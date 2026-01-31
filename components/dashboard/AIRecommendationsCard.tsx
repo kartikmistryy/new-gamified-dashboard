@@ -1,17 +1,39 @@
 "use client";
 
-import { Sparkles, ChevronRight, ThumbsUp, ThumbsDown } from "lucide-react";
+import * as React from "react";
+import {
+  Sparkles,
+  ChevronRight,
+  ThumbsUp,
+  ThumbsDown,
+  Bot,
+} from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { getAIRecommendations } from "@/lib/orgDashboard/utils";
-import { INDUSTRY_AVERAGE_GAUGE } from "@/lib/orgDashboard/constants";
 import type { ChartDataPoint } from "@/lib/orgDashboard/types";
 
 type AIRecommendationsCardProps = {
   gaugeValue: number;
   chartData: ChartDataPoint[];
 };
+
+function formatMarketCloseDate(): string {
+  const today = new Date();
+  const month = today.toLocaleString("en-US", { month: "short" });
+  const day = today.getDate();
+  return `Key updates from the market close on ${month} ${day}`;
+}
+
+function formatTimestamp(): string {
+  const today = new Date();
+  const month = today.toLocaleString("en-US", { month: "short" });
+  const day = today.getDate();
+  const hours = today.getHours();
+  const minutes = today.getMinutes();
+  const displayMinutes = minutes.toString().padStart(2, "0");
+  return `Updated: ${month} ${day} ${hours}:${displayMinutes} ET`;
+}
 
 export function AIRecommendationsCard({
   gaugeValue,
@@ -20,120 +42,78 @@ export function AIRecommendationsCard({
   const recommendations = getAIRecommendations(gaugeValue, chartData);
 
   return (
-    <div className="rounded-2xl p-[2px] bg-linear-to-r from-sky-400 via-violet-500 to-fuchsia-500 shadow-md">
-      <Card className="rounded-[14px] overflow-hidden border-0 bg-[#F5F3FF] shadow-none">
-        <div className="px-5 pt-5 pb-1">
-          <div className="flex items-center gap-3 flex-wrap">
-            <Sparkles
-              className="size-5 text-violet-600 shrink-0"
-              aria-hidden
-            />
-            <h3 className="font-bold text-gray-900 tracking-tight">
-              AI Recommendations
+    <Card className="rounded-lg overflow-hidden border border-gray-200 bg-linear-to-br from-purple-50/40 via-pink-50/30 to-purple-50/40 shadow-sm py-0">
+      <CardContent className="px-5 pt-5 pb-5">
+        {/* Header */}
+        <div className="flex items-start gap-3 mb-5">
+          <div className="relative shrink-0">
+            <div className="size-10 rounded-full p-1 bg-linear-to-br from-blue-400 via-purple-400 to-purple-500">
+              <div className="size-full rounded-full bg-white flex items-center justify-center">
+                <Bot className="size-5 text-blue-500" aria-hidden />
+              </div>
+            </div>
+          </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="font-bold text-lg text-gray-900 tracking-tight mb-0.5">
+              {formatMarketCloseDate()}
             </h3>
-            <span className="rounded-md bg-sky-100 px-2 py-0.5 text-xs font-semibold text-sky-700">
-              BETA
-            </span>
-            <p className="text-xs text-gray-600 w-full mt-0.5 ml-8">
-              Based on score ({gaugeValue}) and chart trend
-            </p>
+            <p className="text-xs text-gray-500">{formatTimestamp()}</p>
           </div>
         </div>
-        <CardContent className="px-5 pt-3 pb-5">
-          <p className="text-sm text-gray-800 leading-snug mb-4">
-            {gaugeValue >= INDUSTRY_AVERAGE_GAUGE ? (
-              <>
-                Overall score is{" "}
-                <strong className="text-gray-900">{gaugeValue}</strong> —{" "}
-                <strong className="text-green-700">
-                  {Math.round(gaugeValue - INDUSTRY_AVERAGE_GAUGE)} pts above
-                </strong>{" "}
-                industry average.
-              </>
-            ) : (
-              <>
-                Overall score is{" "}
-                <strong className="text-gray-900">{gaugeValue}</strong> —{" "}
-                <strong className="text-red-600">
-                  {Math.abs(
-                    Math.round(gaugeValue - INDUSTRY_AVERAGE_GAUGE),
-                  )}{" "}
-                  pts below
-                </strong>{" "}
-                industry average.
-              </>
-            )}
-          </p>
-          <div className="space-y-3">
+
+        {/* Trading Data Section */}
+        <div className="mb-4">
+          <h4 className="font-semibold text-base text-gray-900 mb-3">
+            Trading Data
+          </h4>
+          <div className="space-y-4">
             {recommendations.map((rec, i) => (
-              <div
-                key={i}
-                className={cn(
-                  "border-l-4 rounded-r-lg bg-white/60 pl-4 pr-4 py-3 transition-colors hover:bg-white/80",
-                  rec.borderAccent,
-                )}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0 flex-1">
-                    <span
-                      className={cn(
-                        "inline-flex rounded-md px-2 py-0.5 text-xs font-medium mb-1.5",
-                        rec.sentimentColor,
-                        rec.sentimentColor === "text-red-600" && "bg-red-50",
-                        rec.sentimentColor === "text-green-600" && "bg-green-50",
-                        rec.sentimentColor === "text-amber-600" && "bg-amber-50",
-                        rec.sentimentColor === "text-gray-600" && "bg-gray-100",
-                      )}
-                    >
-                      {rec.sentiment}
-                    </span>
-                    <p className="text-sm text-gray-800 leading-snug">
-                      {rec.text}
-                    </p>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="shrink-0 text-violet-600 hover:text-violet-800 hover:bg-violet-50 rounded-lg -mr-1 font-medium"
-                  >
-                    {rec.cta}
-                    <ChevronRight className="size-4 ml-0.5" aria-hidden />
-                  </Button>
-                </div>
+              <div key={i} className="space-y-2">
+                <p className="text-sm text-gray-900 leading-relaxed">
+                  <span className={`font-bold ${rec.sentimentColor}`}>
+                    {rec.sentiment}:
+                  </span>{" "}
+                  {rec.text}
+                </p>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-auto py-1 px-3 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-medium border border-gray-200"
+                >
+                  {rec.cta}
+                  <ChevronRight className="size-3 ml-1" aria-hidden />
+                </Button>
               </div>
             ))}
           </div>
-          <div className="flex items-center justify-between gap-4 mt-5 pt-4 border-t border-violet-200/60">
-            <a
-              href="#"
-              className="text-sm font-medium text-violet-600 hover:text-violet-800 underline underline-offset-2"
+        </div>
+
+        {/* Footer */}
+        <div className="flex items-center justify-between gap-2 pt-4 border-t border-gray-200 w-full">
+          <span className="flex flex-row gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="size-9 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 border border-gray-200 bg-gray-50"
+              aria-label="Helpful"
             >
-              View Details
-            </a>
-            <div className="flex items-center gap-2">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="size-8 rounded-full text-gray-500 hover:text-green-600 hover:bg-green-50/80"
-                aria-label="Helpful"
-              >
-                <ThumbsUp className="size-4" aria-hidden />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="size-8 rounded-full text-gray-500 hover:text-red-600 hover:bg-red-50/80"
-                aria-label="Not helpful"
-              >
-                <ThumbsDown className="size-4" aria-hidden />
-              </Button>
-              <Button className="rounded-xl bg-gray-900 text-white hover:bg-gray-800 border-0 font-medium text-sm px-4 h-9 shadow-sm">
-                Ask AI
-              </Button>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+              <ThumbsUp className="size-4" aria-hidden />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="size-9 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 border border-gray-200 bg-gray-50"
+              aria-label="Not helpful"
+            >
+              <ThumbsDown className="size-4" aria-hidden />
+            </Button>
+          </span>
+          <Button className="rounded-lg bg-linear-to-r from-pink-400 via-purple-400 to-purple-500 text-white hover:opacity-90 border-0 font-medium text-sm px-4 h-9 shadow-sm flex items-center gap-2">
+            <Sparkles className="size-4" aria-hidden />
+            Ask AI
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

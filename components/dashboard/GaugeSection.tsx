@@ -9,7 +9,7 @@ import {
   getGaugeSecondaryLabelIcon,
 } from "@/lib/orgDashboard/utils";
 import { useGauge } from "./useGauge";
-import { INDUSTRY_AVERAGE_GAUGE } from "@/lib/orgDashboard/constants";
+import { MARKET_AVERAGE_GAUGE } from "@/lib/orgDashboard/constants";
 
 type GaugeSectionProps = {
   gaugeValue: number;
@@ -22,7 +22,7 @@ export function GaugeSection({
   timeRange,
   onTimeRangeChange,
 }: GaugeSectionProps) {
-  const gaugeRef = useGauge(gaugeValue, INDUSTRY_AVERAGE_GAUGE);
+  const gaugeRef = useGauge(gaugeValue, MARKET_AVERAGE_GAUGE);
 
   return (
     <div className="flex flex-col items-center gap-4">
@@ -30,7 +30,7 @@ export function GaugeSection({
         <div
           ref={gaugeRef}
           className="w-full h-full min-w-[400px]"
-          aria-label="Overall score gauge"
+          aria-label="Fear & Greed Index gauge"
         />
         <div
           className="flex items-center justify-center gap-1.5 text-sm font-medium"
@@ -86,15 +86,15 @@ export function GaugeSection({
       </ToggleGroup>
       <div className="flex flex-row justify-between max-w-sm mx-auto gap-8 w-full">
         <div className="flex flex-col justify-center items-center gap-2">
-          <p className="text-base text-gray-500">Overall Quality</p>
+          <p className="text-base text-gray-500">Fear & Greed Index</p>
           <p className="font-bold text-3xl leading-tight text-gray-900">
             {getGaugeSecondaryLabel(gaugeValue)}
           </p>
         </div>
         <div className="flex flex-col justify-center items-center gap-2">
-          <p className="text-base text-gray-500">Percentile</p>
+          <p className="text-base text-gray-500">Index Value</p>
           <p className="font-bold text-3xl leading-tight text-gray-900">
-            {Math.round((gaugeValue / 100) * 100)}%
+            {gaugeValue}
           </p>
         </div>
       </div>

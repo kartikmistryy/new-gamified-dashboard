@@ -54,7 +54,7 @@ export function useGauge(
       startAngle: 270,
       endAngle: 450,
       segmentation: { enabled: true, interval: { count: 3 } },
-      targets: [{ value: industryAverage, text: "Industry Average" }],
+      targets: [{ value: industryAverage, text: "Market Average" }],
       cornerMode: "container",
       cornerRadius: 10,
     };

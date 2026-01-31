@@ -9,7 +9,7 @@ import {
   CHART_DATA_1_MONTH,
   CHART_DATA_1_YEAR,
   CHART_DATA_ALL,
-  INDUSTRY_AVERAGE_GAUGE,
+  MARKET_AVERAGE_GAUGE,
 } from "./constants";
 import type { AIRecommendation, ChartDataPoint } from "./types";
 
@@ -26,20 +26,16 @@ export function getGaugeColor(value: number): string {
 
 export function getGaugeSecondaryLabel(value: number): string {
   switch (true) {
-    case value >= 0 && value <= 15:
-      return "Critical";
-    case value >= 16 && value <= 35:
-      return "At Risk";
-    case value >= 36 && value <= 50:
-      return "Major Concern";
-    case value >= 51 && value <= 65:
-      return "Moderate";
-    case value >= 66 && value <= 80:
-      return "Healthy";
-    case value >= 81 && value <= 92:
-      return "Good";
-    case value >= 93 && value <= 100:
-      return "Excellent";
+    case value >= 0 && value <= 24:
+      return "Extreme Fear";
+    case value >= 25 && value <= 44:
+      return "Fear";
+    case value >= 45 && value <= 55:
+      return "Neutral";
+    case value >= 56 && value <= 75:
+      return "Greed";
+    case value >= 76 && value <= 100:
+      return "Extreme Greed";
     default:
       return "Unknown";
   }
@@ -47,12 +43,12 @@ export function getGaugeSecondaryLabel(value: number): string {
 
 export function getGaugeSecondaryLabelText(
   value: number,
-  industryAverage: number = INDUSTRY_AVERAGE_GAUGE,
+  industryAverage: number = MARKET_AVERAGE_GAUGE,
 ): string {
   const diff = Math.round(value - industryAverage);
-  if (diff === 0) return "At industry average";
-  if (diff > 0) return `${diff} pts more`;
-  return `${Math.abs(diff)} pts less`;
+  if (diff === 0) return "At market average";
+  if (diff > 0) return `${diff} pts above average`;
+  return `${Math.abs(diff)} pts below average`;
 }
 
 export function getGaugeSecondaryLabelIcon(value: number): LucideIcon {
@@ -79,13 +75,13 @@ export function getAIRecommendations(
   gaugeValue: number,
   chartData: ChartDataPoint[],
 ): AIRecommendation[] {
-  const diff = gaugeValue - INDUSTRY_AVERAGE_GAUGE;
-  const scoreTrend =
+  const diff = gaugeValue - MARKET_AVERAGE_GAUGE;
+  const fearGreedTrend =
     chartData.length >= 2
       ? chartData[chartData.length - 1].fearGreed -
         chartData[chartData.length - 2].fearGreed
       : 0;
-  const industryTrend =
+  const btcPriceTrend =
     chartData.length >= 2
       ? chartData[chartData.length - 1].btcPrice -
         chartData[chartData.length - 2].btcPrice
@@ -93,67 +89,67 @@ export function getAIRecommendations(
 
   const recommendations: AIRecommendation[] = [];
 
-  if (diff < -20) {
+  if (gaugeValue <= 25) {
     recommendations.push({
-      sentiment: "Below average",
+      sentiment: "Extreme Fear",
       sentimentColor: "text-red-600",
       borderAccent: "border-l-red-500",
-      text: `Overall score is ${Math.abs(Math.round(diff))} pts below industry average. Consider reviewing key drivers and focusing on areas that typically move the needle.`,
-      cta: "View benchmarks",
+      text: "Market sentiment indicates extreme fear. This could present buying opportunities, but exercise caution and consider dollar-cost averaging strategies.",
+      cta: "View indicators",
     });
-  } else if (diff > 15) {
+  } else if (gaugeValue >= 76) {
     recommendations.push({
-      sentiment: "Above average",
+      sentiment: "Extreme Greed",
       sentimentColor: "text-green-600",
       borderAccent: "border-l-green-500",
-      text: `Overall score is ${Math.round(diff)} pts above industry average. Maintain current practices and look for opportunities to extend the lead.`,
-      cta: "Compare peers",
-    });
-  }
-
-  if (scoreTrend < -5) {
-    recommendations.push({
-      sentiment: "Declining score",
-      sentimentColor: "text-amber-600",
-      borderAccent: "border-l-amber-500",
-      text: "Overall score % has declined over the latest period. Monitor contributing factors and consider proactive adjustments before the next cycle.",
-      cta: "Indicators",
-    });
-  } else if (scoreTrend > 5) {
-    recommendations.push({
-      sentiment: "Improving score",
-      sentimentColor: "text-green-600",
-      borderAccent: "border-l-green-500",
-      text: "Overall score % is trending up. Recent changes appear to be having a positive impact; consider doubling down on what's working.",
+      text: "Market sentiment shows extreme greed. Consider taking profits and rebalancing your portfolio. High sentiment often precedes corrections.",
       cta: "Analysis",
     });
   }
 
-  if (industryTrend < 0 && recommendations.length < 3) {
+  if (fearGreedTrend < -10) {
     recommendations.push({
-      sentiment: "Industry pressure",
-      sentimentColor: "text-gray-600",
-      borderAccent: "border-l-gray-400",
-      text: "Industry average has moved down recently. Use this as context when interpreting your score and prioritising next actions.",
-      cta: "Industry view",
+      sentiment: "Bearish",
+      sentimentColor: "text-red-600",
+      borderAccent: "border-l-red-500",
+      text: "The closing price has crossed below the MA5, suggesting a potential downside risk.",
+      cta: "Indicators",
     });
-  } else if (industryTrend > 0 && recommendations.length < 3) {
+  } else if (fearGreedTrend > 10) {
     recommendations.push({
-      sentiment: "Industry tailwind",
+      sentiment: "Bullish",
       sentimentColor: "text-green-600",
       borderAccent: "border-l-green-500",
-      text: "Industry average is rising. Your relative position versus peers may shift; keep an eye on both absolute and relative performance.",
-      cta: "Benchmarks",
+      text: "Fear & Greed Index is rising, indicating improving market sentiment. Monitor volume and support levels for confirmation of the trend.",
+      cta: "Analysis",
+    });
+  }
+
+  if (btcPriceTrend < -5000 && recommendations.length < 3) {
+    recommendations.push({
+      sentiment: "Price Decline",
+      sentimentColor: "text-amber-600",
+      borderAccent: "border-l-amber-500",
+      text: "BTC price has moved down recently. This may indicate a short-term correction or shift in market dynamics. Review technical indicators.",
+      cta: "Technical view",
+    });
+  } else if (btcPriceTrend > 5000 && recommendations.length < 3) {
+    recommendations.push({
+      sentiment: "Price Surge",
+      sentimentColor: "text-green-600",
+      borderAccent: "border-l-green-500",
+      text: "BTC price is trending upward. Monitor resistance levels and consider profit-taking strategies if the rally extends.",
+      cta: "Price analysis",
     });
   }
 
   if (recommendations.length === 0) {
     recommendations.push({
-      sentiment: "Stable",
-      sentimentColor: "text-gray-600",
+      sentiment: "Neutral",
+      sentimentColor: "text-gray-900",
       borderAccent: "border-l-gray-400",
-      text: "Score and industry average are stable. Good time to review goals and set targets for the next period.",
-      cta: "Set goals",
+      text: "Call options trading volume and open interest are concentrated around the 18 strike price, indicating this level may serve as a key support or resistance. It is important to monitor changes in volatility and consider flexible directional or volatility strategies.",
+      cta: "Analysis",
     });
   }
 

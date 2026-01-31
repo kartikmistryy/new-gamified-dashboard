@@ -12,12 +12,13 @@ export type ChartDataPoint = {
   btcPrice: number;
 };
 
-export type TeamRow = {
+export type CryptoRow = {
   rank: number;
   name: string;
-  teamId: string;
-  codeQuality: number;
-  karmaPoints: number;
+  symbol: string;
+  price: number;
+  marketCap: string;
+  color: string;
 };
 
-export type TeamSortColumn = "codeQuality" | "karmaPoints" | null;
+export type CryptoSortColumn = "price" | "marketCap" | null;
