@@ -115,7 +115,7 @@ export function SummaryChart({ chartData, gaugeValue }: SummaryChartProps) {
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={dataWithIndex}
-          margin={{ top: 10, right: 30, left: 20, bottom: 10 }}
+          margin={{ top: 10, right: 30, left: 20, bottom: 24 }}
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
           
@@ -136,6 +136,7 @@ export function SummaryChart({ chartData, gaugeValue }: SummaryChartProps) {
               if (!point) return "";
               return point.date;
             }}
+            label={{ value: "Date", position: "insideBottom", offset: -5, style: { fontSize: 12, fill: "#6b7280" } }}
           />
           <YAxis
             yAxisId="left"
@@ -145,6 +146,7 @@ export function SummaryChart({ chartData, gaugeValue }: SummaryChartProps) {
             tickFormatter={(v) => `${(v / 1000).toFixed(1)}K`}
             domain={["dataMin", "dataMax"]}
             allowDecimals={false}
+            label={{ value: "BTC Price", angle: -90, position: "insideLeft", style: { fontSize: 12, fill: "#6b7280" } }}
           />
           <YAxis
             yAxisId="right"
@@ -153,6 +155,7 @@ export function SummaryChart({ chartData, gaugeValue }: SummaryChartProps) {
             tick={{ fontSize: 11, fill: "#6b7280" }}
             domain={[0, 100]}
             tickFormatter={(v) => `${v}`}
+            label={{ value: "Fear & Greed Index", angle: 90, position: "insideRight", style: { fontSize: 12, fill: "#6b7280" } }}
           />
           <Tooltip
             content={({ active, payload, label }) => {
