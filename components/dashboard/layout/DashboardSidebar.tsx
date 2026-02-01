@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { useState } from "react"
+import { usePathname } from "next/navigation"
 import {
   Sidebar,
   SidebarContent,
@@ -11,6 +12,8 @@ import {
 } from "@/components/ui/sidebar"
 import { organizations } from "@/__mocks__/sidebar/organizations"
 import DashboardHeader from "./DashboardHeader"
+import DashboardHero from "./DashboardHero"
+import DashboardTabs from "./DashboardTabs"
 import useDashboardMeta from "./hooks/useDashboardMeta"
 import { useSidebarData, useVisibleItems, useSidebarVisibility } from "./hooks/useSidebarData"
 import { useFavorites } from "./hooks/useFavorites"
@@ -22,7 +25,9 @@ import { SIDEBAR_DISPLAY_LIMITS } from "./constants"
 import type { Organization } from "@/types/sidebar"
 
 export default function DashboardSidebar({ children }: { children: React.ReactNode }) {
-  const { breadcrumbItems, teamId, userId, repoId } = useDashboardMeta()
+  const pathname = usePathname()
+  const { breadcrumbItems, dashboardKey, teamId, userId, repoId } = useDashboardMeta()
+  const showDashboardTabs = pathname?.startsWith("/org/") ?? false
   const [selectedOrg, setSelectedOrg] = useState<Organization>(() => {
     if (organizations.length === 0) throw new Error("No organizations available.")
     return organizations[0]
@@ -46,6 +51,17 @@ export default function DashboardSidebar({ children }: { children: React.ReactNo
 
   const { orgFavorites, isFavorited, toggleFavorite } = useFavorites(selectedOrg)
   const visibleTeams = useVisibleItems(allTeams, showAllTeams, SIDEBAR_DISPLAY_LIMITS.TEAMS)
+
+  const heroDisplayName = React.useMemo(() => {
+    if (dashboardKey === "organization") return selectedOrg.name
+    if (dashboardKey === "team" && teamId)
+      return allTeams.find((t) => t.id === teamId)?.name
+    if (dashboardKey === "user" && userId)
+      return people.find((p) => p.id === userId)?.name
+    if (dashboardKey === "repo" && repoId)
+      return repositories.find((r) => r.id === repoId)?.name
+    return undefined
+  }, [dashboardKey, selectedOrg.name, teamId, userId, repoId, allTeams, people, repositories])
   const visibleRepos = useVisibleItems(
     repositories,
     showAllRepos,
@@ -94,7 +110,28 @@ export default function DashboardSidebar({ children }: { children: React.ReactNo
           <SidebarTrigger />
           <DashboardHeader breadcrumbItems={breadcrumbItems} />
         </header>
-        <main className="flex flex-1 flex-col bg-white">{children}</main>
+        <main className="flex flex-1 flex-col gap-4 bg-white">
+          <div className="px-4 pt-4">
+            <DashboardHero
+              dashboard={dashboardKey}
+              name={heroDisplayName}
+              userName={dashboardKey === "user" ? heroDisplayName : undefined}
+              avatarSrc={
+                dashboardKey === "user"
+                  ? people.find((p) => p.id === userId)?.avatar
+                  : dashboardKey === "team"
+                    ? allTeams.find((t) => t.id === teamId)?.avatar
+                    : undefined
+              }
+            />
+          </div>
+          {showDashboardTabs && (
+            <div className="px-4 pb-2">
+              <DashboardTabs />
+            </div>
+          )}
+          {children}
+        </main>
       </SidebarInset>
     </SidebarProvider>
   )

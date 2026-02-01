@@ -41,6 +41,24 @@ export function getGaugeSecondaryLabel(value: number): string {
   }
 }
 
+/** Performance-themed gauge label for org overview (Underperforming, Flat, Outperforming). */
+export function getPerformanceGaugeLabel(value: number): string {
+  switch (true) {
+    case value >= 0 && value <= 24:
+      return "Extreme Underperforming";
+    case value >= 25 && value <= 44:
+      return "Underperforming";
+    case value >= 45 && value <= 55:
+      return "Flat";
+    case value >= 56 && value <= 75:
+      return "Outperforming";
+    case value >= 76 && value <= 100:
+      return "Extreme Outperforming";
+    default:
+      return "Unknown";
+  }
+}
+
 export function getGaugeSecondaryLabelText(
   value: number,
   industryAverage: number = MARKET_AVERAGE_GAUGE,
@@ -75,7 +93,6 @@ export function getAIRecommendations(
   gaugeValue: number,
   chartData: ChartDataPoint[],
 ): AIRecommendation[] {
-  const diff = gaugeValue - MARKET_AVERAGE_GAUGE;
   const fearGreedTrend =
     chartData.length >= 2
       ? chartData[chartData.length - 1].fearGreed -

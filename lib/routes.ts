@@ -51,3 +51,8 @@ export function detectDashboardType(pathname: string): DashboardType {
   if (/^\/org\/[^/]+/.test(pathname)) return "organization"
   return "organization"
 }
+
+export function isRepoDetailPage(pathname: string | null | undefined): boolean {
+  if (!pathname) return false
+  return /^\/org\/[^/]+\/repo\/[^/]+/.test(pathname)
+}
