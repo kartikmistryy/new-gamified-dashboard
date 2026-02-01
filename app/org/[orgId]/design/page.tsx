@@ -52,7 +52,7 @@ export default function OrgDesignPage() {
             }}
           />
           <CardContent className="space-y-8 w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {SUMMARY_CARD_CONFIGS.map((item) => {
                 const Icon = SUMMARY_ICONS[item.key];
                 return (
@@ -60,18 +60,16 @@ export default function OrgDesignPage() {
                     key={item.key}
                     className={`${item.bg} border-0 shadow-sm overflow-hidden`}
                   >
-                    <CardContent className="p-4 flex flex-row items-center justify-between">
+                    <CardContent className="px-4 flex flex-col items-start justify-between gap-3">
                       <div className="flex items-center gap-3">
                         <div className={`p-2 rounded-md bg-white/60 ${item.iconColor}`}>
                           <Icon className="size-5" aria-hidden />
                         </div>
-                        <div>
-                          <p className="text-sm font-medium text-gray-700">{item.title}</p>
-                          <p className="text-xl font-bold text-gray-900">
-                            {item.count} ({item.pct}%)
-                          </p>
-                        </div>
+                        <p className="text-sm font-medium text-gray-700">{item.title}</p>
                       </div>
+                      <p className="text-xl font-bold text-gray-900 ml-2">
+                        {item.count} ({item.pct}%)
+                      </p>
                     </CardContent>
                   </Card>
                 );
