@@ -34,7 +34,7 @@ const normalizeBasePath = (basePath: string) =>
 export const resolveActiveTab = (
   pathname: string | null,
   basePath: string,
-  fallback: ProfileTabKey = "overall",
+  fallback: ProfileTabKey = "overview",
 ): ProfileTabKey => {
   if (!pathname) return fallback
 
@@ -53,7 +53,7 @@ export const resolveActiveTab = (
     if (segment && !["team", "user", "repo"].includes(segment)) {
       return (segment as ProfileTabKey) || fallback
     }
-    return fallback
+    return "overview"
   }
 
   const normalizedBasePath = normalizeBasePath(basePath)
@@ -95,29 +95,29 @@ export const buildTabConfigs = (
     if (orgId) {
       if (dashboardType === "team" && teamId) {
         href =
-          tab.key === "overall"
+          tab.key === "overview"
             ? `/org/${orgId}/team/${teamId}`
             : `/org/${orgId}/team/${teamId}/${tab.key}`
       } else if (dashboardType === "user" && userId) {
         href =
-          tab.key === "overall"
+          tab.key === "overview"
             ? `/org/${orgId}/user/${userId}`
             : `/org/${orgId}/user/${userId}/${tab.key}`
       } else if (dashboardType === "repo" && repoId) {
         href =
-          tab.key === "overall"
+          tab.key === "overview"
             ? `/org/${orgId}/repo/${repoId}`
             : `/org/${orgId}/repo/${repoId}/${tab.key}`
       } else {
         href =
-          tab.key === "overall"
+          tab.key === "overview"
             ? `/org/${orgId}`
             : `/org/${orgId}/${tab.key}`
       }
     } else {
       const normalizedBasePath = normalizeBasePath(basePath)
       href =
-        tab.key === "overall"
+        tab.key === "overview"
           ? normalizedBasePath
           : `${normalizedBasePath === "/" ? "" : normalizedBasePath}/${tab.key}`
     }
