@@ -34,12 +34,14 @@ export default function OrgSummaryPage() {
               Organization Overview
             </h2>
 
+            <div className="flex flex-row gap-5">
             <GaugeSection
               gaugeValue={gaugeValue}
               labelVariant="performance"
             />
 
             <ChartInsights insights={chartInsights} />
+            </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
               {summaryCards.map((item) => (
