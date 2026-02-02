@@ -90,6 +90,8 @@ export type TeamPerformanceRow = {
   performanceValue: number;
   trend: "up" | "down" | "flat";
   performanceBarColor: string;
+  /** Change in points (e.g. +5, -5, 0); used on performance page. */
+  changePts?: number;
   typeDistribution: {
     star: number;
     timeBomb: number;
@@ -101,3 +103,30 @@ export type TeamPerformanceRow = {
 };
 
 export type TeamTableFilter = "mostProductive" | "leastProductive" | "mostOptimal" | "mostRisky";
+
+export type PerformanceTableFilter =
+  | "mostProductive"
+  | "leastProductive"
+  | "mostImproved"
+  | "mostRegressed";
+
+/** Design page teams table: ownership allocation (3 segments), engineering chaos (4 segments). */
+export type DesignTeamRow = {
+  teamName: string;
+  teamColor: string;
+  /** 3 segments: red, blue, green (counts). */
+  ownershipAllocation: [number, number, number];
+  /** 4 segments: red, light orange, blue, green (counts). */
+  engineeringChaos: [number, number, number, number];
+  /** Scores backing the filter tabs for deterministic sorting. Higher is \"more\" of that dimension. */
+  outlierScore: number;
+  skilledAIScore: number;
+  unskilledScore: number;
+  legacyScore: number;
+};
+
+export type DesignTableFilter =
+  | "mostOutliers"
+  | "mostSkilledAIBuilders"
+  | "mostUnskilledVibeCoders"
+  | "mostLegacyDevs";
