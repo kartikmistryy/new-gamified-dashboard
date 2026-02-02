@@ -26,15 +26,15 @@ export default function DashboardTabItem({
       aria-selected={tab.isActive}
       aria-controls={`panel-${tab.key}`}
       tabIndex={tab.isActive ? 0 : -1}
-      className="flex-1 sm:flex-1 min-w-fit h-9 cursor-pointer shrink-0"
+      className="flex-1 sm:flex-1 min-w-fit h-8 cursor-pointer shrink-0"
     >
       <Link
         href={tab.href}
         ref={(el) => registerTabRef(tab.key, el)}
         className={cn(
           basePill,
-          "w-full z-10 h-9 flex flex-row items-center gap-1",
-          tab.isActive ? "text-foreground" : "text-foreground/60",
+          "w-full z-10 h-8 flex flex-row items-center gap-1",
+          tab.isActive ? "text-foreground font-medium" : "text-foreground/60",
         )}
       >
         <span className="z-10 text-sm">{tab.label}</span>

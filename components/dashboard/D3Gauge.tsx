@@ -90,7 +90,9 @@ export function D3Gauge({
     return () => cancelAnimationFrame(rafId);
   }, [value, cx, cy, dotRadius, spec]);
 
-  const textY = cy - innerRadius / 2;
+  /** Value and label at bottom of gauge */
+  const valueY = H - 44;
+  const labelY = H - 16;
 
   /** Angular gap (degrees) between each colored segment */
   const SEGMENT_GAP_DEG = 2.5;
@@ -129,9 +131,9 @@ export function D3Gauge({
 
       <text
         x={cx}
-        y={textY}
+        y={valueY - 35}
         textAnchor="middle"
-        dominantBaseline="central"
+        dominantBaseline="central" 
         className="fill-slate-900"
         style={{ fontSize: 44, fontWeight: 700 }}
       >
@@ -139,11 +141,11 @@ export function D3Gauge({
       </text>
       <text
         x={cx}
-        y={textY + 44}
+        y={labelY - 20}
         textAnchor="middle"
-        dominantBaseline="central"
+        dominantBaseline="alphabetic"
         className="fill-slate-700"
-        style={{ fontSize: 14, fontWeight: 500, fill: labelColor }}
+        style={{ fontSize: 16, fontWeight: 500, fill: labelColor }}
       >
         {label}
       </text>

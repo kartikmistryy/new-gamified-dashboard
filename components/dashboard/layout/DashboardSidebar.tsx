@@ -106,7 +106,7 @@ export default function DashboardSidebar({ children }: { children: React.ReactNo
         <UserFooter people={people} />
       </Sidebar>
       <SidebarInset className="p-0">
-        <header className="flex h-14 items-center gap-4 px-6 border-b bg-white">
+        <header className="flex h-14 items-center gap-4 px-4 border-b bg-white">
           <SidebarTrigger />
           <DashboardHeader breadcrumbItems={breadcrumbItems} />
         </header>

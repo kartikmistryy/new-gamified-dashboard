@@ -42,11 +42,11 @@ export default function DashboardTabs() {
     <div className="w-full h-fit flex overflow-x-auto">
       <div
         ref={containerRef}
-        className="relative flex flex-row items-center justify-between w-auto min-w-max max-w-full sm:min-w-fit sm:max-w-80 md:max-w-fit lg:h-fit h-12 py-1 px-1.5 rounded-full bg-muted shrink-0"
+        className="relative flex flex-row items-center justify-between w-auto min-w-max max-w-full sm:min-w-fit sm:max-w-80 md:max-w-fit lg:h-fit h-10 py-1 px-1.5 rounded-full bg-muted shrink-0"
       >
         <motion.span
           aria-hidden
-          className="pointer-events-none h-9 absolute top-1/2 -translate-y-1/2 bg-card rounded-full transition-all duration-300 ease-out z-0"
+          className="pointer-events-none h-8 absolute top-1/2 -translate-y-1/2 bg-card rounded-full transition-all duration-300 ease-out z-0"
           style={{ width: indicatorStyle.width, left: indicatorStyle.left }}
           animate={{
             left: indicatorStyle.left,

@@ -27,7 +27,7 @@ export default function OrgSummaryPage() {
       <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
         <Card className="w-full border-none bg-white p-0 shadow-none">
           <CardContent className="flex w-full flex-col items-stretch space-y-8 px-0">
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 className="text-2xl font-semibold text-foreground">
               Organization Overview
             </h2>
 
@@ -43,7 +43,7 @@ export default function OrgSummaryPage() {
             </div>
 
             <section className="w-full" aria-labelledby="teams-heading">
-              <h2 id="teams-heading" className="mb-4 text-2xl font-bold text-gray-900">
+              <h2 id="teams-heading" className="mb-4 text-2xl font-semibold text-foreground">
                 Teams
               </h2>
               <TeamTable rows={teamRows} />

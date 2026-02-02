@@ -39,9 +39,9 @@ export default function DashboardHero({
       : name ?? getFallbackDisplayName(dashboard)
 
   return (
-    <div className="w-full h-fit flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+    <div className="w-full h-fit flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 my-2">
       <div className="w-full h-fit flex flex-row lg:items-center items-start gap-3">
-        <Avatar className="lg:size-12 size-8 rounded-xl">
+        <Avatar className="lg:size-12 size-8 rounded-md">
           <AvatarImage src={avatarSrc} alt={`${displayName} avatar`} />
           <AvatarFallback>{DEFAULT_AVATAR_FALLBACK}</AvatarFallback>
         </Avatar>

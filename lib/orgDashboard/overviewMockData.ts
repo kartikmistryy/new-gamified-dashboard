@@ -45,20 +45,21 @@ function getTypeDistributionForPerformance(value: number): TeamPerformanceRow["t
 }
 
 function getPerformanceBarColor(value: number): string {
-  if (value <= 24) return "bg-red-500";
-  if (value <= 44) return "bg-orange-500";
-  if (value <= 55) return "bg-yellow-500";
-  if (value <= 75) return "bg-green-400";
-  return "bg-green-600";
+  if (value <= 24) return "bg-[#CA3A31]";
+  if (value <= 44) return "bg-[#E87B35]";
+  if (value <= 55) return "bg-[#E2B53E]";
+  if (value <= 75) return "bg-[#94CA42]";
+  return "bg-[#55B685]";
 }
 
-function getTeamColor(value: number): string {
-  if (value <= 24) return "bg-red-500";
-  if (value <= 44) return "bg-orange-500";
-  if (value <= 55) return "bg-yellow-500";
-  if (value <= 75) return "bg-green-400";
-  return "bg-green-600";
-}
+/** Fixed colors for teams 1–5 (by name/order), not based on performance. */
+const TEAM_COLORS_BY_RANK: string[] = [
+  "bg-[#FF8080]",
+  "bg-[#ACFF80]",
+  "bg-[#80C8FF]",
+  "bg-[#80C8FF]",
+  "bg-[#80C8FF]",
+];
 
 /** Extreme Underperforming = down; Underperforming & Outperforming = up; Flat = right. */
 function getTrend(value: number): "up" | "down" | "flat" {
@@ -77,7 +78,7 @@ export function getTeamPerformanceRowsForGauge(gaugeValue: number): TeamPerforma
   return values.map((performanceValue, index) => {
     const performanceLabel = getPerformanceGaugeLabel(performanceValue);
     const performanceBarColor = getPerformanceBarColor(performanceValue);
-    const teamColor = getTeamColor(performanceValue);
+    const teamColor = TEAM_COLORS_BY_RANK[index] ?? TEAM_COLORS_BY_RANK[0];
     const trend = getTrend(performanceValue);
     return {
       rank: index + 1,
@@ -93,12 +94,12 @@ export function getTeamPerformanceRowsForGauge(gaugeValue: number): TeamPerforma
 }
 
 const BASE_CARD_CONFIG: Omit<OverviewSummaryCardConfig, "count">[] = [
-  { key: "star", title: "Star", priority: "Optimal", descriptionLine1: "Low SPOF", descriptionLine2: "Skilled AI Builder", bg: "bg-green-50", iconColor: "text-green-600", badgeColor: "text-white bg-green-600" },
-  { key: "time-bomb", title: "Time Bomb", priority: "P0", descriptionLine1: "High SPOF", descriptionLine2: "Unskilled Vibe Coder", bg: "bg-red-50", iconColor: "text-red-600", badgeColor: "text-white bg-pink-700" },
-  { key: "key-player", title: "Key Role", priority: "P1", descriptionLine1: "High SPOF", descriptionLine2: "Skilled AI Builder", bg: "bg-orange-50", iconColor: "text-orange-600", badgeColor: "text-white bg-orange-600" },
-  { key: "bottleneck", title: "Bottleneck", priority: "P1", descriptionLine1: "High SPOF", descriptionLine2: "Manual Coder", bg: "bg-orange-50", iconColor: "text-orange-600", badgeColor: "text-white bg-orange-600" },
-  { key: "risky", title: "Risky", priority: "P2", descriptionLine1: "Low SPOF", descriptionLine2: "Unskilled Vibe Coder", bg: "bg-yellow-50", iconColor: "text-yellow-600", badgeColor: "text-white bg-yellow-600" },
-  { key: "stable", title: "Legacy", priority: "P3", descriptionLine1: "Low SPOF", descriptionLine2: "Manual Coder", bg: "bg-yellow-50", iconColor: "text-yellow-600", badgeColor: "text-white bg-yellow-600" },
+  { key: "star", title: "Star", priority: "Optimal", descriptionLine1: "Low SPOF", descriptionLine2: "Skilled AI Builder", bg: "#D9F9E6", iconColor: "#55B685", badgeColor: "text-white bg-[#6BC095]" },
+  { key: "time-bomb", title: "Time Bomb", priority: "P0", descriptionLine1: "High SPOF", descriptionLine2: "Unskilled Vibe Coder", bg: "#F9E3E2", iconColor: "#CA3A31", badgeColor: "text-white bg-[#CA3A31]" },
+  { key: "key-player", title: "Key Role", priority: "P1", descriptionLine1: "High SPOF", descriptionLine2: "Skilled AI Builder", bg: "#FCEED8", iconColor: "#E87B35", badgeColor: "text-white bg-[#E87B35]" },
+  { key: "bottleneck", title: "Bottleneck", priority: "P1", descriptionLine1: "High SPOF", descriptionLine2: "Manual Coder", bg: "#FCEED8", iconColor: "#E87B35", badgeColor: "text-white bg-[#E9A23B]" },
+  { key: "risky", title: "Risky", priority: "P2", descriptionLine1: "Low SPOF", descriptionLine2: "Unskilled Vibe Coder", bg: "#FCF3CC", iconColor: "#E9A23B", badgeColor: "text-white bg-[#E9A23B]" },
+  { key: "stable", title: "Legacy", priority: "P3", descriptionLine1: "Low SPOF", descriptionLine2: "Manual Coder", bg: "#FDF9C9", iconColor: "#E2B53E", badgeColor: "text-white bg-[#E2B53E]" },
 ];
 
 const CARD_KEY_TO_DIST_KEY: (keyof TeamPerformanceRow["typeDistribution"])[] = [

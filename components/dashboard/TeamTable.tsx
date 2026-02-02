@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ArrowRight, TrendingUp, TrendingDown, Star, Bomb, Puzzle, FlaskConical, BrickWall } from "lucide-react";
+import { ArrowRight, TrendingUp, TrendingDown, Star, Bomb, Puzzle, FlaskConical, BrickWall, AlertTriangle } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -20,17 +20,18 @@ const TEAM_FILTER_TABS: { key: TeamTableFilter; label: string }[] = [
   { key: "mostRisky", label: "Most Risky" },
 ];
 
-/** Five type-distribution segments: green star, red circle, orange gear, orange triangle, yellow building. */
+/** Type-distribution segments use same palette as performance bar (overviewMockData getPerformanceBarColor). */
 const TYPE_DISTRIBUTION_SEGMENTS: {
   key: keyof TeamPerformanceRow["typeDistribution"];
   bg: string;
   icon: React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
 }[] = [
-  { key: "star", bg: "bg-green-500", icon: Star },
-  { key: "timeBomb", bg: "bg-red-500", icon: Bomb },
-  { key: "keyRole", bg: "bg-orange-500", icon: Puzzle },
-  { key: "bottleneck", bg: "bg-orange-400", icon: FlaskConical },
-  { key: "legacy", bg: "bg-amber-500", icon: BrickWall },
+  { key: "star", bg: "bg-[#55B685]", icon: Star },
+  { key: "timeBomb", bg: "bg-[#CA3A31]", icon: Bomb },
+  { key: "keyRole", bg: "bg-[#E87B35]", icon: Puzzle },
+  { key: "risky", bg: "bg-[#E87B35]", icon: FlaskConical },
+  { key: "bottleneck", bg: "bg-[#E9A23B]", icon: AlertTriangle },
+  { key: "legacy", bg: "bg-[#E2B53E]", icon: BrickWall },
 ];
 
 type TeamTableProps = {
@@ -66,7 +67,7 @@ export function TeamTable({
           <Badge
             key={tab.key}
             onClick={() => handleFilter(tab.key)}
-            className={`px-4 py-2 rounded-lg cursor-pointer text-sm font-medium transition-colors ${
+            className={`px-3 py-2 rounded-lg cursor-pointer text-sm font-medium transition-colors ${
               currentFilter === tab.key
                 ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
                 : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
@@ -80,10 +81,10 @@ export function TeamTable({
         <Table>
           <TableHeader className="border-0">
             <TableRow className="border-none hover:bg-transparent">
-              <TableHead className="text-gray-500 font-medium w-14">Rank</TableHead>
-              <TableHead className="text-gray-500 font-medium">Team</TableHead>
-              <TableHead className="text-gray-500 font-medium">Real Performance</TableHead>
-              <TableHead className="text-gray-500 font-medium">Type Distribution</TableHead>
+              <TableHead className="text-foreground font-medium w-14">Rank</TableHead>
+              <TableHead className="text-foreground font-medium">Team</TableHead>
+              <TableHead className="text-foreground font-medium text-right">Real Performance</TableHead>
+              <TableHead className="text-foreground font-medium text-right">Type Distribution</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -91,8 +92,16 @@ export function TeamTable({
               const displayRank = index + 1;
               const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
               return (
-                <TableRow key={`${row.teamName}-${displayRank}`} className="border-gray-100 hover:bg-gray-50/80">
-                  <TableCell className="font-semibold text-gray-900">{displayRank}</TableCell>
+                <TableRow key={`${row.teamName}-${displayRank}`} className="border-[#E5E5E5] hover:bg-gray-50/80">
+                  <TableCell
+                    className={
+                      displayRank <= 3
+                        ? "text-foreground font-bold"
+                        : "text-[#737373] font-medium"
+                    }
+                  >
+                    {displayRank}
+                  </TableCell>
                   <TableCell>
                     <div className="flex items-center gap-3">
                       <div
@@ -102,8 +111,8 @@ export function TeamTable({
                       <p className="font-medium text-gray-900">{row.teamName}</p>
                     </div>
                   </TableCell>
-                  <TableCell>
-                    <div className="flex items-center gap-2">
+                  <TableCell className="text-right">
+                    <div className="flex items-center justify-end gap-2">
                       <span
                         className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium text-white ${row.performanceBarColor}`}
                       >
@@ -115,8 +124,8 @@ export function TeamTable({
                       </span>
                     </div>
                   </TableCell>
-                  <TableCell>
-                    <div className="flex items-center">
+                  <TableCell className="text-right">
+                    <div className="flex items-center justify-end">
                       {TYPE_DISTRIBUTION_SEGMENTS.map((seg, segIndex) => {
                         const Icon = seg.icon;
                         const count = row.typeDistribution[seg.key] ?? 0;
@@ -129,10 +138,11 @@ export function TeamTable({
                             : isLast
                               ? "rounded-r-lg"
                               : "";
+                        const borderLeftClass = seg.key === "risky" ? "border-l border-black/20" : "";
                         return (
                           <span
                             key={seg.key}
-                            className={`inline-flex items-center gap-1.5 px-4 py-1 text-xs font-medium text-white ${seg.bg} ${roundedClass}`}
+                            className={`inline-flex w-full justify-center items-center gap-1.5 px-4 py-1 text-xs font-medium text-white ${seg.bg} ${roundedClass} ${borderLeftClass}`}
                           >
                             <Icon className="size-3.5 shrink-0" aria-hidden />
                             {count}

@@ -21,10 +21,11 @@ export const defaultGaugeSpec: GaugeSpec = {
   min: 0,
   max: 100,
   segments: [
-    { key: "low", color: "#EE6666", start: 0, end: 25 },
-    { key: "mid-low", color: "#FD994D", start: 25, end: 50 },
-    { key: "mid-high", color: "#FAC858", start: 50, end: 75 },
-    { key: "high", color: "#91CC75", start: 75, end: 100 },
+    { key: "low", color: "#DD524C", start: 0, end: 22 },
+    { key: "mid-low", color: "#E87B35", start: 22, end: 45 },
+    { key: "mid", color: "#E2B53E", start: 45, end: 55 },
+    { key: "mid-high", color: "#94CA42", start: 55, end: 78 },
+    { key: "high", color: "#55B685", start: 78, end: 100 },
   ],
 };
 

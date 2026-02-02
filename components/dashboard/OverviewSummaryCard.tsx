@@ -18,14 +18,28 @@ export type OverviewSummaryCardProps = {
   item: OverviewSummaryCardConfig;
 };
 
+function isCssColor(value: string): boolean {
+  return value.startsWith("#") || value.startsWith("rgb");
+}
+
 export function OverviewSummaryCard({ item }: OverviewSummaryCardProps) {
   const Icon = OVERVIEW_ICONS[item.key];
+  const bgStyle = isCssColor(item.bg) ? { backgroundColor: item.bg } : undefined;
+  const bgClass = isCssColor(item.bg) ? "" : item.bg;
+  const iconColorStyle = isCssColor(item.iconColor) ? { color: item.iconColor } : undefined;
+  const iconColorClass = isCssColor(item.iconColor) ? "" : item.iconColor;
   return (
-    <Card className={`${item.bg} border-0 shadow-sm overflow-hidden rounded-l py-0`}>
+    <Card
+      className={`${bgClass} border-0 shadow-sm overflow-hidden rounded-lg py-0`}
+      style={bgStyle}
+    >
       <CardContent className="px-3 py-3 flex flex-col gap-1.5">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <div className={`p-1.5 rounded-md bg-white/60 ${item.iconColor}`}>
+            <div
+              className={`p-1.5 rounded-md bg-white/60 ${iconColorClass}`}
+              style={iconColorStyle}
+            >
               <Icon className="size-3" aria-hidden />
             </div>
             <p className="text-sm font-semibold text-gray-900">{item.title}</p>
@@ -44,7 +58,11 @@ export function OverviewSummaryCard({ item }: OverviewSummaryCardProps) {
             {item.descriptionLine2}
           </p>
           <div className="flex justify-end mt-auto bg-white p-1 rounded-sm">
-            <TrendingUp className={`size-4 text-gray-400 ${item.iconColor}`} aria-hidden />
+            <TrendingUp
+              className={`size-4 ${iconColorClass || "text-gray-400"}`}
+              style={iconColorStyle}
+              aria-hidden
+            />
           </div>
         </span>
       </CardContent>
