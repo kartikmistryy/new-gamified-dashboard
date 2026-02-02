@@ -84,7 +84,7 @@ export function TeamTable({
               <TableHead className="text-foreground font-medium w-14">Rank</TableHead>
               <TableHead className="text-foreground font-medium">Team</TableHead>
               <TableHead className="text-foreground font-medium text-right">Real Performance</TableHead>
-              <TableHead className="text-foreground font-medium text-right">Type Distribution</TableHead>
+              <TableHead className="text-foreground font-medium text-right">Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Bomb, AlertTriangle, BrickWall, FlaskConical, TrendingUp } from "lucide-react";
+import { Star, Bomb, AlertTriangle, BrickWall, FlaskConical, TrendingUp, TrendingDown, ArrowRight } from "lucide-react";
 import type { OverviewSummaryCardConfig, SummaryCardKey } from "@/lib/orgDashboard/types";
 import { Badge } from "../shared/Badge";
 
@@ -22,8 +22,17 @@ function isCssColor(value: string): boolean {
   return value.startsWith("#") || value.startsWith("rgb");
 }
 
+const TREND_ICONS = { up: TrendingUp, down: TrendingDown, flat: ArrowRight } as const;
+
+function getTrendDirection(count: number): keyof typeof TREND_ICONS {
+  if (count >= 8) return "up";
+  if (count <= 4) return "down";
+  return "flat";
+}
+
 export function OverviewSummaryCard({ item }: OverviewSummaryCardProps) {
   const Icon = OVERVIEW_ICONS[item.key];
+  const TrendIconComponent = TREND_ICONS[getTrendDirection(item.count)];
   const bgStyle = isCssColor(item.bg) ? { backgroundColor: item.bg } : undefined;
   const bgClass = isCssColor(item.bg) ? "" : item.bg;
   const iconColorStyle = isCssColor(item.iconColor) ? { color: item.iconColor } : undefined;
@@ -58,7 +67,7 @@ export function OverviewSummaryCard({ item }: OverviewSummaryCardProps) {
             {item.descriptionLine2}
           </p>
           <div className="flex justify-end mt-auto bg-white p-1 rounded-sm">
-            <TrendingUp
+            <TrendIconComponent
               className={`size-4 ${iconColorClass || "text-gray-400"}`}
               style={iconColorStyle}
               aria-hidden

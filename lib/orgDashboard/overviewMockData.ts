@@ -12,13 +12,13 @@ const TEAM_NAMES = [
 /** Spread around gauge so average equals gauge: -41, -13, 0, +13, +43. */
 const TEAM_VALUE_OFFSETS = [-41, -13, 0, 13, 43] as const;
 
-/** Reference type distributions (sum 30) for interpolation. */
+/** Reference type distributions (sum 30) for interpolation. Tuned so summed counts vary for trend arrows: some ≤4 (down), 5–7 (flat), ≥8 (up). */
 const TYPE_DIST_REF: { value: number; dist: TeamPerformanceRow["typeDistribution"] }[] = [
-  { value: 11, dist: { star: 3, timeBomb: 8, keyRole: 4, bottleneck: 5, risky: 6, legacy: 4 } },
-  { value: 39, dist: { star: 5, timeBomb: 5, keyRole: 5, bottleneck: 5, risky: 5, legacy: 5 } },
-  { value: 50, dist: { star: 6, timeBomb: 4, keyRole: 5, bottleneck: 5, risky: 4, legacy: 6 } },
-  { value: 65, dist: { star: 8, timeBomb: 3, keyRole: 6, bottleneck: 4, risky: 4, legacy: 5 } },
-  { value: 95, dist: { star: 12, timeBomb: 2, keyRole: 6, bottleneck: 3, risky: 3, legacy: 4 } },
+  { value: 11, dist: { star: 10, timeBomb: 9, keyRole: 8, bottleneck: 2, risky: 0, legacy: 1 } },
+  { value: 39, dist: { star: 10, timeBomb: 9, keyRole: 8, bottleneck: 2, risky: 0, legacy: 1 } },
+  { value: 50, dist: { star: 9, timeBomb: 9, keyRole: 9, bottleneck: 1, risky: 1, legacy: 1 } },
+  { value: 65, dist: { star: 9, timeBomb: 8, keyRole: 9, bottleneck: 1, risky: 1, legacy: 2 } },
+  { value: 95, dist: { star: 10, timeBomb: 6, keyRole: 10, bottleneck: 0, risky: 2, legacy: 2 } },
 ];
 
 function lerp(a: number, b: number, t: number): number {
