@@ -29,6 +29,11 @@ export type ChartAnnotation = {
   value: number;
 };
 
+export type ChartInsight = {
+  id: string;
+  text: string;
+};
+
 export type CryptoRow = {
   rank: number;
   name: string;

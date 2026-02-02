@@ -6,7 +6,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
   getTeamPerformanceRowsForGauge,
   getOverviewSummaryCardsForGauge,
+  getChartInsightsMock,
 } from "@/lib/orgDashboard/overviewMockData";
+import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { GaugeSection } from "@/components/dashboard/GaugeSection";
 import { OverviewSummaryCard } from "@/components/dashboard/OverviewSummaryCard";
 import { TeamTable } from "@/components/dashboard/TeamTable";
@@ -21,6 +23,7 @@ export default function OrgSummaryPage() {
     () => getOverviewSummaryCardsForGauge(gaugeValue),
     [gaugeValue],
   );
+  const chartInsights = useMemo(() => getChartInsightsMock(), []);
 
   return (
     <TooltipProvider>
@@ -35,6 +38,8 @@ export default function OrgSummaryPage() {
               gaugeValue={gaugeValue}
               labelVariant="performance"
             />
+
+            <ChartInsights insights={chartInsights} />
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
               {summaryCards.map((item) => (
