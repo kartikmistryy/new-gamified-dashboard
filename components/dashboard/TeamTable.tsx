@@ -67,7 +67,7 @@ export function TeamTable({
           <Badge
             key={tab.key}
             onClick={() => handleFilter(tab.key)}
-            className={`px-3 py-2 rounded-lg cursor-pointer text-sm font-medium transition-colors ${
+            className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
               currentFilter === tab.key
                 ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
                 : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
@@ -114,10 +114,10 @@ export function TeamTable({
                   <TableCell className="text-right">
                     <div className="flex items-center justify-end gap-2">
                       <span
-                        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium text-white ${row.performanceBarColor}`}
+                        className={`inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium text-white ${row.performanceBarColor}`}
                       >
                         {row.performanceLabel}
-                        <span className="flex flex-row gap-1 pl-2 border-l border-white/50">
+                        <span className="flex flex-row items-center justify-between gap-1 pl-2 py-1 border-l border-black/20 w-12">
                           {row.performanceValue}
                           <TrendIcon className="size-4 text-white shrink-0" aria-hidden />
                         </span>

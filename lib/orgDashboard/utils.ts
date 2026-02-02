@@ -11,17 +11,28 @@ import {
   CHART_DATA_ALL,
   MARKET_AVERAGE_GAUGE,
 } from "./constants";
+import { defaultGaugeSpec, type GaugeSpec } from "@/lib/gauge";
 import type { AIRecommendation, ChartDataPoint } from "./types";
 
 export function formatOrgTitle(orgId: string): string {
   return orgId.charAt(0).toUpperCase() + orgId.slice(1);
 }
 
-export function getGaugeColor(value: number): string {
-  if (value <= 25) return "#EE6666";
-  if (value <= 50) return "#FD994D";
-  if (value <= 75) return "#FAC858";
-  return "#91CC75";
+export function getGaugeColor(
+  value: number,
+  spec: GaugeSpec = defaultGaugeSpec
+): string {
+  const clampedValue = Math.max(spec.min, Math.min(spec.max, value));
+
+  const segment = spec.segments.find((seg, index) => {
+    const isLast = index === spec.segments.length - 1;
+    if (isLast) {
+      return clampedValue >= seg.start && clampedValue <= seg.end;
+    }
+    return clampedValue >= seg.start && clampedValue < seg.end;
+  });
+
+  return segment?.color ?? spec.segments[0]?.color ?? "#91CC75";
 }
 
 export function getGaugeSecondaryLabel(value: number): string {
