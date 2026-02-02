@@ -167,7 +167,7 @@ export function ChaosMatrix({ data, range = "max" }: ChaosMatrixProps) {
           aria-label="Chart legend"
         >
           {(Object.keys(CATEGORY_COLORS) as ChaosCategory[]).map((cat) => (
-            <div key={cat} className="flex items-center justify-center gap-2">
+            <div key={cat} className="flex items-center gap-2">
               <div className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: CATEGORY_COLORS[cat] }} />
               <span className="text-xs font-medium">{cat}</span>
             </div>

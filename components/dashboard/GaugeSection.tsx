@@ -40,6 +40,7 @@ export function GaugeSection({
             value={gaugeValue}
             label={primaryLabel}
             labelColor={labelColor}
+            valueDisplay={isPerformance ? `${Math.round(gaugeValue)}/100` : undefined}
           />
         </div>
       </div>

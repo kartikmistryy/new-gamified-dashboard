@@ -20,11 +20,14 @@ export function D3Gauge({
   value,
   label,
   labelColor,
+  valueDisplay,
   spec = defaultGaugeSpec,
 }: {
   value: number;
   label: string;
   labelColor?: string;
+  /** When set, shown instead of rounded value (e.g. "28/100"). */
+  valueDisplay?: string;
   spec?: GaugeSpec;
 }) {
   const W = 360;
@@ -133,11 +136,11 @@ export function D3Gauge({
         x={cx}
         y={valueY - 35}
         textAnchor="middle"
-        dominantBaseline="central" 
+        dominantBaseline="central"
         className="fill-slate-900"
         style={{ fontSize: 44, fontWeight: 700 }}
       >
-        {Math.round(value)}
+        {valueDisplay ?? Math.round(value)}
       </text>
       <text
         x={cx}
