@@ -1,5 +1,6 @@
 import type { ChartInsight, OverviewSummaryCardConfig, TeamPerformanceRow } from "./types";
 import { getPerformanceGaugeLabel } from "./utils";
+import { getPerformanceBarColor } from "./tableUtils";
 
 const TEAM_NAMES = [
   "Frontend Development",
@@ -44,14 +45,6 @@ function getTypeDistributionForPerformance(value: number): TeamPerformanceRow["t
   return dist;
 }
 
-function getPerformanceBarColor(value: number): string {
-  if (value <= 24) return "bg-[#CA3A31]";
-  if (value <= 44) return "bg-[#E87B35]";
-  if (value <= 55) return "bg-[#E2B53E]";
-  if (value <= 75) return "bg-[#94CA42]";
-  return "bg-[#55B685]";
-}
-
 /** Fixed colors for teams 1–5 (by name/order), not based on performance. */
 const TEAM_COLORS_BY_RANK: string[] = [
   "bg-[#FF8080]",
@@ -80,6 +73,7 @@ export function getTeamPerformanceRowsForGauge(gaugeValue: number): TeamPerforma
     const performanceBarColor = getPerformanceBarColor(performanceValue);
     const teamColor = TEAM_COLORS_BY_RANK[index] ?? TEAM_COLORS_BY_RANK[0];
     const trend = getTrend(performanceValue);
+    const changePts = trend === "up" ? 5 : trend === "down" ? -5 : 0;
     return {
       rank: index + 1,
       teamName: TEAM_NAMES[index],
@@ -88,6 +82,7 @@ export function getTeamPerformanceRowsForGauge(gaugeValue: number): TeamPerforma
       performanceValue,
       trend,
       performanceBarColor,
+      changePts,
       typeDistribution: getTypeDistributionForPerformance(performanceValue),
     };
   });

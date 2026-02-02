@@ -1,4 +1,5 @@
-import type { OutlierRow, SummaryCardConfig } from "./types";
+import type { DesignTeamRow, OutlierRow, SummaryCardConfig } from "./types";
+import { DASHBOARD_BG_CLASSES } from "./colors";
 
 /** Mock outlier data for the Org Design "Need attention" cards (upper-left: low KP / high ownership). */
 export const UPPER_LEFT_OUTLIERS: OutlierRow[] = [
@@ -22,4 +23,74 @@ export const SUMMARY_CARD_CONFIGS: SummaryCardConfig[] = [
   { key: "stable", title: "Stable", count: 3, pct: 30, bg: "bg-blue-100", iconColor: "text-blue-600" },
   { key: "risky", title: "Risky", count: 1, pct: 10, bg: "bg-purple-100", iconColor: "text-purple-600" },
   { key: "time-bomb", title: "Time Bomb", count: 1, pct: 10, bg: "bg-red-100", iconColor: "text-red-600" },
+];
+
+const DESIGN_TEAM_NAMES = [
+  "Frontend Development",
+  "UI/UX Design",
+  "AI / ML Development",
+  "Mobile App Development",
+  "Web Development",
+] as const;
+
+const DESIGN_TEAM_COLORS = [
+  DASHBOARD_BG_CLASSES.danger,
+  DASHBOARD_BG_CLASSES.excellent,
+  DASHBOARD_BG_CLASSES.blue,
+  DASHBOARD_BG_CLASSES.blueLight,
+  DASHBOARD_BG_CLASSES.danger,
+] as const;
+
+/** Mock design teams: ownership allocation (red, blue, green) and engineering chaos (red, light orange, blue, green). */
+export const DESIGN_TEAM_ROWS: DesignTeamRow[] = [
+  {
+    teamName: DESIGN_TEAM_NAMES[0],
+    teamColor: DESIGN_TEAM_COLORS[0],
+    ownershipAllocation: [8, 4, 10],
+    engineeringChaos: [9, 7, 4, 3],
+    outlierScore: 9,
+    skilledAIScore: 7,
+    unskilledScore: 3,
+    legacyScore: 2,
+  },
+  {
+    teamName: DESIGN_TEAM_NAMES[1],
+    teamColor: DESIGN_TEAM_COLORS[1],
+    ownershipAllocation: [5, 5, 14],
+    engineeringChaos: [4, 3, 6, 8],
+    outlierScore: 6,
+    skilledAIScore: 9,
+    unskilledScore: 2,
+    legacyScore: 3,
+  },
+  {
+    teamName: DESIGN_TEAM_NAMES[2],
+    teamColor: DESIGN_TEAM_COLORS[2],
+    ownershipAllocation: [6, 7, 11],
+    engineeringChaos: [7, 6, 7, 4],
+    outlierScore: 8,
+    skilledAIScore: 8,
+    unskilledScore: 5,
+    legacyScore: 4,
+  },
+  {
+    teamName: DESIGN_TEAM_NAMES[3],
+    teamColor: DESIGN_TEAM_COLORS[3],
+    ownershipAllocation: [4, 6, 14],
+    engineeringChaos: [3, 4, 5, 7],
+    outlierScore: 5,
+    skilledAIScore: 6,
+    unskilledScore: 4,
+    legacyScore: 7,
+  },
+  {
+    teamName: DESIGN_TEAM_NAMES[4],
+    teamColor: DESIGN_TEAM_COLORS[4],
+    ownershipAllocation: [7, 5, 10],
+    engineeringChaos: [6, 5, 6, 5],
+    outlierScore: 7,
+    skilledAIScore: 5,
+    unskilledScore: 8,
+    legacyScore: 6,
+  },
 ];
