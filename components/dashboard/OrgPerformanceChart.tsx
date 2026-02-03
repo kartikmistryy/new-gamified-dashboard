@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ChartEvent, ChartAnnotation } from "@/lib/orgDashboard/types";
 import type { OrgPerformanceDataPoint } from "@/lib/orgDashboard/orgPerformanceChartData";
+import type { TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
 import {
   generateOrgPerformanceData,
   ORG_PERFORMANCE_HOLIDAYS,
@@ -16,12 +17,36 @@ import {
   MARGIN,
 } from "@/lib/orgDashboard/orgPerformanceChartUtils";
 
+/** Calculate the start date based on time range key */
+function getStartDateForRange(timeRange: TimeRangeKey, endDate: Date): Date {
+  const start = new Date(endDate);
+  switch (timeRange) {
+    case "1m":
+      start.setMonth(start.getMonth() - 1);
+      break;
+    case "3m":
+      start.setMonth(start.getMonth() - 3);
+      break;
+    case "1y":
+      start.setFullYear(start.getFullYear() - 1);
+      break;
+    case "max":
+    default:
+      return new Date(0); // Return epoch for max (include all data)
+  }
+  return start;
+}
+
 type OrgPerformanceChartProps = {
   className?: string;
   /** When provided, use API/real data; otherwise use mock. Same shape = same behavior. */
   data?: OrgPerformanceDataPoint[];
   holidays?: ChartEvent[];
   annotations?: ChartAnnotation[];
+  /** Optional visibility filter for teams. When provided, only visible teams contribute to the aggregated performance value. */
+  visibleTeams?: Record<string, boolean>;
+  /** Time range filter. When provided, data is filtered to show only the selected range. */
+  timeRange?: TimeRangeKey;
 };
 
 function formatXAxis(dateStr: string): string {
@@ -33,13 +58,107 @@ function formatXAxis(dateStr: string): string {
 export function OrgPerformanceChart({
   className = "",
   data: dataProp,
-  holidays = ORG_PERFORMANCE_HOLIDAYS,
-  annotations = ORG_PERFORMANCE_ANNOTATIONS,
+  holidays: holidaysProp = ORG_PERFORMANCE_HOLIDAYS,
+  annotations: annotationsProp = ORG_PERFORMANCE_ANNOTATIONS,
+  visibleTeams,
+  timeRange = "max",
 }: OrgPerformanceChartProps) {
-  const data = useMemo(
+  const rawData = useMemo(
     () => (dataProp != null && dataProp.length > 0 ? dataProp : generateOrgPerformanceData()),
     [dataProp]
   );
+
+  // Filter data based on time range
+  const timeFilteredData = useMemo(() => {
+    if (timeRange === "max" || rawData.length === 0) {
+      return rawData;
+    }
+
+    // Get the end date from the last data point
+    const endDate = new Date(rawData[rawData.length - 1].date);
+    const startDate = getStartDateForRange(timeRange, endDate);
+
+    return rawData.filter((d) => {
+      const date = new Date(d.date);
+      return date >= startDate && date <= endDate;
+    });
+  }, [rawData, timeRange]);
+
+  // Filter holidays based on time range
+  const holidays = useMemo(() => {
+    if (timeRange === "max" || timeFilteredData.length === 0) {
+      return holidaysProp;
+    }
+
+    const startDate = new Date(timeFilteredData[0].date);
+    const endDate = new Date(timeFilteredData[timeFilteredData.length - 1].date);
+
+    return holidaysProp.filter((h) => {
+      const date = new Date(h.date);
+      return date >= startDate && date <= endDate;
+    });
+  }, [holidaysProp, timeRange, timeFilteredData]);
+
+  // Filter annotations based on time range
+  const annotations = useMemo(() => {
+    if (timeRange === "max" || timeFilteredData.length === 0) {
+      return annotationsProp;
+    }
+
+    const startDate = new Date(timeFilteredData[0].date);
+    const endDate = new Date(timeFilteredData[timeFilteredData.length - 1].date);
+
+    return annotationsProp.filter((a) => {
+      const date = new Date(a.date);
+      return date >= startDate && date <= endDate;
+    });
+  }, [annotationsProp, timeRange, timeFilteredData]);
+
+  // Filter data based on visible teams if provided
+  const filteredData = useMemo(() => {
+    // If no visibility filter is provided, return time-filtered data
+    if (!visibleTeams) {
+      return timeFilteredData;
+    }
+
+    // Get list of visible team names
+    const visibleTeamNames = Object.entries(visibleTeams)
+      .filter(([_, visible]) => visible !== false)
+      .map(([name]) => name);
+
+    // If no teams are visible, return empty data
+    if (visibleTeamNames.length === 0) {
+      return [];
+    }
+
+    // Recalculate performance values based on only the visible teams
+    return timeFilteredData.map((dataPoint) => {
+      // If this data point doesn't have team values, return it as-is
+      if (!dataPoint.teamValues) {
+        return dataPoint;
+      }
+
+      // Calculate the average performance value of visible teams
+      let sum = 0;
+      let count = 0;
+
+      for (const teamName of visibleTeamNames) {
+        const teamValue = dataPoint.teamValues[teamName];
+        if (teamValue !== undefined) {
+          sum += teamValue;
+          count++;
+        }
+      }
+
+      // Calculate the new aggregated value (average of visible teams)
+      const newValue = count > 0 ? Math.round(sum / count) : dataPoint.value;
+
+      return {
+        ...dataPoint,
+        value: newValue,
+      };
+    });
+  }, [timeFilteredData, visibleTeams]);
   const [tooltip, setTooltip] = useState<{ date: string; value: number; x: number; y: number } | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [chartSize, setChartSize] = useState({ width: 0, height: CHART_HEIGHT });
@@ -58,19 +177,19 @@ export function OrgPerformanceChart({
   const geom = useMemo(
     () =>
       buildOrgPerformanceChartGeometry(
-        data,
+        filteredData,
         holidays,
         annotations,
         chartSize.width || undefined,
         chartSize.height
       ),
-    [data, holidays, annotations, chartSize.width, chartSize.height]
+    [filteredData, holidays, annotations, chartSize.width, chartSize.height]
   );
 
   const width = chartSize.width > 0 ? chartSize.width : geom.innerWidth + MARGIN.left + MARGIN.right;
   const height = chartSize.height;
 
-  if (!data.length) {
+  if (!filteredData.length) {
     return (
       <div className={`w-full ${className}`}>
         <div className="w-full h-[420px] flex items-center justify-center bg-gray-50 rounded-lg">
@@ -129,7 +248,7 @@ export function OrgPerformanceChart({
 
           <path d={geom.linePath} fill="none" stroke="#2563eb" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
 
-          {data.map((d, i) => {
+          {filteredData.map((d, i) => {
             const cx = geom.xScale(d.date);
             const cy = geom.yScale(d.value);
             return (

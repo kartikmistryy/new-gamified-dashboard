@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
@@ -20,6 +20,25 @@ const DEFAULT_PERFORMANCE_GAUGE_VALUE = Math.floor(Math.random() * 100);
 export default function OrgPerformancePage() {
   const [timeRange, setTimeRange] = useState<TimeRangeKey>("1y");
   const chartInsights = useMemo(() => getChartInsightsMock(), []);
+
+  // Initialize visibility state - all teams visible by default
+  const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
+    const init: Record<string, boolean> = {};
+    for (const row of TEAM_PERFORMANCE_ROWS) {
+      init[row.teamName] = true;
+    }
+    return init;
+  });
+
+  const handleVisibilityChange = useCallback(
+    (teamName: string, visible: boolean) => {
+      setVisibleTeams((prev) => ({
+        ...prev,
+        [teamName]: visible,
+      }));
+    },
+    []
+  );
 
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
@@ -51,11 +70,15 @@ export default function OrgPerformancePage() {
               />
             }
           >
-            <OrgPerformanceChart />
+            <OrgPerformanceChart visibleTeams={visibleTeams} timeRange={timeRange} />
           </DashboardSection>
 
           <DashboardSection title="Teams" className="w-full">
-            <PerformanceTeamsTable rows={TEAM_PERFORMANCE_ROWS} />
+            <PerformanceTeamsTable
+              rows={TEAM_PERFORMANCE_ROWS}
+              visibleTeams={visibleTeams}
+              onVisibilityChange={handleVisibilityChange}
+            />
           </DashboardSection>
         </CardContent>
       </Card>

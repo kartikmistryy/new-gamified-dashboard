@@ -4,7 +4,18 @@ export type OrgPerformanceDataPoint = {
   date: string;
   week: string;
   value: number;
+  /** Optional team-specific values for filtering. Key = team name, value = performance value */
+  teamValues?: Record<string, number>;
 };
+
+/** Team names matching TEAM_PERFORMANCE_ROWS from overviewMockData */
+export const PERFORMANCE_TEAM_NAMES = [
+  "Frontend Development",
+  "UI/UX Design",
+  "AI / ML Development",
+  "Mobile App Development",
+  "Web Development",
+] as const;
 
 /** US holidays for 2024 */
 export const ORG_PERFORMANCE_HOLIDAYS: ChartEvent[] = [
@@ -29,6 +40,32 @@ export const ORG_PERFORMANCE_ANNOTATIONS: ChartAnnotation[] = [
   { date: "2024-11-18", label: "Pre-Thxgvg", value: 62 },
   { date: "2024-12-16", label: "Pre-Xmas", value: 73 },
 ];
+
+/**
+ * Generate team-specific performance values for a given week index and org value.
+ * Teams will have variations around the org value to create realistic diversity.
+ */
+function generateTeamValues(orgValue: number, weekIndex: number): Record<string, number> {
+  const teamValues: Record<string, number> = {};
+
+  // Create deterministic but varied team values based on week index
+  // Each team has a different pattern of variation
+  const variations = [
+    Math.sin(weekIndex * 0.3) * 15,      // Frontend Development: wavy pattern
+    Math.cos(weekIndex * 0.2) * 12,      // UI/UX Design: complementary wave
+    (weekIndex % 7) * 3 - 10,            // AI / ML Development: weekly cycle
+    Math.sin(weekIndex * 0.5) * 18,      // Mobile App Development: faster wave
+    Math.cos(weekIndex * 0.4) * 10,      // Web Development: medium wave
+  ];
+
+  PERFORMANCE_TEAM_NAMES.forEach((teamName, idx) => {
+    // Add variation but clamp to 0-100 range
+    const teamValue = Math.max(0, Math.min(100, orgValue + variations[idx]));
+    teamValues[teamName] = Math.round(teamValue);
+  });
+
+  return teamValues;
+}
 
 /** Generate weekly data points for the org performance chart */
 export function generateOrgPerformanceData(): OrgPerformanceDataPoint[] {
@@ -85,6 +122,7 @@ export function generateOrgPerformanceData(): OrgPerformanceDataPoint[] {
       date: dateStr,
       week,
       value: values[index],
+      teamValues: generateTeamValues(values[index], index),
     });
 
     // Move to next week
