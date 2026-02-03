@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import type { DesignTeamRow, DesignTableFilter } from "@/lib/orgDashboard/types";
 import { DASHBOARD_BG_CLASSES, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
@@ -40,14 +40,20 @@ type DesignTeamsTableProps = {
   rows: DesignTeamRow[];
   activeFilter?: DesignTableFilter;
   onFilterChange?: (filter: DesignTableFilter) => void;
+  /** Optional external visibility map keyed by team name. When provided, the table becomes controlled. */
+  visibleTeams?: Record<string, boolean>;
+  /** Optional external toggle handler; used when `visibleTeams` is provided. */
+  onToggleTeamVisibility?: (teamName: string) => void;
 };
 
 export function DesignTeamsTable({
   rows,
   activeFilter = "mostOutliers",
   onFilterChange,
+  visibleTeams,
+  onToggleTeamVisibility,
 }: DesignTeamsTableProps) {
-  const [visible, setVisible] = React.useState<Record<string, boolean>>(() => {
+  const [internalVisible, setInternalVisible] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
     rows.forEach((r, i) => {
       init[r.teamName] = i !== 1;
@@ -55,18 +61,24 @@ export function DesignTeamsTable({
     return init;
   });
 
-  const toggleView = React.useCallback((teamName: string) => {
-    setVisible((prev) => ({ ...prev, [teamName]: !prev[teamName] }));
-  }, []);
+  const toggleView = useCallback((teamName: string) => {
+    if (onToggleTeamVisibility) {
+      onToggleTeamVisibility(teamName);
+      return;
+    }
+    setInternalVisible((prev) => ({ ...prev, [teamName]: !prev[teamName] }));
+  }, [onToggleTeamVisibility]);
 
-  const columns = React.useMemo<BaseTeamsTableColumn<DesignTeamRow, DesignTableFilter>[]>(
+  const effectiveVisible = visibleTeams ?? internalVisible;
+
+  const columns = useMemo<BaseTeamsTableColumn<DesignTeamRow, DesignTableFilter>[]>(
     () => [
       {
         key: "view",
         header: "View",
         className: "w-14",
         render: (row) => {
-          const isVisible = visible[row.teamName] !== false;
+          const isVisible = effectiveVisible[row.teamName] !== false;
           return (
             <button
               type="button"
@@ -119,7 +131,7 @@ export function DesignTeamsTable({
         ),
       },
     ],
-    [visible, toggleView]
+    [effectiveVisible, toggleView]
   );
 
   return (

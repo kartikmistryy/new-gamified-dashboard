@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { ChaosMatrix } from "@/components/dashboard/ChaosMatrix";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
@@ -8,13 +8,34 @@ import { DesignTeamsTable } from "@/components/dashboard/DesignTeamsTable";
 import { OwnershipScatter } from "@/components/dashboard/OwnershipScatter";
 import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
 import { getChartInsightsMock } from "@/lib/orgDashboard/overviewMockData";
-import { DESIGN_TEAM_ROWS } from "@/lib/orgDashboard/designMockData";
+import { DESIGN_TEAM_ROWS, getDesignTeamRowsForRange } from "@/lib/orgDashboard/designMockData";
 import { TIME_RANGE_OPTIONS, type TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
 
 export default function OrgDesignPage() {
   const chartInsights = useMemo(() => getChartInsightsMock(), []);
   const [ownershipRange, setOwnershipRange] = useState<TimeRangeKey>("3m");
   const [chaosRange, setChaosRange] = useState<TimeRangeKey>("max");
+  const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
+    const init: Record<string, boolean> = {};
+    DESIGN_TEAM_ROWS.forEach((row, index) => {
+      init[row.teamName] = index !== 1;
+    });
+    return init;
+  });
+
+  const handleToggleTeamVisibility = useCallback((teamName: string) => {
+    setVisibleTeams((prev) => ({ ...prev, [teamName]: !prev[teamName] }));
+  }, []);
+
+  const designTeamRows = useMemo(
+    () => getDesignTeamRowsForRange(chaosRange),
+    [chaosRange],
+  );
+
+  const designTeamNames = useMemo(
+    () => designTeamRows.map((row) => row.teamName),
+    [designTeamRows],
+  );
 
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
@@ -49,11 +70,15 @@ export default function OrgDesignPage() {
           />
         }
       >
-        <ChaosMatrix range={chaosRange} />
+        <ChaosMatrix range={chaosRange} visibleTeams={visibleTeams} teamNames={designTeamNames} />
       </DashboardSection>
 
       <DashboardSection title="Teams" className="w-full">
-        <DesignTeamsTable rows={DESIGN_TEAM_ROWS} />
+        <DesignTeamsTable
+          rows={designTeamRows}
+          visibleTeams={visibleTeams}
+          onToggleTeamVisibility={handleToggleTeamVisibility}
+        />
       </DashboardSection>
     </div>
   );

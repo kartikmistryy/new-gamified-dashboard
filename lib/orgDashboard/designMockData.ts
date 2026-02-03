@@ -1,5 +1,6 @@
 import type { DesignTeamRow, OutlierRow, SummaryCardConfig } from "./types";
 import { DASHBOARD_BG_CLASSES } from "./colors";
+import type { TimeRangeKey } from "./timeRangeTypes";
 
 /** Mock outlier data for the Org Design "Need attention" cards (upper-left: low KP / high ownership). */
 export const UPPER_LEFT_OUTLIERS: OutlierRow[] = [
@@ -41,8 +42,8 @@ const DESIGN_TEAM_COLORS = [
   DASHBOARD_BG_CLASSES.danger,
 ] as const;
 
-/** Mock design teams: ownership allocation (red, blue, green) and engineering chaos (red, light orange, blue, green). */
-export const DESIGN_TEAM_ROWS: DesignTeamRow[] = [
+/** Base mock design teams: ownership allocation (red, blue, green) and engineering chaos (red, light orange, blue, green). */
+const BASE_DESIGN_TEAM_ROWS: DesignTeamRow[] = [
   {
     teamName: DESIGN_TEAM_NAMES[0],
     teamColor: DESIGN_TEAM_COLORS[0],
@@ -94,3 +95,43 @@ export const DESIGN_TEAM_ROWS: DesignTeamRow[] = [
     legacyScore: 6,
   },
 ];
+
+/** Default rows used where a specific time range is not required. */
+export const DESIGN_TEAM_ROWS: DesignTeamRow[] = BASE_DESIGN_TEAM_ROWS;
+
+function getRangeFactor(range: TimeRangeKey): number {
+  if (range === "1m") return 0.8;
+  if (range === "3m") return 1;
+  if (range === "1y") return 1.1;
+  return 1.2;
+}
+
+function clampScore(value: number, factor: number): number {
+  const scaled = Math.round(value * factor);
+  if (scaled < 1) return 1;
+  if (scaled > 10) return 10;
+  return scaled;
+}
+
+/** Range-aware mock rows so the Teams table can stay in sync with the chaos time filter. */
+export function getDesignTeamRowsForRange(range: TimeRangeKey): DesignTeamRow[] {
+  const factor = getRangeFactor(range);
+  return BASE_DESIGN_TEAM_ROWS.map((row) => ({
+    ...row,
+    ownershipAllocation: [
+      clampScore(row.ownershipAllocation[0], factor),
+      clampScore(row.ownershipAllocation[1], factor),
+      clampScore(row.ownershipAllocation[2], factor),
+    ],
+    engineeringChaos: [
+      clampScore(row.engineeringChaos[0], factor),
+      clampScore(row.engineeringChaos[1], factor),
+      clampScore(row.engineeringChaos[2], factor),
+      clampScore(row.engineeringChaos[3], factor),
+    ],
+    outlierScore: clampScore(row.outlierScore, factor),
+    skilledAIScore: clampScore(row.skilledAIScore, factor),
+    unskilledScore: clampScore(row.unskilledScore, factor),
+    legacyScore: clampScore(row.legacyScore, factor),
+  }));
+}

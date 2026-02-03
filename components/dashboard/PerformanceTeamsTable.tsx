@@ -101,9 +101,9 @@ function createPerformanceColumns(
         const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
         return (
           <div className="flex items-center justify-end gap-2">
-            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium text-white ${row.performanceBarColor}`}>
+            <span className={`inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium text-white ${row.performanceBarColor}`}>
               {row.performanceLabel}
-              <span className="flex flex-row gap-1 pl-2 border-l border-white/50">
+              <span className="flex flex-row items-center justify-between gap-1 pl-2 py-1 border-l border-black/20 w-12">
                 {row.performanceValue}
                 <TrendIcon className="size-4 text-white shrink-0" aria-hidden />
               </span>
@@ -115,7 +115,7 @@ function createPerformanceColumns(
     {
       key: "change",
       header: "Change",
-      className: "text-right",
+      className: "text-left",
       render: (row) => {
         const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
         const changePts = row.changePts ?? 0;
