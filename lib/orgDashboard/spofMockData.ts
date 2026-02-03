@@ -125,6 +125,8 @@ export function calculateSpofStats(data: SpofDataPoint[]) {
 export type SpofTeamRow = {
   teamName: string;
   teamColor: string;
+  domainCount: number;
+  skillCount: number;
   memberCount: number;
   avgSpofScore: number;
   highRiskCount: number;
@@ -161,6 +163,8 @@ export function calculateTeamStats(data: SpofDataPoint[]): SpofTeamRow[] {
     rows.push({
       teamName,
       teamColor: color,
+      domainCount: Math.max(3, Math.round(scores.length / 20)),
+      skillCount: Math.max(10, Math.round(scores.length / 2)),
       memberCount: scores.length,
       avgSpofScore: avgScore,
       highRiskCount,
