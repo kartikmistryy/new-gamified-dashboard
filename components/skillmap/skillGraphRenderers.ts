@@ -1,4 +1,4 @@
-import type { D3HierarchyNode, TooltipState } from "./skillGraphTypes";
+import type { D3HierarchyNode, TooltipState, SkillData } from "./skillGraphTypes";
 import { getColorForDomain } from "./skillGraphUtils";
 
 const buildCirclePolygon = (radius: number, steps = 80): [number, number][] => {
@@ -42,20 +42,13 @@ const createOpacityScale = (nodes: D3HierarchyNode[]) => {
   };
 };
 
-const sumLeafValues = (data: { value?: number; children?: { value?: number; children?: unknown[] }[] }): number => {
+const sumLeafValues = (data: { value?: number; children?: unknown[] }): number => {
   if (!data.children || data.children.length === 0) return data.value || 0;
-  return data.children.reduce((sum, child) => sum + sumLeafValues(child), 0);
+  return data.children.reduce<number>((sum, child) => {
+    const next = child as { value?: number; children?: unknown[] };
+    return sum + sumLeafValues(next);
+  }, 0);
 };
-
-const getTopDomainNameFromNode = (node: D3HierarchyNode, rootLabel: string): string => {
-  let current: D3HierarchyNode | null = node;
-  while (current?.parent && current.parent.data.name !== rootLabel) {
-    current = current.parent;
-  }
-  return current?.data.name || rootLabel;
-};
-
-
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const colorWithOpacity = (d3Lib: any, baseColor: string, opacity: number): string => {
@@ -197,8 +190,6 @@ const renderDomainBadges = (
     const labelRadius = radius + 36;
     const x = centerX + Math.cos(angle) * labelRadius;
     const y = centerY + Math.sin(angle) * labelRadius;
-    const anchorX = centerX + Math.cos(angle) * radius;
-    const anchorY = centerY + Math.sin(angle) * radius;
 
     renderBadge(svg, domain.data.name, getColorForDomain(domain.data.name), x, y, shadowId);
   });
