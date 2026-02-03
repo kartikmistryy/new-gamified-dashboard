@@ -35,13 +35,24 @@ export const DASHBOARD_BG_CLASSES = {
   skillOrange: "bg-[#F3BC8F]",
 } as const;
 
+/** Badge styles that use a translucent fill with matching text color. */
+export const DASHBOARD_BADGE_CLASSES = {
+  danger: "bg-[rgba(202,58,49,0.25)] text-[#CA3A31]",
+  warning: "bg-[rgba(232,123,53,0.25)] text-[#E87B35]",
+  caution: "bg-[rgba(233,162,59,0.25)] text-[#E9A23B]",
+  stable: "bg-[rgba(226,181,62,0.25)] text-[#E2B53E]",
+  good: "bg-[rgba(148,202,66,0.25)] text-[#94CA42]",
+  excellent: "bg-[rgba(85,182,133,0.25)] text-[#55B685]",
+  blue: "bg-[rgba(61,129,255,0.25)] text-[#3D81FF]",
+} as const;
+
 /** Change badge (e.g. performance delta): success and danger. */
 export const DASHBOARD_CHANGE_CLASSES = {
-  successBg: "bg-[#E8F5E9]",
+  successBg: "bg-[rgba(85,182,133,0.25)]",
   successText: "text-[#55B685]",
-  dangerBg: "bg-[#FFEBEE]",
+  dangerBg: "bg-[rgba(202,58,49,0.25)]",
   dangerText: "text-[#CA3A31]",
-  neutralBg: "bg-gray-100",
+  neutralBg: "bg-[rgba(115,115,115,0.2)]",
   neutralText: "text-[#737373]",
 } as const;
 

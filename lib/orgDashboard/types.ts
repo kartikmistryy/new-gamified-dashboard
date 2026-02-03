@@ -137,8 +137,9 @@ export type SkillgraphTeamRow = {
   teamColor: string;
   domainCount: number;
   skillCount: number;
-  top3WidelyKnown: { name: string; color: string }[];
-  top3Proficient: { name: string; color: string }[];
+  top3WidelyKnown?: { name: string; color: string }[];
+  top3Proficient?: { name: string; color: string }[];
+  domainDistribution?: { domain: string; value: number }[];
 };
 
 export type SkillgraphTableFilter =
@@ -146,3 +147,16 @@ export type SkillgraphTableFilter =
   | "leastDomains"
   | "mostSkills"
   | "leastSkills";
+
+export type SkillgraphSkillRow = {
+  domainName: string;
+  domainCount: number;
+  skillCount: number;
+  domainDistribution?: { domain: string; value: number }[];
+};
+
+export type SkillgraphSkillFilter =
+  | "mostCommon"
+  | "leastCommon"
+  | "mostProficient"
+  | "leastProficient";
