@@ -130,3 +130,19 @@ export type DesignTableFilter =
   | "mostSkilledAIBuilders"
   | "mostUnskilledVibeCoders"
   | "mostLegacyDevs";
+
+/** Skillgraph page teams table: domain count, skill count, top 3 widely known and proficient skills. */
+export type SkillgraphTeamRow = {
+  teamName: string;
+  teamColor: string;
+  domainCount: number;
+  skillCount: number;
+  top3WidelyKnown: { name: string; color: string }[];
+  top3Proficient: { name: string; color: string }[];
+};
+
+export type SkillgraphTableFilter =
+  | "mostDomains"
+  | "leastDomains"
+  | "mostSkills"
+  | "leastSkills";
