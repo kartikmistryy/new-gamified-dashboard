@@ -17,7 +17,7 @@ type OwnershipScatterProps = {
 };
 
 export function OwnershipScatter({ data, range = "max" }: OwnershipScatterProps) {
-  const { points, bandPath, xTicks, yTicks, xLabelMin, xLabelMax, trendLine } = useMemo(
+  const { points, bandPath, xTicks, yTicks, trendLine } = useMemo(
     () => buildOwnershipChartData(data, range),
     [data, range]
   );
@@ -40,10 +40,32 @@ export function OwnershipScatter({ data, range = "max" }: OwnershipScatterProps)
             y={MARGIN.top}
             width={WIDTH - MARGIN.left - MARGIN.right}
             height={HEIGHT - MARGIN.top - MARGIN.bottom}
-            fill="#f9fafb"
+            fill="#f1f5f9"
           />
+          {xTicks.map((t, idx) => (
+            <line
+              key={`v-${idx}`}
+              x1={t.x}
+              y1={MARGIN.top}
+              x2={t.x}
+              y2={HEIGHT - MARGIN.bottom}
+              stroke="#e2e8f0"
+              strokeWidth={1}
+            />
+          ))}
+          {yTicks.map((t, idx) => (
+            <line
+              key={`h-${idx}`}
+              x1={MARGIN.left}
+              y1={t.y}
+              x2={WIDTH - MARGIN.right}
+              y2={t.y}
+              stroke="#e2e8f0"
+              strokeWidth={1}
+            />
+          ))}
           {bandPath && (
-            <path d={bandPath} fill="rgba(144, 238, 144, 0.35)" stroke="none" />
+            <path d={bandPath} fill="rgba(0, 200, 0, 0.2)" stroke="none" />
           )}
           {trendLine && (
             <line
@@ -63,8 +85,14 @@ export function OwnershipScatter({ data, range = "max" }: OwnershipScatterProps)
                 cx={p.cx}
                 cy={p.cy}
                 r={4.5}
-                fill={p.inNormalRange ? "#3b82f6" : "#ef4444"}
-                fillOpacity={p.inNormalRange ? 0.65 : 1}
+                fill={
+                  p.outlierType === "high"
+                    ? "#22c55e"
+                    : p.outlierType === "low"
+                      ? "#ef4444"
+                      : "rgba(66, 133, 244, 0.7)"
+                }
+                fillOpacity={p.inNormalRange ? 1 : 1}
                 onMouseEnter={(event) => {
                   if (!containerRef.current) return;
                   const rect = containerRef.current.getBoundingClientRect();
@@ -130,7 +158,7 @@ export function OwnershipScatter({ data, range = "max" }: OwnershipScatterProps)
             className="fill-slate-700"
             style={{ fontSize: 14 }}
           >
-            Cumulative KarmaPoints ({Math.round(xLabelMin / 1000)}k – {Math.round(xLabelMax / 1000)}k)
+            Cumulative KarmaPoints
           </text>
           <text
             x={16}
@@ -164,16 +192,15 @@ export function OwnershipScatter({ data, range = "max" }: OwnershipScatterProps)
         aria-label="Chart legend"
       >
         <div className="flex items-center gap-2">
-          <div className="h-3 w-3 shrink-0 rounded-sm" style={{ backgroundColor: "rgba(144, 238, 144, 0.6)" }} />
-          <span className="text-xs font-medium">Normal Range</span>
+          <div
+            className="h-3 w-3 shrink-0 rounded-full"
+            style={{ backgroundColor: "#22c55e" }}
+          />
+          <span className="text-xs font-medium">Outlier (High Ownership)</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#ef4444]" />
-          <span className="text-xs font-medium">Outlier</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#3b82f6] opacity-[0.65]" />
-          <span className="text-xs font-medium">Normal Range</span>
+          <span className="text-xs font-medium">Outlier (Low Ownership)</span>
         </div>
         <div className="flex items-center gap-2">
           <svg className="h-3 w-3 shrink-0" viewBox="0 0 12 12" preserveAspectRatio="none" aria-hidden>

@@ -1,9 +1,13 @@
 import { area as d3Area, curveMonotoneX } from "d3-shape";
 import type { DeveloperPoint, ClassifiedPoint, BandPoint, TrendLine, OwnershipTimeRangeKey } from "./ownershipScatterTypes";
 
-export const WIDTH = 700;
-export const HEIGHT = 350;
+export const WIDTH = 720;
+export const HEIGHT = 420;
 export const MARGIN = { top: 24, right: 24, bottom: 48, left: 64 };
+
+export const X_AXIS_MAX = 300000;
+export const Y_AXIS_MAX = 80;
+export const X_TICK_STEP = 50000;
 
 export const NORMAL_COUNT_BY_RANGE: Record<OwnershipTimeRangeKey, number> = {
   "1m": 55,
@@ -48,17 +52,22 @@ export function computeClassifiedPoints(points: DeveloperPoint[]): {
   const withResiduals: ClassifiedPoint[] = points.map((p) => {
     const yPred = slope * p.totalKarmaPoints + intercept;
     const residual = p.ownershipPct - yPred;
-    return { ...p, residual, inNormalRange: false };
+    return { ...p, residual, inNormalRange: false , outlierType: null};
   });
   const meanRes = withResiduals.reduce((acc, p) => acc + p.residual, 0) / withResiduals.length;
   const variance =
     withResiduals.reduce((acc, p) => acc + (p.residual - meanRes) ** 2, 0) / withResiduals.length;
   const stdRes = Math.sqrt(variance || 1);
   const threshold = 1.5 * stdRes;
-  const classified = withResiduals.map((p) => ({
-    ...p,
-    inNormalRange: Math.abs(p.residual) <= threshold,
-  }));
+  const classified = withResiduals.map((p) => {
+    const inNormalRange = Math.abs(p.residual) <= threshold;
+    const outlierType: "high" | "low" | null = inNormalRange
+      ? null
+      : p.residual > 0
+        ? "high"
+        : "low";
+    return { ...p, inNormalRange, outlierType };
+  });
   return { classified, slope, intercept, stdRes };
 }
 
@@ -91,8 +100,30 @@ export function generateSyntheticPoints(range: OwnershipTimeRangeKey): Developer
     { name: "Alex Davis 495", team: "Backend", totalKarmaPoints: 7000, ownershipPct: 21.6 },
     { name: "Riley Taylor 550", team: "Backend", totalKarmaPoints: 7000, ownershipPct: 17.7 },
     { name: "Avery Patel 340", team: "Backend", totalKarmaPoints: 2000, ownershipPct: 16.6 },
+    { name: "Jamie Lee 802", team: "Platform", totalKarmaPoints: 15000, ownershipPct: 38 },
+    { name: "Morgan Kim 803", team: "Frontend", totalKarmaPoints: 40000, ownershipPct: 45 },
+    { name: "Sam Chen 801", team: "Platform", totalKarmaPoints: 280000, ownershipPct: 72 },
+    { name: "Drew Walsh 901", team: "Platform", totalKarmaPoints: 250000, ownershipPct: 78 },
+    { name: "Quinn Hayes 902", team: "Backend", totalKarmaPoints: 220000, ownershipPct: 70 },
+    { name: "Blake Reed H1", team: "Frontend", totalKarmaPoints: 10000, ownershipPct: 22 },
+    { name: "Jordan Reed H2", team: "Backend", totalKarmaPoints: 12000, ownershipPct: 24 },
+    { name: "Casey Reed H3", team: "Platform", totalKarmaPoints: 8000, ownershipPct: 18 },
+    { name: "Riley Reed H4", team: "DevOps", totalKarmaPoints: 18000, ownershipPct: 28 },
+    { name: "Avery Reed H5", team: "Frontend", totalKarmaPoints: 22000, ownershipPct: 26 },
+    { name: "Sam Reed H6", team: "Backend", totalKarmaPoints: 35000, ownershipPct: 42 },
+    { name: "Quinn Reed H7", team: "Platform", totalKarmaPoints: 45000, ownershipPct: 48 },
+    { name: "Drew Reed H8", team: "DevOps", totalKarmaPoints: 30000, ownershipPct: 38 },
+    { name: "Morgan Reed H9", team: "Frontend", totalKarmaPoints: 48000, ownershipPct: 52 },
+    { name: "Sky Reed H10", team: "Backend", totalKarmaPoints: 300000, ownershipPct: 75 },
     { name: "Avery Thomas 577", team: "DevOps", totalKarmaPoints: 107000, ownershipPct: 0.7 },
     { name: "Jordan Patel 375", team: "DevOps", totalKarmaPoints: 31000, ownershipPct: 2.4 },
+    { name: "Reese Blake 903", team: "DevOps", totalKarmaPoints: 240000, ownershipPct: 8 },
+    { name: "Casey Ford 904", team: "Frontend", totalKarmaPoints: 265000, ownershipPct: 5 },
+    { name: "Low A", team: "Backend", totalKarmaPoints: 20000, ownershipPct: 5 },
+    { name: "Low B", team: "DevOps", totalKarmaPoints: 40000, ownershipPct: 3 },
+    { name: "Low C", team: "Frontend", totalKarmaPoints: 95000, ownershipPct: 18 },
+    { name: "Low D", team: "Platform", totalKarmaPoints: 100000, ownershipPct: 0 },
+    { name: "Low E", team: "Backend", totalKarmaPoints: 155000, ownershipPct: 9 },
   ];
 
   return [...points, ...manualOutliers];
@@ -120,16 +151,13 @@ export function buildOwnershipChartData(
   const base = ratio >= 1 ? fullData : fullData.slice(0, Math.max(2, Math.ceil(fullData.length * ratio)));
   const { classified, slope, intercept, stdRes } = computeClassifiedPoints(base);
 
-  const xs = classified.map((p) => p.totalKarmaPoints);
-  const ys = classified.map((p) => p.ownershipPct);
-  const xMin = Math.min(0, ...xs);
-  const xMax = Math.max(...xs);
-  const yMin = Math.min(0, Math.min(...ys));
-  const yMax = Math.max(80, Math.max(...ys));
+  const xMin = 0;
+  const xMax = X_AXIS_MAX;
+  const yMin = 0;
+  const yMax = Y_AXIS_MAX;
 
-  const X_TICK_STEP = 50000;
   const xTickValues: number[] = [];
-  for (let v = 0; v <= Math.ceil(xMax / X_TICK_STEP) * X_TICK_STEP; v += X_TICK_STEP) {
+  for (let v = 0; v <= xMax; v += X_TICK_STEP) {
     xTickValues.push(v);
   }
 
@@ -149,8 +177,8 @@ export function buildOwnershipChartData(
     const center = slope * x + intercept;
     bandPoints.push({
       x,
-      yLower: center - 1.5 * stdRes,
-      yUpper: center + 1.5 * stdRes,
+      yLower: Math.max(yMin, center - 1.5 * stdRes),
+      yUpper: Math.min(yMax, center + 1.5 * stdRes),
     });
   }
 
@@ -161,11 +189,7 @@ export function buildOwnershipChartData(
     .curve(curveMonotoneX);
   const bandPath = areaGen(bandPoints) ?? undefined;
 
-  const yTickCount = 4;
-  const yTickValues = Array.from(
-    { length: yTickCount + 1 },
-    (_, i) => yMin + ((yMax - yMin) * i) / yTickCount
-  );
+  const yTickValues = [0, 20, 40, 60, 80];
 
   const scaledPoints = classified.map((p) => ({
     ...p,

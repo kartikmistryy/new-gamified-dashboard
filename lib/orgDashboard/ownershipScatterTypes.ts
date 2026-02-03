@@ -8,10 +8,15 @@ export type DeveloperPoint = {
 
 export type OwnershipTimeRangeKey = "1m" | "3m" | "1y" | "max";
 
-/** Developer point with regression residual and normal-range flag. */
+/** Outlier classification: above band = high ownership, below band = low ownership. */
+export type OutlierType = "high" | "low" | null;
+
+/** Developer point with regression residual and outlier classification. */
 export type ClassifiedPoint = DeveloperPoint & {
   residual: number;
   inNormalRange: boolean;
+  /** null = normal range; "high" = above band; "low" = below band. */
+  outlierType: OutlierType;
 };
 
 /** Band boundary point for normal range area. */
