@@ -7,6 +7,10 @@ export const DASHBOARD_COLORS = {
   good: "#94CA42",
   excellent: "#55B685",
   blue: "#3D81FF",
+  skillGreen: "#6BC095",
+  skillBlue: "#86B1D4",
+  skillLavender: "#B6B5D4",
+  skillOrange: "#F3BC8F",
 } as const;
 
 /** Tailwind bg classes for segments and bars. */
@@ -24,6 +28,11 @@ export const DASHBOARD_BG_CLASSES = {
   blue60: "bg-[#3D81FF]/60",
   excellent60: "bg-[#55B685]/60",
   excellent90: "bg-[#55B685]/90",
+  /** Skillgraph badge colors. */
+  skillGreen: "bg-[#6BC095]",
+  skillBlue: "bg-[#86B1D4]",
+  skillLavender: "bg-[#B6B5D4]",
+  skillOrange: "bg-[#F3BC8F]",
 } as const;
 
 /** Change badge (e.g. performance delta): success and danger. */

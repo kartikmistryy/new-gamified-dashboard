@@ -16,6 +16,10 @@ export type { ChaosTimeRangeKey };
 type ChaosMatrixProps = {
   data?: ChaosPoint[];
   range?: ChaosTimeRangeKey;
+  /** Optional visibility map keyed by team name; when provided, hidden teams are removed from the plot. */
+  visibleTeams?: Record<string, boolean>;
+  /** Optional team names used when generating synthetic chaos points so labels match the Teams table. */
+  teamNames?: string[];
 };
 
 type CategorizedPoint = ChaosPoint & { category: ChaosCategory };
@@ -24,7 +28,7 @@ const WIDTH = 800;
 const HEIGHT = 380;
 const MARGIN = { top: 24, right: 24, bottom: 48, left: 96 };
 
-export function ChaosMatrix({ data, range = "max" }: ChaosMatrixProps) {
+export function ChaosMatrix({ data, range = "max", visibleTeams, teamNames }: ChaosMatrixProps) {
   const [tooltip, setTooltip] = useState<{
     point: CategorizedPoint;
     x: number;
@@ -33,13 +37,17 @@ export function ChaosMatrix({ data, range = "max" }: ChaosMatrixProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const chart = useMemo(() => {
-    const base = data && data.length > 0 ? data : generateSyntheticChaosPoints(range);
+    const base = data && data.length > 0 ? data : generateSyntheticChaosPoints(range, teamNames);
     const kpThresh = base.length > 0 ? median(base.map((p) => p.medianWeeklyKp)) : 1000;
     const churnThresh = base.length > 0 ? median(base.map((p) => p.churnRatePct)) : 2;
     const categorized: CategorizedPoint[] = base.map((p) => ({
       ...p,
       category: categorizeChaos(p.medianWeeklyKp, p.churnRatePct, kpThresh, churnThresh),
     }));
+
+    const filtered = visibleTeams
+      ? categorized.filter((p) => visibleTeams[p.team] !== false)
+      : categorized;
 
     const xMin = -1000;
     const xMax = 8000;
@@ -56,7 +64,7 @@ export function ChaosMatrix({ data, range = "max" }: ChaosMatrixProps) {
     const rightCenterX = xScale((kpThresh + xMax) / 2);
 
     return {
-      points: categorized.map((p) => ({
+      points: filtered.map((p) => ({
         ...p,
         cx: xScale(p.medianWeeklyKp),
         cy: yScale(p.churnRatePct),
@@ -72,7 +80,7 @@ export function ChaosMatrix({ data, range = "max" }: ChaosMatrixProps) {
         { x: rightCenterX, y: HEIGHT - MARGIN.bottom - 10, text: "Skilled AI User", color: CATEGORY_COLORS["Skilled AI User"] },
       ],
     };
-  }, [data, range]);
+  }, [data, range, visibleTeams, teamNames]);
 
   return (
     <div className="w-full overflow-visible">

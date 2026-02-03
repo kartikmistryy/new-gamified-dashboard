@@ -42,6 +42,7 @@ export type ChaosTimeRangeKey = "1m" | "3m" | "1y" | "max";
 
 export function generateSyntheticChaosPoints(
   range: ChaosTimeRangeKey,
+  teamNames?: string[],
 ): ChaosPoint[] {
   const count = range === "1m" ? 60 : range === "3m" ? 120 : range === "1y" ? 180 : 220;
   const points: ChaosPoint[] = [];
@@ -65,9 +66,15 @@ export function generateSyntheticChaosPoints(
       kp = 1200 + r(i) * 3800;
       churn = 0.5 + r(i + 1) * 1.5;
     }
+    const teamIndex = i % 5;
+    const teamLabel =
+      teamNames && teamNames.length > 0
+        ? teamNames[teamIndex % teamNames.length]!
+        : `Team ${teamIndex + 1}`;
+
     points.push({
       name: `Dev ${i + 1}`,
-      team: `Team ${(i % 5) + 1}`,
+      team: teamLabel,
       medianWeeklyKp: Math.round(kp),
       churnRatePct: Math.round(churn * 10) / 10,
     });
