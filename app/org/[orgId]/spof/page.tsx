@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { SpofTeamsTable } from "@/components/dashboard/SpofTeamsTable";
 import { SpofDistributionChart } from "@/components/dashboard/SpofDistributionChart";
+import { RepoHealthBar } from "@/components/dashboard/RepoHealthBar";
 import {
   SPOF_DATA,
   SPOF_TEAM_ROWS,
@@ -34,6 +35,10 @@ export default function OrgSpofPage() {
             showNormalFit
           />
         </div>
+      </DashboardSection>
+
+      <DashboardSection title="Repository Health Distribution">
+        <RepoHealthBar />
       </DashboardSection>
 
       <DashboardSection title="Teams">
