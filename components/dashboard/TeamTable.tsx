@@ -2,7 +2,8 @@
 
 import { ArrowRight, TrendingUp, TrendingDown, Star, Bomb, Puzzle, FlaskConical, BrickWall, AlertTriangle } from "lucide-react";
 import type { TeamPerformanceRow, TeamTableFilter } from "@/lib/orgDashboard/types";
-import { DASHBOARD_BG_CLASSES, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
+import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "./BaseTeamsTable";
 import { SegmentBar } from "./SegmentBar";
 
@@ -14,12 +15,12 @@ const TEAM_FILTER_TABS: { key: TeamTableFilter; label: string }[] = [
 ];
 
 const TYPE_DISTRIBUTION_SEGMENTS = [
-  { key: "star" as const, bg: DASHBOARD_BG_CLASSES.excellent, icon: Star },
-  { key: "timeBomb" as const, bg: DASHBOARD_BG_CLASSES.danger, icon: Bomb },
-  { key: "keyRole" as const, bg: DASHBOARD_BG_CLASSES.warning, icon: Puzzle },
-  { key: "risky" as const, bg: DASHBOARD_BG_CLASSES.warning, icon: FlaskConical, borderClass: "border-l border-black/20" },
-  { key: "bottleneck" as const, bg: DASHBOARD_BG_CLASSES.caution, icon: AlertTriangle },
-  { key: "legacy" as const, bg: DASHBOARD_BG_CLASSES.stable, icon: BrickWall },
+  { key: "star" as const, icon: Star, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.excellent, 0.25), color: DASHBOARD_COLORS.excellent } },
+  { key: "timeBomb" as const, icon: Bomb, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.danger, 0.25), color: DASHBOARD_COLORS.danger } },
+  { key: "keyRole" as const, icon: Puzzle, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
+  { key: "risky" as const, icon: FlaskConical, borderClass: "border-l border-black/20", style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
+  { key: "bottleneck" as const, icon: AlertTriangle, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.caution, 0.25), color: DASHBOARD_COLORS.caution } },
+  { key: "legacy" as const, icon: BrickWall, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.stable, 0.25), color: DASHBOARD_COLORS.stable } },
 ];
 
 function teamSortFunction(rows: TeamPerformanceRow[], currentFilter: TeamTableFilter): TeamPerformanceRow[] {
@@ -65,11 +66,17 @@ const TEAM_COLUMNS: BaseTeamsTableColumn<TeamPerformanceRow, TeamTableFilter>[] 
       const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
       return (
         <div className="flex items-center justify-end gap-2">
-          <span className={`inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium text-white ${row.performanceBarColor}`}>
+          <span
+            className="inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium"
+            style={{
+              backgroundColor: hexToRgba(row.performanceBarColor, 0.25),
+              color: row.performanceBarColor,
+            }}
+          >
             {row.performanceLabel}
             <span className="flex flex-row items-center justify-between gap-1 pl-2 py-1 border-l border-black/20 w-12">
               {row.performanceValue}
-              <TrendIcon className="size-4 text-white shrink-0" aria-hidden />
+              <TrendIcon className="size-4 text-current shrink-0" aria-hidden />
             </span>
           </span>
         </div>

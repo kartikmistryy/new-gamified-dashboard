@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { Eye, EyeOff } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -11,7 +10,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "../shared/Badge";
-import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
+import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
+import { VisibilityToggleButton } from "./VisibilityToggleButton";
 import type { SpofTeamRow } from "@/lib/orgDashboard/spofMockData";
 
 type SpofTableFilter = "highestRisk" | "lowestRisk" | "mostMembers" | "leastMembers";
@@ -44,6 +45,37 @@ type SpofTeamsTableProps = {
   visibleTeams: Record<string, boolean>;
   onVisibilityChange: (teamName: string, visible: boolean) => void;
 };
+
+const SPOF_OWNER_SEGMENTS = [
+  { key: "high", label: "High", color: DASHBOARD_COLORS.danger },
+  { key: "medium", label: "Medium", color: DASHBOARD_COLORS.blue },
+  { key: "low", label: "Low", color: DASHBOARD_COLORS.excellent },
+];
+
+function SpofOwnerDistributionBar({
+  segments,
+}: {
+  segments: { label: string; value: number; color: string }[];
+}) {
+  return (
+    <div className="flex h-6 w-full overflow-hidden rounded-full bg-gray-100">
+      {segments.map((segment) => (
+        <div
+          key={segment.label}
+          className="flex items-center justify-center text-xs font-semibold"
+          style={{
+            flex: "1 1 0",
+            minWidth: 0,
+            backgroundColor: hexToRgba(segment.color, 0.25),
+            color: segment.color,
+          }}
+        >
+          {segment.value}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function SpofTeamsTable({
   rows,
@@ -89,16 +121,23 @@ export function SpofTeamsTable({
               <TableHead className="w-14 text-foreground font-medium" />
               <TableHead className="w-14 text-foreground font-medium">Rank</TableHead>
               <TableHead className="text-foreground font-medium">Team</TableHead>
-              <TableHead className="text-foreground font-medium text-left">Members</TableHead>
-              <TableHead className="text-foreground font-medium text-left">Avg SPOF Score</TableHead>
-              <TableHead className="text-foreground font-medium text-left">High Risk</TableHead>
-              <TableHead className="text-foreground font-medium text-left">Low Risk</TableHead>
+              <TableHead className="text-foreground font-medium text-left">Domain</TableHead>
+              <TableHead className="text-foreground font-medium text-left">Skill</TableHead>
+              <TableHead className="text-foreground font-medium text-right min-w-[260px]">
+                SPOF Owner Distribution
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {sortedRows.map((row, index) => {
               const isVisible = visibleTeams[row.teamName] !== false;
               const displayRank = index + 1;
+              const mediumCount = Math.max(0, row.memberCount - row.highRiskCount - row.lowRiskCount);
+              const ownerSegments = [
+                { label: SPOF_OWNER_SEGMENTS[0].label, value: row.highRiskCount, color: SPOF_OWNER_SEGMENTS[0].color },
+                { label: SPOF_OWNER_SEGMENTS[1].label, value: mediumCount, color: SPOF_OWNER_SEGMENTS[1].color },
+                { label: SPOF_OWNER_SEGMENTS[2].label, value: row.lowRiskCount, color: SPOF_OWNER_SEGMENTS[2].color },
+              ];
 
               return (
                 <TableRow
@@ -106,18 +145,11 @@ export function SpofTeamsTable({
                   className="border-[#E5E5E5] hover:bg-gray-50/80"
                 >
                   <TableCell className="w-14">
-                    <button
-                      type="button"
-                      onClick={() => handleToggle(row.teamName)}
-                      className="inline-flex items-center justify-center size-8 rounded-md text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-1"
-                      aria-label={isVisible ? "Hide team from chart" : "Show team in chart"}
-                    >
-                      {isVisible ? (
-                        <Eye className="size-5 shrink-0" aria-hidden />
-                      ) : (
-                        <EyeOff className="size-5 shrink-0" aria-hidden />
-                      )}
-                    </button>
+                    <VisibilityToggleButton
+                      isVisible={isVisible}
+                      onToggle={() => handleToggle(row.teamName)}
+                      label={isVisible ? "Hide team from chart" : "Show team in chart"}
+                    />
                   </TableCell>
                   <TableCell className="w-14">
                     <span
@@ -141,16 +173,13 @@ export function SpofTeamsTable({
                     </div>
                   </TableCell>
                   <TableCell className="text-left">
-                    <span className="text-gray-900">{row.memberCount}</span>
+                    <span className="text-gray-900">{row.domainCount}</span>
                   </TableCell>
                   <TableCell className="text-left">
-                    <span className="text-gray-900">{row.avgSpofScore.toFixed(2)}</span>
+                    <span className="text-gray-900">{row.skillCount}</span>
                   </TableCell>
-                  <TableCell className="text-left">
-                    <span className="text-red-600 font-medium">{row.highRiskCount}</span>
-                  </TableCell>
-                  <TableCell className="text-left">
-                    <span className="text-green-600 font-medium">{row.lowRiskCount}</span>
+                  <TableCell className="text-right">
+                    <SpofOwnerDistributionBar segments={ownerSegments} />
                   </TableCell>
                 </TableRow>
               );

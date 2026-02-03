@@ -1,18 +1,20 @@
 "use client";
 
-import { useCallback } from "react";
-import { ArrowRight, TrendingUp, TrendingDown, Eye, EyeOff } from "lucide-react";
+import { useCallback, type CSSProperties } from "react";
+import { ArrowRight, TrendingUp, TrendingDown } from "lucide-react";
 import type { TeamPerformanceRow, PerformanceTableFilter } from "@/lib/orgDashboard/types";
-import { DASHBOARD_BG_CLASSES, DASHBOARD_CHANGE_CLASSES, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
+import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "./BaseTeamsTable";
 import { SegmentBar } from "./SegmentBar";
+import { VisibilityToggleButton } from "./VisibilityToggleButton";
 
-const PERFORMANCE_DISTRIBUTION_SEGMENTS: { getCount: (d: TeamPerformanceRow["typeDistribution"]) => number; bg: string }[] = [
-  { getCount: (d) => d.timeBomb ?? 0, bg: DASHBOARD_BG_CLASSES.danger90 },
-  { getCount: (d) => (d.keyRole ?? 0) + (d.risky ?? 0), bg: DASHBOARD_BG_CLASSES.danger60 },
-  { getCount: (d) => d.bottleneck ?? 0, bg: DASHBOARD_BG_CLASSES.blue60 },
-  { getCount: (d) => d.legacy ?? 0, bg: DASHBOARD_BG_CLASSES.excellent60 },
-  { getCount: (d) => d.star ?? 0, bg: DASHBOARD_BG_CLASSES.excellent90 },
+const PERFORMANCE_DISTRIBUTION_SEGMENTS: { getCount: (d: TeamPerformanceRow["typeDistribution"]) => number; style: CSSProperties }[] = [
+  { getCount: (d) => d.timeBomb ?? 0, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.danger, 0.25), color: DASHBOARD_COLORS.danger } },
+  { getCount: (d) => (d.keyRole ?? 0) + (d.risky ?? 0), style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
+  { getCount: (d) => d.bottleneck ?? 0, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.blue, 0.25), color: DASHBOARD_COLORS.blue } },
+  { getCount: (d) => d.legacy ?? 0, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.excellent, 0.25), color: DASHBOARD_COLORS.excellent } },
+  { getCount: (d) => d.star ?? 0, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.excellent, 0.25), color: DASHBOARD_COLORS.excellent } },
 ];
 
 const PERFORMANCE_FILTER_TABS: { key: PerformanceTableFilter; label: string }[] = [
@@ -48,23 +50,13 @@ function createPerformanceColumns(
       key: "visibility",
       header: "",
       className: "w-14",
-      render: (row) => {
-        const isVisible = visibleTeams[row.teamName] !== false;
-        return (
-          <button
-            type="button"
-            onClick={() => onVisibilityToggle(row.teamName)}
-            className="inline-flex items-center justify-center size-8 rounded-md text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-1"
-            aria-label={isVisible ? "Hide team from chart" : "Show team in chart"}
-          >
-            {isVisible ? (
-              <Eye className="size-5 shrink-0" aria-hidden />
-            ) : (
-              <EyeOff className="size-5 shrink-0" aria-hidden />
-            )}
-          </button>
-        );
-      },
+      render: (row) => (
+        <VisibilityToggleButton
+          isVisible={visibleTeams[row.teamName] !== false}
+          onToggle={() => onVisibilityToggle(row.teamName)}
+          label={visibleTeams[row.teamName] !== false ? "Hide team from chart" : "Show team in chart"}
+        />
+      ),
     });
   }
 
@@ -101,11 +93,17 @@ function createPerformanceColumns(
         const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
         return (
           <div className="flex items-center justify-end gap-2">
-            <span className={`inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium text-white ${row.performanceBarColor}`}>
+            <span
+              className="inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium"
+              style={{
+                backgroundColor: hexToRgba(row.performanceBarColor, 0.25),
+                color: row.performanceBarColor,
+              }}
+            >
               {row.performanceLabel}
               <span className="flex flex-row items-center justify-between gap-1 pl-2 py-1 border-l border-black/20 w-12">
                 {row.performanceValue}
-                <TrendIcon className="size-4 text-white shrink-0" aria-hidden />
+                <TrendIcon className="size-4 text-current shrink-0" aria-hidden />
               </span>
             </span>
           </div>
@@ -120,15 +118,18 @@ function createPerformanceColumns(
         const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
         const changePts = row.changePts ?? 0;
         const changeLabel = changePts > 0 ? `${changePts} pts` : changePts < 0 ? `${Math.abs(changePts)} pts` : "0 pts";
-        const changeBadgeClass =
+        const changeColor =
           changePts > 0
-            ? `${DASHBOARD_CHANGE_CLASSES.successBg} ${DASHBOARD_CHANGE_CLASSES.successText}`
+            ? DASHBOARD_COLORS.excellent
             : changePts < 0
-              ? `${DASHBOARD_CHANGE_CLASSES.dangerBg} ${DASHBOARD_CHANGE_CLASSES.dangerText}`
-              : `${DASHBOARD_CHANGE_CLASSES.neutralBg} ${DASHBOARD_CHANGE_CLASSES.neutralText}`;
+              ? DASHBOARD_COLORS.danger
+              : "#737373";
         return (
           <div className="flex items-center justify-start">
-            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium ${changeBadgeClass}`}>
+            <span
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
+              style={{ backgroundColor: hexToRgba(changeColor, 0.25), color: changeColor }}
+            >
               <TrendIcon className="size-4 shrink-0" aria-hidden />
               {changeLabel}
             </span>
@@ -142,7 +143,7 @@ function createPerformanceColumns(
       className: "text-right",
       render: (row) => (
         <SegmentBar
-          segments={PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s) => ({ bg: s.bg }))}
+          segments={PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s) => ({ style: s.style }))}
           counts={PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s) => s.getCount(row.typeDistribution))}
           alignment="end"
         />
@@ -153,87 +154,6 @@ function createPerformanceColumns(
   return columns;
 }
 
-// Deprecated: Legacy column definition without visibility toggle
-const PERF_COLUMNS: BaseTeamsTableColumn<TeamPerformanceRow, PerformanceTableFilter>[] = [
-  {
-    key: "rank",
-    header: "Rank",
-    className: "w-14",
-    render: (_, index) => {
-      const displayRank = index + 1;
-      return (
-        <span className={displayRank <= 3 ? "text-foreground font-bold" : DASHBOARD_TEXT_CLASSES.rankMuted}>
-          {displayRank}
-        </span>
-      );
-    },
-  },
-  {
-    key: "team",
-    header: "Team",
-    render: (row) => (
-      <div className="flex items-center gap-3">
-        <div className={`size-4 rounded shrink-0 ${row.teamColor}`} aria-hidden />
-        <p className="font-medium text-gray-900">{row.teamName}</p>
-      </div>
-    ),
-  },
-  {
-    key: "performance",
-    header: "Real Productivity",
-    className: "text-right",
-    render: (row) => {
-      const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
-      return (
-        <div className="flex items-center justify-end gap-2">
-          <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium text-white ${row.performanceBarColor}`}>
-            {row.performanceLabel}
-            <span className="flex flex-row gap-1 pl-2 border-l border-white/50">
-              {row.performanceValue}
-              <TrendIcon className="size-4 text-white shrink-0" aria-hidden />
-            </span>
-          </span>
-        </div>
-      );
-    },
-  },
-  {
-    key: "change",
-    header: "Change",
-    className: "text-right",
-    render: (row) => {
-      const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
-      const changePts = row.changePts ?? 0;
-      const changeLabel = changePts > 0 ? `${changePts} pts` : changePts < 0 ? `${Math.abs(changePts)} pts` : "0 pts";
-      const changeBadgeClass =
-        changePts > 0
-          ? `${DASHBOARD_CHANGE_CLASSES.successBg} ${DASHBOARD_CHANGE_CLASSES.successText}`
-          : changePts < 0
-            ? `${DASHBOARD_CHANGE_CLASSES.dangerBg} ${DASHBOARD_CHANGE_CLASSES.dangerText}`
-            : `${DASHBOARD_CHANGE_CLASSES.neutralBg} ${DASHBOARD_CHANGE_CLASSES.neutralText}`;
-      return (
-        <div className="flex items-center justify-start">
-          <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium ${changeBadgeClass}`}>
-            <TrendIcon className="size-4 shrink-0" aria-hidden />
-            {changeLabel}
-          </span>
-        </div>
-      );
-    },
-  },
-  {
-    key: "distribution",
-    header: "Performance Distribution",
-    className: "text-right",
-    render: (row) => (
-      <SegmentBar
-        segments={PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s) => ({ bg: s.bg }))}
-        counts={PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s) => s.getCount(row.typeDistribution))}
-        alignment="end"
-      />
-    ),
-  },
-];
 
 type PerformanceTeamsTableProps = {
   rows: TeamPerformanceRow[];
@@ -261,11 +181,10 @@ export function PerformanceTeamsTable({
     [visibleTeams, onVisibilityChange]
   );
 
-  // Use dynamic columns if visibility features are enabled
-  const columns =
-    visibleTeams && onVisibilityChange
-      ? createPerformanceColumns(visibleTeams, handleToggle)
-      : PERF_COLUMNS;
+  const columns = createPerformanceColumns(
+    visibleTeams,
+    visibleTeams && onVisibilityChange ? handleToggle : undefined
+  );
 
   return (
     <BaseTeamsTable<TeamPerformanceRow, PerformanceTableFilter>

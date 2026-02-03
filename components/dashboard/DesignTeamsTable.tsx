@@ -1,23 +1,24 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
 import type { DesignTeamRow, DesignTableFilter } from "@/lib/orgDashboard/types";
-import { DASHBOARD_BG_CLASSES, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
+import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "./BaseTeamsTable";
 import { SegmentBar } from "./SegmentBar";
+import { VisibilityToggleButton } from "./VisibilityToggleButton";
 
 const OWNERSHIP_SEGMENTS = [
-  { bg: DASHBOARD_BG_CLASSES.danger90 },
-  { bg: DASHBOARD_BG_CLASSES.blue60 },
-  { bg: DASHBOARD_BG_CLASSES.excellent90 },
+  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.danger, 0.25), color: DASHBOARD_COLORS.danger } },
+  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.blue, 0.25), color: DASHBOARD_COLORS.blue } },
+  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.excellent, 0.25), color: DASHBOARD_COLORS.excellent } },
 ];
 
 const CHAOS_SEGMENTS = [
-  { bg: DASHBOARD_BG_CLASSES.danger90 },
-  { bg: DASHBOARD_BG_CLASSES.danger60 },
-  { bg: DASHBOARD_BG_CLASSES.blue60 },
-  { bg: DASHBOARD_BG_CLASSES.excellent90 },
+  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.danger, 0.25), color: DASHBOARD_COLORS.danger } },
+  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
+  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.blue, 0.25), color: DASHBOARD_COLORS.blue } },
+  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.excellent, 0.25), color: DASHBOARD_COLORS.excellent } },
 ];
 
 const DESIGN_FILTER_TABS: { key: DesignTableFilter; label: string }[] = [
@@ -77,19 +78,12 @@ export function DesignTeamsTable({
         key: "view",
         header: "View",
         className: "w-14",
-        render: (row) => {
-          const isVisible = effectiveVisible[row.teamName] !== false;
-          return (
-            <button
-              type="button"
-              onClick={() => toggleView(row.teamName)}
-              className="inline-flex items-center justify-center size-8 rounded-md text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-1"
-              aria-label={isVisible ? "Hide" : "Show"}
-            >
-              {isVisible ? <Eye className="size-5 shrink-0" aria-hidden /> : <EyeOff className="size-5 shrink-0" aria-hidden />}
-            </button>
-          );
-        },
+        render: (row) => (
+          <VisibilityToggleButton
+            isVisible={effectiveVisible[row.teamName] !== false}
+            onToggle={() => toggleView(row.teamName)}
+          />
+        ),
       },
       {
         key: "rank",

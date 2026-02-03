@@ -1,10 +1,11 @@
 "use client";
 
-import type { ComponentType } from "react";
+import type { ComponentType, CSSProperties } from "react";
 import { getSegmentRoundedClass } from "@/lib/orgDashboard/tableUtils";
 
 export type SegmentBarSegment = {
-  bg: string;
+  bg?: string;
+  style?: CSSProperties;
   icon?: ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
   borderClass?: string;
 };
@@ -30,11 +31,13 @@ export function SegmentBar({
         const roundedClass = getSegmentRoundedClass(segIndex, total);
         const Icon = seg.icon;
         const borderClass = seg.borderClass ?? "";
+        const bgClass = seg.bg ?? "";
 
         return (
           <span
             key={segIndex}
-            className={`inline-flex w-full justify-center items-center gap-1.5 px-4 py-1 text-xs font-medium text-white ${seg.bg} ${roundedClass} ${borderClass}`}
+            className={`inline-flex w-full justify-center items-center gap-1.5 px-4 py-1 text-xs font-medium ${bgClass} ${roundedClass} ${borderClass}`}
+            style={seg.style}
           >
             {Icon && <Icon className="size-3.5 shrink-0" aria-hidden />}
             {count}
