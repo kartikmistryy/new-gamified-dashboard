@@ -15,12 +15,12 @@ const TEAM_FILTER_TABS: { key: TeamTableFilter; label: string }[] = [
 ];
 
 const TYPE_DISTRIBUTION_SEGMENTS = [
-  { key: "star" as const, icon: Star, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.excellent, 0.25), color: DASHBOARD_COLORS.excellent } },
-  { key: "timeBomb" as const, icon: Bomb, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.danger, 0.25), color: DASHBOARD_COLORS.danger } },
-  { key: "keyRole" as const, icon: Puzzle, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
-  { key: "risky" as const, icon: FlaskConical, borderClass: "border-l border-black/20", style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
-  { key: "bottleneck" as const, icon: AlertTriangle, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.caution, 0.25), color: DASHBOARD_COLORS.caution } },
-  { key: "legacy" as const, icon: BrickWall, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.stable, 0.25), color: DASHBOARD_COLORS.stable } },
+  { key: "star" as const, label: "Star", icon: Star, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.excellent, 0.25), color: DASHBOARD_COLORS.excellent } },
+  { key: "timeBomb" as const, label: "Time Bomb", icon: Bomb, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.danger, 0.25), color: DASHBOARD_COLORS.danger } },
+  { key: "keyRole" as const, label: "Key Role", icon: Puzzle, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
+  { key: "risky" as const, label: "Risky", icon: FlaskConical, borderClass: "border-l border-black/20", style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
+  { key: "bottleneck" as const, label: "Bottleneck", icon: AlertTriangle, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.caution, 0.25), color: DASHBOARD_COLORS.caution } },
+  { key: "legacy" as const, label: "Legacy", icon: BrickWall, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.stable, 0.25), color: DASHBOARD_COLORS.stable } },
 ];
 
 function teamSortFunction(rows: TeamPerformanceRow[], currentFilter: TeamTableFilter): TeamPerformanceRow[] {
@@ -92,6 +92,7 @@ const TEAM_COLUMNS: BaseTeamsTableColumn<TeamPerformanceRow, TeamTableFilter>[] 
         segments={TYPE_DISTRIBUTION_SEGMENTS}
         counts={TYPE_DISTRIBUTION_SEGMENTS.map((s) => row.typeDistribution[s.key] ?? 0)}
         alignment="end"
+        showCounts
       />
     ),
   },

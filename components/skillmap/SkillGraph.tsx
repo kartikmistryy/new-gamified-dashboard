@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback, useId, useMemo } from "react";
-import type { SkillData, D3HierarchyNode, TooltipState } from "./skillGraphTypes";
+import type { SkillData, D3HierarchyNode, SkillTooltipController } from "./skillGraphTypes";
 import { buildSkillData, loadD3Scripts, checkD3Libs } from "./skillGraphUtils";
 import { renderWorldView, renderDrilldownView } from "./skillGraphRenderers";
+import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 
 declare const d3: typeof import("d3") & {
   voronoiTreemap?: () => {
@@ -72,7 +73,6 @@ const applyDomainWeights = (data: SkillData, domainWeights?: Record<string, numb
 
 export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGraphProps) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const tooltipRef = useRef<HTMLDivElement>(null);
   const weightedFullData = useMemo(
     () => applyDomainWeights(fullSkillData, domainWeights),
     [domainWeights]
@@ -85,10 +85,11 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
   const [currentData, setCurrentData] = useState<SkillData>(rootSkillData);
   const [activeDomain, setActiveDomain] = useState<string | null>(null);
   const [history, setHistory] = useState<Array<{ data: SkillData; activeDomain: string | null }>>([]);
-  const [tooltip, setTooltip] = useState<TooltipState>({ show: false, x: 0, y: 0, content: "" });
   const [libsLoaded, setLibsLoaded] = useState(false);
   const [layoutAttempt, setLayoutAttempt] = useState(0);
   const instanceId = useId().replace(/:/g, "");
+  const tooltipId = `skill-tooltip-${instanceId}`;
+  const tooltipRef = useRef<D3TooltipController | null>(null);
 
   const radius = Math.min(width, height) / 2 - 100;
   const isRootView = currentData.name === rootSkillData.name;
@@ -159,6 +160,11 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
   }, [rootSkillData]);
 
   useEffect(() => {
+    tooltipRef.current = createChartTooltip(tooltipId);
+    return () => tooltipRef.current?.destroy();
+  }, [tooltipId]);
+
+  useEffect(() => {
     if (!svgRef.current || typeof d3 === "undefined") return;
     const d3Lib = d3;
     d3Lib.select(svgRef.current).selectAll("*").remove();
@@ -221,6 +227,17 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
 
     let needsRetry = false;
     if (libsLoaded && hasVoronoiTreemap && d3Lib.voronoiTreemap) {
+      const tooltip: SkillTooltipController = tooltipRef.current
+        ? {
+          show: (html, x, y) => tooltipRef.current?.show(html, x, y),
+          move: (x, y) => tooltipRef.current?.move(x, y),
+          hide: () => tooltipRef.current?.hide(),
+        }
+        : {
+          show: () => {},
+          move: () => {},
+          hide: () => {},
+        };
       if (isRootView) {
         const ok = renderWorldView(
           d3Lib,
@@ -230,7 +247,7 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
           radius,
           centerX,
           centerY,
-          setTooltip,
+          tooltip,
           handleNodeClick,
           rootSkillData.name,
           badgeShadowId
@@ -245,7 +262,7 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
           radius,
           centerX,
           centerY,
-          setTooltip,
+          tooltip,
           handleNodeClick,
           currentData.name,
           activeDomain ?? currentData.name,
@@ -356,12 +373,6 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
             </div>
           </div>
         </div>
-        <div
-          ref={tooltipRef}
-          className="fixed py-3 px-4 bg-white border border-gray-200 rounded-lg shadow-[0_4px_12px_rgba(0,0,0,0.15)] text-[13px] leading-relaxed pointer-events-none z-1000 max-w-[280px] [&>strong]:block [&>strong]:mb-1 [&>strong]:text-gray-800 [&>div]:text-gray-600"
-          style={{ display: tooltip.show ? "block" : "none", left: tooltip.x, top: tooltip.y }}
-          dangerouslySetInnerHTML={{ __html: tooltip.content }}
-        />
       </div>
     </div>
   );

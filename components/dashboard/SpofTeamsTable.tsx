@@ -15,6 +15,7 @@ import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/col
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import { VisibilityToggleButton } from "./VisibilityToggleButton";
 import type { SpofTeamRow } from "@/lib/orgDashboard/spofMockData";
+import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 
 type SpofTableFilter = "highestRisk" | "lowestRisk" | "mostMembers" | "leastMembers";
 
@@ -68,6 +69,14 @@ function SpofOwnerDistributionBar({
   segments: { label: string; value: number; color: string }[];
 }) {
   const counts = segments.map((segment) => segment.value);
+  const tooltipId = React.useId().replace(/:/g, "");
+  const tooltipRef = React.useRef<D3TooltipController | null>(null);
+
+  React.useEffect(() => {
+    tooltipRef.current = createChartTooltip(`spof-owner-tooltip-${tooltipId}`);
+    return () => tooltipRef.current?.destroy();
+  }, [tooltipId]);
+
   return (
     <div className="flex h-6 w-full overflow-hidden rounded-full bg-gray-100">
       {segments.map((segment, index) => {
@@ -82,6 +91,20 @@ function SpofOwnerDistributionBar({
               backgroundColor: hexToRgba(segment.color, 0.25),
               color: segment.color,
             }}
+            onMouseEnter={(event) => {
+              const tooltip = tooltipRef.current;
+              if (!tooltip) return;
+              tooltip.show(
+                `<div style="font-weight:600; color:#0f172a;">${segment.label}</div>` +
+                  `<div style="color:#6b7280;">Owners: ${segment.value}</div>`,
+                event.clientX + 12,
+                event.clientY + 12
+              );
+            }}
+            onMouseMove={(event) => {
+              tooltipRef.current?.move(event.clientX + 12, event.clientY + 12);
+            }}
+            onMouseLeave={() => tooltipRef.current?.hide()}
           >
             <TrendIcon className="size-3.5 shrink-0 text-current" aria-hidden />
             {segment.value}

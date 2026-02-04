@@ -11,26 +11,32 @@ import { SegmentBar } from "./SegmentBar";
 import { VisibilityToggleButton } from "./VisibilityToggleButton";
 
 const PERFORMANCE_DISTRIBUTION_SEGMENTS: {
+  label: string;
   getCount: (d: TeamPerformanceRow["typeDistribution"]) => number;
   style: CSSProperties;
 }[] = [
   {
+    label: "Stars",
     getCount: (d) => d.star ?? 0,
     style: { backgroundColor: PERFORMANCE_ZONES.excellent.color, color: DASHBOARD_COLORS.excellent },
   },
   {
+    label: "Legacy",
     getCount: (d) => d.legacy ?? 0,
     style: { backgroundColor: PERFORMANCE_ZONES.aboveAvg.color, color: DASHBOARD_COLORS.excellent },
   },
   {
+    label: "Bottleneck",
     getCount: (d) => d.bottleneck ?? 0,
     style: { backgroundColor: hexToRgba("#2563eb", 0.25), color: "#2563eb" },
   },
   {
+    label: "Key Roles + Risky",
     getCount: (d) => (d.keyRole ?? 0) + (d.risky ?? 0),
     style: { backgroundColor: PERFORMANCE_ZONES.belowAvg.color, color: DASHBOARD_COLORS.danger },
   },
   {
+    label: "Time Bombs",
     getCount: (d) => d.timeBomb ?? 0,
     style: { backgroundColor: PERFORMANCE_ZONES.concerning.color, color: DASHBOARD_COLORS.danger },
   },
@@ -174,6 +180,7 @@ function createPerformanceColumns(
         return (
           <SegmentBar
             segments={PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s, index) => ({
+              label: s.label,
               style: s.style,
               icon: getTrendIconForCount(counts, index),
             }))}

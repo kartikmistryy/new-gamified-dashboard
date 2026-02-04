@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo, useId } from "react";
 import * as d3 from "d3";
 import { SPOF_TEAM_CONFIG, calculateSpofStats } from "@/lib/orgDashboard/spofMockData";
 import type { SpofDataPoint } from "@/lib/orgDashboard/spofMockData";
@@ -16,6 +16,7 @@ import {
   drawTitle,
   drawLegend,
 } from "@/lib/orgDashboard/spofChartUtils";
+import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 
 type SpofDistributionChartProps = {
   data: SpofDataPoint[];
@@ -30,6 +31,8 @@ export function SpofDistributionChart({
 }: SpofDistributionChartProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const tooltipId = useId().replace(/:/g, "");
+  const tooltipRef = useRef<D3TooltipController | null>(null);
 
   const filteredData = useMemo(
     () => data.filter((d) => visibleTeams[d.team] !== false),
@@ -47,7 +50,15 @@ export function SpofDistributionChart({
   );
 
   useEffect(() => {
+    tooltipRef.current = createChartTooltip(`spof-tooltip-${tooltipId}`);
+    return () => tooltipRef.current?.destroy();
+  }, [tooltipId]);
+
+  useEffect(() => {
     if (!svgRef.current || !containerRef.current) return;
+    if (!tooltipRef.current) {
+      tooltipRef.current = createChartTooltip(`spof-tooltip-${tooltipId}`);
+    }
 
     const dims = getChartDimensions(containerRef.current.clientWidth);
     const { width, height, margin, innerWidth, innerHeight } = dims;
@@ -76,7 +87,7 @@ export function SpofDistributionChart({
     drawShadedRegions(g, xScale, innerHeight, innerWidth, muMinus1Sigma, muPlus1Sigma);
 
     const teamColors = new Map(SPOF_TEAM_CONFIG.map((t) => [t.name, t.color]));
-    drawStackedBars(g, stackedData, xScale, yScale, binWidth, teamColors);
+    drawStackedBars(g, stackedData, xScale, yScale, binWidth, teamColors, tooltipRef.current ?? undefined);
 
     if (showNormalFit && filteredData.length > 0) {
       const normalData = generateNormalCurveData(mean, std, filteredData.length);

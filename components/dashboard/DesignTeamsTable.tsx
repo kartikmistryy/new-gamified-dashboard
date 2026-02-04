@@ -11,31 +11,35 @@ import { SegmentBar } from "./SegmentBar";
 import { VisibilityToggleButton } from "./VisibilityToggleButton";
 
 const OWNERSHIP_SEGMENTS = [
-  { style: { backgroundColor: hexToRgba("#22c55e", 0.25), color: "#22c55e" } },
-  { style: { backgroundColor: hexToRgba("#4285f4", 0.25), color: "#4285f4" } },
-  { style: { backgroundColor: hexToRgba("#ef4444", 0.25), color: "#ef4444" } },
+  { label: "High Ownership", style: { backgroundColor: hexToRgba("#22c55e", 0.25), color: "#22c55e" } },
+  { label: "Balanced Ownership", style: { backgroundColor: hexToRgba("#4285f4", 0.25), color: "#4285f4" } },
+  { label: "Low Ownership", style: { backgroundColor: hexToRgba("#ef4444", 0.25), color: "#ef4444" } },
 ];
 
 const CHAOS_SEGMENTS = [
   {
+    label: "Skilled AI User",
     style: {
       backgroundColor: hexToRgba(CATEGORY_COLORS["Skilled AI User"], 0.25),
       color: CATEGORY_COLORS["Skilled AI User"],
     },
   },
   {
+    label: "Traditional Developer",
     style: {
       backgroundColor: hexToRgba(CATEGORY_COLORS["Traditional Developer"], 0.25),
       color: CATEGORY_COLORS["Traditional Developer"],
     },
   },
   {
+    label: "Unskilled AI User",
     style: {
       backgroundColor: hexToRgba(CATEGORY_COLORS["Unskilled AI User"], 0.25),
       color: CATEGORY_COLORS["Unskilled AI User"],
     },
   },
   {
+    label: "Low-Skill Developer",
     style: {
       backgroundColor: hexToRgba(CATEGORY_COLORS["Low-Skill Developer"], 0.25),
       color: CATEGORY_COLORS["Low-Skill Developer"],

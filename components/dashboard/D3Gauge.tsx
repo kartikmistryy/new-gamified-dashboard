@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useId } from "react";
 import { arc as d3Arc } from "d3-shape";
 import {
   defaultGaugeSpec,
@@ -9,6 +9,7 @@ import {
   getIndicatorXY,
   getSegmentAngleRangeDeg,
 } from "@/lib/gauge";
+import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 
 const INDICATOR_ANIMATION_MS = 350;
 
@@ -59,6 +60,8 @@ export function D3Gauge({
 
   const [animatedDot, setAnimatedDot] = useState(targetDot);
   const posRef = useRef(targetDot);
+  const tooltipId = useId().replace(/:/g, "");
+  const tooltipRef = useRef<D3TooltipController | null>(null);
 
   useEffect(() => {
     const target = getIndicatorXY({
@@ -93,6 +96,11 @@ export function D3Gauge({
     return () => cancelAnimationFrame(rafId);
   }, [value, cx, cy, dotRadius, spec]);
 
+  useEffect(() => {
+    tooltipRef.current = createChartTooltip(`gauge-tooltip-${tooltipId}`);
+    return () => tooltipRef.current?.destroy();
+  }, [tooltipId]);
+
   /** Value and label at bottom of gauge */
   const valueY = H - 44;
   const labelY = H - 16;
@@ -119,7 +127,28 @@ export function D3Gauge({
           const d = arcGen({ startAngle, endAngle, innerRadius, outerRadius });
           if (!d) return null;
 
-          return <path key={seg.key} d={d} fill={seg.color} />;
+          const rangeLabel = `${seg.start}–${seg.end}`;
+          return (
+            <path
+              key={seg.key}
+              d={d}
+              fill={seg.color}
+              onMouseEnter={(event) => {
+                const tooltip = tooltipRef.current;
+                if (!tooltip) return;
+                tooltip.show(
+                  `<div style="font-weight:600; color:#0f172a;">${seg.key.replace(/-/g, " ")}</div>` +
+                    `<div style="color:#2563eb;">Range: ${rangeLabel}</div>`,
+                  event.clientX + 12,
+                  event.clientY + 12
+                );
+              }}
+              onMouseMove={(event) => {
+                tooltipRef.current?.move(event.clientX + 12, event.clientY + 12);
+              }}
+              onMouseLeave={() => tooltipRef.current?.hide()}
+            />
+          );
         })}
       </g>
 
@@ -130,6 +159,20 @@ export function D3Gauge({
         fill="#111827"
         stroke="#ffffff"
         strokeWidth={dotStrokeWidth}
+        onMouseEnter={(event) => {
+          const tooltip = tooltipRef.current;
+          if (!tooltip) return;
+          tooltip.show(
+            `<div style="font-weight:600; color:#0f172a;">${label}</div>` +
+              `<div style="color:#2563eb;">Value: ${valueDisplay ?? Math.round(value)}</div>`,
+            event.clientX + 12,
+            event.clientY + 12
+          );
+        }}
+        onMouseMove={(event) => {
+          tooltipRef.current?.move(event.clientX + 12, event.clientY + 12);
+        }}
+        onMouseLeave={() => tooltipRef.current?.hide()}
       />
 
       <text

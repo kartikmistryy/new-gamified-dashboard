@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useEffect, useId } from "react";
 import {
   type ChaosPoint,
   type ChaosCategory,
@@ -10,6 +10,7 @@ import {
   median,
   generateSyntheticChaosPoints,
 } from "@/lib/orgDashboard/chaosMatrixData";
+import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 
 export type { ChaosTimeRangeKey };
 
@@ -29,12 +30,13 @@ const HEIGHT = 380;
 const MARGIN = { top: 24, right: 24, bottom: 48, left: 96 };
 
 export function ChaosMatrix({ data, range = "max", visibleTeams, teamNames }: ChaosMatrixProps) {
-  const [tooltip, setTooltip] = useState<{
-    point: CategorizedPoint;
-    x: number;
-    y: number;
-  } | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const tooltipId = useId().replace(/:/g, "");
+  const tooltipRef = useRef<D3TooltipController | null>(null);
+
+  useEffect(() => {
+    tooltipRef.current = createChartTooltip(`chaos-tooltip-${tooltipId}`);
+    return () => tooltipRef.current?.destroy();
+  }, [tooltipId]);
 
   const chart = useMemo(() => {
     const base = data && data.length > 0 ? data : generateSyntheticChaosPoints(range, teamNames);
@@ -88,7 +90,7 @@ export function ChaosMatrix({ data, range = "max", visibleTeams, teamNames }: Ch
         className="flex shrink-0 flex-col items-center justify-center overflow-visible"
         style={{ width: WIDTH }}
       >
-      <div ref={containerRef} className="relative overflow-visible bg-white">
+      <div className="relative overflow-visible bg-white">
         <svg
           role="img"
           aria-label="Engineering Chaos Matrix: Median Weekly KP vs Churn Rate"
@@ -113,16 +115,20 @@ export function ChaosMatrix({ data, range = "max", visibleTeams, teamNames }: Ch
               r={4}
               fill={CATEGORY_COLORS[p.category]}
               onMouseEnter={(e) => {
-                if (!containerRef.current) return;
-                const rect = containerRef.current.getBoundingClientRect();
-                setTooltip({ point: p, x: e.clientX - rect.left, y: e.clientY - rect.top });
+                const tooltip = tooltipRef.current;
+                if (!tooltip) return;
+                tooltip.show(
+                  `<div style="font-weight:600; color:#0f172a;">${p.name}</div>` +
+                    `<div style="color:#6b7280;">Team: ${p.team}</div>` +
+                    `<div style="margin-top:4px; color:#2563eb;">KP: ${p.medianWeeklyKp} · Churn: ${p.churnRatePct}%</div>`,
+                  e.clientX + 12,
+                  e.clientY + 12
+                );
               }}
               onMouseMove={(e) => {
-                if (!containerRef.current) return;
-                const rect = containerRef.current.getBoundingClientRect();
-                setTooltip((prev) => (prev ? { point: prev.point, x: e.clientX - rect.left, y: e.clientY - rect.top } : null));
+                tooltipRef.current?.move(e.clientX + 12, e.clientY + 12);
               }}
-              onMouseLeave={() => setTooltip(null)}
+              onMouseLeave={() => tooltipRef.current?.hide()}
             />
           ))}
           <line x1={MARGIN.left} x2={WIDTH - MARGIN.right} y1={HEIGHT - MARGIN.bottom} y2={HEIGHT - MARGIN.bottom} stroke="#d1d5db" />
@@ -161,15 +167,7 @@ export function ChaosMatrix({ data, range = "max", visibleTeams, teamNames }: Ch
             ))}
           </g>
         </svg>
-        {tooltip && (
-          <div className="pointer-events-none absolute rounded-md bg-slate-900 px-3 py-2 text-xs text-white shadow-lg" style={{ left: tooltip.x + 12, top: tooltip.y + 12 }}>
-            <div className="font-medium">{tooltip.point.name}</div>
-            <div className="text-[11px] text-slate-300">Team: {tooltip.point.team}</div>
-            <div className="mt-1 text-[11px]">KP: {tooltip.point.medianWeeklyKp} · Churn: {tooltip.point.churnRatePct}%</div>
-          </div>
-        )}
-
-<div
+        <div
           className="mt-3 pt-6 flex flex-wrap items-center justify-center gap-6 text-slate-700"
           role="list"
           aria-label="Chart legend"

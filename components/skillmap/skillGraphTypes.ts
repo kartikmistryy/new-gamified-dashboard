@@ -1,3 +1,5 @@
+import type { D3TooltipController } from "@/lib/chartTooltip";
+
 export interface SkillData {
   name: string;
   value?: number;
@@ -21,12 +23,7 @@ export type D3HierarchyNode = {
   sort(compare: (a: { value?: number }, b: { value?: number }) => number): D3HierarchyNode;
 };
 
-export type TooltipState = {
-  show: boolean;
-  x: number;
-  y: number;
-  content: string;
-};
+export type SkillTooltipController = Pick<D3TooltipController, "show" | "move" | "hide">;
 
 // D3 types - using a more flexible approach to work with actual D3 library
 /* eslint-disable @typescript-eslint/no-explicit-any */

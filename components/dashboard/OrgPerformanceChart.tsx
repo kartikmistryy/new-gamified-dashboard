@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useId } from "react";
 import type { ChartEvent, ChartAnnotation } from "@/lib/orgDashboard/types";
 import type { OrgPerformanceDataPoint } from "@/lib/orgDashboard/orgPerformanceChartData";
 import type { TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
@@ -16,6 +16,7 @@ import {
   CHART_HEIGHT,
   MARGIN,
 } from "@/lib/orgDashboard/orgPerformanceChartUtils";
+import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 
 /** Calculate the start date based on time range key */
 function getStartDateForRange(timeRange: TimeRangeKey, endDate: Date): Date {
@@ -159,8 +160,9 @@ export function OrgPerformanceChart({
       };
     });
   }, [timeFilteredData, visibleTeams]);
-  const [tooltip, setTooltip] = useState<{ date: string; value: number; x: number; y: number } | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const tooltipId = useId().replace(/:/g, "");
+  const tooltipRef = useRef<D3TooltipController | null>(null);
   const [chartSize, setChartSize] = useState({ width: 0, height: CHART_HEIGHT });
 
   useEffect(() => {
@@ -173,6 +175,11 @@ export function OrgPerformanceChart({
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
+
+  useEffect(() => {
+    tooltipRef.current = createChartTooltip(`org-perf-tooltip-${tooltipId}`);
+    return () => tooltipRef.current?.destroy();
+  }, [tooltipId]);
 
   const geom = useMemo(
     () =>
@@ -260,16 +267,24 @@ export function OrgPerformanceChart({
                 fill="#2563eb"
                 stroke="#2563eb"
                 onMouseEnter={(e) => {
-                  if (!containerRef.current) return;
-                  const rect = containerRef.current.getBoundingClientRect();
-                  setTooltip({ date: d.date, value: d.value, x: e.clientX - rect.left, y: e.clientY - rect.top });
+                  const tooltip = tooltipRef.current;
+                  if (!tooltip) return;
+                  const dateLabel = new Date(d.date).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  });
+                  tooltip.show(
+                    `<div style="font-weight:600; color:#0f172a;">${dateLabel}</div>` +
+                      `<div style="color:#2563eb;">Percentile: ${d.value}</div>`,
+                    e.clientX + 12,
+                    e.clientY + 12
+                  );
                 }}
                 onMouseMove={(e) => {
-                  if (!containerRef.current) return;
-                  const rect = containerRef.current.getBoundingClientRect();
-                  setTooltip((prev) => (prev ? { ...prev, x: e.clientX - rect.left, y: e.clientY - rect.top } : null));
+                  tooltipRef.current?.move(e.clientX + 12, e.clientY + 12);
                 }}
-                onMouseLeave={() => setTooltip(null)}
+                onMouseLeave={() => tooltipRef.current?.hide()}
               />
             );
           })}
@@ -297,15 +312,6 @@ export function OrgPerformanceChart({
           <text x={16} y={height / 2} textAnchor="middle" transform={`rotate(-90 16 ${height / 2})`} className="fill-slate-700" style={{ fontSize: 12, fontWeight: 500 }}>Percentile (Normalized to Rolling Avg)</text>
         </svg>
 
-        {tooltip && (
-          <div
-            className="pointer-events-none absolute rounded-lg border border-gray-200 bg-white px-3 py-2 shadow-lg text-sm"
-            style={{ left: tooltip.x + 12, top: tooltip.y + 12 }}
-          >
-            <p className="font-medium text-gray-900">{new Date(tooltip.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</p>
-            <p className="text-blue-600">Percentile: {tooltip.value}</p>
-          </div>
-        )}
       </div>
 
       <div

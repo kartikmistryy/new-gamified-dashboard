@@ -1,4 +1,4 @@
-import type { D3HierarchyNode, TooltipState, SkillData, D3Library, D3Selection } from "./skillGraphTypes";
+import type { D3HierarchyNode, SkillData, D3Library, D3Selection, SkillTooltipController } from "./skillGraphTypes";
 import { getColorForDomain } from "./skillGraphUtils";
 
 const buildCirclePolygon = (radius: number, steps = 80): [number, number][] => {
@@ -196,7 +196,7 @@ const attachNodeInteractions = (
   selection: D3Selection,
   root: D3HierarchyNode,
   tooltipLabel: string,
-  setTooltip: (t: TooltipState) => void,
+  tooltip: SkillTooltipController,
   onNodeClick: (node: D3HierarchyNode) => void
 ) => {
   selection
@@ -207,16 +207,21 @@ const attachNodeInteractions = (
       const frequency = getNodeFrequency(node);
       const pct = root.value ? ((ownership / root.value) * 100).toFixed(1) : "0";
       const parentLabel = node.parent?.data.name ? ` · ${node.parent.data.name}` : "";
-      setTooltip({
-        show: true,
-        x: event.pageX + 10,
-        y: event.pageY + 10,
-        content: `<strong>${node.data.name}${parentLabel}</strong><div>Ownership: ${ownership}</div><div>Frequency: ${frequency}</div><div>% of ${tooltipLabel}: ${pct}%</div>`,
-      });
+      tooltip.show(
+        `<strong style="color:#0f172a;">${node.data.name}${parentLabel}</strong>` +
+          `<div style="color:#6b7280;">Ownership: ${ownership}</div>` +
+          `<div style="color:#6b7280;">Frequency: ${frequency}</div>` +
+          `<div style="color:#2563eb;">% of ${tooltipLabel}: ${pct}%</div>`,
+        event.clientX + 12,
+        event.clientY + 12
+      );
+    })
+    .on("mousemove", function (event: MouseEvent) {
+      tooltip.move(event.clientX + 12, event.clientY + 12);
     })
     .on("mouseout", function (this: SVGPathElement) {
       d3Lib.select(this).attr("stroke-width", 2);
-      setTooltip({ show: false, x: 0, y: 0, content: "" });
+      tooltip.hide();
     })
     .on("click", function (event: MouseEvent, node: D3HierarchyNode) {
       event.stopPropagation();
@@ -232,7 +237,7 @@ export function renderWorldView(
   radius: number,
   centerX: number,
   centerY: number,
-  setTooltip: (t: TooltipState) => void,
+  tooltip: SkillTooltipController,
   onNodeClick: (node: D3HierarchyNode) => void,
   rootLabel: string,
   badgeShadowId: string
@@ -308,7 +313,7 @@ export function renderWorldView(
     .attr("stroke", "#fff")
     .attr("stroke-width", 2);
 
-  attachNodeInteractions(d3Lib, cells, layoutRoot, "Total", setTooltip, onNodeClick);
+  attachNodeInteractions(d3Lib, cells, layoutRoot, "Total", tooltip, onNodeClick);
 
   g
     .selectAll(".domain-border")
@@ -337,7 +342,7 @@ export function renderDrilldownView(
   radius: number,
   centerX: number,
   centerY: number,
-  setTooltip: (t: TooltipState) => void,
+  tooltip: SkillTooltipController,
   onNodeClick: (node: D3HierarchyNode) => void,
   activeLabel: string,
   activeDomain: string,
@@ -361,7 +366,7 @@ export function renderDrilldownView(
     .attr("stroke", "#fff")
     .attr("stroke-width", 2);
 
-  attachNodeInteractions(d3Lib, cells, root, activeLabel, setTooltip, onNodeClick);
+  attachNodeInteractions(d3Lib, cells, root, activeLabel, tooltip, onNodeClick);
   renderSkillLabels(d3Lib, g, nodes);
 
   const labelY = Math.max(24, centerY - radius - 26);

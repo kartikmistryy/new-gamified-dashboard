@@ -1,13 +1,14 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
-import type { TooltipState, OwnershipTimeRangeKey, DeveloperPoint } from "@/lib/orgDashboard/ownershipScatterTypes";
+import { useMemo, useRef, useEffect, useId } from "react";
+import type { OwnershipTimeRangeKey, DeveloperPoint } from "@/lib/orgDashboard/ownershipScatterTypes";
 import {
   buildOwnershipChartData,
   WIDTH,
   HEIGHT,
   MARGIN,
 } from "@/lib/orgDashboard/ownershipScatterUtils";
+import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 
 export type { OwnershipTimeRangeKey } from "@/lib/orgDashboard/ownershipScatterTypes";
 
@@ -22,12 +23,17 @@ export function OwnershipScatter({ data, range = "max" }: OwnershipScatterProps)
     [data, range]
   );
 
-  const [tooltip, setTooltip] = useState<TooltipState>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const tooltipId = useId().replace(/:/g, "");
+  const tooltipRef = useRef<D3TooltipController | null>(null);
+
+  useEffect(() => {
+    tooltipRef.current = createChartTooltip(`ownership-tooltip-${tooltipId}`);
+    return () => tooltipRef.current?.destroy();
+  }, [tooltipId]);
 
   return (
     <div className="w-full overflow-visible">
-      <div ref={containerRef} className="relative overflow-visible bg-white">
+      <div className="relative overflow-visible bg-white">
         <svg
           role="img"
           aria-label="Scatterplot of Cumulative KarmaPoints versus Ownership Percentage"
@@ -94,24 +100,20 @@ export function OwnershipScatter({ data, range = "max" }: OwnershipScatterProps)
                 }
                 fillOpacity={p.inNormalRange ? 1 : 1}
                 onMouseEnter={(event) => {
-                  if (!containerRef.current) return;
-                  const rect = containerRef.current.getBoundingClientRect();
-                  setTooltip({
-                    point: p,
-                    x: event.clientX - rect.left,
-                    y: event.clientY - rect.top,
-                  });
-                }}
-                onMouseMove={(event) => {
-                  if (!containerRef.current) return;
-                  const rect = containerRef.current.getBoundingClientRect();
-                  setTooltip((current) =>
-                    current && current.point.name === p.name
-                      ? { point: p, x: event.clientX - rect.left, y: event.clientY - rect.top }
-                      : current
+                  const tooltip = tooltipRef.current;
+                  if (!tooltip) return;
+                  tooltip.show(
+                    `<div style="font-weight:600; color:#0f172a;">${p.name}</div>` +
+                      `<div style="color:#6b7280;">Team: ${p.team}</div>` +
+                      `<div style="margin-top:4px; color:#2563eb;">KP: ${Math.round(p.totalKarmaPoints).toLocaleString()} • Ownership: ${p.ownershipPct.toFixed(1)}%</div>`,
+                    event.clientX + 12,
+                    event.clientY + 12
                   );
                 }}
-                onMouseLeave={() => setTooltip(null)}
+                onMouseMove={(event) => {
+                  tooltipRef.current?.move(event.clientX + 12, event.clientY + 12);
+                }}
+                onMouseLeave={() => tooltipRef.current?.hide()}
               />
             ))}
           </g>
@@ -171,20 +173,6 @@ export function OwnershipScatter({ data, range = "max" }: OwnershipScatterProps)
             Ownership %
           </text>
         </svg>
-        {tooltip && (
-          <div
-            className="pointer-events-none absolute rounded-md bg-slate-900 px-3 py-2 text-xs text-white shadow-lg"
-            style={{ left: tooltip.x + 12, top: tooltip.y + 12 }}
-          >
-            <div className="font-medium">{tooltip.point.name}</div>
-            <div className="text-[11px] text-slate-300">Team: {tooltip.point.team}</div>
-            <div className="mt-1 text-[11px]">
-              KP: {Math.round(tooltip.point.totalKarmaPoints).toLocaleString()}
-              {" • "}
-              Ownership: {tooltip.point.ownershipPct.toFixed(1)}%
-            </div>
-          </div>
-        )}
       </div>
       <div
         className="mt-5 pt-6 flex flex-wrap items-center justify-center gap-6 text-slate-700"

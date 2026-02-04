@@ -1,6 +1,7 @@
 import * as d3 from "d3";
 import type { SpofTeamConfig } from "./spofMockData";
 import type { StackedBinData } from "./spofChartTypes";
+import type { D3TooltipController } from "@/lib/chartTooltip";
 
 /** Draw shaded regions for standard deviation bounds */
 export function drawShadedRegions(
@@ -31,18 +32,57 @@ export function drawStackedBars(
   xScale: d3.ScaleLinear<number, number>,
   yScale: d3.ScaleLinear<number, number>,
   binWidth: number,
-  teamColors: Map<string, string>
+  teamColors: Map<string, string>,
+  tooltip?: D3TooltipController
 ): void {
-  for (const bin of stackedData) {
-    for (const stack of bin.stacks) {
-      g.append("rect")
-        .attr("x", xScale(bin.x0) + 1)
-        .attr("y", yScale(stack.y1))
-        .attr("width", binWidth - 2)
-        .attr("height", yScale(stack.y0) - yScale(stack.y1))
-        .attr("fill", teamColors.get(stack.team) || "#ccc");
-    }
+  const barData = stackedData.flatMap((bin) =>
+    bin.stacks.map((stack) => ({ bin, stack }))
+  );
+
+  const bars = g
+    .selectAll<SVGRectElement, { bin: StackedBinData; stack: { team: string; y0: number; y1: number } }>("rect.spof-bar")
+    .data(barData, (d) => `${d.stack.team}-${d.bin.x0}-${d.bin.x1}`);
+
+  const mergedBars = bars
+    .enter()
+    .append("rect")
+    .attr("class", "spof-bar")
+    .merge(
+      bars as unknown as d3.Selection<
+        SVGRectElement,
+        { bin: StackedBinData; stack: { team: string; y0: number; y1: number } },
+        SVGGElement,
+        unknown
+      >
+    )
+    .attr("x", (d) => xScale(d.bin.x0) + 1)
+    .attr("y", (d) => yScale(d.stack.y1))
+    .attr("width", binWidth - 2)
+    .attr("height", (d) => yScale(d.stack.y0) - yScale(d.stack.y1))
+    .attr("fill", (d) => teamColors.get(d.stack.team) || "#ccc");
+
+  if (tooltip) {
+    mergedBars
+      .on("mouseenter", (event, d) => {
+        const range = `${d.bin.x0.toFixed(1)}–${d.bin.x1.toFixed(1)}`;
+        const count = d.stack.y1 - d.stack.y0;
+        tooltip.show(
+          `<div style="font-weight:600; color:#0f172a;">${d.stack.team}</div>` +
+            `<div style="color:#6b7280;">Score: ${range}</div>` +
+            `<div style="margin-top:4px; color:#2563eb;">Count: ${count}</div>`,
+          event.clientX + 12,
+          event.clientY + 12
+        );
+      })
+      .on("mousemove", (event) => {
+        tooltip.move(event.clientX + 12, event.clientY + 12);
+      })
+      .on("mouseleave", () => {
+        tooltip.hide();
+      });
   }
+
+  bars.exit().remove();
 }
 
 /** Draw normal fit curve */
