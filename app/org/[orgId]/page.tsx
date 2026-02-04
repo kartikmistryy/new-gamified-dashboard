@@ -43,10 +43,12 @@ export default function OrgSummaryPage() {
             <ChartInsights insights={chartInsights} />
             </div>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-              {summaryCards.map((item) => (
-                <OverviewSummaryCard key={item.key} item={item} />
-              ))}
+            <div className="@container w-full">
+              <div className="grid grid-cols-3 gap-4 @[1050px]:grid-cols-6">
+                {summaryCards.map((item) => (
+                  <OverviewSummaryCard key={item.key} item={item} />
+                ))}
+              </div>
             </div>
 
             <section className="w-full" aria-labelledby="teams-heading">

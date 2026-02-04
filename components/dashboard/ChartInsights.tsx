@@ -12,7 +12,7 @@ export function ChartInsights({ insights }: ChartInsightsProps) {
   if (insights.length === 0) return null;
 
   return (
-    <Card className="w-full rounded-xl bg-muted h-full max-w-xl mx-auto shadow-none border-none"
+    <Card className="w-full rounded-xl bg-muted h-full max-w-2xl mx-auto shadow-none border-none"
     >
       <CardTitle className="px-6">
         <h2
