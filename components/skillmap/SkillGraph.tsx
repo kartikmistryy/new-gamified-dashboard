@@ -87,6 +87,7 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
   const [history, setHistory] = useState<Array<{ data: SkillData; activeDomain: string | null }>>([]);
   const [tooltip, setTooltip] = useState<TooltipState>({ show: false, x: 0, y: 0, content: "" });
   const [libsLoaded, setLibsLoaded] = useState(false);
+  const [layoutAttempt, setLayoutAttempt] = useState(0);
   const instanceId = useId().replace(/:/g, "");
 
   const radius = Math.min(width, height) / 2 - 100;
@@ -218,9 +219,10 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
 
     const hasVoronoiTreemap = typeof d3Lib.voronoiTreemap !== "undefined";
 
+    let needsRetry = false;
     if (libsLoaded && hasVoronoiTreemap && d3Lib.voronoiTreemap) {
       if (isRootView) {
-        renderWorldView(
+        const ok = renderWorldView(
           d3Lib,
           g,
           svg,
@@ -233,6 +235,7 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
           rootSkillData.name,
           badgeShadowId
         );
+        if (!ok) needsRetry = true;
       } else {
         renderDrilldownView(
           d3Lib,
@@ -262,7 +265,13 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
         goBack();
       }
     });
-  }, [activeDomain, badgeShadowId, clipId, currentData, goBack, handleNodeClick, isRootView, libsLoaded, radius, width, height]);
+    if (needsRetry) {
+      const timer = window.setTimeout(() => {
+        setLayoutAttempt((prev) => prev + 1);
+      }, 60);
+      return () => window.clearTimeout(timer);
+    }
+  }, [activeDomain, badgeShadowId, clipId, currentData, goBack, handleNodeClick, isRootView, layoutAttempt, libsLoaded, radius, width, height]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;

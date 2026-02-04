@@ -353,4 +353,197 @@ export const roadmapData: Roadmap[] = [
       },
     ],
   },
+  {
+    name: "Product & Design",
+    value: 180,
+    technologies: [
+      {
+        name: "Product Strategy",
+        value: 60,
+        children: [
+          { name: "Vision & Goals", value: 16 },
+          { name: "Roadmapping", value: 14 },
+          { name: "Prioritization", value: 12 },
+          { name: "Metrics", value: 10 },
+          { name: "Stakeholders", value: 8 },
+        ],
+      },
+      {
+        name: "UX Design",
+        value: 55,
+        children: [
+          { name: "User Research", value: 14 },
+          { name: "Information Arch", value: 12 },
+          { name: "Wireframing", value: 10 },
+          { name: "Usability", value: 10 },
+          { name: "Accessibility", value: 9 },
+        ],
+      },
+      {
+        name: "UI Design",
+        value: 40,
+        children: [
+          { name: "Design Systems", value: 12 },
+          { name: "Typography", value: 8 },
+          { name: "Color & Theme", value: 8 },
+          { name: "Components", value: 7 },
+          { name: "Prototyping", value: 5 },
+        ],
+      },
+      {
+        name: "Growth",
+        value: 25,
+        children: [
+          { name: "Onboarding", value: 8 },
+          { name: "Activation", value: 7 },
+          { name: "Retention", value: 6 },
+          { name: "Experimentation", value: 4 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Data Engineering",
+    value: 190,
+    technologies: [
+      {
+        name: "Pipelines",
+        value: 70,
+        children: [
+          { name: "Batch ETL", value: 18 },
+          { name: "Streaming", value: 16 },
+          { name: "Orchestration", value: 14 },
+          { name: "Data Quality", value: 12 },
+          { name: "Lineage", value: 10 },
+        ],
+      },
+      {
+        name: "Warehousing",
+        value: 55,
+        children: [
+          { name: "Modeling", value: 14 },
+          { name: "Partitioning", value: 12 },
+          { name: "Cost Control", value: 10 },
+          { name: "Query Tuning", value: 9 },
+          { name: "Governance", value: 10 },
+        ],
+      },
+      {
+        name: "Streaming",
+        value: 40,
+        children: [
+          { name: "Kafka", value: 12 },
+          { name: "Flink", value: 10 },
+          { name: "Event Design", value: 9 },
+          { name: "Backfills", value: 9 },
+        ],
+      },
+      {
+        name: "Analytics",
+        value: 25,
+        children: [
+          { name: "Dashboards", value: 8 },
+          { name: "Metric Design", value: 7 },
+          { name: "Self-Serve", value: 6 },
+          { name: "Documentation", value: 4 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Security",
+    value: 170,
+    technologies: [
+      {
+        name: "App Security",
+        value: 60,
+        children: [
+          { name: "AuthN/AuthZ", value: 16 },
+          { name: "Secure APIs", value: 14 },
+          { name: "Input Validation", value: 12 },
+          { name: "Secrets Mgmt", value: 10 },
+          { name: "Dependency Risk", value: 8 },
+        ],
+      },
+      {
+        name: "Infrastructure",
+        value: 45,
+        children: [
+          { name: "Network Segments", value: 12 },
+          { name: "IAM", value: 10 },
+          { name: "Vuln Scans", value: 9 },
+          { name: "Backups", value: 8 },
+          { name: "Incident Prep", value: 6 },
+        ],
+      },
+      {
+        name: "Compliance",
+        value: 35,
+        children: [
+          { name: "SOC 2", value: 10 },
+          { name: "GDPR", value: 9 },
+          { name: "Risk Reviews", value: 8 },
+          { name: "Policies", value: 8 },
+        ],
+      },
+      {
+        name: "Threat Modeling",
+        value: 30,
+        children: [
+          { name: "Attack Surface", value: 8 },
+          { name: "Abuse Cases", value: 8 },
+          { name: "Mitigations", value: 7 },
+          { name: "Tabletop", value: 7 },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Leadership",
+    value: 160,
+    technologies: [
+      {
+        name: "Team Health",
+        value: 55,
+        children: [
+          { name: "1:1s", value: 14 },
+          { name: "Hiring", value: 12 },
+          { name: "Feedback", value: 10 },
+          { name: "Growth Plans", value: 9 },
+          { name: "Recognition", value: 10 },
+        ],
+      },
+      {
+        name: "Execution",
+        value: 50,
+        children: [
+          { name: "Scoping", value: 14 },
+          { name: "Estimation", value: 12 },
+          { name: "Delivery", value: 10 },
+          { name: "Risk Mgmt", value: 8 },
+          { name: "Postmortems", value: 6 },
+        ],
+      },
+      {
+        name: "Communication",
+        value: 35,
+        children: [
+          { name: "Docs", value: 10 },
+          { name: "Stakeholder Updates", value: 10 },
+          { name: "Decision Logs", value: 8 },
+          { name: "Alignment", value: 7 },
+        ],
+      },
+      {
+        name: "Mentorship",
+        value: 20,
+        children: [
+          { name: "Pairing", value: 6 },
+          { name: "Coaching", value: 6 },
+          { name: "Onboarding", value: 5 },
+          { name: "Community", value: 3 },
+        ],
+      },
+    ],
+  },
 ];

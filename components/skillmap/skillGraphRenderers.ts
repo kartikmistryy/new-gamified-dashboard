@@ -1,4 +1,4 @@
-import type { D3HierarchyNode, TooltipState, SkillData } from "./skillGraphTypes";
+import type { D3HierarchyNode, TooltipState, SkillData, D3Library, D3Selection } from "./skillGraphTypes";
 import { getColorForDomain } from "./skillGraphUtils";
 
 const buildCirclePolygon = (radius: number, steps = 80): [number, number][] => {
@@ -10,17 +10,15 @@ const buildCirclePolygon = (radius: number, steps = 80): [number, number][] => {
   return circle;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const applyVoronoiTreemap = (d3Lib: any, root: D3HierarchyNode, radius: number, clip?: [number, number][]) => {
+const applyVoronoiTreemap = (d3Lib: D3Library, root: D3HierarchyNode, radius: number, clip?: [number, number][]) => {
   try {
     d3Lib
-      .voronoiTreemap()
+      .voronoiTreemap?.()
       .clip(clip ?? buildCirclePolygon(radius))
-      .convergenceRatio(0.001)
-      .maxIterationCount(120)
+      .convergenceRatio(0.0005)
+      .maxIterationCount(400)
       .minWeightRatio(0.001)(root);
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.error("Voronoi treemap error:", error);
   }
 };
@@ -50,8 +48,7 @@ const sumLeafValues = (data: { value?: number; children?: unknown[] }): number =
   }, 0);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const colorWithOpacity = (d3Lib: any, baseColor: string, opacity: number): string => {
+const colorWithOpacity = (d3Lib: D3Library, baseColor: string, opacity: number): string => {
   const color = d3Lib.color(baseColor);
   if (!color) return baseColor;
   color.opacity = opacity;
@@ -66,8 +63,7 @@ const getTopDomainName = (node: D3HierarchyNode, rootLabel: string): string => {
   return current?.data.name || rootLabel;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const renderSkillLabels = (d3Lib: any, g: any, nodes: D3HierarchyNode[]) => {
+const renderSkillLabels = (d3Lib: D3Library, g: D3Selection, nodes: D3HierarchyNode[]) => {
   nodes.forEach((node) => {
     if (!node.polygon) return;
     const area = Math.abs(d3Lib.polygonArea(node.polygon));
@@ -95,9 +91,8 @@ const renderSkillLabels = (d3Lib: any, g: any, nodes: D3HierarchyNode[]) => {
   });
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderBadge = (
-  svg: any,
+  svg: D3Selection,
   label: string,
   color: string,
   x: number,
@@ -116,22 +111,23 @@ const renderBadge = (
     .attr("font-weight", 600)
     .text(label);
 
-  const bbox = (text.node() as SVGTextElement).getBBox();
-  group
-    .insert("rect", "text")
-    .attr("x", bbox.x - 4)
-    .attr("y", bbox.y - 2)
-    .attr("width", bbox.width + 8)
-    .attr("height", bbox.height + 4)
-    .attr("rx", 6)
-    .attr("fill", color)
-    .attr("filter", shadowId ? `url(#${shadowId})` : null);
+  const bbox = (text.node() as SVGTextElement)?.getBBox();
+  if (bbox) {
+    group
+      .insert("rect", "text")
+      .attr("x", bbox.x - 4)
+      .attr("y", bbox.y - 2)
+      .attr("width", bbox.width + 8)
+      .attr("height", bbox.height + 4)
+      .attr("rx", 6)
+      .attr("fill", color)
+      .attr("filter", shadowId ? `url(#${shadowId})` : null);
+  }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderDomainBadges = (
-  d3Lib: any,
-  svg: any,
+  d3Lib: D3Library,
+  svg: D3Selection,
   domains: D3HierarchyNode[],
   centerX: number,
   centerY: number,
@@ -191,14 +187,13 @@ const renderDomainBadges = (
     const x = centerX + Math.cos(angle) * labelRadius;
     const y = centerY + Math.sin(angle) * labelRadius;
 
-    renderBadge(svg, domain.data.name, getColorForDomain(domain.data.name), x, y, shadowId);
+  renderBadge(svg, domain.data.name, getColorForDomain(domain.data.name), x, y, shadowId);
   });
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const attachNodeInteractions = (
-  d3Lib: any,
-  selection: any,
+  d3Lib: D3Library,
+  selection: D3Selection,
   root: D3HierarchyNode,
   tooltipLabel: string,
   setTooltip: (t: TooltipState) => void,
@@ -229,11 +224,10 @@ const attachNodeInteractions = (
     });
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function renderWorldView(
-  d3Lib: any,
-  g: any,
-  svg: any,
+  d3Lib: D3Library,
+  g: D3Selection,
+  svg: D3Selection,
   root: D3HierarchyNode,
   radius: number,
   centerX: number,
@@ -242,9 +236,7 @@ export function renderWorldView(
   onNodeClick: (node: D3HierarchyNode) => void,
   rootLabel: string,
   badgeShadowId: string
-) {
-  const focusDomainName = "Frontend";
-
+) : boolean {
   const domainByNode = new WeakMap<object, string>();
   const mapDomains = (data: SkillData, currentDomain?: string) => {
     const domainName = currentDomain;
@@ -270,18 +262,12 @@ export function renderWorldView(
     domain.polygon && domain.polygon.some((point) => Math.hypot(point[0], point[1]) >= radius * 0.94);
 
   let layoutRoot: D3HierarchyNode | null = null;
-  for (let attempt = 0; attempt < 4; attempt += 1) {
-    const othersSum = Array.from(domainTotals.entries())
-      .filter(([name]) => name !== focusDomainName)
-      .reduce((sum, [name, value]) => sum + value * (boosts.get(name) || 1), 0) || 0.001;
-    const focusBase = domainTotals.get(focusDomainName) || 0.001;
-    const focusBoost = (0.4 * othersSum) / (0.6 * focusBase);
-
+  for (let attempt = 0; attempt < 24; attempt += 1) {
     layoutRoot = d3Lib.hierarchy(root.data)
       .sum((d: SkillData) => {
         if (d.children && d.children.length > 0) return 0;
-        const domainName = domainByNode.get(d as object) || focusDomainName;
-        const multiplier = domainName === focusDomainName ? focusBoost : (boosts.get(domainName) || 1);
+        const domainName = domainByNode.get(d as object) || root.data.name;
+        const multiplier = boosts.get(domainName) || 1;
         return Math.max(0.001, (d.value || 0) * multiplier);
       })
       .sort((a: { value?: number }, b: { value?: number }) => (b.value || 0) - (a.value || 0)) as D3HierarchyNode;
@@ -294,13 +280,15 @@ export function renderWorldView(
 
     isolated.forEach((domain) => {
       const name = domain.data.name;
-      boosts.set(name, (boosts.get(name) || 1) * 1.25);
+      boosts.set(name, (boosts.get(name) || 1) * 2);
     });
   }
 
-  if (!layoutRoot) return;
+  if (!layoutRoot) return false;
 
   const domains = (layoutRoot.children || []) as D3HierarchyNode[];
+  const isolatedDomains = domains.filter((domain) => !touchesEdge(domain));
+  if (isolatedDomains.length > 0) return false;
   const leaves = layoutRoot.leaves() as D3HierarchyNode[];
   const opacityScale = createOpacityScale(leaves);
 
@@ -337,13 +325,14 @@ export function renderWorldView(
 
   renderSkillLabels(d3Lib, g, leaves);
   renderDomainBadges(d3Lib, svg, domains, centerX, centerY, radius, badgeShadowId);
+
+  return true;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function renderDrilldownView(
-  d3Lib: any,
-  g: any,
-  svg: any,
+  d3Lib: D3Library,
+  g: D3Selection,
+  svg: D3Selection,
   root: D3HierarchyNode,
   radius: number,
   centerX: number,

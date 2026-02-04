@@ -17,6 +17,8 @@ export type D3HierarchyNode = {
   r?: number;
   polygon?: [number, number][];
   leaves(): D3HierarchyNode[];
+  sum(value: (d: SkillData) => number): D3HierarchyNode;
+  sort(compare: (a: { value?: number }, b: { value?: number }) => number): D3HierarchyNode;
 };
 
 export type TooltipState = {
@@ -24,4 +26,18 @@ export type TooltipState = {
   x: number;
   y: number;
   content: string;
+};
+
+// D3 types - using a more flexible approach to work with actual D3 library
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export type D3Selection = any;
+
+export type D3Library = {
+  select(selector: any): any;
+  selectAll(selector: any): any;
+  hierarchy(data: SkillData): D3HierarchyNode;
+  voronoiTreemap?: () => any;
+  polygonArea(polygon: [number, number][]): number;
+  polygonCentroid(polygon: [number, number][]): [number, number];
+  color(color: string): { opacity: number; formatRgb(): string } | null;
 };
