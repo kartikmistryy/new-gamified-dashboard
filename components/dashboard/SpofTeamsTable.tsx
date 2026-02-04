@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { ArrowRight, TrendingDown, TrendingUp } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -23,6 +24,15 @@ const SPOF_FILTER_TABS: { key: SpofTableFilter; label: string }[] = [
   { key: "mostMembers", label: "Most Members" },
   { key: "leastMembers", label: "Least Members" },
 ];
+
+function getTrendIconForCount(counts: number[], index: number) {
+  const total = counts.reduce((sum, value) => sum + value, 0);
+  const average = counts.length ? total / counts.length : 0;
+  const value = counts[index] ?? 0;
+  if (value > average) return TrendingUp;
+  if (value < average) return TrendingDown;
+  return ArrowRight;
+}
 
 function sortSpofTeams(rows: SpofTeamRow[], filter: SpofTableFilter): SpofTeamRow[] {
   const copy = [...rows];
@@ -47,9 +57,9 @@ type SpofTeamsTableProps = {
 };
 
 const SPOF_OWNER_SEGMENTS = [
-  { key: "high", label: "High", color: DASHBOARD_COLORS.danger },
-  { key: "medium", label: "Medium", color: DASHBOARD_COLORS.blue },
-  { key: "low", label: "Low", color: DASHBOARD_COLORS.excellent },
+  { key: "low", label: "Low", color: "#22c55e" },
+  { key: "medium", label: "Medium", color: "#f59e0b" },
+  { key: "high", label: "High", color: "#ef4444" },
 ];
 
 function SpofOwnerDistributionBar({
@@ -57,22 +67,27 @@ function SpofOwnerDistributionBar({
 }: {
   segments: { label: string; value: number; color: string }[];
 }) {
+  const counts = segments.map((segment) => segment.value);
   return (
     <div className="flex h-6 w-full overflow-hidden rounded-full bg-gray-100">
-      {segments.map((segment) => (
-        <div
-          key={segment.label}
-          className="flex items-center justify-center text-xs font-semibold"
-          style={{
-            flex: "1 1 0",
-            minWidth: 0,
-            backgroundColor: hexToRgba(segment.color, 0.25),
-            color: segment.color,
-          }}
-        >
-          {segment.value}
-        </div>
-      ))}
+      {segments.map((segment, index) => {
+        const TrendIcon = getTrendIconForCount(counts, index);
+        return (
+          <div
+            key={segment.label}
+            className="flex items-center justify-center gap-1 text-xs font-semibold"
+            style={{
+              flex: "1 1 0",
+              minWidth: 0,
+              backgroundColor: hexToRgba(segment.color, 0.25),
+              color: segment.color,
+            }}
+          >
+            <TrendIcon className="size-3.5 shrink-0 text-current" aria-hidden />
+            {segment.value}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -134,9 +149,9 @@ export function SpofTeamsTable({
               const displayRank = index + 1;
               const mediumCount = Math.max(0, row.memberCount - row.highRiskCount - row.lowRiskCount);
               const ownerSegments = [
-                { label: SPOF_OWNER_SEGMENTS[0].label, value: row.highRiskCount, color: SPOF_OWNER_SEGMENTS[0].color },
+                { label: SPOF_OWNER_SEGMENTS[0].label, value: row.lowRiskCount, color: SPOF_OWNER_SEGMENTS[0].color },
                 { label: SPOF_OWNER_SEGMENTS[1].label, value: mediumCount, color: SPOF_OWNER_SEGMENTS[1].color },
-                { label: SPOF_OWNER_SEGMENTS[2].label, value: row.lowRiskCount, color: SPOF_OWNER_SEGMENTS[2].color },
+                { label: SPOF_OWNER_SEGMENTS[2].label, value: row.highRiskCount, color: SPOF_OWNER_SEGMENTS[2].color },
               ];
 
               return (

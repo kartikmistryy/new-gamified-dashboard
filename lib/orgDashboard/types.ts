@@ -140,6 +140,12 @@ export type SkillgraphTeamRow = {
   top3WidelyKnown?: { name: string; color: string }[];
   top3Proficient?: { name: string; color: string }[];
   domainDistribution?: { domain: string; value: number }[];
+  details?: {
+    domain: string;
+    skill: string;
+    usage: number;
+    progress: number;
+  }[];
 };
 
 export type SkillgraphTableFilter =
@@ -153,6 +159,12 @@ export type SkillgraphSkillRow = {
   domainCount: number;
   skillCount: number;
   domainDistribution?: { domain: string; value: number }[];
+  details?: {
+    team: string;
+    usage: number;
+    ownership: number;
+    progress: number;
+  }[];
 };
 
 export type SkillgraphSkillFilter =

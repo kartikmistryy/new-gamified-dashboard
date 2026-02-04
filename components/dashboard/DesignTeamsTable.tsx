@@ -1,24 +1,46 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import { ArrowRight, TrendingDown, TrendingUp } from "lucide-react";
 import type { DesignTeamRow, DesignTableFilter } from "@/lib/orgDashboard/types";
-import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
+import { CATEGORY_COLORS } from "@/lib/orgDashboard/chaosMatrixData";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "./BaseTeamsTable";
 import { SegmentBar } from "./SegmentBar";
 import { VisibilityToggleButton } from "./VisibilityToggleButton";
 
 const OWNERSHIP_SEGMENTS = [
-  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.danger, 0.25), color: DASHBOARD_COLORS.danger } },
-  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.blue, 0.25), color: DASHBOARD_COLORS.blue } },
-  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.excellent, 0.25), color: DASHBOARD_COLORS.excellent } },
+  { style: { backgroundColor: hexToRgba("#22c55e", 0.25), color: "#22c55e" } },
+  { style: { backgroundColor: hexToRgba("#4285f4", 0.25), color: "#4285f4" } },
+  { style: { backgroundColor: hexToRgba("#ef4444", 0.25), color: "#ef4444" } },
 ];
 
 const CHAOS_SEGMENTS = [
-  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.danger, 0.25), color: DASHBOARD_COLORS.danger } },
-  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
-  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.blue, 0.25), color: DASHBOARD_COLORS.blue } },
-  { style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.excellent, 0.25), color: DASHBOARD_COLORS.excellent } },
+  {
+    style: {
+      backgroundColor: hexToRgba(CATEGORY_COLORS["Skilled AI User"], 0.25),
+      color: CATEGORY_COLORS["Skilled AI User"],
+    },
+  },
+  {
+    style: {
+      backgroundColor: hexToRgba(CATEGORY_COLORS["Traditional Developer"], 0.25),
+      color: CATEGORY_COLORS["Traditional Developer"],
+    },
+  },
+  {
+    style: {
+      backgroundColor: hexToRgba(CATEGORY_COLORS["Unskilled AI User"], 0.25),
+      color: CATEGORY_COLORS["Unskilled AI User"],
+    },
+  },
+  {
+    style: {
+      backgroundColor: hexToRgba(CATEGORY_COLORS["Low-Skill Developer"], 0.25),
+      color: CATEGORY_COLORS["Low-Skill Developer"],
+    },
+  },
 ];
 
 const DESIGN_FILTER_TABS: { key: DesignTableFilter; label: string }[] = [
@@ -27,6 +49,15 @@ const DESIGN_FILTER_TABS: { key: DesignTableFilter; label: string }[] = [
   { key: "mostUnskilledVibeCoders", label: "Most Unskilled Vibe Coders" },
   { key: "mostLegacyDevs", label: "Most Legacy Devs" },
 ];
+
+function getTrendIconForCount(counts: number[], index: number) {
+  const total = counts.reduce((sum, value) => sum + value, 0);
+  const average = counts.length ? total / counts.length : 0;
+  const value = counts[index] ?? 0;
+  if (value > average) return TrendingUp;
+  if (value < average) return TrendingDown;
+  return ArrowRight;
+}
 
 function designSortFunction(rows: DesignTeamRow[], currentFilter: DesignTableFilter): DesignTeamRow[] {
   const copy = [...rows];
@@ -112,17 +143,48 @@ export function DesignTeamsTable({
         key: "ownership",
         header: "Ownership Allocation",
         className: "text-right",
-        render: (row) => (
-          <SegmentBar segments={OWNERSHIP_SEGMENTS} counts={row.ownershipAllocation} alignment="end" />
-        ),
+        render: (row) => {
+          const counts = [
+            row.ownershipAllocation[2],
+            row.ownershipAllocation[1],
+            row.ownershipAllocation[0],
+          ];
+          return (
+            <SegmentBar
+              segments={OWNERSHIP_SEGMENTS.map((segment, index) => ({
+                ...segment,
+                icon: getTrendIconForCount(counts, index),
+              }))}
+              counts={counts}
+              alignment="end"
+              showCounts
+            />
+          );
+        },
       },
       {
         key: "chaos",
         header: "Engineering Chaos",
         className: "text-right",
-        render: (row) => (
-          <SegmentBar segments={CHAOS_SEGMENTS} counts={row.engineeringChaos} alignment="end" />
-        ),
+        render: (row) => {
+          const counts = [
+            row.engineeringChaos[3],
+            row.engineeringChaos[2],
+            row.engineeringChaos[1],
+            row.engineeringChaos[0],
+          ];
+          return (
+            <SegmentBar
+              segments={CHAOS_SEGMENTS.map((segment, index) => ({
+                ...segment,
+                icon: getTrendIconForCount(counts, index),
+              }))}
+              counts={counts}
+              alignment="end"
+              showCounts
+            />
+          );
+        },
       },
     ],
     [effectiveVisible, toggleView]

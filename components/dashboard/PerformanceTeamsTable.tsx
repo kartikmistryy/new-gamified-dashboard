@@ -5,16 +5,35 @@ import { ArrowRight, TrendingUp, TrendingDown } from "lucide-react";
 import type { TeamPerformanceRow, PerformanceTableFilter } from "@/lib/orgDashboard/types";
 import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
+import { PERFORMANCE_ZONES } from "@/lib/orgDashboard/orgPerformanceChartData";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "./BaseTeamsTable";
 import { SegmentBar } from "./SegmentBar";
 import { VisibilityToggleButton } from "./VisibilityToggleButton";
 
-const PERFORMANCE_DISTRIBUTION_SEGMENTS: { getCount: (d: TeamPerformanceRow["typeDistribution"]) => number; style: CSSProperties }[] = [
-  { getCount: (d) => d.timeBomb ?? 0, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.danger, 0.25), color: DASHBOARD_COLORS.danger } },
-  { getCount: (d) => (d.keyRole ?? 0) + (d.risky ?? 0), style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
-  { getCount: (d) => d.bottleneck ?? 0, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.blue, 0.25), color: DASHBOARD_COLORS.blue } },
-  { getCount: (d) => d.legacy ?? 0, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.excellent, 0.25), color: DASHBOARD_COLORS.excellent } },
-  { getCount: (d) => d.star ?? 0, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.excellent, 0.25), color: DASHBOARD_COLORS.excellent } },
+const PERFORMANCE_DISTRIBUTION_SEGMENTS: {
+  getCount: (d: TeamPerformanceRow["typeDistribution"]) => number;
+  style: CSSProperties;
+}[] = [
+  {
+    getCount: (d) => d.star ?? 0,
+    style: { backgroundColor: PERFORMANCE_ZONES.excellent.color, color: DASHBOARD_COLORS.excellent },
+  },
+  {
+    getCount: (d) => d.legacy ?? 0,
+    style: { backgroundColor: PERFORMANCE_ZONES.aboveAvg.color, color: DASHBOARD_COLORS.excellent },
+  },
+  {
+    getCount: (d) => d.bottleneck ?? 0,
+    style: { backgroundColor: hexToRgba("#2563eb", 0.25), color: "#2563eb" },
+  },
+  {
+    getCount: (d) => (d.keyRole ?? 0) + (d.risky ?? 0),
+    style: { backgroundColor: PERFORMANCE_ZONES.belowAvg.color, color: DASHBOARD_COLORS.danger },
+  },
+  {
+    getCount: (d) => d.timeBomb ?? 0,
+    style: { backgroundColor: PERFORMANCE_ZONES.concerning.color, color: DASHBOARD_COLORS.danger },
+  },
 ];
 
 const PERFORMANCE_FILTER_TABS: { key: PerformanceTableFilter; label: string }[] = [
@@ -23,6 +42,15 @@ const PERFORMANCE_FILTER_TABS: { key: PerformanceTableFilter; label: string }[] 
   { key: "mostImproved", label: "Most Improved" },
   { key: "mostRegressed", label: "Most Regressed" },
 ];
+
+function getTrendIconForCount(counts: number[], index: number) {
+  const total = counts.reduce((sum, value) => sum + value, 0);
+  const average = counts.length ? total / counts.length : 0;
+  const value = counts[index] ?? 0;
+  if (value > average) return TrendingUp;
+  if (value < average) return TrendingDown;
+  return ArrowRight;
+}
 
 function performanceSortFunction(rows: TeamPerformanceRow[], currentFilter: PerformanceTableFilter): TeamPerformanceRow[] {
   const copy = [...rows];
@@ -141,13 +169,20 @@ function createPerformanceColumns(
       key: "distribution",
       header: "Performance Distribution",
       className: "text-right",
-      render: (row) => (
-        <SegmentBar
-          segments={PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s) => ({ style: s.style }))}
-          counts={PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s) => s.getCount(row.typeDistribution))}
-          alignment="end"
-        />
-      ),
+      render: (row) => {
+        const counts = PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s) => s.getCount(row.typeDistribution));
+        return (
+          <SegmentBar
+            segments={PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s, index) => ({
+              style: s.style,
+              icon: getTrendIconForCount(counts, index),
+            }))}
+            counts={counts}
+            alignment="end"
+            showCounts
+          />
+        );
+      },
     }
   );
 

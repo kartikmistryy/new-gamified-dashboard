@@ -14,12 +14,14 @@ type SegmentBarProps = {
   segments: SegmentBarSegment[];
   counts: number[];
   alignment?: "start" | "end";
+  showCounts?: boolean;
 };
 
 export function SegmentBar({
   segments,
   counts,
   alignment = "end",
+  showCounts = false,
 }: SegmentBarProps) {
   const total = segments.length;
   const justifyClass = alignment === "end" ? "justify-end" : "justify-start";
@@ -39,8 +41,8 @@ export function SegmentBar({
             className={`inline-flex w-full justify-center items-center gap-1.5 px-4 py-1 text-xs font-medium ${bgClass} ${roundedClass} ${borderClass}`}
             style={seg.style}
           >
-            {Icon && <Icon className="size-3.5 shrink-0" aria-hidden />}
-            {count}
+            {Icon && <Icon className="size-3.5 shrink-0 text-current" aria-hidden />}
+            {showCounts ? <span className="text-current">{count}</span> : null}
           </span>
         );
       })}
