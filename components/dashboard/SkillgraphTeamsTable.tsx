@@ -24,7 +24,7 @@ type SkillgraphTeamsTableProps = {
 export function SkillgraphTeamsTable({
   rows,
   skillRows = [],
-  activeFilter = "mostDomains",
+  activeFilter = "mostUsage",
   onFilterChange,
   visibleTeams,
   onVisibilityChange,
@@ -32,7 +32,7 @@ export function SkillgraphTeamsTable({
   onDomainVisibilityChange,
 }: SkillgraphTeamsTableProps) {
   const [view, setView] = useState<"team" | "skill">("team");
-  const [skillFilter, setSkillFilter] = useState<SkillgraphSkillFilter>("mostCommon");
+  const [skillFilter, setSkillFilter] = useState<SkillgraphSkillFilter>("mostUsage");
 
   return (
     <div className="w-full">

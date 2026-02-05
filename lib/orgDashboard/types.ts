@@ -135,7 +135,7 @@ export type DesignTableFilter =
 export type SkillgraphTeamRow = {
   teamName: string;
   teamColor: string;
-  domainCount: number;
+  totalUsage: number;
   skillCount: number;
   top3WidelyKnown?: { name: string; color: string }[];
   top3Proficient?: { name: string; color: string }[];
@@ -148,17 +148,14 @@ export type SkillgraphTeamRow = {
   }[];
 };
 
-export type SkillgraphTableFilter =
-  | "mostDomains"
-  | "leastDomains"
-  | "mostSkills"
-  | "leastSkills";
+export type SkillgraphTableFilter = "mostUsage" | "leastUsage";
 
 export type SkillgraphSkillRow = {
+  skillName: string;
   domainName: string;
-  domainCount: number;
-  skillCount: number;
-  domainDistribution?: { domain: string; value: number }[];
+  totalUsage: number;
+  avgUsage: number;
+  contributors: number;
   details?: {
     team: string;
     usage: number;
@@ -168,7 +165,9 @@ export type SkillgraphSkillRow = {
 };
 
 export type SkillgraphSkillFilter =
-  | "mostCommon"
-  | "leastCommon"
-  | "mostProficient"
-  | "leastProficient";
+  | "mostUsage"
+  | "leastUsage"
+  | "mostAvgUsage"
+  | "leastAvgUsage"
+  | "mostContributors"
+  | "leastContributors";

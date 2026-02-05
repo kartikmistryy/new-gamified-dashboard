@@ -36,7 +36,12 @@ const buildRootViewData = (data: SkillData): SkillData => ({
   })),
 });
 
-type SkillGraphProps = { width?: number; height?: number; domainWeights?: Record<string, number> };
+type SkillGraphProps = {
+  width?: number;
+  height?: number;
+  domainWeights?: Record<string, number>;
+  skillVisibility?: Record<string, boolean>;
+};
 
 const sumLeafValues = (node: SkillData): number => {
   if (!node.children || node.children.length === 0) return node.value || 0;
@@ -71,11 +76,32 @@ const applyDomainWeights = (data: SkillData, domainWeights?: Record<string, numb
   return { ...data, children: filtered, value: totalValue };
 };
 
-export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGraphProps) {
+const applySkillVisibility = (data: SkillData, skillVisibility?: Record<string, boolean>): SkillData => {
+  if (!skillVisibility) return data;
+  const domains = data.children ?? [];
+  const filteredDomains = domains
+    .map((domain) => {
+      if (!domain.children || domain.children.length === 0) return domain;
+      const filteredSkills = domain.children.filter((skill) => skillVisibility[skill.name] !== false);
+      if (filteredSkills.length === 0) return null;
+      const domainValue = filteredSkills.reduce((sum, skill) => sum + sumLeafValues(skill), 0);
+      return { ...domain, children: filteredSkills, value: domainValue };
+    })
+    .filter(Boolean) as SkillData[];
+
+  const totalValue = filteredDomains.reduce((sum, d) => sum + sumLeafValues(d), 0);
+  return { ...data, children: filteredDomains, value: totalValue };
+};
+
+export function SkillGraph({ width = 800, height = 800, domainWeights, skillVisibility }: SkillGraphProps) {
   const svgRef = useRef<SVGSVGElement>(null);
+  const filteredSkillData = useMemo(
+    () => applySkillVisibility(fullSkillData, skillVisibility),
+    [skillVisibility]
+  );
   const weightedFullData = useMemo(
-    () => applyDomainWeights(fullSkillData, domainWeights),
-    [domainWeights]
+    () => applyDomainWeights(filteredSkillData, domainWeights),
+    [filteredSkillData, domainWeights]
   );
   const rootSkillData = useMemo(
     () => buildRootViewData(weightedFullData),
@@ -329,7 +355,6 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
                   borderRadius: 999,
                   background: "#8b93f5",
                   opacity: 0.85,
-                  boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.85)",
                   display: "inline-block",
                 }}
               />
@@ -340,7 +365,6 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
                   borderRadius: 999,
                   background: "#8b93f5",
                   opacity: 0.85,
-                  boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.85)",
                   display: "inline-block",
                 }}
               />
@@ -350,17 +374,12 @@ export function SkillGraph({ width = 800, height = 800, domainWeights }: SkillGr
               <div className="text-xs text-gray-500 leading-tight">How well I know this skill</div>
             </div>
           </div>
-          <span
-            className="hidden sm:inline-block"
-            style={{ width: 2, height: 24, background: "#e5e7eb", borderRadius: 999 }}
-          />
           <div className="flex items-center gap-3">
             <div
               style={{
                 width: 110,
                 height: 14,
                 borderRadius: 999,
-                border: "1px solid rgba(0,0,0,0.1)",
                 background:
                   "linear-gradient(90deg, rgba(139, 147, 245, 0.2), rgba(123, 133, 232, 0.95))",
               }}

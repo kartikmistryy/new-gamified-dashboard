@@ -2,14 +2,44 @@
 
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { SkillgraphTeamsTable } from "@/components/dashboard/SkillgraphTeamsTable";
-import { SKILLGRAPH_TEAM_ROWS, SKILLGRAPH_SKILL_ROWS } from "@/lib/orgDashboard/skillgraphMockData";
+import { SKILLGRAPH_TEAM_ROWS } from "@/lib/orgDashboard/skillgraphMockData";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { getChartInsightsMock } from "@/lib/orgDashboard/overviewMockData";
 import { SkillGraph } from "@/components/skillmap/SkillGraph";
 import { useMemo, useState } from "react";
+import { roadmapData } from "@/components/skillmap/data/data";
+import type { SkillgraphSkillRow } from "@/lib/orgDashboard/types";
+
+const buildSkillRowsFromRoadmap = (): SkillgraphSkillRow[] => {
+  const teams = SKILLGRAPH_TEAM_ROWS.slice(0, 3);
+  return roadmapData.flatMap((roadmap, domainIndex) =>
+    roadmap.technologies.map((tech, techIndex) => {
+      const base = Math.max(1, tech.value || 0);
+      const totalUsage = Math.round(base * 25);
+      const contributors = Math.max(4, Math.round(base / 3));
+      const avgUsage = contributors > 0 ? Math.round(totalUsage / contributors) : totalUsage;
+      const details = teams.map((team, index) => {
+        const usage = Math.max(20, Math.round(base * (0.7 + index * 0.12)));
+        const ownership = Math.min(95, Math.max(5, Math.round((base / (base + 50)) * 100) + index * 3));
+        const progress = Math.min(95, 60 + ((domainIndex * 7 + techIndex * 5 + index * 4) % 35));
+        return { team: team.teamName, usage, ownership, progress };
+      });
+
+      return {
+        skillName: tech.name,
+        domainName: roadmap.name,
+        totalUsage,
+        avgUsage,
+        contributors,
+        details,
+      };
+    })
+  );
+};
 
 export default function OrgSkillgraphPage() {
   const chartInsights = useMemo(() => getChartInsightsMock(), []);
+  const skillRows = useMemo(() => buildSkillRowsFromRoadmap(), []);
   const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
     SKILLGRAPH_TEAM_ROWS.forEach((row) => {
@@ -19,8 +49,8 @@ export default function OrgSkillgraphPage() {
   });
   const [visibleDomains, setVisibleDomains] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
-    SKILLGRAPH_SKILL_ROWS.forEach((row) => {
-      init[row.domainName] = true;
+    skillRows.forEach((row) => {
+      init[row.skillName] = true;
     });
     return init;
   });
@@ -33,12 +63,6 @@ export default function OrgSkillgraphPage() {
       row.domainDistribution?.forEach((segment) => {
         totals[segment.domain] = (totals[segment.domain] ?? 0) + segment.value;
       });
-    });
-
-    Object.keys(visibleDomains).forEach((domain) => {
-      if (visibleDomains[domain] === false) {
-        totals[domain] = 0;
-      }
     });
 
     const totalSum = Object.values(totals).reduce((sum, value) => sum + value, 0);
@@ -57,7 +81,7 @@ export default function OrgSkillgraphPage() {
       <DashboardSection title="" className="py-6">
         <div className="flex justify-center">
           <div className="h-[700px] w-[850px] flex items-center justify-center">
-            <SkillGraph width={700} height={700} domainWeights={domainWeights} />
+            <SkillGraph width={700} height={700} domainWeights={domainWeights} skillVisibility={visibleDomains} />
           </div>
         </div>
       </DashboardSection>
@@ -65,7 +89,7 @@ export default function OrgSkillgraphPage() {
       <DashboardSection title="Teams" className="py-6">
         <SkillgraphTeamsTable
           rows={SKILLGRAPH_TEAM_ROWS}
-          skillRows={SKILLGRAPH_SKILL_ROWS}
+          skillRows={skillRows}
           visibleTeams={visibleTeams}
           onVisibilityChange={(teamName, visible) =>
             setVisibleTeams((prev) => ({ ...prev, [teamName]: visible }))

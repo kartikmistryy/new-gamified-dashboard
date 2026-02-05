@@ -20,19 +20,17 @@ import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
+const USAGE_FORMATTER = new Intl.NumberFormat("en-US");
+
 const FILTER_TABS: { key: SkillgraphTableFilter; label: string }[] = [
-  { key: "mostDomains", label: "Most Domains" },
-  { key: "leastDomains", label: "Least Domains" },
-  { key: "mostSkills", label: "Most Skills" },
-  { key: "leastSkills", label: "Least Skills" },
+  { key: "mostUsage", label: "Most Usage" },
+  { key: "leastUsage", label: "Least Usage" },
 ];
 
 function sortFunction(rows: SkillgraphTeamRow[], filter: SkillgraphTableFilter): SkillgraphTeamRow[] {
   const copy = [...rows];
-  if (filter === "mostDomains") return copy.sort((a, b) => b.domainCount - a.domainCount);
-  if (filter === "leastDomains") return copy.sort((a, b) => a.domainCount - b.domainCount);
-  if (filter === "mostSkills") return copy.sort((a, b) => b.skillCount - a.skillCount);
-  if (filter === "leastSkills") return copy.sort((a, b) => a.skillCount - b.skillCount);
+  if (filter === "mostUsage") return copy.sort((a, b) => b.totalUsage - a.totalUsage);
+  if (filter === "leastUsage") return copy.sort((a, b) => a.totalUsage - b.totalUsage);
   return copy;
 }
 
@@ -46,7 +44,7 @@ type SkillgraphByTeamTableProps = {
 
 export function SkillgraphByTeamTable({
   rows,
-  activeFilter = "mostDomains",
+  activeFilter = "mostUsage",
   onFilterChange,
   visibleTeams: externalVisibleTeams,
   onVisibilityChange,
@@ -71,9 +69,14 @@ export function SkillgraphByTeamTable({
     rows,
     activeFilter,
     onFilterChange,
-    defaultFilter: "mostDomains",
+    defaultFilter: "mostUsage",
     sortFunction,
   });
+
+  const totalUsageSum = useMemo(
+    () => rows.reduce((sum, row) => sum + row.totalUsage, 0),
+    [rows],
+  );
 
   const columns = useMemo<ColumnDef<SkillgraphTeamRow>[]>(() => [
     {
@@ -132,15 +135,28 @@ export function SkillgraphByTeamTable({
         </div>
       ),
     },
+    // {
+    //   header: "Domain",
+    //   accessorKey: "domainCount",
+    //   cell: ({ row }) => <span className="text-gray-900">{row.original.domainCount}</span>,
+    // },
     {
-      header: "Domain",
-      accessorKey: "domainCount",
-      cell: ({ row }) => <span className="text-gray-900">{row.original.domainCount}</span>,
+      header: "Total usage",
+      accessorKey: "totalUsage",
+      cell: ({ row }) => (
+        <span className="text-gray-900">{USAGE_FORMATTER.format(row.original.totalUsage)}</span>
+      ),
     },
     {
-      header: "Skill",
-      accessorKey: "skillCount",
-      cell: ({ row }) => <span className="text-gray-900">{row.original.skillCount}</span>,
+      id: "percentOfChart",
+      header: "% of chart",
+      cell: ({ row }) => {
+        const usageShare = totalUsageSum ? (row.original.totalUsage / totalUsageSum) * 100 : 0;
+        const percentText = Number.isInteger(usageShare)
+          ? `${usageShare}%`
+          : `${usageShare.toFixed(1)}%`;
+        return <span className="text-gray-900">{percentText}</span>;
+      },
     },
     {
       id: "distribution",
@@ -151,7 +167,7 @@ export function SkillgraphByTeamTable({
           <DomainDistributionBar segments={row.original.domainDistribution} getColor={getColorForDomain} />
         ) : null,
     },
-  ], [toggleVisibility, visibleTeams]);
+  ], [toggleVisibility, visibleTeams, totalUsageSum]);
 
   const table = useReactTable({
     data: sortedRows,

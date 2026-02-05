@@ -315,7 +315,7 @@ export function OrgPerformanceChart({
       </div>
 
       <div
-        className="mt-4 w-full max-w-xs shrink-0 gap-x-4 gap-y-2 text-xs mx-auto"
+        className="mt-4 w-full max-w-2xl shrink-0 gap-x-4 gap-y-2 text-xs mx-auto"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(4, minmax(0, 1fr))",

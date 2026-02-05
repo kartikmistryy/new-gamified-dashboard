@@ -13,26 +13,31 @@ import type { SkillgraphSkillRow, SkillgraphSkillFilter } from "@/lib/orgDashboa
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { useTableFilter } from "@/lib/orgDashboard/useTableFilter";
 import { Badge } from "../shared/Badge";
-import { DomainDistributionBar } from "./DomainDistributionBar";
 import { SkillgraphProgressBar } from "./SkillgraphProgressBar";
 import { VisibilityToggleButton } from "./VisibilityToggleButton";
 import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
+const USAGE_FORMATTER = new Intl.NumberFormat("en-US");
+
 const FILTER_TABS: { key: SkillgraphSkillFilter; label: string }[] = [
-  { key: "mostCommon", label: "Most Common" },
-  { key: "leastCommon", label: "Least Common" },
-  { key: "mostProficient", label: "Most Proficient" },
-  { key: "leastProficient", label: "Least Proficient" },
+  { key: "mostUsage", label: "Most Usage" },
+  { key: "leastUsage", label: "Least Usage" },
+  { key: "mostAvgUsage", label: "Highest Avg Usage" },
+  { key: "leastAvgUsage", label: "Lowest Avg Usage" },
+  { key: "mostContributors", label: "Most Contributors" },
+  { key: "leastContributors", label: "Least Contributors" },
 ];
 
 function sortFunction(rows: SkillgraphSkillRow[], filter: SkillgraphSkillFilter): SkillgraphSkillRow[] {
   const copy = [...rows];
-  if (filter === "mostCommon") return copy.sort((a, b) => b.skillCount - a.skillCount);
-  if (filter === "leastCommon") return copy.sort((a, b) => a.skillCount - b.skillCount);
-  if (filter === "mostProficient") return copy.sort((a, b) => b.domainCount - a.domainCount);
-  if (filter === "leastProficient") return copy.sort((a, b) => a.domainCount - b.domainCount);
+  if (filter === "mostUsage") return copy.sort((a, b) => b.totalUsage - a.totalUsage);
+  if (filter === "leastUsage") return copy.sort((a, b) => a.totalUsage - b.totalUsage);
+  if (filter === "mostAvgUsage") return copy.sort((a, b) => b.avgUsage - a.avgUsage);
+  if (filter === "leastAvgUsage") return copy.sort((a, b) => a.avgUsage - b.avgUsage);
+  if (filter === "mostContributors") return copy.sort((a, b) => b.contributors - a.contributors);
+  if (filter === "leastContributors") return copy.sort((a, b) => a.contributors - b.contributors);
   return copy;
 }
 
@@ -46,24 +51,25 @@ type SkillgraphBySkillTableProps = {
 
 export function SkillgraphBySkillTable({
   rows,
-  activeFilter = "mostCommon",
+  activeFilter = "mostUsage",
   onFilterChange,
   visibleDomains: externalVisibleDomains,
   onVisibilityChange,
 }: SkillgraphBySkillTableProps) {
   const [internalVisible, setInternalVisible] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
-    rows.forEach((r) => { init[r.domainName] = true; });
+    rows.forEach((r) => { init[r.skillName] = true; });
     return init;
   });
 
   const visibleDomains = externalVisibleDomains ?? internalVisible;
 
-  const toggleVisibility = useCallback((domainName: string) => {
+
+  const toggleVisibility = useCallback((skillName: string) => {
     if (onVisibilityChange) {
-      onVisibilityChange(domainName, visibleDomains[domainName] === false);
+      onVisibilityChange(skillName, visibleDomains[skillName] === false);
     } else {
-      setInternalVisible((prev) => ({ ...prev, [domainName]: !prev[domainName] }));
+      setInternalVisible((prev) => ({ ...prev, [skillName]: !prev[skillName] }));
     }
   }, [visibleDomains, onVisibilityChange]);
 
@@ -71,7 +77,7 @@ export function SkillgraphBySkillTable({
     rows,
     activeFilter,
     onFilterChange,
-    defaultFilter: "mostCommon",
+    defaultFilter: "mostUsage",
     sortFunction,
   });
 
@@ -86,8 +92,8 @@ export function SkillgraphBySkillTable({
           aria-expanded={row.getIsExpanded()}
           aria-label={
             row.getIsExpanded()
-              ? `Collapse details for ${row.original.domainName}`
-              : `Expand details for ${row.original.domainName}`
+              ? `Collapse details for ${row.original.skillName}`
+              : `Expand details for ${row.original.skillName}`
           }
           size="icon"
           variant="ghost"
@@ -105,8 +111,8 @@ export function SkillgraphBySkillTable({
       header: "",
       cell: ({ row }) => (
         <VisibilityToggleButton
-          isVisible={visibleDomains[row.original.domainName] !== false}
-          onToggle={() => toggleVisibility(row.original.domainName)}
+          isVisible={visibleDomains[row.original.skillName] !== false}
+          onToggle={() => toggleVisibility(row.original.skillName)}
         />
       ),
     },
@@ -123,8 +129,8 @@ export function SkillgraphBySkillTable({
       },
     },
     {
-      header: "Domain",
-      accessorKey: "domainName",
+      header: "Skill",
+      accessorKey: "skillName",
       cell: ({ row }) => (
         <div className="flex items-center gap-3">
           <div
@@ -132,28 +138,31 @@ export function SkillgraphBySkillTable({
             style={{ backgroundColor: getColorForDomain(row.original.domainName) }}
             aria-hidden
           />
-          <p className="font-medium text-gray-900">{row.original.domainName}</p>
+          <p className="font-medium text-gray-900">{row.original.skillName}</p>
         </div>
       ),
     },
     {
-      header: "Skill",
-      accessorKey: "skillCount",
-      cell: ({ row }) => <span className="text-gray-900">{row.original.skillCount}</span>,
-    },
-    {
       header: "Domain",
-      accessorKey: "domainCount",
-      cell: ({ row }) => <span className="text-gray-900">{row.original.domainCount}</span>,
+      accessorKey: "domainName",
+      cell: ({ row }) => <span className="text-gray-900">{row.original.domainName}</span>,
     },
     {
-      id: "distribution",
-      header: "Domain Distribution",
-      meta: { className: "text-right min-w-[260px]" },
-      cell: ({ row }) =>
-        row.original.domainDistribution ? (
-          <DomainDistributionBar segments={row.original.domainDistribution} getColor={getColorForDomain} />
-        ) : null,
+      header: "Total Usage",
+      accessorKey: "totalUsage",
+      cell: ({ row }) => <span className="text-gray-900">{USAGE_FORMATTER.format(row.original.totalUsage)}</span>,
+    },
+    {
+      header: "Avg Usage",
+      accessorKey: "avgUsage",
+      cell: ({ row }) => <span className="text-gray-900">{USAGE_FORMATTER.format(row.original.avgUsage)}</span>,
+    },
+    {
+      header: "Contributors",
+      accessorKey: "contributors",
+      cell: ({ row }) => (
+        <span className="text-gray-900">{USAGE_FORMATTER.format(row.original.contributors)} people</span>
+      ),
     },
   ], [toggleVisibility, visibleDomains]);
 
