@@ -29,10 +29,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Team Dashboard route at `/org/:orgId/team/:teamId` renders without errors
   4. MemberTable component displays member rows with name, avatar, and metrics
   5. Tab navigation switches between all 5 team dashboard tabs
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] TBD (pending plan-phase)
+- [ ] 01-01-PLAN.md — Member types and mock data generators
+- [ ] 01-02-PLAN.md — MemberTable component, team pages, and tab navigation
 
 ### Phase 2: Overview Tab
 **Goal**: Users can view team member performance metrics using familiar dashboard interface
@@ -87,7 +88,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Type System | 0/TBD | Not started | - |
+| 1. Foundation & Type System | 0/2 | Planning complete | - |
 | 2. Overview Tab | 0/TBD | Not started | - |
 | 3. Performance Tab | 0/TBD | Not started | - |
 | 4. Remaining Tabs | 0/TBD | Not started | - |
