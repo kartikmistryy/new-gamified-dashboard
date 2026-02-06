@@ -9,6 +9,7 @@ import { PERFORMANCE_ZONES } from "@/lib/orgDashboard/orgPerformanceChartData";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "./BaseTeamsTable";
 import { SegmentBar } from "./SegmentBar";
 import { VisibilityToggleButton } from "./VisibilityToggleButton";
+import { TeamAvatar } from "../shared/TeamAvatar";
 
 const PERFORMANCE_DISTRIBUTION_SEGMENTS: {
   label: string;
@@ -114,14 +115,14 @@ function createPerformanceColumns(
       header: "Team",
       render: (row) => (
         <div className="flex items-center gap-3">
-          <div className={`size-4 rounded shrink-0 ${row.teamColor}`} aria-hidden />
+          <TeamAvatar teamName={row.teamName} className="size-4" />
           <p className="font-medium text-gray-900">{row.teamName}</p>
         </div>
       ),
     },
     {
       key: "performance",
-      header: "Real Productivity",
+      header: "Effective Performance",
       className: "text-right",
       render: (row) => {
         const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
@@ -147,7 +148,7 @@ function createPerformanceColumns(
     {
       key: "change",
       header: "Change",
-      className: "text-left",
+      className: "text-right",
       render: (row) => {
         const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
         const changePts = row.changePts ?? 0;
@@ -159,7 +160,7 @@ function createPerformanceColumns(
               ? DASHBOARD_COLORS.danger
               : "#737373";
         return (
-          <div className="flex items-center justify-start">
+          <div className="flex items-center justify-end">
             <span
               className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
               style={{ backgroundColor: hexToRgba(changeColor, 0.25), color: changeColor }}
@@ -173,7 +174,7 @@ function createPerformanceColumns(
     },
     {
       key: "distribution",
-      header: "Performance Distribution",
+      header: "Performance Breakdown",
       className: "text-right",
       render: (row) => {
         const counts = PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s) => s.getCount(row.typeDistribution));
