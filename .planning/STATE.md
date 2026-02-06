@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2026-02-06)
 
 ## Current Position
 
-Phase: 3 of 4 (Performance Tab)
-Plan: 2 of 2 in current phase
-Status: ✓ Phase complete
-Last activity: 2026-02-06 — Completed 03-02-PLAN.md
+Phase: 4 of 4 (Remaining Tabs)
+Plan: 1 of 4 in current phase
+Status: In progress
+Last activity: 2026-02-06 — Completed 04-01-PLAN.md
 
-Progress: [██████░░░░] 83%
+Progress: [██████░░░░] 86%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
+- Total plans completed: 6
 - Average duration: 3.4min
-- Total execution time: 0.28 hours
+- Total execution time: 0.34 hours
 
 **By Phase:**
 
@@ -30,9 +30,10 @@ Progress: [██████░░░░] 83%
 | 01-foundation-type-system | 2 | 10min | 5min |
 | 02-overview-tab | 1 | 2min | 2min |
 | 03-performance-tab | 2 | 5min | 2.5min |
+| 04-remaining-tabs | 1 | 3.4min | 3.4min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (8min), 02-01 (2min), 03-01 (2min), 03-02 (3min)
+- Last 5 plans: 02-01 (2min), 03-01 (2min), 03-02 (3min), 04-01 (3.4min)
 - Trend: Consistent fast execution with established patterns
 
 *Updated after each plan completion*
@@ -70,6 +71,10 @@ Recent decisions affecting current work:
 - **[03-02]** activeFilter state drives both table sorting AND chart visibility in individual mode
 - **[03-02]** Performance table uses Rank/Name/Performance/Change/Churn columns (differs from Overview)
 - **[03-02]** Generate change and churnRate deterministically in page component (performance-tab-specific metrics)
+- **[04-01]** Use member name charCode + index as seed for deterministic design metrics
+- **[04-01]** Calculate outlier detection via standard deviation (>1 stddev = outlier)
+- **[04-01]** Use member name as ChaosMatrix 'team' field so each member is distinct group
+- **[04-01]** Filter badges rendered outside BaseTeamsTable (matches org design pattern)
 
 ### Pending Todos
 
@@ -82,9 +87,9 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-06
-Stopped at: Completed 03-02-PLAN.md (Phase 3 Performance Tab complete)
+Stopped at: Completed 04-01-PLAN.md (Phase 4 Design tab complete)
 Resume file: None
 
 ---
 *State initialized: 2026-02-06*
-*Last updated: 2026-02-06 (Phase 3 complete)*
+*Last updated: 2026-02-06 (Plan 04-01 complete)*
