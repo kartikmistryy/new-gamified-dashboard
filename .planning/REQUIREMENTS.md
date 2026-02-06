@@ -98,13 +98,42 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| TBD | TBD | Pending |
+| FOUND-01 | Phase 1 | Pending |
+| FOUND-02 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Pending |
+| FOUND-04 | Phase 1 | Pending |
+| FOUND-05 | Phase 1 | Pending |
+| OVER-01 | Phase 2 | Pending |
+| OVER-02 | Phase 2 | Pending |
+| OVER-03 | Phase 2 | Pending |
+| OVER-04 | Phase 2 | Pending |
+| OVER-05 | Phase 2 | Pending |
+| PERF-01 | Phase 3 | Pending |
+| PERF-02 | Phase 3 | Pending |
+| PERF-03 | Phase 3 | Pending |
+| PERF-04 | Phase 3 | Pending |
+| PERF-05 | Phase 3 | Pending |
+| DSGN-01 | Phase 4 | Pending |
+| DSGN-02 | Phase 4 | Pending |
+| DSGN-03 | Phase 4 | Pending |
+| DSGN-04 | Phase 4 | Pending |
+| DSGN-05 | Phase 4 | Pending |
+| SKILL-01 | Phase 4 | Pending |
+| SKILL-02 | Phase 4 | Pending |
+| SKILL-03 | Phase 4 | Pending |
+| SKILL-04 | Phase 4 | Pending |
+| SKILL-05 | Phase 4 | Pending |
+| SPOF-01 | Phase 4 | Pending |
+| SPOF-02 | Phase 4 | Pending |
+| SPOF-03 | Phase 4 | Pending |
+| SPOF-04 | Phase 4 | Pending |
+| SPOF-05 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 30 total
-- Mapped to phases: 0 (pending roadmap)
-- Unmapped: 30 ⚠️
+- Mapped to phases: 30/30
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-06*
-*Last updated: 2026-02-06 after initial definition*
+*Last updated: 2026-02-06 after roadmap creation*
