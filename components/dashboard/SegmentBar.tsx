@@ -18,6 +18,7 @@ type SegmentBarProps = {
   counts: number[];
   alignment?: "start" | "end";
   showCounts?: boolean;
+  minSegmentWidth?: number;
 };
 
 export function SegmentBar({
@@ -25,8 +26,10 @@ export function SegmentBar({
   counts,
   alignment = "end",
   showCounts = false,
+  minSegmentWidth = 40,
 }: SegmentBarProps) {
   const total = segments.length;
+  const totalCount = counts.reduce((sum, value) => sum + value, 0);
   const justifyClass = alignment === "end" ? "justify-end" : "justify-start";
   const tooltipId = useId().replace(/:/g, "");
   const tooltipRef = useRef<D3TooltipController | null>(null);
@@ -50,7 +53,11 @@ export function SegmentBar({
           <span
             key={segIndex}
             className={`inline-flex w-full justify-center items-center gap-1.5 px-4 py-1 text-xs font-medium ${bgClass} ${roundedClass} ${borderClass}`}
-            style={seg.style}
+            style={{
+              ...seg.style,
+              flex: totalCount > 0 ? `${count} 1 0` : "1 1 0",
+              minWidth: minSegmentWidth,
+            }}
             onMouseEnter={(event) => {
               const tooltip = tooltipRef.current;
               if (!tooltip) return;

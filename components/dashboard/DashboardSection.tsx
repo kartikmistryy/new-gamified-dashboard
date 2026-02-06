@@ -12,14 +12,24 @@ type DashboardSectionProps = {
   children?: React.ReactNode;
   action?: React.ReactNode;
   className?: string;
+  actionLayout?: "row" | "column";
 };
 
-export function DashboardSection({ title, children, action, className = "" }: DashboardSectionProps) {
+export function DashboardSection({
+  title,
+  children,
+  action,
+  className = "",
+  actionLayout = "column",
+}: DashboardSectionProps) {
   const headingId = slugify(title);
+  const headerLayout = actionLayout === "row"
+    ? "flex flex-row flex-wrap items-center justify-start gap-4"
+    : "flex flex-col flex-wrap items-start justify-start gap-4";
 
   return (
     <section className={className} aria-labelledby={headingId}>
-      <div className="mb-4 flex flex-col flex-wrap items-start justify-between gap-4">
+      <div className={`mb-4 ${headerLayout}`}>
         <h2 id={headingId} className="text-2xl font-semibold text-foreground">
           {title}
         </h2>
