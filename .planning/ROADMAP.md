@@ -45,10 +45,10 @@ Plans:
   3. Six metric cards display member counts for each category (Star, Time Bomb, Key Role, Bottleneck, Risky, Legacy)
   4. ChartInsights panel shows member-level trend insights
   5. Filter tabs (Most Productive, Least Productive, Most Optimal, Most Risky) correctly filter member data
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] TBD (pending plan-phase)
+- [ ] 02-01-PLAN.md — Overview helpers, gauge, metric cards, insights, and page composition
 
 ### Phase 3: Performance Tab
 **Goal**: Users can track individual member performance over time with comparative analysis
@@ -89,7 +89,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Type System | 2/2 | ✓ Complete | 2026-02-06 |
-| 2. Overview Tab | 0/TBD | Not started | - |
+| 2. Overview Tab | 0/1 | In progress | - |
 | 3. Performance Tab | 0/TBD | Not started | - |
 | 4. Remaining Tabs | 0/TBD | Not started | - |
 
