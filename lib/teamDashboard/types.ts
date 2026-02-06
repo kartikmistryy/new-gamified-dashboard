@@ -9,6 +9,8 @@ export type MemberPerformanceRow = {
   trend: "up" | "down" | "flat";
   performanceBarColor: string;
   changePts?: number;
+  change?: number; // Performance change in points, positive = improved, negative = regressed
+  churnRate?: number; // Code churn rate 0-100
   typeDistribution: {
     star: number;
     timeBomb: number;
