@@ -17,6 +17,7 @@ import { VisibilityToggleButton } from "./VisibilityToggleButton";
 import type { SpofTeamRow } from "@/lib/orgDashboard/spofMockData";
 import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 import { REPO_HEALTH_SEGMENTS } from "./RepoHealthBar";
+import { TeamAvatar } from "../shared/TeamAvatar";
 
 type SpofTableFilter = "highestRisk" | "lowestRisk" | "mostMembers" | "leastMembers";
 
@@ -59,9 +60,9 @@ type SpofTeamsTableProps = {
 };
 
 const SPOF_OWNER_SEGMENTS = [
-  { key: "low", label: "Low", color: "#22c55e" },
-  { key: "medium", label: "Medium", color: "#f59e0b" },
-  { key: "high", label: "High", color: "#ef4444" },
+  { key: "low", label: "Low", color: "#10b981" },
+  { key: "medium", label: "Medium", color: "#3b82f6" },
+  { key: "high", label: "High", color: "#f97316" },
 ];
 
 function JoinedDistributionBar({
@@ -72,6 +73,7 @@ function JoinedDistributionBar({
   valueLabel: string;
 }) {
   const counts = segments.map((segment) => segment.value);
+  const total = counts.reduce((sum, value) => sum + value, 0);
   const tooltipId = React.useId().replace(/:/g, "");
   const tooltipRef = React.useRef<D3TooltipController | null>(null);
 
@@ -89,8 +91,8 @@ function JoinedDistributionBar({
             key={segment.label}
             className="flex items-center justify-center gap-1 text-xs font-semibold"
             style={{
-              flex: "1 1 0",
-              minWidth: 0,
+              flex: total > 0 ? `${segment.value} 1 0` : "1 1 0",
+              minWidth: 40,
               backgroundColor: hexToRgba(segment.color, 0.25),
               color: segment.color,
             }}
@@ -162,8 +164,6 @@ export function SpofTeamsTable({
               <TableHead className="w-14 text-foreground font-medium" />
               <TableHead className="w-14 text-foreground font-medium">Rank</TableHead>
               <TableHead className="text-foreground font-medium">Team</TableHead>
-              <TableHead className="text-foreground font-medium text-left">Domain</TableHead>
-              <TableHead className="text-foreground font-medium text-left">Skill</TableHead>
               <TableHead className="text-foreground font-medium text-right min-w-[260px]">
                 SPOF Owner Distribution
               </TableHead>
@@ -225,19 +225,9 @@ export function SpofTeamsTable({
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center gap-3">
-                      <div
-                        className="size-4 rounded shrink-0"
-                        style={{ backgroundColor: row.teamColor }}
-                        aria-hidden
-                      />
+                      <TeamAvatar teamName={row.teamName} className="size-4" />
                       <p className="font-medium text-gray-900">{row.teamName}</p>
                     </div>
-                  </TableCell>
-                  <TableCell className="text-left">
-                    <span className="text-gray-900">{row.domainCount}</span>
-                  </TableCell>
-                  <TableCell className="text-left">
-                    <span className="text-gray-900">{row.skillCount}</span>
                   </TableCell>
                   <TableCell className="text-right">
                     <JoinedDistributionBar segments={ownerSegments} valueLabel="Owners" />

@@ -13,6 +13,7 @@ export function DomainDistributionBar({
   segments,
   getColor,
 }: DomainDistributionBarProps) {
+  const total = segments.reduce((sum, segment) => sum + segment.value, 0);
   const tooltipId = useId().replace(/:/g, "");
   const tooltipRef = useRef<D3TooltipController | null>(null);
 
@@ -30,8 +31,8 @@ export function DomainDistributionBar({
             key={segment.domain}
             className="flex items-center justify-center text-xs font-semibold"
             style={{
-              flex: "1 1 0",
-              minWidth: 0,
+              flex: total > 0 ? `${segment.value} 1 0` : "1 1 0",
+              minWidth: 40,
               backgroundColor: hexToRgba(color, 0.25),
               color,
             }}
