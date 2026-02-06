@@ -4,17 +4,20 @@ import { useCallback, useMemo, useState } from "react";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { ChaosMatrix } from "@/components/dashboard/ChaosMatrix";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { DesignTeamsTable } from "@/components/dashboard/DesignTeamsTable";
+import { DesignTeamsTable, DESIGN_FILTER_TABS } from "@/components/dashboard/DesignTeamsTable";
+import { Badge } from "@/components/shared/Badge";
 import { OwnershipScatter } from "@/components/dashboard/OwnershipScatter";
 import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
 import { getChartInsightsMock } from "@/lib/orgDashboard/overviewMockData";
 import { DESIGN_TEAM_ROWS, getDesignTeamRowsForRange } from "@/lib/orgDashboard/designMockData";
 import { TIME_RANGE_OPTIONS, type TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
+import type { DesignTableFilter } from "@/lib/orgDashboard/types";
 
 export default function OrgDesignPage() {
   const chartInsights = useMemo(() => getChartInsightsMock(), []);
   const [ownershipRange, setOwnershipRange] = useState<TimeRangeKey>("3m");
   const [chaosRange, setChaosRange] = useState<TimeRangeKey>("max");
+  const [designFilter, setDesignFilter] = useState<DesignTableFilter>("mostOutliers");
   const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
     DESIGN_TEAM_ROWS.forEach((row, index) => {
@@ -73,9 +76,32 @@ export default function OrgDesignPage() {
         <ChaosMatrix range={chaosRange} visibleTeams={visibleTeams} teamNames={designTeamNames} />
       </DashboardSection>
 
-      <DashboardSection title="Teams" className="w-full">
+      <DashboardSection
+        title="Teams"
+        className="w-full"
+        action={
+          <div className="flex flex-row flex-wrap gap-2">
+            {DESIGN_FILTER_TABS.map((tab) => (
+              <Badge
+                key={tab.key}
+                onClick={() => setDesignFilter(tab.key)}
+                className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
+                  designFilter === tab.key
+                    ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
+                    : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
+                }`}
+              >
+                {tab.label}
+              </Badge>
+            ))}
+          </div>
+        }
+      >
         <DesignTeamsTable
           rows={designTeamRows}
+          activeFilter={designFilter}
+          onFilterChange={setDesignFilter}
+          showFilters={false}
           visibleTeams={visibleTeams}
           onToggleTeamVisibility={handleToggleTeamVisibility}
         />

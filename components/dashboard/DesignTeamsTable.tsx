@@ -9,6 +9,7 @@ import { CATEGORY_COLORS } from "@/lib/orgDashboard/chaosMatrixData";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "./BaseTeamsTable";
 import { SegmentBar } from "./SegmentBar";
 import { VisibilityToggleButton } from "./VisibilityToggleButton";
+import { TeamAvatar } from "../shared/TeamAvatar";
 
 const OWNERSHIP_SEGMENTS = [
   { label: "High Ownership", style: { backgroundColor: hexToRgba("#22c55e", 0.25), color: "#22c55e" } },
@@ -47,7 +48,7 @@ const CHAOS_SEGMENTS = [
   },
 ];
 
-const DESIGN_FILTER_TABS: { key: DesignTableFilter; label: string }[] = [
+export const DESIGN_FILTER_TABS: { key: DesignTableFilter; label: string }[] = [
   { key: "mostOutliers", label: "Most Outliers" },
   { key: "mostSkilledAIBuilders", label: "Most Skilled AI Builders" },
   { key: "mostUnskilledVibeCoders", label: "Most Unskilled Vibe Coders" },
@@ -76,6 +77,7 @@ type DesignTeamsTableProps = {
   rows: DesignTeamRow[];
   activeFilter?: DesignTableFilter;
   onFilterChange?: (filter: DesignTableFilter) => void;
+  showFilters?: boolean;
   /** Optional external visibility map keyed by team name. When provided, the table becomes controlled. */
   visibleTeams?: Record<string, boolean>;
   /** Optional external toggle handler; used when `visibleTeams` is provided. */
@@ -86,6 +88,7 @@ export function DesignTeamsTable({
   rows,
   activeFilter = "mostOutliers",
   onFilterChange,
+  showFilters = true,
   visibleTeams,
   onToggleTeamVisibility,
 }: DesignTeamsTableProps) {
@@ -138,14 +141,14 @@ export function DesignTeamsTable({
         header: "Team",
         render: (row) => (
           <div className="flex items-center gap-3">
-            <div className={`size-4 rounded shrink-0 ${row.teamColor}`} aria-hidden />
+            <TeamAvatar teamName={row.teamName} className="size-4" />
             <p className="font-medium text-gray-900">{row.teamName}</p>
           </div>
         ),
       },
       {
         key: "ownership",
-        header: "Ownership Allocation",
+        header: "Ownership Health",
         className: "text-right",
         render: (row) => {
           const counts = [
@@ -168,7 +171,7 @@ export function DesignTeamsTable({
       },
       {
         key: "chaos",
-        header: "Engineering Chaos",
+        header: "Engineering Chaos Index",
         className: "text-right",
         render: (row) => {
           const counts = [
@@ -204,6 +207,7 @@ export function DesignTeamsTable({
       sortFunction={designSortFunction}
       columns={columns}
       getRowKey={(row) => row.teamName}
+      showFilters={showFilters}
     />
   );
 }
