@@ -11,16 +11,25 @@ import {
   type SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import type { SkillgraphTeamRow } from "@/lib/orgDashboard/types";
+import type { SkillgraphTeamRow, SkillgraphTableFilter } from "@/lib/orgDashboard/types";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { DomainDistributionBar } from "./DomainDistributionBar";
 import { VisibilityToggleButton } from "./VisibilityToggleButton";
 import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Badge } from "../shared/Badge";
+import { TeamAvatar } from "../shared/TeamAvatar";
 import { SkillgraphProgressBar } from "./SkillgraphProgressBar";
 
 const USAGE_FORMATTER = new Intl.NumberFormat("en-US");
+
+const FILTER_TABS: { key: SkillgraphTableFilter; label: string }[] = [
+  { key: "mostUsage", label: "Most Usage" },
+  { key: "leastUsage", label: "Least Usage" },
+  { key: "mostPercentOfChart", label: "Highest % of Chart" },
+  { key: "leastPercentOfChart", label: "Lowest % of Chart" },
+];
 
 function getTeamSkillUsageValue(row: SkillgraphTeamRow) {
   if (row.domainDistribution?.length) {
@@ -29,14 +38,26 @@ function getTeamSkillUsageValue(row: SkillgraphTeamRow) {
   return row.skillCount;
 }
 
+function getSortingForFilter(filter: SkillgraphTableFilter): SortingState {
+  if (filter === "mostUsage") return [{ id: "totalSkillUsage", desc: true }];
+  if (filter === "leastUsage") return [{ id: "totalSkillUsage", desc: false }];
+  if (filter === "mostPercentOfChart") return [{ id: "percentOfChart", desc: true }];
+  if (filter === "leastPercentOfChart") return [{ id: "percentOfChart", desc: false }];
+  return [{ id: "totalSkillUsage", desc: true }];
+}
+
 type SkillgraphByTeamTableProps = {
   rows: SkillgraphTeamRow[];
+  activeFilter?: SkillgraphTableFilter;
+  onFilterChange?: (filter: SkillgraphTableFilter) => void;
   visibleTeams?: Record<string, boolean>;
   onVisibilityChange?: (teamName: string, visible: boolean) => void;
 };
 
 export function SkillgraphByTeamTable({
   rows,
+  activeFilter = "mostUsage",
+  onFilterChange,
   visibleTeams: externalVisibleTeams,
   onVisibilityChange,
 }: SkillgraphByTeamTableProps) {
@@ -56,7 +77,9 @@ export function SkillgraphByTeamTable({
     }
   }, [visibleTeams, onVisibilityChange]);
 
-  const [sorting, setSorting] = useState<SortingState>([]);
+  const [internalFilter, setInternalFilter] = useState<SkillgraphTableFilter>(activeFilter);
+  const currentFilter = onFilterChange ? activeFilter : internalFilter;
+  const [sorting, setSorting] = useState<SortingState>(() => getSortingForFilter(currentFilter));
   const [detailSorting, setDetailSorting] = useState<Record<string, { key: "domain" | "skill" | "usage" | "progress"; dir: "asc" | "desc" }>>({});
 
   const totalUsageSum = useMemo(
@@ -118,7 +141,7 @@ export function SkillgraphByTeamTable({
       accessorKey: "teamName",
       cell: ({ row }) => (
         <div className="flex items-center gap-3">
-          <div className={`size-4 rounded shrink-0 ${row.original.teamColor}`} aria-hidden />
+          <TeamAvatar teamName={row.original.teamName} className="size-4" />
           <p className="font-medium text-gray-900">{row.original.teamName}</p>
         </div>
       ),
@@ -130,6 +153,7 @@ export function SkillgraphByTeamTable({
     // },
     {
       header: "Total Skill Usage",
+      id: "totalSkillUsage",
       accessorFn: (row) => getTeamSkillUsageValue(row),
       meta: { className: "text-right" },
       cell: ({ row }) => (
@@ -178,6 +202,28 @@ export function SkillgraphByTeamTable({
 
   return (
     <div className="w-full">
+      <div className="flex flex-row flex-wrap gap-2 mb-4">
+        {FILTER_TABS.map((tab) => (
+          <Badge
+            key={tab.key}
+            onClick={() => {
+              if (onFilterChange) {
+                onFilterChange(tab.key);
+              } else {
+                setInternalFilter(tab.key);
+              }
+              setSorting(getSortingForFilter(tab.key));
+            }}
+            className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
+              currentFilter === tab.key
+                ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
+                : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
+            }`}
+          >
+            {tab.label}
+          </Badge>
+        ))}
+      </div>
       <div className="rounded-sm border-none overflow-hidden bg-white">
         <Table>
           <TableHeader className="border-0">
@@ -245,8 +291,8 @@ export function SkillgraphByTeamTable({
                                   : key === "skill"
                                     ? "Skill"
                                     : key === "usage"
-                                      ? "Usage"
-                                      : "Progress";
+                                      ? "Skill Usage"
+                                      : "Skill Completion";
                                 return (
                                   <TableHead key={key} className="w-1/4">
                                     <button
@@ -297,7 +343,16 @@ export function SkillgraphByTeamTable({
                               return sortedDetails.map((detail, index) => (
                               <TableRow key={`${detail.skill}-${index}`} className="border-0 hover:bg-gray-50/70">
                                 <TableCell className="text-gray-700 w-1/4">{detail.domain}</TableCell>
-                                <TableCell className="font-medium text-gray-900 w-1/4">{detail.skill}</TableCell>
+                                <TableCell className="font-medium text-gray-900 w-1/4">
+                                  <div className="flex items-center gap-2">
+                                    <div
+                                      className="size-3.5 rounded-sm shrink-0"
+                                      style={{ backgroundColor: getColorForDomain(detail.domain) }}
+                                      aria-hidden
+                                    />
+                                    <span>{detail.skill}</span>
+                                  </div>
+                                </TableCell>
                                 <TableCell className="text-gray-700 w-1/4">{detail.usage}</TableCell>
                                 <TableCell className="w-1/4">
                                   <SkillgraphProgressBar value={detail.progress} />

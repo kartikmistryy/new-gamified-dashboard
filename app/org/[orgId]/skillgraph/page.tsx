@@ -56,6 +56,7 @@ const buildSkillRowsFromRoadmap = (): SkillgraphSkillRow[] => {
 export default function OrgSkillgraphPage() {
   const chartInsights = useMemo(() => getChartInsightsMock(), []);
   const skillRows = useMemo(() => buildSkillRowsFromRoadmap(), []);
+  const [skillgraphView, setSkillgraphView] = useState<"team" | "skill">("team");
   const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
     SKILLGRAPH_TEAM_ROWS.forEach((row) => {
@@ -102,10 +103,38 @@ export default function OrgSkillgraphPage() {
         </div>
       </DashboardSection>
 
-      <DashboardSection title="Teams" className="py-6">
+      <DashboardSection
+        title="Teams"
+        className="py-6"
+        actionLayout="row"
+        action={
+          <div className="inline-flex rounded-full bg-gray-100 p-1">
+            <button
+              type="button"
+              onClick={() => setSkillgraphView("team")}
+              className={`px-4 py-2 text-xs font-semibold shadow-none rounded-full transition ${
+                skillgraphView === "team" ? "bg-white text-gray-900" : "text-gray-600"
+              }`}
+            >
+              By Team
+            </button>
+            <button
+              type="button"
+              onClick={() => setSkillgraphView("skill")}
+              className={`px-4 py-2 text-xs font-semibold shadow-none rounded-full transition ${
+                skillgraphView === "skill" ? "bg-white text-gray-900" : "text-gray-600"
+              }`}
+            >
+              By Skill
+            </button>
+          </div>
+        }
+      >
         <SkillgraphTeamsTable
           rows={SKILLGRAPH_TEAM_ROWS}
           skillRows={skillRows}
+          view={skillgraphView}
+          onViewChange={setSkillgraphView}
           visibleTeams={visibleTeams}
           onVisibilityChange={(teamName, visible) =>
             setVisibleTeams((prev) => ({ ...prev, [teamName]: visible }))

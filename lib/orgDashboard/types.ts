@@ -148,7 +148,11 @@ export type SkillgraphTeamRow = {
   }[];
 };
 
-export type SkillgraphTableFilter = "mostUsage" | "leastUsage";
+export type SkillgraphTableFilter =
+  | "mostUsage"
+  | "leastUsage"
+  | "mostPercentOfChart"
+  | "leastPercentOfChart";
 
 export type SkillgraphSkillRow = {
   skillName: string;

@@ -15,6 +15,8 @@ type SkillgraphTeamsTableProps = {
   onVisibilityChange?: (teamName: string, visible: boolean) => void;
   visibleDomains?: Record<string, boolean>;
   onDomainVisibilityChange?: (domainName: string, visible: boolean) => void;
+  view?: "team" | "skill";
+  onViewChange?: (view: "team" | "skill") => void;
 };
 
 export function SkillgraphTeamsTable({
@@ -24,34 +26,15 @@ export function SkillgraphTeamsTable({
   onVisibilityChange,
   visibleDomains,
   onDomainVisibilityChange,
+  view: externalView,
+  onViewChange,
 }: SkillgraphTeamsTableProps) {
-  const [view, setView] = useState<"team" | "skill">("team");
+  const [internalView, setInternalView] = useState<"team" | "skill">("team");
+  const view = externalView ?? internalView;
+  const setView = onViewChange ?? setInternalView;
 
   return (
     <div className="w-full">
-      <div className="flex flex-wrap items-center gap-3 mb-4">
-        <div className="inline-flex rounded-full bg-gray-100 p-1">
-          <button
-            type="button"
-            onClick={() => setView("team")}
-            className={`px-4 py-2 text-xs font-semibold rounded-full transition ${
-              view === "team" ? "bg-white shadow text-gray-900" : "text-gray-600"
-            }`}
-          >
-            By Team
-          </button>
-          <button
-            type="button"
-            onClick={() => setView("skill")}
-            className={`px-4 py-2 text-xs font-semibold rounded-full transition ${
-              view === "skill" ? "bg-white shadow text-gray-900" : "text-gray-600"
-            }`}
-          >
-            By Skill
-          </button>
-        </div>
-      </div>
-
       {view === "team" ? (
         <SkillgraphByTeamTable
           rows={rows}
