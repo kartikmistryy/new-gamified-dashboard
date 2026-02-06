@@ -155,12 +155,22 @@ export default function TeamPerformancePage() {
   const members = useMemo(
     () => {
       const rows = getMemberPerformanceRowsForTeam(52, teamId, 6);
-      // Add change and churnRate for performance tab
-      return rows.map((row) => ({
-        ...row,
-        change: (Math.random() - 0.5) * 30, // -15 to +15 points
-        churnRate: Math.round(Math.random() * 40), // 0-40%
-      }));
+      // Add change and churnRate for performance tab (deterministic based on member data)
+      return rows.map((row, index) => {
+        // Use member name and index as seed for deterministic values
+        const seed1 = row.memberName.charCodeAt(0) + index * 100;
+        const seed2 = row.memberName.length + index * 50;
+        const noise1 = Math.sin(seed1 * 9999) * 10000;
+        const noise2 = Math.sin(seed2 * 9999) * 10000;
+        const changeSeed = noise1 - Math.floor(noise1);
+        const churnSeed = noise2 - Math.floor(noise2);
+
+        return {
+          ...row,
+          change: (changeSeed - 0.5) * 30, // -15 to +15 points
+          churnRate: Math.round(churnSeed * 40), // 0-40%
+        };
+      });
     },
     [teamId]
   );
