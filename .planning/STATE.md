@@ -5,7 +5,7 @@
 See: .planning/PROJECT.md (updated 2026-02-06)
 
 **Core value:** Enable users to analyze individual team member performance using the same familiar interface and metric categories they already use at the organization level
-**Current focus:** Phase 3 - Performance Tab
+**Current focus:** Phase 4 - Remaining Tabs
 
 ## Current Position
 

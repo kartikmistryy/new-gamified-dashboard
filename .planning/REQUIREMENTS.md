@@ -25,11 +25,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Performance Tab
 
-- [ ] **PERF-01**: Performance tracking chart showing normalized median over time
-- [ ] **PERF-02**: Time range filter buttons (1 Month, 3 Months, 1 Year, Max)
-- [ ] **PERF-03**: Member performance table with columns: Rank, Name, Effective Performance, Change, Churn Rate
-- [ ] **PERF-04**: Filter tabs (Most Productive, Least Productive, Most Improved, Most Regressed, Highest Churn, Lowest Churn)
-- [ ] **PERF-05**: ChartInsights panel with performance trend analysis
+- [x] **PERF-01**: Performance tracking chart showing normalized median over time
+- [x] **PERF-02**: Time range filter buttons (1 Month, 3 Months, 1 Year, Max)
+- [x] **PERF-03**: Member performance table with columns: Rank, Name, Effective Performance, Change, Churn Rate
+- [x] **PERF-04**: Filter tabs (Most Productive, Least Productive, Most Improved, Most Regressed, Highest Churn, Lowest Churn)
+- [x] **PERF-05**: ChartInsights panel with performance trend analysis
 
 ### Design Tab
 
@@ -108,11 +108,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | OVER-03 | Phase 2 | Complete |
 | OVER-04 | Phase 2 | Complete |
 | OVER-05 | Phase 2 | Complete |
-| PERF-01 | Phase 3 | Pending |
-| PERF-02 | Phase 3 | Pending |
-| PERF-03 | Phase 3 | Pending |
-| PERF-04 | Phase 3 | Pending |
-| PERF-05 | Phase 3 | Pending |
+| PERF-01 | Phase 3 | Complete |
+| PERF-02 | Phase 3 | Complete |
+| PERF-03 | Phase 3 | Complete |
+| PERF-04 | Phase 3 | Complete |
+| PERF-05 | Phase 3 | Complete |
 | DSGN-01 | Phase 4 | Pending |
 | DSGN-02 | Phase 4 | Pending |
 | DSGN-03 | Phase 4 | Pending |
@@ -136,4 +136,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-02-06*
-*Last updated: 2026-02-06 after Phase 2 completion*
+*Last updated: 2026-02-06 after Phase 3 completion*
