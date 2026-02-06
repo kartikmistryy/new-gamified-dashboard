@@ -12,7 +12,7 @@ Transform the organization-level dashboard into a member-level analytics view by
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation & Type System** - Member data models, mock generators, routing infrastructure
+- [x] **Phase 1: Foundation & Type System** - Member data models, mock generators, routing infrastructure
 - [ ] **Phase 2: Overview Tab** - First complete tab validating component adaptation patterns
 - [ ] **Phase 3: Performance Tab** - Time series filtering and comparative metrics
 - [ ] **Phase 4: Remaining Tabs** - Design, Skills Graph, SPOF tabs completing 5-tab structure
@@ -32,8 +32,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Member types and mock data generators
-- [ ] 01-02-PLAN.md — MemberTable component, team pages, and tab navigation
+- [x] 01-01-PLAN.md — Member types and mock data generators
+- [x] 01-02-PLAN.md — MemberTable component, team pages, and tab navigation
 
 ### Phase 2: Overview Tab
 **Goal**: Users can view team member performance metrics using familiar dashboard interface
@@ -88,7 +88,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Type System | 0/2 | Planning complete | - |
+| 1. Foundation & Type System | 2/2 | ✓ Complete | 2026-02-06 |
 | 2. Overview Tab | 0/TBD | Not started | - |
 | 3. Performance Tab | 0/TBD | Not started | - |
 | 4. Remaining Tabs | 0/TBD | Not started | - |

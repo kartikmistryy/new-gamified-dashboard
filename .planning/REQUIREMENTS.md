@@ -9,11 +9,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Foundation
 
-- [ ] **FOUND-01**: Member data type definitions separate from team types (MemberPerformanceRow, MemberTableFilter, etc.)
-- [ ] **FOUND-02**: Member mock data generators for all 5 tabs that aggregate mathematically to team totals
-- [ ] **FOUND-03**: Team Dashboard route at `/org/:orgId/team/:teamId` with dynamic segments
-- [ ] **FOUND-04**: MemberTable component adapted from BaseTeamsTable with member-specific columns
-- [ ] **FOUND-05**: Tab navigation working for all 5 team dashboard tabs (Overview, Performance, Design, Skills Graph, SPOF)
+- [x] **FOUND-01**: Member data type definitions separate from team types (MemberPerformanceRow, MemberTableFilter, etc.)
+- [x] **FOUND-02**: Member mock data generators for all 5 tabs that aggregate mathematically to team totals
+- [x] **FOUND-03**: Team Dashboard route at `/org/:orgId/team/:teamId` with dynamic segments
+- [x] **FOUND-04**: MemberTable component adapted from BaseTeamsTable with member-specific columns
+- [x] **FOUND-05**: Tab navigation working for all 5 team dashboard tabs (Overview, Performance, Design, Skills Graph, SPOF)
 
 ### Overview Tab
 
@@ -98,11 +98,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
-| FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
-| FOUND-05 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
+| FOUND-02 | Phase 1 | Complete |
+| FOUND-03 | Phase 1 | Complete |
+| FOUND-04 | Phase 1 | Complete |
+| FOUND-05 | Phase 1 | Complete |
 | OVER-01 | Phase 2 | Pending |
 | OVER-02 | Phase 2 | Pending |
 | OVER-03 | Phase 2 | Pending |
@@ -136,4 +136,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-02-06*
-*Last updated: 2026-02-06 after roadmap creation*
+*Last updated: 2026-02-06 after Phase 1 completion*
