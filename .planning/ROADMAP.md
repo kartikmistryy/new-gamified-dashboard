@@ -60,10 +60,11 @@ Plans:
   3. Member performance table shows Rank, Name, Effective Performance, Change, and Churn Rate columns
   4. Filter tabs (Most Productive, Least Productive, Most Improved, Most Regressed, Highest Churn, Lowest Churn) work correctly
   5. ChartInsights panel provides performance trend analysis specific to member data
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] TBD (pending plan-phase)
+- [ ] 03-01-PLAN.md — Performance types, mock data generator, and helper functions
+- [ ] 03-02-PLAN.md — MemberPerformanceChart component and page composition
 
 ### Phase 4: Remaining Tabs
 **Goal**: Users can analyze member-level design patterns, skills distribution, and SPOF risks
@@ -90,9 +91,9 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation & Type System | 2/2 | ✓ Complete | 2026-02-06 |
 | 2. Overview Tab | 1/1 | ✓ Complete | 2026-02-06 |
-| 3. Performance Tab | 0/TBD | Not started | - |
+| 3. Performance Tab | 0/2 | Not started | - |
 | 4. Remaining Tabs | 0/TBD | Not started | - |
 
 ---
 *Roadmap created: 2026-02-06*
-*Last updated: 2026-02-06 (Phase 2 complete)*
+*Last updated: 2026-02-06 (Phase 3 planned)*
