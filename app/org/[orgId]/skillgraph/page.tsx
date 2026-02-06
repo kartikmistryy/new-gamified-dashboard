@@ -12,6 +12,7 @@ import type { SkillgraphSkillRow } from "@/lib/orgDashboard/types";
 
 const buildSkillRowsFromRoadmap = (): SkillgraphSkillRow[] => {
   const teams = SKILLGRAPH_TEAM_ROWS.slice(0, 3);
+  let lowCompletionCount = 0;
   return roadmapData.flatMap((roadmap, domainIndex) =>
     roadmap.technologies.map((tech, techIndex) => {
       const base = Math.max(1, tech.value || 0);
@@ -20,16 +21,31 @@ const buildSkillRowsFromRoadmap = (): SkillgraphSkillRow[] => {
       const avgUsage = contributors > 0 ? Math.round(totalUsage / contributors) : totalUsage;
       const details = teams.map((team, index) => {
         const usage = Math.max(20, Math.round(base * (0.7 + index * 0.12)));
-        const ownership = Math.min(95, Math.max(5, Math.round((base / (base + 50)) * 100) + index * 3));
         const progress = Math.min(95, 60 + ((domainIndex * 7 + techIndex * 5 + index * 4) % 35));
-        return { team: team.teamName, usage, ownership, progress };
+        return { team: team.teamName, usage, progress };
       });
+
+      const shouldLowerSubskills = lowCompletionCount < 6;
+      if (shouldLowerSubskills && details.length) {
+        const lowCount = Math.min(2, details.length);
+        for (let i = 0; i < lowCount; i += 1) {
+          const lowValue = 18 + ((lowCompletionCount + i) % 6) * 2;
+          details[i] = { ...details[i], progress: lowValue };
+        }
+        lowCompletionCount += lowCount;
+      }
+
+      const averageProgress = details.length
+        ? details.reduce((sum, detail) => sum + detail.progress, 0) / details.length
+        : 0;
+      const totalSkillCompletion = Math.round(averageProgress);
 
       return {
         skillName: tech.name,
         domainName: roadmap.name,
         totalUsage,
         avgUsage,
+        totalSkillCompletion,
         contributors,
         details,
       };

@@ -3,9 +3,7 @@
 import { useState } from "react";
 import type {
   SkillgraphTeamRow,
-  SkillgraphTableFilter,
   SkillgraphSkillRow,
-  SkillgraphSkillFilter,
 } from "@/lib/orgDashboard/types";
 import { SkillgraphByTeamTable } from "./SkillgraphByTeamTable";
 import { SkillgraphBySkillTable } from "./SkillgraphBySkillTable";
@@ -13,8 +11,6 @@ import { SkillgraphBySkillTable } from "./SkillgraphBySkillTable";
 type SkillgraphTeamsTableProps = {
   rows: SkillgraphTeamRow[];
   skillRows?: SkillgraphSkillRow[];
-  activeFilter?: SkillgraphTableFilter;
-  onFilterChange?: (filter: SkillgraphTableFilter) => void;
   visibleTeams?: Record<string, boolean>;
   onVisibilityChange?: (teamName: string, visible: boolean) => void;
   visibleDomains?: Record<string, boolean>;
@@ -24,15 +20,12 @@ type SkillgraphTeamsTableProps = {
 export function SkillgraphTeamsTable({
   rows,
   skillRows = [],
-  activeFilter = "mostUsage",
-  onFilterChange,
   visibleTeams,
   onVisibilityChange,
   visibleDomains,
   onDomainVisibilityChange,
 }: SkillgraphTeamsTableProps) {
   const [view, setView] = useState<"team" | "skill">("team");
-  const [skillFilter, setSkillFilter] = useState<SkillgraphSkillFilter>("mostUsage");
 
   return (
     <div className="w-full">
@@ -62,16 +55,12 @@ export function SkillgraphTeamsTable({
       {view === "team" ? (
         <SkillgraphByTeamTable
           rows={rows}
-          activeFilter={activeFilter}
-          onFilterChange={onFilterChange}
           visibleTeams={visibleTeams}
           onVisibilityChange={onVisibilityChange}
         />
       ) : (
         <SkillgraphBySkillTable
           rows={skillRows}
-          activeFilter={skillFilter}
-          onFilterChange={setSkillFilter}
           visibleDomains={visibleDomains}
           onVisibilityChange={onDomainVisibilityChange}
         />

@@ -1,58 +1,55 @@
 "use client";
 
 import { Fragment, useCallback, useMemo, useState } from "react";
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import type { ColumnDef } from "@tanstack/react-table";
 import {
   flexRender,
   getCoreRowModel,
   getExpandedRowModel,
+  getSortedRowModel,
+  type SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import type { SkillgraphSkillRow, SkillgraphSkillFilter } from "@/lib/orgDashboard/types";
+import type { SkillgraphSkillRow } from "@/lib/orgDashboard/types";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
-import { useTableFilter } from "@/lib/orgDashboard/useTableFilter";
-import { Badge } from "../shared/Badge";
 import { SkillgraphProgressBar } from "./SkillgraphProgressBar";
 import { VisibilityToggleButton } from "./VisibilityToggleButton";
 import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 
 const USAGE_FORMATTER = new Intl.NumberFormat("en-US");
 
-const FILTER_TABS: { key: SkillgraphSkillFilter; label: string }[] = [
-  { key: "mostUsage", label: "Most Usage" },
-  { key: "leastUsage", label: "Least Usage" },
-  { key: "mostAvgUsage", label: "Highest Avg Usage" },
-  { key: "leastAvgUsage", label: "Lowest Avg Usage" },
-  { key: "mostContributors", label: "Most Contributors" },
-  { key: "leastContributors", label: "Least Contributors" },
-];
+function getTotalSkillCompletionValue(row: SkillgraphSkillRow) {
+  const rawValue = row.totalSkillCompletion;
+  const fallbackValue =
+    row.details?.length
+      ? row.details.reduce((sum, detail) => sum + detail.progress, 0) / row.details.length
+      : 0;
+  const safeValue = Number.isFinite(rawValue) ? rawValue : fallbackValue;
+  return Math.round(Math.max(0, Math.min(100, safeValue)));
+}
 
-function sortFunction(rows: SkillgraphSkillRow[], filter: SkillgraphSkillFilter): SkillgraphSkillRow[] {
-  const copy = [...rows];
-  if (filter === "mostUsage") return copy.sort((a, b) => b.totalUsage - a.totalUsage);
-  if (filter === "leastUsage") return copy.sort((a, b) => a.totalUsage - b.totalUsage);
-  if (filter === "mostAvgUsage") return copy.sort((a, b) => b.avgUsage - a.avgUsage);
-  if (filter === "leastAvgUsage") return copy.sort((a, b) => a.avgUsage - b.avgUsage);
-  if (filter === "mostContributors") return copy.sort((a, b) => b.contributors - a.contributors);
-  if (filter === "leastContributors") return copy.sort((a, b) => a.contributors - b.contributors);
-  return copy;
+function createOpacityScale(values: number[]) {
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  return (value: number) => {
+    if (!Number.isFinite(min) || !Number.isFinite(max) || min === max) return 0.75;
+    const t = (value - min) / (max - min);
+    return 0.35 + t * 0.6;
+  };
 }
 
 type SkillgraphBySkillTableProps = {
   rows: SkillgraphSkillRow[];
-  activeFilter?: SkillgraphSkillFilter;
-  onFilterChange?: (filter: SkillgraphSkillFilter) => void;
   visibleDomains?: Record<string, boolean>;
   onVisibilityChange?: (domainName: string, visible: boolean) => void;
 };
 
 export function SkillgraphBySkillTable({
   rows,
-  activeFilter = "mostUsage",
-  onFilterChange,
   visibleDomains: externalVisibleDomains,
   onVisibilityChange,
 }: SkillgraphBySkillTableProps) {
@@ -73,13 +70,12 @@ export function SkillgraphBySkillTable({
     }
   }, [visibleDomains, onVisibilityChange]);
 
-  const { currentFilter, handleFilter, sortedRows } = useTableFilter({
-    rows,
-    activeFilter,
-    onFilterChange,
-    defaultFilter: "mostUsage",
-    sortFunction,
-  });
+  const [sorting, setSorting] = useState<SortingState>([]);
+  const [detailSorting, setDetailSorting] = useState<Record<string, { key: "team" | "usage" | "progress"; dir: "asc" | "desc" }>>({});
+  const opacityScale = useMemo(
+    () => createOpacityScale(rows.map((row) => row.totalUsage)),
+    [rows]
+  );
 
   const columns = useMemo<ColumnDef<SkillgraphSkillRow>[]>(() => [
     {
@@ -119,6 +115,8 @@ export function SkillgraphBySkillTable({
     {
       id: "rank",
       header: "Rank",
+      accessorFn: (_row, index) => index + 1,
+      enableSorting: true,
       cell: ({ row }) => {
         const rank = row.index + 1;
         return (
@@ -135,7 +133,12 @@ export function SkillgraphBySkillTable({
         <div className="flex items-center gap-3">
           <div
             className="size-4 rounded shrink-0"
-            style={{ backgroundColor: getColorForDomain(row.original.domainName) }}
+            style={{
+              backgroundColor: hexToRgba(
+                getColorForDomain(row.original.domainName),
+                opacityScale(row.original.totalUsage)
+              ),
+            }}
             aria-hidden
           />
           <p className="font-medium text-gray-900">{row.original.skillName}</p>
@@ -150,47 +153,66 @@ export function SkillgraphBySkillTable({
     {
       header: "Total Usage",
       accessorKey: "totalUsage",
-      cell: ({ row }) => <span className="text-gray-900">{USAGE_FORMATTER.format(row.original.totalUsage)}</span>,
+      meta: { className: "text-right" },
+      cell: ({ row }) => (
+        <span className="text-gray-900 block text-right">
+          {USAGE_FORMATTER.format(row.original.totalUsage)}
+        </span>
+      ),
     },
     {
-      header: "Avg Usage",
-      accessorKey: "avgUsage",
-      cell: ({ row }) => <span className="text-gray-900">{USAGE_FORMATTER.format(row.original.avgUsage)}</span>,
+      header: "Total Skill Completion",
+      accessorKey: "totalSkillCompletion",
+      sortingFn: (rowA, rowB) => {
+        const a = getTotalSkillCompletionValue(rowA.original);
+        const b = getTotalSkillCompletionValue(rowB.original);
+        return a === b ? 0 : a > b ? 1 : -1;
+      },
+      meta: { className: "text-right" },
+      cell: ({ row }) => {
+        const value = getTotalSkillCompletionValue(row.original);
+        const color = getColorForDomain(row.original.domainName);
+        return (
+          <div className="flex items-center justify-end gap-3">
+            <div className="h-2 w-[140px] rounded-full" style={{ backgroundColor: hexToRgba(color, 0.2) }}>
+              <div
+                className="h-full rounded-full"
+                style={{ width: `${value}%`, backgroundColor: color }}
+                aria-hidden
+              />
+            </div>
+            <span className="text-sm font-medium text-gray-900">
+              {value}/100
+            </span>
+          </div>
+        );
+      },
     },
     {
       header: "Contributors",
       accessorKey: "contributors",
+      meta: { className: "text-right" },
       cell: ({ row }) => (
-        <span className="text-gray-900">{USAGE_FORMATTER.format(row.original.contributors)} people</span>
+        <span className="text-gray-900 block text-right">
+          {USAGE_FORMATTER.format(row.original.contributors)} people
+        </span>
       ),
     },
   ], [toggleVisibility, visibleDomains]);
 
   const table = useReactTable({
-    data: sortedRows,
+    data: rows,
     columns,
     getRowCanExpand: () => true,
     getCoreRowModel: getCoreRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    onSortingChange: setSorting,
+    state: { sorting },
   });
 
   return (
     <div className="w-full">
-      <div className="flex flex-wrap gap-2 mb-4">
-        {FILTER_TABS.map((tab) => (
-          <Badge
-            key={tab.key}
-            onClick={() => handleFilter(tab.key)}
-            className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
-              currentFilter === tab.key
-                ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
-                : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
-            }`}
-          >
-            {tab.label}
-          </Badge>
-        ))}
-      </div>
       <div className="rounded-sm border-none overflow-hidden bg-white">
         <Table>
           <TableHeader className="border-0">
@@ -203,7 +225,24 @@ export function SkillgraphBySkillTable({
                       (header.column.columnDef.meta as { className?: string })?.className ?? ""
                     }`}
                   >
-                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                    {header.isPlaceholder ? null : header.column.getCanSort() ? (
+                      <button
+                        type="button"
+                        className="inline-flex items-center gap-1 text-left"
+                        onClick={header.column.getToggleSortingHandler()}
+                      >
+                        {flexRender(header.column.columnDef.header, header.getContext())}
+                        {header.column.getIsSorted() === "asc" ? (
+                          <ArrowUp className="size-3.5 text-muted-foreground" aria-hidden />
+                        ) : header.column.getIsSorted() === "desc" ? (
+                          <ArrowDown className="size-3.5 text-muted-foreground" aria-hidden />
+                        ) : (
+                          <ArrowUpDown className="size-3.5 text-muted-foreground opacity-60" aria-hidden />
+                        )}
+                      </button>
+                    ) : (
+                      flexRender(header.column.columnDef.header, header.getContext())
+                    )}
                   </TableHead>
                 ))}
               </TableRow>
@@ -233,26 +272,70 @@ export function SkillgraphBySkillTable({
                         <Table className="table-fixed">
                           <TableHeader>
                             <TableRow className="hover:bg-transparent">
-                              <TableHead className="w-1/4">Team</TableHead>
-                              <TableHead className="w-1/4">Usage</TableHead>
-                              <TableHead className="w-1/4">Ownership</TableHead>
-                              <TableHead className="w-1/4">Progress</TableHead>
+                              {(["team", "usage", "progress"] as const).map((key) => {
+                                const sortState = detailSorting[row.id];
+                                const isSorted = sortState?.key === key;
+                                const label = key === "team" ? "Team" : key === "usage" ? "Usage" : "Progress";
+                                return (
+                                  <TableHead key={key} className="w-1/3">
+                                    <button
+                                      type="button"
+                                      className="inline-flex items-center gap-1 text-left"
+                                      onClick={() =>
+                                        setDetailSorting((prev) => {
+                                          const current = prev[row.id];
+                                          if (current?.key === key) {
+                                            return {
+                                              ...prev,
+                                              [row.id]: { key, dir: current.dir === "asc" ? "desc" : "asc" },
+                                            };
+                                          }
+                                          return { ...prev, [row.id]: { key, dir: "asc" } };
+                                        })
+                                      }
+                                    >
+                                      {label}
+                                      {isSorted ? (
+                                        sortState?.dir === "asc" ? (
+                                          <ArrowUp className="size-3.5 text-muted-foreground" aria-hidden />
+                                        ) : (
+                                          <ArrowDown className="size-3.5 text-muted-foreground" aria-hidden />
+                                        )
+                                      ) : (
+                                        <ArrowUpDown className="size-3.5 text-muted-foreground opacity-60" aria-hidden />
+                                      )}
+                                    </button>
+                                  </TableHead>
+                                );
+                              })}
                             </TableRow>
                           </TableHeader>
                           <TableBody>
-                            {(row.original.details ?? []).map((detail, index) => (
+                            {(() => {
+                              const sortState = detailSorting[row.id];
+                              const sortedDetails = [...(row.original.details ?? [])].sort((a, b) => {
+                                if (!sortState) return 0;
+                                const { key, dir } = sortState;
+                                const aVal = a[key];
+                                const bVal = b[key];
+                                if (aVal === bVal) return 0;
+                                const order = aVal > bVal ? 1 : -1;
+                                return dir === "asc" ? order : -order;
+                              });
+
+                              return sortedDetails.map((detail, index) => (
                               <TableRow key={`${detail.team}-${index}`} className="border-0 hover:bg-gray-50/70">
-                                <TableCell className="font-medium text-gray-900 w-1/4">{detail.team}</TableCell>
-                                <TableCell className="text-gray-700 w-1/4">{detail.usage}</TableCell>
-                                <TableCell className="text-gray-700 w-1/4">{detail.ownership}%</TableCell>
-                                <TableCell className="w-1/4">
+                                <TableCell className="font-medium text-gray-900 w-1/3">{detail.team}</TableCell>
+                                <TableCell className="text-gray-700 w-1/3">{detail.usage}</TableCell>
+                                <TableCell className="w-1/3">
                                   <SkillgraphProgressBar value={detail.progress} />
                                 </TableCell>
                               </TableRow>
-                            ))}
+                              ));
+                            })()}
                             {!row.original.details?.length ? (
                               <TableRow className="border-0 hover:bg-transparent">
-                                <TableCell colSpan={4} className="h-14 text-center text-sm text-gray-500">
+                                <TableCell colSpan={3} className="h-14 text-center text-sm text-gray-500">
                                   No details available.
                                 </TableCell>
                               </TableRow>

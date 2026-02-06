@@ -155,11 +155,11 @@ export type SkillgraphSkillRow = {
   domainName: string;
   totalUsage: number;
   avgUsage: number;
+  totalSkillCompletion: number;
   contributors: number;
   details?: {
     team: string;
     usage: number;
-    ownership: number;
     progress: number;
   }[];
 };
