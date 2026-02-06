@@ -3,7 +3,7 @@
 import { Badge } from "@/components/shared/Badge";
 
 type TimeRangeFilterProps<T extends string> = {
-  options: Array<{ id: T; label: string }>;
+  options: Array<{ id: T; label: string; disabled?: boolean }>;
   value: T;
   onChange: (value: T) => void;
   size?: "sm" | "default";
@@ -22,19 +22,25 @@ export function TimeRangeFilter<T extends string>({
 
   return (
     <div className={`flex flex-wrap gap-2 ${className}`}>
-      {options.map((opt) => (
-        <Badge
-          key={String(opt.id)}
-          onClick={() => onChange(opt.id)}
-          className={`${paddingClass} ${textClass} rounded-lg cursor-pointer font-medium transition-colors ${
-            value === opt.id
-              ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
-              : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
-          }`}
-        >
-          {opt.label}
-        </Badge>
-      ))}
+      {options.map((opt) => {
+        const isDisabled = opt.disabled === true;
+        return (
+          <Badge
+            key={String(opt.id)}
+            onClick={() => !isDisabled && onChange(opt.id)}
+            aria-disabled={isDisabled ? "true" : undefined}
+            className={`${paddingClass} ${textClass} rounded-lg font-medium transition-colors ${
+              isDisabled
+                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                : value === opt.id
+                ? "bg-gray-100 text-gray-700 hover:bg-gray-100 cursor-pointer"
+                : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100 cursor-pointer"
+            }`}
+          >
+            {opt.label}
+          </Badge>
+        );
+      })}
     </div>
   );
 }
