@@ -17,11 +17,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Overview Tab
 
-- [ ] **OVER-01**: Member table showing rank, name, avatar, effective performance, developer type
-- [ ] **OVER-02**: D3Gauge displaying team performance aggregated from member data
-- [ ] **OVER-03**: Six metric cards counting members (Star, Time Bomb, Key Role, Bottleneck, Risky, Legacy)
-- [ ] **OVER-04**: ChartInsights panel with member-level trend insights
-- [ ] **OVER-05**: Filter tabs (Most Productive, Least Productive, Most Optimal, Most Risky) working on member data
+- [x] **OVER-01**: Member table showing rank, name, avatar, effective performance, developer type
+- [x] **OVER-02**: D3Gauge displaying team performance aggregated from member data
+- [x] **OVER-03**: Six metric cards counting members (Star, Time Bomb, Key Role, Bottleneck, Risky, Legacy)
+- [x] **OVER-04**: ChartInsights panel with member-level trend insights
+- [x] **OVER-05**: Filter tabs (Most Productive, Least Productive, Most Optimal, Most Risky) working on member data
 
 ### Performance Tab
 
@@ -103,11 +103,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FOUND-03 | Phase 1 | Complete |
 | FOUND-04 | Phase 1 | Complete |
 | FOUND-05 | Phase 1 | Complete |
-| OVER-01 | Phase 2 | Pending |
-| OVER-02 | Phase 2 | Pending |
-| OVER-03 | Phase 2 | Pending |
-| OVER-04 | Phase 2 | Pending |
-| OVER-05 | Phase 2 | Pending |
+| OVER-01 | Phase 2 | Complete |
+| OVER-02 | Phase 2 | Complete |
+| OVER-03 | Phase 2 | Complete |
+| OVER-04 | Phase 2 | Complete |
+| OVER-05 | Phase 2 | Complete |
 | PERF-01 | Phase 3 | Pending |
 | PERF-02 | Phase 3 | Pending |
 | PERF-03 | Phase 3 | Pending |
@@ -136,4 +136,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-02-06*
-*Last updated: 2026-02-06 after Phase 1 completion*
+*Last updated: 2026-02-06 after Phase 2 completion*
