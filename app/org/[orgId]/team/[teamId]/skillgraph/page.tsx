@@ -167,28 +167,27 @@ export default function TeamSkillgraphPage() {
   const [skillgraphView, setSkillgraphView] = useState<"member" | "skill">("member");
   const [memberFilter, setMemberFilter] = useState<SkillsMemberFilter>("mostDomains");
   const [skillFilter, setSkillFilter] = useState<SkillsSkillFilter>("mostUsage");
-  const [visibleMembers, setVisibleMembers] = useState<Record<string, boolean>>({});
-  const [visibleDomains, setVisibleDomains] = useState<Record<string, boolean>>({});
-
   // Data
   const memberSkills = useMemo(() => getMemberSkillsData(teamId, 6), [teamId]);
   const skillRows = useMemo(() => getMemberSkillRows(memberSkills), [memberSkills]);
   const insights = useMemo(() => getSkillsInsights(memberSkills), [memberSkills]);
 
-  // Initialize visibility state
-  useMemo(() => {
+  // Derive visibility state - all visible by default
+  const visibleMembers = useMemo(() => {
     const members: Record<string, boolean> = {};
     memberSkills.forEach((row) => {
       members[row.memberName] = true;
     });
-    setVisibleMembers(members);
+    return members;
+  }, [memberSkills]);
 
+  const visibleDomains = useMemo(() => {
     const domains: Record<string, boolean> = {};
     skillRows.forEach((row) => {
       domains[row.skillName] = true;
     });
-    setVisibleDomains(domains);
-  }, [memberSkills, skillRows]);
+    return domains;
+  }, [skillRows]);
 
   const domainWeights = useMemo(
     () => computeDomainWeights(memberSkills, visibleMembers),

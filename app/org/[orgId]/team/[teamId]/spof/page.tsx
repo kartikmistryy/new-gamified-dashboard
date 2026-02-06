@@ -133,9 +133,6 @@ export default function TeamSpofPage() {
   const params = useParams();
   const teamId = params.teamId as string;
 
-  // State for chart visibility
-  const [visibleMembers, setVisibleMembers] = useState<Record<string, boolean>>({});
-
   // Data pipeline
   const members = useMemo(() => getMemberSpofData(teamId, 6), [teamId]);
 
@@ -145,13 +142,13 @@ export default function TeamSpofPage() {
 
   const insights = useMemo(() => getSpofInsights(members), [members]);
 
-  // Initialize visible members (all visible by default)
-  useMemo(() => {
+  // Derive visible members - all visible by default
+  const visibleMembers = useMemo(() => {
     const init: Record<string, boolean> = {};
     for (const member of members) {
       init[member.memberName] = true;
     }
-    setVisibleMembers(init);
+    return init;
   }, [members]);
 
   // Calculate repo health segments for RepoHealthBar

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import { ArrowRight, TrendingDown, TrendingUp } from "lucide-react";
 import { OwnershipScatter } from "@/components/dashboard/OwnershipScatter";
@@ -184,14 +184,18 @@ export default function TeamDesignPage() {
   const [ownershipRange, setOwnershipRange] = useState<TimeRangeKey>("3m");
   const [chaosRange, setChaosRange] = useState<TimeRangeKey>("max");
   const [designFilter, setDesignFilter] = useState<DesignMemberFilter>("highestOwnership");
-  const [visibleMembers, setVisibleMembers] = useState<Record<string, boolean>>(() => {
-    const init: Record<string, boolean> = {};
-    // Initialize with all members visible
-    return init;
-  });
 
   // Data pipeline
   const members = useMemo(() => getMemberDesignData(teamId, 6), [teamId]);
+
+  // Derive visible members - all visible by default
+  const visibleMembers = useMemo(() => {
+    const init: Record<string, boolean> = {};
+    members.forEach((member) => {
+      init[member.memberName] = true;
+    });
+    return init;
+  }, [members]);
 
   const ownershipScatterData = useMemo(
     () => transformToOwnershipScatterData(members),
@@ -206,19 +210,6 @@ export default function TeamDesignPage() {
   const insights = useMemo(() => getDesignInsights(members), [members]);
 
   const memberNames = useMemo(() => members.map((m) => m.memberName), [members]);
-
-  // Initialize visible members after first render
-  useMemo(() => {
-    const init: Record<string, boolean> = {};
-    members.forEach((member) => {
-      init[member.memberName] = true; // All members visible by default
-    });
-    setVisibleMembers(init);
-  }, [members]);
-
-  const handleToggleMemberVisibility = useCallback((memberName: string) => {
-    setVisibleMembers((prev) => ({ ...prev, [memberName]: !prev[memberName] }));
-  }, []);
 
   return (
     <TooltipProvider>
