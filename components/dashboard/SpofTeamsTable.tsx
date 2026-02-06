@@ -11,11 +11,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "../shared/Badge";
-import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import { VisibilityToggleButton } from "./VisibilityToggleButton";
 import type { SpofTeamRow } from "@/lib/orgDashboard/spofMockData";
 import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
+import { REPO_HEALTH_SEGMENTS } from "./RepoHealthBar";
 
 type SpofTableFilter = "highestRisk" | "lowestRisk" | "mostMembers" | "leastMembers";
 
@@ -63,17 +64,19 @@ const SPOF_OWNER_SEGMENTS = [
   { key: "high", label: "High", color: "#ef4444" },
 ];
 
-function SpofOwnerDistributionBar({
+function JoinedDistributionBar({
   segments,
+  valueLabel,
 }: {
   segments: { label: string; value: number; color: string }[];
+  valueLabel: string;
 }) {
   const counts = segments.map((segment) => segment.value);
   const tooltipId = React.useId().replace(/:/g, "");
   const tooltipRef = React.useRef<D3TooltipController | null>(null);
 
   React.useEffect(() => {
-    tooltipRef.current = createChartTooltip(`spof-owner-tooltip-${tooltipId}`);
+    tooltipRef.current = createChartTooltip(`joined-distribution-tooltip-${tooltipId}`);
     return () => tooltipRef.current?.destroy();
   }, [tooltipId]);
 
@@ -96,7 +99,7 @@ function SpofOwnerDistributionBar({
               if (!tooltip) return;
               tooltip.show(
                 `<div style="font-weight:600; color:#0f172a;">${segment.label}</div>` +
-                  `<div style="color:#6b7280;">Owners: ${segment.value}</div>`,
+                  `<div style="color:#6b7280;">${valueLabel}: ${segment.value}</div>`,
                 event.clientX + 12,
                 event.clientY + 12
               );
@@ -164,6 +167,9 @@ export function SpofTeamsTable({
               <TableHead className="text-foreground font-medium text-right min-w-[260px]">
                 SPOF Owner Distribution
               </TableHead>
+              <TableHead className="text-foreground font-medium text-right min-w-[280px]">
+                Repository Health Distribution
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -175,6 +181,23 @@ export function SpofTeamsTable({
                 { label: SPOF_OWNER_SEGMENTS[0].label, value: row.lowRiskCount, color: SPOF_OWNER_SEGMENTS[0].color },
                 { label: SPOF_OWNER_SEGMENTS[1].label, value: mediumCount, color: SPOF_OWNER_SEGMENTS[1].color },
                 { label: SPOF_OWNER_SEGMENTS[2].label, value: row.highRiskCount, color: SPOF_OWNER_SEGMENTS[2].color },
+              ];
+              const repoHealthSegments = [
+                {
+                  label: REPO_HEALTH_SEGMENTS[0].label,
+                  value: row.repoHealthHealthyCount,
+                  color: REPO_HEALTH_SEGMENTS[0].color,
+                },
+                {
+                  label: REPO_HEALTH_SEGMENTS[1].label,
+                  value: row.repoHealthNeedsAttentionCount,
+                  color: REPO_HEALTH_SEGMENTS[1].color,
+                },
+                {
+                  label: REPO_HEALTH_SEGMENTS[2].label,
+                  value: row.repoHealthCriticalCount,
+                  color: REPO_HEALTH_SEGMENTS[2].color,
+                },
               ];
 
               return (
@@ -217,7 +240,10 @@ export function SpofTeamsTable({
                     <span className="text-gray-900">{row.skillCount}</span>
                   </TableCell>
                   <TableCell className="text-right">
-                    <SpofOwnerDistributionBar segments={ownerSegments} />
+                    <JoinedDistributionBar segments={ownerSegments} valueLabel="Owners" />
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <JoinedDistributionBar segments={repoHealthSegments} valueLabel="Repos" />
                   </TableCell>
                 </TableRow>
               );

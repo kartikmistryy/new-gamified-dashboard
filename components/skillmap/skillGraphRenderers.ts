@@ -97,7 +97,6 @@ const renderBadge = (
   color: string,
   x: number,
   y: number,
-  shadowId: string
 ) => {
   const group = svg.append("g").attr("class", "skill-badge").style("pointer-events", "none");
   const text = group
@@ -121,7 +120,6 @@ const renderBadge = (
       .attr("height", bbox.height + 4)
       .attr("rx", 6)
       .attr("fill", color)
-      .attr("filter", shadowId ? `url(#${shadowId})` : null);
   }
 };
 
@@ -132,7 +130,6 @@ const renderDomainBadges = (
   centerX: number,
   centerY: number,
   radius: number,
-  shadowId: string
 ) => {
   const touchesEdge = (domain: D3HierarchyNode) => {
     if (!domain.polygon) return false;
@@ -176,7 +173,6 @@ const renderDomainBadges = (
         getColorForDomain(domain.data.name),
         centerX + centroid[0],
         centerY + centroid[1],
-        shadowId
       );
       return;
     }
@@ -187,7 +183,7 @@ const renderDomainBadges = (
     const x = centerX + Math.cos(angle) * labelRadius;
     const y = centerY + Math.sin(angle) * labelRadius;
 
-  renderBadge(svg, domain.data.name, getColorForDomain(domain.data.name), x, y, shadowId);
+  renderBadge(svg, domain.data.name, getColorForDomain(domain.data.name), x, y);
   });
 };
 
@@ -240,7 +236,6 @@ export function renderWorldView(
   tooltip: SkillTooltipController,
   onNodeClick: (node: D3HierarchyNode) => void,
   rootLabel: string,
-  badgeShadowId: string
 ) : boolean {
   const domainByNode = new WeakMap<object, string>();
   const mapDomains = (data: SkillData, currentDomain?: string) => {
@@ -329,7 +324,7 @@ export function renderWorldView(
     .style("pointer-events", "none");
 
   renderSkillLabels(d3Lib, g, leaves);
-  renderDomainBadges(d3Lib, svg, domains, centerX, centerY, radius, badgeShadowId);
+  renderDomainBadges(d3Lib, svg, domains, centerX, centerY, radius);
 
   return true;
 }
@@ -346,7 +341,6 @@ export function renderDrilldownView(
   onNodeClick: (node: D3HierarchyNode) => void,
   activeLabel: string,
   activeDomain: string,
-  badgeShadowId: string
 ) {
   applyVoronoiTreemap(d3Lib, root, radius);
 
@@ -370,5 +364,5 @@ export function renderDrilldownView(
   renderSkillLabels(d3Lib, g, nodes);
 
   const labelY = Math.max(24, centerY - radius - 26);
-  renderBadge(svg, activeLabel, baseColor, centerX, labelY, badgeShadowId);
+  renderBadge(svg, activeLabel, baseColor, centerX, labelY);
 }

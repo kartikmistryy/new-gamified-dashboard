@@ -120,7 +120,6 @@ export function SkillGraph({ width = 800, height = 800, domainWeights, skillVisi
   const radius = Math.min(width, height) / 2 - 100;
   const isRootView = currentData.name === rootSkillData.name;
   const clipId = `skill-clip-${instanceId}`;
-  const badgeShadowId = `skill-badge-shadow-${instanceId}`;
 
   const goBack = useCallback(() => {
     setHistory((prev) => {
@@ -223,19 +222,6 @@ export function SkillGraph({ width = 800, height = 800, domainWeights, skillVisi
       .attr("cy", 0)
       .attr("r", radius);
 
-    const dropShadow = defs.append("filter")
-      .attr("id", badgeShadowId)
-      .attr("x", "-50%")
-      .attr("y", "-50%")
-      .attr("width", "200%")
-      .attr("height", "200%");
-
-    dropShadow.append("feDropShadow")
-      .attr("dx", 0)
-      .attr("dy", 3)
-      .attr("stdDeviation", 4)
-      .attr("flood-color", "#000")
-      .attr("flood-opacity", 0.18);
 
     svg.append("circle")
       .attr("cx", centerX)
@@ -276,7 +262,6 @@ export function SkillGraph({ width = 800, height = 800, domainWeights, skillVisi
           tooltip,
           handleNodeClick,
           rootSkillData.name,
-          badgeShadowId
         );
         if (!ok) needsRetry = true;
       } else {
@@ -292,7 +277,6 @@ export function SkillGraph({ width = 800, height = 800, domainWeights, skillVisi
           handleNodeClick,
           currentData.name,
           activeDomain ?? currentData.name,
-          badgeShadowId
         );
       }
     } else {
@@ -314,7 +298,7 @@ export function SkillGraph({ width = 800, height = 800, domainWeights, skillVisi
       }, 60);
       return () => window.clearTimeout(timer);
     }
-  }, [activeDomain, badgeShadowId, clipId, currentData, goBack, handleNodeClick, isRootView, layoutAttempt, libsLoaded, radius, width, height]);
+  }, [activeDomain, clipId, currentData, goBack, handleNodeClick, isRootView, layoutAttempt, libsLoaded, radius, width, height]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;

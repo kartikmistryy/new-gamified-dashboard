@@ -131,6 +131,9 @@ export type SpofTeamRow = {
   avgSpofScore: number;
   highRiskCount: number;
   lowRiskCount: number;
+  repoHealthHealthyCount: number;
+  repoHealthNeedsAttentionCount: number;
+  repoHealthCriticalCount: number;
 };
 
 /** Calculate team-level statistics from SPOF data. */
@@ -159,6 +162,10 @@ export function calculateTeamStats(data: SpofDataPoint[]): SpofTeamRow[] {
     const highRiskCount = scores.filter(s => s > 2.2).length;
     // Low risk: scores < 0.2 (µ-1σ threshold from reference)
     const lowRiskCount = scores.filter(s => s < 0.2).length;
+    // Repo health buckets derived from SPOF score ranges for consistent mock distribution.
+    const repoHealthHealthyCount = scores.filter(s => s <= 1.2).length;
+    const repoHealthNeedsAttentionCount = scores.filter(s => s > 1.2 && s <= 2.6).length;
+    const repoHealthCriticalCount = scores.filter(s => s > 2.6).length;
 
     rows.push({
       teamName,
@@ -169,6 +176,9 @@ export function calculateTeamStats(data: SpofDataPoint[]): SpofTeamRow[] {
       avgSpofScore: avgScore,
       highRiskCount,
       lowRiskCount,
+      repoHealthHealthyCount,
+      repoHealthNeedsAttentionCount,
+      repoHealthCriticalCount,
     });
   }
 

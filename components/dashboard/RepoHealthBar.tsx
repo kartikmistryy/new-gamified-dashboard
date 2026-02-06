@@ -6,14 +6,20 @@ export type RepoHealthSegment = {
   color: string;
 };
 
+export const REPO_HEALTH_SEGMENTS = [
+  { key: "healthy", label: "Healthy", color: "#22c55e" },
+  { key: "needsAttention", label: "Needs Attention", color: "#f59e0b" },
+  { key: "critical", label: "Critical", color: "#ef4444" },
+] as const;
+
 type RepoHealthBarProps = {
   segments?: RepoHealthSegment[];
 };
 
 const DEFAULT_SEGMENTS: RepoHealthSegment[] = [
-  { label: "Healthy", count: 6, color: "#22c55e" },
-  { label: "Needs Attention", count: 4, color: "#f59e0b" },
-  { label: "Critical", count: 2, color: "#ef4444" },
+  { label: REPO_HEALTH_SEGMENTS[0].label, count: 6, color: REPO_HEALTH_SEGMENTS[0].color },
+  { label: REPO_HEALTH_SEGMENTS[1].label, count: 4, color: REPO_HEALTH_SEGMENTS[1].color },
+  { label: REPO_HEALTH_SEGMENTS[2].label, count: 2, color: REPO_HEALTH_SEGMENTS[2].color },
 ];
 
 export function RepoHealthBar({ segments = DEFAULT_SEGMENTS }: RepoHealthBarProps) {
@@ -51,10 +57,7 @@ export function RepoHealthBar({ segments = DEFAULT_SEGMENTS }: RepoHealthBarProp
               style={{ backgroundColor: segment.color }}
             />
             <span className="text-sm text-gray-700">
-              {segment.label}
-            </span>
-            <span className="text-sm font-medium text-gray-900">
-              {segment.count}
+              {segment.label} {segment.count}
             </span>
           </div>
         ))}
