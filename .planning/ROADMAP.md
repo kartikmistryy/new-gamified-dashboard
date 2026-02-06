@@ -77,10 +77,12 @@ Plans:
   4. Skills Graph view toggle (By Team / By Skill) and filter tabs work correctly
   5. SPOF tab shows member SPOF distribution and repository health with charts and table
   6. All three tabs maintain visual consistency with Overview and Performance tabs
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] TBD (pending plan-phase)
+- [ ] 04-01-PLAN.md — Design tab: member ownership health, chaos matrix, and design table
+- [ ] 04-02-PLAN.md — Skills Graph tab: SkillGraph visualization, dual-view table, skill filters
+- [ ] 04-03-PLAN.md — SPOF tab: SPOF distribution, repo health, risk analysis table
 
 ## Progress
 
@@ -92,8 +94,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Foundation & Type System | 2/2 | ✓ Complete | 2026-02-06 |
 | 2. Overview Tab | 1/1 | ✓ Complete | 2026-02-06 |
 | 3. Performance Tab | 2/2 | ✓ Complete | 2026-02-06 |
-| 4. Remaining Tabs | 0/TBD | Not started | - |
+| 4. Remaining Tabs | 0/3 | Not started | - |
 
 ---
 *Roadmap created: 2026-02-06*
-*Last updated: 2026-02-06 (Phase 3 complete)*
+*Last updated: 2026-02-06 (Phase 4 planned)*
