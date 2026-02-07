@@ -1,4 +1,3 @@
-import { ArrowRight, TrendingDown, TrendingUp } from "lucide-react";
 import type { BaseTeamsTableColumn } from "@/components/dashboard/BaseTeamsTable";
 import { SegmentBar } from "@/components/dashboard/SegmentBar";
 import { Badge } from "@/components/shared/Badge";
@@ -8,6 +7,7 @@ import type { DesignMemberFilter } from "./designHelpers";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import { CATEGORY_COLORS } from "@/lib/orgDashboard/chaosMatrixData";
+import { getTrendIconForCount } from "@/lib/dashboard/trendHelpers";
 
 const OWNERSHIP_SEGMENTS = [
   { label: "High Ownership", style: { backgroundColor: hexToRgba("#22c55e", 0.25), color: "#22c55e" } },
@@ -45,15 +45,6 @@ const CHAOS_SEGMENTS = [
     },
   },
 ];
-
-function getTrendIconForCount(counts: number[], index: number) {
-  const total = counts.reduce((sum, value) => sum + value, 0);
-  const average = counts.length ? total / counts.length : 0;
-  const value = counts[index] ?? 0;
-  if (value > average) return TrendingUp;
-  if (value < average) return TrendingDown;
-  return ArrowRight;
-}
 
 export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, DesignMemberFilter>[] = [
   {
