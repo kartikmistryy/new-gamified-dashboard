@@ -138,7 +138,7 @@ export function layoutGraph(
       .force(
         "link",
         forceLink(forceLinks)
-          .id((d) => d.id)
+          .id((d) => (d as ForceNode).id)
           .distance((link) => {
             const score = (link as ForceLink).spofScore;
             const base = layout === "kamada_kawai" ? 150 : 125;

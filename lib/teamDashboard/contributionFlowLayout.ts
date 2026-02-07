@@ -1,5 +1,5 @@
 import { scaleLinear } from "d3";
-import type { ContributionFlow, ContributionNode, ContributionLink } from "./spofContributionData";
+import type { TeamContributionFlow, ContributionNode, ContributionLink } from "./spofContributionData";
 
 export const MARGIN = { top: 24, right: 220, bottom: 24, left: 220 };
 export const NODE_WIDTH = 20;
@@ -37,7 +37,7 @@ export function buildFlowPath(link: PositionedLink): string {
 }
 
 export function calculateFlowLayout(
-  flow: ContributionFlow,
+  flow: TeamContributionFlow,
   width: number,
   height: number
 ): FlowLayout | null {

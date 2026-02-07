@@ -33,7 +33,7 @@ export function TeamPerformanceComparisonChart({
   const traces = useMemo<Data[]>(() => {
     if (series.length === 0) return [];
 
-    const output: Data[] = [];
+    const output: any[] = [];
 
     series.forEach((contributor) => {
       const x = contributor.points.map((point) => point.date);
@@ -146,6 +146,7 @@ export function TeamPerformanceComparisonChart({
     async function renderPlot() {
       if (!plotRef.current) return;
 
+      // @ts-expect-error - plotly.js-dist-min doesn't have type definitions
       const Plotly = (await import("plotly.js-dist-min")) as unknown as typeof import("plotly.js");
       if (cancelled || !plotRef.current) return;
 
@@ -170,6 +171,7 @@ export function TeamPerformanceComparisonChart({
     return () => {
       void (async () => {
         if (!plotElement) return;
+        // @ts-expect-error - plotly.js-dist-min doesn't have type definitions
         const Plotly = (await import("plotly.js-dist-min")) as unknown as typeof import("plotly.js");
         Plotly.purge(plotElement);
       })();
