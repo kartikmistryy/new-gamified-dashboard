@@ -3,21 +3,19 @@ import type { ChartInsight } from "@/lib/orgDashboard/types";
 
 /** Design member filter types. */
 export type DesignMemberFilter =
-  | "highestOwnership"
-  | "lowestOwnership"
+  | "mostImportant"
   | "skilledAI"
   | "traditionalDev"
-  | "highestChaos"
-  | "lowestChaos";
+  | "unskilledAI"
+  | "lowSkillDev";
 
 /** Design filter tab configuration. */
 export const DESIGN_MEMBER_FILTER_TABS: { key: DesignMemberFilter; label: string }[] = [
-  { key: "highestOwnership", label: "Highest Ownership" },
-  { key: "lowestOwnership", label: "Lowest Ownership" },
-  { key: "skilledAI", label: "Skilled AI Users" },
-  { key: "traditionalDev", label: "Traditional Devs" },
-  { key: "highestChaos", label: "Highest Chaos" },
-  { key: "lowestChaos", label: "Lowest Chaos" },
+  { key: "mostImportant", label: "Most Important" },
+  { key: "skilledAI", label: "Most Skilled AI Builders" },
+  { key: "traditionalDev", label: "Most Legacy Devs" },
+  { key: "unskilledAI", label: "Most Unskilled Vibe Coders" },
+  { key: "lowSkillDev", label: "Most Low-Skill Devs" },
 ];
 
 /** Sort function for design member table based on active filter. */
@@ -28,18 +26,21 @@ export function designMemberSortFunction(
   const copy = [...rows];
 
   switch (currentFilter) {
-    case "highestOwnership":
+    case "mostImportant":
       return copy.sort((a, b) => b.ownershipPct - a.ownershipPct);
-    case "lowestOwnership":
-      return copy.sort((a, b) => a.ownershipPct - b.ownershipPct);
     case "skilledAI":
       return copy.sort((a, b) => b.skilledAIScore - a.skilledAIScore);
     case "traditionalDev":
       return copy.sort((a, b) => b.legacyScore - a.legacyScore);
-    case "highestChaos":
-      return copy.sort((a, b) => b.churnRatePct - a.churnRatePct);
-    case "lowestChaos":
-      return copy.sort((a, b) => a.churnRatePct - b.churnRatePct);
+    case "unskilledAI":
+      return copy.sort((a, b) => b.unskilledScore - a.unskilledScore);
+    case "lowSkillDev":
+      // Low-skill devs: low KP + high churn
+      return copy.sort((a, b) => {
+        const aScore = a.churnRatePct / (a.medianWeeklyKp + 1);
+        const bScore = b.churnRatePct / (b.medianWeeklyKp + 1);
+        return bScore - aScore;
+      });
     default:
       return copy;
   }

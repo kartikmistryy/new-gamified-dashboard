@@ -166,7 +166,7 @@ export default function TeamPerformancePage() {
             </section>
 
             <DashboardSection
-              title="Team Performance Comparison"
+              title="Performance Comparison"
               action={
                 <TimeRangeFilter
                   options={timeRangeOptions}

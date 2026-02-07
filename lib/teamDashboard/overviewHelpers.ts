@@ -59,9 +59,9 @@ const BASE_CARD_CONFIG: Omit<OverviewSummaryCardConfig, "count">[] = [
     priority: "P3",
     descriptionLine1: "Low SPOF",
     descriptionLine2: "Manual Coder",
-    bg: "#FDF9C9",
-    iconColor: "#E2B53E",
-    badgeColor: "text-white bg-[#E2B53E]"
+    bg: "#E5ECF6",
+    iconColor: "#7BA8E6",
+    badgeColor: "text-white bg-[#7BA8E6]"
   },
 ];
 

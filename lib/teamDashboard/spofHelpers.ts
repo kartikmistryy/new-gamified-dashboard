@@ -6,18 +6,14 @@ export type SpofMemberFilter =
   | "highestRisk"
   | "lowestRisk"
   | "mostRepos"
-  | "leastRepos"
-  | "mostCritical"
-  | "mostHealthy";
+  | "leastRepos";
 
 /** Filter tab configuration for SPOF member table. */
 export const SPOF_MEMBER_FILTER_TABS: { key: SpofMemberFilter; label: string }[] = [
-  { key: "highestRisk", label: "Highest Risk" },
-  { key: "lowestRisk", label: "Lowest Risk" },
-  { key: "mostRepos", label: "Most Repos" },
-  { key: "leastRepos", label: "Least Repos" },
-  { key: "mostCritical", label: "Most Critical" },
-  { key: "mostHealthy", label: "Most Healthy" },
+  { key: "highestRisk", label: "Highest Ownership" },
+  { key: "lowestRisk", label: "Lowest Ownership" },
+  { key: "mostRepos", label: "Most Modules" },
+  { key: "leastRepos", label: "Least Modules" },
 ];
 
 /**
@@ -39,10 +35,6 @@ export function spofMemberSortFunction(
       return copy.sort((a, b) => b.repoCount - a.repoCount);
     case "leastRepos":
       return copy.sort((a, b) => a.repoCount - b.repoCount);
-    case "mostCritical":
-      return copy.sort((a, b) => b.repoHealthCritical - a.repoHealthCritical);
-    case "mostHealthy":
-      return copy.sort((a, b) => b.repoHealthHealthy - a.repoHealthHealthy);
     default:
       return copy;
   }

@@ -32,15 +32,15 @@ export default function TeamDesignPage() {
   // State
   const [collaborationRange, setCollaborationRange] = useState<TimeRangeKey>("3m");
   const [chaosRange, setChaosRange] = useState<TimeRangeKey>("max");
-  const [designFilter, setDesignFilter] = useState<DesignMemberFilter>("highestOwnership");
+  const [designFilter, setDesignFilter] = useState<DesignMemberFilter>("mostImportant");
   const [collaborationInsights, setCollaborationInsights] = useState<ChartInsight[]>([]);
 
   // Data pipeline
   const members = useMemo(() => getMemberDesignData(teamId, 6), [teamId]);
 
   const chaosMatrixData = useMemo(
-    () => transformToChaosMatrixData(members),
-    [members]
+    () => transformToChaosMatrixData(members, chaosRange),
+    [members, chaosRange]
   );
 
   const memberNames = useMemo(() => members.map((m) => m.memberName), [members]);
@@ -120,7 +120,7 @@ export default function TeamDesignPage() {
             filterTabs={DESIGN_MEMBER_FILTER_TABS}
             activeFilter={designFilter}
             onFilterChange={setDesignFilter}
-            defaultFilter="highestOwnership"
+            defaultFilter="mostImportant"
             sortFunction={designMemberSortFunction}
             columns={DESIGN_MEMBER_COLUMNS}
             getRowKey={(row) => row.memberName}

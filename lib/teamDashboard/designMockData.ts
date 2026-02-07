@@ -151,7 +151,15 @@ export function transformToOwnershipScatterData(members: MemberDesignRow[]): Dev
 }
 
 /** Transform member design data to ChaosMatrix ChaosPoint[] format. */
-export function transformToChaosMatrixData(members: MemberDesignRow[]): ChaosPoint[] {
+export function transformToChaosMatrixData(
+  members: MemberDesignRow[],
+  range?: "1m" | "3m" | "1y" | "max"
+): ChaosPoint[] {
+  // Time range affects how much variance/drift we show from base values
+  // More recent time ranges (1m) show current snapshot, older ranges show more historical variance
+  const timeVarianceFactor = range === "1m" ? 0.1 : range === "3m" ? 0.2 : range === "1y" ? 0.3 : 0.4;
+  const rangeSeed = range === "1m" ? 0 : range === "3m" ? 1000 : range === "1y" ? 2000 : 3000;
+
   return members.map((member, index) => {
     // Spread points across all four quadrants for visual variety (deterministic).
     const baseKp = member.medianWeeklyKp;
@@ -163,11 +171,21 @@ export function transformToChaosMatrixData(members: MemberDesignRow[]): ChaosPoi
     const kpShift = quadrant < 2 ? -kpSpread : kpSpread;
     const churnShift = quadrant % 2 === 0 ? -churnSpread : churnSpread;
 
+    // Add temporal variation based on time range (simulating historical position)
+    const seed = index * 1000 + rangeSeed;
+    const noise1 = Math.sin(seed * 9999) * 10000;
+    const noise2 = Math.sin((seed + 500) * 9999) * 10000;
+    const noiseVal1 = noise1 - Math.floor(noise1);
+    const noiseVal2 = noise2 - Math.floor(noise2);
+
+    const kpDrift = (noiseVal1 - 0.5) * 600 * timeVarianceFactor;
+    const churnDrift = (noiseVal2 - 0.5) * 3 * timeVarianceFactor;
+
     return {
       name: member.memberName,
       team: member.memberName, // Use member name as "team" so each member is a distinct group
-      medianWeeklyKp: Math.max(0, baseKp + kpShift),
-      churnRatePct: Math.min(14, Math.max(0, baseChurn + churnShift)),
+      medianWeeklyKp: Math.max(0, baseKp + kpShift + kpDrift),
+      churnRatePct: Math.min(14, Math.max(0, baseChurn + churnShift + churnDrift)),
     };
   });
 }

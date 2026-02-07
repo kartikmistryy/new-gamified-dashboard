@@ -63,6 +63,7 @@ const MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceRow, MemberTableFilt
   {
     key: "member",
     header: "Member",
+    className: "w-full min-w-[360px]",
     render: (row) => (
       <div className="flex items-center gap-3">
         <TeamAvatar teamName={row.memberName} className="size-4" />
@@ -73,7 +74,7 @@ const MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceRow, MemberTableFilt
   {
     key: "performance",
     header: "Effective Performance",
-    className: "text-right",
+    className: "w-px text-right whitespace-nowrap",
     render: (row) => {
       const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
       return (
@@ -98,7 +99,7 @@ const MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceRow, MemberTableFilt
   {
     key: "status",
     header: "Developer Type",
-    className: "text-right",
+    className: "w-px text-right whitespace-nowrap",
     render: (row) => {
       const type = getPrimaryDeveloperType(row);
       const Icon = type.icon;

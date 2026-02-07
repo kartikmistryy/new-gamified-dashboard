@@ -94,7 +94,7 @@ const BASE_CARD_CONFIG: Omit<OverviewSummaryCardConfig, "count">[] = [
   { key: "key-player", title: "Key Role", priority: "P1", descriptionLine1: "High SPOF", descriptionLine2: "Skilled AI Builder", bg: "#FCEED8", iconColor: "#E87B35", badgeColor: "text-white bg-[#E87B35]" },
   { key: "bottleneck", title: "Bottleneck", priority: "P1", descriptionLine1: "High SPOF", descriptionLine2: "Manual Coder", bg: "#FCEED8", iconColor: "#E87B35", badgeColor: "text-white bg-[#E9A23B]" },
   { key: "risky", title: "Risky", priority: "P2", descriptionLine1: "Low SPOF", descriptionLine2: "Unskilled Vibe Coder", bg: "#FCF3CC", iconColor: "#E9A23B", badgeColor: "text-white bg-[#E9A23B]" },
-  { key: "stable", title: "Legacy", priority: "P3", descriptionLine1: "Low SPOF", descriptionLine2: "Manual Coder", bg: "#FDF9C9", iconColor: "#E2B53E", badgeColor: "text-white bg-[#E2B53E]" },
+  { key: "stable", title: "Legacy", priority: "P3", descriptionLine1: "Low SPOF", descriptionLine2: "Manual Coder", bg: "#E5ECF6", iconColor: "#7BA8E6", badgeColor: "text-white bg-[#7BA8E6]" },
 ];
 
 const CARD_KEY_TO_DIST_KEY: (keyof TeamPerformanceRow["typeDistribution"])[] = [

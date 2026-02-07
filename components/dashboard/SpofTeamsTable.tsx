@@ -22,10 +22,10 @@ import { TeamAvatar } from "../shared/TeamAvatar";
 type SpofTableFilter = "highestRisk" | "lowestRisk" | "mostMembers" | "leastMembers";
 
 const SPOF_FILTER_TABS: { key: SpofTableFilter; label: string }[] = [
-  { key: "highestRisk", label: "Highest Risk" },
-  { key: "lowestRisk", label: "Lowest Risk" },
-  { key: "mostMembers", label: "Most Members" },
-  { key: "leastMembers", label: "Least Members" },
+  { key: "lowestRisk", label: "Most Optimal" },
+  { key: "highestRisk", label: "Most Risky" },
+  { key: "mostMembers", label: "Healthiest" },
+  { key: "leastMembers", label: "Most Critical" },
 ];
 
 function getTrendIconForCount(counts: number[], index: number) {
