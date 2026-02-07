@@ -3,12 +3,11 @@
 import { useMemo } from "react";
 import { useParams } from "next/navigation";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { D3Gauge } from "@/components/dashboard/D3Gauge";
+import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
 import { TeamContributionChart } from "@/components/dashboard/TeamContributionChart";
 import { RepoHealthBar, REPO_HEALTH_SEGMENTS, type RepoHealthSegment } from "@/components/dashboard/RepoHealthBar";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "@/components/dashboard/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { TeamAvatar } from "@/components/shared/TeamAvatar";
 import {
   getMemberSpofData,
@@ -107,19 +106,14 @@ export default function TeamSpofPage() {
     <TooltipProvider>
       <div className="flex flex-col gap-8 px-6 pb-8 bg-white text-gray-900 min-h-screen">
         <DashboardSection title="SPOF Owner Distribution">
-          <div className="flex flex-row flex-wrap items-stretch gap-8 mb-6">
-            <div className="flex shrink-0 min-w-[280px] max-w-[50%]">
-              <D3Gauge
-                value={gaugeValue}
-                label={getPerformanceGaugeLabel(gaugeValue)}
-                labelColor={getGaugeColor(gaugeValue)}
-                valueDisplay={`${gaugeValue}/100`}
-              />
-            </div>
-            <div className="flex-1 min-w-[280px]">
-              <ChartInsights insights={insights} />
-            </div>
-          </div>
+          <GaugeWithInsights
+            value={gaugeValue}
+            label={getPerformanceGaugeLabel(gaugeValue)}
+            labelColor={getGaugeColor(gaugeValue)}
+            valueDisplay={`${gaugeValue}/100`}
+            insights={insights}
+            className="mb-6"
+          />
         </DashboardSection>
 
         <DashboardSection title="Team Contribution Flow">
