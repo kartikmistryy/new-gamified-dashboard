@@ -152,10 +152,22 @@ export function transformToOwnershipScatterData(members: MemberDesignRow[]): Dev
 
 /** Transform member design data to ChaosMatrix ChaosPoint[] format. */
 export function transformToChaosMatrixData(members: MemberDesignRow[]): ChaosPoint[] {
-  return members.map((member) => ({
-    name: member.memberName,
-    team: member.memberName, // Use member name as "team" so each member is a distinct group
-    medianWeeklyKp: member.medianWeeklyKp,
-    churnRatePct: member.churnRatePct,
-  }));
+  return members.map((member, index) => {
+    // Spread points across all four quadrants for visual variety (deterministic).
+    const baseKp = member.medianWeeklyKp;
+    const baseChurn = member.churnRatePct;
+    const quadrant = index % 4;
+    const kpSpread = (index % 3) * 450 + 300; // 300, 750, 1200
+    const churnSpread = (index % 3) * 1.8 + 1.2; // 1.2, 3.0, 4.8
+
+    const kpShift = quadrant < 2 ? -kpSpread : kpSpread;
+    const churnShift = quadrant % 2 === 0 ? -churnSpread : churnSpread;
+
+    return {
+      name: member.memberName,
+      team: member.memberName, // Use member name as "team" so each member is a distinct group
+      medianWeeklyKp: Math.max(0, baseKp + kpShift),
+      churnRatePct: Math.min(14, Math.max(0, baseChurn + churnShift)),
+    };
+  });
 }

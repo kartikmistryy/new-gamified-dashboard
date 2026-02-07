@@ -5,7 +5,6 @@ import type { MemberPerformanceRow, MemberTableFilter } from "@/lib/teamDashboar
 import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "./BaseTeamsTable";
-import { SegmentBar } from "./SegmentBar";
 import { TeamAvatar } from "../shared/TeamAvatar";
 
 const MEMBER_FILTER_TABS: { key: MemberTableFilter; label: string }[] = [
@@ -19,10 +18,22 @@ const TYPE_DISTRIBUTION_SEGMENTS = [
   { key: "star" as const, label: "Star", icon: Star, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.excellent, 0.25), color: DASHBOARD_COLORS.excellent } },
   { key: "timeBomb" as const, label: "Time Bomb", icon: Bomb, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.danger, 0.25), color: DASHBOARD_COLORS.danger } },
   { key: "keyRole" as const, label: "Key Role", icon: Puzzle, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
-  { key: "risky" as const, label: "Risky", icon: FlaskConical, borderClass: "border-l border-black/20", style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
+  { key: "risky" as const, label: "Risky", icon: FlaskConical, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.25), color: DASHBOARD_COLORS.warning } },
   { key: "bottleneck" as const, label: "Bottleneck", icon: AlertTriangle, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.caution, 0.25), color: DASHBOARD_COLORS.caution } },
   { key: "legacy" as const, label: "Legacy", icon: BrickWall, style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.stable, 0.25), color: DASHBOARD_COLORS.stable } },
 ];
+
+const TYPE_LOOKUP = new Map(TYPE_DISTRIBUTION_SEGMENTS.map((segment) => [segment.key, segment]));
+
+function getPrimaryDeveloperType(row: MemberPerformanceRow) {
+  const value = row.performanceValue;
+  if (value >= 85) return TYPE_LOOKUP.get("star") ?? TYPE_DISTRIBUTION_SEGMENTS[0];
+  if (value >= 70) return TYPE_LOOKUP.get("keyRole") ?? TYPE_DISTRIBUTION_SEGMENTS[0];
+  if (value >= 55) return TYPE_LOOKUP.get("legacy") ?? TYPE_DISTRIBUTION_SEGMENTS[0];
+  if (value >= 40) return TYPE_LOOKUP.get("bottleneck") ?? TYPE_DISTRIBUTION_SEGMENTS[0];
+  if (value >= 25) return TYPE_LOOKUP.get("risky") ?? TYPE_DISTRIBUTION_SEGMENTS[0];
+  return TYPE_LOOKUP.get("timeBomb") ?? TYPE_DISTRIBUTION_SEGMENTS[0];
+}
 
 function memberSortFunction(rows: MemberPerformanceRow[], currentFilter: MemberTableFilter): MemberPerformanceRow[] {
   const copy = [...rows];
@@ -88,14 +99,21 @@ const MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceRow, MemberTableFilt
     key: "status",
     header: "Developer Type",
     className: "text-right",
-    render: (row) => (
-      <SegmentBar
-        segments={TYPE_DISTRIBUTION_SEGMENTS}
-        counts={TYPE_DISTRIBUTION_SEGMENTS.map((s) => row.typeDistribution[s.key] ?? 0)}
-        alignment="end"
-        showCounts
-      />
-    ),
+    render: (row) => {
+      const type = getPrimaryDeveloperType(row);
+      const Icon = type.icon;
+      return (
+        <div className="flex items-center justify-end">
+          <span
+            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1 text-xs font-medium"
+            style={type.style}
+          >
+            <Icon className="size-3.5 shrink-0" aria-hidden />
+            {type.label}
+          </span>
+        </div>
+      );
+    },
   },
 ];
 

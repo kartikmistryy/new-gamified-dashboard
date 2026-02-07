@@ -1,0 +1,100 @@
+---
+description: Core project rules — apply when making any changes
+alwaysApply: true
+---
+
+# Project Rules
+
+Follow these rules whenever editing or adding code in this project.
+
+## Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **UI**: React 19, TypeScript, Tailwind CSS v4
+- **Styling**: Use Tailwind; keep custom CSS in `app/globals.css` when needed
+
+## Do not touch
+
+- **Never edit shadcn component files in `/ui`.** Treat `/ui` as a black box: add or use components only via the shadcn CLI or docs; do not modify files under `/ui` manually.
+- **Never edit `app/globals.css`** except for shadcn/animate-ui theme variables and base styles. You can update CSS variables (colors, radius, etc.) and @layer base styles, but avoid other custom CSS changes.
+
+## File size
+
+- **Component, utility, hook, helper, and page files must stay under 160–200 lines.** If a file grows beyond that, split it: extract subcomponents, hooks, or helpers into separate files.
+
+## Reuse
+
+- **If a utility, component, hook, or block of code is repeated in the app, extract it into a reusable piece.** Put shared UI in `components/shared/`; shared logic in hooks or utils as appropriate.
+
+## Components folder structure
+
+- **Root `/components`** (at project root) must use **intent-based folders**, e.g. `components/auth/`, `components/dashboard/`, `components/forms/`, `components/layout/`.
+- **Shared components** live in **`/components/shared`** — anything used in more than one intent or across the app goes here.
+- **Filenames**: Use **PascalCase** for component files (e.g. `UserProfile.tsx`, `AuthForm.tsx`); use **camelCase** for hooks, utilities, helpers, and other non-component files (e.g. `useFormState.ts`, `formatDate.ts`, `getDisplayName.ts`). **Folder names**: use **lowercase only** — no kebab-case or hyphens (e.g. `auth/`, `dashboard/`, `userprofile/`).
+
+## Org dashboard architecture
+
+Dashboard feature code follows this layout and these patterns.
+
+### Lib (`lib/orgDashboard/`)
+
+- **`colors.ts`**: Central palette. Use `DASHBOARD_COLORS` (hex), `DASHBOARD_BG_CLASSES`, `DASHBOARD_CHANGE_CLASSES`, `DASHBOARD_TEXT_CLASSES` for segments, badges, and text. Do not hardcode hex or `bg-[#...]` in dashboard components or mock data.
+- **`tableUtils.ts`**: `getSegmentRoundedClass(index, total)`, `getPerformanceBarColor(value)`. Used by SegmentBar and table/mock code.
+- **`useTableFilter.ts`**: Hook `useTableFilter<T, F>({ rows, activeFilter, onFilterChange, defaultFilter, sortFunction })` → `{ currentFilter, handleFilter, sortedRows }`. Use for any filtered table.
+- **`timeRangeTypes.ts`**: `TimeRangeKey`, `TIME_RANGE_OPTIONS`. Shared time-range types and options for filters.
+- **Types and chart data**: Keep types and pure logic in lib. E.g. `ownershipScatterTypes.ts` + `ownershipScatterUtils.ts`, `chaosMatrixData.ts`. Components import from these; do not put regression/classification or synthetic data generation inside components.
+
+### Dashboard components (`components/dashboard/`)
+
+- **Tables**: Use **`BaseTeamsTable`** with `useTableFilter` for filter state and sorted rows. Define `columns: Array<{ key, header, className?, render(row, index) }>` and pass `filterTabs`, `sortFunction`, `getRowKey`. Use **`SegmentBar`** in a column’s `render` when a row has segment counts. Specific tables (e.g. `TeamTable`, `PerformanceTeamsTable`, `DesignTeamsTable`) are thin wrappers that provide tabs, sort function, and column config.
+- **Segment bars**: Use **`SegmentBar`** with `segments` (e.g. `{ bg, icon?, borderClass? }[]`) and `counts`. Segment colors must come from `DASHBOARD_BG_CLASSES` (or `colors.ts`).
+- **Time range filters**: Use **`TimeRangeFilter`** with `TIME_RANGE_OPTIONS` and controlled `value` / `onChange`. No internal state; controlled only.
+- **Sections**: Use **`DashboardSection`** for a section with title, optional `action` (e.g. filter UI), and `children`. It provides `aria-labelledby` and a flex header (title + action).
+
+### Chart components (e.g. OwnershipScatter, ChaosMatrix)
+
+- Keep **types and pure logic** in `lib/orgDashboard/` (e.g. `ownershipScatterTypes.ts`, `ownershipScatterUtils.ts`, `chaosMatrixData.ts`). The React component should only handle props, `useMemo` for derived data (calling lib utils), SVG/legend, and local UI state (e.g. tooltip).
+- **Headings and filters** for a chart live on the **page** (or in `DashboardSection`), not inside the chart component. The chart receives `data`/`range` (or equivalent) as props.
+- If a chart file exceeds the line limit, extract SVG (or similar) into a separate component under `components/dashboard/` and keep the main file under 200 lines.
+
+### Pages (org dashboard)
+
+- Use **`DashboardSection`** to wrap each major block (title + optional action + content). Use **`TimeRangeFilter`** in the section `action` when the block has a time range.
+- Pass filter state and handlers from the page into chart and table components; do not own filter state inside the chart component.
+
+## Conventions
+
+1. **Files & structure**
+   - Use `app/` for routes and layouts; put feature-specific components under `components/<intent>/` or `components/shared/`.
+
+2. **Components**
+   - Prefer functional components and hooks; type all props with TypeScript; avoid `any`.
+   - One clear responsibility per component or hook; if it does two things, split it.
+
+3. **Code style**
+   - Use double quotes for strings unless the file already uses single quotes.
+   - Run `npm run lint` and fix issues before considering changes done.
+   - Prefer `const`; use `let` only when reassignment is needed.
+
+4. **When making changes**
+   - Preserve existing patterns and naming in the files you touch.
+   - Don’t remove or rename exports or props without checking usages.
+   - Prefer small, incremental edits unless refactoring was requested.
+
+5. **Accessibility & UX**
+   - Use semantic HTML and ARIA where needed; ensure keyboard access and visible focus states.
+
+## Clean code
+
+- **Names**: Use descriptive names (e.g. `getUserDisplayName`, `isFormValid`); avoid abbreviations unless widely used (e.g. `id`, `url`).
+- **Functions**: Keep functions small and focused; if a function does multiple steps, consider splitting or extracting helpers.
+- **Nesting**: Avoid deep nesting (e.g. > 3 levels); use early returns, guard clauses, or extract logic into named functions.
+- **Constants**: Extract magic numbers and repeated strings into named constants or enums at the top of the file or in a shared constants file.
+- **Imports**: Prefer explicit, named exports; use path aliases consistently (e.g. `@/components/...`) if configured in the project.
+- **No dead code**: Remove unused imports, variables, and functions; don’t leave commented-out code or debug logs.
+
+## Don’t
+
+- Don’t add new dependencies without good reason; prefer built-in or existing packages.
+- Don’t change formatting or style unrelated to the requested change (no “fix all the formatting” unless asked).
+- Don’t edit files under `/ui` (shadcn components).

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useEffect, useId } from "react";
+import { useMemo, useRef, useEffect, useId, type MouseEvent, type ReactNode } from "react";
 import {
   type ChaosPoint,
   type ChaosCategory,
@@ -21,6 +21,16 @@ type ChaosMatrixProps = {
   visibleTeams?: Record<string, boolean>;
   /** Optional team names used when generating synthetic chaos points so labels match the Teams table. */
   teamNames?: string[];
+  tooltipTeamLabel?: string;
+  renderPoint?: (
+    point: CategorizedPoint & { cx: number; cy: number; stackIndex?: number; stackCount?: number },
+    index: number,
+    handlers: {
+      onMouseEnter: (event: MouseEvent<SVGElement>) => void;
+      onMouseMove: (event: MouseEvent<SVGElement>) => void;
+      onMouseLeave: () => void;
+    }
+  ) => ReactNode;
 };
 
 type CategorizedPoint = ChaosPoint & { category: ChaosCategory };
@@ -29,7 +39,14 @@ const WIDTH = 800;
 const HEIGHT = 380;
 const MARGIN = { top: 24, right: 24, bottom: 48, left: 96 };
 
-export function ChaosMatrix({ data, range = "max", visibleTeams, teamNames }: ChaosMatrixProps) {
+export function ChaosMatrix({
+  data,
+  range = "max",
+  visibleTeams,
+  teamNames,
+  tooltipTeamLabel = "Team",
+  renderPoint,
+}: ChaosMatrixProps) {
   const tooltipId = useId().replace(/:/g, "");
   const tooltipRef = useRef<D3TooltipController | null>(null);
 
@@ -107,30 +124,63 @@ export function ChaosMatrix({ data, range = "max", visibleTeams, teamNames }: Ch
           />
           <line x1={chart.vlineX} x2={chart.vlineX} y1={MARGIN.top} y2={HEIGHT - MARGIN.bottom} stroke="#9ca3af" strokeWidth={1} strokeDasharray="4 4" />
           <line x1={MARGIN.left} x2={WIDTH - MARGIN.right} y1={chart.hlineY} y2={chart.hlineY} stroke="#9ca3af" strokeWidth={1} strokeDasharray="4 4" />
-          {chart.points.map((p, idx) => (
-            <circle
-              key={`${p.name}-${idx}`}
-              cx={p.cx}
-              cy={p.cy}
-              r={4}
-              fill={CATEGORY_COLORS[p.category]}
-              onMouseEnter={(e) => {
+          {(() => {
+            const buckets = new Map<string, { count: number; used: number }>();
+            chart.points.forEach((p) => {
+              const key = `${Math.round(p.cx)}:${Math.round(p.cy)}`;
+              const bucket = buckets.get(key);
+              if (bucket) {
+                bucket.count += 1;
+              } else {
+                buckets.set(key, { count: 1, used: 0 });
+              }
+            });
+
+            return chart.points.map((p, idx) => {
+            const handlers = {
+              onMouseEnter: (e: MouseEvent<SVGElement>) => {
                 const tooltip = tooltipRef.current;
                 if (!tooltip) return;
                 tooltip.show(
                   `<div style="font-weight:600; color:#0f172a;">${p.name}</div>` +
-                    `<div style="color:#6b7280;">Team: ${p.team}</div>` +
-                    `<div style="margin-top:4px; color:#2563eb;">KP: ${p.medianWeeklyKp} · Churn: ${p.churnRatePct}%</div>`,
+                    `<div style="color:#6b7280;">${tooltipTeamLabel}: ${p.team}</div>` +
+                    `<div style="margin-top:4px; color:#2563eb;">KP: ${p.medianWeeklyKp} · Churn: ${Math.round(p.churnRatePct)}%</div>`,
                   e.clientX + 12,
                   e.clientY + 12
                 );
-              }}
-              onMouseMove={(e) => {
+              },
+              onMouseMove: (e: MouseEvent<SVGElement>) => {
                 tooltipRef.current?.move(e.clientX + 12, e.clientY + 12);
-              }}
-              onMouseLeave={() => tooltipRef.current?.hide()}
-            />
-          ))}
+              },
+              onMouseLeave: () => tooltipRef.current?.hide(),
+            };
+
+            const bucketKey = `${Math.round(p.cx)}:${Math.round(p.cy)}`;
+            const bucket = buckets.get(bucketKey);
+            const stackIndex = bucket ? bucket.used++ : 0;
+            const stackCount = bucket?.count ?? 1;
+            const stackedPoint = { ...p, stackIndex, stackCount };
+
+            if (renderPoint) {
+              return (
+                <g key={`${p.name}-${idx}`}>
+                  {renderPoint(stackedPoint, idx, handlers)}
+                </g>
+              );
+            }
+
+            return (
+              <circle
+                key={`${p.name}-${idx}`}
+                cx={p.cx}
+                cy={p.cy}
+                r={4}
+                fill={CATEGORY_COLORS[p.category]}
+                {...handlers}
+              />
+            );
+            });
+          })()}
           <line x1={MARGIN.left} x2={WIDTH - MARGIN.right} y1={HEIGHT - MARGIN.bottom} y2={HEIGHT - MARGIN.bottom} stroke="#d1d5db" />
           <line x1={MARGIN.left} x2={MARGIN.left} y1={MARGIN.top} y2={HEIGHT - MARGIN.bottom} stroke="#d1d5db" />
           {chart.xTicks.map((t, i) => (

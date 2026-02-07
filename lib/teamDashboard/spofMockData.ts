@@ -6,6 +6,8 @@ import type { SpofDataPoint } from "@/lib/orgDashboard/spofMockData";
 export type MemberSpofRow = {
   memberName: string;
   teamId: string;
+  ownershipPct: number;
+  ownedModules: number;
   avgSpofScore: number; // 0-6 scale, average of member's SPOF data points
   domainCount: number; // 1-5 domains member contributes to
   skillCount: number; // 3-15 skills
@@ -58,6 +60,8 @@ export function getMemberSpofData(teamId: string, memberCount?: number): MemberS
 
     const repoNoise = noise(seed + 3);
     const repoCount = Math.floor(5 + repoNoise * 21); // 5-25
+    const ownershipPct = Math.round(8 + noise(seed + 11) * 34); // 8 - 42
+    const ownedModules = Math.max(1, Math.floor(1 + noise(seed + 12) * 9)); // 1-9
 
     // High risk count derived from avgSpofScore (higher SPOF = more high-risk repos)
     const highRiskRatio = avgSpofScore / 6.0; // Normalize to 0-1
@@ -71,7 +75,6 @@ export function getMemberSpofData(teamId: string, memberCount?: number): MemberS
     // Lower SPOF score = more healthy repos
     const healthyRatio = Math.max(0.2, 1 - avgSpofScore / 6.0); // 20%-100%
     const criticalRatio = Math.min(0.4, avgSpofScore / 6.0 * 0.6); // 0%-40%
-    const attentionRatio = 1 - healthyRatio - criticalRatio;
 
     const repoHealthHealthy = Math.floor(repoCount * healthyRatio);
     const repoHealthCritical = Math.floor(repoCount * criticalRatio);
@@ -83,6 +86,8 @@ export function getMemberSpofData(teamId: string, memberCount?: number): MemberS
     return {
       memberName,
       teamId,
+      ownershipPct,
+      ownedModules,
       avgSpofScore,
       domainCount,
       skillCount,

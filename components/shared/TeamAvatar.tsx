@@ -8,7 +8,7 @@ type TeamAvatarProps = {
 
 const DICEBEAR_STYLE = "shapes";
 
-function getTeamAvatarUrl(teamName: string, size: number) {
+export function getTeamAvatarUrl(teamName: string, size: number) {
   const seed = encodeURIComponent(teamName.trim() || "team");
   return `https://api.dicebear.com/9.x/${DICEBEAR_STYLE}/svg?seed=${seed}&size=${size}`;
 }

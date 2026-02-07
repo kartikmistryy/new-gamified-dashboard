@@ -1,10 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useParams } from "next/navigation";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { D3Gauge } from "@/components/dashboard/D3Gauge";
-import { SpofDistributionChart } from "@/components/dashboard/SpofDistributionChart";
+import { TeamContributionChart } from "@/components/dashboard/TeamContributionChart";
 import { RepoHealthBar, REPO_HEALTH_SEGMENTS, type RepoHealthSegment } from "@/components/dashboard/RepoHealthBar";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "@/components/dashboard/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
@@ -12,7 +12,6 @@ import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { TeamAvatar } from "@/components/shared/TeamAvatar";
 import {
   getMemberSpofData,
-  getMemberSpofDataPoints,
   calculateTeamSpofGaugeValue,
   type MemberSpofRow,
 } from "@/lib/teamDashboard/spofMockData";
@@ -49,83 +48,22 @@ const SPOF_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberSpofRow, SpofMemberFilter>
     header: "Member",
     render: (row) => (
       <div className="flex items-center gap-3">
-        <div className="relative">
-          <TeamAvatar teamName={row.memberName} className="size-4" />
-          {/* Color indicator dot */}
-          <div
-            className="absolute -bottom-0.5 -right-0.5 size-2 rounded-full border border-white"
-            style={{ backgroundColor: row.memberColor }}
-          />
-        </div>
+        <TeamAvatar teamName={row.memberName} className="size-4" />
         <p className="font-medium text-gray-900">{row.memberName}</p>
       </div>
     ),
   },
   {
-    key: "spofScore",
-    header: "SPOF Score",
+    key: "ownershipPct",
+    header: "% of Ownership",
     className: "text-right",
-    render: (row) => {
-      const score = row.avgSpofScore;
-      const color =
-        score < 1.5 ? "#55B685" : score < 3.0 ? "#E9A23B" : "#CA3A31";
-      return (
-        <span className="font-medium" style={{ color }}>
-          {score.toFixed(1)}
-        </span>
-      );
-    },
+    render: (row) => <span className="text-gray-700">{Math.round(row.ownershipPct)}%</span>,
   },
   {
-    key: "repos",
-    header: "Repos",
+    key: "ownedModules",
+    header: "Owned Modules",
     className: "text-right",
-    render: (row) => <span className="text-gray-700">{row.repoCount}</span>,
-  },
-  {
-    key: "highRisk",
-    header: "High Risk",
-    className: "text-right",
-    render: (row) => (
-      <span className="font-medium text-[#CA3A31]">{row.highRiskCount}</span>
-    ),
-  },
-  {
-    key: "repoHealth",
-    header: "Repo Health",
-    className: "w-48",
-    render: (row) => {
-      const total = row.repoCount;
-      const segments = [
-        {
-          width: (row.repoHealthHealthy / total) * 100,
-          color: "#22c55e",
-        },
-        {
-          width: (row.repoHealthNeedsAttention / total) * 100,
-          color: "#f59e0b",
-        },
-        {
-          width: (row.repoHealthCritical / total) * 100,
-          color: "#ef4444",
-        },
-      ];
-
-      return (
-        <div className="flex h-2 w-full overflow-hidden rounded-full bg-gray-100">
-          {segments.map((segment, index) => (
-            <div
-              key={index}
-              className="h-full"
-              style={{
-                width: `${segment.width}%`,
-                backgroundColor: segment.color,
-              }}
-            />
-          ))}
-        </div>
-      );
-    },
+    render: (row) => <span className="text-gray-700">{row.ownedModules}</span>,
   },
 ];
 
@@ -136,20 +74,9 @@ export default function TeamSpofPage() {
   // Data pipeline
   const members = useMemo(() => getMemberSpofData(teamId, 6), [teamId]);
 
-  const spofDataPoints = useMemo(() => getMemberSpofDataPoints(members), [members]);
-
   const gaugeValue = useMemo(() => calculateTeamSpofGaugeValue(members), [members]);
 
   const insights = useMemo(() => getSpofInsights(members), [members]);
-
-  // Derive visible members - all visible by default
-  const visibleMembers = useMemo(() => {
-    const init: Record<string, boolean> = {};
-    for (const member of members) {
-      init[member.memberName] = true;
-    }
-    return init;
-  }, [members]);
 
   // Calculate repo health segments for RepoHealthBar
   const repoHealthSegments = useMemo((): RepoHealthSegment[] => {
@@ -193,13 +120,10 @@ export default function TeamSpofPage() {
               <ChartInsights insights={insights} />
             </div>
           </div>
-          <div className="bg-white rounded-lg">
-            <SpofDistributionChart
-              data={spofDataPoints}
-              visibleTeams={visibleMembers}
-              showNormalFit
-            />
-          </div>
+        </DashboardSection>
+
+        <DashboardSection title="Team Contribution Flow">
+          <TeamContributionChart members={members} minPercentage={5} />
         </DashboardSection>
 
         <DashboardSection title="Repository Health Distribution">

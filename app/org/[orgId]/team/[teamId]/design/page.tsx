@@ -3,26 +3,26 @@
 import { useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import { ArrowRight, TrendingDown, TrendingUp } from "lucide-react";
-import { OwnershipScatter } from "@/components/dashboard/OwnershipScatter";
-import { ChaosMatrix } from "@/components/dashboard/ChaosMatrix";
+import { TeamChaosMatrix } from "@/components/dashboard/TeamChaosMatrix";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "@/components/dashboard/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
 import { SegmentBar } from "@/components/dashboard/SegmentBar";
+import { TeamCollaborationNetwork } from "@/components/dashboard/TeamCollaborationNetwork";
+import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { Badge } from "@/components/shared/Badge";
 import { TeamAvatar } from "@/components/shared/TeamAvatar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import {
   getMemberDesignData,
-  transformToOwnershipScatterData,
   transformToChaosMatrixData,
   type MemberDesignRow,
 } from "@/lib/teamDashboard/designMockData";
+import { getTeamCollaborationData } from "@/lib/teamDashboard/collaborationNetworkData";
+import type { ChartInsight } from "@/lib/orgDashboard/types";
 import {
   DESIGN_MEMBER_FILTER_TABS,
   designMemberSortFunction,
-  getDesignInsights,
   type DesignMemberFilter,
 } from "@/lib/teamDashboard/designHelpers";
 import { TIME_RANGE_OPTIONS, type TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
@@ -181,61 +181,54 @@ export default function TeamDesignPage() {
   const teamId = params.teamId as string;
 
   // State
-  const [ownershipRange, setOwnershipRange] = useState<TimeRangeKey>("3m");
+  const [collaborationRange, setCollaborationRange] = useState<TimeRangeKey>("3m");
   const [chaosRange, setChaosRange] = useState<TimeRangeKey>("max");
   const [designFilter, setDesignFilter] = useState<DesignMemberFilter>("highestOwnership");
+  const [collaborationInsights, setCollaborationInsights] = useState<ChartInsight[]>([]);
 
   // Data pipeline
   const members = useMemo(() => getMemberDesignData(teamId, 6), [teamId]);
-
-  // Derive visible members - all visible by default
-  const visibleMembers = useMemo(() => {
-    const init: Record<string, boolean> = {};
-    members.forEach((member) => {
-      init[member.memberName] = true;
-    });
-    return init;
-  }, [members]);
-
-  const ownershipScatterData = useMemo(
-    () => transformToOwnershipScatterData(members),
-    [members]
-  );
 
   const chaosMatrixData = useMemo(
     () => transformToChaosMatrixData(members),
     [members]
   );
 
-  const insights = useMemo(() => getDesignInsights(members), [members]);
-
   const memberNames = useMemo(() => members.map((m) => m.memberName), [members]);
+  const collaborationData = useMemo(
+    () => getTeamCollaborationData(teamId, memberNames, collaborationRange),
+    [teamId, memberNames, collaborationRange]
+  );
 
   return (
     <TooltipProvider>
       <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
         <DashboardSection
-          title="Ownership Misallocation Detector"
+          title="Collaboration Network"
+          className="w-full"
           action={
             <TimeRangeFilter
               options={TIME_RANGE_OPTIONS}
-              value={ownershipRange}
-              onChange={setOwnershipRange}
+              value={collaborationRange}
+              onChange={setCollaborationRange}
             />
           }
         >
-          <div className="flex flex-row gap-5">
-            <div className="w-[65%] shrink-0">
-              <OwnershipScatter data={ownershipScatterData} range={ownershipRange} />
+          <div className="flex flex-col items-stretch gap-8 xl:flex-row">
+            <div className="min-w-0 xl:w-[60%]">
+              <TeamCollaborationNetwork
+                data={collaborationData}
+                onInsightsChange={setCollaborationInsights}
+              />
             </div>
-            <div className="w-[35%] min-w-0 shrink">
-              <ChartInsights insights={insights} />
+            <div className="min-w-[280px] xl:w-[40%]">
+              <ChartInsights insights={collaborationInsights} />
             </div>
           </div>
         </DashboardSection>
 
         <DashboardSection
-          title="Engineering Chaos Matrix"
+          title="Engineering Chaos Index"
           className="w-full"
           action={
             <TimeRangeFilter
@@ -245,10 +238,9 @@ export default function TeamDesignPage() {
             />
           }
         >
-          <ChaosMatrix
+          <TeamChaosMatrix
             data={chaosMatrixData}
             range={chaosRange}
-            visibleTeams={visibleMembers}
             teamNames={memberNames}
           />
         </DashboardSection>

@@ -4,11 +4,13 @@ import { useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
-import { MemberPerformanceChart } from "@/components/dashboard/MemberPerformanceChart";
+import { D3Gauge } from "@/components/dashboard/D3Gauge";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
+import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "@/components/dashboard/BaseTeamsTable";
+import { TeamPerformanceChart } from "@/components/dashboard/TeamPerformanceChart";
+import { TeamPerformanceComparisonChart } from "@/components/dashboard/TeamPerformanceComparisonChart";
 import { TeamAvatar } from "@/components/shared/TeamAvatar";
 import { getMemberPerformanceRowsForTeam } from "@/lib/teamDashboard/overviewMockData";
 import { generateMemberPerformanceTimeSeries } from "@/lib/teamDashboard/performanceMockData";
@@ -16,14 +18,14 @@ import {
   filterByTimeRange,
   smartSample,
   isTimeRangeSufficient,
-  getVisibleMembersForFilter,
   getPerformanceInsights,
 } from "@/lib/teamDashboard/performanceHelpers";
 import { TimeRangeKey, TIME_RANGE_OPTIONS } from "@/lib/orgDashboard/timeRangeTypes";
-import { ViewMode, PerformanceFilter } from "@/lib/teamDashboard/performanceTypes";
+import { PerformanceFilter } from "@/lib/teamDashboard/performanceTypes";
 import type { MemberPerformanceRow } from "@/lib/teamDashboard/types";
-import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
+import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/orgDashboard/utils";
 import { TrendingUp, TrendingDown, ArrowRight } from "lucide-react";
 
 // Performance filter tabs (different from MemberTable overview filter tabs)
@@ -38,9 +40,9 @@ const PERFORMANCE_FILTER_TABS: { key: PerformanceFilter; label: string }[] = [
 
 // Performance sort function
 function performanceSortFunction(
-  rows: MemberPerformanceRow[],
+  rows: MemberPerformanceWithDelta[],
   currentFilter: PerformanceFilter
-): MemberPerformanceRow[] {
+): MemberPerformanceWithDelta[] {
   const copy = [...rows];
   switch (currentFilter) {
     case "mostProductive":
@@ -60,8 +62,12 @@ function performanceSortFunction(
   }
 }
 
+type MemberPerformanceWithDelta = MemberPerformanceRow & {
+  cumulativeDiffDelta: number;
+};
+
 // Performance table columns
-const PERFORMANCE_COLUMNS: BaseTeamsTableColumn<MemberPerformanceRow, PerformanceFilter>[] = [
+const PERFORMANCE_COLUMNS: BaseTeamsTableColumn<MemberPerformanceWithDelta, PerformanceFilter>[] = [
   {
     key: "rank",
     header: "Rank",
@@ -120,15 +126,32 @@ const PERFORMANCE_COLUMNS: BaseTeamsTableColumn<MemberPerformanceRow, Performanc
     header: "Change",
     className: "text-right",
     render: (row) => {
-      const change = row.change ?? 0;
-      const color = change > 0 ? "#55B685" : change < 0 ? "#CA3A31" : "#737373";
-      const prefix = change > 0 ? "+" : "";
+      const TrendIcon =
+        row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
+      const change = Math.round(row.change ?? 0);
+      const changeLabel = change > 0 ? `${change} pts` : change < 0 ? `${Math.abs(change)} pts` : "0 pts";
+      const changeColor =
+        change > 0 ? DASHBOARD_COLORS.excellent : change < 0 ? DASHBOARD_COLORS.danger : "#737373";
       return (
-        <span className="font-medium" style={{ color }}>
-          {prefix}
-          {change}
-        </span>
+        <div className="flex items-center justify-end">
+          <span
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
+            style={{ backgroundColor: hexToRgba(changeColor, 0.25), color: changeColor }}
+          >
+            <TrendIcon className="size-4 shrink-0" aria-hidden />
+            {changeLabel}
+          </span>
+        </div>
       );
+    },
+  },
+  {
+    key: "cumulativeDiffDelta",
+    header: "Cumulative DiffDelta",
+    className: "text-right",
+    render: (row) => {
+      const cumulativeDelta = Math.round(Math.abs(row.cumulativeDiffDelta ?? 0));
+      return <span className="text-gray-700">{cumulativeDelta}</span>;
     },
   },
   {
@@ -147,8 +170,8 @@ export default function TeamPerformancePage() {
   const teamId = params.teamId as string;
 
   // State
-  const [viewMode, setViewMode] = useState<ViewMode>("aggregate");
   const [timeRange, setTimeRange] = useState<TimeRangeKey>("1m");
+  const [comparisonRange, setComparisonRange] = useState<TimeRangeKey>("3m");
   const [activeFilter, setActiveFilter] = useState<PerformanceFilter>("mostProductive");
 
   // Data pipeline
@@ -183,10 +206,9 @@ export default function TeamPerformancePage() {
   );
 
   const sampledData = useMemo(() => smartSample(timeFilteredData), [timeFilteredData]);
-
-  const visibleMembers = useMemo(
-    () => getVisibleMembersForFilter(members, activeFilter, viewMode),
-    [members, activeFilter, viewMode]
+  const comparisonFilteredData = useMemo(
+    () => filterByTimeRange(rawData, comparisonRange),
+    [rawData, comparisonRange]
   );
 
   const timeRangeOptions = useMemo(
@@ -203,57 +225,109 @@ export default function TeamPerformancePage() {
     [members, sampledData, timeRange]
   );
 
+  const cumulativeDiffDeltaByMember = useMemo(() => {
+    const totals = new Map<string, number>();
+    if (timeFilteredData.length < 2) return totals;
+
+    for (let i = 1; i < timeFilteredData.length; i++) {
+      const prev = timeFilteredData[i - 1];
+      const curr = timeFilteredData[i];
+      for (const member of members) {
+        const prevValue = prev.memberValues[member.memberName] ?? 0;
+        const currValue = curr.memberValues[member.memberName] ?? 0;
+        const delta = currValue - prevValue;
+        totals.set(member.memberName, (totals.get(member.memberName) ?? 0) + delta);
+      }
+    }
+
+    return totals;
+  }, [timeFilteredData, members]);
+
+  const tableRows = useMemo<MemberPerformanceWithDelta[]>(
+    () => {
+      const rawValues = members.map((member) =>
+        Math.abs(cumulativeDiffDeltaByMember.get(member.memberName) ?? 0)
+      );
+      const min = Math.min(...rawValues, 0);
+      const max = Math.max(...rawValues, 0);
+      const minOutput = 20;
+      const maxOutput = 50;
+      const scaleValue = (value: number) => {
+        if (max === min) return Math.round((minOutput + maxOutput) / 2);
+        const ratio = (value - min) / (max - min);
+        return Math.round(minOutput + ratio * (maxOutput - minOutput));
+      };
+
+      return members.map((member) => ({
+        ...member,
+        cumulativeDiffDelta: scaleValue(
+          Math.abs(cumulativeDiffDeltaByMember.get(member.memberName) ?? 0)
+        ),
+      }));
+    },
+    [members, cumulativeDiffDeltaByMember]
+  );
+
+  const teamPerformanceValue = useMemo(() => {
+    if (members.length === 0) return 0;
+    const total = members.reduce((sum, member) => sum + member.performanceValue, 0);
+    return Math.round(total / members.length);
+  }, [members]);
+
   return (
     <TooltipProvider>
       <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
         <Card className="w-full border-none bg-white p-0 shadow-none">
           <CardContent className="flex w-full flex-col items-stretch space-y-8 px-0">
-            <h2 className="text-2xl font-semibold text-foreground">Performance</h2>
+            <DashboardSection title="Performance Tracking">
+              <div className="flex flex-row flex-wrap items-stretch gap-8">
+                <div className="flex shrink-0 min-w-[280px] max-w-[50%]">
+                  <D3Gauge
+                    value={teamPerformanceValue}
+                    label={getPerformanceGaugeLabel(teamPerformanceValue)}
+                    labelColor={getGaugeColor(teamPerformanceValue)}
+                    valueDisplay={`${teamPerformanceValue}/100`}
+                  />
+                </div>
+                <div className="flex-1 min-w-[280px]">
+                  <ChartInsights insights={insights} />
+                </div>
+              </div>
+            </DashboardSection>
 
-            {/* Controls row: view toggle left, time range right */}
-            <div className="flex items-center justify-between">
-              <ToggleGroup
-                type="single"
-                value={viewMode}
-                onValueChange={(value) => {
-                  if (value) setViewMode(value as ViewMode);
-                }}
-              >
-                <ToggleGroupItem value="aggregate" aria-label="Team Aggregate view">
-                  Team Aggregate
-                </ToggleGroupItem>
-                <ToggleGroupItem value="individual" aria-label="Individual Members view">
-                  Individual Members
-                </ToggleGroupItem>
-              </ToggleGroup>
-              <TimeRangeFilter
-                options={timeRangeOptions}
-                value={timeRange}
-                onChange={setTimeRange}
-              />
-            </div>
-
-            {/* Chart + insights row */}
-            <div className="flex flex-row gap-5">
-              <div className="flex-1">
-                <MemberPerformanceChart
-                  data={sampledData}
-                  members={members}
-                  viewMode={viewMode}
-                  visibleMembers={visibleMembers}
-                  timeRange={timeRange}
+            <section className="w-full" aria-label="Team performance chart">
+              <div className="mb-4 flex flex-row flex-wrap items-center justify-start gap-4">
+                <TimeRangeFilter
+                  options={timeRangeOptions}
+                  value={timeRange}
+                  onChange={setTimeRange}
                 />
               </div>
-              <ChartInsights insights={insights} />
-            </div>
+              <div className="bg-white rounded-lg">
+                <TeamPerformanceChart data={timeFilteredData} />
+              </div>
+            </section>
+
+            <DashboardSection
+              title="Team Performance Comparison"
+              action={
+                <TimeRangeFilter
+                  options={timeRangeOptions}
+                  value={comparisonRange}
+                  onChange={setComparisonRange}
+                />
+              }
+            >
+              <TeamPerformanceComparisonChart data={comparisonFilteredData} />
+            </DashboardSection>
 
             {/* Member table section */}
             <section className="w-full" aria-labelledby="members-heading">
               <h2 id="members-heading" className="mb-4 text-2xl font-semibold text-foreground">
                 Team Members
               </h2>
-              <BaseTeamsTable<MemberPerformanceRow, PerformanceFilter>
-                rows={members}
+              <BaseTeamsTable<MemberPerformanceWithDelta, PerformanceFilter>
+                rows={tableRows}
                 filterTabs={PERFORMANCE_FILTER_TABS}
                 activeFilter={activeFilter}
                 onFilterChange={setActiveFilter}
