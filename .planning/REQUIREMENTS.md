@@ -33,27 +33,35 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Design Tab
 
-- [ ] **DSGN-01**: Ownership Health scatter plot or chart adapted for members
-- [ ] **DSGN-02**: Engineering Chaos Index chart adapted for members
-- [ ] **DSGN-03**: Member table with ownership health and chaos index scores
-- [ ] **DSGN-04**: Filter tabs adapted for member-level ownership patterns
-- [ ] **DSGN-05**: ChartInsights panel with design pattern insights
+- [x] **DSGN-01**: Ownership Health scatter plot or chart adapted for members
+- [x] **DSGN-02**: Engineering Chaos Index chart adapted for members
+- [x] **DSGN-03**: Member table with ownership health and chaos index scores
+- [x] **DSGN-04**: Filter tabs adapted for member-level ownership patterns
+- [x] **DSGN-05**: ChartInsights panel with design pattern insights
 
 ### Skills Graph Tab
 
-- [ ] **SKILL-01**: Skills sunburst/treemap chart showing member's skill distribution
-- [ ] **SKILL-02**: View toggle (By Team / By Skill) for different skill groupings
-- [ ] **SKILL-03**: Member skills table showing Domain, Skill, Total Skill Usage, Total Skill Completion, Contributors
-- [ ] **SKILL-04**: Filter tabs (Most Domains, Least Domains, Most Skills, Least Skills)
-- [ ] **SKILL-05**: ChartInsights panel with skills insights
+- [x] **SKILL-01**: Skills sunburst/treemap chart showing member's skill distribution
+- [x] **SKILL-02**: View toggle (By Team / By Skill) for different skill groupings
+- [x] **SKILL-03**: Member skills table showing Domain, Skill, Total Skill Usage, Total Skill Completion, Contributors
+- [x] **SKILL-04**: Filter tabs (Most Domains, Least Domains, Most Skills, Least Skills)
+- [x] **SKILL-05**: ChartInsights panel with skills insights
 
 ### SPOF Tab
 
-- [ ] **SPOF-01**: SPOF Owner Distribution histogram/chart for members
-- [ ] **SPOF-02**: Repository Health Distribution bar chart
-- [ ] **SPOF-03**: Member table with SPOF distribution and repository health columns
-- [ ] **SPOF-04**: Filter tabs (Most Domains, Least Domains, Most Skills, Least Skills)
-- [ ] **SPOF-05**: ChartInsights panel with SPOF risk insights
+- [x] **SPOF-01**: SPOF Owner Distribution histogram/chart for members
+- [x] **SPOF-02**: Repository Health Distribution bar chart
+- [x] **SPOF-03**: Member table with SPOF distribution and repository health columns
+- [x] **SPOF-04**: Filter tabs (Most Domains, Least Domains, Most Skills, Least Skills)
+- [x] **SPOF-05**: ChartInsights panel with SPOF risk insights
+
+### Architectural Alignment
+
+- [x] **ARCH-01**: RouteParamsProvider context provides type-safe route parameters to all components
+- [x] **ARCH-02**: Page components are thin server-side wrappers with business logic in Client Components
+- [x] **ARCH-03**: Strict context utility prevents null context access errors
+- [x] **ARCH-04**: All URL building uses centralized route utilities from lib/routes.ts
+- [x] **ARCH-05**: No direct useParams() usage - all components use useRouteParams() hook
 
 ## v2 Requirements
 
@@ -113,27 +121,32 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PERF-03 | Phase 3 | Complete |
 | PERF-04 | Phase 3 | Complete |
 | PERF-05 | Phase 3 | Complete |
-| DSGN-01 | Phase 4 | Pending |
-| DSGN-02 | Phase 4 | Pending |
-| DSGN-03 | Phase 4 | Pending |
-| DSGN-04 | Phase 4 | Pending |
-| DSGN-05 | Phase 4 | Pending |
-| SKILL-01 | Phase 4 | Pending |
-| SKILL-02 | Phase 4 | Pending |
-| SKILL-03 | Phase 4 | Pending |
-| SKILL-04 | Phase 4 | Pending |
-| SKILL-05 | Phase 4 | Pending |
-| SPOF-01 | Phase 4 | Pending |
-| SPOF-02 | Phase 4 | Pending |
-| SPOF-03 | Phase 4 | Pending |
-| SPOF-04 | Phase 4 | Pending |
-| SPOF-05 | Phase 4 | Pending |
+| DSGN-01 | Phase 4 | Complete |
+| DSGN-02 | Phase 4 | Complete |
+| DSGN-03 | Phase 4 | Complete |
+| DSGN-04 | Phase 4 | Complete |
+| DSGN-05 | Phase 4 | Complete |
+| SKILL-01 | Phase 4 | Complete |
+| SKILL-02 | Phase 4 | Complete |
+| SKILL-03 | Phase 4 | Complete |
+| SKILL-04 | Phase 4 | Complete |
+| SKILL-05 | Phase 4 | Complete |
+| SPOF-01 | Phase 4 | Complete |
+| SPOF-02 | Phase 4 | Complete |
+| SPOF-03 | Phase 4 | Complete |
+| SPOF-04 | Phase 4 | Complete |
+| SPOF-05 | Phase 4 | Complete |
+| ARCH-01 | Phase 5 | Complete |
+| ARCH-02 | Phase 5 | Complete |
+| ARCH-03 | Phase 5 | Complete |
+| ARCH-04 | Phase 5 | Complete |
+| ARCH-05 | Phase 5 | Complete |
 
 **Coverage:**
-- v1 requirements: 30 total
-- Mapped to phases: 30/30
+- v1 requirements: 35 total
+- Mapped to phases: 35/35
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-06*
-*Last updated: 2026-02-06 after Phase 3 completion*
+*Last updated: 2026-02-08 after Phase 5 completion*
