@@ -41,7 +41,7 @@ export const DASHBOARD_TABS: Record<DashboardType, Readonly<ProfileTab[]>> = {
 
 export const DASHBOARD_BASE_PATHS: Record<DashboardType, string> = {
   team: "/team",
-  repo: "/team/repositories",
+  repo: "/repository",
   user: "/user",
   organization: "/",
 } as const

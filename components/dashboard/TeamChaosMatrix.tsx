@@ -2,11 +2,12 @@
 
 import { useId } from "react";
 import type { ChaosPoint, ChaosTimeRangeKey } from "@/lib/orgDashboard/chaosMatrixData";
+import { CATEGORY_COLORS } from "@/lib/orgDashboard/chaosMatrixData";
 import { ChaosMatrix } from "@/components/dashboard/ChaosMatrix";
 import { getTeamAvatarUrl } from "@/components/shared/TeamAvatar";
 
 const AVATAR_SIZE = 22;
-const AVATAR_STROKE = 2;
+const AVATAR_STROKE = 2.5;
 
 type TeamChaosMatrixProps = {
   data?: ChaosPoint[];
@@ -38,6 +39,8 @@ export function TeamChaosMatrix({ data, range, visibleTeams, teamNames }: TeamCh
         const dy = Math.sin(angle) * radius;
         const x = point.cx + dx;
         const y = point.cy + dy;
+        // Get border color based on category
+        const borderColor = CATEGORY_COLORS[point.category];
         return (
           <g {...handlers}>
             <defs>
@@ -59,7 +62,7 @@ export function TeamChaosMatrix({ data, range, visibleTeams, teamNames }: TeamCh
               cy={y}
               r={half}
               fill="none"
-              stroke="#ffffff"
+              stroke={borderColor}
               strokeWidth={AVATAR_STROKE}
             />
           </g>

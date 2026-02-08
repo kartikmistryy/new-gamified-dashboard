@@ -50,22 +50,30 @@ export function generateSyntheticChaosPoints(
     const x = Math.sin(seed * 12.9898) * 43758.5453;
     return x - Math.floor(x);
   }
+
+  // Ensure even distribution across all 4 quadrants
   for (let i = 0; i < count; i++) {
     const quadrant = i % 4;
     let kp: number, churn: number;
+
     if (quadrant === 0) {
-      kp = 200 + r(i) * 800;
-      churn = 4 + r(i + 1) * 10;
+      // Low-Skill Developer: Low KP, High Churn (bottom-left)
+      kp = 100 + r(i) * 800;         // 100-900 KP
+      churn = 10 + r(i + 1) * 2;     // 10-12% churn
     } else if (quadrant === 1) {
-      kp = 200 + r(i) * 800;
-      churn = 0.5 + r(i + 1) * 1.5;
+      // Traditional Developer: Low KP, Low Churn (bottom-right)
+      kp = 100 + r(i) * 800;         // 100-900 KP
+      churn = 0.3 + r(i + 1) * 1.7;  // 0.3-2% churn
     } else if (quadrant === 2) {
-      kp = 1200 + r(i) * 3800;
-      churn = 4 + r(i + 1) * 10;
+      // Unskilled AI User: High KP, High Churn (top-left)
+      kp = 1500 + r(i) * 4500;       // 1500-6000 KP
+      churn = 10 + r(i + 1) * 2;     // 10-12% churn
     } else {
-      kp = 1200 + r(i) * 3800;
-      churn = 0.5 + r(i + 1) * 1.5;
+      // Skilled AI User: High KP, Low Churn (top-right)
+      kp = 1500 + r(i) * 4500;       // 1500-6000 KP
+      churn = 0.3 + r(i + 1) * 1.7;  // 0.3-2% churn
     }
+
     const teamIndex = i % 5;
     const teamLabel =
       teamNames && teamNames.length > 0
@@ -76,7 +84,7 @@ export function generateSyntheticChaosPoints(
       name: `Dev ${i + 1}`,
       team: teamLabel,
       medianWeeklyKp: Math.round(kp),
-      churnRatePct: Math.round(churn * 10) / 10,
+      churnRatePct: parseFloat((churn).toFixed(1)),
     });
   }
   return points;

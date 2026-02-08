@@ -26,7 +26,11 @@ export function useTableFilter<T, F extends string>({
   const handleFilter = onFilterChange ?? setFilter;
 
   const sortedRows = useMemo(
-    () => sortFunction(rows, currentFilter as F),
+    () => {
+      if (!rows || !Array.isArray(rows)) return [];
+      const result = sortFunction(rows, currentFilter as F);
+      return Array.isArray(result) ? result : [];
+    },
     [rows, currentFilter, sortFunction]
   );
 

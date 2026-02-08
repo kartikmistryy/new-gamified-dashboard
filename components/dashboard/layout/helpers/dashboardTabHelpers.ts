@@ -48,13 +48,13 @@ export const resolveActiveTab = (
   const userMatch = pathname.match(/^\/org\/[^/]+\/user\/[^/]+(?:\/([^/]+))?/)
   if (userMatch) return (userMatch[1] as ProfileTabKey) || "performance"
 
-  const repoMatch = pathname.match(/^\/org\/[^/]+\/repo\/[^/]+(?:\/([^/]+))?/)
+  const repoMatch = pathname.match(/^\/org\/[^/]+\/repository\/[^/]+(?:\/([^/]+))?/)
   if (repoMatch) return (repoMatch[1] as ProfileTabKey) || fallback
 
   const orgMatch = pathname.match(/^\/org\/[^/]+(?:\/([^/]+))?/)
   if (orgMatch) {
     const segment = orgMatch[1]
-    if (segment && !["team", "user", "repo"].includes(segment)) {
+    if (segment && !["team", "user", "repository"].includes(segment)) {
       return (segment as ProfileTabKey) || fallback
     }
     return "overview"

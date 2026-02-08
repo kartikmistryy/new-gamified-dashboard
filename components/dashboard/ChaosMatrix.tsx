@@ -36,7 +36,7 @@ type ChaosMatrixProps = {
 type CategorizedPoint = ChaosPoint & { category: ChaosCategory };
 
 const WIDTH = 800;
-const HEIGHT = 380;
+const HEIGHT = 480;
 const MARGIN = { top: 24, right: 24, bottom: 48, left: 96 };
 
 export function ChaosMatrix({
