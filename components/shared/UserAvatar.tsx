@@ -9,15 +9,19 @@
 
 type UserAvatarProps = {
   /** User name to generate avatar from. */
-  userName: string;
+  userName?: string;
+  /** Alternative prop name for user name. */
+  name?: string;
+  /** Optional custom avatar URL. If provided, uses this instead of generated avatar. */
+  src?: string;
   /** Optional Tailwind className for sizing and positioning. */
   className?: string;
-  /** Size in pixels for the generated SVG (default: 64). */
-  size?: number;
+  /** Size preset (sm, md, lg) or custom pixel value. */
+  size?: "sm" | "md" | "lg" | number;
 };
 
 /** DiceBear avatar style for user profiles. */
-const DICEBEAR_STYLE = "avataaars";
+const DICEBEAR_STYLE = "shapes";
 
 /**
  * Generates a consistent avatar URL for a given user name.
@@ -29,8 +33,8 @@ const DICEBEAR_STYLE = "avataaars";
  * @param size - Size in pixels for the SVG
  * @returns Avatar URL
  */
-export function getUserAvatarUrl(userName: string, size: number): string {
-  const seed = encodeURIComponent(userName.trim() || "user");
+export function getUserAvatarUrl(userName: string | undefined, size: number): string {
+  const seed = encodeURIComponent((userName || "").trim() || "user");
   return `https://api.dicebear.com/9.x/${DICEBEAR_STYLE}/svg?seed=${seed}&size=${size}`;
 }
 
@@ -43,18 +47,53 @@ export function getUserAvatarUrl(userName: string, size: number): string {
  * @example
  * ```tsx
  * <UserAvatar userName="Alice Johnson" className="size-8" />
+ * <UserAvatar name="Bob Smith" size="md" />
+ * <UserAvatar name="Carol Lee" src="https://example.com/avatar.jpg" />
  * ```
  */
 export function UserAvatar({
   userName,
-  className = "size-6",
+  name,
+  src,
+  className,
   size = 64,
 }: UserAvatarProps) {
+  const displayName = userName || name || "User";
+
+  // Convert size preset to pixel value
+  let pixelSize: number;
+  let sizeClass: string;
+
+  if (typeof size === "number") {
+    pixelSize = size;
+    sizeClass = className || "size-6";
+  } else {
+    switch (size) {
+      case "sm":
+        pixelSize = 32;
+        sizeClass = className || "size-8";
+        break;
+      case "md":
+        pixelSize = 48;
+        sizeClass = className || "size-12";
+        break;
+      case "lg":
+        pixelSize = 64;
+        sizeClass = className || "size-16";
+        break;
+      default:
+        pixelSize = 64;
+        sizeClass = className || "size-6";
+    }
+  }
+
+  const avatarUrl = src || getUserAvatarUrl(displayName, pixelSize);
+
   return (
     <img
-      src={getUserAvatarUrl(userName, size)}
-      alt={`${userName} avatar`}
-      className={`shrink-0 rounded-full ${className}`}
+      src={avatarUrl}
+      alt={`${displayName} avatar`}
+      className={`shrink-0 rounded-full ${sizeClass}`}
       loading="lazy"
     />
   );
