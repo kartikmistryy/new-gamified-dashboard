@@ -1,3 +1,8 @@
+export type FilterTab<T extends string = string> = {
+  key: T;
+  label: string;
+};
+
 export type AIRecommendation = {
   sentiment: string;
   sentimentColor: string;
