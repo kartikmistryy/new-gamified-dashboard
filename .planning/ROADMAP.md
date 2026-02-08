@@ -15,7 +15,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation & Type System** - Member data models, mock generators, routing infrastructure
 - [x] **Phase 2: Overview Tab** - First complete tab validating component adaptation patterns
 - [x] **Phase 3: Performance Tab** - Time series filtering and comparative metrics
-- [ ] **Phase 4: Remaining Tabs** - Design, Skills Graph, SPOF tabs completing 5-tab structure
+- [x] **Phase 4: Remaining Tabs** - Design, Skills Graph, SPOF tabs completing 5-tab structure
+- [ ] **Phase 5: Architectural Alignment with Best Practices** - Implement routing and component architecture improvements
 
 ## Phase Details
 
@@ -80,14 +81,45 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — Design tab: member ownership health, chaos matrix, and design table
-- [ ] 04-02-PLAN.md — Skills Graph tab: SkillGraph visualization, dual-view table, skill filters
-- [ ] 04-03-PLAN.md — SPOF tab: SPOF distribution, repo health, risk analysis table
+- [x] 04-01-PLAN.md — Design tab: member ownership health, chaos matrix, and design table
+- [x] 04-02-PLAN.md — Skills Graph tab: SkillGraph visualization, dual-view table, skill filters
+- [x] 04-03-PLAN.md — SPOF tab: SPOF distribution, repo health, risk analysis table
+
+### Phase 5: Architectural Alignment with Best Practices
+**Goal**: Eliminate architectural anti-patterns and align codebase with Next.js routing and component best practices
+**Depends on**: Phase 4
+**Requirements**: ARCH-01, ARCH-02, ARCH-03, ARCH-04, ARCH-05
+**Success Criteria** (what must be TRUE):
+  1. RouteParamsProvider context exists and provides type-safe route parameters to all components
+  2. Page components are thin server-side wrappers with business logic in Client Components
+  3. Strict context utility (get-strict-context.tsx) prevents null context access errors
+  4. All URL building uses centralized route utilities from lib/routes.ts
+  5. No direct useParams() usage - all components use useRouteParams() hook
+**Plans**: 3 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Foundation: strict context utility, RouteParamsProvider, org layout, URL refactor
+- [ ] 05-02-PLAN.md — Extract 5 team pages to Server/Client Component pattern
+- [ ] 05-03-PLAN.md — Extract 5 org pages to Server/Client Component pattern
+
+**Details:**
+Based on ARCHITECTURE_AUDIT.md findings:
+
+**HIGH PRIORITY:**
+- Create RouteParamsProvider with type-safe context for route params
+- Implement Client Component pattern - separate page/client logic
+- Create strict context utility (get-strict-context.tsx)
+
+**MEDIUM PRIORITY:**
+- Refactor URL building in helpers to use centralized route utilities
+- Replace direct useParams() usage with useRouteParams() hook
+
+This phase establishes foundation for maintainable, scalable code by following Next.js App Router best practices and eliminating mixed concerns in page components.
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -95,7 +127,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 2. Overview Tab | 1/1 | ✓ Complete | 2026-02-06 |
 | 3. Performance Tab | 2/2 | ✓ Complete | 2026-02-06 |
 | 4. Remaining Tabs | 3/3 | ✓ Complete | 2026-02-06 |
+| 5. Architectural Alignment | 0/3 | Planned | - |
 
 ---
 *Roadmap created: 2026-02-06*
-*Last updated: 2026-02-06 (Phase 4 complete)*
+*Last updated: 2026-02-08 (Phase 5 planned)*
