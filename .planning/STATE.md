@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-06)
 ## Current Position
 
 Phase: 5 of 5 (Architectural Alignment with Best Practices)
-Plan: 2 of [TBD] in current phase
+Plan: 3 of [TBD] in current phase
 Status: In progress
-Last activity: 2026-02-08 — Completed 05-02-PLAN.md (Team Pages Client Component Extraction)
+Last activity: 2026-02-08 — Completed 05-03-PLAN.md (Org Pages Client Component Extraction)
 
-Progress: [████████░░] 84% (Phase 5 in progress: team pages migrated to Client Component pattern)
+Progress: [████████░░] 86% (Phase 5 in progress: all dashboard pages migrated to Client Component pattern)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
+- Total plans completed: 11
 - Average duration: 3.2min
-- Total execution time: 0.53 hours
+- Total execution time: 0.59 hours
 
 **By Phase:**
 
@@ -31,11 +31,11 @@ Progress: [████████░░] 84% (Phase 5 in progress: team pages 
 | 02-overview-tab | 1 | 2min | 2min |
 | 03-performance-tab | 2 | 5min | 2.5min |
 | 04-remaining-tabs | 3 | 12min | 4min |
-| 05-architectural-alignment | 2 | 5.2min | 2.6min |
+| 05-architectural-alignment | 3 | 8.45min | 2.8min |
 
 **Recent Trend:**
-- Last 5 plans: 04-01 (3.4min), 04-02 (5min), 04-03 (3.7min), 05-01 (2min), 05-02 (3.2min)
-- Trend: Consistent refactoring velocity, efficient page extraction pattern
+- Last 5 plans: 04-02 (5min), 04-03 (3.7min), 05-01 (2min), 05-02 (3.2min), 05-03 (3.25min)
+- Trend: Efficient refactoring velocity, consistent page extraction pattern
 
 *Updated after each plan completion*
 
@@ -90,6 +90,9 @@ Recent decisions affecting current work:
 - **[05-02]** Client Components placed in components/dashboard/pages/ (separates page-level from reusable components)
 - **[05-02]** All team pages use useRouteParams() instead of direct useParams() (eliminates Next.js coupling)
 - **[05-02]** Server Component wrappers have zero logic (single-line render of Client Component)
+- **[05-03]** Org pages extracted to Client Components (don't need useRouteParams unlike team pages)
+- **[05-03]** Helper functions kept in Client Components when page-specific (e.g., buildSkillRowsFromRoadmap)
+- **[05-03]** Server Component wrappers include commented async examples for future server data fetching
 
 ### Pending Todos
 
@@ -105,10 +108,10 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-08 09:53 UTC
-Stopped at: Completed 05-02-PLAN.md (Phase 5 Plan 2: Team Pages Client Component Extraction)
+Last session: 2026-02-08 09:54 UTC
+Stopped at: Completed 05-03-PLAN.md (Phase 5 Plan 3: Org Pages Client Component Extraction)
 Resume file: None
 
 ---
 *State initialized: 2026-02-06*
-*Last updated: 2026-02-08 (Phase 5 Plan 2 complete - All team pages migrated to Client Component pattern)*
+*Last updated: 2026-02-08 (Phase 5 Plan 3 complete - All dashboard pages migrated to Client Component pattern)*
