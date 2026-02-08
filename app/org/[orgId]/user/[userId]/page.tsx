@@ -1,3 +1,5 @@
-export default function UserPage() {
-  return <div>User</div>
+import { UserPerformancePageClient } from "@/components/dashboard/pages/UserPerformancePageClient";
+
+export default function UserPerformancePage() {
+  return <UserPerformancePageClient />;
 }
