@@ -14,7 +14,7 @@ export function getUserPath(orgId: string, userId: string, tab?: string): string
 }
 
 export function getRepoPath(orgId: string, repoId: string, tab?: string): string {
-  const base = `/org/${orgId}/repo/${repoId}`
+  const base = `/org/${orgId}/repository/${repoId}`
   return tab ? `${base}/${tab}` : base
 }
 
@@ -38,7 +38,7 @@ export function extractUserId(pathname: string | null | undefined): string | nul
 
 export function extractRepoId(pathname: string | null | undefined): string | null {
   if (!pathname) return null
-  const match = pathname.match(/^\/org\/[^/]+\/repo\/([^/]+)/)
+  const match = pathname.match(/^\/org\/[^/]+\/repository\/([^/]+)/)
   return match ? match[1] : null
 }
 
@@ -46,7 +46,7 @@ export type DashboardType = "organization" | "team" | "user" | "repo"
 
 export function detectDashboardType(pathname: string): DashboardType {
   if (/^\/org\/[^/]+\/user\/[^/]+/.test(pathname)) return "user"
-  if (/^\/org\/[^/]+\/repo\/[^/]+/.test(pathname)) return "repo"
+  if (/^\/org\/[^/]+\/repository\/[^/]+/.test(pathname)) return "repo"
   if (/^\/org\/[^/]+\/team\/[^/]+/.test(pathname)) return "team"
   if (/^\/org\/[^/]+/.test(pathname)) return "organization"
   return "organization"
@@ -54,5 +54,5 @@ export function detectDashboardType(pathname: string): DashboardType {
 
 export function isRepoDetailPage(pathname: string | null | undefined): boolean {
   if (!pathname) return false
-  return /^\/org\/[^/]+\/repo\/[^/]+/.test(pathname)
+  return /^\/org\/[^/]+\/repository\/[^/]+/.test(pathname)
 }
