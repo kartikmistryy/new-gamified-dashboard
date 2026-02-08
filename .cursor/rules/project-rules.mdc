@@ -39,15 +39,17 @@ Dashboard code follows strict separation of concerns with these layers and patte
 ### Architecture layers
 
 ```
-app/               → Page composition (thin, delegation only)
-components/        → UI components (rendering only)
-lib/               → Business logic, data, utilities
-lib/shared/        → Cross-dashboard shared code
+app/                      → Page routing (Server Component wrappers)
+components/dashboard/pages/ → Page-level Client Components (business logic)
+components/dashboard/      → Reusable dashboard UI components
+lib/                      → Business logic, data, utilities
+lib/shared/               → Cross-dashboard shared code
 ```
 
 **Layer responsibilities**:
-- **Pages (`app/`)**: Route definition, data fetching (future: API calls), filter state management, component composition. NO business logic, NO data transformation. MAX 160 lines per page.
-- **Components (`components/`)**: Pure rendering, props-driven, reusable across contexts. NO data fetching, NO business logic. MAX 200 lines per component.
+- **Page wrappers (`app/`)**: Server Component wrappers. Single-line render of Client Component. Future: server-side data fetching. NO `"use client"`. MAX 10 lines per page.
+- **Page Client Components (`components/dashboard/pages/`)**: Page-level business logic. Marked `"use client"`. Contains useState, useMemo, data processing, filter state. Uses `useRouteParams()`. MAX 160 lines per component.
+- **Reusable components (`components/dashboard/`)**: Pure rendering, props-driven, reusable across pages. NO data fetching, NO page-specific business logic. MAX 200 lines per component.
 - **Lib (`lib/`)**: Data transformation, mock data generation (future: API adapters), business logic, pure functions, type definitions. MAX 200 lines per file.
 
 **Data flow**: Backend API (future) → `lib/[dashboard]/mockData.ts` (will become API adapters) → `lib/[dashboard]/helpers.ts` (transform data) → `app/[page].tsx` (manage state, compose UI) → `components/[Component].tsx` (render UI)
@@ -60,6 +62,9 @@ lib/shared/        → Cross-dashboard shared code
   - `timeRangeTypes.ts`: TimeRangeKey, time utilities, TIME_RANGE_OPTIONS
   - `entityTypes.ts`: MemberId, TeamId, OrgId (branded types)
   - `utilityTypes.ts`: Generic utilities
+- **`lib/routes.ts`**: Centralized route utilities (URL building, param extraction)
+- **`lib/get-strict-context.tsx`**: Type-safe context factory (eliminates null checks)
+- **`lib/RouteParamsProvider.tsx`**: Route params context provider and `useRouteParams()` hook
 - **Cross-dashboard utilities**: Shared functions used by both org and team dashboards
 
 ### Dashboard-specific lib (`lib/orgDashboard/`, `lib/teamDashboard/`)
@@ -72,8 +77,16 @@ lib/shared/        → Cross-dashboard shared code
 - **Column definitions**: Extract column configs to lib files for reusability (e.g. `PERFORMANCE_COLUMNS`)
 - **Chart data transforms**: Pure functions for processing chart data (e.g. `transformToOwnershipScatterData`)
 
-### Dashboard components (`components/dashboard/`)
+### Dashboard components
 
+**Page-level Client Components** (`components/dashboard/pages/`):
+- **Page-specific business logic**: One file per page (e.g. `TeamOverviewPageClient.tsx`, `OrgPerformancePageClient.tsx`).
+- **Contains**: useState, useMemo, useCallback, data processing, filter state management, component composition.
+- **Always** marked `"use client"` at top of file.
+- **Named exports only**: e.g. `export function TeamOverviewPageClient()`.
+- **Uses `useRouteParams()`** to access route parameters (orgId, teamId, etc.).
+
+**Reusable dashboard components** (`components/dashboard/`):
 - **Tables**: Use **`BaseTeamsTable`** with column definitions from lib. Pass `rows`, `columns`, `filterTabs`, `sortFunction`, `getRowKey`, and optional `activeFilter`/`onFilterChange` (controlled) or `defaultFilter` (uncontrolled). Use **`SegmentBar`** in column `render` functions for segment visualization. NO filter state inside BaseTeamsTable; page manages filter state.
 - **Charts**: Components are pure rendering only. Receive `data` as props (already processed). Charts do NOT fetch data, do NOT transform data, do NOT manage filters. Page manages time range and passes processed data.
 - **Segment bars**: Use **`SegmentBar`** with `segments` (e.g. `{ bg }[]` from `DASHBOARD_BG_CLASSES`) and `counts`. Segment colors must come from `colors.ts`.
@@ -89,10 +102,59 @@ lib/shared/        → Cross-dashboard shared code
 
 ### Pages (org & team dashboards)
 
-- **Thin delegation only**: Pages fetch data (currently from mock, future from API), manage filter state, compose components. NO business logic. MAX 160 lines.
-- Use **`DashboardSection`** to wrap each major block (title + optional action + content). Use **`TimeRangeFilter`** in the section `action` when needed.
-- Pass filter state and handlers from page into components; components do NOT own state.
-- Process data in page using lib helpers before passing to components (e.g. `const sortedData = useMemo(() => sortFunction(data, filter), [data, filter])`).
+Dashboard pages follow the **Server Component wrapper + Client Component** pattern for optimal performance and clean separation.
+
+**Page file structure** (`app/org/[orgId]/*/page.tsx`):
+- **Server Component wrapper**: Thin, single-line render of Client Component. NO `"use client"` directive.
+- **Future-ready**: Server Components will fetch data from API and pass as props to Client Component.
+- **Current state**: Wrapper simply renders Client Component (data fetching happens client-side for now).
+
+**Client Component** (`components/dashboard/pages/*PageClient.tsx`):
+- **Contains all business logic**: useState, useMemo, useCallback, data processing, filter state management.
+- **Marked with `"use client"`** directive at top of file.
+- **Named export** (not default): e.g. `export function TeamOverviewPageClient()`.
+- **Uses `useRouteParams()`** hook (NOT `useParams()` directly) to access orgId, teamId, userId, repoId.
+- **Composes UI**: Use `DashboardSection`, charts, tables, filters. MAX 160 lines per Client Component.
+
+**Example pattern**:
+```tsx
+// app/org/[orgId]/team/[teamId]/page.tsx (Server Component)
+import { TeamOverviewPageClient } from '@/components/dashboard/pages/TeamOverviewPageClient';
+
+export default function TeamOverviewPage() {
+  return <TeamOverviewPageClient />;
+}
+
+// components/dashboard/pages/TeamOverviewPageClient.tsx (Client Component)
+"use client";
+
+import { useRouteParams } from '@/lib/RouteParamsProvider';
+
+export function TeamOverviewPageClient() {
+  const { teamId, orgId } = useRouteParams();
+  // ... business logic, state, data processing
+  return (/* ... UI ... */);
+}
+```
+
+### Routing and navigation
+
+**Route parameters**:
+- **Use `useRouteParams()` hook** from `@/lib/RouteParamsProvider` (NOT `useParams()` from Next.js).
+- **Why**: Type-safe, provides pre-bound URL builders, eliminates null checks via strict context pattern.
+- **Available in all routes**: `app/org/[orgId]/layout.tsx` wraps all org-scoped routes with RouteParamsProvider.
+- **Returns**: `{ orgId, teamId, userId, repoId, getOrgUrl(), getTeamUrl(), getUserUrl(), getRepoUrl() }`.
+
+**URL building**:
+- **Use route utilities** from `@/lib/routes.ts` (NOT manual template literals).
+- **Available functions**: `getOrgPath(orgId, tab?)`, `getTeamPath(orgId, teamId, tab?)`, `getUserPath(orgId, userId, tab?)`, `getRepoPath(orgId, repoId, tab?)`.
+- **Extraction functions**: `extractOrgId(pathname)`, `extractTeamId(pathname)`, `extractUserId(pathname)`, `extractRepoId(pathname)`.
+- **Never write**: `` `/org/${orgId}/team/${teamId}` `` — use `getTeamPath(orgId, teamId)` instead.
+
+**Context pattern**:
+- **Use `getStrictContext<T>(displayName)`** from `@/lib/get-strict-context` to create type-safe contexts.
+- **Returns**: `[Context, useHook]` tuple where `useHook()` throws descriptive error if used outside provider.
+- **Eliminates null checks**: Hook never returns null when used inside provider (runtime safety).
 
 ### Backend integration (future)
 
