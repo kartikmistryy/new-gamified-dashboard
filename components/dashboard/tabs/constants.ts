@@ -9,9 +9,8 @@ export const REPO_DASHBOARD_TABS: Readonly<ProfileTab[]> = [
 ] as const
 
 export const USER_DASHBOARD_TABS: Readonly<ProfileTab[]> = [
-  { key: "overview", label: "Overview" },
+  { key: "performance", label: "Performance" },
   { key: "skillgraph", label: "Skills Graph" },
-  { key: "design", label: "Design" },
   { key: "spof", label: "SPOF" },
 ] as const
 

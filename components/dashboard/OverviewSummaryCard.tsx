@@ -24,9 +24,15 @@ function isCssColor(value: string): boolean {
 
 const TREND_ICONS = { up: TrendingUp, down: TrendingDown, flat: ArrowRight } as const;
 
-function getTrendDirection(count: number): keyof typeof TREND_ICONS {
-  if (count >= 8) return "up";
-  if (count <= 4) return "down";
+function getTrendDirection(count: number | string): keyof typeof TREND_ICONS {
+  // If count is a string, try to parse it as a number, otherwise return "flat"
+  const numericCount = typeof count === "number" ? count : parseFloat(String(count).replace(/[^0-9.-]/g, ""));
+
+  // If we couldn't parse a valid number, default to "flat"
+  if (isNaN(numericCount)) return "flat";
+
+  if (numericCount >= 8) return "up";
+  if (numericCount <= 4) return "down";
   return "flat";
 }
 

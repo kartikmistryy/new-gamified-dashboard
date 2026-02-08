@@ -46,7 +46,7 @@ export const resolveActiveTab = (
   if (teamMatch) return (teamMatch[1] as ProfileTabKey) || fallback
 
   const userMatch = pathname.match(/^\/org\/[^/]+\/user\/[^/]+(?:\/([^/]+))?/)
-  if (userMatch) return (userMatch[1] as ProfileTabKey) || fallback
+  if (userMatch) return (userMatch[1] as ProfileTabKey) || "performance"
 
   const repoMatch = pathname.match(/^\/org\/[^/]+\/repo\/[^/]+(?:\/([^/]+))?/)
   if (repoMatch) return (repoMatch[1] as ProfileTabKey) || fallback
@@ -97,7 +97,12 @@ export const buildTabConfigs = (
     let href: string
 
     if (orgId) {
-      const tabKey = tab.key === "overview" ? undefined : tab.key
+      // For user dashboard, "performance" is the default (no URL segment)
+      // For other dashboards, "overview" is the default
+      const isDefaultTab = dashboardType === "user"
+        ? tab.key === "performance"
+        : tab.key === "overview"
+      const tabKey = isDefaultTab ? undefined : tab.key
       if (dashboardType === "team" && teamId) {
         href = getTeamPath(orgId, teamId, tabKey)
       } else if (dashboardType === "user" && userId) {

@@ -73,8 +73,8 @@ export type SummaryCardConfig = {
 export type OverviewSummaryCardConfig = {
   key: SummaryCardKey;
   title: string;
-  count: number;
-  priority: "Optimal" | "P0" | "P1" | "P2" | "P3";
+  count: number | string;
+  priority: string;
   descriptionLine1: string;
   descriptionLine2: string;
   bg: string;
