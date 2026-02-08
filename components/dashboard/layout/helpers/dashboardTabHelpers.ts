@@ -9,6 +9,10 @@ import {
   extractTeamId,
   extractUserId,
   extractOrgId,
+  getOrgPath,
+  getTeamPath,
+  getUserPath,
+  getRepoPath,
 } from "@/lib/routes"
 
 export type TabConfig = ProfileTab & {
@@ -93,26 +97,15 @@ export const buildTabConfigs = (
     let href: string
 
     if (orgId) {
+      const tabKey = tab.key === "overview" ? undefined : tab.key
       if (dashboardType === "team" && teamId) {
-        href =
-          tab.key === "overview"
-            ? `/org/${orgId}/team/${teamId}`
-            : `/org/${orgId}/team/${teamId}/${tab.key}`
+        href = getTeamPath(orgId, teamId, tabKey)
       } else if (dashboardType === "user" && userId) {
-        href =
-          tab.key === "overview"
-            ? `/org/${orgId}/user/${userId}`
-            : `/org/${orgId}/user/${userId}/${tab.key}`
+        href = getUserPath(orgId, userId, tabKey)
       } else if (dashboardType === "repo" && repoId) {
-        href =
-          tab.key === "overview"
-            ? `/org/${orgId}/repo/${repoId}`
-            : `/org/${orgId}/repo/${repoId}/${tab.key}`
+        href = getRepoPath(orgId, repoId, tabKey)
       } else {
-        href =
-          tab.key === "overview"
-            ? `/org/${orgId}`
-            : `/org/${orgId}/${tab.key}`
+        href = getOrgPath(orgId, tabKey)
       }
     } else {
       const normalizedBasePath = normalizeBasePath(basePath)
