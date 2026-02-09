@@ -1,22 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useMemo, useId } from "react";
-import * as d3 from "d3";
+import { useEffect, useRef, useMemo } from "react";
+import Plotly from "plotly.js-dist-min";
 import { SPOF_TEAM_CONFIG, calculateSpofStats } from "@/lib/orgDashboard/spofMockData";
 import type { SpofDataPoint } from "@/lib/orgDashboard/spofMockData";
-import {
-  getChartDimensions,
-  createStackedHistogramData,
-  generateNormalCurveData,
-  drawShadedRegions,
-  drawStackedBars,
-  drawNormalCurve,
-  drawSigmaLines,
-  drawAxes,
-  drawTitle,
-  drawLegend,
-} from "@/lib/orgDashboard/spofChartUtils";
-import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 
 type SpofDistributionChartProps = {
   data: SpofDataPoint[];
@@ -24,15 +11,65 @@ type SpofDistributionChartProps = {
   showNormalFit?: boolean;
 };
 
+/**
+ * Create histogram bins for stacked bar chart
+ */
+function createHistogramBins(
+  data: SpofDataPoint[],
+  visibleTeams: string[],
+  binSize: number = 0.3
+) {
+  const bins: Record<string, Record<string, number>> = {};
+  const numBins = Math.ceil(6 / binSize);
+
+  // Initialize bins
+  for (let i = 0; i < numBins; i++) {
+    const binStart = i * binSize;
+    const binCenter = binStart + binSize / 2;
+    bins[binCenter.toFixed(2)] = {};
+    visibleTeams.forEach(team => {
+      bins[binCenter.toFixed(2)][team] = 0;
+    });
+  }
+
+  // Fill bins with data
+  data.forEach(point => {
+    const binIndex = Math.floor(point.score / binSize);
+    const binStart = binIndex * binSize;
+    const binCenter = binStart + binSize / 2;
+    const binKey = binCenter.toFixed(2);
+    if (bins[binKey] && bins[binKey][point.team] !== undefined) {
+      bins[binKey][point.team]++;
+    }
+  });
+
+  return { bins, binSize };
+}
+
+/**
+ * Generate normal distribution curve data
+ */
+function generateNormalCurve(mean: number, std: number, totalCount: number, numPoints: number = 200) {
+  const points: { x: number; y: number }[] = [];
+  const binSize = 0.3;
+
+  for (let i = 0; i < numPoints; i++) {
+    const x = (i / numPoints) * 6;
+    const exponent = -Math.pow(x - mean, 2) / (2 * Math.pow(std, 2));
+    const y = (totalCount * binSize / (std * Math.sqrt(2 * Math.PI))) * Math.exp(exponent);
+    points.push({ x, y });
+  }
+
+  return points;
+}
+
 export function SpofDistributionChart({
   data,
   visibleTeams,
   showNormalFit = true,
 }: SpofDistributionChartProps) {
-  const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const tooltipId = useId().replace(/:/g, "");
-  const tooltipRef = useRef<D3TooltipController | null>(null);
+  const plotlyInitialized = useRef(false);
 
   const filteredData = useMemo(
     () => data.filter((d) => visibleTeams[d.team] !== false),
@@ -50,61 +87,205 @@ export function SpofDistributionChart({
   );
 
   useEffect(() => {
-    tooltipRef.current = createChartTooltip(`spof-tooltip-${tooltipId}`);
-    return () => tooltipRef.current?.destroy();
-  }, [tooltipId]);
+    if (!containerRef.current || visibleTeamNames.length === 0) return;
 
-  useEffect(() => {
-    if (!svgRef.current || !containerRef.current) return;
-    if (!tooltipRef.current) {
-      tooltipRef.current = createChartTooltip(`spof-tooltip-${tooltipId}`);
-    }
-
-    const dims = getChartDimensions(containerRef.current.clientWidth);
-    const { width, height, margin, innerWidth, innerHeight } = dims;
-
-    d3.select(svgRef.current).selectAll("*").remove();
-
-    const svg = d3.select(svgRef.current).attr("width", width).attr("height", height);
     const stats = calculateSpofStats(filteredData);
     const { mean, std, skewType } = stats;
+    const { bins, binSize } = createHistogramBins(filteredData, visibleTeamNames, 0.3);
 
-    const xScale = d3.scaleLinear().domain([0, 6]).range([0, innerWidth]);
-    const { stackedData, maxCount, binWidth } = createStackedHistogramData(
-      filteredData,
-      visibleTeamConfigs,
-      xScale
-    );
-    const yScale = d3.scaleLinear()
-      .domain([0, Math.ceil(maxCount / 10) * 10])
-      .range([innerHeight, 0]);
+    const binCenters = Object.keys(bins).map(Number).sort((a, b) => a - b);
+    const traces: Plotly.Data[] = [];
 
-    const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    // Create stacked bar traces for each team
+    visibleTeamConfigs.forEach(teamConfig => {
+      const yValues = binCenters.map(center => bins[center.toFixed(2)][teamConfig.name] || 0);
+
+      traces.push({
+        x: binCenters,
+        y: yValues,
+        type: "bar",
+        name: teamConfig.name,
+        marker: { color: teamConfig.color },
+        hovertemplate: `<b>${teamConfig.name}</b><br>` +
+          "SPOF Score: %{x:.1f}<br>" +
+          "Count: %{y}<extra></extra>",
+      } as Plotly.Data);
+    });
+
+    // Add normal distribution curve
+    if (showNormalFit && filteredData.length > 0) {
+      const normalCurve = generateNormalCurve(mean, std, filteredData.length);
+      traces.push({
+        x: normalCurve.map(p => p.x),
+        y: normalCurve.map(p => p.y),
+        type: "scatter",
+        mode: "lines",
+        name: "Normal Fit",
+        line: {
+          color: "#dc2626",
+          width: 2,
+          dash: "dash",
+        },
+        hovertemplate: "Normal Fit<br>x=%{x:.2f}<br>y=%{y:.1f}<extra></extra>",
+      } as Plotly.Data);
+    }
 
     const muMinus1Sigma = Math.max(0, mean - std);
     const muPlus1Sigma = Math.min(6, mean + std);
 
-    drawShadedRegions(g, xScale, innerHeight, innerWidth, muMinus1Sigma, muPlus1Sigma);
+    // Calculate max y value for proper scaling
+    const maxCount = Math.max(
+      ...binCenters.map(center =>
+        visibleTeamNames.reduce((sum, team) => sum + (bins[center.toFixed(2)][team] || 0), 0)
+      )
+    );
+    const yMax = Math.ceil(maxCount / 10) * 10;
 
-    const teamColors = new Map(SPOF_TEAM_CONFIG.map((t) => [t.name, t.color]));
-    drawStackedBars(g, stackedData, xScale, yScale, binWidth, teamColors, tooltipRef.current ?? undefined);
+    const teamsText = visibleTeamNames.length > 0
+      ? visibleTeamNames.join(", ")
+      : "No teams selected";
 
-    if (showNormalFit && filteredData.length > 0) {
-      const normalData = generateNormalCurveData(mean, std, filteredData.length);
-      drawNormalCurve(g, normalData, xScale, yScale);
+    const layout: Partial<Plotly.Layout> = {
+      title: {
+        text: `SPOF Distribution (${skewType})<br>` +
+          `<sub>μ=${mean.toFixed(2)}, σ=${std.toFixed(2)} | Teams: ${teamsText}</sub>`,
+        font: { size: 16, color: "#1e293b" },
+      },
+      xaxis: {
+        title: "SPOF Score",
+        range: [0, 6],
+        gridcolor: "#e2e8f0",
+        showline: true,
+        linecolor: "#cbd5e1",
+      },
+      yaxis: {
+        title: "Count",
+        range: [0, yMax],
+        gridcolor: "#e2e8f0",
+        showline: true,
+        linecolor: "#cbd5e1",
+      },
+      barmode: "stack",
+      bargap: 0.1,
+      showlegend: true,
+      legend: {
+        orientation: "v",
+        x: 1.02,
+        y: 1,
+        xanchor: "left",
+        bgcolor: "rgba(255,255,255,0.9)",
+        bordercolor: "#e2e8f0",
+        borderwidth: 1,
+      },
+      shapes: [
+        // Left shaded region (< μ-σ) - Orange
+        {
+          type: "rect",
+          xref: "x",
+          yref: "paper",
+          x0: 0,
+          x1: muMinus1Sigma,
+          y0: 0,
+          y1: 1,
+          fillcolor: "rgba(249, 115, 22, 0.1)",
+          opacity: 1,
+          line: { width: 0 },
+          layer: "below",
+        },
+        // Right shaded region (> μ+σ) - Green
+        {
+          type: "rect",
+          xref: "x",
+          yref: "paper",
+          x0: muPlus1Sigma,
+          x1: 6,
+          y0: 0,
+          y1: 1,
+          fillcolor: "rgba(16, 185, 129, 0.1)",
+          opacity: 1,
+          line: { width: 0 },
+          layer: "below",
+        },
+        // μ-σ line - Orange
+        {
+          type: "line",
+          xref: "x",
+          yref: "paper",
+          x0: muMinus1Sigma,
+          x1: muMinus1Sigma,
+          y0: 0,
+          y1: 1,
+          line: {
+            color: "#f97316",
+            width: 2,
+            dash: "dot",
+          },
+        },
+        // μ+σ line - Green
+        {
+          type: "line",
+          xref: "x",
+          yref: "paper",
+          x0: muPlus1Sigma,
+          x1: muPlus1Sigma,
+          y0: 0,
+          y1: 1,
+          line: {
+            color: "#10b981",
+            width: 2,
+            dash: "dot",
+          },
+        },
+      ],
+      annotations: [
+        {
+          x: muMinus1Sigma,
+          y: 1,
+          xref: "x",
+          yref: "paper",
+          text: `μ-1σ (${muMinus1Sigma.toFixed(1)})`,
+          showarrow: false,
+          xanchor: "center",
+          yanchor: "bottom",
+          font: { size: 11, color: "#000000" },
+        },
+        {
+          x: muPlus1Sigma,
+          y: 1,
+          xref: "x",
+          yref: "paper",
+          text: `μ+1σ (${muPlus1Sigma.toFixed(1)})`,
+          showarrow: false,
+          xanchor: "center",
+          yanchor: "bottom",
+          font: { size: 11, color: "#000000" },
+        },
+      ],
+      margin: { l: 60, r: 150, t: 80, b: 60 },
+      paper_bgcolor: "white",
+      plot_bgcolor: "white",
+      hovermode: "closest",
+    };
+
+    const config: Partial<Plotly.Config> = {
+      responsive: true,
+      displayModeBar: false,
+    };
+
+    if (!plotlyInitialized.current) {
+      Plotly.newPlot(containerRef.current, traces, layout, config);
+      plotlyInitialized.current = true;
+    } else {
+      Plotly.react(containerRef.current, traces, layout, config);
     }
 
-    drawSigmaLines(g, xScale, innerHeight, muMinus1Sigma, muPlus1Sigma);
-    drawAxes(g, xScale, yScale, innerHeight, innerWidth);
-
-    const teamsText = visibleTeamNames.length > 0 ? visibleTeamNames.join(", ") : "No teams selected";
-    drawTitle(svg, width, skewType, mean, std, teamsText);
-    drawLegend(svg, visibleTeamConfigs, width, margin, showNormalFit, mean, std);
+    return () => {
+      if (plotlyInitialized.current && containerRef.current) {
+        Plotly.purge(containerRef.current);
+        plotlyInitialized.current = false;
+      }
+    };
   }, [filteredData, visibleTeamConfigs, visibleTeamNames, showNormalFit]);
 
-  return (
-    <div ref={containerRef} className="w-full">
-      <svg ref={svgRef} className="w-full" />
-    </div>
-  );
+  return <div ref={containerRef} className="w-full h-[500px]" />;
 }
