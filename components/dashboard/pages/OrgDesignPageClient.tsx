@@ -7,16 +7,15 @@ import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { DesignTeamsTable, DESIGN_FILTER_TABS } from "@/components/dashboard/DesignTeamsTable";
 import { Badge } from "@/components/shared/Badge";
 import { OwnershipScatter } from "@/components/dashboard/OwnershipScatter";
-import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
+import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
+import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { getChartInsightsMock } from "@/lib/orgDashboard/overviewMockData";
 import { DESIGN_TEAM_ROWS, getDesignTeamRowsForRange } from "@/lib/orgDashboard/designMockData";
-import { TIME_RANGE_OPTIONS, type TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
 import type { DesignTableFilter } from "@/lib/orgDashboard/types";
 
 export function OrgDesignPageClient() {
+  const { timeRange } = useTimeRange();
   const chartInsights = useMemo(() => getChartInsightsMock(), []);
-  const [ownershipRange, setOwnershipRange] = useState<TimeRangeKey>("3m");
-  const [chaosRange, setChaosRange] = useState<TimeRangeKey>("max");
   const [designFilter, setDesignFilter] = useState<DesignTableFilter>("mostOutliers");
   const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
@@ -31,8 +30,8 @@ export function OrgDesignPageClient() {
   }, []);
 
   const designTeamRows = useMemo(
-    () => getDesignTeamRowsForRange(chaosRange),
-    [chaosRange],
+    () => getDesignTeamRowsForRange(timeRange),
+    [timeRange],
   );
 
   const designTeamNames = useMemo(
@@ -42,19 +41,10 @@ export function OrgDesignPageClient() {
 
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
-      <DashboardSection
-        title="Ownership Misallocation Detector"
-        action={
-          <TimeRangeFilter
-            options={TIME_RANGE_OPTIONS}
-            value={ownershipRange}
-            onChange={setOwnershipRange}
-          />
-        }
-      >
+      <DashboardSection title="Ownership Misallocation Detector">
         <div className="flex flex-row gap-5">
           <div className="w-[65%] shrink-0">
-            <OwnershipScatter range={ownershipRange} />
+            <OwnershipScatter range={timeRange} />
           </div>
           <div className="w-[35%] min-w-0 shrink">
             <ChartInsights insights={chartInsights} />
@@ -62,18 +52,11 @@ export function OrgDesignPageClient() {
         </div>
       </DashboardSection>
 
-      <DashboardSection
-        title="Engineering Chaos Matrix"
-        className="w-full"
-        action={
-          <TimeRangeFilter
-            options={TIME_RANGE_OPTIONS}
-            value={chaosRange}
-            onChange={setChaosRange}
-          />
-        }
-      >
-        <ChaosMatrix range={chaosRange} visibleTeams={visibleTeams} teamNames={designTeamNames} />
+      {/* Global Time Range Filter */}
+      <GlobalTimeRangeFilter showLabel />
+
+      <DashboardSection title="Engineering Chaos Matrix" className="w-full">
+        <ChaosMatrix range={timeRange} visibleTeams={visibleTeams} teamNames={designTeamNames} />
       </DashboardSection>
 
       <DashboardSection

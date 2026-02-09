@@ -1,12 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
+import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
 import { UserPerformanceComparisonChart } from "@/components/dashboard/UserPerformanceComparisonChart";
-import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { TIME_RANGE_OPTIONS, type TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
 import { getStartDateForRange } from "@/lib/orgDashboard/performanceChartHelpers";
 import {
   generateUserPerformanceData,
@@ -24,12 +23,11 @@ import { generateUserPerformanceData as getUserData } from "@/lib/userDashboard/
  * Contains all business logic for the user performance page:
  * - Individual performance tracking chart
  * - Comparative performance chart (user vs team vs org)
- * - Time range filter state management
+ * - Uses centralized time range from TimeRangeContext
  */
 export function UserPerformancePageClient() {
   const { userId } = useRouteParams();
-  const [timeRange, setTimeRange] = useState<TimeRangeKey>("max");
-  const [comparativeTimeRange, setComparativeTimeRange] = useState<TimeRangeKey>("max");
+  const { timeRange } = useTimeRange();
 
   // Generate user performance data for the chart
   const userData = useMemo(() => {
@@ -52,18 +50,18 @@ export function UserPerformancePageClient() {
 
   // Filter cumulative data based on time range
   const filteredCumulativeData = useMemo(() => {
-    if (!cumulativePerformanceData || comparativeTimeRange === "max") {
+    if (!cumulativePerformanceData || timeRange === "max") {
       return cumulativePerformanceData || [];
     }
 
     const endDate = new Date(cumulativePerformanceData[cumulativePerformanceData.length - 1].date);
-    const startDate = getStartDateForRange(comparativeTimeRange, endDate);
+    const startDate = getStartDateForRange(timeRange, endDate);
 
     return cumulativePerformanceData.filter((d) => {
       const date = new Date(d.date);
       return date >= startDate && date <= endDate;
     });
-  }, [cumulativePerformanceData, comparativeTimeRange]);
+  }, [cumulativePerformanceData, timeRange]);
 
   // Generate comparison lines (team and org medians)
   const comparisonLines = useMemo(() => {
@@ -72,10 +70,10 @@ export function UserPerformancePageClient() {
 
     // Filter based on time range
     const filterLine = (data: { date: string; value: number }[]) => {
-      if (comparativeTimeRange === "max" || data.length === 0) return data;
+      if (timeRange === "max" || data.length === 0) return data;
 
       const endDate = new Date(data[data.length - 1].date);
-      const startDate = getStartDateForRange(comparativeTimeRange, endDate);
+      const startDate = getStartDateForRange(timeRange, endDate);
 
       return data.filter((d) => {
         const date = new Date(d.date);
@@ -97,7 +95,7 @@ export function UserPerformancePageClient() {
         dashStyle: "dot" as const,
       },
     ];
-  }, [comparativeTimeRange]);
+  }, [timeRange]);
 
   if (!userId || !userData) {
     return null;
@@ -106,18 +104,7 @@ export function UserPerformancePageClient() {
   return (
     <div className="flex flex-col gap-6">
       {/* Individual Performance Tracking */}
-      <DashboardSection
-        title="Performance Tracking"
-        actionLayout="column"
-        action={
-          <TimeRangeFilter
-            options={TIME_RANGE_OPTIONS}
-            value={timeRange}
-            onChange={setTimeRange}
-            size="sm"
-          />
-        }
-      >
+      <DashboardSection title="Performance Tracking">
         <PerformanceChart
           data={performanceData}
           holidays={USER_PERFORMANCE_EVENTS}
@@ -129,18 +116,7 @@ export function UserPerformancePageClient() {
 
       {/* Performance Comparison: User vs Team vs Org */}
       {userData && filteredCumulativeData.length > 0 && (
-        <DashboardSection
-          title="Performance Comparison"
-          actionLayout="column"
-          action={
-            <TimeRangeFilter
-              options={TIME_RANGE_OPTIONS}
-              value={comparativeTimeRange}
-              onChange={setComparativeTimeRange}
-              size="sm"
-            />
-          }
-        >
+        <DashboardSection title="Performance Comparison">
           <UserPerformanceComparisonChart
             userLine={{
               name: userData.userName,

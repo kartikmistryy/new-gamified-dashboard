@@ -5,7 +5,8 @@ import { Badge } from "@/components/shared/Badge";
 import { TeamChaosMatrix } from "@/components/dashboard/TeamChaosMatrix";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
+import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
+import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { TeamCollaborationNetwork } from "@/components/dashboard/TeamCollaborationNetwork";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -22,15 +23,13 @@ import {
   type DesignMemberFilter,
 } from "@/lib/teamDashboard/designHelpers";
 import { DESIGN_MEMBER_COLUMNS } from "@/lib/teamDashboard/designTableColumns";
-import { TIME_RANGE_OPTIONS, type TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
 
 export function TeamDesignPageClient() {
   const { teamId } = useRouteParams();
+  const { timeRange } = useTimeRange();
 
   // State
-  const [collaborationRange, setCollaborationRange] = useState<TimeRangeKey>("3m");
-  const [chaosRange, setChaosRange] = useState<TimeRangeKey>("max");
   const [designFilter, setDesignFilter] = useState<DesignMemberFilter>("mostImportant");
   const [collaborationInsights, setCollaborationInsights] = useState<ChartInsight[]>([]);
 
@@ -38,30 +37,20 @@ export function TeamDesignPageClient() {
   const members = useMemo(() => getMemberDesignData(teamId!, 6), [teamId]);
 
   const chaosMatrixData = useMemo(
-    () => transformToChaosMatrixData(members, chaosRange),
-    [members, chaosRange]
+    () => transformToChaosMatrixData(members, timeRange),
+    [members, timeRange]
   );
 
   const memberNames = useMemo(() => members.map((m) => m.memberName), [members]);
   const collaborationData = useMemo(
-    () => getTeamCollaborationData(teamId!, memberNames, collaborationRange),
-    [teamId, memberNames, collaborationRange]
+    () => getTeamCollaborationData(teamId!, memberNames, timeRange),
+    [teamId, memberNames, timeRange]
   );
 
   return (
     <TooltipProvider>
       <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
-        <DashboardSection
-          title="Collaboration Network"
-          className="w-full"
-          action={
-            <TimeRangeFilter
-              options={TIME_RANGE_OPTIONS}
-              value={collaborationRange}
-              onChange={setCollaborationRange}
-            />
-          }
-        >
+        <DashboardSection title="Collaboration Network" className="w-full">
           <div className="flex flex-col items-stretch gap-8 xl:flex-row">
             <div className="min-w-0 xl:w-[60%]">
               <TeamCollaborationNetwork
@@ -75,20 +64,13 @@ export function TeamDesignPageClient() {
           </div>
         </DashboardSection>
 
-        <DashboardSection
-          title="Engineering Chaos Index"
-          className="w-full"
-          action={
-            <TimeRangeFilter
-              options={TIME_RANGE_OPTIONS}
-              value={chaosRange}
-              onChange={setChaosRange}
-            />
-          }
-        >
+        {/* Global Time Range Filter */}
+        <GlobalTimeRangeFilter showLabel />
+
+        <DashboardSection title="Engineering Chaos Index" className="w-full">
           <TeamChaosMatrix
             data={chaosMatrixData}
-            range={chaosRange}
+            range={timeRange}
             teamNames={memberNames}
           />
         </DashboardSection>

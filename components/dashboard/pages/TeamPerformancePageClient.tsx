@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
+import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
+import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
@@ -17,7 +18,7 @@ import {
   isTimeRangeSufficient,
   getPerformanceInsights,
 } from "@/lib/teamDashboard/performanceHelpers";
-import { TimeRangeKey, TIME_RANGE_OPTIONS } from "@/lib/orgDashboard/timeRangeTypes";
+import { TIME_RANGE_OPTIONS } from "@/lib/orgDashboard/timeRangeTypes";
 import { PerformanceFilter } from "@/lib/teamDashboard/performanceTypes";
 import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/orgDashboard/utils";
 import {
@@ -30,10 +31,9 @@ import { useRouteParams } from "@/lib/RouteParamsProvider";
 
 export function TeamPerformancePageClient() {
   const { teamId } = useRouteParams();
+  const { timeRange } = useTimeRange();
 
   // State
-  const [timeRange, setTimeRange] = useState<TimeRangeKey>("1m");
-  const [comparisonRange, setComparisonRange] = useState<TimeRangeKey>("3m");
   const [activeFilter, setActiveFilter] = useState<PerformanceFilter>("mostProductive");
 
   // Data pipeline
@@ -68,10 +68,6 @@ export function TeamPerformancePageClient() {
   );
 
   const sampledData = useMemo(() => smartSample(timeFilteredData), [timeFilteredData]);
-  const comparisonFilteredData = useMemo(
-    () => filterByTimeRange(rawData, comparisonRange),
-    [rawData, comparisonRange]
-  );
 
   const timeRangeOptions = useMemo(
     () =>
@@ -151,30 +147,17 @@ export function TeamPerformancePageClient() {
               />
             </DashboardSection>
 
+            {/* Global Time Range Filter */}
+            <GlobalTimeRangeFilter showLabel />
+
             <section className="w-full" aria-label="Team performance chart">
-              <div className="mb-4 flex flex-row flex-wrap items-center justify-start gap-4">
-                <TimeRangeFilter
-                  options={timeRangeOptions}
-                  value={timeRange}
-                  onChange={setTimeRange}
-                />
-              </div>
               <div className="bg-white rounded-lg">
                 <TeamPerformanceChart data={timeFilteredData} />
               </div>
             </section>
 
-            <DashboardSection
-              title="Performance Comparison"
-              action={
-                <TimeRangeFilter
-                  options={timeRangeOptions}
-                  value={comparisonRange}
-                  onChange={setComparisonRange}
-                />
-              }
-            >
-              <TeamPerformanceComparisonChart data={comparisonFilteredData} />
+            <DashboardSection title="Performance Comparison">
+              <TeamPerformanceComparisonChart data={timeFilteredData} />
             </DashboardSection>
 
             {/* Member table section */}

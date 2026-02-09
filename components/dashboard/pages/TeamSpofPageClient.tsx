@@ -29,6 +29,7 @@ const SPOF_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberSpofRow, SpofMemberFilter>
     key: "rank",
     header: "Rank",
     className: "w-14",
+    enableSorting: false,
     render: (_, index) => {
       const displayRank = index + 1;
       return (
@@ -45,6 +46,7 @@ const SPOF_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberSpofRow, SpofMemberFilter>
   {
     key: "member",
     header: "Member",
+    enableSorting: false,
     render: (row) => (
       <div className="flex items-center gap-3">
         <TeamAvatar teamName={row.memberName} className="size-4" />
@@ -56,12 +58,16 @@ const SPOF_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberSpofRow, SpofMemberFilter>
     key: "ownershipPct",
     header: "% of Ownership",
     className: "text-right",
+    enableSorting: true,
+    accessorFn: (row) => row.ownershipPct,
     render: (row) => <span className="text-gray-700">{Math.round(row.ownershipPct)}%</span>,
   },
   {
     key: "ownedModules",
     header: "Owned Modules",
     className: "text-right",
+    enableSorting: true,
+    accessorFn: (row) => row.ownedModules,
     render: (row) => <span className="text-gray-700">{row.ownedModules}</span>,
   },
 ];

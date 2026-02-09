@@ -5,7 +5,8 @@ import { Badge } from "@/components/shared/Badge";
 import { TeamChaosMatrix } from "@/components/dashboard/TeamChaosMatrix";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
+import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
+import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { TeamCollaborationNetwork } from "@/components/dashboard/TeamCollaborationNetwork";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -22,15 +23,13 @@ import {
   type DesignContributorFilter,
 } from "@/lib/repoDashboard/designHelpers";
 import { DESIGN_CONTRIBUTOR_COLUMNS } from "@/lib/repoDashboard/designTableColumns";
-import { TIME_RANGE_OPTIONS, type TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
 
 export function RepoDesignPageClient() {
   const { repoId } = useRouteParams();
+  const { timeRange } = useTimeRange();
 
   // State
-  const [collaborationRange, setCollaborationRange] = useState<TimeRangeKey>("3m");
-  const [chaosRange, setChaosRange] = useState<TimeRangeKey>("max");
   const [designFilter, setDesignFilter] = useState<DesignContributorFilter>("mostImportant");
   const [collaborationInsights, setCollaborationInsights] = useState<ChartInsight[]>([]);
 
@@ -38,30 +37,20 @@ export function RepoDesignPageClient() {
   const contributors = useMemo(() => getContributorDesignData(repoId!, 6), [repoId]);
 
   const chaosMatrixData = useMemo(
-    () => transformToChaosMatrixData(contributors, chaosRange),
-    [contributors, chaosRange]
+    () => transformToChaosMatrixData(contributors, timeRange),
+    [contributors, timeRange]
   );
 
   const contributorNames = useMemo(() => contributors.map((c) => c.contributorName), [contributors]);
   const collaborationData = useMemo(
-    () => getRepoCollaborationData(repoId!, contributorNames, collaborationRange),
-    [repoId, contributorNames, collaborationRange]
+    () => getRepoCollaborationData(repoId!, contributorNames, timeRange),
+    [repoId, contributorNames, timeRange]
   );
 
   return (
     <TooltipProvider>
       <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
-        <DashboardSection
-          title="Collaboration Network"
-          className="w-full"
-          action={
-            <TimeRangeFilter
-              options={TIME_RANGE_OPTIONS}
-              value={collaborationRange}
-              onChange={setCollaborationRange}
-            />
-          }
-        >
+        <DashboardSection title="Collaboration Network" className="w-full">
           <div className="flex flex-col items-stretch gap-8 xl:flex-row">
             <div className="min-w-0 xl:w-[60%]">
               <TeamCollaborationNetwork
@@ -75,20 +64,13 @@ export function RepoDesignPageClient() {
           </div>
         </DashboardSection>
 
-        <DashboardSection
-          title="Engineering Chaos Index"
-          className="w-full"
-          action={
-            <TimeRangeFilter
-              options={TIME_RANGE_OPTIONS}
-              value={chaosRange}
-              onChange={setChaosRange}
-            />
-          }
-        >
+        {/* Global Time Range Filter */}
+        <GlobalTimeRangeFilter showLabel />
+
+        <DashboardSection title="Engineering Chaos Index" className="w-full">
           <TeamChaosMatrix
             data={chaosMatrixData}
-            range={chaosRange}
+            range={timeRange}
             teamNames={contributorNames}
           />
         </DashboardSection>

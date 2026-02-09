@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
+import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
+import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
@@ -14,13 +15,11 @@ import { generateContributorPerformanceTimeSeries } from "@/lib/repoDashboard/pe
 import {
   filterByTimeRange,
   smartSample,
-  isTimeRangeSufficient,
   getPerformanceInsights,
   generateContributorTimeSeriesMetrics,
   aggregateContributorMetrics,
   generateCumulativeData,
 } from "@/lib/repoDashboard/performanceHelpers";
-import { TimeRangeKey, TIME_RANGE_OPTIONS } from "@/lib/orgDashboard/timeRangeTypes";
 import { PerformanceFilter } from "@/lib/repoDashboard/performanceTypes";
 import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/orgDashboard/utils";
 import {
@@ -33,9 +32,9 @@ import { useRouteParams } from "@/lib/RouteParamsProvider";
 
 export function RepoPerformancePageClient() {
   const { repoId } = useRouteParams();
+  const { timeRange } = useTimeRange();
 
   // State
-  const [timeRange, setTimeRange] = useState<TimeRangeKey>("1m");
   const [activeFilter, setActiveFilter] = useState<PerformanceFilter>("mostProductive");
 
   // Data pipeline
@@ -79,15 +78,6 @@ export function RepoPerformancePageClient() {
       memberValues: point.contributorValues, // Rename contributorValues to memberValues
     }));
   }, [timeFilteredData]);
-
-  const timeRangeOptions = useMemo(
-    () =>
-      TIME_RANGE_OPTIONS.map((opt) => ({
-        ...opt,
-        disabled: !isTimeRangeSufficient(rawData, opt.id),
-      })),
-    [rawData]
-  );
 
   const insights = useMemo(
     () => getPerformanceInsights(contributors, sampledData, timeRange),
@@ -176,14 +166,10 @@ export function RepoPerformancePageClient() {
               />
             </DashboardSection>
 
+            {/* Global Time Range Filter */}
+            <GlobalTimeRangeFilter showLabel />
+
             <section className="w-full" aria-label="Repository performance chart">
-              <div className="mb-4 flex flex-row flex-wrap items-center justify-start gap-4">
-                <TimeRangeFilter
-                  options={timeRangeOptions}
-                  value={timeRange}
-                  onChange={setTimeRange}
-                />
-              </div>
               <div className="bg-white rounded-lg">
                 <TeamPerformanceChart data={chartData} />
               </div>
@@ -199,18 +185,6 @@ export function RepoPerformancePageClient() {
                   <p className="text-sm text-gray-600">
                     Cumulative DiffDelta over time with additions and deletions
                   </p>
-                </div>
-                <div className="flex items-center gap-0 flex-wrap">
-                  <select
-                    value={timeRange}
-                    onChange={(e) => setTimeRange(e.target.value as TimeRangeKey)}
-                    className="rounded-md border border-gray-300 bg-white px-2 py-2 text-sm text-gray-700 shadow-none hover:bg-gray-50 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                  >
-                    <option value="1m">Period: 1 Month</option>
-                    <option value="3m">Period: 3 Months</option>
-                    <option value="1y">Period: 1 Year</option>
-                    <option value="max">Period: All</option>
-                  </select>
                 </div>
               </div>
 
