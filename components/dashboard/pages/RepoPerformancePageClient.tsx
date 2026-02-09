@@ -143,9 +143,25 @@ export function RepoPerformancePageClient() {
     [aggregateMetrics]
   );
 
+  // Filter cumulative data based on time range
+  const filteredAggregateData = useMemo(() => {
+    if (timeRange === "max") return aggregateCumulativeData;
+
+    // Calculate the number of weeks to show based on time range
+    const weeksToShow = {
+      "1m": 4,
+      "3m": 13,
+      "1y": 52,
+      "max": aggregateCumulativeData.length,
+    }[timeRange];
+
+    // Return the last N weeks
+    return aggregateCumulativeData.slice(-weeksToShow);
+  }, [aggregateCumulativeData, timeRange]);
+
   // Calculate median values for benchmark lines based on final cumulative values
   const medianValues = useMemo(() => {
-    if (contributorMetrics.length === 0 || aggregateCumulativeData.length === 0) {
+    if (contributorMetrics.length === 0 || filteredAggregateData.length === 0) {
       return { orgMedian: undefined, teamMedian: undefined };
     }
 
@@ -172,7 +188,7 @@ export function RepoPerformancePageClient() {
       orgMedian: Math.round(orgMedian),
       teamMedian: Math.round(teamMedian)
     };
-  }, [contributorMetrics, aggregateCumulativeData]);
+  }, [contributorMetrics, filteredAggregateData]);
 
   return (
     <TooltipProvider>
@@ -222,7 +238,7 @@ export function RepoPerformancePageClient() {
               <div className="mb-6 rounded-xl bg-white overflow-hidden">
                 <div className="min-w-full pb-2">
                   <ContributorMetricsChart
-                    data={aggregateCumulativeData}
+                    data={filteredAggregateData}
                     contributorName="Repository"
                     contributorColor="#3b82f6"
                     orgMedian={medianValues.orgMedian}
