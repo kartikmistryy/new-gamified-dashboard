@@ -76,12 +76,12 @@ const MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceRow, MemberTableFilt
   {
     key: "performance",
     header: "Effective Performance",
-    className: "w-px text-right whitespace-nowrap",
+    className: "w-px whitespace-nowrap",
     accessorFn: (row) => row.performanceValue,
     render: (row) => {
       const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
       return (
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center gap-2">
           <span
             className="inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium"
             style={{
@@ -102,13 +102,13 @@ const MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceRow, MemberTableFilt
   {
     key: "status",
     header: "Developer Type",
-    className: "w-px text-right whitespace-nowrap",
+    className: "w-px whitespace-nowrap",
     accessorFn: (row) => getPrimaryDeveloperType(row).label,
     render: (row) => {
       const type = getPrimaryDeveloperType(row);
       const Icon = type.icon;
       return (
-        <div className="flex items-center justify-end">
+        <div className="flex items-center">
           <span
             className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1 text-xs font-medium"
             style={type.style}

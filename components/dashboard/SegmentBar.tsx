@@ -24,7 +24,7 @@ type SegmentBarProps = {
 export function SegmentBar({
   segments,
   counts,
-  alignment = "end",
+  alignment = "start",
   showCounts = false,
   minSegmentWidth = 40,
 }: SegmentBarProps) {

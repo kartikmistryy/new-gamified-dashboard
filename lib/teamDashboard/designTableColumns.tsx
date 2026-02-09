@@ -79,7 +79,6 @@ export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, Design
   {
     key: "ownershipHealth",
     header: "Ownership Health",
-    className: "text-right",
     enableSorting: true,
     accessorFn: (row) => row.ownershipAllocation[2], // Sort by high ownership count
     render: (row) => {
@@ -96,7 +95,7 @@ export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, Design
             Icon: getTrendIconForCount(counts, index),
           }))}
           counts={counts}
-          alignment="end"
+          alignment="start"
           showCounts
         />
       );
@@ -105,7 +104,6 @@ export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, Design
   {
     key: "engineeringChaos",
     header: "Engineering Chaos Index",
-    className: "text-right",
     enableSorting: true,
     accessorFn: (row) => row.outlierScore, // Sort by outlier score
     render: (row) => {
@@ -123,7 +121,7 @@ export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, Design
             Icon: getTrendIconForCount(counts, index),
           }))}
           counts={counts}
-          alignment="end"
+          alignment="start"
           showCounts
         />
       );
@@ -132,7 +130,6 @@ export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, Design
   {
     key: "kp",
     header: "KP",
-    className: "text-right",
     enableSorting: true,
     accessorFn: (row) => row.totalKarmaPoints,
     render: (row) => (
@@ -144,7 +141,6 @@ export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, Design
   {
     key: "ownership",
     header: "Ownership %",
-    className: "text-right",
     enableSorting: true,
     accessorFn: (row) => row.ownershipPct,
     render: (row) => (

@@ -64,12 +64,11 @@ const TEAM_COLUMNS: BaseTeamsTableColumn<TeamPerformanceRow, TeamTableFilter>[] 
   {
     key: "performance",
     header: "Effective Performance",
-    className: "text-right",
     accessorFn: (row) => row.performanceValue,
     render: (row) => {
       const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
       return (
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center gap-2">
           <span
             className="inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium"
             style={{
@@ -90,13 +89,12 @@ const TEAM_COLUMNS: BaseTeamsTableColumn<TeamPerformanceRow, TeamTableFilter>[] 
   {
     key: "status",
     header: "Status",
-    className: "text-right",
     enableSorting: false,
     render: (row) => (
       <SegmentBar
         segments={TYPE_DISTRIBUTION_SEGMENTS}
         counts={TYPE_DISTRIBUTION_SEGMENTS.map((s) => row.typeDistribution[s.key] ?? 0)}
-        alignment="end"
+        alignment="start"
         showCounts
       />
     ),

@@ -12,14 +12,12 @@ import {
 import type { SkillgraphTeamRow, SkillgraphTableFilter } from "@/lib/orgDashboard/types";
 import { createSkillgraphTeamColumns } from "@/lib/dashboard/skillgraphTeamColumns";
 import {
-  SKILLGRAPH_TEAM_FILTER_TABS,
   getTeamSkillUsageValue,
   getSortingForFilter,
 } from "@/lib/dashboard/skillgraphTeamTableUtils";
 import { SkillgraphTeamDetailTable } from "./SkillgraphTeamDetailTable";
 import { SortableTableHeader } from "./SortableTableHeader";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "../shared/Badge";
 
 type SkillgraphByTeamTableProps = {
   rows: SkillgraphTeamRow[];
@@ -52,9 +50,7 @@ export function SkillgraphByTeamTable({
     }
   }, [visibleTeams, onVisibilityChange]);
 
-  const [internalFilter, setInternalFilter] = useState<SkillgraphTableFilter>(activeFilter);
-  const currentFilter = onFilterChange ? activeFilter : internalFilter;
-  const [sorting, setSorting] = useState<SortingState>(() => getSortingForFilter(currentFilter));
+  const [sorting, setSorting] = useState<SortingState>(() => getSortingForFilter(activeFilter));
 
   const totalUsageSum = useMemo(
     () => rows.reduce((sum, row) => sum + getTeamSkillUsageValue(row), 0),
@@ -84,28 +80,6 @@ export function SkillgraphByTeamTable({
 
   return (
     <div className="w-full">
-      <div className="flex flex-row flex-wrap gap-2 mb-4">
-        {SKILLGRAPH_TEAM_FILTER_TABS.map((tab) => (
-          <Badge
-            key={tab.key}
-            onClick={() => {
-              if (onFilterChange) {
-                onFilterChange(tab.key);
-              } else {
-                setInternalFilter(tab.key);
-              }
-              setSorting(getSortingForFilter(tab.key));
-            }}
-            className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
-              currentFilter === tab.key
-                ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
-                : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
-            }`}
-          >
-            {tab.label}
-          </Badge>
-        ))}
-      </div>
       <div className="rounded-sm border-none overflow-hidden bg-white">
         <Table>
           <TableHeader className="border-0">

@@ -108,9 +108,8 @@ export function createSkillgraphSkillColumns({
     {
       header: "Total Skill Usage",
       accessorKey: "totalUsage",
-      meta: { className: "text-right" },
       cell: ({ row }) => (
-        <span className="text-gray-900 block text-right">
+        <span className="text-gray-900 block">
           {USAGE_FORMATTER.format(row.original.totalUsage)}
         </span>
       ),
@@ -123,12 +122,11 @@ export function createSkillgraphSkillColumns({
         const b = getTotalSkillCompletionValue(rowB.original);
         return a === b ? 0 : a > b ? 1 : -1;
       },
-      meta: { className: "text-right" },
       cell: ({ row }) => {
         const value = getTotalSkillCompletionValue(row.original);
         const color = getColorForDomain(row.original.domainName);
         return (
-          <div className="flex items-center justify-end gap-3">
+          <div className="flex items-center gap-3">
             <div className="h-2 w-[140px] rounded-full" style={{ backgroundColor: hexToRgba(color, 0.2) }}>
               <div
                 className="h-full rounded-full"
@@ -146,9 +144,8 @@ export function createSkillgraphSkillColumns({
     {
       header: "Contributors",
       accessorKey: "contributors",
-      meta: { className: "text-right" },
       cell: ({ row }) => (
-        <span className="text-gray-900 block text-right">
+        <span className="text-gray-900 block">
           {USAGE_FORMATTER.format(row.original.contributors)} people
         </span>
       ),

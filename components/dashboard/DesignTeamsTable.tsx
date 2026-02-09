@@ -152,7 +152,6 @@ export function DesignTeamsTable({
       {
         key: "ownership",
         header: "Ownership Health",
-        className: "text-right",
         accessorFn: (row) => row.ownershipAllocation[2], // Sort by high ownership count
         render: (row) => {
           const counts = [
@@ -167,7 +166,7 @@ export function DesignTeamsTable({
                 icon: getTrendIconForCount(counts, index),
               }))}
               counts={counts}
-              alignment="end"
+              alignment="start"
               showCounts
             />
           );
@@ -176,7 +175,6 @@ export function DesignTeamsTable({
       {
         key: "chaos",
         header: "Engineering Chaos Index",
-        className: "text-right",
         accessorFn: (row) => row.outlierScore, // Sort by outlier score
         render: (row) => {
           const counts = [
@@ -192,7 +190,7 @@ export function DesignTeamsTable({
                 icon: getTrendIconForCount(counts, index),
               }))}
               counts={counts}
-              alignment="end"
+              alignment="start"
               showCounts
             />
           );

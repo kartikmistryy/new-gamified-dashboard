@@ -154,7 +154,7 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
       header: "Module",
       accessorFn: (row) => row.name,
       cell: ({ row }) => (
-        <div className="flex flex-col gap-1.5">
+        <div className="flex flex-col gap-1.5 w-full">
           <UiBadge variant="outline" className="text-xs w-fit">
             {row.original.repoName}
           </UiBadge>
@@ -163,7 +163,7 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
           </span>
         </div>
       ),
-      meta: { className: "w-[280px] py-4" },
+      meta: { className: "py-4" },
     },
     {
       id: "primaryOwner",
@@ -182,7 +182,7 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
           />
         );
       },
-      meta: { className: "w-[280px] py-4" },
+      meta: { className: "w-[260px] py-4" },
     },
     {
       id: "backupOwner",
@@ -195,7 +195,7 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
           color="#94A3B8"
         />
       ),
-      meta: { className: "w-[280px] py-4" },
+      meta: { className: "w-[260px] py-4" },
     },
     {
       id: "risk",
@@ -218,7 +218,7 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
           </span>
         );
       },
-      meta: { className: "text-right py-4" },
+      meta: { className: "w-[140px] pl-6 py-4" },
     },
   ], []);
 

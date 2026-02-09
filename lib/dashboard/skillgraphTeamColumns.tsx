@@ -93,9 +93,8 @@ export function createSkillgraphTeamColumns({
       header: "Total Skill Usage",
       id: "totalSkillUsage",
       accessorFn: (row) => getTeamSkillUsageValue(row),
-      meta: { className: "text-right" },
       cell: ({ row }) => (
-        <span className="text-gray-900 block text-right">
+        <span className="text-gray-900 block">
           {USAGE_FORMATTER.format(getTeamSkillUsageValue(row.original))}
         </span>
       ),
@@ -107,19 +106,18 @@ export function createSkillgraphTeamColumns({
         if (!totalUsageSum) return 0;
         return (getTeamSkillUsageValue(row) / totalUsageSum) * 100;
       },
-      meta: { className: "text-right" },
       cell: ({ row }) => {
         const usageShare = totalUsageSum
           ? (getTeamSkillUsageValue(row.original) / totalUsageSum) * 100
           : 0;
         const percentText = `${Math.round(usageShare)}%`;
-        return <span className="text-gray-900 block text-right">{percentText}</span>;
+        return <span className="text-gray-900 block">{percentText}</span>;
       },
     },
     {
       id: "distribution",
       header: "Domain Distribution",
-      meta: { className: "text-right min-w-[260px]" },
+      meta: { className: "min-w-[260px]" },
       cell: ({ row }) =>
         row.original.domainDistribution ? (
           <DomainDistributionBar segments={row.original.domainDistribution} getColor={getColorForDomain} />

@@ -39,13 +39,12 @@ export const PERFORMANCE_CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorPe
   {
     key: "performance",
     header: "Effective Performance",
-    className: "text-right",
     enableSorting: true,
     accessorFn: (row) => row.performanceValue,
     render: (row) => {
       const TrendIcon = getTrendIcon(row.trend);
       return (
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center gap-2">
           <span
             className="inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium"
             style={{
@@ -66,7 +65,6 @@ export const PERFORMANCE_CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorPe
   {
     key: "change",
     header: "Change",
-    className: "text-right",
     enableSorting: true,
     accessorFn: (row) => Math.round(row.change ?? 0),
     render: (row) => {
@@ -75,7 +73,7 @@ export const PERFORMANCE_CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorPe
       const changeLabel = formatChangeLabel(change);
       const changeColor = getChangeColor(change);
       return (
-        <div className="flex items-center justify-end">
+        <div className="flex items-center">
           <span
             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
             style={{ backgroundColor: hexToRgba(changeColor, 0.25), color: changeColor }}
@@ -90,7 +88,6 @@ export const PERFORMANCE_CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorPe
   {
     key: "cumulativeDiffDelta",
     header: "Cumulative DiffDelta",
-    className: "text-right",
     enableSorting: true,
     accessorFn: (row) => Math.round(Math.abs(row.cumulativeDiffDelta ?? 0)),
     render: (row) => {
@@ -101,7 +98,6 @@ export const PERFORMANCE_CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorPe
   {
     key: "churnRate",
     header: "Churn Rate",
-    className: "text-right",
     enableSorting: true,
     accessorFn: (row) => row.churnRate ?? 0,
     render: (row) => {

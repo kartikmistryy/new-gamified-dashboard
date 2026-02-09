@@ -126,13 +126,12 @@ function createPerformanceColumns(
     {
       key: "performance",
       header: "Effective Performance",
-      className: "text-right",
       enableSorting: true,
       accessorFn: (row) => row.performanceValue,
       render: (row) => {
         const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
         return (
-          <div className="flex items-center justify-end gap-2">
+          <div className="flex items-center gap-2">
             <span
               className="inline-flex items-center gap-1.5 px-3 rounded-lg text-xs font-medium"
               style={{
@@ -153,7 +152,6 @@ function createPerformanceColumns(
     {
       key: "change",
       header: "Change",
-      className: "text-right",
       enableSorting: true,
       accessorFn: (row) => row.changePts ?? 0,
       render: (row) => {
@@ -167,7 +165,7 @@ function createPerformanceColumns(
               ? DASHBOARD_COLORS.danger
               : "#737373";
         return (
-          <div className="flex items-center justify-end">
+          <div className="flex items-center">
             <span
               className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
               style={{ backgroundColor: hexToRgba(changeColor, 0.25), color: changeColor }}
@@ -182,7 +180,6 @@ function createPerformanceColumns(
     {
       key: "distribution",
       header: "Performance Breakdown",
-      className: "text-right",
       enableSorting: false,
       render: (row) => {
         const counts = PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s) => s.getCount(row.typeDistribution));
@@ -194,7 +191,7 @@ function createPerformanceColumns(
               icon: getTrendIconForCount(counts, index),
             }))}
             counts={counts}
-            alignment="end"
+            alignment="start"
             showCounts
           />
         );

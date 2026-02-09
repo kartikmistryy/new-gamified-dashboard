@@ -209,7 +209,7 @@ export function SpofTeamsTable({
         ];
         return <JoinedDistributionBar segments={ownerSegments} valueLabel="Owners" />;
       },
-      meta: { className: "text-right min-w-[260px]" },
+      meta: { className: "min-w-[260px]" },
     },
     {
       id: "repoHealthDistribution",
@@ -235,7 +235,7 @@ export function SpofTeamsTable({
         ];
         return <JoinedDistributionBar segments={repoHealthSegments} valueLabel="Repos" />;
       },
-      meta: { className: "text-right min-w-[280px]" },
+      meta: { className: "min-w-[280px]" },
     },
   ], [visibleTeams, handleToggle]);
 
