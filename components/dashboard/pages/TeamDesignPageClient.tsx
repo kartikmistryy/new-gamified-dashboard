@@ -6,7 +6,7 @@ import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
 import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
-import { TeamCollaborationNetwork } from "@/components/dashboard/TeamCollaborationNetwork";
+import { CollaborationNetworkGraph } from "@/components/dashboard/CollaborationNetworkGraph";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import {
@@ -54,7 +54,7 @@ export function TeamDesignPageClient() {
         <DashboardSection title="Collaboration Network" className="w-full">
           <div className="flex flex-row flex-wrap items-stretch gap-8">
             <div className="flex-[1.5] min-w-[400px]">
-              <TeamCollaborationNetwork
+              <CollaborationNetworkGraph
                 data={collaborationData}
                 onInsightsChange={setCollaborationInsights}
               />
