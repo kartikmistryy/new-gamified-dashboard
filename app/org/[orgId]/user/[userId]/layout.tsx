@@ -68,9 +68,6 @@ export default function UserDashboardLayout({
         <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
           <Card className="w-full border-none bg-white p-0 shadow-none">
             <CardContent className="flex w-full flex-col items-stretch space-y-8 px-0">
-              {/* Global Time Range Filter */}
-              <GlobalTimeRangeFilter showLabel />
-
               {/* Gauge and Insights - Constant across all tabs */}
               <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-8">
                 <div className="flex shrink-0 w-full lg:w-[320px]">
@@ -83,6 +80,9 @@ export default function UserDashboardLayout({
                   <ChartInsights insights={insights} />
                 </div>
               </div>
+              
+              {/* Global Time Range Filter */}
+              <GlobalTimeRangeFilter showLabel />
 
               {/* Metric Cards - 3x2 Grid - Constant across all tabs */}
               <section aria-labelledby="metrics-heading">
