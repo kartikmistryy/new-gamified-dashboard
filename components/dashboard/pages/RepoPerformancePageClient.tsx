@@ -143,6 +143,37 @@ export function RepoPerformancePageClient() {
     [aggregateMetrics]
   );
 
+  // Calculate median values for benchmark lines based on final cumulative values
+  const medianValues = useMemo(() => {
+    if (contributorMetrics.length === 0 || aggregateCumulativeData.length === 0) {
+      return { orgMedian: undefined, teamMedian: undefined };
+    }
+
+    // Get final cumulative value for each contributor (last week's cumulative total)
+    const contributorFinalValues = contributorMetrics.map(contributor => {
+      const contributorCumulativeData = generateCumulativeData(
+        contributor.additionsData,
+        contributor.deletionsData
+      );
+      return contributorCumulativeData[contributorCumulativeData.length - 1]?.cumulative ?? 0;
+    }).sort((a, b) => a - b);
+
+    // Calculate team median (median of all contributors' final cumulative values)
+    const midIndex = Math.floor(contributorFinalValues.length / 2);
+    const teamMedian = contributorFinalValues.length % 2 === 0
+      ? (contributorFinalValues[midIndex - 1] + contributorFinalValues[midIndex]) / 2
+      : contributorFinalValues[midIndex];
+
+    // Org median is set to a higher benchmark (75th percentile)
+    const p75Index = Math.floor(contributorFinalValues.length * 0.75);
+    const orgMedian = contributorFinalValues[p75Index] ?? teamMedian * 1.3;
+
+    return {
+      orgMedian: Math.round(orgMedian),
+      teamMedian: Math.round(teamMedian)
+    };
+  }, [contributorMetrics, aggregateCumulativeData]);
+
   return (
     <TooltipProvider>
       <div className="flex min-w-0 max-w-full flex-col gap-8 overflow-x-hidden px-6 pb-8 text-gray-900 min-h-screen bg-white">
@@ -162,7 +193,6 @@ export function RepoPerformancePageClient() {
             <GlobalTimeRangeFilter showLabel />
 
             <section className="w-full" aria-label="Repository performance chart">
-              <div className="bg-white rounded-lg">
                 <PerformanceChart
                   dataSource={{
                     type: "repo",
@@ -180,7 +210,6 @@ export function RepoPerformancePageClient() {
                   timeRange={timeRange}
                   ariaLabel="Repository contributor performance over time"
                 />
-              </div>
             </section>
 
             {/* Contributors Section */}
@@ -196,6 +225,8 @@ export function RepoPerformancePageClient() {
                     data={aggregateCumulativeData}
                     contributorName="Repository"
                     contributorColor="#3b82f6"
+                    orgMedian={medianValues.orgMedian}
+                    teamMedian={medianValues.teamMedian}
                   />
                 </div>
               </div>

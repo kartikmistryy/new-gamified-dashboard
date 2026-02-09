@@ -336,19 +336,77 @@ export function generateContributorTimeSeriesMetrics(
     const deletionsData: Array<{ week: string; value: number }> = [];
 
     for (let weekIndex = 0; weekIndex < weekCount; weekIndex++) {
-      // Create realistic variation with some weekly patterns
+      // Get week date for seasonal calculations
+      const weekDate = new Date(today);
+      weekDate.setDate(weekDate.getDate() - (weekCount - 1 - weekIndex) * 7);
+      const month = weekDate.getMonth();
+
+      // Sprint cycle variations (2-week sprints, 4-phase cycle)
+      const sprintPhase = weekIndex % 4;
+      const sprintMultiplier =
+        sprintPhase === 0 ? 1.3 :  // Sprint start - ramping up
+        sprintPhase === 1 ? 1.7 :  // Sprint peak - highest activity
+        sprintPhase === 2 ? 1.0 :  // Sprint end - normal activity
+        0.6;                        // Sprint planning - lowest activity
+
+      // Seasonal variations (holidays and vacation periods)
+      const isHolidaySeason = month === 11 || month === 0; // December, January
+      const isSummerSlump = month === 6 || month === 7;     // July, August
+      const seasonalMultiplier =
+        isHolidaySeason ? 0.45 :
+        isSummerSlump ? 0.65 :
+        1.0;
+
+      // Project milestones (occasional spikes every ~6-8 weeks)
+      const isMilestoneWeek = weekIndex % 7 === 2 || weekIndex % 11 === 4;
+      const milestoneMultiplier = isMilestoneWeek ? 2.1 : 1.0;
+
+      // Code cleanup/refactoring periods (higher deletion ratio every ~8 weeks)
+      const isRefactoringWeek = weekIndex % 8 === 5;
+
+      // Random week-to-week variation (good weeks vs slow weeks)
       const weekSeed = seed + weekIndex * 1000;
       const weekVariation = noise(weekSeed);
-      const seasonalFactor = 0.8 + 0.4 * Math.sin((weekIndex / 52) * Math.PI * 2); // Yearly cycle
+      const randomVariation = 0.7 + weekVariation * 0.6; // 0.7 to 1.3
 
-      // Commits per week with variation
+      // Per-contributor variation to add diversity
+      const contributorVariation = 0.85 + noise(seed + contributorIndex * 500 + weekIndex) * 0.3; // 0.85 to 1.15
+
+      // Apply all multipliers to base activity
+      const activityMultiplier =
+        sprintMultiplier *
+        seasonalMultiplier *
+        milestoneMultiplier *
+        randomVariation *
+        contributorVariation;
+
+      // Commits per week with realistic variation
       const commits = Math.round(
-        Math.max(0, baseCommitsPerWeek * seasonalFactor * (0.5 + weekVariation))
+        Math.max(0, baseCommitsPerWeek * activityMultiplier)
       );
 
       // Lines per commit with variation
       const additionsPerCommit = baseLinesPerCommit * (0.7 + noise(weekSeed + 100) * 0.6);
-      const deletionsPerCommit = baseLinesPerCommit * (0.3 + noise(weekSeed + 200) * 0.4) * (1 - performanceRatio * 0.3);
+
+      // Delete rate calculation with context-awareness
+      let deletionRate = (0.3 + noise(weekSeed + 200) * 0.4) * (1 - performanceRatio * 0.3);
+
+      // Refactoring weeks have much higher delete ratio
+      if (isRefactoringWeek) {
+        deletionRate *= 2.8;
+      }
+
+      // Sprint planning weeks have lower delete (more planning, less coding)
+      if (sprintPhase === 3) {
+        deletionRate *= 0.4;
+      }
+
+      // Milestone weeks may have lower deletions (focused on new features)
+      if (isMilestoneWeek) {
+        deletionRate *= 0.7;
+      }
+
+      const deletionsPerCommit = baseLinesPerCommit * deletionRate;
 
       const additions = Math.round(commits * additionsPerCommit);
       const deletions = Math.round(commits * deletionsPerCommit);

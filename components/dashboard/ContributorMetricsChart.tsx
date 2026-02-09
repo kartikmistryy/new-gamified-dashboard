@@ -18,6 +18,8 @@ type ContributorMetricsChartProps = {
   subtitle?: string;
   showMiniVersion?: boolean;
   height?: number;
+  orgMedian?: number;
+  teamMedian?: number;
 };
 
 const DEFAULT_HEIGHT = 360;
@@ -43,6 +45,8 @@ export function ContributorMetricsChart({
   subtitle,
   showMiniVersion = false,
   height: propHeight,
+  orgMedian,
+  teamMedian,
 }: ContributorMetricsChartProps) {
   const plotRef = useRef<HTMLDivElement | null>(null);
 
@@ -102,15 +106,51 @@ export function ContributorMetricsChart({
       hovertemplate: `Delete: %{y:,.0f}<extra></extra>`,
     } as any);
 
+    // Org median horizontal line (purple)
+    if (orgMedian !== undefined) {
+      output.push({
+        type: "scatter",
+        mode: "lines",
+        x,
+        y: Array(x.length).fill(orgMedian),
+        name: "Org Median",
+        line: {
+          color: "#8b5cf6",
+          width: 1.5,
+          dash: "dash",
+        },
+        hovertemplate: `Org Median: %{y:,.0f}<extra></extra>`,
+        showlegend: true,
+      });
+    }
+
+    // Team median horizontal line (amber)
+    if (teamMedian !== undefined) {
+      output.push({
+        type: "scatter",
+        mode: "lines",
+        x,
+        y: Array(x.length).fill(teamMedian),
+        name: "Team Median",
+        line: {
+          color: "#f59e0b",
+          width: 1.5,
+          dash: "dash",
+        },
+        hovertemplate: `Team Median: %{y:,.0f}<extra></extra>`,
+        showlegend: true,
+      });
+    }
+
     return output;
-  }, [data, contributorName, contributorColor, showMiniVersion]);
+  }, [data, contributorName, contributorColor, showMiniVersion, orgMedian, teamMedian]);
 
   const layout = useMemo<Partial<Layout>>(
     () => ({
       autosize: true,
       height: chartHeight,
-      paper_bgcolor: "transparent",
-      plot_bgcolor: "transparent",
+      paper_bgcolor: "#ffffff",
+      plot_bgcolor: "#f9fafb",
       margin: showMiniVersion
         ? { t: 10, r: 10, b: 30, l: 40 }
         : { t: 20, r: 20, b: 44, l: 60 },
@@ -125,14 +165,30 @@ export function ContributorMetricsChart({
         },
         bordercolor: "#e5e7eb",
       },
-      showlegend: false,
+      showlegend: orgMedian !== undefined || teamMedian !== undefined,
+      legend: {
+        x: 1,
+        xanchor: "right",
+        y: 1,
+        yanchor: "top",
+        bgcolor: "rgba(255, 255, 255, 0.9)",
+        bordercolor: "#e5e7eb",
+        borderwidth: 1,
+        font: {
+          size: 11,
+          color: "#374151",
+        },
+      },
       xaxis: {
         title: { text: "" },
         tickformat: showMiniVersion ? "%b" : "%b %-d<br>%Y",
         hoverformat: "%b %-d, %Y",
-        showgrid: false,
+        showgrid: true,
+        gridcolor: "#e2e8f0",
+        gridwidth: 1,
         showline: false,
         zeroline: false,
+        zerolinecolor: "#cbd5e1",
         tickfont: { color: "#6b7280", size: showMiniVersion ? 10 : 14 },
       },
       yaxis: {
@@ -141,9 +197,11 @@ export function ContributorMetricsChart({
           font: { size: 14, color: "#374151" }
         },
         tickformat: "~s",
-        gridcolor: "#f3f4f6",
+        showgrid: true,
+        gridcolor: "#e2e8f0",
         gridwidth: 1,
         zeroline: false,
+        zerolinecolor: "#cbd5e1",
         tickfont: { color: "#6b7280", size: showMiniVersion ? 10 : 14 },
       },
       font: {
@@ -151,7 +209,7 @@ export function ContributorMetricsChart({
         color: "#1e293b",
       },
     }),
-    [chartHeight, showMiniVersion]
+    [chartHeight, showMiniVersion, orgMedian, teamMedian]
   );
 
   const config = useMemo<Partial<Config>>(

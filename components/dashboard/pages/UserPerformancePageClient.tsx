@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
 import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
-import { UserPerformanceComparisonChart } from "@/components/dashboard/UserPerformanceComparisonChart";
+import { ContributorMetricsChart } from "@/components/dashboard/ContributorMetricsChart";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { getStartDateForRange } from "@/lib/orgDashboard/performanceChartHelpers";
 import {
@@ -63,8 +63,21 @@ export function UserPerformancePageClient() {
     });
   }, [cumulativePerformanceData, timeRange]);
 
-  // Generate comparison lines (team and org medians)
-  const comparisonLines = useMemo(() => {
+  // Transform cumulative data to ContributorMetricsChart format
+  const transformedCumulativeData = useMemo(() => {
+    if (!filteredCumulativeData || filteredCumulativeData.length === 0) return [];
+
+    // Convert from UserPerformanceComparisonDataPoint to ContributorMetricDataPoint
+    return filteredCumulativeData.map((point) => ({
+      week: point.date,
+      cumulative: point.cumulative,
+      additions: point.add,
+      deletions: point.selfDelete,
+    }));
+  }, [filteredCumulativeData]);
+
+  // Calculate median values from comparison data
+  const medianValues = useMemo(() => {
     const teamMedianData = generateTeamMedianCumulativeData();
     const orgMedianData = generateOrgMedianCumulativeData();
 
@@ -81,20 +94,19 @@ export function UserPerformancePageClient() {
       });
     };
 
-    return [
-      {
-        label: "Team Median",
-        color: "#10b981",
-        data: filterLine(teamMedianData),
-        dashStyle: "dash" as const,
-      },
-      {
-        label: "Org Median",
-        color: "#8b5cf6",
-        data: filterLine(orgMedianData),
-        dashStyle: "dot" as const,
-      },
-    ];
+    const filteredTeamMedian = filterLine(teamMedianData);
+    const filteredOrgMedian = filterLine(orgMedianData);
+
+    // Get final cumulative values from the last data point
+    const teamMedian = filteredTeamMedian.length > 0
+      ? filteredTeamMedian[filteredTeamMedian.length - 1].value
+      : undefined;
+
+    const orgMedian = filteredOrgMedian.length > 0
+      ? filteredOrgMedian[filteredOrgMedian.length - 1].value
+      : undefined;
+
+    return { teamMedian, orgMedian };
   }, [timeRange]);
 
   if (!userId || !userData) {
@@ -126,15 +138,15 @@ export function UserPerformancePageClient() {
       </DashboardSection>
 
       {/* Performance Comparison: User vs Team vs Org */}
-      {userData && filteredCumulativeData.length > 0 && (
+      {userData && transformedCumulativeData.length > 0 && (
         <DashboardSection title="Performance Comparison">
-          <UserPerformanceComparisonChart
-            userLine={{
-              name: userData.userName,
-              color: "#2563eb",
-              data: filteredCumulativeData,
-            }}
-            comparisonLines={comparisonLines}
+          <ContributorMetricsChart
+            data={transformedCumulativeData}
+            contributorName={userData.userName}
+            contributorColor="#2563eb"
+            teamMedian={medianValues.teamMedian}
+            orgMedian={medianValues.orgMedian}
+            height={500}
           />
         </DashboardSection>
       )}

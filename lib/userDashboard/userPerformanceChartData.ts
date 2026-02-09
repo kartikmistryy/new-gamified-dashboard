@@ -1,10 +1,16 @@
 import type { ChartEvent, ChartAnnotation } from "@/lib/orgDashboard/types";
-import type { UserPerformanceComparisonDataPoint } from "@/components/dashboard/UserPerformanceComparisonChart";
 
 /**
  * User Performance Chart Data
  * Data structure and mock data for individual user performance tracking over time.
  */
+
+export type UserPerformanceComparisonDataPoint = {
+  date: string;
+  cumulative: number;
+  add: number;
+  selfDelete: number;
+};
 
 /**
  * Creates a deterministic seeded random number generator.
