@@ -35,7 +35,7 @@ interface TimeRangeFilterProps {
    * Available time range options (controlled mode)
    * Optional - defaults to context options or TIME_RANGE_OPTIONS
    */
-  options?: TimeRangeOption[];
+  options?: readonly TimeRangeOption[];
   /**
    * Visual size variant
    * - `sm`: Compact size for tight layouts
@@ -174,7 +174,7 @@ export function TimeRangeFilter({
 
   let timeRange: TimeRangeKey;
   let setTimeRange: (value: TimeRangeKey) => void;
-  let filterOptions: TimeRangeOption[];
+  let filterOptions: readonly TimeRangeOption[];
 
   if (contextValue !== null) {
     // Context mode: use context values, allow prop overrides

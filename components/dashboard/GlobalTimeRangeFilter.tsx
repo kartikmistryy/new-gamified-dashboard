@@ -10,7 +10,7 @@ import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
  */
 interface GlobalTimeRangeFilterProps {
   /** Optional custom time range options (defaults to standard options) */
-  options?: Array<{ id: TimeRangeKey; label: string; disabled?: boolean }>;
+  options?: ReadonlyArray<{ id: TimeRangeKey; label: string; disabled?: boolean }>;
   /** Additional CSS classes */
   className?: string;
   /** Label text to display before the filter */

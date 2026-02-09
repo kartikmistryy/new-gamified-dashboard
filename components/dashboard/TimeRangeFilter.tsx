@@ -3,7 +3,7 @@
 import { Badge } from "@/components/shared/Badge";
 
 type TimeRangeFilterProps<T extends string> = {
-  options: Array<{ id: T; label: string; disabled?: boolean }>;
+  options: ReadonlyArray<{ id: T; label: string; disabled?: boolean }>;
   value: T;
   onChange: (value: T) => void;
   size?: "sm" | "default";
