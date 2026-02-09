@@ -8,8 +8,9 @@ import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
-import { TeamPerformanceChart } from "@/components/dashboard/TeamPerformanceChart";
+import { UnifiedPerformanceChart } from "@/components/dashboard/UnifiedPerformanceChart";
 import { ContributorMetricsChart } from "@/components/dashboard/ContributorMetricsChart";
+import { generateRepoEvents, generateRepoAnnotations } from "@/lib/dashboard/performanceChart";
 import { getContributorPerformanceRowsForRepo } from "@/lib/repoDashboard/overviewMockData";
 import { generateContributorPerformanceTimeSeries } from "@/lib/repoDashboard/performanceMockData";
 import {
@@ -69,15 +70,6 @@ export function RepoPerformancePageClient() {
   );
 
   const sampledData = useMemo(() => smartSample(timeFilteredData), [timeFilteredData]);
-
-  // Transform contributor data to member data format for TeamPerformanceChart
-  const chartData = useMemo(() => {
-    return timeFilteredData.map(point => ({
-      date: point.date,
-      value: point.value,
-      memberValues: point.contributorValues, // Rename contributorValues to memberValues
-    }));
-  }, [timeFilteredData]);
 
   const insights = useMemo(
     () => getPerformanceInsights(contributors, sampledData, timeRange),
@@ -171,7 +163,23 @@ export function RepoPerformancePageClient() {
 
             <section className="w-full" aria-label="Repository performance chart">
               <div className="bg-white rounded-lg">
-                <TeamPerformanceChart data={chartData} />
+                <UnifiedPerformanceChart
+                  dataSource={{
+                    type: "repo",
+                    data: timeFilteredData,
+                    repoId: repoId!,
+                  }}
+                  eventStrategy={{
+                    mode: "dynamic",
+                    generator: generateRepoEvents,
+                  }}
+                  annotationStrategy={{
+                    mode: "dynamic",
+                    generator: generateRepoAnnotations,
+                  }}
+                  timeRange={timeRange}
+                  ariaLabel="Repository contributor performance over time"
+                />
               </div>
             </section>
 

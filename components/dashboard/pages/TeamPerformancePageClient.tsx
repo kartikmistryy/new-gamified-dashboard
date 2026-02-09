@@ -8,8 +8,9 @@ import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
-import { TeamPerformanceChart } from "@/components/dashboard/TeamPerformanceChart";
+import { UnifiedPerformanceChart } from "@/components/dashboard/UnifiedPerformanceChart";
 import { TeamPerformanceComparisonChart } from "@/components/dashboard/TeamPerformanceComparisonChart";
+import { generateTeamEvents, generateTeamAnnotations } from "@/lib/dashboard/performanceChart";
 import { getMemberPerformanceRowsForTeam } from "@/lib/teamDashboard/overviewMockData";
 import { generateMemberPerformanceTimeSeries } from "@/lib/teamDashboard/performanceMockData";
 import {
@@ -152,7 +153,23 @@ export function TeamPerformancePageClient() {
 
             <section className="w-full" aria-label="Team performance chart">
               <div className="bg-white rounded-lg">
-                <TeamPerformanceChart data={timeFilteredData} />
+                <UnifiedPerformanceChart
+                  dataSource={{
+                    type: "team",
+                    data: timeFilteredData,
+                    teamId: teamId!,
+                  }}
+                  eventStrategy={{
+                    mode: "dynamic",
+                    generator: generateTeamEvents,
+                  }}
+                  annotationStrategy={{
+                    mode: "dynamic",
+                    generator: generateTeamAnnotations,
+                  }}
+                  timeRange={timeRange}
+                  ariaLabel="Team performance normalized to rolling average over time"
+                />
               </div>
             </section>
 

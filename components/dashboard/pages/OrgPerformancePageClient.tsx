@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { GaugeSection } from "@/components/dashboard/GaugeSection";
-import { OrgPerformanceChart } from "@/components/dashboard/OrgPerformanceChart";
+import { UnifiedPerformanceChart } from "@/components/dashboard/UnifiedPerformanceChart";
 import { PerformanceTeamsTable } from "@/components/dashboard/PerformanceTeamsTable";
 import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
 import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
@@ -13,6 +13,11 @@ import {
   TEAM_PERFORMANCE_ROWS,
   getChartInsightsMock,
 } from "@/lib/orgDashboard/overviewMockData";
+import {
+  ORG_PERFORMANCE_HOLIDAYS,
+  ORG_PERFORMANCE_ANNOTATIONS,
+  generateOrgPerformanceData,
+} from "@/lib/orgDashboard/orgPerformanceChartData";
 
 /** Default performance gauge value for the Performance Tracking section (0–100). */
 const DEFAULT_PERFORMANCE_GAUGE_VALUE = Math.floor(Math.random() * 100);
@@ -62,7 +67,25 @@ export function OrgPerformancePageClient() {
           <GlobalTimeRangeFilter showLabel />
 
           <DashboardSection title="Percentile (Normalized to Rolling Avg)">
-            <OrgPerformanceChart visibleTeams={visibleTeams} timeRange={timeRange} />
+            <UnifiedPerformanceChart
+              dataSource={{
+                type: "org",
+                data: [],
+                generator: generateOrgPerformanceData,
+              }}
+              eventStrategy={{
+                mode: "static",
+                events: ORG_PERFORMANCE_HOLIDAYS,
+              }}
+              annotationStrategy={{
+                mode: "static",
+                annotations: ORG_PERFORMANCE_ANNOTATIONS,
+              }}
+              timeRange={timeRange}
+              entityVisibility={{
+                visibleEntities: visibleTeams,
+              }}
+            />
           </DashboardSection>
 
           <DashboardSection title="Teams" className="w-full">
