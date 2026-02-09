@@ -4,13 +4,13 @@ import { RouteParamsProvider } from '@/lib/RouteParamsProvider';
 import { TimeRangeProvider } from '@/lib/contexts/TimeRangeContext';
 
 /**
- * Organization Layout
+ * Team Dashboard Layout
  *
- * Provides RouteParamsProvider and TimeRangeProvider for all org-level pages.
+ * Provides RouteParamsProvider and TimeRangeProvider for all team-level pages.
  * The TimeRangeProvider enables centralized time range management across
- * all organization dashboard pages and visualizations.
+ * all team dashboard pages and visualizations.
  */
-export default function OrgLayout({ children }: { children: React.ReactNode }) {
+export default function TeamLayout({ children }: { children: React.ReactNode }) {
   return (
     <RouteParamsProvider>
       <TimeRangeProvider defaultTimeRange="1y">

@@ -8,6 +8,8 @@ import { generateUserPerformanceData, getUserMetricCards, getUserChartInsights }
 import { GaugeSection } from "@/components/dashboard/GaugeSection";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { OverviewSummaryCard } from "@/components/dashboard/OverviewSummaryCard";
+import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
+import { TimeRangeProvider } from "@/lib/contexts/TimeRangeContext";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
 
 /**
@@ -15,6 +17,9 @@ import { useRouteParams } from "@/lib/RouteParamsProvider";
  *
  * Contains the constant content (gauge, insights, metric cards) that persists
  * across all tabs. Only the tab-specific content (children) changes on navigation.
+ *
+ * Includes TimeRangeProvider for centralized time range management across all
+ * visualizations and tables within the user dashboard.
  */
 export default function UserDashboardLayout({
   children,
@@ -58,42 +63,47 @@ export default function UserDashboardLayout({
   }
 
   return (
-    <TooltipProvider>
-      <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
-        <Card className="w-full border-none bg-white p-0 shadow-none">
-          <CardContent className="flex w-full flex-col items-stretch space-y-8 px-0">
-            {/* Gauge and Insights - Constant across all tabs */}
-            <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-8">
-              <div className="flex shrink-0 w-full lg:w-[320px]">
-                <GaugeSection
-                  gaugeValue={userData.performanceScore}
-                  labelVariant="performance"
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <ChartInsights insights={insights} />
-              </div>
-            </div>
+    <TimeRangeProvider defaultTimeRange="max">
+      <TooltipProvider>
+        <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
+          <Card className="w-full border-none bg-white p-0 shadow-none">
+            <CardContent className="flex w-full flex-col items-stretch space-y-8 px-0">
+              {/* Global Time Range Filter */}
+              <GlobalTimeRangeFilter showLabel />
 
-            {/* Metric Cards - 3x2 Grid - Constant across all tabs */}
-            <section aria-labelledby="metrics-heading">
-              <h2 id="metrics-heading" className="sr-only">
-                Performance Metrics
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-                {metricCards.map((card) => (
-                  <OverviewSummaryCard key={card.key} item={card} />
-                ))}
+              {/* Gauge and Insights - Constant across all tabs */}
+              <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-8">
+                <div className="flex shrink-0 w-full lg:w-[320px]">
+                  <GaugeSection
+                    gaugeValue={userData.performanceScore}
+                    labelVariant="performance"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <ChartInsights insights={insights} />
+                </div>
               </div>
-            </section>
 
-            {/* Tab-specific content (changes on navigation) */}
-            <section className="mt-8">
-              {children}
-            </section>
-          </CardContent>
-        </Card>
-      </div>
-    </TooltipProvider>
+              {/* Metric Cards - 3x2 Grid - Constant across all tabs */}
+              <section aria-labelledby="metrics-heading">
+                <h2 id="metrics-heading" className="sr-only">
+                  Performance Metrics
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                  {metricCards.map((card) => (
+                    <OverviewSummaryCard key={card.key} item={card} />
+                  ))}
+                </div>
+              </section>
+
+              {/* Tab-specific content (changes on navigation) */}
+              <section className="mt-8">
+                {children}
+              </section>
+            </CardContent>
+          </Card>
+        </div>
+      </TooltipProvider>
+    </TimeRangeProvider>
   );
 }
