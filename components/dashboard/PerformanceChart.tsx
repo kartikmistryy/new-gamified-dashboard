@@ -13,7 +13,7 @@ import { getStartDateForRange } from "@/lib/orgDashboard/performanceChartHelpers
 import { PerformanceChartLegend } from "./PerformanceChartLegend";
 import { PERFORMANCE_ZONES, PERFORMANCE_BASELINES } from "@/lib/orgDashboard/orgPerformanceChartData";
 import type {
-  UnifiedPerformanceChartProps,
+  PerformanceChartProps,
   NormalizedPerformanceDataPoint,
 } from "@/lib/dashboard/performanceChart";
 import {
@@ -26,6 +26,7 @@ import {
 } from "@/lib/dashboard/performanceChart";
 
 // Dynamically import Plotly to avoid SSR issues
+// Note: react-plotly.js only exports a default export (external library)
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
 /**
@@ -49,7 +50,7 @@ const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
  * @example
  * ```tsx
  * // Org dashboard usage
- * <UnifiedPerformanceChart
+ * <PerformanceChart
  *   dataSource={{ type: "org", data: orgData }}
  *   eventStrategy={{ mode: "static", events: ORG_HOLIDAYS }}
  *   annotationStrategy={{ mode: "static", annotations: ORG_ANNOTATIONS }}
@@ -58,7 +59,7 @@ const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
  * />
  *
  * // Team dashboard usage
- * <UnifiedPerformanceChart
+ * <PerformanceChart
  *   dataSource={{ type: "team", data: memberData }}
  *   eventStrategy={{ mode: "dynamic", generator: generateTeamEvents }}
  *   annotationStrategy={{ mode: "dynamic", generator: generateTeamAnnotations }}
@@ -66,7 +67,7 @@ const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
  * />
  * ```
  */
-export function UnifiedPerformanceChart({
+export function PerformanceChart({
   dataSource,
   eventStrategy = { mode: "none" },
   annotationStrategy = { mode: "none" },
@@ -74,7 +75,7 @@ export function UnifiedPerformanceChart({
   entityVisibility,
   ariaLabel = "Performance chart over time",
   className = "",
-}: UnifiedPerformanceChartProps) {
+}: PerformanceChartProps) {
   // ============================================================================
   // Data Transformation Pipeline
   // ============================================================================
