@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
-import { RepoContributionChart } from "@/components/dashboard/RepoContributionChart";
+import { SankeyContributionChart } from "@/components/dashboard/SankeyContributionChart";
 import { RepoHealthBar, REPO_HEALTH_SEGMENTS, type RepoHealthSegment } from "@/components/dashboard/RepoHealthBar";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "@/components/dashboard/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
@@ -19,6 +19,8 @@ import {
   getSpofInsights,
   type SpofContributorFilter,
 } from "@/lib/repoDashboard/spofHelpers";
+import { buildRepoContributionFlow } from "@/lib/repoDashboard/spofContributionData";
+import { CONTRIBUTOR_FALLBACK_COLORS } from "@/lib/repoDashboard/contributionFlowHelpers";
 import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/orgDashboard/utils";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
@@ -82,6 +84,21 @@ export function RepoSpofPageClient() {
 
   const insights = useMemo(() => getSpofInsights(contributors), [contributors]);
 
+  // Build contribution flow data
+  const contributionFlow = useMemo(
+    () => buildRepoContributionFlow(contributors, 5),
+    [contributors]
+  );
+
+  const contributorColorMap = useMemo(() => {
+    return new Map(
+      contributors.map((contributor, index) => [
+        contributor.contributorName,
+        contributor.contributorColor ?? CONTRIBUTOR_FALLBACK_COLORS[index % CONTRIBUTOR_FALLBACK_COLORS.length],
+      ])
+    );
+  }, [contributors]);
+
   // Calculate repo health segments for RepoHealthBar
   const repoHealthSegments = useMemo((): RepoHealthSegment[] => {
     const totalHealthy = contributors.reduce((sum, c) => sum + c.repoHealthHealthy, 0);
@@ -122,7 +139,12 @@ export function RepoSpofPageClient() {
         </DashboardSection>
 
         <DashboardSection title="Repository Contribution Flow">
-          <RepoContributionChart contributors={contributors} minPercentage={5} />
+          <SankeyContributionChart
+            flow={contributionFlow}
+            colorMap={contributorColorMap}
+            sourceLabel="Contributor"
+            targetLabel="Module"
+          />
         </DashboardSection>
 
         <DashboardSection title="Repository Health Distribution">

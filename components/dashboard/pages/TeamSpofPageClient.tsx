@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
-import { TeamContributionChart } from "@/components/dashboard/TeamContributionChart";
+import { SankeyContributionChart } from "@/components/dashboard/SankeyContributionChart";
 import { RepoHealthBar, REPO_HEALTH_SEGMENTS, type RepoHealthSegment } from "@/components/dashboard/RepoHealthBar";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "@/components/dashboard/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
@@ -19,6 +19,8 @@ import {
   getSpofInsights,
   type SpofMemberFilter,
 } from "@/lib/teamDashboard/spofHelpers";
+import { buildTeamContributionFlow } from "@/lib/teamDashboard/spofContributionData";
+import { MEMBER_FALLBACK_COLORS } from "@/lib/teamDashboard/contributionFlowHelpers";
 import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/orgDashboard/utils";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
@@ -82,6 +84,21 @@ export function TeamSpofPageClient() {
 
   const insights = useMemo(() => getSpofInsights(members), [members]);
 
+  // Build contribution flow data
+  const contributionFlow = useMemo(
+    () => buildTeamContributionFlow(members, 5),
+    [members]
+  );
+
+  const memberColorMap = useMemo(() => {
+    return new Map(
+      members.map((member, index) => [
+        member.memberName,
+        member.memberColor ?? MEMBER_FALLBACK_COLORS[index % MEMBER_FALLBACK_COLORS.length],
+      ])
+    );
+  }, [members]);
+
   // Calculate repo health segments for RepoHealthBar
   const repoHealthSegments = useMemo((): RepoHealthSegment[] => {
     const totalHealthy = members.reduce((sum, m) => sum + m.repoHealthHealthy, 0);
@@ -122,7 +139,12 @@ export function TeamSpofPageClient() {
         </DashboardSection>
 
         <DashboardSection title="Team Contribution Flow">
-          <TeamContributionChart members={members} minPercentage={5} />
+          <SankeyContributionChart
+            flow={contributionFlow}
+            colorMap={memberColorMap}
+            sourceLabel="Member"
+            targetLabel="Repo"
+          />
         </DashboardSection>
 
         <DashboardSection title="Repository Health Distribution">
