@@ -48,6 +48,17 @@ export const TIME_RANGE_CONFIGS: ReadonlyArray<TimeRangeConfig> = [
 ] as const;
 
 /**
+ * Simplified time range options for TimeRangeFilter component
+ * Compatible with the existing orgDashboard TIME_RANGE_OPTIONS format
+ */
+export const TIME_RANGE_OPTIONS: ReadonlyArray<{ id: TimeRangeKey; label: string }> = [
+  { id: "1m", label: "1 Month" },
+  { id: "3m", label: "3 Months" },
+  { id: "1y", label: "1 Year" },
+  { id: "max", label: "Max" },
+] as const;
+
+/**
  * Type-safe time range lookup
  * @throws Error if invalid time range key
  */

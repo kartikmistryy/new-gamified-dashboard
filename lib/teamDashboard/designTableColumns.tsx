@@ -51,6 +51,7 @@ export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, Design
     key: "rank",
     header: "Rank",
     className: "w-14",
+    enableSorting: false,
     render: (_, index) => {
       const displayRank = index + 1;
       return (
@@ -67,6 +68,7 @@ export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, Design
   {
     key: "member",
     header: "Member",
+    enableSorting: false,
     render: (row) => (
       <div className="flex items-center gap-3">
         <TeamAvatar teamName={row.memberName} className="size-4" />
@@ -78,6 +80,8 @@ export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, Design
     key: "ownershipHealth",
     header: "Ownership Health",
     className: "text-right",
+    enableSorting: true,
+    accessorFn: (row) => row.ownershipAllocation[2], // Sort by high ownership count
     render: (row) => {
       // Reverse order: green, blue, red (as per org design pattern)
       const counts = [
@@ -102,6 +106,8 @@ export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, Design
     key: "engineeringChaos",
     header: "Engineering Chaos Index",
     className: "text-right",
+    enableSorting: true,
+    accessorFn: (row) => row.outlierScore, // Sort by outlier score
     render: (row) => {
       // Reverse order for display
       const counts = [
@@ -127,6 +133,8 @@ export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, Design
     key: "kp",
     header: "KP",
     className: "text-right",
+    enableSorting: true,
+    accessorFn: (row) => row.totalKarmaPoints,
     render: (row) => (
       <span className="text-gray-700">
         {(row.totalKarmaPoints / 1000).toFixed(1)}k
@@ -137,6 +145,8 @@ export const DESIGN_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberDesignRow, Design
     key: "ownership",
     header: "Ownership %",
     className: "text-right",
+    enableSorting: true,
+    accessorFn: (row) => row.ownershipPct,
     render: (row) => (
       <span className="text-gray-700">
         {row.ownershipPct.toFixed(1)}%

@@ -11,6 +11,7 @@ export const PERFORMANCE_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceW
     key: "rank",
     header: "Rank",
     className: "w-14",
+    enableSorting: false,
     render: (_, index) => {
       const displayRank = index + 1;
       return (
@@ -27,6 +28,7 @@ export const PERFORMANCE_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceW
   {
     key: "member",
     header: "Member",
+    enableSorting: false,
     render: (row) => (
       <div className="flex items-center gap-3">
         <TeamAvatar teamName={row.memberName} className="size-4" />
@@ -38,6 +40,8 @@ export const PERFORMANCE_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceW
     key: "performance",
     header: "Effective Performance",
     className: "text-right",
+    enableSorting: true,
+    accessorFn: (row) => row.performanceValue,
     render: (row) => {
       const TrendIcon = getTrendIcon(row.trend);
       return (
@@ -63,6 +67,8 @@ export const PERFORMANCE_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceW
     key: "change",
     header: "Change",
     className: "text-right",
+    enableSorting: true,
+    accessorFn: (row) => Math.round(row.change ?? 0),
     render: (row) => {
       const TrendIcon = getTrendIcon(row.trend);
       const change = Math.round(row.change ?? 0);
@@ -85,6 +91,8 @@ export const PERFORMANCE_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceW
     key: "cumulativeDiffDelta",
     header: "Cumulative DiffDelta",
     className: "text-right",
+    enableSorting: true,
+    accessorFn: (row) => Math.round(Math.abs(row.cumulativeDiffDelta ?? 0)),
     render: (row) => {
       const cumulativeDelta = Math.round(Math.abs(row.cumulativeDiffDelta ?? 0));
       return <span className="text-gray-700">{cumulativeDelta}</span>;
@@ -94,6 +102,8 @@ export const PERFORMANCE_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceW
     key: "churnRate",
     header: "Churn Rate",
     className: "text-right",
+    enableSorting: true,
+    accessorFn: (row) => row.churnRate ?? 0,
     render: (row) => {
       const churnRate = row.churnRate ?? 0;
       return <span className="text-gray-700">{churnRate}%</span>;

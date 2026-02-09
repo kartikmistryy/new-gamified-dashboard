@@ -69,7 +69,7 @@ export function createSkillgraphTeamColumns({
       id: "rank",
       header: "Rank",
       accessorFn: (_row, index) => index + 1,
-      enableSorting: true,
+      enableSorting: false,
       cell: ({ row }) => {
         const rank = row.index + 1;
         return (
