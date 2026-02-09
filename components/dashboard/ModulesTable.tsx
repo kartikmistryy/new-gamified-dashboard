@@ -20,6 +20,7 @@ import {
 import { Badge as UiBadge } from "@/components/ui/badge";
 import { UserAvatar } from "@/components/shared/UserAvatar";
 import { SortableTableHeader } from "./SortableTableHeader";
+import { ModuleDetailSheet } from "./ModuleDetailSheet";
 import type { ModuleSPOFData } from "@/lib/userDashboard/types";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
@@ -121,12 +122,20 @@ function OwnerCell({ name, percent, color }: { name: string; percent: number; co
  */
 export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [selectedModule, setSelectedModule] = useState<ModuleSPOFData | null>(null);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   // Filter and sort modules
   const displayedModules = useMemo(() => {
     const filtered = filterModules(modules, "all", currentUserId);
     return sortModulesByRisk(filtered);
   }, [modules, currentUserId]);
+
+  // Handle row click
+  const handleRowClick = (module: ModuleSPOFData) => {
+    setSelectedModule(module);
+    setIsSheetOpen(true);
+  };
 
   const columns = useMemo<ColumnDef<ModuleSPOFData, unknown>[]>(() => [
     {
@@ -232,37 +241,46 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
   });
 
   return (
-    <div className="w-full">
-      <div className="rounded-sm border-none overflow-hidden bg-white">
-        <Table>
-          <TableHeader className="border-0">
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className="border-none hover:bg-transparent">
-                {headerGroup.headers.map((header) => (
-                  <SortableTableHeader key={header.id} header={header} />
-                ))}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.original.id}
-                className="border-none hover:bg-gray-50 transition-colors"
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell
-                    key={cell.id}
-                    className={(cell.column.columnDef.meta as { className?: string })?.className}
-                  >
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+    <>
+      <div className="w-full">
+        <div className="rounded-sm border-none overflow-hidden bg-white">
+          <Table>
+            <TableHeader className="border-0">
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id} className="border-none hover:bg-transparent">
+                  {headerGroup.headers.map((header) => (
+                    <SortableTableHeader key={header.id} header={header} />
+                  ))}
+                </TableRow>
+              ))}
+            </TableHeader>
+            <TableBody>
+              {table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.original.id}
+                  onClick={() => handleRowClick(row.original)}
+                  className="border-none hover:bg-gray-50 transition-colors cursor-pointer"
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell
+                      key={cell.id}
+                      className={(cell.column.columnDef.meta as { className?: string })?.className}
+                    >
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
-    </div>
+
+      <ModuleDetailSheet
+        open={isSheetOpen}
+        onOpenChange={setIsSheetOpen}
+        module={selectedModule}
+      />
+    </>
   );
 }

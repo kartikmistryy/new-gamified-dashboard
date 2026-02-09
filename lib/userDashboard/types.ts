@@ -148,6 +148,40 @@ export type ModuleOwner = {
 };
 
 /**
+ * Contributor information for module capabilities.
+ */
+export type CapabilityContributor = {
+  /** Contributor name. */
+  name: string;
+  /** Ownership percentage (0-100). */
+  ownershipPercent: number;
+};
+
+/**
+ * Module capability (function/sub-module) information.
+ */
+export type ModuleCapability = {
+  /** Unique identifier for the capability. */
+  id: string;
+  /** Display name of the capability/function. */
+  name: string;
+  /** Importance percentage (0-100). */
+  importance: number;
+  /** Bus factor count. */
+  busFactor: number;
+  /** Backup owners count. */
+  backupCount: number;
+  /** Top owner percentage. */
+  topOwnerPercent: number;
+  /** Number of files in this capability. */
+  fileCount: number;
+  /** List of contributors with ownership percentages. */
+  contributors: CapabilityContributor[];
+  /** SPOF score for this capability (optional, for highlighting). */
+  spofScore?: number;
+};
+
+/**
  * Module data for SPOF treemap visualization.
  */
 export type ModuleSPOFData = {
@@ -167,4 +201,12 @@ export type ModuleSPOFData = {
   primaryOwner: ModuleOwner;
   /** Backup owner (second highest ownership). */
   backupOwner: ModuleOwner;
+  /** Module description. */
+  description?: string;
+  /** Active contributors count. */
+  activeContributors?: number;
+  /** Team load status. */
+  teamLoad?: "Low Pressure" | "Medium Pressure" | "High Pressure";
+  /** Module capabilities/functions. */
+  capabilities?: ModuleCapability[];
 };

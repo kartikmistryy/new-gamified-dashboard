@@ -26,6 +26,8 @@ import type {
   PerformanceLevel,
   ModuleSPOFData,
   ModuleOwner,
+  ModuleCapability,
+  CapabilityContributor,
 } from "./types";
 import { getScoreRange } from "./userSpofHelpers";
 
@@ -438,6 +440,122 @@ function generateMockOwner(index: number, ownershipPercent: number): ModuleOwner
 }
 
 /**
+ * Generates mock capabilities for a module based on its characteristics.
+ *
+ * @param moduleName - Name of the module
+ * @param spofScore - SPOF score of the module
+ * @param userName - Current user name
+ * @returns Array of module capabilities
+ */
+function generateMockCapabilities(
+  moduleName: string,
+  spofScore: number,
+  userName: string
+): ModuleCapability[] {
+  // Capability templates based on common module patterns
+  const capabilityTemplates = [
+    { name: "Core Engine", importance: 100, busFactor: 7, backupCount: 1 },
+    { name: "API Handler", importance: 95, busFactor: 5, backupCount: 1 },
+    { name: "Data Processor", importance: 80, busFactor: 4, backupCount: 1 },
+    { name: "Authentication Service", importance: 85, busFactor: 3, backupCount: 2 },
+    { name: "Configuration Manager", importance: 75, busFactor: 3, backupCount: 1 },
+  ];
+
+  // Number of capabilities based on module complexity (SPOF score)
+  const numCapabilities = spofScore > 70 ? 4 : spofScore > 40 ? 3 : 2;
+  const capabilities: ModuleCapability[] = [];
+
+  for (let i = 0; i < numCapabilities; i++) {
+    const template = capabilityTemplates[i % capabilityTemplates.length];
+    const capabilityName = `${template.name}`;
+
+    // Generate contributors for this capability
+    const numContributors = Math.min(3, template.busFactor);
+    const contributors: CapabilityContributor[] = [];
+
+    // Top owner percentage decreases with better bus factor
+    const topOwnerPercent = Math.floor(100 - (template.busFactor * 5));
+
+    // Generate contributor ownership that sums to ~100%
+    let remainingOwnership = 100;
+    for (let j = 0; j < numContributors; j++) {
+      const isCurrentUser = i === 0 && j === 0; // Current user is top contributor in first capability
+      const contributorName = isCurrentUser ? userName : MOCK_USERS[(i + j) % MOCK_USERS.length];
+
+      let ownership: number;
+      if (j === 0) {
+        // Top contributor
+        ownership = topOwnerPercent;
+      } else if (j === numContributors - 1) {
+        // Last contributor gets remaining
+        ownership = remainingOwnership;
+      } else {
+        // Middle contributors get proportional share
+        ownership = Math.floor(remainingOwnership / (numContributors - j));
+      }
+
+      contributors.push({
+        name: contributorName,
+        ownershipPercent: Math.min(ownership, remainingOwnership),
+      });
+
+      remainingOwnership -= ownership;
+    }
+
+    // Add SPOF score for high-risk capabilities
+    const capabilitySpofScore = i === 0 && spofScore > 70 ?
+      spofScore / 10 : // Convert to 1-10 scale
+      undefined;
+
+    capabilities.push({
+      id: `cap-${moduleName}-${i}`,
+      name: capabilityName,
+      importance: template.importance - (i * 5), // Decrease importance for subsequent capabilities
+      busFactor: template.busFactor,
+      backupCount: template.backupCount,
+      topOwnerPercent,
+      fileCount: Math.floor(10 + (template.importance / 10) * Math.random() * 20),
+      contributors,
+      spofScore: capabilitySpofScore,
+    });
+  }
+
+  return capabilities;
+}
+
+/**
+ * Generates module description based on name and characteristics.
+ *
+ * @param moduleName - Name of the module
+ * @returns Description string
+ */
+function generateModuleDescription(moduleName: string): string {
+  const descriptions: Record<string, string> = {
+    "Deployment Module": "The core deployment engine that manages deployment flows, multi-stage pipelines, and automated rollback procedures. It is the central intelligence responsible for orchestrating releases and ensuring zero-downtime deployments.",
+    "Payment Module": "Handles all payment processing workflows including transaction validation, payment gateway integration, and refund management. Critical for revenue operations.",
+    "Cache Module": "Distributed caching layer that manages data retrieval optimization, cache invalidation strategies, and performance tuning across the platform.",
+    "Database Module": "Core database abstraction layer managing connection pooling, query optimization, and transaction management for all data operations.",
+    "Auth Module": "Authentication and authorization engine handling user sessions, token management, and access control across all services.",
+    "Search Module": "Full-text search engine powering all search functionality with real-time indexing and query optimization.",
+  };
+
+  return descriptions[moduleName] ||
+    `Core module responsible for ${moduleName.toLowerCase().replace(" module", "")} functionality and business logic processing.`;
+}
+
+/**
+ * Determines team load based on SPOF score and module characteristics.
+ *
+ * @param spofScore - SPOF score of the module
+ * @returns Team load level
+ */
+function getTeamLoad(spofScore: number): "Low Pressure" | "Medium Pressure" | "High Pressure" {
+  if (spofScore >= 80) return "High Pressure";
+  if (spofScore >= 60) return "Medium Pressure";
+  return "Low Pressure";
+}
+
+/**
  * Generates mock module SPOF data for treemap visualization and modules table.
  *
  * Creates realistic module data where the current user is always a contributor
@@ -521,6 +639,15 @@ export function getUserModuleSPOFData(userId: string, userName: string = "Alice"
       isUserPrimaryOwner ? backupOwnership : primaryOwnership
     );
 
+    // Generate capabilities for this module
+    const capabilities = generateMockCapabilities(module.name, module.spofScore, userName);
+
+    // Calculate active contributors (unique contributors across all capabilities)
+    const uniqueContributors = new Set<string>();
+    capabilities.forEach(cap => {
+      cap.contributors.forEach(contrib => uniqueContributors.add(contrib.name));
+    });
+
     return {
       id: `module-${userId}-${index}`,
       repoName: repos[index % repos.length],
@@ -528,6 +655,10 @@ export function getUserModuleSPOFData(userId: string, userName: string = "Alice"
       scoreRange: getScoreRange(module.spofScore),
       primaryOwner: isUserPrimaryOwner ? currentUserOwner : otherOwner,
       backupOwner: isUserPrimaryOwner ? otherOwner : currentUserOwner,
+      description: generateModuleDescription(module.name),
+      activeContributors: uniqueContributors.size,
+      teamLoad: getTeamLoad(module.spofScore),
+      capabilities,
     };
   });
 }
