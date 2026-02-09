@@ -40,6 +40,7 @@ const TEAM_COLUMNS: BaseTeamsTableColumn<TeamPerformanceRow, TeamTableFilter>[] 
     key: "rank",
     header: "Rank",
     className: "w-14",
+    enableSorting: false,
     render: (_, index) => {
       const displayRank = index + 1;
       return (
@@ -52,6 +53,7 @@ const TEAM_COLUMNS: BaseTeamsTableColumn<TeamPerformanceRow, TeamTableFilter>[] 
   {
     key: "team",
     header: "Team",
+    accessorFn: (row) => row.teamName,
     render: (row) => (
       <div className="flex items-center gap-3">
         <TeamAvatar teamName={row.teamName} className="size-4" />
@@ -63,6 +65,7 @@ const TEAM_COLUMNS: BaseTeamsTableColumn<TeamPerformanceRow, TeamTableFilter>[] 
     key: "performance",
     header: "Effective Performance",
     className: "text-right",
+    accessorFn: (row) => row.performanceValue,
     render: (row) => {
       const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
       return (
@@ -88,6 +91,7 @@ const TEAM_COLUMNS: BaseTeamsTableColumn<TeamPerformanceRow, TeamTableFilter>[] 
     key: "status",
     header: "Status",
     className: "text-right",
+    enableSorting: false,
     render: (row) => (
       <SegmentBar
         segments={TYPE_DISTRIBUTION_SEGMENTS}

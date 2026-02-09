@@ -116,6 +116,7 @@ export function DesignTeamsTable({
         key: "view",
         header: "View",
         className: "w-14",
+        enableSorting: false,
         render: (row) => (
           <VisibilityToggleButton
             isVisible={effectiveVisible[row.teamName] !== false}
@@ -127,6 +128,7 @@ export function DesignTeamsTable({
         key: "rank",
         header: "Rank",
         className: "w-14",
+        enableSorting: false,
         render: (_, index) => {
           const displayRank = index + 1;
           return (
@@ -139,6 +141,7 @@ export function DesignTeamsTable({
       {
         key: "team",
         header: "Team",
+        accessorFn: (row) => row.teamName,
         render: (row) => (
           <div className="flex items-center gap-3">
             <TeamAvatar teamName={row.teamName} className="size-4" />
@@ -150,6 +153,7 @@ export function DesignTeamsTable({
         key: "ownership",
         header: "Ownership Health",
         className: "text-right",
+        accessorFn: (row) => row.ownershipAllocation[2], // Sort by high ownership count
         render: (row) => {
           const counts = [
             row.ownershipAllocation[2],
@@ -173,6 +177,7 @@ export function DesignTeamsTable({
         key: "chaos",
         header: "Engineering Chaos Index",
         className: "text-right",
+        accessorFn: (row) => row.outlierScore, // Sort by outlier score
         render: (row) => {
           const counts = [
             row.engineeringChaos[3],

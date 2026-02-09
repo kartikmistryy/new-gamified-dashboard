@@ -51,6 +51,7 @@ const CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorPerformanceRow, Contr
     key: "rank",
     header: "Rank",
     className: "w-14",
+    enableSorting: false,
     render: (_, index) => {
       const displayRank = index + 1;
       return (
@@ -64,6 +65,7 @@ const CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorPerformanceRow, Contr
     key: "contributor",
     header: "Contributor",
     className: "w-full min-w-[360px]",
+    accessorFn: (row) => row.contributorName,
     render: (row) => (
       <div className="flex items-center gap-3">
         <UserAvatar userName={row.contributorName} className="size-4" size={16} />
@@ -75,6 +77,7 @@ const CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorPerformanceRow, Contr
     key: "performance",
     header: "Effective Performance",
     className: "w-px text-right whitespace-nowrap",
+    accessorFn: (row) => row.performanceValue,
     render: (row) => {
       const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
       return (
@@ -100,6 +103,7 @@ const CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorPerformanceRow, Contr
     key: "status",
     header: "Developer Type",
     className: "w-px text-right whitespace-nowrap",
+    accessorFn: (row) => getPrimaryDeveloperType(row).label,
     render: (row) => {
       const type = getPrimaryDeveloperType(row);
       const Icon = type.icon;

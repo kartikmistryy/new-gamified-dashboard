@@ -85,6 +85,7 @@ function createPerformanceColumns(
       key: "visibility",
       header: "",
       className: "w-14",
+      enableSorting: false,
       render: (row) => (
         <VisibilityToggleButton
           isVisible={visibleTeams[row.teamName] !== false}
@@ -101,6 +102,7 @@ function createPerformanceColumns(
       key: "rank",
       header: "Rank",
       className: "w-14",
+      enableSorting: false,
       render: (_, index) => {
         const displayRank = index + 1;
         return (
@@ -113,6 +115,7 @@ function createPerformanceColumns(
     {
       key: "team",
       header: "Team",
+      enableSorting: false,
       render: (row) => (
         <div className="flex items-center gap-3">
           <TeamAvatar teamName={row.teamName} className="size-4" />
@@ -124,6 +127,8 @@ function createPerformanceColumns(
       key: "performance",
       header: "Effective Performance",
       className: "text-right",
+      enableSorting: true,
+      accessorFn: (row) => row.performanceValue,
       render: (row) => {
         const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
         return (
@@ -149,6 +154,8 @@ function createPerformanceColumns(
       key: "change",
       header: "Change",
       className: "text-right",
+      enableSorting: true,
+      accessorFn: (row) => row.changePts ?? 0,
       render: (row) => {
         const TrendIcon = row.trend === "up" ? TrendingUp : row.trend === "down" ? TrendingDown : ArrowRight;
         const changePts = row.changePts ?? 0;
@@ -176,6 +183,7 @@ function createPerformanceColumns(
       key: "distribution",
       header: "Performance Breakdown",
       className: "text-right",
+      enableSorting: false,
       render: (row) => {
         const counts = PERFORMANCE_DISTRIBUTION_SEGMENTS.map((s) => s.getCount(row.typeDistribution));
         return (
