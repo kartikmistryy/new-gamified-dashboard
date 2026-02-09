@@ -8,7 +8,7 @@ import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
-import { UnifiedPerformanceChart } from "@/components/dashboard/UnifiedPerformanceChart";
+import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
 import { TeamPerformanceComparisonChart } from "@/components/dashboard/TeamPerformanceComparisonChart";
 import { generateTeamEvents, generateTeamAnnotations } from "@/lib/dashboard/performanceChart";
 import { getMemberPerformanceRowsForTeam } from "@/lib/teamDashboard/overviewMockData";
@@ -153,7 +153,7 @@ export function TeamPerformancePageClient() {
 
             <section className="w-full" aria-label="Team performance chart">
               <div className="bg-white rounded-lg">
-                <UnifiedPerformanceChart
+                <PerformanceChart
                   dataSource={{
                     type: "team",
                     data: timeFilteredData,

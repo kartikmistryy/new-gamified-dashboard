@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
 import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
-import { UnifiedPerformanceChart } from "@/components/dashboard/UnifiedPerformanceChart";
+import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
 import { UserPerformanceComparisonChart } from "@/components/dashboard/UserPerformanceComparisonChart";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { getStartDateForRange } from "@/lib/orgDashboard/performanceChartHelpers";
@@ -105,7 +105,7 @@ export function UserPerformancePageClient() {
     <div className="flex flex-col gap-6">
       {/* Individual Performance Tracking */}
       <DashboardSection title="Performance Tracking">
-        <UnifiedPerformanceChart
+        <PerformanceChart
           dataSource={{
             type: "user",
             data: performanceData,

@@ -8,7 +8,7 @@ import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
-import { UnifiedPerformanceChart } from "@/components/dashboard/UnifiedPerformanceChart";
+import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
 import { ContributorMetricsChart } from "@/components/dashboard/ContributorMetricsChart";
 import { generateRepoEvents, generateRepoAnnotations } from "@/lib/dashboard/performanceChart";
 import { getContributorPerformanceRowsForRepo } from "@/lib/repoDashboard/overviewMockData";
@@ -163,7 +163,7 @@ export function RepoPerformancePageClient() {
 
             <section className="w-full" aria-label="Repository performance chart">
               <div className="bg-white rounded-lg">
-                <UnifiedPerformanceChart
+                <PerformanceChart
                   dataSource={{
                     type: "repo",
                     data: timeFilteredData,

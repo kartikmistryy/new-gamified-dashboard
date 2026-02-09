@@ -152,7 +152,7 @@ export type EntityVisibilityConfig<TEntity extends string = string> = {
 /**
  * Main configuration object for the unified performance chart
  */
-export type UnifiedPerformanceChartConfig = {
+export type PerformanceChartConfig = {
   /** Data source with type discrimination */
   dataSource: PerformanceDataSource;
   /** Event generation strategy */
@@ -174,9 +174,9 @@ export type UnifiedPerformanceChartConfig = {
 // ============================================================================
 
 /**
- * Props for the UnifiedPerformanceChart component
+ * Props for the PerformanceChart component
  */
-export type UnifiedPerformanceChartProps = UnifiedPerformanceChartConfig;
+export type PerformanceChartProps = PerformanceChartConfig;
 
 // ============================================================================
 // Builder Pattern for Fluent Configuration
@@ -196,7 +196,7 @@ export type UnifiedPerformanceChartProps = UnifiedPerformanceChartConfig;
  * ```
  */
 export class PerformanceChartConfigBuilder {
-  private config: Partial<UnifiedPerformanceChartConfig> = {};
+  private config: Partial<PerformanceChartConfig> = {};
 
   /**
    * Set the data source (required)
@@ -292,7 +292,7 @@ export class PerformanceChartConfigBuilder {
    * Build and validate the configuration
    * @throws Error if required fields are missing
    */
-  build(): UnifiedPerformanceChartConfig {
+  build(): PerformanceChartConfig {
     if (!this.config.dataSource) {
       throw new Error("PerformanceChartConfigBuilder: dataSource is required");
     }

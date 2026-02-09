@@ -15,8 +15,8 @@ export type {
   EventGenerationStrategy,
   AnnotationGenerationStrategy,
   EntityVisibilityConfig,
-  UnifiedPerformanceChartConfig,
-  UnifiedPerformanceChartProps,
+  PerformanceChartConfig,
+  PerformanceChartProps,
 } from "./types";
 
 // Export builder

@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { GaugeSection } from "@/components/dashboard/GaugeSection";
-import { UnifiedPerformanceChart } from "@/components/dashboard/UnifiedPerformanceChart";
+import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
 import { PerformanceTeamsTable } from "@/components/dashboard/PerformanceTeamsTable";
 import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
 import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
@@ -67,7 +67,7 @@ export function OrgPerformancePageClient() {
           <GlobalTimeRangeFilter showLabel />
 
           <DashboardSection title="Percentile (Normalized to Rolling Avg)">
-            <UnifiedPerformanceChart
+            <PerformanceChart
               dataSource={{
                 type: "org",
                 data: [],
