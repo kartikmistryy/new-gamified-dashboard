@@ -142,8 +142,7 @@ export function SankeyContributionChart({
         pad: 10,
         thickness: 20,
         line: {
-          color: "rgba(15, 23, 42, 0.28)",
-          width: 0.6,
+          width: 0,
         },
         label: allNodes.map((node) => {
           // Format target node labels (repos/modules)
@@ -163,7 +162,7 @@ export function SankeyContributionChart({
         customdata: allNodes.map((node) => ({
           value: node.value,
           side: node.side,
-        })),
+        })) as any,
         hovertemplate:
           "<b>%{label}</b><br>" +
           "Total Contribution: %{customdata.value:.0f}<br>" +
@@ -186,7 +185,7 @@ export function SankeyContributionChart({
             target: targetNode?.label ?? "",
             percentage: link.percentage,
           };
-        }),
+        }) as any,
         hovertemplate:
           "<b>%{customdata.source} → %{customdata.target}</b><br>" +
           "Contribution: %{value:.0f}<br>" +
@@ -205,6 +204,15 @@ export function SankeyContributionChart({
       paper_bgcolor: "#ffffff",
       margin: { t: 10, r: 10, b: 10, l: 10 },
       height: height,
+      hoverlabel: {
+        bgcolor: "#ffffff",
+        bordercolor: "#e5e7eb",
+        font: {
+          size: 12,
+          color: "#0f172a",
+          family: "inherit",
+        },
+      },
     };
 
     return { plotlyData: [sankeyData], plotlyLayout: layout };
@@ -217,7 +225,7 @@ export function SankeyContributionChart({
 
   if (flow.nodes.length === 0 || flow.links.length === 0) {
     return (
-      <div className="w-full rounded-xl border border-gray-100 bg-[#e8edf5] p-6">
+      <div className="w-full rounded-xl bg-[#e8edf5] p-6">
         <p className="text-sm text-slate-600">
           Not enough data to render contribution flow.
         </p>
@@ -226,7 +234,6 @@ export function SankeyContributionChart({
   }
 
   return (
-    <div className="w-full rounded-xl border border-gray-100 bg-[#e8edf5] p-4">
       <div className="relative w-full overflow-visible bg-white rounded-lg">
         <Plot
           data={plotlyData}
@@ -236,6 +243,5 @@ export function SankeyContributionChart({
           useResizeHandler={true}
         />
       </div>
-    </div>
   );
 }
