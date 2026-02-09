@@ -1,22 +1,29 @@
 "use client";
+"use no memo";
 
 import { useState, useMemo } from "react";
+import {
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  useReactTable,
+  type ColumnDef,
+  type SortingState,
+} from "@tanstack/react-table";
 import {
   Table,
   TableBody,
   TableCell,
-  TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { Badge as UiBadge } from "@/components/ui/badge";
-import { Badge } from "@/components/shared/Badge";
 import { UserAvatar } from "@/components/shared/UserAvatar";
+import { SortableTableHeader } from "./SortableTableHeader";
 import type { ModuleSPOFData } from "@/lib/userDashboard/types";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import {
-  MODULE_FILTER_TABS,
   filterModules,
   sortModulesByRisk,
   type ModuleFilter,
@@ -68,7 +75,7 @@ function getRiskBadgeStyle(scoreRange: ModuleSPOFData["scoreRange"]) {
 function OwnerCell({ name, percent, color }: { name: string; percent: number; color: string }) {
   return (
     <div className="flex items-center gap-3">
-      <UserAvatar userName={name} className="size-8 flex-shrink-0" />
+      <UserAvatar userName={name} className="size-8 shrink-0" />
       <div className="flex flex-col gap-1.5 flex-1 min-w-0">
         <span className="text-sm text-gray-900 font-medium truncate">
           {name}
@@ -113,129 +120,146 @@ function OwnerCell({ name, percent, color }: { name: string; percent: number; co
  * ```
  */
 export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
-  const [currentFilter, setCurrentFilter] = useState<ModuleFilter>("all");
+  const [sorting, setSorting] = useState<SortingState>([]);
 
   // Filter and sort modules
   const displayedModules = useMemo(() => {
-    const filtered = filterModules(modules, currentFilter, currentUserId);
+    const filtered = filterModules(modules, "all", currentUserId);
     return sortModulesByRisk(filtered);
-  }, [modules, currentFilter, currentUserId]);
+  }, [modules, currentUserId]);
+
+  const columns = useMemo<ColumnDef<ModuleSPOFData, unknown>[]>(() => [
+    {
+      id: "rank",
+      header: "Rank",
+      cell: ({ row }) => {
+        const rank = row.index + 1;
+        return (
+          <span
+            className={
+              rank <= 3
+                ? "text-foreground font-bold"
+                : DASHBOARD_TEXT_CLASSES.rankMuted
+            }
+          >
+            {rank}
+          </span>
+        );
+      },
+      enableSorting: false,
+      meta: { className: "w-14 py-4" },
+    },
+    {
+      id: "module",
+      header: "Module",
+      accessorFn: (row) => row.name,
+      cell: ({ row }) => (
+        <div className="flex flex-col gap-1.5">
+          <UiBadge variant="outline" className="text-xs w-fit">
+            {row.original.repoName}
+          </UiBadge>
+          <span className="font-medium text-gray-900">
+            {row.original.name}
+          </span>
+        </div>
+      ),
+      meta: { className: "w-[280px] py-4" },
+    },
+    {
+      id: "primaryOwner",
+      header: "Primary Owner",
+      accessorFn: (row) => row.primaryOwner.ownershipPercent,
+      cell: ({ row }) => {
+        const ownershipColor =
+          row.original.scoreRange === "high" ? "#DD524C" :
+          row.original.scoreRange === "medium" ? "#E87B35" :
+          "#55B685";
+        return (
+          <OwnerCell
+            name={row.original.primaryOwner.name}
+            percent={row.original.primaryOwner.ownershipPercent}
+            color={ownershipColor}
+          />
+        );
+      },
+      meta: { className: "w-[280px] py-4" },
+    },
+    {
+      id: "backupOwner",
+      header: "Backup Owner",
+      accessorFn: (row) => row.backupOwner.ownershipPercent,
+      cell: ({ row }) => (
+        <OwnerCell
+          name={row.original.backupOwner.name}
+          percent={row.original.backupOwner.ownershipPercent}
+          color="#94A3B8"
+        />
+      ),
+      meta: { className: "w-[280px] py-4" },
+    },
+    {
+      id: "risk",
+      header: "Risk",
+      accessorFn: (row) => {
+        const riskOrder = { high: 3, medium: 2, low: 1 };
+        return riskOrder[row.scoreRange];
+      },
+      cell: ({ row }) => {
+        const riskBadge = getRiskBadgeStyle(row.original.scoreRange);
+        return (
+          <span
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
+            style={{
+              backgroundColor: hexToRgba(riskBadge.color, 0.25),
+              color: riskBadge.color,
+            }}
+          >
+            {riskBadge.text}
+          </span>
+        );
+      },
+      meta: { className: "text-right py-4" },
+    },
+  ], []);
+
+  const table = useReactTable({
+    data: displayedModules,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    onSortingChange: setSorting,
+    state: { sorting },
+  });
 
   return (
     <div className="w-full">
-      {/* Filter Tabs */}
-      <div className="flex flex-row flex-wrap gap-2 mb-4">
-        {MODULE_FILTER_TABS.map((tab) => (
-          <Badge
-            key={tab.key}
-            onClick={() => setCurrentFilter(tab.key)}
-            className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
-              currentFilter === tab.key
-                ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
-                : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
-            }`}
-          >
-            {tab.label}
-          </Badge>
-        ))}
-      </div>
-
-      {/* Modules Table */}
       <div className="rounded-sm border-none overflow-hidden bg-white">
         <Table>
           <TableHeader className="border-0">
-            <TableRow className="border-none hover:bg-transparent">
-              <TableHead className="w-14 text-foreground font-medium">
-                Rank
-              </TableHead>
-              <TableHead className="text-foreground font-medium w-[280px]">
-                Module
-              </TableHead>
-              <TableHead className="text-foreground font-medium w-[280px]">
-                Primary Owner
-              </TableHead>
-              <TableHead className="text-foreground font-medium w-[280px]">
-                Backup Owner
-              </TableHead>
-              <TableHead className="text-foreground font-medium text-right">
-                Risk
-              </TableHead>
-            </TableRow>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id} className="border-none hover:bg-transparent">
+                {headerGroup.headers.map((header) => (
+                  <SortableTableHeader key={header.id} header={header} />
+                ))}
+              </TableRow>
+            ))}
           </TableHeader>
           <TableBody>
-            {displayedModules.map((module, index) => {
-              const rank = index + 1;
-              const riskBadge = getRiskBadgeStyle(module.scoreRange);
-
-              // Get color for ownership bars based on risk level
-              const ownershipColor =
-                module.scoreRange === "high" ? "#DD524C" :
-                module.scoreRange === "medium" ? "#E87B35" :
-                "#55B685";
-
-              return (
-                <TableRow
-                  key={module.id}
-                  className="border-none hover:bg-gray-50 transition-colors"
-                >
-                  {/* Rank */}
-                  <TableCell className="py-4">
-                    <span
-                      className={
-                        rank <= 3
-                          ? "text-foreground font-bold"
-                          : DASHBOARD_TEXT_CLASSES.rankMuted
-                      }
-                    >
-                      {rank}
-                    </span>
+            {table.getRowModel().rows.map((row) => (
+              <TableRow
+                key={row.original.id}
+                className="border-none hover:bg-gray-50 transition-colors"
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell
+                    key={cell.id}
+                    className={(cell.column.columnDef.meta as { className?: string })?.className}
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
-
-                  {/* Module (Repo badge + Module name) */}
-                  <TableCell className="py-4">
-                    <div className="flex flex-col gap-1.5">
-                      <UiBadge variant="outline" className="text-xs w-fit">
-                        {module.repoName}
-                      </UiBadge>
-                      <span className="font-medium text-gray-900">
-                        {module.name}
-                      </span>
-                    </div>
-                  </TableCell>
-
-                  {/* Primary Owner with Progress Bar */}
-                  <TableCell className="py-4">
-                    <OwnerCell
-                      name={module.primaryOwner.name}
-                      percent={module.primaryOwner.ownershipPercent}
-                      color={ownershipColor}
-                    />
-                  </TableCell>
-
-                  {/* Backup Owner with Progress Bar */}
-                  <TableCell className="py-4">
-                    <OwnerCell
-                      name={module.backupOwner.name}
-                      percent={module.backupOwner.ownershipPercent}
-                      color="#94A3B8"
-                    />
-                  </TableCell>
-
-                  {/* Risk Badge */}
-                  <TableCell className="py-4 text-right">
-                    <span
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
-                      style={{
-                        backgroundColor: hexToRgba(riskBadge.color, 0.25),
-                        color: riskBadge.color,
-                      }}
-                    >
-                      {riskBadge.text}
-                    </span>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+                ))}
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>

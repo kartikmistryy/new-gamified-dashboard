@@ -1,12 +1,21 @@
 "use client";
+"use no memo";
 
 import * as React from "react";
+import { useMemo, useState } from "react";
 import { ArrowRight, TrendingDown, TrendingUp } from "lucide-react";
+import {
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  useReactTable,
+  type ColumnDef,
+  type SortingState,
+} from "@tanstack/react-table";
 import {
   Table,
   TableBody,
   TableCell,
-  TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
@@ -14,6 +23,7 @@ import { Badge } from "../shared/Badge";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import { VisibilityToggleButton } from "./VisibilityToggleButton";
+import { SortableTableHeader } from "./SortableTableHeader";
 import type { SpofTeamRow } from "@/lib/orgDashboard/spofMockData";
 import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 import { REPO_HEALTH_SEGMENTS } from "./RepoHealthBar";
@@ -125,9 +135,10 @@ export function SpofTeamsTable({
   visibleTeams,
   onVisibilityChange,
 }: SpofTeamsTableProps) {
-  const [currentFilter, setCurrentFilter] = React.useState<SpofTableFilter>("highestRisk");
+  const [currentFilter, setCurrentFilter] = useState<SpofTableFilter>("highestRisk");
+  const [sorting, setSorting] = useState<SortingState>([]);
 
-  const sortedRows = React.useMemo(
+  const sortedRows = useMemo(
     () => sortSpofTeams(rows, currentFilter),
     [rows, currentFilter]
   );
@@ -140,104 +151,132 @@ export function SpofTeamsTable({
     [visibleTeams, onVisibilityChange]
   );
 
+  const columns = useMemo<ColumnDef<SpofTeamRow, any>[]>(() => [
+    {
+      id: "visibility",
+      header: "",
+      cell: ({ row }) => (
+        <VisibilityToggleButton
+          isVisible={visibleTeams[row.original.teamName] !== false}
+          onToggle={() => handleToggle(row.original.teamName)}
+          label={visibleTeams[row.original.teamName] !== false ? "Hide team from chart" : "Show team in chart"}
+        />
+      ),
+      enableSorting: false,
+      meta: { className: "w-14" },
+    },
+    {
+      id: "rank",
+      header: "Rank",
+      cell: ({ row }) => {
+        const displayRank = row.index + 1;
+        return (
+          <span
+            className={
+              displayRank <= 3
+                ? "text-foreground font-bold"
+                : DASHBOARD_TEXT_CLASSES.rankMuted
+            }
+          >
+            {displayRank}
+          </span>
+        );
+      },
+      enableSorting: false,
+      meta: { className: "w-14" },
+    },
+    {
+      id: "team",
+      header: "Team",
+      accessorFn: (row) => row.teamName,
+      cell: ({ row }) => (
+        <div className="flex items-center gap-3">
+          <TeamAvatar teamName={row.original.teamName} className="size-4" />
+          <p className="font-medium text-gray-900">{row.original.teamName}</p>
+        </div>
+      ),
+    },
+    {
+      id: "spofOwnerDistribution",
+      header: "SPOF Owner Distribution",
+      accessorFn: (row) => row.avgSpofScore,
+      cell: ({ row }) => {
+        const mediumCount = Math.max(0, row.original.memberCount - row.original.highRiskCount - row.original.lowRiskCount);
+        const ownerSegments = [
+          { label: SPOF_OWNER_SEGMENTS[0].label, value: row.original.lowRiskCount, color: SPOF_OWNER_SEGMENTS[0].color },
+          { label: SPOF_OWNER_SEGMENTS[1].label, value: mediumCount, color: SPOF_OWNER_SEGMENTS[1].color },
+          { label: SPOF_OWNER_SEGMENTS[2].label, value: row.original.highRiskCount, color: SPOF_OWNER_SEGMENTS[2].color },
+        ];
+        return <JoinedDistributionBar segments={ownerSegments} valueLabel="Owners" />;
+      },
+      meta: { className: "text-right min-w-[260px]" },
+    },
+    {
+      id: "repoHealthDistribution",
+      header: "Repository Health Distribution",
+      accessorFn: (row) => row.repoHealthCriticalCount, // Sort by critical count
+      cell: ({ row }) => {
+        const repoHealthSegments = [
+          {
+            label: REPO_HEALTH_SEGMENTS[0].label,
+            value: row.original.repoHealthHealthyCount,
+            color: REPO_HEALTH_SEGMENTS[0].color,
+          },
+          {
+            label: REPO_HEALTH_SEGMENTS[1].label,
+            value: row.original.repoHealthNeedsAttentionCount,
+            color: REPO_HEALTH_SEGMENTS[1].color,
+          },
+          {
+            label: REPO_HEALTH_SEGMENTS[2].label,
+            value: row.original.repoHealthCriticalCount,
+            color: REPO_HEALTH_SEGMENTS[2].color,
+          },
+        ];
+        return <JoinedDistributionBar segments={repoHealthSegments} valueLabel="Repos" />;
+      },
+      meta: { className: "text-right min-w-[280px]" },
+    },
+  ], [visibleTeams, handleToggle]);
+
+  const table = useReactTable({
+    data: sortedRows,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    onSortingChange: setSorting,
+    state: { sorting },
+  });
+
   return (
     <div className="w-full">
-      <div className="flex flex-wrap gap-2 mb-4">
-        {SPOF_FILTER_TABS.map((tab) => (
-          <Badge
-            key={tab.key}
-            onClick={() => setCurrentFilter(tab.key)}
-            className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
-              currentFilter === tab.key
-                ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
-                : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
-            }`}
-          >
-            {tab.label}
-          </Badge>
-        ))}
-      </div>
       <div className="rounded-sm border-none overflow-hidden bg-white">
         <Table>
           <TableHeader className="border-0">
-            <TableRow className="border-none hover:bg-transparent">
-              <TableHead className="w-14 text-foreground font-medium" />
-              <TableHead className="w-14 text-foreground font-medium">Rank</TableHead>
-              <TableHead className="text-foreground font-medium">Team</TableHead>
-              <TableHead className="text-foreground font-medium text-right min-w-[260px]">
-                SPOF Owner Distribution
-              </TableHead>
-              <TableHead className="text-foreground font-medium text-right min-w-[280px]">
-                Repository Health Distribution
-              </TableHead>
-            </TableRow>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id} className="border-none hover:bg-transparent">
+                {headerGroup.headers.map((header) => (
+                  <SortableTableHeader key={header.id} header={header} />
+                ))}
+              </TableRow>
+            ))}
           </TableHeader>
           <TableBody>
-            {sortedRows.map((row, index) => {
-              const isVisible = visibleTeams[row.teamName] !== false;
-              const displayRank = index + 1;
-              const mediumCount = Math.max(0, row.memberCount - row.highRiskCount - row.lowRiskCount);
-              const ownerSegments = [
-                { label: SPOF_OWNER_SEGMENTS[0].label, value: row.lowRiskCount, color: SPOF_OWNER_SEGMENTS[0].color },
-                { label: SPOF_OWNER_SEGMENTS[1].label, value: mediumCount, color: SPOF_OWNER_SEGMENTS[1].color },
-                { label: SPOF_OWNER_SEGMENTS[2].label, value: row.highRiskCount, color: SPOF_OWNER_SEGMENTS[2].color },
-              ];
-              const repoHealthSegments = [
-                {
-                  label: REPO_HEALTH_SEGMENTS[0].label,
-                  value: row.repoHealthHealthyCount,
-                  color: REPO_HEALTH_SEGMENTS[0].color,
-                },
-                {
-                  label: REPO_HEALTH_SEGMENTS[1].label,
-                  value: row.repoHealthNeedsAttentionCount,
-                  color: REPO_HEALTH_SEGMENTS[1].color,
-                },
-                {
-                  label: REPO_HEALTH_SEGMENTS[2].label,
-                  value: row.repoHealthCriticalCount,
-                  color: REPO_HEALTH_SEGMENTS[2].color,
-                },
-              ];
-
-              return (
-                <TableRow
-                  key={row.teamName}
-                  className="border-[#E5E5E5] hover:bg-gray-50/80"
-                >
-                  <TableCell className="w-14">
-                    <VisibilityToggleButton
-                      isVisible={isVisible}
-                      onToggle={() => handleToggle(row.teamName)}
-                      label={isVisible ? "Hide team from chart" : "Show team in chart"}
-                    />
+            {table.getRowModel().rows.map((row) => (
+              <TableRow
+                key={row.original.teamName}
+                className="border-[#E5E5E5] hover:bg-gray-50/80"
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell
+                    key={cell.id}
+                    className={(cell.column.columnDef.meta as { className?: string })?.className}
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
-                  <TableCell className="w-14">
-                    <span
-                      className={
-                        displayRank <= 3
-                          ? "text-foreground font-bold"
-                          : DASHBOARD_TEXT_CLASSES.rankMuted
-                      }
-                    >
-                      {displayRank}
-                    </span>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex items-center gap-3">
-                      <TeamAvatar teamName={row.teamName} className="size-4" />
-                      <p className="font-medium text-gray-900">{row.teamName}</p>
-                    </div>
-                  </TableCell>
-                  <TableCell className="text-right">
-                    <JoinedDistributionBar segments={ownerSegments} valueLabel="Owners" />
-                  </TableCell>
-                  <TableCell className="text-right">
-                    <JoinedDistributionBar segments={repoHealthSegments} valueLabel="Repos" />
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+                ))}
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>

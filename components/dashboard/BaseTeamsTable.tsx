@@ -1,14 +1,24 @@
 "use client";
+"use no memo";
 
+import { useMemo, useState } from "react";
+import {
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  useReactTable,
+  type ColumnDef,
+  type SortingState,
+} from "@tanstack/react-table";
 import {
   Table,
   TableBody,
   TableCell,
-  TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "../shared/Badge";
+import { SortableTableHeader } from "./SortableTableHeader";
 import { useTableFilter } from "@/lib/orgDashboard/useTableFilter";
 
 export type BaseTeamsTableColumn<T, F extends string> = {
@@ -16,6 +26,12 @@ export type BaseTeamsTableColumn<T, F extends string> = {
   header: string;
   className?: string;
   render: (row: T, index: number) => React.ReactNode;
+  /** Enable sorting for this column. Default: true */
+  enableSorting?: boolean;
+  /** Custom sort function for this column */
+  sortingFn?: (rowA: T, rowB: T) => number;
+  /** Accessor function to get sortable value from row */
+  accessorFn?: (row: T) => any;
 };
 
 type BaseTeamsTableProps<T, F extends string> = {
@@ -49,48 +65,60 @@ export function BaseTeamsTable<T, F extends string>({
     sortFunction,
   });
 
+  const [sorting, setSorting] = useState<SortingState>([]);
+
+  // Convert BaseTeamsTableColumn to TanStack ColumnDef
+  const tableColumns = useMemo<ColumnDef<T, unknown>[]>(() => {
+    return columns.map((col) => ({
+      id: col.key,
+      header: col.header,
+      // Use accessorFn if provided, otherwise create a default one
+      accessorFn: col.accessorFn || ((row: T) => row),
+      cell: ({ row }) => col.render(row.original, row.index),
+      enableSorting: col.enableSorting === true,
+      sortingFn: col.sortingFn ? (rowA, rowB) => col.sortingFn!(rowA.original, rowB.original) : "auto",
+      meta: {
+        className: col.className,
+      },
+    }));
+  }, [columns]);
+
+  const table = useReactTable({
+    data: sortedRows,
+    columns: tableColumns,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    onSortingChange: setSorting,
+    state: {
+      sorting,
+    },
+  });
+
   return (
     <div className="w-full min-w-0">
-      {showFilters ? (
-        <div className="flex flex-row flex-wrap gap-2 mb-4">
-          {filterTabs.map((tab) => (
-            <Badge
-              key={tab.key}
-              onClick={() => handleFilter(tab.key)}
-              className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
-                currentFilter === tab.key
-                  ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
-                  : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
-              }`}
-            >
-              {tab.label}
-            </Badge>
-          ))}
-        </div>
-      ) : null}
       <div className="rounded-sm border-none overflow-hidden bg-white min-w-0 max-w-full">
         <Table>
           <TableHeader className="border-0">
-            <TableRow className="border-none hover:bg-transparent">
-              {columns.map((col) => (
-                <TableHead
-                  key={col.key}
-                  className={`text-foreground font-medium ${col.className ?? ""}`}
-                >
-                  {col.header}
-                </TableHead>
-              ))}
-            </TableRow>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id} className="border-none hover:bg-transparent">
+                {headerGroup.headers.map((header) => (
+                  <SortableTableHeader key={header.id} header={header} />
+                ))}
+              </TableRow>
+            ))}
           </TableHeader>
           <TableBody>
-            {sortedRows.map((row, index) => (
+            {table.getRowModel().rows.map((row) => (
               <TableRow
-                key={getRowKey(row)}
+                key={getRowKey(row.original)}
                 className="border-[#E5E5E5] hover:bg-gray-50/80"
               >
-                {columns.map((col) => (
-                  <TableCell key={col.key} className={col.className}>
-                    {col.render(row, index)}
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell
+                    key={cell.id}
+                    className={(cell.column.columnDef.meta as { className?: string })?.className}
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
               </TableRow>
