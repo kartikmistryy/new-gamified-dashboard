@@ -28,19 +28,25 @@ export function UserSPOFPageClient() {
 
   // Generate module SPOF data for the user
   // All modules returned will have the current user as a contributor
-  const moduleData = useMemo(
+  const allModuleData = useMemo(
     () => getUserModuleSPOFData(userId ?? "user-1", userName),
     [userId, userName]
+  );
+
+  // Filter to only show modules where user is primary owner
+  const primaryOwnerModules = useMemo(
+    () => allModuleData.filter((module) => module.primaryOwner.id === (userId ?? "user-1")),
+    [allModuleData, userId]
   );
 
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 bg-white text-gray-900 min-h-screen">
       <DashboardSection title="SPOF">
-        <SPOFTreemap modules={moduleData} />
+        <SPOFTreemap modules={primaryOwnerModules} currentUserId={userId ?? "user-1"} />
       </DashboardSection>
 
       <DashboardSection title="Modules">
-        <ModulesTable modules={moduleData} currentUserId={userId ?? "user-1"} />
+        <ModulesTable modules={primaryOwnerModules} currentUserId={userId ?? "user-1"} />
       </DashboardSection>
     </div>
   );

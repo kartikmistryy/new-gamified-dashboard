@@ -56,7 +56,7 @@ export function SkillgraphDetailTable({
               <TableHead key={key} className="w-1/3">
                 <button
                   type="button"
-                  className="inline-flex items-center gap-1 text-left"
+                  className="inline-flex items-center gap-1 text-left text-foreground font-medium text-sm"
                   onClick={() => handleSort(key)}
                 >
                   {label}
@@ -80,10 +80,7 @@ export function SkillgraphDetailTable({
           sortedDetails.map((detail, index) => (
             <TableRow key={`${detail.team}-${index}`} className="border-0 hover:bg-gray-50/70">
               <TableCell className="font-medium text-gray-900 w-1/3">
-                <div className="flex items-center gap-2">
-                  <TeamAvatar teamName={detail.team} className="size-4" />
-                  <span>{detail.team}</span>
-                </div>
+                {detail.team}
               </TableCell>
               <TableCell className="text-gray-700 w-1/3">{detail.usage}</TableCell>
               <TableCell className="w-1/3">

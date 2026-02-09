@@ -2,13 +2,14 @@
 
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { SkillGraph } from "@/components/skillmap/SkillGraph";
-import { useMemo, useState, useEffect, useCallback } from "react";
+import { useMemo, useState, useEffect, useCallback, Fragment } from "react";
 import { roadmapData } from "@/components/skillmap/data/data";
 import type { SkillgraphSkillRow } from "@/lib/orgDashboard/types";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
 import {
   flexRender,
   getCoreRowModel,
+  getExpandedRowModel,
   getSortedRowModel,
   type SortingState,
   useReactTable,
@@ -17,6 +18,7 @@ import { createSkillgraphSkillColumns } from "@/lib/dashboard/skillgraphColumns"
 import { createOpacityScale } from "@/lib/dashboard/skillgraphTableUtils";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { SortableTableHeader } from "@/components/dashboard/SortableTableHeader";
+import { SkillgraphDetailTable } from "@/components/dashboard/SkillgraphDetailTable";
 
 /**
  * Build user-specific skill rows from roadmap data
@@ -97,6 +99,41 @@ const buildUserSkillRowsFromRoadmap = (userId: string): SkillgraphSkillRow[] => 
       // Contributors is always 1 for individual user (self)
       const contributors = 1;
 
+      // Generate sub-skills for the main skill
+      // Create relevant sub-skills based on the parent skill name
+      const generateSubSkills = (skillName: string): string[] => {
+        // Common sub-skill patterns
+        const patterns = [
+          `${skillName} Basics`,
+          `${skillName} Advanced`,
+          `${skillName} Best Practices`,
+          `${skillName} Architecture`,
+          `${skillName} Testing`,
+          `${skillName} Performance`,
+          `${skillName} Security`,
+          `${skillName} Integration`,
+        ];
+
+        // Return 3-5 sub-skills
+        const subSkillCount = 3 + ((userSeed + techIndex) % 3);
+        return patterns.slice(0, subSkillCount);
+      };
+
+      const subSkills = generateSubSkills(tech.name);
+      const details = subSkills.map((subSkillName, i) => {
+        const subSkillSeed = userSeed + techIndex * 13 + i * 7;
+
+        // Distribute usage across sub-skills
+        const subSkillUsage = Math.max(1, Math.floor(totalUsage / subSkills.length * (0.5 + (subSkillSeed % 100) / 100)));
+        const subSkillProgress = Math.min(100, Math.max(20, totalSkillCompletion + ((subSkillSeed % 30) - 15)));
+
+        return {
+          team: subSkillName,
+          usage: subSkillUsage,
+          progress: subSkillProgress,
+        };
+      });
+
       return {
         skillName: tech.name,
         domainName: roadmap.name,
@@ -104,6 +141,7 @@ const buildUserSkillRowsFromRoadmap = (userId: string): SkillgraphSkillRow[] => 
         avgUsage,
         totalSkillCompletion,
         contributors,
+        details,
       };
     })
   );
@@ -167,15 +205,20 @@ export function UserSkillGraphPageClient() {
     [skillRows]
   );
 
-  // Create columns without expander
+  // Create columns with expander, excluding Contributors column
   const columns = useMemo(() => {
     const allColumns = createSkillgraphSkillColumns({
       toggleVisibility,
       visibleDomains: visibleSkills,
       opacityScale,
     });
-    // Filter out the expander column (first column with id "expander")
-    return allColumns.filter((col) => col.id !== "expander");
+    // Filter out the Contributors column since it's always 1 for individual users
+    return allColumns.filter((col) => {
+      // Check both id and accessorKey if it exists
+      if (col.id === "contributors") return false;
+      if ("accessorKey" in col && col.accessorKey === "contributors") return false;
+      return true;
+    });
   }, [toggleVisibility, visibleSkills, opacityScale]);
 
   // Table state
@@ -187,7 +230,9 @@ export function UserSkillGraphPageClient() {
   const table = useReactTable({
     data: skillRows,
     columns,
+    getRowCanExpand: () => true,
     getCoreRowModel: getCoreRowModel(),
+    getExpandedRowModel: getExpandedRowModel(),
     getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
     state: { sorting },
@@ -230,21 +275,33 @@ export function UserSkillGraphPageClient() {
               <TableBody>
                 {table.getRowModel().rows?.length ? (
                   table.getRowModel().rows.map((row) => (
-                    <TableRow
-                      key={row.id}
-                      className="border-[#E5E5E5] hover:bg-gray-50/80"
-                    >
-                      {row.getVisibleCells().map((cell) => (
-                        <TableCell
-                          key={cell.id}
-                          className={`align-middle ${
-                            (cell.column.columnDef.meta as { className?: string })?.className ?? ""
-                          }`}
-                        >
-                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                        </TableCell>
-                      ))}
-                    </TableRow>
+                    <Fragment key={row.id}>
+                      <TableRow
+                        className={`border-[#E5E5E5] hover:bg-gray-50/80 ${row.getIsExpanded() ? "bg-muted" : ""}`}
+                      >
+                        {row.getVisibleCells().map((cell) => (
+                          <TableCell
+                            key={cell.id}
+                            className={`align-middle [&:has([aria-expanded])]:w-px [&:has([aria-expanded])]:py-0 ${
+                              (cell.column.columnDef.meta as { className?: string })?.className ?? ""
+                            }`}
+                          >
+                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                          </TableCell>
+                        ))}
+                      </TableRow>
+                      {row.getIsExpanded() ? (
+                        <TableRow className="hover:bg-transparent">
+                          <TableCell colSpan={row.getVisibleCells().length} className="p-0">
+                            <SkillgraphDetailTable
+                              details={row.original.details}
+                              rowId={row.id}
+                              detailHeaderLabel="Sub-Skill"
+                            />
+                          </TableCell>
+                        </TableRow>
+                      ) : null}
+                    </Fragment>
                   ))
                 ) : (
                   <TableRow>

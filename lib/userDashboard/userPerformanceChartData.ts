@@ -6,6 +6,26 @@ import type { UserPerformanceComparisonDataPoint } from "@/components/dashboard/
  * Data structure and mock data for individual user performance tracking over time.
  */
 
+/**
+ * Creates a deterministic seeded random number generator.
+ * Returns a function that generates numbers between 0 and 1.
+ */
+function createSeededRandom(seed: string): () => number {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) {
+    const char = seed.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+
+  // Use a simple LCG (Linear Congruential Generator)
+  let state = Math.abs(hash);
+  return function() {
+    state = (state * 1664525 + 1013904223) % 4294967296;
+    return state / 4294967296;
+  };
+}
+
 export type UserPerformanceDataPoint = {
   date: string;
   week: string;
@@ -40,8 +60,11 @@ export function generateUserPerformanceData(
   const startDate = new Date("2024-01-01");
   const endDate = new Date("2025-01-06");
 
-  // Base performance score (default to random value between 30-80)
-  const baseScore = basePerformance ?? Math.floor(Math.random() * 50 + 30);
+  // Create deterministic random generator from userId
+  const random = createSeededRandom(userId);
+
+  // Base performance score (default to deterministic value between 30-80)
+  const baseScore = basePerformance ?? Math.floor(random() * 50 + 30);
 
   // Create deterministic but realistic variations based on userId
   const seed = userId.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
@@ -214,8 +237,11 @@ export function generateUserCumulativePerformanceData(
   const startDate = new Date("2024-01-01");
   const endDate = new Date("2025-01-06");
 
+  // Create deterministic random generator from userId
+  const random = createSeededRandom(userId);
+
   // Base performance influences the growth rate and add/delete ratio
-  const performanceScore = basePerformance ?? Math.floor(Math.random() * 50 + 30);
+  const performanceScore = basePerformance ?? Math.floor(random() * 50 + 30);
   const seed = userId.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
 
   let cumulativeValue = 0;
@@ -246,7 +272,7 @@ export function generateUserCumulativePerformanceData(
       1.0;
 
     // Random productivity spikes and dips (simulates good/bad weeks)
-    const randomFactor = 0.7 + Math.random() * 0.6; // 0.7 to 1.3
+    const randomFactor = 0.7 + random() * 0.6; // 0.7 to 1.3
 
     // Occasional major refactoring weeks (every ~8 weeks)
     const isRefactoringWeek = weekIndex % 8 === 5;
@@ -286,7 +312,7 @@ export function generateUserCumulativePerformanceData(
       Math.round(
         weeklyAdd * churnRate +
         Math.cos((seed + weekIndex) * 0.5) * 25 + // Variation in deletes
-        (Math.random() - 0.5) * 30 // Random delete spikes
+        (random() - 0.5) * 30 // Random delete spikes
       )
     );
 
@@ -315,6 +341,9 @@ export function generateTeamMedianCumulativeData(): { date: string; value: numbe
   const data: { date: string; value: number }[] = [];
   const startDate = new Date("2024-01-01");
   const endDate = new Date("2025-01-06");
+
+  // Create deterministic random generator for team median
+  const random = createSeededRandom("team-median-cumulative");
 
   // Team median grows at a moderate rate with realistic variations
   let cumulativeValue = 0;
@@ -348,7 +377,7 @@ export function generateTeamMedianCumulativeData(): { date: string; value: numbe
       sprintMultiplier *
       seasonalMultiplier +
       Math.sin(weekIndex * 0.3) * 25 + // Wave variation
-      (Math.random() - 0.5) * 20        // Random noise
+      (random() - 0.5) * 20        // Random noise
     );
 
     cumulativeValue += weeklyGrowth;
@@ -373,6 +402,9 @@ export function generateOrgMedianCumulativeData(): { date: string; value: number
   const data: { date: string; value: number }[] = [];
   const startDate = new Date("2024-01-01");
   const endDate = new Date("2025-01-06");
+
+  // Create deterministic random generator for org median
+  const random = createSeededRandom("org-median-cumulative");
 
   // Org median grows at baseline rate (more stable than team/individual)
   let cumulativeValue = 0;
@@ -405,7 +437,7 @@ export function generateOrgMedianCumulativeData(): { date: string; value: number
       sprintMultiplier *
       seasonalMultiplier +
       Math.sin(weekIndex * 0.25) * 15 + // Gentle wave
-      (Math.random() - 0.5) * 10         // Minimal noise
+      (random() - 0.5) * 10         // Minimal noise
     );
 
     cumulativeValue += weeklyGrowth;

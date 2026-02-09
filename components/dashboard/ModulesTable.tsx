@@ -57,6 +57,42 @@ function getRiskBadgeStyle(scoreRange: ModuleSPOFData["scoreRange"]) {
 }
 
 /**
+ * Owner Cell Component with Progress Bar
+ *
+ * Displays owner info with avatar, name, and ownership percentage as a progress bar.
+ *
+ * @param name - Owner name
+ * @param percent - Ownership percentage
+ * @param color - Color for the progress bar
+ */
+function OwnerCell({ name, percent, color }: { name: string; percent: number; color: string }) {
+  return (
+    <div className="flex items-center gap-3">
+      <UserAvatar userName={name} className="size-8 flex-shrink-0" />
+      <div className="flex flex-col gap-1.5 flex-1 min-w-0">
+        <span className="text-sm text-gray-900 font-medium truncate">
+          {name}
+        </span>
+        <div className="flex items-center gap-2">
+          <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+            <div
+              className="h-full rounded-full transition-all"
+              style={{
+                width: `${percent}%`,
+                backgroundColor: color,
+              }}
+            />
+          </div>
+          <span className="text-xs text-gray-600 font-medium min-w-[35px] text-right">
+            {percent}%
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
  * Modules Table Component
  *
  * Displays a sortable, filterable table of modules with ownership and SPOF risk information.
@@ -112,22 +148,16 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
               <TableHead className="w-14 text-foreground font-medium">
                 Rank
               </TableHead>
-              <TableHead className="text-foreground font-medium">
+              <TableHead className="text-foreground font-medium w-[280px]">
                 Module
               </TableHead>
-              <TableHead className="text-foreground font-medium">
+              <TableHead className="text-foreground font-medium w-[280px]">
                 Primary Owner
               </TableHead>
-              <TableHead className="text-right text-foreground font-medium">
-                %
-              </TableHead>
-              <TableHead className="text-foreground font-medium">
+              <TableHead className="text-foreground font-medium w-[280px]">
                 Backup Owner
               </TableHead>
-              <TableHead className="text-right text-foreground font-medium">
-                %
-              </TableHead>
-              <TableHead className="text-foreground font-medium">
+              <TableHead className="text-foreground font-medium text-right">
                 Risk
               </TableHead>
             </TableRow>
@@ -137,13 +167,19 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
               const rank = index + 1;
               const riskBadge = getRiskBadgeStyle(module.scoreRange);
 
+              // Get color for ownership bars based on risk level
+              const ownershipColor =
+                module.scoreRange === "high" ? "#DD524C" :
+                module.scoreRange === "medium" ? "#E87B35" :
+                "#55B685";
+
               return (
                 <TableRow
                   key={module.id}
                   className="border-none hover:bg-gray-50 transition-colors"
                 >
                   {/* Rank */}
-                  <TableCell>
+                  <TableCell className="py-4">
                     <span
                       className={
                         rank <= 3
@@ -156,9 +192,9 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
                   </TableCell>
 
                   {/* Module (Repo badge + Module name) */}
-                  <TableCell>
-                    <div className="flex items-center gap-2">
-                      <UiBadge variant="outline" className="text-xs">
+                  <TableCell className="py-4">
+                    <div className="flex flex-col gap-1.5">
+                      <UiBadge variant="outline" className="text-xs w-fit">
                         {module.repoName}
                       </UiBadge>
                       <span className="font-medium text-gray-900">
@@ -167,48 +203,26 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
                     </div>
                   </TableCell>
 
-                  {/* Primary Owner */}
-                  <TableCell>
-                    <div className="flex items-center gap-2">
-                      <UserAvatar
-                        userName={module.primaryOwner.name}
-                        className="size-6"
-                      />
-                      <span className="text-gray-700">
-                        {module.primaryOwner.name}
-                      </span>
-                    </div>
+                  {/* Primary Owner with Progress Bar */}
+                  <TableCell className="py-4">
+                    <OwnerCell
+                      name={module.primaryOwner.name}
+                      percent={module.primaryOwner.ownershipPercent}
+                      color={ownershipColor}
+                    />
                   </TableCell>
 
-                  {/* Primary Owner % */}
-                  <TableCell className="text-right">
-                    <span className="text-gray-700">
-                      {module.primaryOwner.ownershipPercent}%
-                    </span>
-                  </TableCell>
-
-                  {/* Backup Owner */}
-                  <TableCell>
-                    <div className="flex items-center gap-2">
-                      <UserAvatar
-                        userName={module.backupOwner.name}
-                        className="size-6"
-                      />
-                      <span className="text-gray-700">
-                        {module.backupOwner.name}
-                      </span>
-                    </div>
-                  </TableCell>
-
-                  {/* Backup Owner % */}
-                  <TableCell className="text-right">
-                    <span className="text-gray-700">
-                      {module.backupOwner.ownershipPercent}%
-                    </span>
+                  {/* Backup Owner with Progress Bar */}
+                  <TableCell className="py-4">
+                    <OwnerCell
+                      name={module.backupOwner.name}
+                      percent={module.backupOwner.ownershipPercent}
+                      color="#94A3B8"
+                    />
                   </TableCell>
 
                   {/* Risk Badge */}
-                  <TableCell>
+                  <TableCell className="py-4 text-right">
                     <span
                       className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
                       style={{

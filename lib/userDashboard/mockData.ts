@@ -30,6 +30,26 @@ import type {
 import { getScoreRange } from "./userSpofHelpers";
 
 /**
+ * Creates a deterministic seeded random number generator.
+ * Returns a function that generates numbers between 0 and 1.
+ */
+function createSeededRandom(seed: string): () => number {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) {
+    const char = seed.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+
+  // Use a simple LCG (Linear Congruential Generator)
+  let state = Math.abs(hash);
+  return function() {
+    state = (state * 1664525 + 1013904223) % 4294967296;
+    return state / 4294967296;
+  };
+}
+
+/**
  * Determines performance level based on Weekly DiffDelta value.
  */
 function getPerformanceLevel(value: number): PerformanceLevel {
@@ -59,14 +79,17 @@ export function generateUserPerformanceData(
   userName: string,
   performanceScore?: number
 ): UserPerformanceData {
-  // Use provided score or generate random value
-  const score = performanceScore ?? Math.floor(Math.random() * 101);
+  // Create deterministic random generator from userId
+  const random = createSeededRandom(userId);
+
+  // Use provided score or generate deterministic value
+  const score = performanceScore ?? Math.floor(random() * 101);
 
   // Generate correlated metrics based on performance score
-  const weeklyDiffDelta = Math.floor(score * 0.8 + Math.random() * 20);
-  const churnRate = Math.floor(100 - score * 0.7 + Math.random() * 30);
-  const cumulativeDelta = Math.floor(score * 15 + Math.random() * 500);
-  const weekOverWeek = Math.floor((Math.random() - 0.5) * 30);
+  const weeklyDiffDelta = Math.floor(score * 0.8 + random() * 20);
+  const churnRate = Math.floor(100 - score * 0.7 + random() * 30);
+  const cumulativeDelta = Math.floor(score * 15 + random() * 500);
+  const weekOverWeek = Math.floor((random() - 0.5) * 30);
 
   // Determine developer type based on score
   let developerType: DeveloperType;
@@ -94,7 +117,7 @@ export function generateUserPerformanceData(
 
   // SPOF risk
   let spofLevel: SPOFRiskLevel;
-  const ownershipScore = Math.random() * 100;
+  const ownershipScore = random() * 100;
   if (ownershipScore > 80) spofLevel = "High Risk";
   else if (ownershipScore > 60) spofLevel = "Need Attention";
   else if (ownershipScore > 40) spofLevel = "Low Risk";
@@ -432,8 +455,14 @@ function generateMockOwner(index: number, ownershipPercent: number): ModuleOwner
  * @returns Array of 25 modules with SPOF data
  */
 export function getUserModuleSPOFData(userId: string, userName: string = "Alice"): ModuleSPOFData[] {
-  // Mock repositories
-  const repos = ["web-app", "api", "mobile-app", "platform", "services"];
+  // Mock repositories with realistic names
+  const repos = [
+    "frontend-dashboard",
+    "backend-api-gateway",
+    "mobile-ios-app",
+    "core-platform-services",
+    "payment-processing-service"
+  ];
 
   // Mock data matching the screenshot
   const modules: Array<Omit<ModuleSPOFData, "id" | "scoreRange" | "primaryOwner" | "backupOwner" | "repoName">> = [
@@ -471,8 +500,9 @@ export function getUserModuleSPOFData(userId: string, userName: string = "Alice"
   return modules.map((module, index) => {
     // Generate ownership percentages based on SPOF score
     // Higher SPOF = more concentrated ownership
+    // Ownership must add up to 100%
     const primaryOwnership = Math.floor(50 + (module.spofScore / 100) * 40); // 50-90%
-    const backupOwnership = Math.floor(20 + Math.random() * 20); // 20-40%
+    const backupOwnership = 100 - primaryOwnership; // Remaining ownership
 
     // Determine if current user is primary or backup owner
     // For high SPOF scores, user is more likely to be primary owner
