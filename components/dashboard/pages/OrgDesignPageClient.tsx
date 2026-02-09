@@ -40,6 +40,8 @@ export function OrgDesignPageClient() {
 
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
+      <GlobalTimeRangeFilter showLabel />
+      
       <DashboardSection title="Ownership Misallocation Detector">
         <div className="flex flex-row flex-wrap items-stretch gap-8">
           <div className="flex-[1.5] min-w-[400px]">
@@ -50,9 +52,6 @@ export function OrgDesignPageClient() {
           </div>
         </div>
       </DashboardSection>
-
-      {/* Global Time Range Filter */}
-      <GlobalTimeRangeFilter showLabel />
 
       <DashboardSection title="Engineering Chaos Matrix" className="w-full">
         <ChaosMatrixChart
