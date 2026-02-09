@@ -2,10 +2,9 @@
 
 import { useCallback, useMemo, useState } from "react";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
-import { ChaosMatrix } from "@/components/dashboard/ChaosMatrix";
+import { ChaosMatrixChart } from "@/components/dashboard/ChaosMatrixChart";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { DesignTeamsTable, DESIGN_FILTER_TABS } from "@/components/dashboard/DesignTeamsTable";
-import { Badge } from "@/components/shared/Badge";
+import { DesignTeamsTable } from "@/components/dashboard/DesignTeamsTable";
 import { OwnershipScatter } from "@/components/dashboard/OwnershipScatter";
 import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
 import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
@@ -56,30 +55,15 @@ export function OrgDesignPageClient() {
       <GlobalTimeRangeFilter showLabel />
 
       <DashboardSection title="Engineering Chaos Matrix" className="w-full">
-        <ChaosMatrix range={timeRange} visibleTeams={visibleTeams} teamNames={designTeamNames} />
+        <ChaosMatrixChart
+          range={timeRange}
+          visibleTeams={visibleTeams}
+          teamNames={designTeamNames}
+          renderMode="circles"
+        />
       </DashboardSection>
 
-      <DashboardSection
-        title="Teams"
-        className="w-full"
-        action={
-          <div className="flex flex-row flex-wrap gap-2">
-            {DESIGN_FILTER_TABS.map((tab) => (
-              <Badge
-                key={tab.key}
-                onClick={() => setDesignFilter(tab.key)}
-                className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
-                  designFilter === tab.key
-                    ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
-                    : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
-                }`}
-              >
-                {tab.label}
-              </Badge>
-            ))}
-          </div>
-        }
-      >
+      <DashboardSection title="Teams" className="w-full">
         <DesignTeamsTable
           rows={designTeamRows}
           activeFilter={designFilter}

@@ -1,8 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Badge } from "@/components/shared/Badge";
-import { TeamChaosMatrix } from "@/components/dashboard/TeamChaosMatrix";
+import { ChaosMatrixChart } from "@/components/dashboard/ChaosMatrixChart";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
@@ -50,6 +49,8 @@ export function TeamDesignPageClient() {
   return (
     <TooltipProvider>
       <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
+        <GlobalTimeRangeFilter showLabel />
+
         <DashboardSection title="Collaboration Network" className="w-full">
           <div className="flex flex-row flex-wrap items-stretch gap-8">
             <div className="flex-[1.5] min-w-[400px]">
@@ -64,38 +65,19 @@ export function TeamDesignPageClient() {
           </div>
         </DashboardSection>
 
-        {/* Global Time Range Filter */}
-        <GlobalTimeRangeFilter showLabel />
+
 
         <DashboardSection title="Engineering Chaos Index" className="w-full">
-          <TeamChaosMatrix
+          <ChaosMatrixChart
             data={chaosMatrixData}
             range={timeRange}
             teamNames={memberNames}
+            tooltipTeamLabel="Person"
+            renderMode="avatars"
           />
         </DashboardSection>
 
-        <DashboardSection
-          title="Team Members"
-          className="w-full"
-          action={
-            <div className="flex flex-row flex-wrap gap-2">
-              {DESIGN_MEMBER_FILTER_TABS.map((tab) => (
-                <Badge
-                  key={tab.key}
-                  onClick={() => setDesignFilter(tab.key)}
-                  className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
-                    designFilter === tab.key
-                      ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
-                      : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
-                  }`}
-                >
-                  {tab.label}
-                </Badge>
-              ))}
-            </div>
-          }
-        >
+        <DashboardSection title="Team Members" className="w-full">
           <BaseTeamsTable<MemberDesignRow, DesignMemberFilter>
             rows={members}
             filterTabs={DESIGN_MEMBER_FILTER_TABS}
