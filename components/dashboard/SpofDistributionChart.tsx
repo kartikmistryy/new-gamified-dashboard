@@ -1,9 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useMemo } from "react";
-import Plotly from "plotly.js-dist-min";
+import { useMemo } from "react";
+import dynamic from "next/dynamic";
+import type { Data, Layout, Config } from "plotly.js";
 import { SPOF_TEAM_CONFIG, calculateSpofStats } from "@/lib/orgDashboard/spofMockData";
 import type { SpofDataPoint } from "@/lib/orgDashboard/spofMockData";
+
+const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
 type SpofDistributionChartProps = {
   data: SpofDataPoint[];
@@ -68,9 +71,6 @@ export function SpofDistributionChart({
   visibleTeams,
   showNormalFit = true,
 }: SpofDistributionChartProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const plotlyInitialized = useRef(false);
-
   const filteredData = useMemo(
     () => data.filter((d) => visibleTeams[d.team] !== false),
     [data, visibleTeams]
@@ -86,15 +86,15 @@ export function SpofDistributionChart({
     [visibleTeams]
   );
 
-  useEffect(() => {
-    if (!containerRef.current || visibleTeamNames.length === 0) return;
+  const plotData = useMemo(() => {
+    if (visibleTeamNames.length === 0) return [];
 
     const stats = calculateSpofStats(filteredData);
-    const { mean, std, skewType } = stats;
-    const { bins, binSize } = createHistogramBins(filteredData, visibleTeamNames, 0.3);
+    const { mean, std } = stats;
+    const { bins } = createHistogramBins(filteredData, visibleTeamNames, 0.3);
 
     const binCenters = Object.keys(bins).map(Number).sort((a, b) => a - b);
-    const traces: Plotly.Data[] = [];
+    const traces: Data[] = [];
 
     // Create stacked bar traces for each team
     visibleTeamConfigs.forEach(teamConfig => {
@@ -109,7 +109,7 @@ export function SpofDistributionChart({
         hovertemplate: `<b>${teamConfig.name}</b><br>` +
           "SPOF Score: %{x:.1f}<br>" +
           "Count: %{y}<extra></extra>",
-      } as Plotly.Data);
+      });
     });
 
     // Add normal distribution curve
@@ -127,8 +127,17 @@ export function SpofDistributionChart({
           dash: "dash",
         },
         hovertemplate: "Normal Fit<br>x=%{x:.2f}<br>y=%{y:.1f}<extra></extra>",
-      } as Plotly.Data);
+      });
     }
+
+    return traces;
+  }, [filteredData, visibleTeamConfigs, visibleTeamNames, showNormalFit]);
+
+  const plotLayout = useMemo((): Partial<Layout> => {
+    const stats = calculateSpofStats(filteredData);
+    const { mean, std, skewType } = stats;
+    const { bins } = createHistogramBins(filteredData, visibleTeamNames, 0.3);
+    const binCenters = Object.keys(bins).map(Number).sort((a, b) => a - b);
 
     const muMinus1Sigma = Math.max(0, mean - std);
     const muPlus1Sigma = Math.min(6, mean + std);
@@ -145,21 +154,21 @@ export function SpofDistributionChart({
       ? visibleTeamNames.join(", ")
       : "No teams selected";
 
-    const layout: Partial<Plotly.Layout> = {
+    return {
       title: {
         text: `SPOF Distribution (${skewType})<br>` +
           `<sub>μ=${mean.toFixed(2)}, σ=${std.toFixed(2)} | Teams: ${teamsText}</sub>`,
         font: { size: 16, color: "#1e293b" },
       },
       xaxis: {
-        title: "SPOF Score",
+        title: { text: "SPOF Score" },
         range: [0, 6],
         gridcolor: "#e2e8f0",
         showline: true,
         linecolor: "#cbd5e1",
       },
       yaxis: {
-        title: "Count",
+        title: { text: "Count" },
         range: [0, yMax],
         gridcolor: "#e2e8f0",
         showline: true,
@@ -265,27 +274,18 @@ export function SpofDistributionChart({
       paper_bgcolor: "white",
       plot_bgcolor: "white",
       hovermode: "closest",
+      height: 500,
     };
+  }, [filteredData, visibleTeamNames]);
 
-    const config: Partial<Plotly.Config> = {
-      responsive: true,
-      displayModeBar: false,
-    };
+  const plotConfig = useMemo((): Partial<Config> => ({
+    responsive: true,
+    displayModeBar: false,
+  }), []);
 
-    if (!plotlyInitialized.current) {
-      Plotly.newPlot(containerRef.current, traces, layout, config);
-      plotlyInitialized.current = true;
-    } else {
-      Plotly.react(containerRef.current, traces, layout, config);
-    }
-
-    return () => {
-      if (plotlyInitialized.current && containerRef.current) {
-        Plotly.purge(containerRef.current);
-        plotlyInitialized.current = false;
-      }
-    };
-  }, [filteredData, visibleTeamConfigs, visibleTeamNames, showNormalFit]);
-
-  return <div ref={containerRef} className="w-full h-[500px]" />;
+  return (
+    <div className="w-full h-[500px]">
+      <Plot data={plotData} layout={plotLayout} config={plotConfig} className="w-full h-full" />
+    </div>
+  );
 }
