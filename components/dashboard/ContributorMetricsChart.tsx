@@ -116,6 +116,15 @@ export function ContributorMetricsChart({
         : { t: 20, r: 20, b: 44, l: 60 },
       barmode: "overlay",
       hovermode: "x unified",
+      hoverlabel: {
+        bgcolor: "#ffffff",
+        font: {
+          color: "#1f2937",
+          family: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
+          size: 12
+        },
+        bordercolor: "#e5e7eb",
+      },
       showlegend: false,
       xaxis: {
         title: { text: "" },
@@ -201,7 +210,7 @@ export function ContributorMetricsChart({
   }
 
   return (
-    <div className={`w-full max-w-full overflow-hidden rounded-lg ${showMiniVersion ? "" : "border border-gray-100"} p-2`}>
+    <div className={`w-full max-w-full overflow-hidden rounded-lg ${showMiniVersion ? "" : ""} p-2`}>
       <div
         ref={plotRef}
         className="w-full max-w-full overflow-hidden"

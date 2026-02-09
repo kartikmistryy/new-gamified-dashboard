@@ -3,20 +3,12 @@
 import { useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
 import { TeamPerformanceChart } from "@/components/dashboard/TeamPerformanceChart";
 import { ContributorMetricsChart } from "@/components/dashboard/ContributorMetricsChart";
-import { ContributorMetricsCard } from "@/components/dashboard/ContributorMetricsCard";
 import { getContributorPerformanceRowsForRepo } from "@/lib/repoDashboard/overviewMockData";
 import { generateContributorPerformanceTimeSeries } from "@/lib/repoDashboard/performanceMockData";
 import {
@@ -38,24 +30,6 @@ import {
 } from "@/lib/repoDashboard/performanceTableConfig";
 import { PERFORMANCE_CONTRIBUTOR_COLUMNS } from "@/lib/repoDashboard/performanceTableColumns";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
-
-// Generate deterministic colors for contributors
-const CONTRIBUTOR_COLORS = [
-  "#5470c6", // blue
-  "#ee6666", // red
-  "#5ab374", // green
-  "#9a60b4", // purple
-  "#ea7ccc", // pink
-  "#73c0de", // cyan
-  "#fac858", // yellow
-  "#fc8452", // orange
-  "#91cc75", // lime
-  "#3ba272", // teal
-];
-
-function getContributorColor(index: number): string {
-  return CONTRIBUTOR_COLORS[index % CONTRIBUTOR_COLORS.length];
-}
 
 export function RepoPerformancePageClient() {
   const { repoId } = useRouteParams();
@@ -251,42 +225,6 @@ export function RepoPerformancePageClient() {
                   </div>
               </div>
 
-              {/* Contributor Cards Carousel */}
-              <div className="relative w-full max-w-full min-w-0 overflow-hidden">
-                <Carousel
-                  opts={{
-                    align: "start",
-                    loop: false,
-                  }}
-                  className="w-full max-w-full min-w-0 px-12"
-                >
-                  <CarouselContent className="-ml-2 md:-ml-4">
-                    {contributorMetrics.map((contributor, index) => {
-                      const cumulativeData = generateCumulativeData(
-                        contributor.additionsData,
-                        contributor.deletionsData
-                      );
-
-                      return (
-                        <CarouselItem key={contributor.contributorName} className="basis-full pl-2 md:basis-1/2 md:pl-4 lg:basis-1/3">
-                            <ContributorMetricsCard
-                              contributorName={contributor.contributorName}
-                              contributorAvatar={contributor.contributorAvatar}
-                              contributorColor={getContributorColor(index)}
-                              rank={contributor.rank}
-                              commits={contributor.totalCommits}
-                              additions={contributor.totalAdditions}
-                              deletions={contributor.totalDeletions}
-                              data={cumulativeData}
-                            />
-                        </CarouselItem>
-                      );
-                    })}
-                  </CarouselContent>
-                  <CarouselPrevious className="left-2 top-1/2 -translate-y-1/2" />
-                  <CarouselNext className="right-2 top-1/2 -translate-y-1/2" />
-                </Carousel>
-              </div>
             </section>
 
             {/* Contributor table section */}
