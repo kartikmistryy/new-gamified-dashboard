@@ -176,36 +176,25 @@ export function RepoPerformancePageClient() {
             </section>
 
             {/* Contributors Section */}
-            <section className="w-full overflow-hidden" aria-labelledby="contributors-metrics-heading">
-              <div className="mb-6 flex items-center justify-between flex-wrap gap-4">
-                <div>
-                  <h2 id="contributors-metrics-heading" className="text-2xl font-semibold text-gray-900">
-                    Contributors
-                  </h2>
-                  <p className="text-sm text-gray-600">
-                    Cumulative DiffDelta over time with additions and deletions
-                  </p>
-                </div>
-              </div>
+            <DashboardSection title="Contributors" className="w-full overflow-hidden">
+              <p className="text-sm text-gray-600 mb-6">
+                Cumulative DiffDelta over time with additions and deletions
+              </p>
 
               {/* Aggregate Chart */}
               <div className="mb-6 rounded-xl bg-white overflow-hidden">
-                  <div className="min-w-full pb-2">
-                    <ContributorMetricsChart
-                      data={aggregateCumulativeData}
-                      contributorName="Repository"
-                      contributorColor="#3b82f6"
-                    />
-                  </div>
+                <div className="min-w-full pb-2">
+                  <ContributorMetricsChart
+                    data={aggregateCumulativeData}
+                    contributorName="Repository"
+                    contributorColor="#3b82f6"
+                  />
+                </div>
               </div>
-
-            </section>
+            </DashboardSection>
 
             {/* Contributor table section */}
-            <section className="w-full" aria-labelledby="contributors-heading">
-              <h2 id="contributors-heading" className="mb-4 text-2xl font-semibold text-foreground">
-                Repository Contributors
-              </h2>
+            <DashboardSection title="Repository Contributors" className="w-full">
               <BaseTeamsTable<ContributorPerformanceWithDelta, PerformanceFilter>
                 rows={tableRows}
                 filterTabs={PERFORMANCE_FILTER_TABS}
@@ -216,7 +205,7 @@ export function RepoPerformancePageClient() {
                 columns={PERFORMANCE_CONTRIBUTOR_COLUMNS}
                 getRowKey={(row) => row.contributorName}
               />
-            </section>
+            </DashboardSection>
           </CardContent>
         </Card>
       </div>

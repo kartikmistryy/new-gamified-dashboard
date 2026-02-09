@@ -10,6 +10,7 @@ import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { OverviewSummaryCard } from "@/components/dashboard/OverviewSummaryCard";
 import { MemberTable } from "@/components/dashboard/MemberTable";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
+import { DashboardSection } from "@/components/dashboard/DashboardSection";
 
 export function TeamOverviewPageClient() {
   const { teamId } = useRouteParams();
@@ -34,32 +35,31 @@ export function TeamOverviewPageClient() {
       <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
         <Card className="w-full border-none bg-white p-0 shadow-none">
           <CardContent className="flex w-full flex-col items-stretch space-y-8 px-0">
-            <h2 className="text-2xl font-semibold text-foreground">
-              Overview
-            </h2>
-
-            <div className="flex flex-row gap-5">
-              <GaugeSection
-                gaugeValue={teamGaugeValue}
-                labelVariant="performance"
-              />
-              <ChartInsights insights={insights} />
-            </div>
-
-            <div className="@container w-full">
-              <div className="grid grid-cols-3 gap-4 @[1050px]:grid-cols-6">
-                {metricCards.map((item) => (
-                  <OverviewSummaryCard key={item.key} item={item} />
-                ))}
+            <DashboardSection title="Overview">
+              <div className="flex flex-row flex-wrap items-stretch gap-8">
+                <div className="flex shrink-0 min-w-[280px] max-w-[50%]">
+                  <GaugeSection
+                    gaugeValue={teamGaugeValue}
+                    labelVariant="performance"
+                  />
+                </div>
+                <div className="flex-1 min-w-[280px]">
+                  <ChartInsights insights={insights} />
+                </div>
               </div>
-            </div>
 
-            <section className="w-full" aria-labelledby="members-heading">
-              <h2 id="members-heading" className="mb-4 text-2xl font-semibold text-foreground">
-                Team Members
-              </h2>
+              <div className="@container w-full mt-8">
+                <div className="grid grid-cols-3 gap-4 @[1050px]:grid-cols-6">
+                  {metricCards.map((item) => (
+                    <OverviewSummaryCard key={item.key} item={item} />
+                  ))}
+                </div>
+              </div>
+            </DashboardSection>
+
+            <DashboardSection title="Team Members" className="w-full">
               <MemberTable rows={memberRows} />
-            </section>
+            </DashboardSection>
           </CardContent>
         </Card>
       </div>

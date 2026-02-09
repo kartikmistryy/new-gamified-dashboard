@@ -51,14 +51,14 @@ export function RepoDesignPageClient() {
     <TooltipProvider>
       <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
         <DashboardSection title="Collaboration Network" className="w-full">
-          <div className="flex flex-col items-stretch gap-8 xl:flex-row">
-            <div className="min-w-0 xl:w-[60%]">
+          <div className="flex flex-row flex-wrap items-stretch gap-8">
+            <div className="flex-[1.5] min-w-[400px]">
               <TeamCollaborationNetwork
                 data={collaborationData}
                 onInsightsChange={setCollaborationInsights}
               />
             </div>
-            <div className="min-w-[280px] xl:w-[40%]">
+            <div className="flex-1 min-w-[280px]">
               <ChartInsights insights={collaborationInsights} />
             </div>
           </div>

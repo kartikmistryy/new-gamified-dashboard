@@ -42,11 +42,11 @@ export function OrgDesignPageClient() {
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
       <DashboardSection title="Ownership Misallocation Detector">
-        <div className="flex flex-row gap-5">
-          <div className="w-[65%] shrink-0">
+        <div className="flex flex-row flex-wrap items-stretch gap-8">
+          <div className="flex-[1.5] min-w-[400px]">
             <OwnershipScatter range={timeRange} />
           </div>
-          <div className="w-[35%] min-w-0 shrink">
+          <div className="flex-1 min-w-[280px]">
             <ChartInsights insights={chartInsights} />
           </div>
         </div>

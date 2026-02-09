@@ -161,10 +161,7 @@ export function TeamPerformancePageClient() {
             </DashboardSection>
 
             {/* Member table section */}
-            <section className="w-full" aria-labelledby="members-heading">
-              <h2 id="members-heading" className="mb-4 text-2xl font-semibold text-foreground">
-                Team Members
-              </h2>
+            <DashboardSection title="Team Members" className="w-full">
               <BaseTeamsTable<MemberPerformanceWithDelta, PerformanceFilter>
                 rows={tableRows}
                 filterTabs={PERFORMANCE_FILTER_TABS}
@@ -175,7 +172,7 @@ export function TeamPerformancePageClient() {
                 columns={PERFORMANCE_MEMBER_COLUMNS}
                 getRowKey={(row) => row.memberName}
               />
-            </section>
+            </DashboardSection>
           </CardContent>
         </Card>
       </div>
