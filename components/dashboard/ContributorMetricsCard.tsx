@@ -1,42 +1,35 @@
 "use client";
 
 import { UserAvatar } from "@/components/shared/UserAvatar";
-import { ContributorMetricsChart } from "./ContributorMetricsChart";
-
-type MetricType = "commits" | "additions" | "deletions";
-
-type TimeSeriesDataPoint = {
-  week: string;
-  value: number;
-};
+import { ContributorMetricsChart, type ContributorMetricDataPoint } from "./ContributorMetricsChart";
 
 type ContributorMetricsCardProps = {
   contributorName: string;
   contributorAvatar?: string;
+  contributorColor?: string;
   rank: number;
   commits: number;
   additions: number;
   deletions: number;
-  data: TimeSeriesDataPoint[];
-  metricType: MetricType;
+  data: ContributorMetricDataPoint[];
 };
 
 export function ContributorMetricsCard({
   contributorName,
   contributorAvatar,
+  contributorColor,
   rank,
   commits,
   additions,
   deletions,
   data,
-  metricType,
 }: ContributorMetricsCardProps) {
   return (
-    <div className="w-full rounded-xl bg-white border border-gray-200 p-4 shadow-sm">
+    <div className="w-full h-full max-w-full overflow-hidden rounded-lg bg-white border border-gray-200 p-4 shadow-none">
       {/* Header */}
       <div className="mb-3 flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0 flex-1">
-          <UserAvatar name={contributorName} src={contributorAvatar} size="md" />
+          <UserAvatar name={contributorName} src={contributorAvatar} size="sm" />
           <div className="min-w-0 flex-1">
             <h4 className="text-sm font-semibold text-gray-900 truncate">{contributorName}</h4>
             <div className="flex items-center gap-2 text-xs text-gray-600">
@@ -50,22 +43,15 @@ export function ContributorMetricsCard({
           <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 border border-gray-200">
             <span className="text-xs font-semibold text-gray-700">#{rank}</span>
           </div>
-          <button className="text-gray-500 hover:text-gray-700 p-1">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-              <circle cx="8" cy="3" r="1.5" />
-              <circle cx="8" cy="8" r="1.5" />
-              <circle cx="8" cy="13" r="1.5" />
-            </svg>
-          </button>
         </div>
       </div>
 
       {/* Chart */}
-      <div className="w-full h-[140px]">
+      <div className="w-full h-[160px]">
         <ContributorMetricsChart
           data={data}
-          metricType={metricType}
-          title=""
+          contributorName={contributorName}
+          contributorColor={contributorColor}
           showMiniVersion
         />
       </div>

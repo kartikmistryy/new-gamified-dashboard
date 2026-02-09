@@ -50,7 +50,7 @@ export function BaseTeamsTable<T, F extends string>({
   });
 
   return (
-    <div className="w-full">
+    <div className="w-full min-w-0">
       {showFilters ? (
         <div className="flex flex-row flex-wrap gap-2 mb-4">
           {filterTabs.map((tab) => (
@@ -68,7 +68,7 @@ export function BaseTeamsTable<T, F extends string>({
           ))}
         </div>
       ) : null}
-      <div className="rounded-sm border-none overflow-hidden bg-white">
+      <div className="rounded-sm border-none overflow-hidden bg-white min-w-0 max-w-full">
         <Table>
           <TableHeader className="border-0">
             <TableRow className="border-none hover:bg-transparent">

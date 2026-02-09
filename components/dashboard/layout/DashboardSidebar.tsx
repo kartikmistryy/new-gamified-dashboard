@@ -105,12 +105,12 @@ export default function DashboardSidebar({ children }: { children: React.ReactNo
         </SidebarContent>
         <UserFooter people={people} />
       </Sidebar>
-      <SidebarInset className="p-0">
-        <header className="flex h-14 items-center gap-4 px-4 border-b bg-white">
+      <SidebarInset className="min-w-0 overflow-x-hidden p-0">
+        <header className="flex h-14 min-w-0 items-center gap-4 border-b bg-white px-4">
           <SidebarTrigger />
           <DashboardHeader breadcrumbItems={breadcrumbItems} />
         </header>
-        <main className="flex flex-1 flex-col gap-4 bg-white">
+        <main className="flex min-w-0 flex-1 flex-col gap-4 overflow-x-hidden bg-white">
           <div className="px-4 pt-4">
             <DashboardHero
               dashboard={dashboardKey}

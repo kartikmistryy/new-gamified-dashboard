@@ -1,114 +1,198 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
+import type { Config, Data, Layout } from "plotly.js";
 
-type MetricType = "commits" | "additions" | "deletions";
-
-type TimeSeriesDataPoint = {
+export type ContributorMetricDataPoint = {
   week: string;
-  value: number;
+  cumulative: number;
+  additions: number;
+  deletions: number;
 };
 
 type ContributorMetricsChartProps = {
-  data: TimeSeriesDataPoint[];
-  metricType: MetricType;
-  title: string;
+  data: ContributorMetricDataPoint[];
+  contributorName?: string;
+  contributorColor?: string;
+  title?: string;
   subtitle?: string;
   showMiniVersion?: boolean;
   height?: number;
 };
 
+const DEFAULT_HEIGHT = 360;
+const MINI_HEIGHT = 160;
+
+/**
+ * Generates date strings from week labels for x-axis.
+ * Parses "Jan '24" format and creates ISO dates.
+ */
+function parseWeekToDate(week: string, index: number, totalWeeks: number): string {
+  const today = new Date();
+  const weeksBack = totalWeeks - 1 - index;
+  const date = new Date(today);
+  date.setDate(date.getDate() - weeksBack * 7);
+  return date.toISOString().split("T")[0];
+}
+
 export function ContributorMetricsChart({
   data,
-  metricType,
+  contributorName = "Contributor",
+  contributorColor = "#3b82f6",
   title,
   subtitle,
   showMiniVersion = false,
   height: propHeight,
 }: ContributorMetricsChartProps) {
-  // Determine bar color based on metric type
-  const barColor = useMemo(() => {
-    switch (metricType) {
-      case "additions":
-        return "#10b981"; // green
-      case "deletions":
-        return "#ef4444"; // red
-      case "commits":
-      default:
-        return "#3b82f6"; // blue
-    }
-  }, [metricType]);
+  const plotRef = useRef<HTMLDivElement | null>(null);
 
-  const chartConfig = useMemo(() => {
-    if (data.length === 0) {
-      return null;
-    }
+  const chartHeight = propHeight ?? (showMiniVersion ? MINI_HEIGHT : DEFAULT_HEIGHT);
 
-    // Use a reasonable base width that will scale responsively
-    const height = propHeight ?? (showMiniVersion ? 140 : 360);
-    // Calculate width based on data length for better readability
-    // For mini version, keep it fixed to fit in cards. For full version, calculate based on data.
-    const minBarWidth = 12;
-    const width = showMiniVersion ? 400 : Math.max(800, data.length * minBarWidth);
-    const margin = showMiniVersion
-      ? { top: 5, right: 5, bottom: 25, left: 5 }
-      : { top: 10, right: 20, bottom: 40, left: 50 };
+  const traces = useMemo<Data[]>(() => {
+    if (data.length === 0) return [];
 
-    const innerWidth = width - margin.left - margin.right;
-    const innerHeight = height - margin.top - margin.bottom;
+    const x = data.map((point, index) => parseWeekToDate(point.week, index, data.length));
+    const cumulative = data.map((point) => point.cumulative);
+    const additions = data.map((point) => point.additions);
+    const deletions = data.map((point) => -Math.abs(point.deletions));
 
-    const maxValue = Math.max(...data.map((d) => d.value), 1);
-    const barWidth = Math.max(2, (innerWidth / data.length) * 0.8);
-    const barGap = (innerWidth / data.length) * 0.2;
+    const output: Data[] = [];
 
-    const bars = data.map((point, index) => {
-      const x = margin.left + (index * innerWidth) / data.length + barGap / 2;
-      const barHeight = (point.value / maxValue) * innerHeight;
-      const y = margin.top + innerHeight - barHeight;
-
-      return {
-        x,
-        y,
-        width: barWidth,
-        height: Math.max(1, barHeight),
-        value: point.value,
-        week: point.week,
-      };
+    // Cumulative line
+    output.push({
+      type: "scatter",
+      mode: "lines",
+      x,
+      y: cumulative,
+      name: contributorName,
+      line: {
+        color: contributorColor,
+        width: showMiniVersion ? 2 : 3,
+      },
+      hovertemplate: `${contributorName}: %{y:,.0f}<extra></extra>`,
     });
 
-    // Y-axis ticks
-    const tickCount = showMiniVersion ? 3 : 5;
-    const yTicks = [];
-    for (let i = 0; i <= tickCount; i++) {
-      const value = Math.round((maxValue / tickCount) * i);
-      const y = margin.top + innerHeight - (i / tickCount) * innerHeight;
-      yTicks.push({ y, value });
+    // Addition bars (green)
+    output.push({
+      type: "bar",
+      x,
+      y: additions,
+      base: cumulative,
+      name: `${contributorName} Add`,
+      showlegend: false,
+      marker: {
+        color: "#3A9C45",
+        opacity: 0.5,
+      },
+      hovertemplate: `Add: +%{y:,.0f}<extra></extra>`,
+    } as any);
+
+    // Deletion bars (red, negative)
+    output.push({
+      type: "bar",
+      x,
+      y: deletions,
+      base: cumulative,
+      name: `${contributorName} Delete`,
+      showlegend: false,
+      marker: {
+        color: "#D65249",
+        opacity: 0.5,
+      },
+      hovertemplate: `Delete: %{y:,.0f}<extra></extra>`,
+    } as any);
+
+    return output;
+  }, [data, contributorName, contributorColor, showMiniVersion]);
+
+  const layout = useMemo<Partial<Layout>>(
+    () => ({
+      autosize: true,
+      height: chartHeight,
+      paper_bgcolor: "transparent",
+      plot_bgcolor: "transparent",
+      margin: showMiniVersion
+        ? { t: 10, r: 10, b: 30, l: 40 }
+        : { t: 20, r: 20, b: 44, l: 60 },
+      barmode: "overlay",
+      hovermode: "x unified",
+      showlegend: false,
+      xaxis: {
+        title: { text: "" },
+        tickformat: showMiniVersion ? "%b" : "%b %-d<br>%Y",
+        hoverformat: "%b %-d, %Y",
+        showgrid: false,
+        showline: false,
+        zeroline: false,
+        tickfont: { color: "#6b7280", size: showMiniVersion ? 10 : 14 },
+      },
+      yaxis: {
+        title: {
+          text: showMiniVersion ? "" : "Cumulative DiffDelta",
+          font: { size: 14, color: "#374151" }
+        },
+        tickformat: "~s",
+        gridcolor: "#f3f4f6",
+        gridwidth: 1,
+        zeroline: false,
+        tickfont: { color: "#6b7280", size: showMiniVersion ? 10 : 14 },
+      },
+      font: {
+        family: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
+        color: "#1e293b",
+      },
+    }),
+    [chartHeight, showMiniVersion]
+  );
+
+  const config = useMemo<Partial<Config>>(
+    () => ({
+      responsive: true,
+      displayModeBar: false,
+      scrollZoom: false,
+    }),
+    []
+  );
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function renderPlot() {
+      if (!plotRef.current) return;
+
+      // @ts-expect-error - plotly.js-dist-min doesn't have type definitions
+      const Plotly = (await import("plotly.js-dist-min")) as unknown as typeof import("plotly.js");
+      if (cancelled || !plotRef.current) return;
+
+      if (traces.length === 0) {
+        Plotly.purge(plotRef.current);
+        plotRef.current.innerHTML = "";
+        return;
+      }
+
+      await Plotly.react(plotRef.current, traces, layout, config);
     }
 
-    // X-axis ticks
-    const labelCount = showMiniVersion ? 4 : 8;
-    const labelInterval = Math.max(1, Math.floor(data.length / labelCount));
-    const xTicks = data
-      .map((point, index) => {
-        if (index % labelInterval === 0 || index === data.length - 1) {
-          const x = margin.left + (index * innerWidth) / data.length + barWidth / 2 + barGap / 2;
-          return { x, label: point.week };
-        }
-        return null;
-      })
-      .filter((tick): tick is { x: number; label: string } => tick !== null);
+    void renderPlot();
 
-    return {
-      bars,
-      yTicks,
-      xTicks,
-      width,
-      height,
-      margin,
+    return () => {
+      cancelled = true;
     };
-  }, [data, metricType, showMiniVersion, propHeight]);
+  }, [traces, layout, config]);
 
-  if (!chartConfig) {
+  useEffect(() => {
+    const plotElement = plotRef.current;
+    return () => {
+      void (async () => {
+        if (!plotElement) return;
+        // @ts-expect-error - plotly.js-dist-min doesn't have type definitions
+        const Plotly = (await import("plotly.js-dist-min")) as unknown as typeof import("plotly.js");
+        Plotly.purge(plotElement);
+      })();
+    };
+  }, []);
+
+  if (data.length === 0) {
     return (
       <div className="flex items-center justify-center rounded-lg bg-gray-50 p-8">
         <p className="text-sm text-gray-500">No data available</p>
@@ -117,88 +201,14 @@ export function ContributorMetricsChart({
   }
 
   return (
-    <div style={showMiniVersion ? { width: "100%", height: `${chartConfig.height}px` } : { width: `${chartConfig.width}px`, height: `${chartConfig.height}px` }}>
-      <svg
-        viewBox={`0 0 ${chartConfig.width} ${chartConfig.height}`}
-        {...(showMiniVersion ? { className: "w-full", style: { display: "block", height: `${chartConfig.height}px` } } : { width: chartConfig.width, height: chartConfig.height, style: { display: "block" } })}
-      >
-        {/* Horizontal grid lines */}
-        {!showMiniVersion && chartConfig.yTicks.map((tick, i) => (
-          <line
-            key={i}
-            x1={chartConfig.margin.left}
-            x2={chartConfig.width - chartConfig.margin.right}
-            y1={tick.y}
-            y2={tick.y}
-            stroke="#e5e7eb"
-            strokeWidth={0.5}
-            strokeDasharray="3 3"
-            opacity={0.8}
-          />
-        ))}
-
-        {/* Bars */}
-        {chartConfig.bars.map((bar, index) => (
-          <rect
-            key={index}
-            x={bar.x}
-            y={bar.y}
-            width={bar.width}
-            height={bar.height}
-            fill={barColor}
-            rx={1}
-          />
-        ))}
-
-        {/* Y-axis */}
-        {!showMiniVersion && (
-          <>
-            <line
-              x1={chartConfig.margin.left}
-              x2={chartConfig.margin.left}
-              y1={chartConfig.margin.top}
-              y2={chartConfig.height - chartConfig.margin.bottom}
-              stroke="#d1d5db"
-              strokeWidth={1}
-            />
-            {chartConfig.yTicks.map((tick, i) => (
-              <text
-                key={i}
-                x={chartConfig.margin.left - 8}
-                y={tick.y}
-                textAnchor="end"
-                dominantBaseline="middle"
-                fill="#6b7280"
-                fontSize={10}
-              >
-                {tick.value}
-              </text>
-            ))}
-          </>
-        )}
-
-        {/* X-axis */}
-        <line
-          x1={chartConfig.margin.left}
-          x2={chartConfig.width - chartConfig.margin.right}
-          y1={chartConfig.height - chartConfig.margin.bottom}
-          y2={chartConfig.height - chartConfig.margin.bottom}
-          stroke="#d1d5db"
-          strokeWidth={1}
-        />
-        {chartConfig.xTicks.map((tick, i) => (
-          <text
-            key={i}
-            x={tick.x}
-            y={chartConfig.height - chartConfig.margin.bottom + (showMiniVersion ? 15 : 20)}
-            textAnchor="middle"
-            fill="#6b7280"
-            fontSize={showMiniVersion ? 8 : 10}
-          >
-            {tick.label}
-          </text>
-        ))}
-      </svg>
+    <div className={`w-full max-w-full overflow-hidden rounded-lg ${showMiniVersion ? "" : "border border-gray-100"} p-2`}>
+      <div
+        ref={plotRef}
+        className="w-full max-w-full overflow-hidden"
+        style={{ height: `${chartHeight}px` }}
+        role="img"
+        aria-label="Contributor metrics with additions and deletions"
+      />
     </div>
   );
 }

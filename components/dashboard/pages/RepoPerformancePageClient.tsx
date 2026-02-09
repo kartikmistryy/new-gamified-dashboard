@@ -3,6 +3,13 @@
 import { useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
@@ -19,6 +26,7 @@ import {
   getPerformanceInsights,
   generateContributorTimeSeriesMetrics,
   aggregateContributorMetrics,
+  generateCumulativeData,
 } from "@/lib/repoDashboard/performanceHelpers";
 import { TimeRangeKey, TIME_RANGE_OPTIONS } from "@/lib/orgDashboard/timeRangeTypes";
 import { PerformanceFilter } from "@/lib/repoDashboard/performanceTypes";
@@ -31,7 +39,23 @@ import {
 import { PERFORMANCE_CONTRIBUTOR_COLUMNS } from "@/lib/repoDashboard/performanceTableColumns";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
 
-type MetricType = "commits" | "additions" | "deletions";
+// Generate deterministic colors for contributors
+const CONTRIBUTOR_COLORS = [
+  "#5470c6", // blue
+  "#ee6666", // red
+  "#5ab374", // green
+  "#9a60b4", // purple
+  "#ea7ccc", // pink
+  "#73c0de", // cyan
+  "#fac858", // yellow
+  "#fc8452", // orange
+  "#91cc75", // lime
+  "#3ba272", // teal
+];
+
+function getContributorColor(index: number): string {
+  return CONTRIBUTOR_COLORS[index % CONTRIBUTOR_COLORS.length];
+}
 
 export function RepoPerformancePageClient() {
   const { repoId } = useRouteParams();
@@ -39,7 +63,6 @@ export function RepoPerformancePageClient() {
   // State
   const [timeRange, setTimeRange] = useState<TimeRangeKey>("1m");
   const [activeFilter, setActiveFilter] = useState<PerformanceFilter>("mostProductive");
-  const [metricType, setMetricType] = useState<MetricType>("commits");
 
   // Data pipeline
   const contributors = useMemo(
@@ -158,23 +181,17 @@ export function RepoPerformancePageClient() {
     [contributorMetrics]
   );
 
-  // Get current metric data based on selected type
-  const currentAggregateData = useMemo(() => {
-    switch (metricType) {
-      case "commits":
-        return aggregateMetrics.commitData;
-      case "additions":
-        return aggregateMetrics.additionsData;
-      case "deletions":
-        return aggregateMetrics.deletionsData;
-    }
-  }, [aggregateMetrics, metricType]);
+  // Generate cumulative data for the aggregate chart
+  const aggregateCumulativeData = useMemo(
+    () => generateCumulativeData(aggregateMetrics.additionsData, aggregateMetrics.deletionsData),
+    [aggregateMetrics]
+  );
 
   return (
     <TooltipProvider>
-      <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
-        <Card className="w-full border-none bg-white p-0 shadow-none">
-          <CardContent className="flex w-full flex-col items-stretch space-y-8 px-0">
+      <div className="flex min-w-0 max-w-full flex-col gap-8 overflow-x-hidden px-6 pb-8 text-gray-900 min-h-screen bg-white">
+        <Card className="w-full min-w-0 max-w-full border-none bg-white p-0 shadow-none">
+          <CardContent className="flex w-full min-w-0 max-w-full flex-col items-stretch space-y-8 px-0">
             <DashboardSection title="Performance Tracking">
               <GaugeWithInsights
                 value={repoPerformanceValue}
@@ -206,82 +223,69 @@ export function RepoPerformancePageClient() {
                     Contributors
                   </h2>
                   <p className="text-sm text-gray-600">
-                    Contributions per week to main, excluding merge commits
+                    Cumulative DiffDelta over time with additions and deletions
                   </p>
                 </div>
-                <div className="flex items-center gap-3 flex-wrap">
+                <div className="flex items-center gap-0 flex-wrap">
                   <select
                     value={timeRange}
                     onChange={(e) => setTimeRange(e.target.value as TimeRangeKey)}
-                    className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 shadow-sm hover:bg-gray-50 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                    className="rounded-md border border-gray-300 bg-white px-2 py-2 text-sm text-gray-700 shadow-none hover:bg-gray-50 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   >
                     <option value="1m">Period: 1 Month</option>
                     <option value="3m">Period: 3 Months</option>
                     <option value="1y">Period: 1 Year</option>
                     <option value="max">Period: All</option>
                   </select>
-                  <select
-                    value={metricType}
-                    onChange={(e) => setMetricType(e.target.value as MetricType)}
-                    className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 shadow-sm hover:bg-gray-50 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                  >
-                    <option value="commits">Contributions: Commits</option>
-                    <option value="additions">Contributions: Additions</option>
-                    <option value="deletions">Contributions: Deletions</option>
-                  </select>
                 </div>
               </div>
 
               {/* Aggregate Chart */}
-              <div className="mb-6 rounded-xl bg-white border border-gray-100 shadow-sm overflow-hidden">
-                <div className="p-6 pb-0">
-                  <div className="mb-4">
-                    <h3 className="text-base font-semibold text-gray-900">
-                      {metricType.charAt(0).toUpperCase() + metricType.slice(1)} over time
-                    </h3>
-                    <p className="text-xs text-gray-600">
-                      Weekly from {currentAggregateData[0]?.week || "N/A"} to{" "}
-                      {currentAggregateData[currentAggregateData.length - 1]?.week || "N/A"}
-                    </p>
-                  </div>
-                </div>
-                <div className="w-full overflow-x-auto px-6 pb-6">
+              <div className="mb-6 rounded-xl bg-white overflow-hidden">
                   <div className="min-w-full pb-2">
                     <ContributorMetricsChart
-                      data={currentAggregateData}
-                      metricType={metricType}
-                      title=""
+                      data={aggregateCumulativeData}
+                      contributorName="Repository"
+                      contributorColor="#3b82f6"
                     />
                   </div>
-                </div>
               </div>
 
-              {/* Contributor Cards Grid */}
-              <div className="w-full">
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                  {contributorMetrics.map((contributor) => {
-                    const contributorData =
-                      metricType === "commits"
-                        ? contributor.commitData
-                        : metricType === "additions"
-                        ? contributor.additionsData
-                        : contributor.deletionsData;
+              {/* Contributor Cards Carousel */}
+              <div className="relative w-full max-w-full min-w-0 overflow-hidden">
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: false,
+                  }}
+                  className="w-full max-w-full min-w-0 px-12"
+                >
+                  <CarouselContent className="-ml-2 md:-ml-4">
+                    {contributorMetrics.map((contributor, index) => {
+                      const cumulativeData = generateCumulativeData(
+                        contributor.additionsData,
+                        contributor.deletionsData
+                      );
 
-                    return (
-                      <ContributorMetricsCard
-                        key={contributor.contributorName}
-                        contributorName={contributor.contributorName}
-                        contributorAvatar={contributor.contributorAvatar}
-                        rank={contributor.rank}
-                        commits={contributor.totalCommits}
-                        additions={contributor.totalAdditions}
-                        deletions={contributor.totalDeletions}
-                        data={contributorData}
-                        metricType={metricType}
-                      />
-                    );
-                  })}
-                </div>
+                      return (
+                        <CarouselItem key={contributor.contributorName} className="basis-full pl-2 md:basis-1/2 md:pl-4 lg:basis-1/3">
+                            <ContributorMetricsCard
+                              contributorName={contributor.contributorName}
+                              contributorAvatar={contributor.contributorAvatar}
+                              contributorColor={getContributorColor(index)}
+                              rank={contributor.rank}
+                              commits={contributor.totalCommits}
+                              additions={contributor.totalAdditions}
+                              deletions={contributor.totalDeletions}
+                              data={cumulativeData}
+                            />
+                        </CarouselItem>
+                      );
+                    })}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-2 top-1/2 -translate-y-1/2" />
+                  <CarouselNext className="right-2 top-1/2 -translate-y-1/2" />
+                </Carousel>
               </div>
             </section>
 

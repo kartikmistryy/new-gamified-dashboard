@@ -414,3 +414,30 @@ export function aggregateContributorMetrics(
 
   return { commitData, additionsData, deletionsData };
 }
+
+/**
+ * Converts time-series data to cumulative format for comparison charts.
+ * Returns data with cumulative, additions, and deletions for each week.
+ */
+export function generateCumulativeData(
+  additionsData: Array<{ week: string; value: number }>,
+  deletionsData: Array<{ week: string; value: number }>
+): Array<{ week: string; cumulative: number; additions: number; deletions: number }> {
+  const result: Array<{ week: string; cumulative: number; additions: number; deletions: number }> = [];
+  let cumulative = 0;
+
+  for (let i = 0; i < additionsData.length; i++) {
+    const additions = additionsData[i]?.value ?? 0;
+    const deletions = deletionsData[i]?.value ?? 0;
+    cumulative += additions - deletions;
+
+    result.push({
+      week: additionsData[i]?.week ?? "",
+      cumulative,
+      additions,
+      deletions,
+    });
+  }
+
+  return result;
+}
