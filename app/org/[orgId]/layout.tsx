@@ -1,21 +1,17 @@
 "use client";
 
 import { RouteParamsProvider } from '@/lib/RouteParamsProvider';
-import { TimeRangeProvider } from '@/lib/contexts/TimeRangeContext';
 
 /**
  * Organization Layout
  *
- * Provides RouteParamsProvider and TimeRangeProvider for all org-level pages.
- * The TimeRangeProvider enables centralized time range management across
- * all organization dashboard pages and visualizations.
+ * Provides RouteParamsProvider for all org-level pages.
+ * TimeRangeProvider is now in the root layout for global access.
  */
 export default function OrgLayout({ children }: { children: React.ReactNode }) {
   return (
     <RouteParamsProvider>
-      <TimeRangeProvider defaultTimeRange="1y">
-        {children}
-      </TimeRangeProvider>
+      {children}
     </RouteParamsProvider>
   );
 }

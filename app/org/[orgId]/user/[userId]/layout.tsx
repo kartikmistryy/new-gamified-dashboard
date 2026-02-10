@@ -8,8 +8,6 @@ import { generateUserPerformanceData, getUserMetricCards, getUserChartInsights }
 import { GaugeSection } from "@/components/dashboard/GaugeSection";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { OverviewSummaryCard } from "@/components/dashboard/OverviewSummaryCard";
-import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
-import { TimeRangeProvider } from "@/lib/contexts/TimeRangeContext";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
 
 /**
@@ -63,28 +61,24 @@ export default function UserDashboardLayout({
   }
 
   return (
-    <TimeRangeProvider defaultTimeRange="max">
-      <TooltipProvider>
-        <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
-          <Card className="w-full border-none bg-white p-0 shadow-none">
-            <CardContent className="flex w-full flex-col items-stretch space-y-8 px-0">
-              {/* Gauge and Insights - Constant across all tabs */}
-              <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-8">
-                <div className="flex shrink-0 w-full lg:w-[320px]">
-                  <GaugeSection
-                    gaugeValue={userData.performanceScore}
-                    labelVariant="performance"
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <ChartInsights insights={insights} />
-                </div>
+    <TooltipProvider>
+      <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
+        <Card className="w-full border-none bg-white p-0 shadow-none">
+          <CardContent className="flex w-full flex-col items-stretch space-y-8 px-0">
+            {/* Gauge and Insights - Constant across all tabs */}
+            <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-8">
+              <div className="flex shrink-0 w-full lg:w-[320px]">
+                <GaugeSection
+                  gaugeValue={userData.performanceScore}
+                  labelVariant="performance"
+                />
               </div>
-              
-              {/* Global Time Range Filter */}
-              <GlobalTimeRangeFilter showLabel />
+              <div className="flex-1 min-w-0">
+                <ChartInsights insights={insights} />
+              </div>
+            </div>
 
-              {/* Metric Cards - 3x2 Grid - Constant across all tabs */}
+            {/* Metric Cards - 3x2 Grid - Constant across all tabs */}
               <section aria-labelledby="metrics-heading">
                 <h2 id="metrics-heading" className="sr-only">
                   Performance Metrics
@@ -104,6 +98,5 @@ export default function UserDashboardLayout({
           </Card>
         </div>
       </TooltipProvider>
-    </TimeRangeProvider>
   );
 }

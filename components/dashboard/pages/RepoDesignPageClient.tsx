@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import { ChaosMatrixChart } from "@/components/dashboard/ChaosMatrixChart";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
 import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { CollaborationNetworkGraph } from "@/components/dashboard/CollaborationNetworkGraph";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
@@ -49,8 +48,6 @@ export function RepoDesignPageClient() {
   return (
     <TooltipProvider>
       <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
-        <GlobalTimeRangeFilter showLabel />
-        
         <DashboardSection title="Collaboration Network" className="w-full">
           <div className="flex flex-row flex-wrap items-stretch gap-8">
             <div className="flex-[1.5] min-w-[400px]">

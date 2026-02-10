@@ -15,6 +15,9 @@ import DashboardHeader from "./DashboardHeader"
 import DashboardHero from "./DashboardHero"
 import DashboardTabs from "./DashboardTabs"
 import useDashboardMeta from "./hooks/useDashboardMeta"
+import { TimeRangeDropdown } from "@/components/dashboard/TimeRangeDropdown"
+import { useOptionalTimeRange } from "@/lib/contexts/TimeRangeContext"
+import { TIME_RANGE_OPTIONS } from "@/lib/shared/types/timeRangeTypes"
 import { useSidebarData, useVisibleItems, useSidebarVisibility } from "./hooks/useSidebarData"
 import { useFavorites } from "./hooks/useFavorites"
 import { OrganizationSwitcher } from "./OrganizationSwitcher"
@@ -28,6 +31,13 @@ export default function DashboardSidebar({ children }: { children: React.ReactNo
   const pathname = usePathname()
   const { breadcrumbItems, dashboardKey, teamId, userId, repoId } = useDashboardMeta()
   const showDashboardTabs = pathname?.startsWith("/org/") ?? false
+  const timeRangeContext = useOptionalTimeRange()
+
+  // Only show time range dropdown on pages that use time-based filtering
+  const showTimeRangeDropdown = React.useMemo(() => {
+    if (!pathname) return false
+    return pathname.includes("/performance") || pathname.includes("/design")
+  }, [pathname])
   const [selectedOrg, setSelectedOrg] = useState<Organization>(() => {
     if (organizations.length === 0) throw new Error("No organizations available.")
     return organizations[0]
@@ -127,7 +137,16 @@ export default function DashboardSidebar({ children }: { children: React.ReactNo
           </div>
           {showDashboardTabs && (
             <div className="px-4 pb-2">
-              <DashboardTabs />
+              <div className="flex items-center justify-between gap-4">
+                <DashboardTabs />
+                {showTimeRangeDropdown && timeRangeContext && (
+                  <TimeRangeDropdown
+                    value={timeRangeContext.timeRange}
+                    onChange={timeRangeContext.setTimeRange}
+                    options={TIME_RANGE_OPTIONS}
+                  />
+                )}
+              </div>
             </div>
           )}
           {children}

@@ -7,7 +7,6 @@ import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { GaugeSection } from "@/components/dashboard/GaugeSection";
 import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
 import { PerformanceTeamsTable } from "@/components/dashboard/PerformanceTeamsTable";
-import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
 import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import {
   TEAM_PERFORMANCE_ROWS,
@@ -62,9 +61,6 @@ export function OrgPerformancePageClient() {
               </div>
             </div>
           </DashboardSection>
-
-          {/* Global Time Range Filter */}
-          <GlobalTimeRangeFilter showLabel />
 
           <DashboardSection title="Percentile (Normalized to Rolling Avg)">
             <PerformanceChart

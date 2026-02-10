@@ -6,7 +6,6 @@ import { ChaosMatrixChart } from "@/components/dashboard/ChaosMatrixChart";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { DesignTeamsTable } from "@/components/dashboard/DesignTeamsTable";
 import { OwnershipScatter } from "@/components/dashboard/OwnershipScatter";
-import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
 import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { getChartInsightsMock } from "@/lib/orgDashboard/overviewMockData";
 import { DESIGN_TEAM_ROWS, getDesignTeamRowsForRange } from "@/lib/orgDashboard/designMockData";
@@ -40,8 +39,6 @@ export function OrgDesignPageClient() {
 
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
-      <GlobalTimeRangeFilter showLabel />
-      
       <DashboardSection title="Ownership Misallocation Detector">
         <div className="flex flex-row flex-wrap items-stretch gap-8">
           <div className="flex-[1.5] min-w-[400px]">

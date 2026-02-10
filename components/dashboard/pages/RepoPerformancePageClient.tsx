@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { GlobalTimeRangeFilter } from "@/components/dashboard/GlobalTimeRangeFilter";
 import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
@@ -204,9 +203,6 @@ export function RepoPerformancePageClient() {
                 insights={insights}
               />
             </DashboardSection>
-
-            {/* Global Time Range Filter */}
-            <GlobalTimeRangeFilter showLabel />
 
             <section className="w-full" aria-label="Repository performance chart">
                 <PerformanceChart

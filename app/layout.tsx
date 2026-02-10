@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import DashboardSidebar from "@/components/dashboard/layout/DashboardSidebar";
 import { LightThemeScript } from "@/components/shared/LightThemeScript";
+import { TimeRangeProvider } from "@/lib/contexts/TimeRangeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
-        <DashboardSidebar>{children}</DashboardSidebar>
+        <TimeRangeProvider defaultTimeRange="1y">
+          <DashboardSidebar>{children}</DashboardSidebar>
+        </TimeRangeProvider>
       </body>
     </html>
   );
