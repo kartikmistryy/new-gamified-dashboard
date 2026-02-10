@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useCallback, useMemo, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import {
   flexRender,
   getCoreRowModel,
@@ -18,6 +18,14 @@ import {
 import { SkillgraphDetailTable } from "./SkillgraphDetailTable";
 import { SortableTableHeader } from "./SortableTableHeader";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
+import { FilterBadges } from "./FilterBadges";
+
+const SKILLGRAPH_SKILL_FILTER_TABS: { key: SkillgraphSkillFilter; label: string }[] = [
+  { key: "mostUsage", label: "Most Popular" },
+  { key: "mostAvgUsage", label: "Most Focused" },
+  { key: "mostContributors", label: "Broadest Adoption" },
+  { key: "leastContributors", label: "Niche Skill" },
+];
 
 type SkillgraphBySkillTableProps = {
   rows: SkillgraphSkillRow[];
@@ -41,8 +49,19 @@ export function SkillgraphBySkillTable({
     rows.forEach((r) => { init[r.skillName] = true; });
     return init;
   });
+  const [internalFilter, setInternalFilter] = useState<SkillgraphSkillFilter>("mostUsage");
 
   const visibleDomains = externalVisibleDomains ?? internalVisible;
+  // Use activeFilter if onFilterChange is provided (controlled), otherwise use internal state (uncontrolled)
+  const currentFilter = onFilterChange ? activeFilter : internalFilter;
+
+  const handleFilterChange = useCallback((filter: SkillgraphSkillFilter) => {
+    if (onFilterChange) {
+      onFilterChange(filter);
+    } else {
+      setInternalFilter(filter);
+    }
+  }, [onFilterChange]);
 
 
   const toggleVisibility = useCallback((skillName: string) => {
@@ -54,6 +73,10 @@ export function SkillgraphBySkillTable({
   }, [visibleDomains, onVisibilityChange]);
 
   const [sorting, setSorting] = useState<SortingState>(() => getSortingForFilter(activeFilter));
+
+  useEffect(() => {
+    setSorting(getSortingForFilter(currentFilter));
+  }, [currentFilter]);
 
   const opacityScale = useMemo(
     () => createOpacityScale(rows.map((row) => row.totalUsage)),
@@ -83,6 +106,11 @@ export function SkillgraphBySkillTable({
 
   return (
     <div className="w-full">
+      <FilterBadges
+        filterTabs={SKILLGRAPH_SKILL_FILTER_TABS}
+        currentFilter={currentFilter}
+        onFilterChange={handleFilterChange}
+      />
       <div className="rounded-sm border-none overflow-hidden bg-white">
         <Table>
           <TableHeader className="border-0">

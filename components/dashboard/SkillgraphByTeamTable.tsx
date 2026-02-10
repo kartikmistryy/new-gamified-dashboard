@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useCallback, useMemo, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import {
   flexRender,
   getCoreRowModel,
@@ -18,6 +18,14 @@ import {
 import { SkillgraphTeamDetailTable } from "./SkillgraphTeamDetailTable";
 import { SortableTableHeader } from "./SortableTableHeader";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
+import { FilterBadges } from "./FilterBadges";
+
+const SKILLGRAPH_TEAM_FILTER_TABS: { key: SkillgraphTableFilter; label: string }[] = [
+  { key: "mostUsage", label: "Most Usage" },
+  { key: "leastUsage", label: "Least Usage" },
+  { key: "mostPercentOfChart", label: "Most Diverse" },
+  { key: "leastPercentOfChart", label: "Most Focused" },
+];
 
 type SkillgraphByTeamTableProps = {
   rows: SkillgraphTeamRow[];
@@ -39,8 +47,19 @@ export function SkillgraphByTeamTable({
     rows.forEach((r) => { init[r.teamName] = true; });
     return init;
   });
+  const [internalFilter, setInternalFilter] = useState<SkillgraphTableFilter>("mostUsage");
 
   const visibleTeams = externalVisibleTeams ?? internalVisible;
+  // Use activeFilter if onFilterChange is provided (controlled), otherwise use internal state (uncontrolled)
+  const currentFilter = onFilterChange ? activeFilter : internalFilter;
+
+  const handleFilterChange = useCallback((filter: SkillgraphTableFilter) => {
+    if (onFilterChange) {
+      onFilterChange(filter);
+    } else {
+      setInternalFilter(filter);
+    }
+  }, [onFilterChange]);
 
   const toggleVisibility = useCallback((teamName: string) => {
     if (onVisibilityChange) {
@@ -51,6 +70,10 @@ export function SkillgraphByTeamTable({
   }, [visibleTeams, onVisibilityChange]);
 
   const [sorting, setSorting] = useState<SortingState>(() => getSortingForFilter(activeFilter));
+
+  useEffect(() => {
+    setSorting(getSortingForFilter(currentFilter));
+  }, [currentFilter]);
 
   const totalUsageSum = useMemo(
     () => rows.reduce((sum, row) => sum + getTeamSkillUsageValue(row), 0),
@@ -80,6 +103,11 @@ export function SkillgraphByTeamTable({
 
   return (
     <div className="w-full">
+      <FilterBadges
+        filterTabs={SKILLGRAPH_TEAM_FILTER_TABS}
+        currentFilter={currentFilter}
+        onFilterChange={handleFilterChange}
+      />
       <div className="rounded-sm border-none overflow-hidden bg-white">
         <Table>
           <TableHeader className="border-0">

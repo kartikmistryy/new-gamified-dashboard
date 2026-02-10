@@ -20,6 +20,7 @@ import {
 import { Badge } from "../shared/Badge";
 import { SortableTableHeader } from "./SortableTableHeader";
 import { useTableFilter } from "@/lib/orgDashboard/useTableFilter";
+import { FilterBadges } from "./FilterBadges";
 
 export type BaseTeamsTableColumn<T, F extends string> = {
   key: string;
@@ -96,6 +97,13 @@ export function BaseTeamsTable<T, F extends string>({
 
   return (
     <div className="w-full min-w-0">
+      {showFilters && (
+        <FilterBadges
+          filterTabs={filterTabs}
+          currentFilter={currentFilter}
+          onFilterChange={handleFilter}
+        />
+      )}
       <div className="rounded-sm border-none overflow-hidden bg-white min-w-0 max-w-full">
         <Table>
           <TableHeader className="border-0">

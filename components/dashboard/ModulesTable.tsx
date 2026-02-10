@@ -28,7 +28,9 @@ import {
   filterModules,
   sortModulesByRisk,
   type ModuleFilter,
+  MODULE_FILTER_TABS,
 } from "@/lib/userDashboard/userSpofHelpers";
+import { FilterBadges } from "./FilterBadges";
 
 type ModulesTableProps = {
   /** Array of module SPOF data to display. */
@@ -124,12 +126,13 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [selectedModule, setSelectedModule] = useState<ModuleSPOFData | null>(null);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [currentFilter, setCurrentFilter] = useState<ModuleFilter>("all");
 
   // Filter and sort modules
   const displayedModules = useMemo(() => {
-    const filtered = filterModules(modules, "all", currentUserId);
+    const filtered = filterModules(modules, currentFilter, currentUserId);
     return sortModulesByRisk(filtered);
-  }, [modules, currentUserId]);
+  }, [modules, currentFilter, currentUserId]);
 
   // Handle row click
   const handleRowClick = (module: ModuleSPOFData) => {
@@ -243,6 +246,11 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
   return (
     <>
       <div className="w-full">
+        <FilterBadges
+          filterTabs={MODULE_FILTER_TABS}
+          currentFilter={currentFilter}
+          onFilterChange={setCurrentFilter}
+        />
         <div className="rounded-sm border-none overflow-hidden bg-white">
           <Table>
             <TableHeader className="border-0">

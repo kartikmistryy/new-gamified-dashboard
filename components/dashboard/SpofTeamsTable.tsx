@@ -28,6 +28,7 @@ import type { SpofTeamRow } from "@/lib/orgDashboard/spofMockData";
 import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 import { REPO_HEALTH_SEGMENTS } from "./RepoHealthBar";
 import { TeamAvatar } from "../shared/TeamAvatar";
+import { FilterBadges } from "./FilterBadges";
 
 type SpofTableFilter = "highestRisk" | "lowestRisk" | "mostMembers" | "leastMembers";
 
@@ -250,6 +251,11 @@ export function SpofTeamsTable({
 
   return (
     <div className="w-full">
+      <FilterBadges
+        filterTabs={SPOF_FILTER_TABS}
+        currentFilter={currentFilter}
+        onFilterChange={setCurrentFilter}
+      />
       <div className="rounded-sm border-none overflow-hidden bg-white">
         <Table>
           <TableHeader className="border-0">
