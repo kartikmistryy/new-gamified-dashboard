@@ -1,12 +1,12 @@
 /** Ownership Scatter Plot - Plotly trace and layout builders */
 
 import type { Data, Layout, Config } from "plotly.js";
-import type { ProcessedOwnershipData } from "./ownershipScatterUtils";
+import type { OwnershipChartData } from "./ownershipScatterUtils";
 import { WIDTH, HEIGHT, MARGIN } from "./ownershipScatterUtils";
 
 /** Build Plotly data traces for ownership scatter plot */
 export function buildOwnershipTraces(
-  points: ProcessedOwnershipData["points"]
+  points: OwnershipChartData["points"]
 ): Data[] {
   const traces: Data[] = [];
   const normalPoints = points.filter((p) => p.inNormalRange);
@@ -69,7 +69,7 @@ export function buildOwnershipTraces(
 
 /** Build Plotly layout for ownership scatter plot */
 export function buildOwnershipLayout(
-  trendLine: ProcessedOwnershipData["trendLine"] | undefined,
+  trendLine: OwnershipChartData["trendLine"] | undefined,
   chartWidth: number
 ): Partial<Layout> {
   const shapes: any[] = [];

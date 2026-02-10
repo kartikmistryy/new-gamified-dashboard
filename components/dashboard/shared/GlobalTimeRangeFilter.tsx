@@ -1,7 +1,7 @@
 "use client";
 
 import { useTimeRange } from "@/lib/dashboard/TimeRangeContext";
-import { TimeRangeFilter } from "@/components/dashboard/TimeRangeFilter";
+import { TimeRangeFilter } from "@/components/dashboard/shared/TimeRangeFilter";
 import { TIME_RANGE_OPTIONS } from "@/lib/shared/types/timeRangeTypes";
 import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 

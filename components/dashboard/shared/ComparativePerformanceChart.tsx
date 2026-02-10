@@ -11,8 +11,8 @@ import {
 } from "@/lib/orgDashboard/orgPerformanceChartUtils";
 import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 import { getStartDateForRange } from "@/lib/orgDashboard/performanceChartHelpers";
-import { ComparativePerformanceChartSVG, type PerformanceLine } from "./ComparativePerformanceChartSVG";
-import { ComparativePerformanceChartLegend } from "./ComparativePerformanceChartLegend";
+import { ComparativePerformanceChartSVG, type PerformanceLine } from "@/components/dashboard/shared/ComparativePerformanceChartSVG";
+import { ComparativePerformanceChartLegend } from "@/components/dashboard/shared/ComparativePerformanceChartLegend";
 
 type ComparativePerformanceChartProps = {
   className?: string;

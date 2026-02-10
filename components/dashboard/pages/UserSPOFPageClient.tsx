@@ -1,9 +1,9 @@
 "use client";
 
 import { useMemo } from "react";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { SPOFTreemap } from "@/components/dashboard/SPOFTreemap";
-import { ModulesTable } from "@/components/dashboard/ModulesTable";
+import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
+import { SPOFTreemap } from "@/components/dashboard/shared/SPOFTreemap";
+import { ModulesTable } from "@/components/dashboard/repoDashboard/ModulesTable";
 import { getUserModuleSPOFData } from "@/lib/userDashboard/mockData";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
 

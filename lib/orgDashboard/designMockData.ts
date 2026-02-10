@@ -1,6 +1,6 @@
 import type { DesignTeamRow, OutlierRow, SummaryCardConfig } from "./types";
 import { DASHBOARD_BG_CLASSES } from "./colors";
-import type { TimeRangeKey } from "./timeRangeTypes";
+import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 
 /** Mock outlier data for the Org Design "Need attention" cards (upper-left: low KP / high ownership). */
 export const UPPER_LEFT_OUTLIERS: OutlierRow[] = [

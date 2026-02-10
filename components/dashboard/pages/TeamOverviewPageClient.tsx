@@ -5,12 +5,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Card, CardContent } from "@/components/ui/card";
 import { getMemberPerformanceRowsForTeam } from "@/lib/teamDashboard/overviewMockData";
 import { calculateTeamGaugeValue, getMemberMetricCards, getMemberInsights } from "@/lib/teamDashboard/overviewHelpers";
-import { GaugeSection } from "@/components/dashboard/GaugeSection";
-import { ChartInsights } from "@/components/dashboard/ChartInsights";
-import { OverviewSummaryCard } from "@/components/dashboard/OverviewSummaryCard";
-import { MemberTable } from "@/components/dashboard/MemberTable";
+import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
+import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
+import { OverviewSummaryCard } from "@/components/dashboard/shared/OverviewSummaryCard";
+import { MemberTable } from "@/components/dashboard/teamDashboard/MemberTable";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
+import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 
 export function TeamOverviewPageClient() {
   const { teamId } = useRouteParams();

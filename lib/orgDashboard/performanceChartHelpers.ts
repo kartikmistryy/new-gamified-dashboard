@@ -1,4 +1,4 @@
-import type { TimeRangeKey } from "./timeRangeTypes";
+import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 
 /** Calculate the start date based on time range key */
 export function getStartDateForRange(timeRange: TimeRangeKey, endDate: Date): Date {

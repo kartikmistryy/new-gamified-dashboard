@@ -1,13 +1,13 @@
 "use client";
 
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
+import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { SkillGraph } from "@/components/skillmap/SkillGraph";
 import { useMemo, Fragment } from "react";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
 import { flexRender } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
-import { SortableTableHeader } from "@/components/dashboard/SortableTableHeader";
-import { SkillgraphDetailTable } from "@/components/dashboard/SkillgraphDetailTable";
+import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
+import { SkillgraphDetailTable } from "@/components/dashboard/userDashboard/SkillgraphDetailTable";
 import { buildUserSkillRowsFromRoadmap } from "@/lib/dashboard/userSkillGraphUtils";
 import { useUserSkillTable } from "@/lib/dashboard/useUserSkillTable";
 

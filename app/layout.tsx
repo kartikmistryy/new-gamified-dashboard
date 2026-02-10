@@ -31,7 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
-        <TimeRangeProvider defaultTimeRange="1y">
+        <TimeRangeProvider config={{ defaultRange: "1y" }}>
           <DashboardSidebar>{children}</DashboardSidebar>
         </TimeRangeProvider>
       </body>

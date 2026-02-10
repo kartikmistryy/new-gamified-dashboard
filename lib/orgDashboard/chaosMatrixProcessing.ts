@@ -87,7 +87,7 @@ export function processChaosMatrixData(
       y: categoryPoints.map((p) => p.churnRatePct),
       text: categoryPoints.map(
         (p) =>
-          `<b>${p.name}</b><br>${tooltipTeamLabel}: ${p.team}<br>KP: ${Math.round(p.originalKp)} · Churn: ${Math.round(p.originalChurn)}%`
+          `<b>${p.name}</b><br>KP: ${Math.round(p.originalKp)} · Churn: ${Math.round(p.originalChurn)}%`
       ),
       hovertemplate: "%{text}<extra></extra>",
       marker:

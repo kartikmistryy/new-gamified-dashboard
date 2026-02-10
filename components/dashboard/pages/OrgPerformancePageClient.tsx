@@ -2,11 +2,11 @@
 
 import { useMemo, useCallback, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChartInsights } from "@/components/dashboard/ChartInsights";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { GaugeSection } from "@/components/dashboard/GaugeSection";
-import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
-import { PerformanceTeamsTable } from "@/components/dashboard/PerformanceTeamsTable";
+import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
+import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
+import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
+import { PerformanceChart } from "@/components/dashboard/shared/PerformanceChart";
+import { PerformanceTeamsTable } from "@/components/dashboard/orgDashboard/PerformanceTeamsTable";
 import { useTimeRange } from "@/lib/dashboard/TimeRangeContext";
 import {
   TEAM_PERFORMANCE_ROWS,

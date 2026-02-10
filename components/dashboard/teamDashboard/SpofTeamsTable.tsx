@@ -11,9 +11,9 @@ import {
   type SortingState,
 } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
-import { SortableTableHeader } from "./SortableTableHeader";
+import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
 import type { SpofTeamRow } from "@/lib/orgDashboard/spofMockData";
-import { FilterBadges } from "./FilterBadges";
+import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
 import {
   sortSpofTeams,
   SPOF_FILTER_TABS,

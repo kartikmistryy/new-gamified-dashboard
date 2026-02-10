@@ -9,8 +9,8 @@ export function useChaosMatrixAvatars(
   renderMode: "circles" | "avatars",
   stackedFiltered: StackedPoint[],
   clipId: string,
-  plotRef: RefObject<HTMLDivElement>,
-  svgOverlayRef: RefObject<SVGSVGElement>
+  plotRef: RefObject<HTMLDivElement | null>,
+  svgOverlayRef: RefObject<SVGSVGElement | null>
 ) {
   const renderAvatars = useCallback(() => {
     if (renderMode !== "avatars" || !svgOverlayRef.current || !plotRef.current) return;

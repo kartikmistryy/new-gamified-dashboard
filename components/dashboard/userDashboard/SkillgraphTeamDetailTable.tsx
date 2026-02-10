@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
 import type { SkillgraphTeamRow } from "@/lib/orgDashboard/types";
-import { SkillgraphProgressBar } from "./SkillgraphProgressBar";
+import { SkillgraphProgressBar } from "@/components/dashboard/userDashboard/SkillgraphProgressBar";
 import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 

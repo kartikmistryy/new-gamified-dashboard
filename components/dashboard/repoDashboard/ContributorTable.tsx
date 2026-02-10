@@ -1,13 +1,13 @@
 "use client";
 
 import { ArrowRight, TrendingUp, TrendingDown, Star, Bomb, Puzzle, FlaskConical, BrickWall, AlertTriangle } from "lucide-react";
-import type { MemberPerformanceRow, MemberTableFilter } from "@/lib/teamDashboard/types";
+import type { ContributorPerformanceRow, ContributorTableFilter } from "@/lib/repoDashboard/types";
 import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
-import { BaseTeamsTable, type BaseTeamsTableColumn } from "./BaseTeamsTable";
-import { TeamAvatar } from "../shared/TeamAvatar";
+import { BaseTeamsTable, type BaseTeamsTableColumn } from "@/components/dashboard/shared/BaseTeamsTable";
+import { UserAvatar } from "@/components/shared/UserAvatar";
 
-const MEMBER_FILTER_TABS: { key: MemberTableFilter; label: string }[] = [
+const CONTRIBUTOR_FILTER_TABS: { key: ContributorTableFilter; label: string }[] = [
   { key: "mostProductive", label: "Most Productive" },
   { key: "leastProductive", label: "Least Productive" },
   { key: "mostOptimal", label: "Most Optimal" },
@@ -25,7 +25,7 @@ const TYPE_DISTRIBUTION_SEGMENTS = [
 
 const TYPE_LOOKUP = new Map(TYPE_DISTRIBUTION_SEGMENTS.map((segment) => [segment.key, segment]));
 
-function getPrimaryDeveloperType(row: MemberPerformanceRow) {
+function getPrimaryDeveloperType(row: ContributorPerformanceRow) {
   const value = row.performanceValue;
   if (value >= 85) return TYPE_LOOKUP.get("star") ?? TYPE_DISTRIBUTION_SEGMENTS[0];
   if (value >= 70) return TYPE_LOOKUP.get("keyRole") ?? TYPE_DISTRIBUTION_SEGMENTS[0];
@@ -35,18 +35,18 @@ function getPrimaryDeveloperType(row: MemberPerformanceRow) {
   return TYPE_LOOKUP.get("timeBomb") ?? TYPE_DISTRIBUTION_SEGMENTS[0];
 }
 
-function memberSortFunction(rows: MemberPerformanceRow[], currentFilter: MemberTableFilter): MemberPerformanceRow[] {
+function contributorSortFunction(rows: ContributorPerformanceRow[], currentFilter: ContributorTableFilter): ContributorPerformanceRow[] {
   const copy = [...rows];
   if (currentFilter === "leastProductive") return copy.sort((a, b) => a.performanceValue - b.performanceValue);
   if (currentFilter === "mostProductive" || currentFilter === "mostOptimal") return copy.sort((a, b) => b.performanceValue - a.performanceValue);
   if (currentFilter === "mostRisky") {
-    const riskyScore = (r: MemberPerformanceRow) => (r.typeDistribution.timeBomb ?? 0) + (r.typeDistribution.risky ?? 0);
+    const riskyScore = (r: ContributorPerformanceRow) => (r.typeDistribution.timeBomb ?? 0) + (r.typeDistribution.risky ?? 0);
     return copy.sort((a, b) => riskyScore(b) - riskyScore(a));
   }
   return copy;
 }
 
-const MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceRow, MemberTableFilter>[] = [
+const CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorPerformanceRow, ContributorTableFilter>[] = [
   {
     key: "rank",
     header: "Rank",
@@ -62,14 +62,14 @@ const MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceRow, MemberTableFilt
     },
   },
   {
-    key: "member",
-    header: "Member",
+    key: "contributor",
+    header: "Contributor",
     className: "w-full min-w-[360px]",
-    accessorFn: (row) => row.memberName,
+    accessorFn: (row) => row.contributorName,
     render: (row) => (
       <div className="flex items-center gap-3">
-        <TeamAvatar teamName={row.memberName} className="size-4" />
-        <p className="font-medium text-gray-900">{row.memberName}</p>
+        <UserAvatar userName={row.contributorName} className="size-4" size={16} />
+        <p className="font-medium text-gray-900">{row.contributorName}</p>
       </div>
     ),
   },
@@ -122,27 +122,27 @@ const MEMBER_COLUMNS: BaseTeamsTableColumn<MemberPerformanceRow, MemberTableFilt
   },
 ];
 
-type MemberTableProps = {
-  rows: MemberPerformanceRow[];
-  activeFilter?: MemberTableFilter;
-  onFilterChange?: (filter: MemberTableFilter) => void;
+type ContributorTableProps = {
+  rows: ContributorPerformanceRow[];
+  activeFilter?: ContributorTableFilter;
+  onFilterChange?: (filter: ContributorTableFilter) => void;
 };
 
-export function MemberTable({
+export function ContributorTable({
   rows,
   activeFilter = "mostProductive",
   onFilterChange,
-}: MemberTableProps) {
+}: ContributorTableProps) {
   return (
-    <BaseTeamsTable<MemberPerformanceRow, MemberTableFilter>
+    <BaseTeamsTable<ContributorPerformanceRow, ContributorTableFilter>
       rows={rows}
-      filterTabs={MEMBER_FILTER_TABS}
+      filterTabs={CONTRIBUTOR_FILTER_TABS}
       activeFilter={activeFilter}
       onFilterChange={onFilterChange}
       defaultFilter="mostProductive"
-      sortFunction={memberSortFunction}
-      columns={MEMBER_COLUMNS}
-      getRowKey={(row) => row.memberName}
+      sortFunction={contributorSortFunction}
+      columns={CONTRIBUTOR_COLUMNS}
+      getRowKey={(row) => row.contributorName}
     />
   );
 }

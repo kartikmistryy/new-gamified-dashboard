@@ -7,7 +7,7 @@ import {
   getGaugeSecondaryLabel,
   getPerformanceGaugeLabel,
 } from "@/lib/orgDashboard/utils";
-import { D3Gauge } from "./D3Gauge";
+import { D3Gauge } from "@/components/dashboard/shared/D3Gauge";
 
 type GaugeSectionProps = {
   gaugeValue: number;

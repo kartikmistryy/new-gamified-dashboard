@@ -2,11 +2,11 @@
 
 import { useMemo } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
-import { SankeyContributionChart } from "@/components/dashboard/SankeyContributionChart";
-import { RepoHealthBar, REPO_HEALTH_SEGMENTS, type RepoHealthSegment } from "@/components/dashboard/RepoHealthBar";
-import { BaseTeamsTable, type BaseTeamsTableColumn } from "@/components/dashboard/BaseTeamsTable";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
+import { GaugeWithInsights } from "@/components/dashboard/shared/GaugeWithInsights";
+import { SankeyContributionChart } from "@/components/dashboard/shared/SankeyContributionChart";
+import { RepoHealthBar, REPO_HEALTH_SEGMENTS, type RepoHealthSegment } from "@/components/dashboard/shared/RepoHealthBar";
+import { BaseTeamsTable, type BaseTeamsTableColumn } from "@/components/dashboard/shared/BaseTeamsTable";
+import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { TeamAvatar } from "@/components/shared/TeamAvatar";
 import {
   getMemberSpofData,

@@ -1,8 +1,23 @@
 /** Repo Performance Data Processing Utilities */
 
-import type { ContributorPerformanceRow } from "./performanceTypes";
+import type { ContributorPerformanceDataPoint } from "./performanceTypes";
+import type { ContributorPerformanceRow } from "./types";
 import type { ContributorPerformanceWithDelta } from "./performanceTableConfig";
-import type { ContributorMetrics, CumulativeDataPoint } from "./performanceHelpers";
+
+/** Contributor metrics for chart generation */
+export type ContributorMetrics = {
+  contributorName: string;
+  additionsData: number[];
+  deletionsData: number[];
+};
+
+/** Cumulative data point for performance charts */
+export type CumulativeDataPoint = {
+  week: string;
+  cumulative: number;
+  additions: number;
+  deletions: number;
+};
 
 export interface EnrichedContributor extends ContributorPerformanceRow {
   change: number;
@@ -128,13 +143,14 @@ export function prepareCarouselContributors(
       timeRange === "max"
         ? chartData
         : (() => {
-            const weeksToShow = {
+            const weeksToShow: Record<string, number> = {
               "1m": 4,
               "3m": 13,
               "1y": 52,
               max: chartData.length,
-            }[timeRange as keyof typeof weeksToShow];
-            return chartData.slice(-weeksToShow);
+            };
+            const weeks = weeksToShow[timeRange] ?? chartData.length;
+            return chartData.slice(-weeks);
           })();
 
     const positiveScore = filteredChartData.reduce((sum, d) => sum + d.additions, 0);
@@ -159,12 +175,13 @@ export function filterAggregateDataByTimeRange(
 ): CumulativeDataPoint[] {
   if (timeRange === "max") return aggregateCumulativeData;
 
-  const weeksToShow = {
+  const weeksToShow: Record<string, number> = {
     "1m": 4,
     "3m": 13,
     "1y": 52,
     max: aggregateCumulativeData.length,
-  }[timeRange as keyof typeof weeksToShow];
+  };
+  const weeks = weeksToShow[timeRange] ?? aggregateCumulativeData.length;
 
-  return aggregateCumulativeData.slice(-weeksToShow);
+  return aggregateCumulativeData.slice(-weeks);
 }

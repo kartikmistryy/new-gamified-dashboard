@@ -1,11 +1,11 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { ChartInsights } from "@/components/dashboard/ChartInsights";
-import { ChaosMatrixChart } from "@/components/dashboard/ChaosMatrixChart";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { DesignTeamsTable } from "@/components/dashboard/DesignTeamsTable";
-import { OwnershipScatter } from "@/components/dashboard/OwnershipScatter";
+import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
+import { ChaosMatrixChart } from "@/components/dashboard/orgDashboard/ChaosMatrixChart";
+import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
+import { DesignTeamsTable } from "@/components/dashboard/orgDashboard/DesignTeamsTable";
+import { OwnershipScatter } from "@/components/dashboard/orgDashboard/OwnershipScatter";
 import { useTimeRange } from "@/lib/dashboard/TimeRangeContext";
 import { getChartInsightsMock } from "@/lib/orgDashboard/overviewMockData";
 import { DESIGN_TEAM_ROWS, getDesignTeamRowsForRange } from "@/lib/orgDashboard/designMockData";

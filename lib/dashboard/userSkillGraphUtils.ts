@@ -46,7 +46,7 @@ export function buildUserSkillRowsFromRoadmap(userId: string): SkillgraphSkillRo
 
   return userRoadmaps.flatMap((roadmap, domainIndex) =>
     roadmap.technologies.map((tech, techIndex) => {
-      const baseValue = tech.totalUsage || 200;
+      const baseValue = tech.value || 200;
       const multiplier = 0.6 + ((userSeed + domainIndex * 13 + techIndex * 7) % 100) / 250;
       const totalUsage = Math.round(baseValue * multiplier);
       const completedProjects = Math.max(1, Math.round(totalUsage / 50));
@@ -55,10 +55,9 @@ export function buildUserSkillRowsFromRoadmap(userId: string): SkillgraphSkillRo
       return {
         skillName: tech.name,
         domainName: roadmap.name,
-        domainColor: roadmap.color,
         totalUsage,
-        completedProjects,
-        proficiencyLevel,
+        avgUsage: totalUsage, // For single user, avg equals total
+        totalSkillCompletion: completedProjects,
         contributors: 1,
       } satisfies SkillgraphSkillRow;
     })

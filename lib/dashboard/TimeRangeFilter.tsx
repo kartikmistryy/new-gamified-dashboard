@@ -4,7 +4,10 @@
 
 import { Badge } from "@/components/shared/Badge";
 import { useOptionalTimeRange } from "./TimeRangeContext";
-import type { TimeRangeOption, TimeRangeKey } from "./timeRangeTypes";
+import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
+
+// Local type for options
+type TimeRangeOption = { readonly id: TimeRangeKey; readonly label: string; readonly disabled?: boolean };
 
 interface TimeRangeFilterProps {
   /** Current time range (optional if in TimeRangeProvider) */

@@ -20,7 +20,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { PerformanceChart } from "./PerformanceChart";
+import { PerformanceChart } from "@/components/dashboard/shared/PerformanceChart";
 import type { ContributorPerformanceChartAdapterProps } from "@/lib/dashboard/contributorCarousel";
 import type { OrgPerformanceDataPoint } from "@/lib/dashboard/performanceChart/types";
 import { hasPerformanceData } from "@/lib/dashboard/contributorCarousel";

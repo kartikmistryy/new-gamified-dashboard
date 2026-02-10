@@ -1,5 +1,5 @@
-import type { BaseTeamsTableColumn } from "@/components/dashboard/BaseTeamsTable";
-import { SegmentBar } from "@/components/dashboard/SegmentBar";
+import type { BaseTeamsTableColumn } from "@/components/dashboard/shared/BaseTeamsTable";
+import { SegmentBar } from "@/components/dashboard/shared/SegmentBar";
 import { Badge } from "@/components/shared/Badge";
 import { TeamAvatar } from "@/components/shared/TeamAvatar";
 import type { MemberDesignRow } from "./designMockData";

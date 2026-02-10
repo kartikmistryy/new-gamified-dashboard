@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import type { DesignTeamRow, DesignTableFilter } from "@/lib/orgDashboard/types";
-import { BaseTeamsTable } from "./BaseTeamsTable";
+import { BaseTeamsTable } from "@/components/dashboard/shared/BaseTeamsTable";
 import { DESIGN_FILTER_TABS, designSortFunction } from "@/lib/orgDashboard/designTeamsTableConfig";
 import { createDesignColumns } from "@/lib/orgDashboard/designTeamsTableColumns";
 

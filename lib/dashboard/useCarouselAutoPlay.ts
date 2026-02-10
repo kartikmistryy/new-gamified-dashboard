@@ -12,7 +12,7 @@ type UseCarouselAutoPlayParams = {
 };
 
 type UseCarouselAutoPlayResult = {
-  toggleAutoPlay: () => void;
+  toggleAutoPlay: () => boolean | null;
   pauseAutoPlay: () => void;
   resumeAutoPlay: () => void;
   clearAutoPlayTimer: () => void;

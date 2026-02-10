@@ -4,7 +4,7 @@ import type { ColumnDef } from "@tanstack/react-table";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import type { SkillgraphSkillRow } from "@/lib/orgDashboard/types";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
-import { VisibilityToggleButton } from "@/components/dashboard/VisibilityToggleButton";
+import { VisibilityToggleButton } from "@/components/dashboard/shared/VisibilityToggleButton";
 import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
 import { Button } from "@/components/ui/button";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import { UserAvatar } from "@/components/shared/UserAvatar";
 import { Badge } from "@/components/ui/badge";
-import { ContributorMetricsChart, type ContributorMetricDataPoint } from "@/components/dashboard/ContributorMetricsChart";
+import { ContributorMetricsChart, type ContributorMetricDataPoint } from "@/components/dashboard/repoDashboard/ContributorMetricsChart";
 
 type ContributorCardData = {
   id: string;

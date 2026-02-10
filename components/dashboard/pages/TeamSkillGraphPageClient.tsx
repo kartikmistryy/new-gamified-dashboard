@@ -2,11 +2,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { ChartInsights } from "@/components/dashboard/ChartInsights";
+import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
+import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { SkillGraph } from "@/components/skillmap/SkillGraph";
-import { SkillgraphByTeamTable } from "@/components/dashboard/SkillgraphByTeamTable";
-import { SkillgraphBySkillTable } from "@/components/dashboard/SkillgraphBySkillTable";
+import { SkillgraphByTeamTable } from "@/components/dashboard/userDashboard/SkillgraphByTeamTable";
+import { SkillgraphBySkillTable } from "@/components/dashboard/userDashboard/SkillgraphBySkillTable";
 import {
   getMemberSkillsData,
   getMemberSkillRows,

@@ -7,9 +7,11 @@ import { getStrictContext } from '@/lib/get-strict-context';
 import {
   TimeRangeKey,
   TIME_RANGE_OPTIONS,
-  type TimeRangeOption,
-  type TimeRangeChangeHandler,
-} from './timeRangeTypes';
+} from '@/lib/shared/types/timeRangeTypes';
+
+// Re-export types for convenience (not a barrel export, just type re-exports)
+export type TimeRangeOption = { readonly id: TimeRangeKey; readonly label: string };
+export type TimeRangeChangeHandler = (value: TimeRangeKey) => void;
 
 /**
  * Configuration for a single named time range

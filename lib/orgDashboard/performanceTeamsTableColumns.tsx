@@ -4,9 +4,9 @@ import { TrendingUp, TrendingDown, ArrowRight } from "lucide-react";
 import type { TeamPerformanceRow, PerformanceTableFilter } from "./types";
 import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "./colors";
 import { hexToRgba } from "./tableUtils";
-import type { BaseTeamsTableColumn } from "@/components/dashboard/BaseTeamsTable";
-import { SegmentBar } from "@/components/dashboard/SegmentBar";
-import { VisibilityToggleButton } from "@/components/dashboard/VisibilityToggleButton";
+import type { BaseTeamsTableColumn } from "@/components/dashboard/shared/BaseTeamsTable";
+import { SegmentBar } from "@/components/dashboard/shared/SegmentBar";
+import { VisibilityToggleButton } from "@/components/dashboard/shared/VisibilityToggleButton";
 import { TeamAvatar } from "@/components/shared/TeamAvatar";
 import { PERFORMANCE_DISTRIBUTION_SEGMENTS, getTrendIconForCount } from "./performanceTeamsTableConfig";
 

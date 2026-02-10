@@ -1,4 +1,4 @@
-import type { BaseTeamsTableColumn } from "@/components/dashboard/BaseTeamsTable";
+import type { BaseTeamsTableColumn } from "@/components/dashboard/shared/BaseTeamsTable";
 import { UserAvatar } from "@/components/shared/UserAvatar";
 import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";

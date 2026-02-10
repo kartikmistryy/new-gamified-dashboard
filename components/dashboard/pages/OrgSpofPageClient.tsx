@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useCallback, useMemo } from "react";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { SpofTeamsTable } from "@/components/dashboard/SpofTeamsTable";
-import { SpofDistributionChart } from "@/components/dashboard/SpofDistributionChart";
-import { RepoHealthBar } from "@/components/dashboard/RepoHealthBar";
-import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
+import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
+import { SpofTeamsTable } from "@/components/dashboard/teamDashboard/SpofTeamsTable";
+import { SpofDistributionChart } from "@/components/dashboard/teamDashboard/SpofDistributionChart";
+import { RepoHealthBar } from "@/components/dashboard/shared/RepoHealthBar";
+import { GaugeWithInsights } from "@/components/dashboard/shared/GaugeWithInsights";
 import {
   SPOF_DATA,
   SPOF_TEAM_ROWS,

@@ -8,11 +8,11 @@ import {
   getOverviewSummaryCardsForGauge,
   getChartInsightsMock,
 } from "@/lib/orgDashboard/overviewMockData";
-import { ChartInsights } from "@/components/dashboard/ChartInsights";
-import { GaugeSection } from "@/components/dashboard/GaugeSection";
-import { OverviewSummaryCard } from "@/components/dashboard/OverviewSummaryCard";
-import { TeamTable } from "@/components/dashboard/TeamTable";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
+import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
+import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
+import { OverviewSummaryCard } from "@/components/dashboard/shared/OverviewSummaryCard";
+import { TeamTable } from "@/components/dashboard/orgDashboard/TeamTable";
+import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 
 export function OrgOverviewPageClient() {
   const [gaugeValue] = useState(() => Math.floor(Math.random() * 101));

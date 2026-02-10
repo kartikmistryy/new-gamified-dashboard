@@ -1,6 +1,6 @@
 /** Contributor Bar Chart Calculation Utilities */
 
-import type { ContributorCodeMetrics } from "@/components/dashboard/ContributorPerformanceBarChart";
+import type { ContributorCodeMetrics } from "@/components/dashboard/repoDashboard/ContributorPerformanceBarChart";
 
 const CHART_HEIGHT = 500;
 const CHART_WIDTH = 900;

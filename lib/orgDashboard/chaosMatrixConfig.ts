@@ -57,7 +57,7 @@ export function buildChaosMatrixTraces(
         },
       },
       showlegend: renderMode === "circles",
-    });
+    } as PlotData);
   });
 
   return traces;

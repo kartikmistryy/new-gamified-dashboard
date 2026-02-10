@@ -1,9 +1,9 @@
 "use client";
 
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { SkillgraphTeamsTable } from "@/components/dashboard/SkillgraphTeamsTable";
+import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
+import { SkillgraphTeamsTable } from "@/components/dashboard/userDashboard/SkillgraphTeamsTable";
 import { SKILLGRAPH_TEAM_ROWS } from "@/lib/orgDashboard/skillgraphMockData";
-import { ChartInsights } from "@/components/dashboard/ChartInsights";
+import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { getChartInsightsMock } from "@/lib/orgDashboard/overviewMockData";
 import { SkillGraph } from "@/components/skillmap/SkillGraph";
 import { useMemo, useState } from "react";

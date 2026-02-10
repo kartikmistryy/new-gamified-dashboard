@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { PerformanceChartLegend } from "./PerformanceChartLegend";
+import { PerformanceChartLegend } from "@/components/dashboard/shared/PerformanceChartLegend";
 import type { PerformanceChartProps } from "@/lib/dashboard/performanceChart/types";
 import { usePerformanceChartData } from "@/lib/dashboard/performanceChart/usePerformanceChartData";
 import { buildPlotlyData, buildPlotlyLayout, PLOTLY_CONFIG } from "@/lib/dashboard/performanceChartConfig";

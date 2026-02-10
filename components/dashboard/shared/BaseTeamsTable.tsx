@@ -17,10 +17,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Badge } from "../shared/Badge";
+import { Badge } from "@/components/shared/Badge";
 import { SortableTableHeader } from "./SortableTableHeader";
 import { useTableFilter } from "@/lib/orgDashboard/useTableFilter";
-import { FilterBadges } from "./FilterBadges";
+import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
 
 export type BaseTeamsTableColumn<T, F extends string> = {
   key: string;

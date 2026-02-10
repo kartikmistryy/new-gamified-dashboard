@@ -1,5 +1,5 @@
-import { D3Gauge } from "./D3Gauge";
-import { ChartInsights } from "./ChartInsights";
+import { D3Gauge } from "@/components/dashboard/shared/D3Gauge";
+import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import type { ChartInsight } from "@/lib/orgDashboard/types";
 
 export type GaugeWithInsightsProps = {

@@ -6,7 +6,7 @@ import type { ModuleSPOFData } from "./types";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import { getRiskBadgeStyle, getOwnershipColor } from "./moduleTableUtils";
-import { OwnerCell } from "@/components/dashboard/ModuleTableComponents";
+import { OwnerCell } from "@/components/dashboard/repoDashboard/ModuleTableComponents";
 
 export function createModuleColumns(): ColumnDef<ModuleSPOFData, unknown>[] {
   return [

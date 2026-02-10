@@ -1,12 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ChaosMatrixChart } from "@/components/dashboard/ChaosMatrixChart";
-import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
+import { ChaosMatrixChart } from "@/components/dashboard/orgDashboard/ChaosMatrixChart";
+import { BaseTeamsTable } from "@/components/dashboard/shared/BaseTeamsTable";
+import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { useTimeRange } from "@/lib/dashboard/TimeRangeContext";
-import { CollaborationNetworkGraph } from "@/components/dashboard/CollaborationNetworkGraph";
-import { ChartInsights } from "@/components/dashboard/ChartInsights";
+import { CollaborationNetworkGraph } from "@/components/dashboard/teamDashboard/CollaborationNetworkGraph";
+import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import {
   getMemberDesignData,

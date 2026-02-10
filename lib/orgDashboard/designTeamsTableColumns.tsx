@@ -2,9 +2,9 @@
 
 import type { DesignTeamRow, DesignTableFilter } from "./types";
 import { DASHBOARD_TEXT_CLASSES } from "./colors";
-import type { BaseTeamsTableColumn } from "@/components/dashboard/BaseTeamsTable";
-import { SegmentBar } from "@/components/dashboard/SegmentBar";
-import { VisibilityToggleButton } from "@/components/dashboard/VisibilityToggleButton";
+import type { BaseTeamsTableColumn } from "@/components/dashboard/shared/BaseTeamsTable";
+import { SegmentBar } from "@/components/dashboard/shared/SegmentBar";
+import { VisibilityToggleButton } from "@/components/dashboard/shared/VisibilityToggleButton";
 import { TeamAvatar } from "@/components/shared/TeamAvatar";
 import { OWNERSHIP_SEGMENTS, CHAOS_SEGMENTS, getTrendIconForCount } from "./designTeamsTableConfig";
 

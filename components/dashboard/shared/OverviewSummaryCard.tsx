@@ -3,7 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Bomb, AlertTriangle, BrickWall, FlaskConical, TrendingUp, TrendingDown, ArrowRight } from "lucide-react";
 import type { OverviewSummaryCardConfig, SummaryCardKey } from "@/lib/orgDashboard/types";
-import { Badge } from "../shared/Badge";
+import { Badge } from "@/components/shared/Badge";
 
 const OVERVIEW_ICONS: Record<SummaryCardKey, React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>> = {
   star: Star,

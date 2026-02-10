@@ -1,4 +1,4 @@
-import { Badge } from "../shared/Badge";
+import { Badge } from "@/components/shared/Badge";
 
 type FilterBadgesProps<F extends string> = {
   filterTabs: { key: F; label: string }[];

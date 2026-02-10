@@ -10,7 +10,7 @@ import {
   type SortingState,
 } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
-import { SortableTableHeader } from "./SortableTableHeader";
+import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
 import { ModuleDetailSheet } from "./ModuleDetailSheet";
 import type { ModuleSPOFData } from "@/lib/userDashboard/types";
 import {
@@ -19,7 +19,7 @@ import {
   type ModuleFilter,
   MODULE_FILTER_TABS,
 } from "@/lib/userDashboard/userSpofHelpers";
-import { FilterBadges } from "./FilterBadges";
+import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
 import { createModuleColumns } from "@/lib/userDashboard/moduleTableColumns";
 
 type ModulesTableProps = {

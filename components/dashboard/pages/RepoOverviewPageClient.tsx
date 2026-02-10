@@ -5,12 +5,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Card, CardContent } from "@/components/ui/card";
 import { getContributorPerformanceRowsForRepo } from "@/lib/repoDashboard/overviewMockData";
 import { calculateRepoGaugeValue, getContributorMetricCards, getContributorInsights } from "@/lib/repoDashboard/overviewHelpers";
-import { GaugeSection } from "@/components/dashboard/GaugeSection";
-import { ChartInsights } from "@/components/dashboard/ChartInsights";
-import { OverviewSummaryCard } from "@/components/dashboard/OverviewSummaryCard";
-import { ContributorTable } from "@/components/dashboard/ContributorTable";
+import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
+import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
+import { OverviewSummaryCard } from "@/components/dashboard/shared/OverviewSummaryCard";
+import { ContributorTable } from "@/components/dashboard/repoDashboard/ContributorTable";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
-import { DashboardSection } from "@/components/dashboard/DashboardSection";
+import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 
 export function RepoOverviewPageClient() {
   const { repoId } = useRouteParams();

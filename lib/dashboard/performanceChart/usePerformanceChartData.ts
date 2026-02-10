@@ -28,7 +28,7 @@ export function usePerformanceChartData(
   );
 
   const timeFilteredData = useMemo(() => {
-    if (timeRange === "max" || normalizedData.length === 0) {
+    if (!timeRange || timeRange === "max" || normalizedData.length === 0) {
       return normalizedData;
     }
 
@@ -47,6 +47,7 @@ export function usePerformanceChartData(
   );
 
   const events = useMemo<ChartEvent[]>(() => {
+    if (!eventStrategy) return [];
     if (isStaticEventStrategy(eventStrategy)) {
       return eventStrategy.events;
     }
@@ -57,6 +58,7 @@ export function usePerformanceChartData(
   }, [eventStrategy, filteredData]);
 
   const annotations = useMemo<ChartAnnotation[]>(() => {
+    if (!annotationStrategy) return [];
     if (isStaticAnnotationStrategy(annotationStrategy)) {
       return annotationStrategy.annotations;
     }

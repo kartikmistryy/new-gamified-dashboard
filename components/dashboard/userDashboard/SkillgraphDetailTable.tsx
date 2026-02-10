@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
 import type { SkillgraphSkillRow } from "@/lib/orgDashboard/types";
-import { SkillgraphProgressBar } from "./SkillgraphProgressBar";
-import { TeamAvatar } from "../shared/TeamAvatar";
+import { SkillgraphProgressBar } from "@/components/dashboard/userDashboard/SkillgraphProgressBar";
+import { TeamAvatar } from "@/components/shared/TeamAvatar";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 type SortKey = "team" | "usage" | "progress";

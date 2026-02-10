@@ -9,51 +9,53 @@ import {
   type SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import type { SkillgraphTeamRow, SkillgraphTableFilter } from "@/lib/orgDashboard/types";
-import { createSkillgraphTeamColumns } from "@/lib/dashboard/skillgraphTeamColumns";
+import type { SkillgraphSkillRow, SkillgraphSkillFilter } from "@/lib/orgDashboard/types";
+import { createSkillgraphSkillColumns } from "@/lib/dashboard/skillgraphColumns";
 import {
-  getTeamSkillUsageValue,
+  createOpacityScale,
   getSortingForFilter,
-} from "@/lib/dashboard/skillgraphTeamTableUtils";
-import { SkillgraphTeamDetailTable } from "./SkillgraphTeamDetailTable";
-import { SortableTableHeader } from "./SortableTableHeader";
+} from "@/lib/dashboard/skillgraphTableUtils";
+import { SkillgraphDetailTable } from "./SkillgraphDetailTable";
+import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
-import { FilterBadges } from "./FilterBadges";
+import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
 
-const SKILLGRAPH_TEAM_FILTER_TABS: { key: SkillgraphTableFilter; label: string }[] = [
-  { key: "mostUsage", label: "Most Usage" },
-  { key: "leastUsage", label: "Least Usage" },
-  { key: "mostPercentOfChart", label: "Most Diverse" },
-  { key: "leastPercentOfChart", label: "Most Focused" },
+const SKILLGRAPH_SKILL_FILTER_TABS: { key: SkillgraphSkillFilter; label: string }[] = [
+  { key: "mostUsage", label: "Most Popular" },
+  { key: "mostAvgUsage", label: "Most Focused" },
+  { key: "mostContributors", label: "Broadest Adoption" },
+  { key: "leastContributors", label: "Niche Skill" },
 ];
 
-type SkillgraphByTeamTableProps = {
-  rows: SkillgraphTeamRow[];
-  activeFilter?: SkillgraphTableFilter;
-  onFilterChange?: (filter: SkillgraphTableFilter) => void;
-  visibleTeams?: Record<string, boolean>;
-  onVisibilityChange?: (teamName: string, visible: boolean) => void;
+type SkillgraphBySkillTableProps = {
+  rows: SkillgraphSkillRow[];
+  activeFilter?: SkillgraphSkillFilter;
+  onFilterChange?: (filter: SkillgraphSkillFilter) => void;
+  visibleDomains?: Record<string, boolean>;
+  onVisibilityChange?: (domainName: string, visible: boolean) => void;
+  detailHeaderLabel?: string;
 };
 
-export function SkillgraphByTeamTable({
+export function SkillgraphBySkillTable({
   rows,
   activeFilter = "mostUsage",
   onFilterChange,
-  visibleTeams: externalVisibleTeams,
+  visibleDomains: externalVisibleDomains,
   onVisibilityChange,
-}: SkillgraphByTeamTableProps) {
+  detailHeaderLabel = "Team",
+}: SkillgraphBySkillTableProps) {
   const [internalVisible, setInternalVisible] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
-    rows.forEach((r) => { init[r.teamName] = true; });
+    rows.forEach((r) => { init[r.skillName] = true; });
     return init;
   });
-  const [internalFilter, setInternalFilter] = useState<SkillgraphTableFilter>("mostUsage");
+  const [internalFilter, setInternalFilter] = useState<SkillgraphSkillFilter>("mostUsage");
 
-  const visibleTeams = externalVisibleTeams ?? internalVisible;
+  const visibleDomains = externalVisibleDomains ?? internalVisible;
   // Use activeFilter if onFilterChange is provided (controlled), otherwise use internal state (uncontrolled)
   const currentFilter = onFilterChange ? activeFilter : internalFilter;
 
-  const handleFilterChange = useCallback((filter: SkillgraphTableFilter) => {
+  const handleFilterChange = useCallback((filter: SkillgraphSkillFilter) => {
     if (onFilterChange) {
       onFilterChange(filter);
     } else {
@@ -61,13 +63,14 @@ export function SkillgraphByTeamTable({
     }
   }, [onFilterChange]);
 
-  const toggleVisibility = useCallback((teamName: string) => {
+
+  const toggleVisibility = useCallback((skillName: string) => {
     if (onVisibilityChange) {
-      onVisibilityChange(teamName, visibleTeams[teamName] === false);
+      onVisibilityChange(skillName, visibleDomains[skillName] === false);
     } else {
-      setInternalVisible((prev) => ({ ...prev, [teamName]: !prev[teamName] }));
+      setInternalVisible((prev) => ({ ...prev, [skillName]: !prev[skillName] }));
     }
-  }, [visibleTeams, onVisibilityChange]);
+  }, [visibleDomains, onVisibilityChange]);
 
   const [sorting, setSorting] = useState<SortingState>(() => getSortingForFilter(activeFilter));
 
@@ -75,19 +78,19 @@ export function SkillgraphByTeamTable({
     setSorting(getSortingForFilter(currentFilter));
   }, [currentFilter]);
 
-  const totalUsageSum = useMemo(
-    () => rows.reduce((sum, row) => sum + getTeamSkillUsageValue(row), 0),
-    [rows],
+  const opacityScale = useMemo(
+    () => createOpacityScale(rows.map((row) => row.totalUsage)),
+    [rows]
   );
 
   const columns = useMemo(
     () =>
-      createSkillgraphTeamColumns({
+      createSkillgraphSkillColumns({
         toggleVisibility,
-        visibleTeams,
-        totalUsageSum,
+        visibleDomains,
+        opacityScale,
       }),
-    [toggleVisibility, visibleTeams, totalUsageSum]
+    [toggleVisibility, visibleDomains, opacityScale]
   );
 
   const table = useReactTable({
@@ -104,7 +107,7 @@ export function SkillgraphByTeamTable({
   return (
     <div className="w-full">
       <FilterBadges
-        filterTabs={SKILLGRAPH_TEAM_FILTER_TABS}
+        filterTabs={SKILLGRAPH_SKILL_FILTER_TABS}
         currentFilter={currentFilter}
         onFilterChange={handleFilterChange}
       />
@@ -140,9 +143,10 @@ export function SkillgraphByTeamTable({
                   {row.getIsExpanded() ? (
                     <TableRow className="hover:bg-transparent">
                       <TableCell colSpan={row.getVisibleCells().length} className="p-0">
-                        <SkillgraphTeamDetailTable
+                        <SkillgraphDetailTable
                           details={row.original.details}
                           rowId={row.id}
+                          detailHeaderLabel={detailHeaderLabel}
                         />
                       </TableCell>
                     </TableRow>

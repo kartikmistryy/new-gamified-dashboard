@@ -5,9 +5,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { generateUserPerformanceData, getUserMetricCards, getUserChartInsights } from "@/lib/userDashboard/mockData";
-import { GaugeSection } from "@/components/dashboard/GaugeSection";
-import { ChartInsights } from "@/components/dashboard/ChartInsights";
-import { OverviewSummaryCard } from "@/components/dashboard/OverviewSummaryCard";
+import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
+import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
+import { OverviewSummaryCard } from "@/components/dashboard/shared/OverviewSummaryCard";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
 
 /**

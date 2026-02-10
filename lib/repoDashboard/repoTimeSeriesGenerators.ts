@@ -1,7 +1,7 @@
 /** Repo Time Series Data Generators */
 
 import type { ContributorPerformanceRow } from "./types";
-import type { ContributorCodeMetrics } from "@/components/dashboard/ContributorPerformanceBarChart";
+import type { ContributorCodeMetrics } from "@/components/dashboard/repoDashboard/ContributorPerformanceBarChart";
 import {
   noise,
   hashString,

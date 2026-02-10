@@ -3,7 +3,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import type { TimeRangeKey } from './timeRangeTypes';
+import type { TimeRangeKey } from '@/lib/shared/types/timeRangeTypes';
 import { useMultiTimeRange } from './MultiTimeRangeContext';
 
 /** Access multiple named ranges at once - convenience hook for components needing multiple ranges */

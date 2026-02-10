@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 import type { TeamPerformanceRow, PerformanceTableFilter } from "@/lib/orgDashboard/types";
-import { BaseTeamsTable } from "./BaseTeamsTable";
+import { BaseTeamsTable } from "@/components/dashboard/shared/BaseTeamsTable";
 import { PERFORMANCE_FILTER_TABS, performanceSortFunction } from "@/lib/orgDashboard/performanceTeamsTableConfig";
 import { createPerformanceColumns } from "@/lib/orgDashboard/performanceTeamsTableColumns";
 

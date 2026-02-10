@@ -3,11 +3,11 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import type { SpofTeamRow } from "./spofMockData";
 import { DASHBOARD_TEXT_CLASSES } from "./colors";
-import { VisibilityToggleButton } from "@/components/dashboard/VisibilityToggleButton";
+import { VisibilityToggleButton } from "@/components/dashboard/shared/VisibilityToggleButton";
 import { TeamAvatar } from "@/components/shared/TeamAvatar";
-import { JoinedDistributionBar } from "@/components/dashboard/SpofTeamsTableComponents";
+import { JoinedDistributionBar } from "@/components/dashboard/teamDashboard/SpofTeamsTableComponents";
 import { SPOF_OWNER_SEGMENTS } from "./spofTeamsTableUtils";
-import { REPO_HEALTH_SEGMENTS } from "@/components/dashboard/RepoHealthBar";
+import { REPO_HEALTH_SEGMENTS } from "@/components/dashboard/shared/RepoHealthBar";
 
 export function createSpofTeamsColumns(
   visibleTeams: Record<string, boolean>,
