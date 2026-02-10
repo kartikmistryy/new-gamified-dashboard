@@ -10,15 +10,7 @@ import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
 import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
 import { ContributorMetricsChart } from "@/components/dashboard/ContributorMetricsChart";
 import { generateTeamEvents, generateTeamAnnotations } from "@/lib/dashboard/performanceChart/eventGenerators";
-import { getMemberPerformanceRowsForTeam } from "@/lib/teamDashboard/overviewMockData";
-import { generateMemberPerformanceTimeSeries } from "@/lib/teamDashboard/performanceMockData";
-import {
-  filterByTimeRange,
-  smartSample,
-  isTimeRangeSufficient,
-  getPerformanceInsights,
-} from "@/lib/teamDashboard/performanceHelpers";
-import { TIME_RANGE_OPTIONS } from "@/lib/shared/types/timeRangeTypes";
+import { useTeamPerformanceData } from "@/lib/teamDashboard/hooks/useTeamPerformanceData";
 import { PerformanceFilter } from "@/lib/teamDashboard/performanceTypes";
 import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/orgDashboard/utils";
 import {
@@ -28,6 +20,7 @@ import {
 } from "@/lib/teamDashboard/performanceTableConfig";
 import { PERFORMANCE_MEMBER_COLUMNS } from "@/lib/teamDashboard/performanceTableColumns";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
+import { filterByTimeRange } from "@/lib/teamDashboard/performanceHelpers";
 
 export function TeamPerformancePageClient() {
   const { teamId } = useRouteParams();
@@ -36,51 +29,20 @@ export function TeamPerformancePageClient() {
   // State
   const [activeFilter, setActiveFilter] = useState<PerformanceFilter>("mostProductive");
 
-  // Data pipeline
-  const members = useMemo(
-    () => {
-      const rows = getMemberPerformanceRowsForTeam(52, teamId!, 6);
-      // Add change and churnRate for performance tab (deterministic based on member data)
-      return rows.map((row, index) => {
-        // Use member name and index as seed for deterministic values
-        const seed1 = row.memberName.charCodeAt(0) + index * 100;
-        const seed2 = row.memberName.length + index * 50;
-        const noise1 = Math.sin(seed1 * 9999) * 10000;
-        const noise2 = Math.sin(seed2 * 9999) * 10000;
-        const changeSeed = noise1 - Math.floor(noise1);
-        const churnSeed = noise2 - Math.floor(noise2);
+  // Use extracted data hook
+  const {
+    members,
+    rawData,
+    sampledData,
+    timeRangeOptions,
+    insights,
+    gaugeValue,
+  } = useTeamPerformanceData(teamId!, timeRange);
 
-        return {
-          ...row,
-          change: (changeSeed - 0.5) * 30, // -15 to +15 points
-          churnRate: Math.round(churnSeed * 40), // 0-40%
-        };
-      });
-    },
-    [teamId]
-  );
-
-  const rawData = useMemo(() => generateMemberPerformanceTimeSeries(members), [members]);
-
+  // Time-filtered data for additional calculations
   const timeFilteredData = useMemo(
     () => filterByTimeRange(rawData, timeRange),
     [rawData, timeRange]
-  );
-
-  const sampledData = useMemo(() => smartSample(timeFilteredData), [timeFilteredData]);
-
-  const timeRangeOptions = useMemo(
-    () =>
-      TIME_RANGE_OPTIONS.map((opt) => ({
-        ...opt,
-        disabled: !isTimeRangeSufficient(rawData, opt.id),
-      })),
-    [rawData]
-  );
-
-  const insights = useMemo(
-    () => getPerformanceInsights(members, sampledData, timeRange),
-    [members, sampledData, timeRange]
   );
 
   const cumulativeDiffDeltaByMember = useMemo(() => {
