@@ -2,16 +2,10 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import type { Data, Layout, Config } from "plotly.js";
 import type { ChartEvent, ChartAnnotation } from "@/lib/orgDashboard/types";
 import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
-import {
-  CHART_HEIGHT,
-  MARGIN,
-} from "@/lib/orgDashboard/orgPerformanceChartUtils";
 import { getStartDateForRange } from "@/lib/orgDashboard/performanceChartHelpers";
 import { PerformanceChartLegend } from "./PerformanceChartLegend";
-import { PERFORMANCE_ZONES, PERFORMANCE_BASELINES } from "@/lib/orgDashboard/orgPerformanceChartData";
 import type {
   PerformanceChartProps,
   NormalizedPerformanceDataPoint,
@@ -26,6 +20,11 @@ import {
   transformDataSource,
   filterByEntityVisibility,
 } from "@/lib/dashboard/performanceChart/transformers";
+import {
+  buildPlotlyData,
+  buildPlotlyLayout,
+  PLOTLY_CONFIG,
+} from "@/lib/dashboard/performanceChartConfig";
 
 // Dynamically import Plotly to avoid SSR issues
 // Note: react-plotly.js only exports a default export (external library)
@@ -215,298 +214,25 @@ export function PerformanceChart({
 
   /**
    * Build Plotly data traces
-   * Includes performance zones, baseline lines, events, annotations, and main data line
+   * Uses extracted configuration builder for cleaner separation
    */
-  const plotlyData = useMemo((): Data[] => {
-    if (filteredData.length === 0) return [];
-
-    const dates = filteredData.map((d) => d.date);
-    const values = filteredData.map((d) => d.value);
-
-    const traces: Data[] = [];
-
-    // Background zones (as shapes, will be added to layout)
-    // Main line trace
-    traces.push({
-      type: "scatter",
-      mode: "lines+markers",
-      x: dates,
-      y: values,
-      name: "Normalized Median",
-      line: {
-        color: "#2563eb",
-        width: 2,
-        shape: "spline",
-      },
-      marker: {
-        color: "#2563eb",
-        size: 6,
-        line: {
-          color: "#2563eb",
-          width: 1,
-        },
-      },
-      hovertemplate: "<b>%{x|%b %d, %Y}</b><br>Percentile: %{y}<extra></extra>",
-    });
-
-    // Baseline reference lines (P60 and P40)
-    const allDates = dates;
-    traces.push({
-      type: "scatter",
-      mode: "lines",
-      x: allDates,
-      y: Array(allDates.length).fill(60),
-      name: PERFORMANCE_BASELINES.p60.label,
-      line: {
-        color: PERFORMANCE_BASELINES.p60.color,
-        width: 1.5,
-        dash: "dash",
-      },
-      hoverinfo: "skip",
-      showlegend: false,
-    });
-
-    traces.push({
-      type: "scatter",
-      mode: "lines",
-      x: allDates,
-      y: Array(allDates.length).fill(40),
-      name: PERFORMANCE_BASELINES.p40.label,
-      line: {
-        color: PERFORMANCE_BASELINES.p40.color,
-        width: 1.5,
-        dash: "dash",
-      },
-      hoverinfo: "skip",
-      showlegend: false,
-    });
-
-    return traces;
-  }, [filteredData]);
+  const plotlyData = useMemo(
+    () => buildPlotlyData(filteredData),
+    [filteredData]
+  );
 
   /**
    * Build Plotly layout configuration
-   * Includes axes, margins, zones, events, and annotations
+   * Uses extracted configuration builder
    */
-  const plotlyLayout = useMemo((): Partial<Layout> => {
-    if (filteredData.length === 0) {
-      return {};
-    }
-
-    const shapes: any[] = [];
-    const layoutAnnotations: any[] = [];
-
-    // Performance zones as background rectangles
-    shapes.push(
-      {
-        type: "rect",
-        xref: "paper",
-        yref: "y",
-        x0: 0,
-        x1: 1,
-        y0: 70,
-        y1: 100,
-        fillcolor: PERFORMANCE_ZONES.excellent.color,
-        line: { width: 0 },
-        layer: "below",
-      },
-      {
-        type: "rect",
-        xref: "paper",
-        yref: "y",
-        x0: 0,
-        x1: 1,
-        y0: 60,
-        y1: 70,
-        fillcolor: PERFORMANCE_ZONES.aboveAvg.color,
-        line: { width: 0 },
-        layer: "below",
-      },
-      {
-        type: "rect",
-        xref: "paper",
-        yref: "y",
-        x0: 0,
-        x1: 1,
-        y0: 30,
-        y1: 40,
-        fillcolor: PERFORMANCE_ZONES.belowAvg.color,
-        line: { width: 0 },
-        layer: "below",
-      },
-      {
-        type: "rect",
-        xref: "paper",
-        yref: "y",
-        x0: 0,
-        x1: 1,
-        y0: 0,
-        y1: 30,
-        fillcolor: PERFORMANCE_ZONES.concerning.color,
-        line: { width: 0 },
-        layer: "below",
-      }
-    );
-
-    // Holiday event lines
-    filteredEvents.forEach((event) => {
-      shapes.push({
-        type: "line",
-        x0: event.date,
-        x1: event.date,
-        xref: "x",
-        y0: 0,
-        y1: 100,
-        yref: "y",
-        line: {
-          color: "#CA3A31",
-          width: 1,
-          dash: "dot",
-        },
-        opacity: 0.6,
-        layer: "above",
-      });
-
-      layoutAnnotations.push({
-        x: event.date,
-        y: 100,
-        xref: "x",
-        yref: "y",
-        text: event.label,
-        showarrow: false,
-        textangle: -45,
-        xanchor: "left",
-        yanchor: "bottom",
-        font: {
-          size: 9,
-          color: "#CA3A31",
-          weight: 500,
-        },
-        yshift: 10,
-      });
-    });
-
-    // Chart annotations (callouts)
-    filteredAnnotations.forEach((ann) => {
-      // Find the closest data point to determine y position
-      const closestPoint = filteredData.reduce((closest, point) => {
-        const annDate = new Date(ann.date).getTime();
-        const pointDate = new Date(point.date).getTime();
-        const closestDate = new Date(closest.date).getTime();
-        return Math.abs(pointDate - annDate) < Math.abs(closestDate - annDate)
-          ? point
-          : closest;
-      }, filteredData[0]);
-
-      const yPos = closestPoint.value;
-      const labelY = yPos > 50 ? yPos - 15 : yPos + 15;
-
-      layoutAnnotations.push({
-        x: closestPoint.date,
-        y: yPos,
-        xref: "x",
-        yref: "y",
-        text: ann.label,
-        showarrow: true,
-        arrowhead: 0,
-        arrowsize: 1,
-        arrowwidth: 1,
-        arrowcolor: "#6b7280",
-        ax: 0,
-        ay: yPos > 50 ? -40 : 40,
-        bgcolor: "white",
-        bordercolor: "#d1d5db",
-        borderwidth: 1,
-        borderpad: 4,
-        font: {
-          size: 10,
-          color: "#374151",
-          weight: 500,
-        },
-      });
-    });
-
-    return {
-      autosize: true,
-      width: chartSize.width > 0 ? chartSize.width : undefined,
-      height: CHART_HEIGHT,
-      margin: {
-        l: MARGIN.left,
-        r: MARGIN.right,
-        t: MARGIN.top,
-        b: MARGIN.bottom,
-      },
-      plot_bgcolor: "#fafafa",
-      paper_bgcolor: "white",
-      xaxis: {
-        title: {
-          text: "Week",
-          font: {
-            size: 12,
-            color: "#334155",
-            weight: 500,
-          },
-        },
-        type: "date",
-        showgrid: false,
-        showline: true,
-        linecolor: "#9ca3af",
-        linewidth: 1,
-        tickfont: {
-          size: 11,
-          color: "#475569",
-        },
-        tickformat: "%b %Y",
-      },
-      yaxis: {
-        title: {
-          text: "Percentile (Normalized to Rolling Avg)",
-          font: {
-            size: 12,
-            color: "#334155",
-            weight: 500,
-          },
-        },
-        range: [0, 100],
-        showgrid: true,
-        gridcolor: "#e5e7eb",
-        gridwidth: 1,
-        griddash: "dot",
-        showline: true,
-        linecolor: "#9ca3af",
-        linewidth: 1,
-        tickfont: {
-          size: 11,
-          color: "#475569",
-        },
-        tickmode: "array",
-        tickvals: [0, 30, 40, 60, 70, 100],
-      },
-      shapes,
-      annotations: layoutAnnotations,
-      hovermode: "closest",
-      hoverlabel: {
-        bgcolor: "white",
-        bordercolor: "#d1d5db",
-        font: {
-          size: 12,
-          color: "#0f172a",
-        },
-      },
-      showlegend: false,
-    };
-  }, [filteredData, filteredEvents, filteredAnnotations, chartSize.width]);
-
-  /**
-   * Plotly configuration
-   */
-  const plotlyConfig = useMemo(
-    (): Partial<Config> => ({
-      displayModeBar: false,
-      responsive: true,
-      displaylogo: false,
-    }),
-    []
+  const plotlyLayout = useMemo(
+    () => buildPlotlyLayout(
+      filteredData,
+      filteredEvents,
+      filteredAnnotations,
+      chartSize.width
+    ),
+    [filteredData, filteredEvents, filteredAnnotations, chartSize.width]
   );
 
   // ============================================================================
@@ -536,7 +262,7 @@ export function PerformanceChart({
         <Plot
           data={plotlyData}
           layout={plotlyLayout}
-          config={plotlyConfig}
+          config={PLOTLY_CONFIG}
           style={{ width: "100%", height: "100%" }}
           useResizeHandler={true}
         />
