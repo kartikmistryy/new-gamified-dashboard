@@ -190,7 +190,7 @@ export function PerformanceChart({
   // ============================================================================
 
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [chartSize, setChartSize] = useState({ width: 0, height: CHART_HEIGHT });
+  const [chartSize, setChartSize] = useState({ width: 0, height: 420 });
 
   /**
    * Set up responsive chart sizing
