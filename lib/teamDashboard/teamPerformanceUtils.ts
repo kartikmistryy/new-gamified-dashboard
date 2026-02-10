@@ -1,6 +1,7 @@
 /** Team Performance Additional Utilities */
 
 import type { MemberPerformanceWithDelta } from "./performanceTableConfig";
+import type { MemberPerformanceRow } from "./types";
 
 export interface EnrichedMember {
   memberName: string;
@@ -19,7 +20,7 @@ export interface AggregateTeamDataPoint {
 /** Calculate cumulative diff delta by member */
 export function calculateCumulativeDiffDeltaByMember(
   timeFilteredData: any[],
-  members: EnrichedMember[]
+  members: MemberPerformanceRow[]
 ): Map<string, number> {
   const totals = new Map<string, number>();
   if (timeFilteredData.length < 2) return totals;
@@ -40,7 +41,7 @@ export function calculateCumulativeDiffDeltaByMember(
 
 /** Build table rows with scaled cumulative diff delta */
 export function buildTableRowsWithScaling(
-  members: EnrichedMember[],
+  members: MemberPerformanceRow[],
   cumulativeDiffDeltaByMember: Map<string, number>
 ): MemberPerformanceWithDelta[] {
   const rawValues = members.map((member) => Math.abs(cumulativeDiffDeltaByMember.get(member.memberName) ?? 0));
@@ -61,7 +62,7 @@ export function buildTableRowsWithScaling(
 }
 
 /** Calculate team average performance value */
-export function calculateTeamPerformanceValue(members: EnrichedMember[]): number {
+export function calculateTeamPerformanceValue(members: MemberPerformanceRow[]): number {
   if (members.length === 0) return 0;
   const total = members.reduce((sum, member) => sum + member.performanceValue, 0);
   return Math.round(total / members.length);
@@ -70,7 +71,7 @@ export function calculateTeamPerformanceValue(members: EnrichedMember[]): number
 /** Generate aggregate team cumulative data with realistic variations */
 export function generateAggregateTeamData(
   timeFilteredData: any[],
-  members: EnrichedMember[],
+  members: MemberPerformanceRow[],
   teamId: string
 ): AggregateTeamDataPoint[] {
   if (timeFilteredData.length === 0) return [];
@@ -148,7 +149,7 @@ export function generateAggregateTeamData(
 
 /** Calculate team benchmarks for comparison */
 export function calculateTeamBenchmarks(
-  members: EnrichedMember[],
+  members: MemberPerformanceRow[],
   aggregateTeamData: AggregateTeamDataPoint[]
 ): { orgBenchmark: number | undefined; industryBenchmark: number | undefined } {
   if (members.length === 0 || aggregateTeamData.length === 0) {
