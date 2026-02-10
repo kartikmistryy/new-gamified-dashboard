@@ -21,10 +21,12 @@ Follow these rules whenever editing or adding code in this project.
 ## File size
 
 - **Component, utility, hook, helper, and page files must stay under 160–200 lines.** If a file grows beyond that, split it: extract subcomponents, hooks, or helpers into separate files.
+- **Avoid creating tiny files (4–10 lines) for individual hooks or utilities.** Keep related small hooks and utilities together in a single file. Only extract when there's genuine reuse across different parts of the app or when a file exceeds the line limit.
 
 ## Reuse
 
 - **If a utility, component, hook, or block of code is repeated in the app, extract it into a reusable piece.** Put shared UI in `components/shared/`; shared logic in hooks or utils as appropriate.
+- **Don't extract prematurely.** A 4–10 line helper used in one place doesn't need its own file. Wait for genuine reuse (2+ places) or file size constraints before extracting. Keep related small utilities and hooks together in context-specific files (e.g., `userHelpers.ts`, `dateUtils.ts`) rather than individual tiny files.
 
 ## Components folder structure
 
@@ -192,11 +194,13 @@ export function TeamOverviewPageClient() {
 - **Functions**: Keep functions small and focused; if a function does multiple steps, consider splitting or extracting helpers.
 - **Nesting**: Avoid deep nesting (e.g. > 3 levels); use early returns, guard clauses, or extract logic into named functions.
 - **Constants**: Extract magic numbers and repeated strings into named constants or enums at the top of the file or in a shared constants file.
-- **Imports**: Prefer explicit, named exports; use path aliases consistently (e.g. `@/components/...`) if configured in the project.
+- **Imports**: Prefer explicit, named exports; use path aliases consistently (e.g. `@/components/...`) if configured in the project. **Never use barrel exports** (index.ts/index.tsx files that re-export from multiple files) — always import directly from the source file.
 - **No dead code**: Remove unused imports, variables, and functions; don’t leave commented-out code or debug logs.
 
-## Don’t
+## Don't
 
-- Don’t add new dependencies without good reason; prefer built-in or existing packages.
-- Don’t change formatting or style unrelated to the requested change (no “fix all the formatting” unless asked).
-- Don’t edit files under `/ui` (shadcn components).
+- Don't add new dependencies without good reason; prefer built-in or existing packages.
+- Don't change formatting or style unrelated to the requested change (no "fix all the formatting" unless asked).
+- Don't edit files under `/ui` (shadcn components).
+- Don't use barrel exports (index.ts/index.tsx files that re-export from multiple files); always import directly from source files.
+- Don't create tiny files (8–14 lines) for individual hooks or utilities; keep related small helpers together until there's genuine reuse or file size pressure.

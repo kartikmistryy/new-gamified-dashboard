@@ -1,75 +1,16 @@
 import type { ContributorPerformanceRow } from "./types";
 import type { ViewMode, PerformanceFilter, ContributorPerformanceDataPoint } from "./performanceTypes";
-import type { TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
+import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 import type { ChartInsight } from "@/lib/orgDashboard/types";
 import type { ContributorCodeMetrics } from "@/components/dashboard/ContributorPerformanceBarChart";
+import {
+  smartSample,
+  filterByTimeRange,
+  isTimeRangeSufficient,
+} from "@/lib/shared/performanceUtils";
 
-/**
- * Smart sampling: reduces data to target number of points while preserving first and last.
- * Always includes first and last point, distributes remaining points evenly.
- */
-export function smartSample<T extends { date: string }>(
-  data: T[],
-  targetPoints = 40
-): T[] {
-  if (data.length <= targetPoints) {
-    return data;
-  }
-
-  const sampled: T[] = [];
-  const step = (data.length - 1) / (targetPoints - 1);
-
-  for (let i = 0; i < targetPoints; i++) {
-    const index = Math.round(i * step);
-    sampled.push(data[index]);
-  }
-
-  return sampled;
-}
-
-/**
- * Filters data by time range relative to the last data point.
- * "max" returns all data, other ranges filter to the specified duration.
- */
-export function filterByTimeRange<T extends { date: string }>(
-  data: T[],
-  timeRange: TimeRangeKey
-): T[] {
-  if (timeRange === "max" || data.length === 0) {
-    return data;
-  }
-
-  const lastDate = new Date(data[data.length - 1].date);
-  let monthsBack = 0;
-
-  switch (timeRange) {
-    case "1m":
-      monthsBack = 1;
-      break;
-    case "3m":
-      monthsBack = 3;
-      break;
-    case "1y":
-      monthsBack = 12;
-      break;
-  }
-
-  const startDate = new Date(lastDate);
-  startDate.setMonth(startDate.getMonth() - monthsBack);
-
-  return data.filter((point) => new Date(point.date) >= startDate);
-}
-
-/**
- * Checks if a time range has sufficient data (>= 2 points) to draw a line chart.
- */
-export function isTimeRangeSufficient<T extends { date: string }>(
-  data: T[],
-  timeRange: TimeRangeKey
-): boolean {
-  const filtered = filterByTimeRange(data, timeRange);
-  return filtered.length >= 2;
-}
+// Re-export shared utilities for backward compatibility
+export { smartSample, filterByTimeRange, isTimeRangeSufficient };
 
 /**
  * Gets visible contributors for a filter in individual view mode.

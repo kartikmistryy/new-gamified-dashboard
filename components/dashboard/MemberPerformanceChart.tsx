@@ -13,7 +13,7 @@ import {
 } from "recharts";
 import type { MemberPerformanceDataPoint, ViewMode } from "@/lib/teamDashboard/performanceTypes";
 import type { MemberPerformanceRow } from "@/lib/teamDashboard/types";
-import type { TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
+import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 type MemberPerformanceChartProps = {

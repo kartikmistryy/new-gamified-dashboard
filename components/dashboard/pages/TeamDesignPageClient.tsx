@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { ChaosMatrixChart } from "@/components/dashboard/ChaosMatrixChart";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
-import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
+import { useTimeRange } from "@/lib/dashboard/TimeRangeContext";
 import { CollaborationNetworkGraph } from "@/components/dashboard/CollaborationNetworkGraph";
 import { ChartInsights } from "@/components/dashboard/ChartInsights";
 import { TooltipProvider } from "@/components/ui/tooltip";

@@ -3,13 +3,13 @@
 import { useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
+import { useTimeRange } from "@/lib/dashboard/TimeRangeContext";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
 import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
 import { ContributorMetricsChart } from "@/components/dashboard/ContributorMetricsChart";
-import { generateTeamEvents, generateTeamAnnotations } from "@/lib/dashboard/performanceChart";
+import { generateTeamEvents, generateTeamAnnotations } from "@/lib/dashboard/performanceChart/eventGenerators";
 import { getMemberPerformanceRowsForTeam } from "@/lib/teamDashboard/overviewMockData";
 import { generateMemberPerformanceTimeSeries } from "@/lib/teamDashboard/performanceMockData";
 import {
@@ -18,7 +18,7 @@ import {
   isTimeRangeSufficient,
   getPerformanceInsights,
 } from "@/lib/teamDashboard/performanceHelpers";
-import { TIME_RANGE_OPTIONS } from "@/lib/orgDashboard/timeRangeTypes";
+import { TIME_RANGE_OPTIONS } from "@/lib/shared/types/timeRangeTypes";
 import { PerformanceFilter } from "@/lib/teamDashboard/performanceTypes";
 import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/orgDashboard/utils";
 import {

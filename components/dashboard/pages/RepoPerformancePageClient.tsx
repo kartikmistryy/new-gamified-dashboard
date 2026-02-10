@@ -3,14 +3,14 @@
 import { useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
+import { useTimeRange } from "@/lib/dashboard/TimeRangeContext";
 import { GaugeWithInsights } from "@/components/dashboard/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
 import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
 import { ContributorMetricsChart } from "@/components/dashboard/ContributorMetricsChart";
 import { ContributorCardsCarousel } from "@/components/dashboard/ContributorCardsCarousel";
-import { generateRepoEvents, generateRepoAnnotations } from "@/lib/dashboard/performanceChart";
+import { generateRepoEvents, generateRepoAnnotations } from "@/lib/dashboard/performanceChart/eventGenerators";
 import { getContributorPerformanceRowsForRepo } from "@/lib/repoDashboard/overviewMockData";
 import { generateContributorPerformanceTimeSeries } from "@/lib/repoDashboard/performanceMockData";
 import {

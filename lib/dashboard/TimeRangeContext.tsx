@@ -11,14 +11,40 @@
 
 import { createContext, useContext, useState, useMemo, useCallback, type ReactNode } from 'react';
 import { getStrictContext } from '@/lib/get-strict-context';
-import {
-  TimeRangeKey,
-  TimeRangeConfig,
-  TimeRangeChangeHandler,
-  UseTimeRangeResult,
-  TIME_RANGE_OPTIONS,
-  type TimeRangeOption,
-} from './timeRangeTypes';
+import type { TimeRangeKey } from '@/lib/shared/types/timeRangeTypes';
+import { TIME_RANGE_OPTIONS } from '@/lib/shared/types/timeRangeTypes';
+
+/**
+ * Time range option with label and optional disabled state
+ */
+export interface TimeRangeOption {
+  id: TimeRangeKey;
+  label: string;
+  disabled?: boolean;
+}
+
+/**
+ * Configuration for a dashboard's time range behavior
+ */
+export interface TimeRangeConfig {
+  defaultRange: TimeRangeKey;
+  options?: ReadonlyArray<TimeRangeOption>;
+  persistToUrl?: boolean;
+}
+
+/**
+ * Callback function type for time range changes
+ */
+export type TimeRangeChangeHandler = (range: TimeRangeKey) => void;
+
+/**
+ * Hook return type with state and setter
+ */
+export interface UseTimeRangeResult {
+  timeRange: TimeRangeKey;
+  setTimeRange: TimeRangeChangeHandler;
+  options: ReadonlyArray<TimeRangeOption>;
+}
 
 /**
  * Context value shape with full type safety

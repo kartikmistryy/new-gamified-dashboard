@@ -1,5 +1,5 @@
 import type { ChartInsight } from "@/lib/orgDashboard/types";
-import type { TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
+import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 
 type CollaborationNodeSeed = {
   id: string;

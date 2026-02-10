@@ -21,12 +21,12 @@
  * - Proper React event types
  */
 
-import type { TimeRangeKey } from "@/lib/dashboard/timeRangeTypes";
+import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 import type {
   NormalizedPerformanceDataPoint,
   EventGenerationStrategy,
   AnnotationGenerationStrategy,
-} from "@/lib/dashboard/performanceChart";
+} from "@/lib/dashboard/performanceChart/types";
 
 // ============================================================================
 // Core Contributor Types

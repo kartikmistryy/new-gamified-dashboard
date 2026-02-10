@@ -8,6 +8,15 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "cryptoicons.org", pathname: "/**" },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/org/:orgId/repo/:repoId/:path*",
+        destination: "/org/:orgId/repository/:repoId/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

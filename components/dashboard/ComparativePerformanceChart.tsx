@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState, useId } from "react";
 import type { ChartEvent, ChartAnnotation } from "@/lib/orgDashboard/types";
 import type { UserPerformanceDataPoint } from "@/lib/userDashboard/userPerformanceChartData";
-import type { TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
+import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 import {
   buildOrgPerformanceChartGeometry,
   CHART_HEIGHT,

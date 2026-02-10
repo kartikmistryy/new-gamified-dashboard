@@ -1,4 +1,4 @@
-import type { TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
+import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 import type { CollaborationModule, CollaborationEdge } from "@/lib/teamDashboard/collaborationNetworkData";
 
 type CollaborationNodeSeed = {

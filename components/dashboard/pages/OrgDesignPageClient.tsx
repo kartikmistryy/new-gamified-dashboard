@@ -6,7 +6,7 @@ import { ChaosMatrixChart } from "@/components/dashboard/ChaosMatrixChart";
 import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { DesignTeamsTable } from "@/components/dashboard/DesignTeamsTable";
 import { OwnershipScatter } from "@/components/dashboard/OwnershipScatter";
-import { useTimeRange } from "@/lib/contexts/TimeRangeContext";
+import { useTimeRange } from "@/lib/dashboard/TimeRangeContext";
 import { getChartInsightsMock } from "@/lib/orgDashboard/overviewMockData";
 import { DESIGN_TEAM_ROWS, getDesignTeamRowsForRange } from "@/lib/orgDashboard/designMockData";
 import type { DesignTableFilter } from "@/lib/orgDashboard/types";

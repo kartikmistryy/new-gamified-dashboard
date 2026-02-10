@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import type { Data, Layout, Config } from "plotly.js";
 import type { ChartEvent, ChartAnnotation } from "@/lib/orgDashboard/types";
-import type { TimeRangeKey } from "@/lib/orgDashboard/timeRangeTypes";
+import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 import {
   CHART_HEIGHT,
   MARGIN,
@@ -15,15 +15,17 @@ import { PERFORMANCE_ZONES, PERFORMANCE_BASELINES } from "@/lib/orgDashboard/org
 import type {
   PerformanceChartProps,
   NormalizedPerformanceDataPoint,
-} from "@/lib/dashboard/performanceChart";
+} from "@/lib/dashboard/performanceChart/types";
 import {
-  transformDataSource,
-  filterByEntityVisibility,
   isStaticEventStrategy,
   isDynamicEventStrategy,
   isStaticAnnotationStrategy,
   isDynamicAnnotationStrategy,
-} from "@/lib/dashboard/performanceChart";
+} from "@/lib/dashboard/performanceChart/types";
+import {
+  transformDataSource,
+  filterByEntityVisibility,
+} from "@/lib/dashboard/performanceChart/transformers";
 
 // Dynamically import Plotly to avoid SSR issues
 // Note: react-plotly.js only exports a default export (external library)
