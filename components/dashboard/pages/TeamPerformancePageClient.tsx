@@ -21,201 +21,44 @@ import {
 import { PERFORMANCE_MEMBER_COLUMNS } from "@/lib/teamDashboard/performanceTableColumns";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
 import { filterByTimeRange } from "@/lib/teamDashboard/performanceHelpers";
+import {
+  calculateCumulativeDiffDeltaByMember,
+  buildTableRowsWithScaling,
+  calculateTeamPerformanceValue,
+  generateAggregateTeamData,
+  calculateTeamBenchmarks,
+} from "@/lib/teamDashboard/teamPerformanceUtils";
 
 export function TeamPerformancePageClient() {
   const { teamId } = useRouteParams();
   const { timeRange } = useTimeRange();
-
-  // State
   const [activeFilter, setActiveFilter] = useState<PerformanceFilter>("mostProductive");
 
-  // Use extracted data hook
-  const {
-    members,
-    rawData,
-    sampledData,
-    timeRangeOptions,
-    insights,
-    gaugeValue,
-  } = useTeamPerformanceData(teamId!, timeRange);
+  const { members, rawData, insights } = useTeamPerformanceData(teamId!, timeRange);
 
-  // Time-filtered data for additional calculations
-  const timeFilteredData = useMemo(
-    () => filterByTimeRange(rawData, timeRange),
-    [rawData, timeRange]
+  const timeFilteredData = useMemo(() => filterByTimeRange(rawData, timeRange), [rawData, timeRange]);
+
+  const cumulativeDiffDeltaByMember = useMemo(
+    () => calculateCumulativeDiffDeltaByMember(timeFilteredData, members),
+    [timeFilteredData, members]
   );
 
-  const cumulativeDiffDeltaByMember = useMemo(() => {
-    const totals = new Map<string, number>();
-    if (timeFilteredData.length < 2) return totals;
-
-    for (let i = 1; i < timeFilteredData.length; i++) {
-      const prev = timeFilteredData[i - 1];
-      const curr = timeFilteredData[i];
-      for (const member of members) {
-        const prevValue = prev.memberValues[member.memberName] ?? 0;
-        const currValue = curr.memberValues[member.memberName] ?? 0;
-        const delta = currValue - prevValue;
-        totals.set(member.memberName, (totals.get(member.memberName) ?? 0) + delta);
-      }
-    }
-
-    return totals;
-  }, [timeFilteredData, members]);
-
-  const tableRows = useMemo<MemberPerformanceWithDelta[]>(
-    () => {
-      const rawValues = members.map((member) =>
-        Math.abs(cumulativeDiffDeltaByMember.get(member.memberName) ?? 0)
-      );
-      const min = Math.min(...rawValues, 0);
-      const max = Math.max(...rawValues, 0);
-      const minOutput = 20;
-      const maxOutput = 50;
-      const scaleValue = (value: number) => {
-        if (max === min) return Math.round((minOutput + maxOutput) / 2);
-        const ratio = (value - min) / (max - min);
-        return Math.round(minOutput + ratio * (maxOutput - minOutput));
-      };
-
-      return members.map((member) => ({
-        ...member,
-        cumulativeDiffDelta: scaleValue(
-          Math.abs(cumulativeDiffDeltaByMember.get(member.memberName) ?? 0)
-        ),
-      }));
-    },
+  const tableRows = useMemo(
+    () => buildTableRowsWithScaling(members, cumulativeDiffDeltaByMember),
     [members, cumulativeDiffDeltaByMember]
   );
 
-  const teamPerformanceValue = useMemo(() => {
-    if (members.length === 0) return 0;
-    const total = members.reduce((sum, member) => sum + member.performanceValue, 0);
-    return Math.round(total / members.length);
-  }, [members]);
+  const teamPerformanceValue = useMemo(() => calculateTeamPerformanceValue(members), [members]);
 
-  // Generate aggregate team cumulative data for comparison chart
-  const aggregateTeamData = useMemo(() => {
-    if (timeFilteredData.length === 0) return [];
+  const aggregateTeamData = useMemo(
+    () => generateAggregateTeamData(timeFilteredData, members, teamId!),
+    [timeFilteredData, members, teamId]
+  );
 
-    // Aggregate all members' contributions for each time point with realistic variations
-    const aggregated = timeFilteredData.map((point, weekIndex) => {
-      const memberNames = Object.keys(point.memberValues);
-      const date = new Date(point.date);
-      const month = date.getMonth();
-
-      // Sprint cycle variations (2-week sprints)
-      // Phase 0-1: High activity (sprint execution)
-      // Phase 2: Medium activity (sprint end/review)
-      // Phase 3: Low activity (sprint planning)
-      const sprintPhase = weekIndex % 4;
-      const sprintMultiplier =
-        sprintPhase === 0 ? 1.4 :  // Sprint start - ramping up
-        sprintPhase === 1 ? 1.8 :  // Sprint peak - highest activity
-        sprintPhase === 2 ? 1.1 :  // Sprint end - winding down
-        0.7;                        // Sprint planning - lowest activity
-
-      // Seasonal variations (holidays and vacation periods)
-      const isHolidaySeason = month === 11 || month === 0; // December, January
-      const isSummerSlump = month === 6 || month === 7;     // July, August
-      const seasonalMultiplier =
-        isHolidaySeason ? 0.5 :
-        isSummerSlump ? 0.7 :
-        1.0;
-
-      // Project milestones (occasional spikes every ~6-8 weeks)
-      const isMilestoneWeek = weekIndex % 7 === 3 || weekIndex % 11 === 5;
-      const milestoneMultiplier = isMilestoneWeek ? 2.2 : 1.0;
-
-      // Code cleanup/refactoring periods (higher deletion ratio every ~8 weeks)
-      const isRefactoringWeek = weekIndex % 8 === 6;
-      const refactoringMultiplier = isRefactoringWeek ? 1.5 : 1.0;
-
-      // Random week-to-week variation (good weeks vs slow weeks)
-      const weekSeed = weekIndex * 0.7 + (teamId ? teamId.charCodeAt(0) : 42);
-      const randomVariation = 0.75 + Math.sin(weekSeed) * 0.25; // 0.5 to 1.0
-
-      // Calculate total additions and deletions across all members
-      let totalAdd = 0;
-      let totalDelete = 0;
-
-      memberNames.forEach((memberName, memberIndex) => {
-        const performanceValue = point.memberValues[memberName] ?? 50;
-
-        // Base weekly contribution influenced by performance
-        const baseContribution = performanceValue * 2 + 50;
-
-        // Add per-member variation to create visual diversity in bars
-        const memberSeed = memberName.charCodeAt(0) + weekIndex * 0.3;
-        const memberVariation = 0.8 + Math.cos(memberSeed) * 0.4; // 0.4 to 1.2
-
-        // Apply all multipliers
-        const weeklyAdd = baseContribution *
-          sprintMultiplier *
-          seasonalMultiplier *
-          milestoneMultiplier *
-          randomVariation *
-          memberVariation;
-
-        totalAdd += weeklyAdd;
-
-        // Delete rate calculation with variation
-        let deleteRate = (1 - performanceValue / 100) * 0.3;
-
-        // Refactoring weeks have much higher delete ratio
-        if (isRefactoringWeek) {
-          deleteRate *= 2.5;
-        }
-
-        // Sprint planning weeks have lower delete (more planning, less coding)
-        if (sprintPhase === 3) {
-          deleteRate *= 0.5;
-        }
-
-        // Add some random variation to deletions
-        const deleteVariation = 0.7 + Math.sin(memberSeed + weekIndex) * 0.6; // 0.1 to 1.3
-        const weeklyDelete = baseContribution * deleteRate * deleteVariation * refactoringMultiplier;
-
-        totalDelete += weeklyDelete;
-      });
-
-      return {
-        date: point.date,
-        add: Math.max(50, Math.round(totalAdd)),      // Minimum threshold
-        delete: Math.max(10, Math.round(totalDelete)), // Minimum threshold
-      };
-    });
-
-    // Convert to cumulative format
-    let cumulative = 0;
-    return aggregated.map((point) => {
-      cumulative += point.add - point.delete;
-      return {
-        week: point.date,
-        cumulative: Math.round(cumulative),
-        additions: point.add,
-        deletions: point.delete,
-      };
-    });
-  }, [timeFilteredData, teamId]);
-
-  // Calculate benchmark values for team comparison
-  const teamBenchmarks = useMemo(() => {
-    if (members.length === 0 || aggregateTeamData.length === 0) {
-      return { orgBenchmark: undefined, industryBenchmark: undefined };
-    }
-
-    // Get final cumulative value for the team
-    const teamFinalValue = aggregateTeamData[aggregateTeamData.length - 1]?.cumulative ?? 0;
-
-    // Org benchmark is typically around 60-70% of this team's performance (conservative estimate)
-    const orgBenchmark = Math.round(teamFinalValue * 0.65);
-
-    // Industry benchmark is typically higher (aspirational/stretch target)
-    const industryBenchmark = Math.round(teamFinalValue * 1.3);
-
-    return { orgBenchmark, industryBenchmark };
-  }, [members, aggregateTeamData]);
+  const teamBenchmarks = useMemo(
+    () => calculateTeamBenchmarks(members, aggregateTeamData),
+    [members, aggregateTeamData]
+  );
 
   return (
     <TooltipProvider>
@@ -268,7 +111,6 @@ export function TeamPerformancePageClient() {
               />
             </DashboardSection>
 
-            {/* Member table section */}
             <DashboardSection title="Team Members" className="w-full">
               <BaseTeamsTable<MemberPerformanceWithDelta, PerformanceFilter>
                 rows={tableRows}

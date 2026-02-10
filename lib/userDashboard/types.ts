@@ -1,12 +1,8 @@
-/**
- * User Dashboard Types
- * Defines all TypeScript types for the user dashboard, including performance metrics,
- * developer classifications, and UI card configurations.
- */
+/** User Dashboard Types - performance metrics, developer classifications, and UI card configurations. */
 
 import type { SummaryCardKey } from "@/lib/orgDashboard/types";
 
-/** Developer type classifications based on performance and behavior patterns. */
+/** Developer type classifications. */
 export type DeveloperType =
   | "Star"
   | "Key Player"
@@ -43,170 +39,94 @@ export type TrendDirection = "up" | "down" | "flat";
 /** Tab keys for user dashboard navigation. */
 export type UserDashboardTab = "performance" | "skillsgraph" | "spof";
 
-/**
- * Configuration for user metric cards using the OverviewSummaryCard component.
- * These cards display key performance indicators in the 3x2 grid.
- */
+/** User metric card configuration for OverviewSummaryCard component. */
 export type UserMetricCardConfig = {
-  /** Unique identifier for the card. */
   key: SummaryCardKey;
-  /** Display title shown at top of card. */
   title: string;
-  /** Main metric value (number, percentage, or status). */
   count: number | string;
-  /** Badge text (priority/status indicator). */
   priority: string;
-  /** Badge color classes. */
   badgeColor: string;
-  /** First line of description text. */
   descriptionLine1: string;
-  /** Second line of description text. */
   descriptionLine2: string;
-  /** Background color class or hex value. */
   bg: string;
-  /** Icon color class or hex value. */
   iconColor: string;
 };
 
-/**
- * Complete user performance data structure.
- * Contains all metrics displayed in the user dashboard overview.
- */
+/** Complete user performance data with all dashboard metrics. */
 export type UserPerformanceData = {
-  /** User identification. */
   userId: string;
   userName: string;
   userAvatar?: string;
-
-  /** Overall performance score (0-100). */
   performanceScore: number;
-
-  /** Weekly DiffDelta metrics. */
   weeklyDiffDelta: {
     value: number;
     level: PerformanceLevel;
   };
-
-  /** Churn rate metrics. */
   churnRate: {
     percentage: number;
-    comparison: string; // e.g., "Extreme Higher Than The Medium"
+    comparison: string;
   };
-
-  /** Cumulative DiffDelta metrics. */
   cumulativeDiffDelta: {
     value: number;
-    weekOverWeek: number; // WoW change
+    weekOverWeek: number;
     trend: TrendDirection;
   };
-
-  /** Developer type classification. */
   developerType: {
     type: DeveloperType;
     spofLevel: "Low" | "High";
-    skillLevel: string; // e.g., "Skilled AI Builder"
+    skillLevel: string;
   };
-
-  /** Engineering chaos metrics. */
   engineeringChaos: {
     status: EngineeringChaosStatus;
     churnLevel: "Low" | "High";
     diffDeltaLevel: "Low" | "High";
   };
-
-  /** SPOF risk assessment. */
   spofRisk: {
     level: SPOFRiskLevel;
     ownership: "Low" | "High";
-    percentile: number; // Percentile compared to peers
+    percentile: number;
   };
-
-  /** Chart insights for performance visualization. */
   insights: string[];
 };
 
-/**
- * Filter types for user performance tabs.
- */
 export type UserPerformanceFilter = "all" | "recent" | "trends";
 
-/**
- * SPOF score ranges for color coding modules.
- */
 export type SPOFScoreRange = "low" | "medium" | "high";
 
-/**
- * Owner information for a module.
- */
 export type ModuleOwner = {
-  /** Owner user ID. */
   id: string;
-  /** Owner name. */
   name: string;
-  /** Ownership percentage (0-100). */
   ownershipPercent: number;
 };
 
-/**
- * Contributor information for module capabilities.
- */
 export type CapabilityContributor = {
-  /** Contributor name. */
   name: string;
-  /** Ownership percentage (0-100). */
   ownershipPercent: number;
 };
 
-/**
- * Module capability (function/sub-module) information.
- */
 export type ModuleCapability = {
-  /** Unique identifier for the capability. */
   id: string;
-  /** Display name of the capability/function. */
   name: string;
-  /** Importance percentage (0-100). */
   importance: number;
-  /** Bus factor count. */
   busFactor: number;
-  /** Backup owners count. */
   backupCount: number;
-  /** Top owner percentage. */
   topOwnerPercent: number;
-  /** Number of files in this capability. */
   fileCount: number;
-  /** List of contributors with ownership percentages. */
   contributors: CapabilityContributor[];
-  /** SPOF score for this capability (optional, for highlighting). */
   spofScore?: number;
 };
 
-/**
- * Module data for SPOF treemap visualization.
- */
 export type ModuleSPOFData = {
-  /** Unique identifier for the module. */
   id: string;
-  /** Display name of the module. */
   name: string;
-  /** Repository name. */
   repoName: string;
-  /** SPOF score (0-100) - higher is more risky. */
   spofScore: number;
-  /** Size/weight for treemap (based on contribution or lines of code). */
   size: number;
-  /** SPOF score range category. */
   scoreRange: SPOFScoreRange;
-  /** Primary owner (highest ownership). */
   primaryOwner: ModuleOwner;
-  /** Backup owner (second highest ownership). */
   backupOwner: ModuleOwner;
-  /** Module description. */
   description?: string;
-  /** Active contributors count. */
   activeContributors?: number;
-  /** Team load status. */
   teamLoad?: "Low Pressure" | "Medium Pressure" | "High Pressure";
-  /** Module capabilities/functions. */
   capabilities?: ModuleCapability[];
 };

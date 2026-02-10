@@ -1,89 +1,21 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
-import { ArrowRight, TrendingDown, TrendingUp } from "lucide-react";
+import { useCallback, useState } from "react";
 import type { DesignTeamRow, DesignTableFilter } from "@/lib/orgDashboard/types";
-import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
-import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
-import { CATEGORY_COLORS } from "@/lib/orgDashboard/chaosMatrixData";
-import { BaseTeamsTable, type BaseTeamsTableColumn } from "./BaseTeamsTable";
-import { SegmentBar } from "./SegmentBar";
-import { VisibilityToggleButton } from "./VisibilityToggleButton";
-import { TeamAvatar } from "../shared/TeamAvatar";
-
-const OWNERSHIP_SEGMENTS = [
-  { label: "High Ownership", style: { backgroundColor: hexToRgba("#22c55e", 0.25), color: "#22c55e" } },
-  { label: "Balanced Ownership", style: { backgroundColor: hexToRgba("#4285f4", 0.25), color: "#4285f4" } },
-  { label: "Low Ownership", style: { backgroundColor: hexToRgba("#ef4444", 0.25), color: "#ef4444" } },
-];
-
-const CHAOS_SEGMENTS = [
-  {
-    label: "Skilled AI User",
-    style: {
-      backgroundColor: hexToRgba(CATEGORY_COLORS["Skilled AI User"], 0.25),
-      color: CATEGORY_COLORS["Skilled AI User"],
-    },
-  },
-  {
-    label: "Traditional Developer",
-    style: {
-      backgroundColor: hexToRgba(CATEGORY_COLORS["Traditional Developer"], 0.25),
-      color: CATEGORY_COLORS["Traditional Developer"],
-    },
-  },
-  {
-    label: "Unskilled AI User",
-    style: {
-      backgroundColor: hexToRgba(CATEGORY_COLORS["Unskilled AI User"], 0.25),
-      color: CATEGORY_COLORS["Unskilled AI User"],
-    },
-  },
-  {
-    label: "Low-Skill Developer",
-    style: {
-      backgroundColor: hexToRgba(CATEGORY_COLORS["Low-Skill Developer"], 0.25),
-      color: CATEGORY_COLORS["Low-Skill Developer"],
-    },
-  },
-];
-
-export const DESIGN_FILTER_TABS: { key: DesignTableFilter; label: string }[] = [
-  { key: "mostOutliers", label: "Most Outliers" },
-  { key: "mostSkilledAIBuilders", label: "Most Skilled AI Builders" },
-  { key: "mostUnskilledVibeCoders", label: "Most Unskilled Vibe Coders" },
-  { key: "mostLegacyDevs", label: "Most Legacy Devs" },
-];
-
-function getTrendIconForCount(counts: number[], index: number) {
-  const total = counts.reduce((sum, value) => sum + value, 0);
-  const average = counts.length ? total / counts.length : 0;
-  const value = counts[index] ?? 0;
-  if (value > average) return TrendingUp;
-  if (value < average) return TrendingDown;
-  return ArrowRight;
-}
-
-function designSortFunction(rows: DesignTeamRow[], currentFilter: DesignTableFilter): DesignTeamRow[] {
-  const copy = [...rows];
-  if (currentFilter === "mostOutliers") return copy.sort((a, b) => b.outlierScore - a.outlierScore);
-  if (currentFilter === "mostSkilledAIBuilders") return copy.sort((a, b) => b.skilledAIScore - a.skilledAIScore);
-  if (currentFilter === "mostUnskilledVibeCoders") return copy.sort((a, b) => b.unskilledScore - a.unskilledScore);
-  if (currentFilter === "mostLegacyDevs") return copy.sort((a, b) => b.legacyScore - a.legacyScore);
-  return copy;
-}
+import { BaseTeamsTable } from "./BaseTeamsTable";
+import { DESIGN_FILTER_TABS, designSortFunction } from "@/lib/orgDashboard/designTeamsTableConfig";
+import { createDesignColumns } from "@/lib/orgDashboard/designTeamsTableColumns";
 
 type DesignTeamsTableProps = {
   rows: DesignTeamRow[];
   activeFilter?: DesignTableFilter;
   onFilterChange?: (filter: DesignTableFilter) => void;
   showFilters?: boolean;
-  /** Optional external visibility map keyed by team name. When provided, the table becomes controlled. */
   visibleTeams?: Record<string, boolean>;
-  /** Optional external toggle handler; used when `visibleTeams` is provided. */
   onToggleTeamVisibility?: (teamName: string) => void;
 };
 
+/** Design Teams Table - displays ownership health and engineering chaos metrics */
 export function DesignTeamsTable({
   rows,
   activeFilter = "mostOutliers",
@@ -100,105 +32,19 @@ export function DesignTeamsTable({
     return init;
   });
 
-  const toggleView = useCallback((teamName: string) => {
-    if (onToggleTeamVisibility) {
-      onToggleTeamVisibility(teamName);
-      return;
-    }
-    setInternalVisible((prev) => ({ ...prev, [teamName]: !prev[teamName] }));
-  }, [onToggleTeamVisibility]);
+  const toggleView = useCallback(
+    (teamName: string) => {
+      if (onToggleTeamVisibility) {
+        onToggleTeamVisibility(teamName);
+        return;
+      }
+      setInternalVisible((prev) => ({ ...prev, [teamName]: !prev[teamName] }));
+    },
+    [onToggleTeamVisibility]
+  );
 
   const effectiveVisible = visibleTeams ?? internalVisible;
-
-  const columns = useMemo<BaseTeamsTableColumn<DesignTeamRow, DesignTableFilter>[]>(
-    () => [
-      {
-        key: "view",
-        header: "View",
-        className: "w-14",
-        enableSorting: false,
-        render: (row) => (
-          <VisibilityToggleButton
-            isVisible={effectiveVisible[row.teamName] !== false}
-            onToggle={() => toggleView(row.teamName)}
-          />
-        ),
-      },
-      {
-        key: "rank",
-        header: "Rank",
-        className: "w-14",
-        enableSorting: false,
-        render: (_, index) => {
-          const displayRank = index + 1;
-          return (
-            <span className={displayRank <= 3 ? "text-foreground font-bold" : DASHBOARD_TEXT_CLASSES.rankMuted}>
-              {displayRank}
-            </span>
-          );
-        },
-      },
-      {
-        key: "team",
-        header: "Team",
-        accessorFn: (row) => row.teamName,
-        render: (row) => (
-          <div className="flex items-center gap-3">
-            <TeamAvatar teamName={row.teamName} className="size-4" />
-            <p className="font-medium text-gray-900">{row.teamName}</p>
-          </div>
-        ),
-      },
-      {
-        key: "ownership",
-        header: "Ownership Health",
-        accessorFn: (row) => row.ownershipAllocation[2], // Sort by high ownership count
-        render: (row) => {
-          const counts = [
-            row.ownershipAllocation[2],
-            row.ownershipAllocation[1],
-            row.ownershipAllocation[0],
-          ];
-          return (
-            <SegmentBar
-              segments={OWNERSHIP_SEGMENTS.map((segment, index) => ({
-                ...segment,
-                icon: getTrendIconForCount(counts, index),
-              }))}
-              counts={counts}
-              alignment="start"
-              showCounts
-            />
-          );
-        },
-      },
-      {
-        key: "chaos",
-        header: "Engineering Chaos Index",
-        accessorFn: (row) => row.outlierScore, // Sort by outlier score
-        render: (row) => {
-          const counts = [
-            row.engineeringChaos[3],
-            row.engineeringChaos[2],
-            row.engineeringChaos[1],
-            row.engineeringChaos[0],
-          ];
-          return (
-            <SegmentBar
-              segments={CHAOS_SEGMENTS.map((segment, index) => ({
-                ...segment,
-                icon: getTrendIconForCount(counts, index),
-              }))}
-              counts={counts}
-              alignment="start"
-              showCounts
-            />
-          );
-        },
-      },
-    ],
-    [effectiveVisible, toggleView]
-  );
+  const columns = createDesignColumns(effectiveVisible, toggleView);
 
   return (
     <BaseTeamsTable<DesignTeamRow, DesignTableFilter>

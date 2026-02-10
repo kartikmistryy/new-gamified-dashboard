@@ -1,24 +1,9 @@
-/**
- * Event and Annotation Generators for Performance Charts
- *
- * Reusable generator functions for creating dynamic events and annotations
- * based on data characteristics. These are used with the strategy pattern
- * to provide flexible event generation across different dashboard contexts.
- */
+/** Event and Annotation Generators for Performance Charts */
 
 import type { ChartEvent, ChartAnnotation } from "@/lib/orgDashboard/types";
 import type { NormalizedPerformanceDataPoint } from "./types";
 
-// ============================================================================
-// Helper Functions
-// ============================================================================
-
-/**
- * Pick a data point at a specific ratio position in the dataset
- * @param data - Array of data points
- * @param ratio - Position ratio (0.0 to 1.0)
- * @returns Data point at the calculated index
- */
+/** Pick a data point at a specific ratio position in the dataset */
 function pickDataPointAtRatio(
   data: NormalizedPerformanceDataPoint[],
   ratio: number
@@ -31,20 +16,13 @@ function pickDataPointAtRatio(
   return data[index] ?? null;
 }
 
-/**
- * Find data points with significant value changes (peaks and valleys)
- * @param data - Array of data points
- * @param threshold - Minimum change threshold to be considered significant
- * @returns Array of points with significant changes
- */
+/** Find data points with significant value changes (peaks and valleys) */
 function findSignificantChangePoints(
   data: NormalizedPerformanceDataPoint[],
   threshold: number = 15
 ): NormalizedPerformanceDataPoint[] {
   if (data.length < 2) return [];
-
   const significantPoints: NormalizedPerformanceDataPoint[] = [];
-
   for (let i = 1; i < data.length - 1; i++) {
     const prev = data[i - 1];
     const curr = data[i];
@@ -54,8 +32,6 @@ function findSignificantChangePoints(
 
     const changeToPrev = Math.abs(curr.value - prev.value);
     const changeToNext = Math.abs(curr.value - next.value);
-
-    // Check if this is a local peak or valley
     const isPeak = curr.value > prev.value && curr.value > next.value;
     const isValley = curr.value < prev.value && curr.value < next.value;
 
@@ -67,27 +43,7 @@ function findSignificantChangePoints(
   return significantPoints;
 }
 
-// ============================================================================
-// Generic Event Generators
-// ============================================================================
-
-/**
- * Generate events at fixed ratio positions in the dataset
- * Useful for creating evenly-spaced milestones
- *
- * @param data - Normalized performance data
- * @param config - Configuration for event generation
- * @returns Array of chart events
- *
- * @example
- * ```typescript
- * const events = generateRatioBasedEvents(data, {
- *   positions: [0.2, 0.5, 0.8],
- *   labels: ["Q1 Review", "Mid-Year", "Q3 Review"],
- *   eventType: "milestone"
- * });
- * ```
- */
+/** Generate events at fixed ratio positions in the dataset */
 export function generateRatioBasedEvents(
   data: NormalizedPerformanceDataPoint[],
   config: {
@@ -112,14 +68,7 @@ export function generateRatioBasedEvents(
     .filter((event): event is ChartEvent => event !== null);
 }
 
-/**
- * Generate events with alternating types (milestone/holiday)
- * Common pattern in team/repo dashboards
- *
- * @param data - Normalized performance data
- * @param config - Configuration for event generation
- * @returns Array of chart events
- */
+/** Generate events with alternating types (milestone/holiday) */
 export function generateAlternatingTypeEvents(
   data: NormalizedPerformanceDataPoint[],
   config: {
@@ -143,26 +92,7 @@ export function generateAlternatingTypeEvents(
     .filter((event): event is ChartEvent => event !== null);
 }
 
-// ============================================================================
-// Generic Annotation Generators
-// ============================================================================
-
-/**
- * Generate annotations at fixed ratio positions in the dataset
- * Useful for marking key milestones or changes
- *
- * @param data - Normalized performance data
- * @param config - Configuration for annotation generation
- * @returns Array of chart annotations
- *
- * @example
- * ```typescript
- * const annotations = generateRatioBasedAnnotations(data, {
- *   positions: [0.3, 0.7],
- *   labels: ["Process Change", "Team Expansion"]
- * });
- * ```
- */
+/** Generate annotations at fixed ratio positions in the dataset */
 export function generateRatioBasedAnnotations(
   data: NormalizedPerformanceDataPoint[],
   config: {
@@ -186,14 +116,7 @@ export function generateRatioBasedAnnotations(
     .filter((annotation): annotation is ChartAnnotation => annotation !== null);
 }
 
-/**
- * Generate annotations at significant performance change points
- * Automatically identifies peaks and valleys in the data
- *
- * @param data - Normalized performance data
- * @param config - Configuration for annotation generation
- * @returns Array of chart annotations
- */
+/** Generate annotations at significant performance change points */
 export function generateChangePointAnnotations(
   data: NormalizedPerformanceDataPoint[],
   config: {
@@ -209,8 +132,6 @@ export function generateChangePointAnnotations(
   } = config;
 
   const significantPoints = findSignificantChangePoints(data, threshold);
-
-  // Limit to max annotations, evenly distributed
   const selected =
     significantPoints.length <= maxAnnotations
       ? significantPoints
@@ -226,14 +147,7 @@ export function generateChangePointAnnotations(
   }));
 }
 
-// ============================================================================
-// Preset Generators for Common Dashboard Types
-// ============================================================================
-
-/**
- * Team dashboard event generator
- * Creates Release, Incident, and Sprint Planning events
- */
+/** Team dashboard event generator */
 export function generateTeamEvents(
   data: NormalizedPerformanceDataPoint[]
 ): ChartEvent[] {
@@ -243,10 +157,7 @@ export function generateTeamEvents(
   });
 }
 
-/**
- * Team dashboard annotation generator
- * Creates Process Upgrade and Staffing Shift annotations
- */
+/** Team dashboard annotation generator */
 export function generateTeamAnnotations(
   data: NormalizedPerformanceDataPoint[]
 ): ChartAnnotation[] {
@@ -256,10 +167,7 @@ export function generateTeamAnnotations(
   });
 }
 
-/**
- * Repo dashboard event generator
- * Creates Deployment, Bug Fix, and Feature Release events
- */
+/** Repo dashboard event generator */
 export function generateRepoEvents(
   data: NormalizedPerformanceDataPoint[]
 ): ChartEvent[] {
@@ -269,10 +177,7 @@ export function generateRepoEvents(
   });
 }
 
-/**
- * Repo dashboard annotation generator
- * Creates Architecture Change and Dependency Update annotations
- */
+/** Repo dashboard annotation generator */
 export function generateRepoAnnotations(
   data: NormalizedPerformanceDataPoint[]
 ): ChartAnnotation[] {
@@ -282,10 +187,7 @@ export function generateRepoAnnotations(
   });
 }
 
-/**
- * Generic performance insight annotation generator
- * Automatically identifies and labels significant changes
- */
+/** Generic performance insight annotation generator */
 export function generatePerformanceInsightAnnotations(
   data: NormalizedPerformanceDataPoint[]
 ): ChartAnnotation[] {

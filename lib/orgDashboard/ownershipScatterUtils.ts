@@ -1,5 +1,6 @@
 import { area as d3Area, curveMonotoneX } from "d3-shape";
 import type { DeveloperPoint, ClassifiedPoint, BandPoint, TrendLine, OwnershipTimeRangeKey } from "./ownershipScatterTypes";
+import { MANUAL_OUTLIERS } from "./ownershipScatterData";
 
 export const WIDTH = 720;
 export const HEIGHT = 420;
@@ -95,38 +96,7 @@ export function generateSyntheticPoints(range: OwnershipTimeRangeKey): Developer
     });
   }
 
-  const manualOutliers: DeveloperPoint[] = [
-    { name: "Sky Wilson 105", team: "Backend", totalKarmaPoints: 5000, ownershipPct: 25 },
-    { name: "Alex Davis 495", team: "Backend", totalKarmaPoints: 7000, ownershipPct: 21.6 },
-    { name: "Riley Taylor 550", team: "Backend", totalKarmaPoints: 7000, ownershipPct: 17.7 },
-    { name: "Avery Patel 340", team: "Backend", totalKarmaPoints: 2000, ownershipPct: 16.6 },
-    { name: "Jamie Lee 802", team: "Platform", totalKarmaPoints: 15000, ownershipPct: 38 },
-    { name: "Morgan Kim 803", team: "Frontend", totalKarmaPoints: 40000, ownershipPct: 45 },
-    { name: "Sam Chen 801", team: "Platform", totalKarmaPoints: 280000, ownershipPct: 72 },
-    { name: "Drew Walsh 901", team: "Platform", totalKarmaPoints: 250000, ownershipPct: 78 },
-    { name: "Quinn Hayes 902", team: "Backend", totalKarmaPoints: 220000, ownershipPct: 70 },
-    { name: "Blake Reed H1", team: "Frontend", totalKarmaPoints: 10000, ownershipPct: 22 },
-    { name: "Jordan Reed H2", team: "Backend", totalKarmaPoints: 12000, ownershipPct: 24 },
-    { name: "Casey Reed H3", team: "Platform", totalKarmaPoints: 8000, ownershipPct: 18 },
-    { name: "Riley Reed H4", team: "DevOps", totalKarmaPoints: 18000, ownershipPct: 28 },
-    { name: "Avery Reed H5", team: "Frontend", totalKarmaPoints: 22000, ownershipPct: 26 },
-    { name: "Sam Reed H6", team: "Backend", totalKarmaPoints: 35000, ownershipPct: 42 },
-    { name: "Quinn Reed H7", team: "Platform", totalKarmaPoints: 45000, ownershipPct: 48 },
-    { name: "Drew Reed H8", team: "DevOps", totalKarmaPoints: 30000, ownershipPct: 38 },
-    { name: "Morgan Reed H9", team: "Frontend", totalKarmaPoints: 48000, ownershipPct: 52 },
-    { name: "Sky Reed H10", team: "Backend", totalKarmaPoints: 300000, ownershipPct: 75 },
-    { name: "Avery Thomas 577", team: "DevOps", totalKarmaPoints: 107000, ownershipPct: 0.7 },
-    { name: "Jordan Patel 375", team: "DevOps", totalKarmaPoints: 31000, ownershipPct: 2.4 },
-    { name: "Reese Blake 903", team: "DevOps", totalKarmaPoints: 240000, ownershipPct: 8 },
-    { name: "Casey Ford 904", team: "Frontend", totalKarmaPoints: 265000, ownershipPct: 5 },
-    { name: "Low A", team: "Backend", totalKarmaPoints: 20000, ownershipPct: 5 },
-    { name: "Low B", team: "DevOps", totalKarmaPoints: 40000, ownershipPct: 3 },
-    { name: "Low C", team: "Frontend", totalKarmaPoints: 95000, ownershipPct: 18 },
-    { name: "Low D", team: "Platform", totalKarmaPoints: 100000, ownershipPct: 0 },
-    { name: "Low E", team: "Backend", totalKarmaPoints: 155000, ownershipPct: 9 },
-  ];
-
-  return [...points, ...manualOutliers];
+  return [...points, ...MANUAL_OUTLIERS];
 }
 
 export type OwnershipChartData = {
@@ -151,60 +121,31 @@ export function buildOwnershipChartData(
   const base = ratio >= 1 ? fullData : fullData.slice(0, Math.max(2, Math.ceil(fullData.length * ratio)));
   const { classified, slope, intercept, stdRes } = computeClassifiedPoints(base);
 
-  const xMin = 0;
-  const xMax = X_AXIS_MAX;
-  const yMin = 0;
-  const yMax = Y_AXIS_MAX;
-
+  const xMin = 0, xMax = X_AXIS_MAX, yMin = 0, yMax = Y_AXIS_MAX;
   const xTickValues: number[] = [];
-  for (let v = 0; v <= xMax; v += X_TICK_STEP) {
-    xTickValues.push(v);
-  }
+  for (let v = 0; v <= xMax; v += X_TICK_STEP) xTickValues.push(v);
 
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
-
-  const xScale = (x: number) =>
-    ((x - xMin) / Math.max(1, xMax - xMin)) * innerWidth + margin.left;
-  const yScale = (y: number) =>
-    height - margin.bottom - ((y - yMin) / Math.max(1, yMax - yMin)) * innerHeight;
+  const xScale = (x: number) => ((x - xMin) / Math.max(1, xMax - xMin)) * innerWidth + margin.left;
+  const yScale = (y: number) => height - margin.bottom - ((y - yMin) / Math.max(1, yMax - yMin)) * innerHeight;
 
   const bandPoints: BandPoint[] = [];
-  const steps = 80;
-  for (let i = 0; i <= steps; i++) {
-    const t = i / steps;
+  for (let i = 0; i <= 80; i++) {
+    const t = i / 80;
     const x = xMin + t * (xMax - xMin);
     const center = slope * x + intercept;
-    bandPoints.push({
-      x,
-      yLower: Math.max(yMin, center - 1.5 * stdRes),
-      yUpper: Math.min(yMax, center + 1.5 * stdRes),
-    });
+    bandPoints.push({ x, yLower: Math.max(yMin, center - 1.5 * stdRes), yUpper: Math.min(yMax, center + 1.5 * stdRes) });
   }
 
-  const areaGen = d3Area<BandPoint>()
-    .x((d) => xScale(d.x))
-    .y0((d) => yScale(d.yLower))
-    .y1((d) => yScale(d.yUpper))
-    .curve(curveMonotoneX);
+  const areaGen = d3Area<BandPoint>().x((d) => xScale(d.x)).y0((d) => yScale(d.yLower)).y1((d) => yScale(d.yUpper)).curve(curveMonotoneX);
   const bandPath = areaGen(bandPoints) ?? undefined;
-
   const yTickValues = [0, 20, 40, 60, 80];
-
-  const scaledPoints = classified.map((p) => ({
-    ...p,
-    cx: xScale(p.totalKarmaPoints),
-    cy: yScale(p.ownershipPct),
-  }));
+  const scaledPoints = classified.map((p) => ({ ...p, cx: xScale(p.totalKarmaPoints), cy: yScale(p.ownershipPct) }));
 
   const yMinLine = slope * xMin + intercept;
   const yMaxLine = slope * xMax + intercept;
-  const trendLine: TrendLine = {
-    x1: xScale(xMin),
-    y1: yScale(yMinLine),
-    x2: xScale(xMax),
-    y2: yScale(yMaxLine),
-  };
+  const trendLine: TrendLine = { x1: xScale(xMin), y1: yScale(yMinLine), x2: xScale(xMax), y2: yScale(yMaxLine) };
 
   return {
     points: scaledPoints,

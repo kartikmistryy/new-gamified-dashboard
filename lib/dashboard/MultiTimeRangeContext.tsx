@@ -1,12 +1,4 @@
-/**
- * Multi Time Range Context Provider
- *
- * Advanced context provider for pages that need multiple independent time ranges.
- * Used in Design pages where different visualizations need separate time filters
- * (e.g., collaboration network vs chaos matrix).
- *
- * @module lib/dashboard/MultiTimeRangeContext
- */
+/** Multi Time Range Context - Provider for pages needing multiple independent time ranges */
 
 'use client';
 
@@ -29,35 +21,14 @@ export interface NamedTimeRangeConfig {
   options?: ReadonlyArray<TimeRangeOption>;
 }
 
-/**
- * Configuration for named time range filters
- *
- * Maps filter names to their configuration. Each name becomes an independent
- * time range that can be accessed via useNamedTimeRange(name).
- *
- * @example
- * ```tsx
- * const config: MultiTimeRangeConfig = {
- *   ranges: {
- *     collaboration: { defaultRange: "3m" },
- *     chaos: { defaultRange: "max" },
- *     performance: { defaultRange: "1m", options: customOptions },
- *   },
- * };
- * ```
- */
+/** Configuration for named time range filters - maps filter names to their config */
 export interface MultiTimeRangeConfig {
   ranges: {
     [name: string]: NamedTimeRangeConfig;
   };
 }
 
-/**
- * Multi-range context value with dynamic keys
- *
- * Provides type-safe access to multiple time ranges by name.
- * Internal API used by hooks.
- */
+/** Multi-range context value - provides type-safe access to multiple time ranges by name */
 interface MultiTimeRangeContextValue {
   /** Get current value for a named range */
   getTimeRange: (name: string) => TimeRangeKey;
@@ -79,11 +50,7 @@ interface MultiTimeRangeContextValue {
 const [MultiTimeRangeContext, useMultiTimeRangeInternal] =
   getStrictContext<MultiTimeRangeContextValue>('MultiTimeRange');
 
-/**
- * Return type for useNamedTimeRange hook
- *
- * Similar to UseTimeRangeResult but for a specific named range.
- */
+/** Return type for useNamedTimeRange hook - similar to UseTimeRangeResult but for a specific named range */
 export interface NamedTimeRangeResult {
   /** Current time range value for this named filter */
   timeRange: TimeRangeKey;
@@ -95,40 +62,7 @@ export interface NamedTimeRangeResult {
   resetTimeRange: () => void;
 }
 
-/**
- * Hook for accessing a specific named time range
- *
- * Primary hook for consuming a single time range from the multi-range context.
- * Each call to this hook with a different name returns independent state.
- *
- * @param name - The name/key of the time range to access
- * @returns State and controls for the named range
- *
- * @throws {Error} If used outside MultiTimeRangeProvider
- * @throws {Error} If name doesn't exist in config
- *
- * @example
- * ```tsx
- * function CollaborationSection() {
- *   const { timeRange, setTimeRange, options } = useNamedTimeRange('collaboration');
- *
- *   return (
- *     <DashboardSection
- *       title="Collaboration Network"
- *       action={
- *         <TimeRangeFilter
- *           value={timeRange}
- *           onChange={setTimeRange}
- *           options={options}
- *         />
- *       }
- *     >
- *       <CollaborationNetwork timeRange={timeRange} />
- *     </DashboardSection>
- *   );
- * }
- * ```
- */
+/** Hook for accessing a specific named time range - primary hook for consuming a single time range */
 export function useNamedTimeRange(name: string): NamedTimeRangeResult {
   const ctx = useMultiTimeRangeInternal();
 
@@ -144,40 +78,12 @@ export function useNamedTimeRange(name: string): NamedTimeRangeResult {
   );
 }
 
-/**
- * Hook for accessing all time ranges (advanced usage)
- *
- * Provides access to the full multi-range context for advanced use cases
- * like bulk operations or observing all ranges.
- *
- * @throws {Error} If used outside MultiTimeRangeProvider
- * @returns Full context value with all range operations
- *
- * @example
- * ```tsx
- * function DebugPanel() {
- *   const { getRangeNames, getTimeRange, resetAll } = useMultiTimeRange();
- *
- *   return (
- *     <div>
- *       {getRangeNames().map((name) => (
- *         <div key={name}>
- *           {name}: {getTimeRange(name)}
- *         </div>
- *       ))}
- *       <button onClick={resetAll}>Reset All Filters</button>
- *     </div>
- *   );
- * }
- * ```
- */
+/** Hook for accessing all time ranges - provides full multi-range context for advanced use cases */
 export function useMultiTimeRange(): Omit<MultiTimeRangeContextValue, never> {
   return useMultiTimeRangeInternal();
 }
 
-/**
- * Props for MultiTimeRangeProvider
- */
+/** Props for MultiTimeRangeProvider */
 interface MultiTimeRangeProviderProps {
   /** Configuration mapping names to time range configs */
   config: MultiTimeRangeConfig;
@@ -185,87 +91,7 @@ interface MultiTimeRangeProviderProps {
   children: ReactNode;
 }
 
-/**
- * Multi Time Range Provider Component
- *
- * Provides multiple independent time ranges for complex pages.
- * Use this for Design pages or any page that needs separate time filters
- * for different visualizations.
- *
- * **When to use:**
- * - Pages with 2+ visualizations that need independent time ranges
- * - Design pages (collaboration network + chaos matrix)
- * - Comparison pages with multiple chart types
- *
- * **When NOT to use:**
- * - Pages with single time range (use TimeRangeProvider instead)
- * - Pages where all visualizations share the same filter
- *
- * @param props.config - Configuration with named ranges
- * @param props.children - Child components
- *
- * @example
- * ```tsx
- * // Team Design Page with two independent filters
- * export function TeamDesignPageClient() {
- *   const { teamId } = useRouteParams();
- *
- *   return (
- *     <MultiTimeRangeProvider
- *       config={{
- *         ranges: {
- *           collaboration: { defaultRange: "3m" },
- *           chaos: { defaultRange: "max" },
- *         },
- *       }}
- *     >
- *       <CollaborationSection />
- *       <ChaosSection />
- *       <MembersSection />
- *     </MultiTimeRangeProvider>
- *   );
- * }
- *
- * // Child component uses named range
- * function CollaborationSection() {
- *   const { timeRange } = useNamedTimeRange('collaboration');
- *   return <CollaborationNetwork timeRange={timeRange} />;
- * }
- * ```
- *
- * @example
- * ```tsx
- * // With custom options per range
- * export function OrgDesignPageClient() {
- *   const collaborationOptions = useMemo(() => {
- *     return TIME_RANGE_OPTIONS.map((opt) => ({
- *       ...opt,
- *       disabled: opt.id === "1m", // Disable 1m for collaboration
- *     }));
- *   }, []);
- *
- *   return (
- *     <MultiTimeRangeProvider
- *       config={{
- *         ranges: {
- *           ownership: {
- *             defaultRange: "3m",
- *             options: TIME_RANGE_OPTIONS,
- *           },
- *           chaos: {
- *             defaultRange: "max",
- *             options: collaborationOptions,
- *           },
- *         },
- *       }}
- *     >
- *       <OwnershipSection />
- *       <ChaosSection />
- *     </MultiTimeRangeProvider>
- *   );
- * }
- * ```
- */
+/** Multi Time Range Provider - provides multiple independent time ranges for complex pages */
 export function MultiTimeRangeProvider({
   config,
   children,
@@ -345,39 +171,5 @@ export function MultiTimeRangeProvider({
   );
 }
 
-/**
- * Utility hook to access multiple named ranges at once
- *
- * Convenience hook for components that need to access multiple ranges
- * without multiple hook calls.
- *
- * @param names - Array of range names to access
- * @returns Map of range names to their current values
- *
- * @example
- * ```tsx
- * function ComparisonChart() {
- *   const ranges = useMultipleNamedRanges(['performance', 'comparison']);
- *
- *   return (
- *     <div>
- *       <Chart1 timeRange={ranges.performance} />
- *       <Chart2 timeRange={ranges.comparison} />
- *     </div>
- *   );
- * }
- * ```
- */
-export function useMultipleNamedRanges(
-  names: string[]
-): Record<string, TimeRangeKey> {
-  const { getTimeRange } = useMultiTimeRangeInternal();
-
-  return useMemo(() => {
-    const result: Record<string, TimeRangeKey> = {};
-    names.forEach((name) => {
-      result[name] = getTimeRange(name);
-    });
-    return result;
-  }, [names, getTimeRange]);
-}
+// Re-export utility hooks
+export { useMultipleNamedRanges } from './multiTimeRangeUtils';

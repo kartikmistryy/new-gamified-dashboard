@@ -2,6 +2,7 @@ import * as d3 from "d3";
 import type { SpofTeamConfig } from "./spofMockData";
 import type { StackedBinData } from "./spofChartTypes";
 import type { D3TooltipController } from "@/lib/chartTooltip";
+import { formatStackedBarTooltip } from "./spofChartTooltips";
 
 /** Draw shaded regions for standard deviation bounds */
 export function drawShadedRegions(
@@ -64,22 +65,15 @@ export function drawStackedBars(
   if (tooltip) {
     mergedBars
       .on("mouseenter", (event, d) => {
-        const range = `${d.bin.x0.toFixed(1)}–${d.bin.x1.toFixed(1)}`;
         const count = d.stack.y1 - d.stack.y0;
         tooltip.show(
-          `<div style="font-weight:600; color:#0f172a;">${d.stack.team}</div>` +
-            `<div style="color:#6b7280;">Score: ${range}</div>` +
-            `<div style="margin-top:4px; color:#2563eb;">Count: ${count}</div>`,
+          formatStackedBarTooltip(d.stack.team, d.bin.x0, d.bin.x1, count),
           event.clientX + 12,
           event.clientY + 12
         );
       })
-      .on("mousemove", (event) => {
-        tooltip.move(event.clientX + 12, event.clientY + 12);
-      })
-      .on("mouseleave", () => {
-        tooltip.hide();
-      });
+      .on("mousemove", (event) => tooltip.move(event.clientX + 12, event.clientY + 12))
+      .on("mouseleave", () => tooltip.hide());
   }
 
   bars.exit().remove();
@@ -92,18 +86,9 @@ export function drawNormalCurve(
   xScale: d3.ScaleLinear<number, number>,
   yScale: d3.ScaleLinear<number, number>
 ): void {
-  const lineGenerator = d3.line<[number, number]>()
-    .x((d) => xScale(d[0]))
-    .y((d) => yScale(d[1]))
-    .curve(d3.curveBasis);
-
-  g.append("path")
-    .datum(normalData)
-    .attr("fill", "none")
-    .attr("stroke", "#dc2626")
-    .attr("stroke-width", 2)
-    .attr("stroke-dasharray", "4,4")
-    .attr("d", lineGenerator);
+  const lineGenerator = d3.line<[number, number]>().x((d) => xScale(d[0])).y((d) => yScale(d[1])).curve(d3.curveBasis);
+  g.append("path").datum(normalData).attr("fill", "none").attr("stroke", "#dc2626")
+    .attr("stroke-width", 2).attr("stroke-dasharray", "4,4").attr("d", lineGenerator);
 }
 
 /** Draw sigma lines and labels */
@@ -145,25 +130,13 @@ export function drawAxes(
   innerHeight: number,
   innerWidth: number
 ): void {
-  g.append("g")
-    .attr("transform", `translate(0,${innerHeight})`)
-    .call(d3.axisBottom(xScale).ticks(7))
+  g.append("g").attr("transform", `translate(0,${innerHeight})`).call(d3.axisBottom(xScale).ticks(7))
     .selectAll("text").attr("font-size", "12px");
-
-  g.append("g")
-    .call(d3.axisLeft(yScale).ticks(8))
-    .selectAll("text").attr("font-size", "12px");
-
-  g.append("text")
-    .attr("x", innerWidth / 2).attr("y", innerHeight + 45)
-    .attr("text-anchor", "middle").attr("font-size", "13px").attr("fill", "#374151")
-    .text("Normalized SPOF Score");
-
-  g.append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("x", -innerHeight / 2).attr("y", -45)
-    .attr("text-anchor", "middle").attr("font-size", "13px").attr("fill", "#374151")
-    .text("Count");
+  g.append("g").call(d3.axisLeft(yScale).ticks(8)).selectAll("text").attr("font-size", "12px");
+  g.append("text").attr("x", innerWidth / 2).attr("y", innerHeight + 45).attr("text-anchor", "middle")
+    .attr("font-size", "13px").attr("fill", "#374151").text("Normalized SPOF Score");
+  g.append("text").attr("transform", "rotate(-90)").attr("x", -innerHeight / 2).attr("y", -45)
+    .attr("text-anchor", "middle").attr("font-size", "13px").attr("fill", "#374151").text("Count");
 }
 
 /** Draw chart title */
@@ -175,9 +148,7 @@ export function drawTitle(
   std: number,
   teamsText: string
 ): void {
-  svg.append("text")
-    .attr("x", width / 2).attr("y", 25)
-    .attr("text-anchor", "middle").attr("font-size", "14px")
+  svg.append("text").attr("x", width / 2).attr("y", 25).attr("text-anchor", "middle").attr("font-size", "14px")
     .attr("font-weight", "600").attr("fill", "#1f2937")
     .text(`SPOF Score Distribution (${skewType}: μ=${mean.toFixed(1)}, σ=${std.toFixed(1)}) | Teams: ${teamsText}`);
 }
@@ -192,26 +163,19 @@ export function drawLegend(
   mean: number,
   std: number
 ): void {
-  const legend = svg.append("g")
-    .attr("transform", `translate(${width - margin.right + 20}, ${margin.top})`);
-
+  const legend = svg.append("g").attr("transform", `translate(${width - margin.right + 20}, ${margin.top})`);
   if (showNormalFit) {
-    legend.append("line")
-      .attr("x1", 0).attr("x2", 25).attr("y1", 10).attr("y2", 10)
+    legend.append("line").attr("x1", 0).attr("x2", 25).attr("y1", 10).attr("y2", 10)
       .attr("stroke", "#dc2626").attr("stroke-width", 2).attr("stroke-dasharray", "4,4");
-    legend.append("text")
-      .attr("x", 30).attr("y", 14).attr("font-size", "11px").attr("fill", "#374151")
+    legend.append("text").attr("x", 30).attr("y", 14).attr("font-size", "11px").attr("fill", "#374151")
       .text(`Normal Fit (μ=${mean.toFixed(2)}, σ=${std.toFixed(2)})`);
   }
-
   const legendOffset = showNormalFit ? 30 : 0;
   visibleTeamConfigs.forEach((team, i) => {
     const y = legendOffset + i * 22;
-    legend.append("rect")
-      .attr("x", 0).attr("y", y).attr("width", 16).attr("height", 16)
+    legend.append("rect").attr("x", 0).attr("y", y).attr("width", 16).attr("height", 16)
       .attr("fill", team.color).attr("rx", 2);
-    legend.append("text")
-      .attr("x", 22).attr("y", y + 12).attr("font-size", "11px").attr("fill", "#374151")
+    legend.append("text").attr("x", 22).attr("y", y + 12).attr("font-size", "11px").attr("fill", "#374151")
       .text(team.name);
   });
 }

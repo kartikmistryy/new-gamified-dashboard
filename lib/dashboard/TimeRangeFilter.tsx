@@ -1,12 +1,4 @@
-/**
- * Time Range Filter Component
- *
- * Unified time range filter component that works in both context-aware
- * and controlled modes. Automatically integrates with TimeRangeContext
- * when available, or can be used standalone with explicit props.
- *
- * @module lib/dashboard/TimeRangeFilter
- */
+/** Time Range Filter - Context-aware or controlled time range selector */
 
 "use client";
 
@@ -14,152 +6,24 @@ import { Badge } from "@/components/shared/Badge";
 import { useOptionalTimeRange } from "./TimeRangeContext";
 import type { TimeRangeOption, TimeRangeKey } from "./timeRangeTypes";
 
-/**
- * Props for TimeRangeFilter component
- *
- * All props are optional when used inside TimeRangeProvider.
- * When used standalone, value/onChange are required.
- */
 interface TimeRangeFilterProps {
-  /**
-   * Current time range value (controlled mode)
-   * Optional if used inside TimeRangeProvider
-   */
+  /** Current time range (optional if in TimeRangeProvider) */
   value?: TimeRangeKey;
-  /**
-   * Change handler (controlled mode)
-   * Optional if used inside TimeRangeProvider
-   */
+  /** Change handler (optional if in TimeRangeProvider) */
   onChange?: (value: TimeRangeKey) => void;
-  /**
-   * Available time range options (controlled mode)
-   * Optional - defaults to context options or TIME_RANGE_OPTIONS
-   */
+  /** Available options (defaults to context options) */
   options?: readonly TimeRangeOption[];
-  /**
-   * Visual size variant
-   * - `sm`: Compact size for tight layouts
-   * - `default`: Standard size
-   */
+  /** Size variant: 'sm' or 'default' */
   size?: "sm" | "default";
-  /**
-   * Additional CSS classes to apply to the container
-   */
+  /** Additional CSS classes */
   className?: string;
-  /**
-   * Accessible label for the filter group
-   * Recommended for screen readers
-   */
+  /** Accessible label for screen readers */
   ariaLabel?: string;
 }
 
 /**
- * Time Range Filter Component
- *
- * **Context-Aware Mode** (Automatic):
- * When placed inside a TimeRangeProvider, automatically syncs with context state.
- * No props needed - just render `<TimeRangeFilter />`.
- *
- * **Controlled Mode** (Explicit):
- * When used standalone, requires value/onChange props like a controlled input.
- * Useful for local state or integration with external state management.
- *
- * **Visual Design:**
- * - Badge-based UI with active/inactive states
- * - Hover effects for better interactivity
- * - Disabled state support for insufficient data scenarios
- * - Responsive flex layout with gap spacing
- *
- * @param props - Component props (all optional if inside provider)
- * @returns Rendered time range filter UI
- *
- * @throws {Error} In controlled mode if value/onChange are missing
- *
- * @example
- * ```tsx
- * // Context-aware mode (simplest usage)
- * function MyPage() {
- *   return (
- *     <TimeRangeProvider config={{ defaultRange: "1m" }}>
- *       <DashboardSection
- *         title="Performance"
- *         action={<TimeRangeFilter />}
- *       >
- *         <PerformanceChart />
- *       </DashboardSection>
- *     </TimeRangeProvider>
- *   );
- * }
- * ```
- *
- * @example
- * ```tsx
- * // Controlled mode (explicit state)
- * function StandaloneFilter() {
- *   const [range, setRange] = useState<TimeRangeKey>("3m");
- *
- *   return (
- *     <TimeRangeFilter
- *       value={range}
- *       onChange={setRange}
- *       options={TIME_RANGE_OPTIONS}
- *     />
- *   );
- * }
- * ```
- *
- * @example
- * ```tsx
- * // With custom options and disabled states
- * function SmartFilter() {
- *   const options = useMemo(() => [
- *     { id: "1m", label: "1 Month", disabled: !hasDataFor1m },
- *     { id: "3m", label: "3 Months" },
- *     { id: "1y", label: "1 Year" },
- *     { id: "max", label: "Max" },
- *   ], [hasDataFor1m]);
- *
- *   return (
- *     <TimeRangeProvider config={{ defaultRange: "3m", options }}>
- *       <TimeRangeFilter size="sm" />
- *     </TimeRangeProvider>
- *   );
- * }
- * ```
- *
- * @example
- * ```tsx
- * // Multi-range with named filters
- * function DesignPage() {
- *   const collaboration = useNamedTimeRange('collaboration');
- *   const chaos = useNamedTimeRange('chaos');
- *
- *   return (
- *     <>
- *       <DashboardSection
- *         title="Collaboration"
- *         action={
- *           <TimeRangeFilter
- *             value={collaboration.timeRange}
- *             onChange={collaboration.setTimeRange}
- *             options={collaboration.options}
- *           />
- *         }
- *       />
- *       <DashboardSection
- *         title="Chaos"
- *         action={
- *           <TimeRangeFilter
- *             value={chaos.timeRange}
- *             onChange={chaos.setTimeRange}
- *             options={chaos.options}
- *           />
- *         }
- *       />
- *     </>
- *   );
- * }
- * ```
+ * Time range filter with context-aware or controlled mode.
+ * Use inside TimeRangeProvider for automatic sync, or pass value/onChange for controlled mode.
  */
 export function TimeRangeFilter({
   value: controlledValue,
@@ -238,17 +102,7 @@ export function TimeRangeFilter({
   );
 }
 
-/**
- * Compact time range filter for toolbar usage
- *
- * Pre-configured small variant with minimal styling.
- * Useful for embedding in page headers or toolbars.
- *
- * @example
- * ```tsx
- * <DashboardHeader actions={<CompactTimeRangeFilter />} />
- * ```
- */
+/** Compact time range filter pre-configured with sm size */
 export function CompactTimeRangeFilter(
   props: Omit<TimeRangeFilterProps, "size">
 ) {

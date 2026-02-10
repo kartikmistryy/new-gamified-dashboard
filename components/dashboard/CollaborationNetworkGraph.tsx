@@ -1,7 +1,5 @@
 "use client";
-
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { interpolateViridis, scaleLinear, scaleSequential } from "d3";
 import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 import type { ChartInsight } from "@/lib/orgDashboard/types";
 import {
@@ -11,7 +9,13 @@ import {
 } from "@/lib/teamDashboard/collaborationNetworkData";
 import { layoutGraph, type LayoutType } from "@/lib/teamDashboard/collaborationNetworkLayout";
 import { getUserAvatarUrl } from "@/components/shared/UserAvatar";
-
+import {
+  createColorScale,
+  createEdgeWidthScale,
+  calculateNodeRadius,
+} from "@/lib/dashboard/collaborationNetworkScales";
+import { formatNodeTooltip, formatEdgeTooltip } from "@/lib/dashboard/collaborationNetworkTooltips";
+import { CollaborationNetworkLegend } from "./CollaborationNetworkLegend";
 const CHART_HEIGHT = 540;
 const DEFAULT_THRESHOLD = 0.7;
 const DEFAULT_LAYOUT: LayoutType = "shell";
@@ -68,15 +72,8 @@ export function CollaborationNetworkGraph({ data, onInsightsChange }: Collaborat
     [graph, width]
   );
 
-  const colorScale = useMemo(
-    () => scaleSequential(interpolateViridis).domain([0.05, 1]),
-    []
-  );
-
-  const edgeWidthScale = useMemo(
-    () => scaleLinear().domain([0.35, 1]).range([1.4, 5.6]).clamp(true),
-    []
-  );
+  const colorScale = useMemo(() => createColorScale(), []);
+  const edgeWidthScale = useMemo(() => createEdgeWidthScale(), []);
 
   return (
     <div className="w-full min-w-0" ref={wrapperRef}>
@@ -110,9 +107,7 @@ export function CollaborationNetworkGraph({ data, onInsightsChange }: Collaborat
                     onMouseEnter={(event) => {
                       setHoveredEdgeKey(key);
                       tooltipRef.current?.show(
-                        `<div style="font-weight:600; color:#0f172a;">${source.label} ↔ ${target.label}</div>` +
-                          `<div style="color:#1d4ed8;">SPOF score: ${edge.spofScore.toFixed(2)}</div>` +
-                          `<div style="color:#475569;">Collaboration strength: ${edge.collaborationStrength.toFixed(2)}</div>`,
+                        formatEdgeTooltip(source.label, target.label, edge.spofScore, edge.collaborationStrength),
                         event.clientX + 12,
                         event.clientY + 12
                       );
@@ -128,7 +123,7 @@ export function CollaborationNetworkGraph({ data, onInsightsChange }: Collaborat
 
               {/* Render nodes */}
               {laidOutGraph.nodes.map((node) => {
-                const radius = 9 + Math.min(7, node.degree * 1.2);
+                const radius = calculateNodeRadius(node.degree);
                 const isHovered = hoveredNodeId === node.id;
                 const avatarSize = radius * 2;
                 const avatarUrl = getUserAvatarUrl(node.label, 64);
@@ -141,9 +136,7 @@ export function CollaborationNetworkGraph({ data, onInsightsChange }: Collaborat
                     onMouseEnter={(event) => {
                       setHoveredNodeId(node.id);
                       tooltipRef.current?.show(
-                        `<div style="font-weight:600; color:#0f172a;">${node.label}</div>` +
-                          `<div style="color:#1d4ed8;">Total DOA (normalized): ${node.doaNormalized.toFixed(2)}</div>` +
-                          `<div style="color:#475569;">Active links: ${node.degree}</div>`,
+                        formatNodeTooltip(node.label, node.doaNormalized, node.degree),
                         event.clientX + 12,
                         event.clientY + 12
                       );
@@ -198,35 +191,7 @@ export function CollaborationNetworkGraph({ data, onInsightsChange }: Collaborat
             </g>
           </svg>
 
-          {/* Legend */}
-          <div className="w-20 shrink-0 pb-2 pt-3">
-            <h3 className="mb-3 text-right text-sm font-semibold leading-tight text-slate-600">
-              Total DOA
-              <br />
-              (normalized)
-            </h3>
-            <div className="flex items-stretch justify-end gap-2">
-              <div
-                className="h-[472px] w-8 rounded-sm border border-slate-300"
-                style={{
-                  background:
-                    "linear-gradient(to top, #440154 0%, #414487 20%, #2a788e 40%, #22a884 60%, #7ad151 80%, #fde725 100%)",
-                }}
-              />
-              <div className="flex h-[472px] flex-col justify-between text-right text-xs font-medium text-slate-600">
-                <span>1.0</span>
-                <span>0.9</span>
-                <span>0.8</span>
-                <span>0.7</span>
-                <span>0.6</span>
-                <span>0.5</span>
-                <span>0.4</span>
-                <span>0.3</span>
-                <span>0.2</span>
-                <span>0.1</span>
-              </div>
-            </div>
-          </div>
+          <CollaborationNetworkLegend />
         </div>
       </div>
     </div>

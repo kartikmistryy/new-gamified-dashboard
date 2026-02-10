@@ -1,15 +1,4 @@
-/**
- * Data Transformers for Unified Performance Chart
- *
- * Pure functions for transforming various data formats into the normalized
- * structure expected by the chart rendering logic.
- *
- * All transformers are:
- * - Pure functions (no side effects)
- * - Immutable (return new objects)
- * - Type-safe (full TypeScript support)
- * - Testable (no dependencies on external state)
- */
+/** Data Transformers for Unified Performance Chart */
 
 import type {
   NormalizedPerformanceDataPoint,
@@ -25,42 +14,14 @@ import {
   isUserDataSource,
 } from "./types";
 
-// ============================================================================
-// Week Label Formatter
-// ============================================================================
-
-/**
- * Format a date string into a week label (Mon YYYY format)
- * @param dateStr - ISO date string (YYYY-MM-DD)
- * @returns Formatted week label (e.g., "Jan 2024")
- */
+/** Format a date string into a week label (Mon YYYY format) */
 export function formatWeekLabel(dateStr: string): string {
   const date = new Date(dateStr);
-  const monthNames = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   return `${monthNames[date.getMonth()]} ${date.getFullYear()}`;
 }
 
-// ============================================================================
-// Individual Data Type Transformers
-// ============================================================================
-
-/**
- * Transform org performance data to normalized format
- * (Already in correct format, just maps to normalized type)
- */
+/** Transform org performance data to normalized format */
 export function transformOrgData(
   data: OrgPerformanceDataPoint[]
 ): NormalizedPerformanceDataPoint[] {
@@ -72,10 +33,7 @@ export function transformOrgData(
   }));
 }
 
-/**
- * Transform member performance data to normalized format
- * Converts memberValues to entityValues
- */
+/** Transform member performance data to normalized format */
 export function transformMemberData(
   data: MemberPerformanceDataPoint[]
 ): NormalizedPerformanceDataPoint[] {
@@ -87,10 +45,7 @@ export function transformMemberData(
   }));
 }
 
-/**
- * Transform contributor performance data to normalized format
- * Converts contributorValues to entityValues
- */
+/** Transform contributor performance data to normalized format */
 export function transformContributorData(
   data: ContributorPerformanceDataPoint[]
 ): NormalizedPerformanceDataPoint[] {
@@ -102,10 +57,7 @@ export function transformContributorData(
   }));
 }
 
-/**
- * Transform user performance data to normalized format
- * User data is already in OrgPerformanceDataPoint format
- */
+/** Transform user performance data to normalized format */
 export function transformUserData(
   data: OrgPerformanceDataPoint[]
 ): NormalizedPerformanceDataPoint[] {
@@ -118,25 +70,7 @@ export function transformUserData(
   }));
 }
 
-// ============================================================================
-// Unified Transformer with Type Discrimination
-// ============================================================================
-
-/**
- * Transform any data source to normalized format
- * Uses type guards to determine the correct transformation strategy
- *
- * @param dataSource - Discriminated union of all supported data sources
- * @returns Normalized data points ready for chart rendering
- *
- * @example
- * ```typescript
- * const normalized = transformDataSource({
- *   type: "team",
- *   data: memberPerformanceData
- * });
- * ```
- */
+/** Transform any data source to normalized format using type guards */
 export function transformDataSource(
   dataSource: PerformanceDataSource
 ): NormalizedPerformanceDataPoint[] {
@@ -168,27 +102,7 @@ export function transformDataSource(
   throw new Error(`Unhandled data source type: ${(_exhaustive as any).type}`);
 }
 
-// ============================================================================
-// Entity Filtering
-// ============================================================================
-
-/**
- * Filter normalized data based on entity visibility
- * Recalculates aggregated values based on visible entities only
- *
- * @param data - Normalized performance data points
- * @param visibleEntities - Map of entity names to visibility state
- * @returns Filtered data with recalculated aggregated values
- *
- * @example
- * ```typescript
- * const filtered = filterByEntityVisibility(data, {
- *   "Team A": true,
- *   "Team B": false,
- *   "Team C": true
- * });
- * ```
- */
+/** Filter normalized data based on entity visibility, recalculating aggregated values */
 export function filterByEntityVisibility(
   data: NormalizedPerformanceDataPoint[],
   visibleEntities?: Record<string, boolean>
@@ -237,14 +151,7 @@ export function filterByEntityVisibility(
   });
 }
 
-// ============================================================================
-// Compatibility Transformers for Legacy Code
-// ============================================================================
-
-/**
- * Transform normalized data back to OrgPerformanceDataPoint format
- * Useful for compatibility with existing chart rendering components
- */
+/** Transform normalized data back to OrgPerformanceDataPoint format */
 export function normalizedToOrgFormat(
   data: NormalizedPerformanceDataPoint[]
 ): OrgPerformanceDataPoint[] {
@@ -256,10 +163,7 @@ export function normalizedToOrgFormat(
   }));
 }
 
-/**
- * Transform normalized data back to MemberPerformanceDataPoint format
- * Useful for compatibility with existing chart rendering components
- */
+/** Transform normalized data back to MemberPerformanceDataPoint format */
 export function normalizedToMemberFormat(
   data: NormalizedPerformanceDataPoint[]
 ): MemberPerformanceDataPoint[] {
