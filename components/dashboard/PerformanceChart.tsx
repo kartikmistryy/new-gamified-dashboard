@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import type { ChartEvent, ChartAnnotation } from "@/lib/orgDashboard/types";
-import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 import { getStartDateForRange } from "@/lib/orgDashboard/performanceChartHelpers";
 import { PerformanceChartLegend } from "./PerformanceChartLegend";
 import type {
