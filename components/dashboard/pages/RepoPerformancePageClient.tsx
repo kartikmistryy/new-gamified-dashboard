@@ -9,6 +9,7 @@ import { DashboardSection } from "@/components/dashboard/DashboardSection";
 import { BaseTeamsTable } from "@/components/dashboard/BaseTeamsTable";
 import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
 import { ContributorMetricsChart } from "@/components/dashboard/ContributorMetricsChart";
+import { ContributorCardsCarousel } from "@/components/dashboard/ContributorCardsCarousel";
 import { generateRepoEvents, generateRepoAnnotations } from "@/lib/dashboard/performanceChart";
 import { getContributorPerformanceRowsForRepo } from "@/lib/repoDashboard/overviewMockData";
 import { generateContributorPerformanceTimeSeries } from "@/lib/repoDashboard/performanceMockData";
@@ -189,6 +190,49 @@ export function RepoPerformancePageClient() {
     };
   }, [contributorMetrics, filteredAggregateData]);
 
+  // Prepare carousel contributors with chart data
+  const carouselContributors = useMemo(() => {
+    // Sort contributors by performanceValue to assign ranks
+    const sorted = [...contributors].sort((a, b) => b.performanceValue - a.performanceValue);
+
+    return sorted.map((contributor, index) => {
+      // Find contributor metrics to get chart data
+      const metrics = contributorMetrics.find(m => m.contributorName === contributor.contributorName);
+
+      // Generate cumulative chart data for this contributor
+      const chartData = metrics
+        ? generateCumulativeData(metrics.additionsData, metrics.deletionsData)
+        : [];
+
+      // Filter chart data based on time range
+      const filteredChartData = timeRange === "max"
+        ? chartData
+        : (() => {
+            const weeksToShow = {
+              "1m": 4,
+              "3m": 13,
+              "1y": 52,
+              "max": chartData.length,
+            }[timeRange];
+            return chartData.slice(-weeksToShow);
+          })();
+
+      // Calculate positive and penalty scores from filtered data
+      const positiveScore = filteredChartData.reduce((sum, d) => sum + d.additions, 0);
+      const penaltyScore = filteredChartData.reduce((sum, d) => sum + d.deletions, 0);
+
+      return {
+        id: contributor.contributorName,
+        name: contributor.contributorName,
+        rank: index + 1,
+        score: contributor.performanceValue,
+        chartData: filteredChartData,
+        positiveScore: positiveScore,
+        penaltyScore: penaltyScore,
+      };
+    });
+  }, [contributors, contributorMetrics, timeRange]);
+
   return (
     <TooltipProvider>
       <div className="flex min-w-0 max-w-full flex-col gap-8 overflow-x-hidden px-6 pb-8 text-gray-900 min-h-screen bg-white">
@@ -242,8 +286,9 @@ export function RepoPerformancePageClient() {
                   />
                 </div>
               </div>
-            </DashboardSection>
 
+              <ContributorCardsCarousel contributors={carouselContributors} />
+            </DashboardSection>
             {/* Contributor table section */}
             <DashboardSection title="Repository Contributors" className="w-full">
               <BaseTeamsTable<ContributorPerformanceWithDelta, PerformanceFilter>

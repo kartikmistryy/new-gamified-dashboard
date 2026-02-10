@@ -268,7 +268,7 @@ export function ContributorMetricsChart({
   }
 
   return (
-    <div className={`w-full max-w-full overflow-hidden rounded-lg ${showMiniVersion ? "" : ""} p-2`}>
+    <div className={`w-full max-w-full overflow-hidden ${showMiniVersion ? "" : ""}`}>
       <div
         ref={plotRef}
         className="w-full max-w-full overflow-hidden"
