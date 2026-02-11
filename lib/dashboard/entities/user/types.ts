@@ -107,6 +107,7 @@ export type CapabilityContributor = {
 export type ModuleCapability = {
   id: string;
   name: string;
+  description: string;
   importance: number;
   busFactor: number;
   backupCount: number;

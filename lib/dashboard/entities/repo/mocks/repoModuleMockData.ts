@@ -42,11 +42,11 @@ function generateMockCapabilities(
   spofScore: number
 ): ModuleCapability[] {
   const capabilityTemplates = [
-    { name: "Core Engine", importance: 100, busFactor: 7, backupCount: 1 },
-    { name: "API Handler", importance: 95, busFactor: 5, backupCount: 1 },
-    { name: "Data Processor", importance: 80, busFactor: 4, backupCount: 1 },
-    { name: "Authentication Service", importance: 85, busFactor: 3, backupCount: 2 },
-    { name: "Configuration Manager", importance: 75, busFactor: 3, backupCount: 1 },
+    { name: "Core Engine", description: "Central processing logic that drives the module's primary operations and orchestrates internal workflows.", importance: 100, busFactor: 7, backupCount: 1 },
+    { name: "API Handler", description: "Request routing and response handling layer that exposes module functionality to external consumers.", importance: 95, busFactor: 5, backupCount: 1 },
+    { name: "Data Processor", description: "Transforms, validates, and normalizes incoming data before persistence or downstream consumption.", importance: 80, busFactor: 4, backupCount: 1 },
+    { name: "Authentication Service", description: "Manages identity verification, session tokens, and permission checks for secure access.", importance: 85, busFactor: 3, backupCount: 2 },
+    { name: "Configuration Manager", description: "Handles runtime settings, feature flags, and environment-specific configuration loading.", importance: 75, busFactor: 3, backupCount: 1 },
   ];
 
   const numCapabilities = spofScore > 70 ? 4 : spofScore > 40 ? 3 : 2;
@@ -85,6 +85,7 @@ function generateMockCapabilities(
     capabilities.push({
       id: `cap-${moduleName}-${i}`,
       name: capabilityName,
+      description: template.description,
       importance: template.importance - (i * 5),
       busFactor: template.busFactor,
       backupCount: template.backupCount,
