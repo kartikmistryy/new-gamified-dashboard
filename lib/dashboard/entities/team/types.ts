@@ -242,3 +242,18 @@ export type StackedBinData = {
   x1: number;
   stacks: { team: string; y0: number; y1: number }[];
 };
+
+/** Severity level for performance metric cards. */
+export type MetricSeverity = "Heavy" | "Medium" | "Low";
+
+/** Configuration for a performance metric card (e.g. Churn Rate, Legacy Code Refactoring). */
+export type PerformanceMetricConfig = {
+  id: string;
+  title: string;
+  severity: MetricSeverity;
+  severityColor: string;
+  bgColor: string;
+  iconColor: string;
+  chartData: { date: string; value: number }[];
+  insights: ChartInsight[];
+};

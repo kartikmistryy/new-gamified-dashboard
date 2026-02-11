@@ -6,6 +6,7 @@ import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
 import { PerformanceChart } from "@/components/dashboard/shared/PerformanceChart";
+import { PerformanceStatisticCard } from "@/components/dashboard/PerformanceStatisticCard";
 import { PerformanceTeamsTable } from "@/components/dashboard/orgDashboard/PerformanceTeamsTable";
 import { useTimeRange } from "@/lib/dashboard/shared/contexts/TimeRangeContext";
 import {
@@ -17,6 +18,7 @@ import {
   ORG_PERFORMANCE_ANNOTATIONS,
   generateOrgPerformanceData,
 } from "@/lib/dashboard/entities/team/charts/performanceChart/orgPerformanceChartData";
+import { PERFORMANCE_METRICS } from "@/lib/dashboard/entities/team/mocks/performanceMetricsMockData";
 
 /** Default performance gauge value for the Performance Tracking section (0–100). */
 const DEFAULT_PERFORMANCE_GAUGE_VALUE = Math.floor(Math.random() * 100);
@@ -83,6 +85,27 @@ export function OrgPerformancePageClient() {
               }}
             />
           </DashboardSection>
+
+          {/* Four performance metric sections from Figma design */}
+          {PERFORMANCE_METRICS.map((metric) => (
+            <DashboardSection key={metric.id} title={metric.title}>
+              <div className="flex flex-row items-stretch gap-[10px]">
+                <PerformanceStatisticCard
+                  title={metric.title}
+                  severity={metric.severity}
+                  severityColor={metric.severityColor}
+                  bgColor={metric.bgColor}
+                  iconColor={metric.iconColor}
+                  chartData={metric.chartData}
+                />
+                <ChartInsights
+                  insights={metric.insights}
+                  variant="paragraphs"
+                  iconStyle="button"
+                />
+              </div>
+            </DashboardSection>
+          ))}
 
           <DashboardSection title="Teams" className="w-full">
             <PerformanceTeamsTable

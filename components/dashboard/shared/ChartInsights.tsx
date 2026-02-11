@@ -2,34 +2,68 @@
 
 import { Sparkles } from "lucide-react";
 import type { ChartInsight } from "@/lib/dashboard/entities/team/types";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
 export type ChartInsightsProps = {
   insights: ChartInsight[];
+  /**
+   * Rendering variant:
+   * - "bullets" (default): renders insights as a bullet list (<ul>/<li>)
+   * - "paragraphs": renders insights as separate paragraphs, matching the Figma metric-section style
+   */
+  variant?: "bullets" | "paragraphs";
+  /**
+   * Icon display style:
+   * - "inline" (default): Sparkles icon inline next to the heading text
+   * - "button": Sparkles icon inside a bordered outline button (matches Figma metric cards)
+   */
+  iconStyle?: "inline" | "button";
 };
 
-export function ChartInsights({ insights }: ChartInsightsProps) {
+export function ChartInsights({
+  insights,
+  variant = "bullets",
+  iconStyle = "inline",
+}: ChartInsightsProps) {
   if (insights.length === 0) return null;
 
+  const iconElement =
+    iconStyle === "button" ? (
+      <span className="inline-flex size-9 items-center justify-center rounded-lg border border-border bg-white shadow-xs">
+        <Sparkles className="size-5 text-foreground" aria-hidden />
+      </span>
+    ) : (
+      <Sparkles className="size-5 text-foreground" aria-hidden />
+    );
+
   return (
-    <Card className="w-full rounded-xl bg-muted h-full max-w-2xl mx-auto shadow-none border-none"
-    >
+    <Card className="w-full rounded-[10px] bg-muted h-full max-w-2xl mx-auto shadow-none border-none">
       <CardTitle className="px-6">
         <h2
           id="chart-insights-heading"
-          className="flex items-center gap-2 text-xl font-semibold text-foreground"
+          className="flex items-center gap-2 text-lg font-semibold text-foreground"
         >
-          <Sparkles className="size-5 text-foreground" aria-hidden />
+          {iconElement}
           Chart Insights
         </h2>
       </CardTitle>
       <CardContent>
-        <ul className="list-disc space-y-2 pl-5 text-foreground">
-          {insights.map(({ id, text }) => (
-            <li key={id} className="text-sm">{text}</li>
-          ))}
-        </ul>
-    </CardContent>
+        {variant === "paragraphs" ? (
+          <div className="space-y-3 text-sm text-muted-foreground">
+            {insights.map(({ id, text }) => (
+              <p key={id}>{text}</p>
+            ))}
+          </div>
+        ) : (
+          <ul className="list-disc space-y-2 pl-5 text-foreground">
+            {insights.map(({ id, text }) => (
+              <li key={id} className="text-sm">
+                {text}
+              </li>
+            ))}
+          </ul>
+        )}
+      </CardContent>
     </Card>
   );
 }
