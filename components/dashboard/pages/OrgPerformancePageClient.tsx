@@ -23,6 +23,32 @@ import { PERFORMANCE_METRICS } from "@/lib/dashboard/entities/team/mocks/perform
 /** Default performance gauge value for the Performance Tracking section (0–100). */
 const DEFAULT_PERFORMANCE_GAUGE_VALUE = Math.floor(Math.random() * 100);
 
+import type { PerformanceMetricConfig } from "@/lib/orgDashboard/types";
+
+function MetricSectionRow({ metric }: { metric: PerformanceMetricConfig }) {
+  return (
+    <DashboardSection title={metric.title}>
+      <div className="flex flex-col lg:flex-row items-stretch gap-[10px]">
+        <PerformanceStatisticCard
+          title={metric.title}
+          severity={metric.severity}
+          severityColor={metric.severityColor}
+          bgColor={metric.bgColor}
+          iconColor={metric.iconColor}
+          icon={metric.icon}
+          chartData={metric.chartData}
+        />
+        <ChartInsights
+          insights={metric.insights}
+          variant="paragraphs"
+          iconStyle="button"
+          className="flex-1 min-w-0"
+        />
+      </div>
+    </DashboardSection>
+  );
+}
+
 export function OrgPerformancePageClient() {
   const { timeRange } = useTimeRange();
   const chartInsights = useMemo(() => getChartInsightsMock(), []);
@@ -88,23 +114,7 @@ export function OrgPerformancePageClient() {
 
           {/* Four performance metric sections from Figma design */}
           {PERFORMANCE_METRICS.map((metric) => (
-            <DashboardSection key={metric.id} title={metric.title}>
-              <div className="flex flex-row items-stretch gap-[10px]">
-                <PerformanceStatisticCard
-                  title={metric.title}
-                  severity={metric.severity}
-                  severityColor={metric.severityColor}
-                  bgColor={metric.bgColor}
-                  iconColor={metric.iconColor}
-                  chartData={metric.chartData}
-                />
-                <ChartInsights
-                  insights={metric.insights}
-                  variant="paragraphs"
-                  iconStyle="button"
-                />
-              </div>
-            </DashboardSection>
+            <MetricSectionRow key={metric.id} metric={metric} />
           ))}
 
           <DashboardSection title="Teams" className="w-full">

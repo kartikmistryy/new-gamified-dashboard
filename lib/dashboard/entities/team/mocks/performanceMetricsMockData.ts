@@ -1,3 +1,4 @@
+import { Hourglass, Code2, RefreshCw, Repeat } from "lucide-react";
 import type { PerformanceMetricConfig } from "./types";
 
 /**
@@ -72,6 +73,7 @@ export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
     severityColor: "#CA3A31",
     bgColor: "#F9E3E2",
     iconColor: "#CA3A31",
+    icon: Hourglass,
     chartData: generateWeeklyData(180, 60),
     insights: SHARED_INSIGHTS_TEXT,
   },
@@ -82,6 +84,7 @@ export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
     severityColor: "#6BC095",
     bgColor: "#D9F9E6",
     iconColor: "#55B685",
+    icon: Code2,
     chartData: generateWeeklyData(1200, 400),
     insights: SHARED_INSIGHTS_TEXT,
   },
@@ -92,6 +95,7 @@ export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
     severityColor: "#E2B53E",
     bgColor: "#FDF9C9",
     iconColor: "#E2B53E",
+    icon: RefreshCw,
     chartData: generateWeeklyData(45, 20),
     insights: SHARED_INSIGHTS_TEXT,
   },
@@ -102,6 +106,7 @@ export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
     severityColor: "#CA3A31",
     bgColor: "#F9E3E2",
     iconColor: "#CA3A31",
+    icon: Repeat,
     chartData: generateWeeklyData(25, 12),
     insights: SHARED_INSIGHTS_TEXT,
   },

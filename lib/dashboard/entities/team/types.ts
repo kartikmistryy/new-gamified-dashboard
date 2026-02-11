@@ -1,3 +1,5 @@
+import type React from "react";
+
 export type FilterTab<T extends string = string> = {
   key: T;
   label: string;
@@ -254,6 +256,8 @@ export type PerformanceMetricConfig = {
   severityColor: string;
   bgColor: string;
   iconColor: string;
+  /** Lucide icon component rendered in the card header. */
+  icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>;
   chartData: { date: string; value: number }[];
   insights: ChartInsight[];
 };

@@ -18,12 +18,15 @@ export type ChartInsightsProps = {
    * - "button": Sparkles icon inside a bordered outline button (matches Figma metric cards)
    */
   iconStyle?: "inline" | "button";
+  /** Additional class names for the outer Card. */
+  className?: string;
 };
 
 export function ChartInsights({
   insights,
   variant = "bullets",
   iconStyle = "inline",
+  className,
 }: ChartInsightsProps) {
   if (insights.length === 0) return null;
 
@@ -36,8 +39,11 @@ export function ChartInsights({
       <Sparkles className="size-5 text-foreground" aria-hidden />
     );
 
+  const defaultClasses = "w-full rounded-[10px] bg-muted h-full shadow-none border-none";
+  const widthConstraint = className ? "" : "max-w-2xl mx-auto";
+
   return (
-    <Card className="w-full rounded-[10px] bg-muted h-full max-w-2xl mx-auto shadow-none border-none">
+    <Card className={`${defaultClasses} ${widthConstraint} ${className ?? ""}`}>
       <CardTitle className="px-6">
         <h2
           id="chart-insights-heading"

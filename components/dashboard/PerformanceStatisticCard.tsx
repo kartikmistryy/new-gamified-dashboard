@@ -10,41 +10,14 @@ const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
 const MINI_CHART_HEIGHT = 160;
 
-/** Icon rendered inside the statistic card header (generic line-chart style). */
-function MetricIcon({ color }: { color: string }) {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden
-    >
-      <path
-        d="M1.17 10.5L4.67 7L7 9.33L12.83 3.5"
-        stroke={color}
-        strokeWidth="1.33"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M8.17 3.5H12.83V8.17"
-        stroke={color}
-        strokeWidth="1.33"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 type PerformanceStatisticCardProps = {
   title: string;
   severity: MetricSeverity;
   severityColor: string;
   bgColor: string;
   iconColor: string;
+  /** Lucide icon component rendered in the card header. */
+  icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>;
   chartData: { date: string; value: number }[];
 };
 
@@ -54,6 +27,7 @@ export function PerformanceStatisticCard({
   severityColor,
   bgColor,
   iconColor,
+  icon: Icon,
   chartData,
 }: PerformanceStatisticCardProps) {
   /** Build Plotly traces for the mini line chart. */
@@ -125,22 +99,22 @@ export function PerformanceStatisticCard({
 
   return (
     <div
-      className="flex flex-col gap-4 rounded-[10px] p-4"
-      style={{ backgroundColor: bgColor, flex: "1 1 0%" }}
+      className="flex flex-col gap-4 rounded-[10px] p-4 min-w-0 flex-1"
+      style={{ backgroundColor: bgColor }}
     >
       {/* Header: icon + title + severity badge */}
       <div className="flex items-center justify-between gap-[10px]">
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-2">
           <div
-            className="flex size-5 items-center justify-center rounded-md"
+            className="flex size-5 shrink-0 items-center justify-center rounded-md"
             style={{ backgroundColor: "rgba(255,255,255,0.6)" }}
           >
-            <MetricIcon color={iconColor} />
+            <Icon size={14} color={iconColor} strokeWidth={1.33} />
           </div>
-          <span className="text-sm font-medium text-foreground">{title}</span>
+          <span className="truncate text-sm font-medium text-foreground">{title}</span>
         </div>
         <span
-          className="inline-flex items-center rounded-lg px-2 py-0.5 text-xs font-semibold"
+          className="inline-flex shrink-0 items-center whitespace-nowrap rounded-lg px-2 py-0.5 text-xs font-semibold"
           style={{ backgroundColor: severityColor, color: "#FAFAFA" }}
         >
           {severity}
