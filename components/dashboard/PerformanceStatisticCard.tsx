@@ -4,6 +4,14 @@ import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import type { Data, Layout, Config } from "plotly.js";
 import type { MetricSeverity } from "@/lib/orgDashboard/types";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardAction,
+  CardContent,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 // Dynamically import Plotly to avoid SSR issues
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
@@ -98,31 +106,31 @@ export function PerformanceStatisticCard({
   );
 
   return (
-    <div
-      className="flex flex-col gap-4 rounded-[10px] p-4 min-w-0 flex-1"
+    <Card
+      className="gap-4 rounded-[10px] border-none p-4 shadow-none min-w-0 flex-1"
       style={{ backgroundColor: bgColor }}
     >
-      {/* Header: icon + title + severity badge */}
-      <div className="flex items-center justify-between gap-[10px]">
-        <div className="flex min-w-0 items-center gap-2">
+      <CardHeader className="gap-[10px] p-0">
+        <CardTitle className="flex min-w-0 items-center gap-2 text-sm font-medium">
           <div
             className="flex size-5 shrink-0 items-center justify-center rounded-md"
             style={{ backgroundColor: "rgba(255,255,255,0.6)" }}
           >
-            <Icon size={14} color={iconColor} strokeWidth={1.33} />
+            <Icon size={14} color={iconColor} strokeWidth={2} />
           </div>
-          <span className="truncate text-sm font-medium text-foreground">{title}</span>
-        </div>
-        <span
-          className="inline-flex shrink-0 items-center whitespace-nowrap rounded-lg px-2 py-0.5 text-xs font-semibold"
-          style={{ backgroundColor: severityColor, color: "#FAFAFA" }}
-        >
-          {severity}
-        </span>
-      </div>
+          <span className="truncate">{title}</span>
+        </CardTitle>
+        <CardAction>
+          <Badge
+            className="rounded-lg font-semibold"
+            style={{ backgroundColor: severityColor, color: "#FAFAFA" }}
+          >
+            {severity}
+          </Badge>
+        </CardAction>
+      </CardHeader>
 
-      {/* Mini chart */}
-      <div className="w-full overflow-hidden">
+      <CardContent className="w-full overflow-hidden p-0">
         {chartData.length > 0 ? (
           <Plot
             data={plotlyData}
@@ -139,7 +147,7 @@ export function PerformanceStatisticCard({
             <p className="text-sm text-gray-400">No data</p>
           </div>
         )}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
