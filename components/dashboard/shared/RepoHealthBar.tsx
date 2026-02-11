@@ -14,6 +14,8 @@ export const REPO_HEALTH_SEGMENTS = [
 
 type RepoHealthBarProps = {
   segments?: RepoHealthSegment[];
+  /** Hide legend for compact display (e.g., in tables) */
+  compact?: boolean;
 };
 
 const DEFAULT_SEGMENTS: RepoHealthSegment[] = [
@@ -22,13 +24,13 @@ const DEFAULT_SEGMENTS: RepoHealthSegment[] = [
   { label: REPO_HEALTH_SEGMENTS[2].label, count: 2, color: REPO_HEALTH_SEGMENTS[2].color },
 ];
 
-export function RepoHealthBar({ segments = DEFAULT_SEGMENTS }: RepoHealthBarProps) {
+export function RepoHealthBar({ segments = DEFAULT_SEGMENTS, compact = false }: RepoHealthBarProps) {
   const total = segments.reduce((sum, s) => sum + s.count, 0);
 
   return (
     <div className="w-full">
       {/* Stacked bar */}
-      <div className="flex h-3 w-full overflow-hidden rounded-full">
+      <div className={`flex w-full overflow-hidden rounded-full ${compact ? "h-2" : "h-3"}`}>
         {segments.map((segment, index) => {
           const widthPercent = (segment.count / total) * 100;
           return (
@@ -48,20 +50,22 @@ export function RepoHealthBar({ segments = DEFAULT_SEGMENTS }: RepoHealthBarProp
         })}
       </div>
 
-      {/* Legend */}
-      <div className="mt-4 flex flex-wrap gap-6">
-        {segments.map((segment) => (
-          <div key={segment.label} className="flex items-center gap-2">
-            <div
-              className="size-3 rounded-full"
-              style={{ backgroundColor: segment.color }}
-            />
-            <span className="text-sm text-gray-700">
-              {segment.label} {segment.count}
-            </span>
-          </div>
-        ))}
-      </div>
+      {/* Legend (hidden in compact mode) */}
+      {!compact && (
+        <div className="mt-4 flex flex-wrap gap-6">
+          {segments.map((segment) => (
+            <div key={segment.label} className="flex items-center gap-2">
+              <div
+                className="size-3 rounded-full"
+                style={{ backgroundColor: segment.color }}
+              />
+              <span className="text-sm text-gray-700">
+                {segment.label} {segment.count}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

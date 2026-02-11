@@ -16,7 +16,6 @@ import Link from "next/link";
 
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { RepoHealthBar } from "@/components/dashboard/shared/RepoHealthBar";
-import { D3Gauge } from "@/components/dashboard/shared/D3Gauge";
 import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
 import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
 import {
@@ -34,21 +33,29 @@ import { UserAvatar } from "@/components/shared/UserAvatar";
 import {
   type OrgRepoSpofRow,
   type OrgRepoSpofFilter,
+  type SpofRiskLevel,
   ORG_REPO_SPOF_ROWS,
   ORG_SPOF_TOTALS,
   ORG_REPO_SPOF_FILTER_TABS,
   ORG_HEALTH_SEGMENTS,
+  ORG_SPOF_RISK_LEVEL,
   sortOrgRepoSpof,
 } from "@/lib/dashboard/entities/team/data/orgSpofDataLoader";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/dashboard/shared/utils/colors";
-import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/dashboard/entities/team/utils/utils";
 import { getRepoPath } from "@/lib/routes";
 
 // ---------------------------------------------------------------------------
-// Constants
+// SPOF Risk Level Colors
 // ---------------------------------------------------------------------------
 
-const DEFAULT_SPOF_GAUGE_VALUE = 28;
+const RISK_LEVEL_COLORS: Record<SpofRiskLevel, string> = {
+  Severe: "text-red-600",
+  High: "text-orange-500",
+  Medium: "text-amber-500",
+  Low: "text-green-600",
+};
+
+const RISK_LEVELS: SpofRiskLevel[] = ["Severe", "High", "Medium", "Low"];
 
 // ---------------------------------------------------------------------------
 // Column definitions
@@ -123,6 +130,21 @@ const repoSpofColumns: ColumnDef<OrgRepoSpofRow>[] = [
     cell: ({ row }) => (
       <span className="block text-right text-gray-900">{row.original.spofOwnerCount}</span>
     ),
+  },
+  {
+    id: "healthBar",
+    header: "Module Health",
+    enableSorting: false,
+    meta: { className: "w-48" },
+    cell: ({ row }) => {
+      const { healthy, needsAttention, critical } = row.original.healthDistribution;
+      const segments = [
+        { label: "Healthy", count: healthy, color: "#22c55e" },
+        { label: "Needs Attention", count: needsAttention, color: "#f59e0b" },
+        { label: "Critical", count: critical, color: "#ef4444" },
+      ];
+      return <RepoHealthBar segments={segments} compact />;
+    },
   },
 ];
 
@@ -202,55 +224,95 @@ export function OrgSpofPageClient() {
 
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 bg-white text-gray-900 min-h-screen">
-      {/* Gauge + SPOF Overview side by side */}
-      <div className="flex flex-row flex-wrap items-stretch gap-8">
-          {/* Gauge */}
-          <div className="flex shrink-0 min-w-[280px] max-w-[50%]">
-            <D3Gauge
-              value={DEFAULT_SPOF_GAUGE_VALUE}
-              label={getPerformanceGaugeLabel(DEFAULT_SPOF_GAUGE_VALUE)}
-              labelColor={getGaugeColor(DEFAULT_SPOF_GAUGE_VALUE)}
-              valueDisplay={`${DEFAULT_SPOF_GAUGE_VALUE}/100`}
-            />
+      {/* 3-column layout: Risk Indicator → Motivation → Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* SPOF Risk Indicator Card */}
+        <div className="rounded-[10px] bg-[#F6F5FA] p-6 flex flex-col justify-center">
+          <p className="text-sm text-gray-500 mb-3">SPOF Risk is:</p>
+
+          {/* Large risk level display */}
+          <div className="flex items-baseline gap-2 mb-4">
+            <span className={`text-4xl font-bold ${RISK_LEVEL_COLORS[ORG_SPOF_RISK_LEVEL]}`}>
+              {ORG_SPOF_RISK_LEVEL}
+            </span>
+            <span className="text-sm text-gray-500">
+              ({Math.round(((ORG_SPOF_TOTALS.healthDistribution.needsAttention + ORG_SPOF_TOTALS.healthDistribution.critical) /
+                (ORG_SPOF_TOTALS.healthDistribution.healthy + ORG_SPOF_TOTALS.healthDistribution.needsAttention + ORG_SPOF_TOTALS.healthDistribution.critical)) * 100)}% at-risk)
+            </span>
           </div>
 
-          {/* SPOF Overview card */}
-          <div className="flex-1 min-w-[280px] flex items-center">
-            <div className="w-full rounded-[10px] bg-[#F6F5FA] p-6">
-              {/* Stat cards — left aligned */}
-              <div className="flex items-center gap-8">
-                {/* SPOF by Module */}
-                <div className="flex items-center gap-3">
-                  <Layers className="size-6 text-gray-500" />
-                  <div>
-                    <p className="text-sm text-gray-500">SPOF by Module</p>
-                    <p className="text-2xl font-bold text-gray-900">
-                      {ORG_SPOF_TOTALS.spofModuleCount}
-                    </p>
-                  </div>
-                </div>
+          {/* Risk spectrum bar */}
+          <div className="flex h-2 w-full rounded-full overflow-hidden mb-2">
+            <div className="h-full bg-red-500" style={{ width: "25%" }} />
+            <div className="h-full bg-orange-400" style={{ width: "25%" }} />
+            <div className="h-full bg-amber-400" style={{ width: "25%" }} />
+            <div className="h-full bg-green-500" style={{ width: "25%" }} />
+          </div>
 
-                {/* Vertical separator */}
-                <div className="h-16 w-px bg-gray-300" />
+          {/* Risk level labels */}
+          <div className="flex justify-between text-xs">
+            {RISK_LEVELS.map((level) => (
+              <span
+                key={level}
+                className={level === ORG_SPOF_RISK_LEVEL ? "font-bold text-gray-700" : "text-gray-400"}
+              >
+                {level}
+              </span>
+            ))}
+          </div>
+        </div>
 
-                {/* Unique SPOF Owner */}
-                <div className="flex items-center gap-3">
-                  <Users className="size-6 text-gray-500" />
-                  <div>
-                    <p className="text-sm text-gray-500">Unique SPOF Owner</p>
-                    <p className="text-2xl font-bold text-gray-900">
-                      {ORG_SPOF_TOTALS.uniqueSpofOwnerCount}
-                    </p>
-                  </div>
-                </div>
+        {/* Motivation Card */}
+        <div className="rounded-[10px] p-6 flex flex-col justify-center">
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+            Why It Matters
+          </p>
+          <p className="text-sm text-gray-700 mb-4">
+            Identifies irreplaceable developers whose departure would put critical code at risk.
+          </p>
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+            How It&apos;s Calculated
+          </p>
+          <p className="text-sm text-gray-700">
+            Analyzes file creation (First Authorship), commit history (Deliveries), and knowledge
+            distribution (Acceptances). Modules where 1-2 developers hold dominant ownership are
+            flagged as at-risk.
+          </p>
+        </div>
+
+        {/* Stats Card */}
+        <div className="rounded-[10px] bg-[#F6F5FA] p-6 flex flex-col justify-center">
+          {/* Stat cards — left aligned */}
+          <div className="flex items-center gap-6 mb-4">
+            {/* SPOF by Module */}
+            <div className="flex items-center gap-3">
+              <Layers className="size-5 text-gray-500" />
+              <div>
+                <p className="text-xs text-gray-500">SPOF by Module</p>
+                <p className="text-xl font-bold text-gray-900">
+                  {ORG_SPOF_TOTALS.spofModuleCount}
+                </p>
               </div>
+            </div>
 
-              {/* Repo health bar */}
-              <div className="mt-6">
-                <RepoHealthBar segments={ORG_HEALTH_SEGMENTS} />
+            {/* Vertical separator */}
+            <div className="h-12 w-px bg-gray-300" />
+
+            {/* Unique SPOF Owner */}
+            <div className="flex items-center gap-3">
+              <Users className="size-5 text-gray-500" />
+              <div>
+                <p className="text-xs text-gray-500">Unique SPOF Owner</p>
+                <p className="text-xl font-bold text-gray-900">
+                  {ORG_SPOF_TOTALS.uniqueSpofOwnerCount}
+                </p>
               </div>
             </div>
           </div>
+
+          {/* Repo health bar */}
+          <RepoHealthBar segments={ORG_HEALTH_SEGMENTS} />
+        </div>
       </div>
 
       {/* SPOF Repositories — expandable repo-level table */}
