@@ -187,3 +187,115 @@ export function calculateTeamStats(data: SpofDataPoint[]): SpofTeamRow[] {
 
 /** Pre-calculated team rows for consistent rendering. */
 export const SPOF_TEAM_ROWS: SpofTeamRow[] = calculateTeamStats(SPOF_DATA);
+
+// ---------------------------------------------------------------------------
+// Org-level repo SPOF data (expandable table)
+// ---------------------------------------------------------------------------
+
+/** Sub-row: a SPOF module within a repo */
+export type OrgRepoSpofModule = {
+  moduleName: string;
+  status: "At Risk" | "Need Attention" | "Healthy";
+  ownerName: string;
+};
+
+/** Parent row: a repo with expandable modules */
+export type OrgRepoSpofRow = {
+  repoName: string;
+  spofModuleCount: number;
+  spofOwnerCount: number;
+  modules: OrgRepoSpofModule[];
+};
+
+export type OrgRepoSpofFilter = "mostSpofModules" | "mostSpofOwners";
+
+/** Mock repo-level SPOF rows. */
+export const ORG_REPO_SPOF_ROWS: OrgRepoSpofRow[] = [
+  {
+    repoName: "backend-api",
+    spofModuleCount: 5,
+    spofOwnerCount: 3,
+    modules: [
+      { moduleName: "AuthService", status: "At Risk", ownerName: "Alice Chen" },
+      { moduleName: "PaymentGateway", status: "At Risk", ownerName: "Alice Chen" },
+      { moduleName: "UserManager", status: "Need Attention", ownerName: "Bob Kim" },
+      { moduleName: "NotificationHub", status: "Healthy", ownerName: "Carol Wu" },
+      { moduleName: "RateLimiter", status: "Need Attention", ownerName: "Bob Kim" },
+    ],
+  },
+  {
+    repoName: "frontend-web",
+    spofModuleCount: 4,
+    spofOwnerCount: 2,
+    modules: [
+      { moduleName: "DashboardLayout", status: "At Risk", ownerName: "David Park" },
+      { moduleName: "ChartEngine", status: "Need Attention", ownerName: "David Park" },
+      { moduleName: "FormValidator", status: "Healthy", ownerName: "Eva Lin" },
+      { moduleName: "ThemeProvider", status: "Need Attention", ownerName: "Eva Lin" },
+    ],
+  },
+  {
+    repoName: "ml-pipeline",
+    spofModuleCount: 4,
+    spofOwnerCount: 3,
+    modules: [
+      { moduleName: "FeatureExtractor", status: "At Risk", ownerName: "Frank Zhao" },
+      { moduleName: "ModelTrainer", status: "At Risk", ownerName: "Grace Lee" },
+      { moduleName: "DataLoader", status: "Need Attention", ownerName: "Frank Zhao" },
+      { moduleName: "InferenceServer", status: "Healthy", ownerName: "Henry Liu" },
+    ],
+  },
+  {
+    repoName: "infra-platform",
+    spofModuleCount: 3,
+    spofOwnerCount: 2,
+    modules: [
+      { moduleName: "TerraformModules", status: "At Risk", ownerName: "Ivan Tanaka" },
+      { moduleName: "CIOrchestrator", status: "Need Attention", ownerName: "Ivan Tanaka" },
+      { moduleName: "MonitoringStack", status: "Healthy", ownerName: "Jill Wang" },
+    ],
+  },
+  {
+    repoName: "data-warehouse",
+    spofModuleCount: 3,
+    spofOwnerCount: 2,
+    modules: [
+      { moduleName: "ETLPipeline", status: "At Risk", ownerName: "Kevin Huang" },
+      { moduleName: "QueryOptimizer", status: "Need Attention", ownerName: "Kevin Huang" },
+      { moduleName: "SchemaManager", status: "Healthy", ownerName: "Laura Chen" },
+    ],
+  },
+  {
+    repoName: "mobile-app",
+    spofModuleCount: 3,
+    spofOwnerCount: 3,
+    modules: [
+      { moduleName: "PushNotifications", status: "At Risk", ownerName: "Mike Sato" },
+      { moduleName: "OfflineSync", status: "Need Attention", ownerName: "Nina Patel" },
+      { moduleName: "BiometricAuth", status: "Healthy", ownerName: "Oscar Reyes" },
+    ],
+  },
+];
+
+/** Aggregated totals computed from mock rows. */
+export const ORG_SPOF_TOTALS = {
+  totalSpofModules: ORG_REPO_SPOF_ROWS.reduce((s, r) => s + r.spofModuleCount, 0),
+  totalSpofOwners: new Set(
+    ORG_REPO_SPOF_ROWS.flatMap((r) => r.modules.map((m) => m.ownerName)),
+  ).size,
+};
+
+/** Filter tabs for the repo SPOF table. */
+export const ORG_REPO_SPOF_FILTER_TABS: { key: OrgRepoSpofFilter; label: string }[] = [
+  { key: "mostSpofModules", label: "Most SPOF Modules" },
+  { key: "mostSpofOwners", label: "Most SPOF Owners" },
+];
+
+/** Sort rows descending by the selected metric. */
+export function sortOrgRepoSpof(
+  rows: OrgRepoSpofRow[],
+  filter: OrgRepoSpofFilter,
+): OrgRepoSpofRow[] {
+  const key = filter === "mostSpofModules" ? "spofModuleCount" : "spofOwnerCount";
+  return [...rows].sort((a, b) => b[key] - a[key]);
+}
