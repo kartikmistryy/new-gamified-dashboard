@@ -12,6 +12,8 @@ import {
 } from "@tanstack/react-table";
 import { ChevronDownIcon, ChevronUpIcon, Layers, Users } from "lucide-react";
 
+import Link from "next/link";
+
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { RepoHealthBar } from "@/components/dashboard/shared/RepoHealthBar";
 import { D3Gauge } from "@/components/dashboard/shared/D3Gauge";
@@ -35,10 +37,12 @@ import {
   ORG_REPO_SPOF_ROWS,
   ORG_SPOF_TOTALS,
   ORG_REPO_SPOF_FILTER_TABS,
+  ORG_HEALTH_SEGMENTS,
   sortOrgRepoSpof,
-} from "@/lib/dashboard/entities/team/mocks/spofMockData";
+} from "@/lib/dashboard/entities/team/data/orgSpofDataLoader";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/dashboard/entities/team/utils/utils";
+import { getRepoPath } from "@/lib/routes";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -96,7 +100,12 @@ const repoSpofColumns: ColumnDef<OrgRepoSpofRow>[] = [
     accessorKey: "repoName",
     enableSorting: false,
     cell: ({ row }) => (
-      <span className="font-medium text-gray-900">{row.original.repoName}</span>
+      <Link
+        href={getRepoPath("gitroll", row.original.repoName, "spof")}
+        className="font-medium text-gray-900 hover:text-blue-600 hover:underline"
+      >
+        {row.original.repoName}
+      </Link>
     ),
   },
   {
@@ -125,7 +134,7 @@ function StatusBadge({ status }: { status: string }) {
   switch (status) {
     case "At Risk":
       return <Badge variant="destructive">{status}</Badge>;
-    case "Need Attention":
+    case "Needs Attention":
       return (
         <Badge variant="secondary" className="bg-amber-100 text-amber-800 border-amber-200">
           {status}
@@ -138,6 +147,30 @@ function StatusBadge({ status }: { status: string }) {
         </Badge>
       );
   }
+}
+
+/** Display up to 3 owners with overflow indicator */
+function OwnersList({ owners }: { owners: string[] }) {
+  const displayOwners = owners.slice(0, 3);
+  const overflow = owners.length > 3 ? owners.length - 3 : 0;
+
+  return (
+    <div className="flex items-center gap-2">
+      <div className="flex -space-x-1">
+        {displayOwners.map((name) => (
+          <UserAvatar key={name} userName={name} className="size-6 border-2 border-white" size={24} />
+        ))}
+      </div>
+      {owners.length === 1 && <span className="text-sm">{owners[0]}</span>}
+      {owners.length === 2 && <span className="text-sm">{owners.join(", ")}</span>}
+      {owners.length >= 3 && (
+        <span className="text-sm text-gray-600">
+          {displayOwners.join(", ")}
+          {overflow > 0 && <span className="text-gray-400"> +{overflow}</span>}
+        </span>
+      )}
+    </div>
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -192,7 +225,7 @@ export function OrgSpofPageClient() {
                   <div>
                     <p className="text-sm text-gray-500">SPOF by Module</p>
                     <p className="text-2xl font-bold text-gray-900">
-                      {ORG_SPOF_TOTALS.totalSpofModules}
+                      {ORG_SPOF_TOTALS.spofModuleCount}
                     </p>
                   </div>
                 </div>
@@ -200,13 +233,13 @@ export function OrgSpofPageClient() {
                 {/* Vertical separator */}
                 <div className="h-16 w-px bg-gray-300" />
 
-                {/* SPOF Owner */}
+                {/* Unique SPOF Owner */}
                 <div className="flex items-center gap-3">
                   <Users className="size-6 text-gray-500" />
                   <div>
-                    <p className="text-sm text-gray-500">SPOF Owner</p>
+                    <p className="text-sm text-gray-500">Unique SPOF Owner</p>
                     <p className="text-2xl font-bold text-gray-900">
-                      {ORG_SPOF_TOTALS.totalSpofOwners}
+                      {ORG_SPOF_TOTALS.uniqueSpofOwnerCount}
                     </p>
                   </div>
                 </div>
@@ -214,7 +247,7 @@ export function OrgSpofPageClient() {
 
               {/* Repo health bar */}
               <div className="mt-6">
-                <RepoHealthBar />
+                <RepoHealthBar segments={ORG_HEALTH_SEGMENTS} />
               </div>
             </div>
           </div>
@@ -279,10 +312,7 @@ export function OrgSpofPageClient() {
                                       <StatusBadge status={mod.status} />
                                     </TableCell>
                                     <TableCell>
-                                      <div className="flex items-center gap-2">
-                                        <UserAvatar userName={mod.ownerName} className="size-5" size={20} />
-                                        <span>{mod.ownerName}</span>
-                                      </div>
+                                      <OwnersList owners={mod.owners} />
                                     </TableCell>
                                   </TableRow>
                                 ))}

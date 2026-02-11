@@ -195,8 +195,8 @@ export const SPOF_TEAM_ROWS: SpofTeamRow[] = calculateTeamStats(SPOF_DATA);
 /** Sub-row: a SPOF module within a repo */
 export type OrgRepoSpofModule = {
   moduleName: string;
-  status: "At Risk" | "Need Attention" | "Healthy";
-  ownerName: string;
+  status: "At Risk" | "Needs Attention" | "Healthy";
+  owners: string[];
 };
 
 /** Parent row: a repo with expandable modules */
@@ -209,79 +209,112 @@ export type OrgRepoSpofRow = {
 
 export type OrgRepoSpofFilter = "mostSpofModules" | "mostSpofOwners";
 
-/** Mock repo-level SPOF rows. */
-export const ORG_REPO_SPOF_ROWS: OrgRepoSpofRow[] = [
+/** Helper to compute SPOF counts from modules */
+function computeSpofCounts(modules: OrgRepoSpofModule[]) {
+  // Only count modules with SPOF risk (At Risk or Needs Attention)
+  const atRiskModules = modules.filter((m) => m.status !== "Healthy");
+
+  // Total SPOF owners = sum of owners across at-risk modules
+  const totalSpofOwners = atRiskModules.reduce((sum, m) => sum + m.owners.length, 0);
+
+  // Unique SPOF owners = distinct individuals across at-risk modules
+  const uniqueOwners = new Set(atRiskModules.flatMap((m) => m.owners));
+
+  return {
+    spofOwnerCount: totalSpofOwners,
+    uniqueSpofOwnerCount: uniqueOwners.size,
+  };
+}
+
+/** Raw module data for each repo */
+const RAW_REPO_MODULES: { repoName: string; modules: OrgRepoSpofModule[] }[] = [
   {
-    repoName: "backend-api",
-    spofModuleCount: 5,
-    spofOwnerCount: 3,
+    repoName: "novu",
     modules: [
-      { moduleName: "AuthService", status: "At Risk", ownerName: "Alice Chen" },
-      { moduleName: "PaymentGateway", status: "At Risk", ownerName: "Alice Chen" },
-      { moduleName: "UserManager", status: "Need Attention", ownerName: "Bob Kim" },
-      { moduleName: "NotificationHub", status: "Healthy", ownerName: "Carol Wu" },
-      { moduleName: "RateLimiter", status: "Need Attention", ownerName: "Bob Kim" },
+      { moduleName: "Translation Management", status: "At Risk", owners: ["Adam Chmara"] },
+      { moduleName: "Activity Feed & Analytics", status: "Needs Attention", owners: ["George Djabarov", "Dima Grossman"] },
+      { moduleName: "User, Team & Tenant Management", status: "Needs Attention", owners: ["Richard Fontein", "Himanshu Garg"] },
+      { moduleName: "Provider & Channel Integrations", status: "Healthy", owners: ["Richard Fontein", "Dima Grossman", "Sokratis Vidros"] },
+      { moduleName: "In-App Notification Center", status: "Healthy", owners: ["Adam Chmara", "Dima Grossman", "George Djabarov", "Paweł Tymczuk"] },
     ],
   },
   {
-    repoName: "frontend-web",
-    spofModuleCount: 4,
-    spofOwnerCount: 2,
+    repoName: "transformers",
     modules: [
-      { moduleName: "DashboardLayout", status: "At Risk", ownerName: "David Park" },
-      { moduleName: "ChartEngine", status: "Need Attention", ownerName: "David Park" },
-      { moduleName: "FormValidator", status: "Healthy", ownerName: "Eva Lin" },
-      { moduleName: "ThemeProvider", status: "Need Attention", ownerName: "Eva Lin" },
+      { moduleName: "Infrastructure", status: "Needs Attention", owners: ["Yih-Dar", "Sylvain Gugger"] },
+      { moduleName: "Computer Vision Model Library", status: "Healthy", owners: ["NielsRogge", "Sylvain Gugger", "Yuanyuan Chen", "Cyril Vallez"] },
+      { moduleName: "Training & Inference Framework", status: "Healthy", owners: ["NielsRogge", "Arthur", "Sylvain Gugger", "Marc Sun"] },
+      { moduleName: "Multimodal Model Library", status: "Healthy", owners: ["Raushan Turganbay", "Cyril Vallez", "Arthur", "Susnato Dhar"] },
     ],
   },
   {
-    repoName: "ml-pipeline",
-    spofModuleCount: 4,
-    spofOwnerCount: 3,
+    repoName: "langchain",
     modules: [
-      { moduleName: "FeatureExtractor", status: "At Risk", ownerName: "Frank Zhao" },
-      { moduleName: "ModelTrainer", status: "At Risk", ownerName: "Grace Lee" },
-      { moduleName: "DataLoader", status: "Need Attention", ownerName: "Frank Zhao" },
-      { moduleName: "InferenceServer", status: "Healthy", ownerName: "Henry Liu" },
+      { moduleName: "Pre-built Application Chains", status: "At Risk", owners: ["Mason Daugherty"] },
+      { moduleName: "Composable Workflow Engine (LCEL)", status: "Healthy", owners: ["Christophe Bornet", "Mason Daugherty", "Nuno Campos"] },
+      { moduleName: "Model Abstraction Layer", status: "Healthy", owners: ["Mason Daugherty", "ccurme", "Bagatur", "Eugene Yurtsev"] },
+      { moduleName: "Agent & Tool Framework", status: "Healthy", owners: ["Eugene Yurtsev", "Mason Daugherty", "Christophe Bornet", "Bagatur"] },
     ],
   },
   {
-    repoName: "infra-platform",
-    spofModuleCount: 3,
-    spofOwnerCount: 2,
+    repoName: "langfuse",
     modules: [
-      { moduleName: "TerraformModules", status: "At Risk", ownerName: "Ivan Tanaka" },
-      { moduleName: "CIOrchestrator", status: "Need Attention", ownerName: "Ivan Tanaka" },
-      { moduleName: "MonitoringStack", status: "Healthy", ownerName: "Jill Wang" },
+      { moduleName: "Dataset & Experiment Management", status: "At Risk", owners: ["marliessophie"] },
+      { moduleName: "Enterprise SSO", status: "At Risk", owners: ["Marc Klingen"] },
+      { moduleName: "Data Annotation & Labeling", status: "At Risk", owners: ["marliessophie"] },
+      { moduleName: "Automations & Integrations", status: "Needs Attention", owners: ["Marc Klingen", "marliessophie"] },
+      { moduleName: "User & Access Management", status: "Needs Attention", owners: ["Marc Klingen", "Max Deichmann"] },
+      { moduleName: "Model Evaluation & Scoring", status: "Needs Attention", owners: ["marliessophie", "Steffen Schmitz"] },
+      { moduleName: "Observability & Analytics", status: "Healthy", owners: ["Valery Meleshkin", "Michael Fröhlich", "Max Deichmann"] },
     ],
   },
   {
-    repoName: "data-warehouse",
-    spofModuleCount: 3,
-    spofOwnerCount: 2,
+    repoName: "rustdesk",
     modules: [
-      { moduleName: "ETLPipeline", status: "At Risk", ownerName: "Kevin Huang" },
-      { moduleName: "QueryOptimizer", status: "Need Attention", ownerName: "Kevin Huang" },
-      { moduleName: "SchemaManager", status: "Healthy", ownerName: "Laura Chen" },
+      { moduleName: "File Transfer & Clipboard Sync", status: "At Risk", owners: ["fufesou"] },
+      { moduleName: "Remote Printing", status: "At Risk", owners: ["fufesou"] },
+      { moduleName: "Collaborative Whiteboard", status: "At Risk", owners: ["fufesou"] },
+      { moduleName: "Plugin & Extension Framework", status: "At Risk", owners: ["fufesou"] },
+      { moduleName: "Remote Session Control", status: "Needs Attention", owners: ["fufesou", "Asura"] },
+      { moduleName: "Infrastructure", status: "Needs Attention", owners: ["rustdesk", "21pages"] },
+      { moduleName: "Client Application Shell", status: "Healthy", owners: ["fufesou", "21pages", "Mr-Update"] },
     ],
   },
   {
-    repoName: "mobile-app",
-    spofModuleCount: 3,
-    spofOwnerCount: 3,
+    repoName: "twenty",
     modules: [
-      { moduleName: "PushNotifications", status: "At Risk", ownerName: "Mike Sato" },
-      { moduleName: "OfflineSync", status: "Need Attention", ownerName: "Nina Patel" },
-      { moduleName: "BiometricAuth", status: "Healthy", ownerName: "Oscar Reyes" },
+      { moduleName: "AI Assistant", status: "At Risk", owners: ["Charles Bochet"] },
+      { moduleName: "Billing & Subscription Management", status: "Needs Attention", owners: ["Félix Malfait", "Ana Sofia Marin Alexandre"] },
+      { moduleName: "Data Import & Export", status: "Healthy", owners: ["Charles Bochet", "Raphaël Bosi", "Etienne"] },
+      { moduleName: "Workflow Automation", status: "Healthy", owners: ["Charles Bochet", "martmull", "Thomas Trompette", "Paul Rastoin"] },
+      { moduleName: "Sales Pipeline & Contact Management", status: "Healthy", owners: ["Félix Malfait", "Charles Bochet", "Lucas Bordeau", "Abdullah."] },
     ],
   },
 ];
 
-/** Aggregated totals computed from mock rows. */
+/** Real repo-level SPOF data with computed counts */
+export const ORG_REPO_SPOF_ROWS: OrgRepoSpofRow[] = RAW_REPO_MODULES.map((repo) => {
+  const counts = computeSpofCounts(repo.modules);
+  return {
+    repoName: repo.repoName,
+    spofModuleCount: counts.spofOwnerCount,
+    spofOwnerCount: counts.uniqueSpofOwnerCount,
+    modules: repo.modules,
+  };
+});
+
+/** Aggregated totals computed from real data. */
 export const ORG_SPOF_TOTALS = {
-  totalSpofModules: ORG_REPO_SPOF_ROWS.reduce((s, r) => s + r.spofModuleCount, 0),
-  totalSpofOwners: new Set(
-    ORG_REPO_SPOF_ROWS.flatMap((r) => r.modules.map((m) => m.ownerName)),
+  // Count of modules with SPOF risk (At Risk or Needs Attention)
+  totalSpofModules: ORG_REPO_SPOF_ROWS.reduce(
+    (sum, r) => sum + r.modules.filter((m) => m.status !== "Healthy").length,
+    0
+  ),
+  // Unique SPOF owners across all at-risk modules
+  totalUniqueSpofOwners: new Set(
+    ORG_REPO_SPOF_ROWS.flatMap((r) =>
+      r.modules.filter((m) => m.status !== "Healthy").flatMap((m) => m.owners)
+    ),
   ).size,
 };
 
