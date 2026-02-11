@@ -16,7 +16,7 @@ import { Badge } from "@/components/ui/badge";
 // Dynamically import Plotly to avoid SSR issues
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
-const MINI_CHART_HEIGHT = 160;
+const CHART_HEIGHT = 200;
 
 type PerformanceStatisticCardProps = {
   title: string;
@@ -66,7 +66,7 @@ export function PerformanceStatisticCard({
   const plotlyLayout = useMemo(
     (): Partial<Layout> => ({
       autosize: true,
-      height: MINI_CHART_HEIGHT,
+      height: CHART_HEIGHT,
       margin: { t: 8, r: 12, b: 28, l: 36 },
       paper_bgcolor: "rgba(0,0,0,0)",
       plot_bgcolor: "rgba(0,0,0,0)",
@@ -107,7 +107,7 @@ export function PerformanceStatisticCard({
 
   return (
     <Card
-      className="gap-4 rounded-[10px] border-none p-4 shadow-none min-w-0 flex-1"
+      className="h-full justify-center gap-4 rounded-[10px] border-none p-4 shadow-none min-w-0 flex-1"
       style={{ backgroundColor: bgColor }}
     >
       <CardHeader className="gap-[10px] p-0">
@@ -136,13 +136,13 @@ export function PerformanceStatisticCard({
             data={plotlyData}
             layout={plotlyLayout}
             config={plotlyConfig}
-            style={{ width: "100%", height: `${MINI_CHART_HEIGHT}px` }}
+            style={{ width: "100%", height: `${CHART_HEIGHT}px` }}
             useResizeHandler
           />
         ) : (
           <div
             className="flex items-center justify-center rounded-lg"
-            style={{ height: `${MINI_CHART_HEIGHT}px`, backgroundColor: "rgba(0,0,0,0.03)" }}
+            style={{ height: `${CHART_HEIGHT}px`, backgroundColor: "rgba(0,0,0,0.03)" }}
           >
             <p className="text-sm text-gray-400">No data</p>
           </div>
