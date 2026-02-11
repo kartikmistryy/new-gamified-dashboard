@@ -124,7 +124,7 @@ export type ModuleSPOFData = {
   size: number;
   scoreRange: SPOFScoreRange;
   primaryOwner: ModuleOwner;
-  backupOwner: ModuleOwner;
+  backupOwners: ModuleOwner[];
   description?: string;
   activeContributors?: number;
   teamLoad?: "Low Pressure" | "Medium Pressure" | "High Pressure";

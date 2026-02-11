@@ -72,7 +72,7 @@ export function filterModules(
     case "primaryOwner":
       return modules.filter((m) => m.primaryOwner.id === currentUserId);
     case "backupOwner":
-      return modules.filter((m) => m.backupOwner.id === currentUserId);
+      return modules.filter((m) => m.backupOwners.some((o) => o.id === currentUserId));
     case "all":
     default:
       return modules;
@@ -103,7 +103,7 @@ export function calculateSpofSummary(modules: ModuleSPOFData[], userId: string) 
   const lowRiskCount = modules.filter((m) => m.scoreRange === "low").length;
 
   const primaryOwnerCount = modules.filter((m) => m.primaryOwner.id === userId).length;
-  const backupOwnerCount = modules.filter((m) => m.backupOwner.id === userId).length;
+  const backupOwnerCount = modules.filter((m) => m.backupOwners.some((o) => o.id === userId)).length;
 
   const avgSpofScore =
     totalModules > 0

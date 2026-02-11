@@ -1,12 +1,12 @@
 /** Modules Table Column Definitions */
 
 import type { ColumnDef } from "@tanstack/react-table";
-import { Badge as UiBadge } from "@/components/ui/badge";
 import type { ModuleSPOFData } from "../types";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
-import { getRiskBadgeStyle, getOwnershipColor } from "../utils/moduleTableUtils";
+import { getStatusBadgeStyle, getOwnershipColor } from "../utils/moduleTableUtils";
 import { OwnerCell } from "@/components/dashboard/repoDashboard/ModuleTableComponents";
+import { UserAvatar } from "@/components/shared/UserAvatar";
 
 export function createModuleColumns(): ColumnDef<ModuleSPOFData, unknown>[] {
   return [
@@ -29,14 +29,32 @@ export function createModuleColumns(): ColumnDef<ModuleSPOFData, unknown>[] {
       header: "Module",
       accessorFn: (row) => row.name,
       cell: ({ row }) => (
-        <div className="flex flex-col gap-1.5 w-full">
-          <UiBadge variant="outline" className="text-xs w-fit">
-            {row.original.repoName}
-          </UiBadge>
-          <span className="font-medium text-gray-900">{row.original.name}</span>
-        </div>
+        <span className="font-medium text-gray-900">{row.original.name}</span>
       ),
       meta: { className: "py-4" },
+    },
+    {
+      id: "status",
+      header: "Status",
+      accessorFn: (row) => {
+        const riskOrder = { high: 3, medium: 2, low: 1 };
+        return riskOrder[row.scoreRange];
+      },
+      cell: ({ row }) => {
+        const badge = getStatusBadgeStyle(row.original.scoreRange);
+        return (
+          <span
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
+            style={{
+              backgroundColor: hexToRgba(badge.color, 0.25),
+              color: badge.color,
+            }}
+          >
+            {badge.text}
+          </span>
+        );
+      },
+      meta: { className: "w-[140px] pl-6 py-4" },
     },
     {
       id: "primaryOwner",
@@ -55,40 +73,40 @@ export function createModuleColumns(): ColumnDef<ModuleSPOFData, unknown>[] {
       meta: { className: "w-[260px] py-4" },
     },
     {
-      id: "backupOwner",
-      header: "Backup Owner",
-      accessorFn: (row) => row.backupOwner.ownershipPercent,
-      cell: ({ row }) => (
-        <OwnerCell
-          name={row.original.backupOwner.name}
-          percent={row.original.backupOwner.ownershipPercent}
-          color="#94A3B8"
-        />
-      ),
-      meta: { className: "w-[260px] py-4" },
-    },
-    {
-      id: "risk",
-      header: "Risk",
-      accessorFn: (row) => {
-        const riskOrder = { high: 3, medium: 2, low: 1 };
-        return riskOrder[row.scoreRange];
-      },
+      id: "backupOwners",
+      header: "Backup Owners",
+      accessorFn: (row) => row.backupOwners[0]?.ownershipPercent ?? 0,
       cell: ({ row }) => {
-        const riskBadge = getRiskBadgeStyle(row.original.scoreRange);
+        const backups = row.original.backupOwners;
+        if (backups.length === 0) {
+          return <span className="text-sm text-gray-400">—</span>;
+        }
+        if (backups.length === 1) {
+          return (
+            <OwnerCell
+              name={backups[0].name}
+              percent={backups[0].ownershipPercent}
+              color="#94A3B8"
+            />
+          );
+        }
         return (
-          <span
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
-            style={{
-              backgroundColor: hexToRgba(riskBadge.color, 0.25),
-              color: riskBadge.color,
-            }}
-          >
-            {riskBadge.text}
-          </span>
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="flex -space-x-2 shrink-0">
+              {backups.slice(0, 3).map((owner) => (
+                <UserAvatar key={owner.id} userName={owner.name} className="size-8 border-2 border-white" size={32} />
+              ))}
+            </div>
+            <span className="text-sm font-medium text-gray-900 truncate">
+              {backups.slice(0, 2).map((o) => o.name).join(", ")}
+              {backups.length > 2 && (
+                <span className="text-gray-400"> +{backups.length - 2}</span>
+              )}
+            </span>
+          </div>
         );
       },
-      meta: { className: "w-[140px] pl-6 py-4" },
+      meta: { className: "w-[260px] py-4" },
     },
   ];
 }

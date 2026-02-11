@@ -126,7 +126,7 @@ export function getUserModuleSPOFData(userId: string, userName: string = "Alice"
     "payment-processing-service"
   ];
 
-  const modules: Array<Omit<ModuleSPOFData, "id" | "scoreRange" | "primaryOwner" | "backupOwner" | "repoName">> = [
+  const modules: Array<Omit<ModuleSPOFData, "id" | "scoreRange" | "primaryOwner" | "backupOwners" | "repoName">> = [
     // High risk modules (red) - SPOF score 71-100
     { name: "Deployment Module", spofScore: 85, size: 220 },
     { name: "Payment Module", spofScore: 88, size: 220 },
@@ -185,7 +185,7 @@ export function getUserModuleSPOFData(userId: string, userName: string = "Alice"
       ...module,
       scoreRange: getScoreRange(module.spofScore),
       primaryOwner: isUserPrimaryOwner ? currentUserOwner : otherOwner,
-      backupOwner: isUserPrimaryOwner ? otherOwner : currentUserOwner,
+      backupOwners: [isUserPrimaryOwner ? otherOwner : currentUserOwner],
       description: generateModuleDescription(module.name),
       activeContributors: uniqueContributors.size,
       teamLoad: getTeamLoad(module.spofScore),

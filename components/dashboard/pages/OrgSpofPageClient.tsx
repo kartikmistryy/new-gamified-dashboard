@@ -26,7 +26,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { UserAvatar } from "@/components/shared/UserAvatar";
 import { OwnerCell } from "@/components/dashboard/repoDashboard/ModuleTableComponents";
@@ -42,7 +41,8 @@ import {
   ORG_SPOF_RISK_LEVEL,
   sortOrgRepoSpof,
 } from "@/lib/dashboard/entities/team/data/orgSpofDataLoader";
-import { DASHBOARD_TEXT_CLASSES } from "@/lib/dashboard/shared/utils/colors";
+import { DASHBOARD_TEXT_CLASSES, DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
+import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
 import { getRepoPath } from "@/lib/routes";
 
 // ---------------------------------------------------------------------------
@@ -174,23 +174,25 @@ const repoSpofColumns: ColumnDef<OrgRepoSpofRow>[] = [
 // Status badge helper
 // ---------------------------------------------------------------------------
 
+const STATUS_BADGE_COLORS: Record<string, string> = {
+  "At Risk": DASHBOARD_COLORS.danger,
+  "Needs Attention": DASHBOARD_COLORS.warning,
+  Healthy: DASHBOARD_COLORS.excellent,
+};
+
 function StatusBadge({ status }: { status: string }) {
-  switch (status) {
-    case "At Risk":
-      return <Badge variant="destructive">{status}</Badge>;
-    case "Needs Attention":
-      return (
-        <Badge variant="secondary" className="bg-amber-100 text-amber-800 border-amber-200">
-          {status}
-        </Badge>
-      );
-    default:
-      return (
-        <Badge variant="secondary" className="bg-green-100 text-green-800 border-green-200">
-          {status}
-        </Badge>
-      );
-  }
+  const color = STATUS_BADGE_COLORS[status] ?? DASHBOARD_COLORS.excellent;
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
+      style={{
+        backgroundColor: hexToRgba(color, 0.25),
+        color,
+      }}
+    >
+      {status}
+    </span>
+  );
 }
 
 // ---------------------------------------------------------------------------

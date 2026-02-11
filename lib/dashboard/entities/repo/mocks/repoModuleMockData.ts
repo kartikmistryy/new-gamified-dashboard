@@ -122,7 +122,7 @@ function getTeamLoad(spofScore: number): "Low Pressure" | "Medium Pressure" | "H
 
 /** Generates mock module SPOF data for a specific repository */
 export function getRepoModuleSPOFData(repoId: string): ModuleSPOFData[] {
-  const modules: Array<Omit<ModuleSPOFData, "id" | "scoreRange" | "primaryOwner" | "backupOwner" | "repoName">> = [
+  const modules: Array<Omit<ModuleSPOFData, "id" | "scoreRange" | "primaryOwner" | "backupOwners" | "repoName">> = [
     // High risk modules
     { name: "Deployment Module", spofScore: 85, size: 220 },
     { name: "Payment Module", spofScore: 88, size: 220 },
@@ -142,10 +142,17 @@ export function getRepoModuleSPOFData(repoId: string): ModuleSPOFData[] {
 
   return modules.map((module, index) => {
     const primaryOwnership = Math.floor(50 + (module.spofScore / 100) * 40);
-    const backupOwnership = 100 - primaryOwnership;
+    const remainingOwnership = 100 - primaryOwnership;
 
     const primaryOwner = generateMockOwner(index, primaryOwnership);
-    const backupOwner = generateMockOwner(index + 1, backupOwnership);
+
+    // Generate 1-3 backup owners based on risk: high-risk → fewer backups
+    const backupCount = module.spofScore > 70 ? 1 : module.spofScore > 40 ? 2 : 3;
+    const backupOwners: ModuleOwner[] = Array.from({ length: backupCount }, (_, i) => {
+      const weight = 1 / (i + 1);
+      const totalWeight = Array.from({ length: backupCount }, (__, j) => 1 / (j + 1)).reduce((s, w) => s + w, 0);
+      return generateMockOwner(index + 1 + i, Math.round((weight / totalWeight) * remainingOwnership));
+    });
 
     const capabilities = generateMockCapabilities(module.name, module.spofScore);
 
@@ -160,7 +167,7 @@ export function getRepoModuleSPOFData(repoId: string): ModuleSPOFData[] {
       ...module,
       scoreRange: getScoreRange(module.spofScore),
       primaryOwner,
-      backupOwner,
+      backupOwners,
       description: generateModuleDescription(module.name),
       activeContributors: uniqueContributors.size,
       teamLoad: getTeamLoad(module.spofScore),
