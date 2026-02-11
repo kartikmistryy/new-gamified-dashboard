@@ -42,3 +42,6 @@ next-env.d.ts
 
 # pattern
 *.tmp
+
+# claude
+.claude/
