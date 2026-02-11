@@ -21,9 +21,9 @@
 
 import { useMemo } from "react";
 import { PerformanceChart } from "@/components/dashboard/shared/PerformanceChart";
-import type { ContributorPerformanceChartAdapterProps } from "@/lib/dashboard/contributorCarousel";
-import type { OrgPerformanceDataPoint } from "@/lib/dashboard/performanceChart/types";
-import { hasPerformanceData } from "@/lib/dashboard/contributorCarousel";
+import type { ContributorPerformanceChartAdapterProps } from "@/lib/dashboard/repoDashboard/contributorCarousel";
+import type { OrgPerformanceDataPoint } from "@/lib/dashboard/shared/performanceChart/types";
+import { hasPerformanceData } from "@/lib/dashboard/repoDashboard/contributorCarousel";
 
 /**
  * ContributorPerformanceChartAdapter Component

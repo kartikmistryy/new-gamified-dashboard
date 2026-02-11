@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import DashboardSidebar from "@/components/dashboard/layout/DashboardSidebar";
 import { LightThemeScript } from "@/components/shared/LightThemeScript";
-import { TimeRangeProvider } from "@/lib/dashboard/TimeRangeContext";
+import { TimeRangeProvider } from "@/lib/dashboard/shared/TimeRangeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

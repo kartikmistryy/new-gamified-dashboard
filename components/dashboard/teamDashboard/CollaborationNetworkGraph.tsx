@@ -13,8 +13,8 @@ import {
   createColorScale,
   createEdgeWidthScale,
   calculateNodeRadius,
-} from "@/lib/dashboard/collaborationNetworkScales";
-import { formatNodeTooltip, formatEdgeTooltip } from "@/lib/dashboard/collaborationNetworkTooltips";
+} from "@/lib/dashboard/shared/collaborationNetworkScales";
+import { formatNodeTooltip, formatEdgeTooltip } from "@/lib/dashboard/shared/collaborationNetworkTooltips";
 import { CollaborationNetworkLegend } from "./CollaborationNetworkLegend";
 const CHART_HEIGHT = 540;
 const DEFAULT_THRESHOLD = 0.7;

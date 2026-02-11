@@ -3,7 +3,7 @@
 "use client";
 
 import { useEffect, useMemo } from "react";
-import type { ContributorPerformanceCarouselProps } from "@/lib/dashboard/contributorCarousel";
+import type { ContributorPerformanceCarouselProps } from "@/lib/dashboard/repoDashboard/contributorCarousel";
 import {
   isCarouselReady,
   isCarouselError,
@@ -12,8 +12,8 @@ import {
   mergeCarouselConfig,
   createSlideIdentifier,
   slideIdentifierToKey,
-} from "@/lib/dashboard/contributorCarousel";
-import { useCarouselNavigation } from "@/lib/dashboard/useCarouselNavigation";
+} from "@/lib/dashboard/repoDashboard/contributorCarousel";
+import { useCarouselNavigation } from "@/lib/dashboard/repoDashboard/useCarouselNavigation";
 import { ContributorCarouselSlide } from "./ContributorCarouselSlide";
 import { ContributorCarouselNavigation } from "./ContributorCarouselNavigation";
 import { CarouselLoadingState, CarouselErrorState, CarouselEmptyState } from "./CarouselStates";

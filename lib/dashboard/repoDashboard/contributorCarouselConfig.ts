@@ -9,7 +9,7 @@ import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 import type {
   EventGenerationStrategy,
   AnnotationGenerationStrategy,
-} from "@/lib/dashboard/performanceChart/types";
+} from "@/lib/dashboard/shared/performanceChart/types";
 import type { NavigationCallback, MetricFormatter } from "./contributorCarouselTypes";
 
 // ============================================================================

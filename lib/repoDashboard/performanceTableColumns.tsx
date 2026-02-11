@@ -2,7 +2,7 @@ import type { BaseTeamsTableColumn } from "@/components/dashboard/shared/BaseTea
 import { UserAvatar } from "@/components/shared/UserAvatar";
 import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
-import { getTrendIcon, formatChangeLabel, getChangeColor } from "@/lib/dashboard/trendHelpers";
+import { getTrendIcon, formatChangeLabel, getChangeColor } from "@/lib/dashboard/shared/trendHelpers";
 import type { PerformanceFilter } from "./performanceTypes";
 import type { ContributorPerformanceWithDelta } from "./performanceTableConfig";
 

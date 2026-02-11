@@ -7,7 +7,7 @@ import type { DesignMemberFilter } from "./designHelpers";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import { CATEGORY_COLORS } from "@/lib/orgDashboard/chaosMatrixData";
-import { getTrendIconForCount } from "@/lib/dashboard/trendHelpers";
+import { getTrendIconForCount } from "@/lib/dashboard/shared/trendHelpers";
 
 const OWNERSHIP_SEGMENTS = [
   { label: "High Ownership", style: { backgroundColor: hexToRgba("#22c55e", 0.25), color: "#22c55e" } },

@@ -8,8 +8,8 @@ import { flexRender } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
 import { SkillgraphDetailTable } from "@/components/dashboard/userDashboard/SkillgraphDetailTable";
-import { buildUserSkillRowsFromRoadmap } from "@/lib/dashboard/userSkillGraphUtils";
-import { useUserSkillTable } from "@/lib/dashboard/useUserSkillTable";
+import { buildUserSkillRowsFromRoadmap } from "@/lib/dashboard/userDashboard/userSkillGraphUtils";
+import { useUserSkillTable } from "@/lib/dashboard/userDashboard/useUserSkillTable";
 
 export function UserSkillGraphPageClient() {
   const { userId } = useRouteParams();

@@ -2,7 +2,7 @@
 
 import { useMemo, useRef, useEffect, useId } from "react";
 import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
-import { calculateBarChart, CHART_CONSTANTS } from "@/lib/dashboard/contributorBarChartUtils";
+import { calculateBarChart, CHART_CONSTANTS } from "@/lib/dashboard/repoDashboard/contributorBarChartUtils";
 import { BarGroup, MedianLines, YAxisTicks } from "./ContributorBarChartComponents";
 
 export type ContributorCodeMetrics = {

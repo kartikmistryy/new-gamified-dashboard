@@ -9,7 +9,7 @@ import {
   DEFAULT_HEIGHT,
   MINI_HEIGHT,
   type ContributorMetricDataPoint,
-} from "@/lib/dashboard/contributorMetricsPlotly";
+} from "@/lib/dashboard/repoDashboard/contributorMetricsPlotly";
 
 export type { ContributorMetricDataPoint };
 

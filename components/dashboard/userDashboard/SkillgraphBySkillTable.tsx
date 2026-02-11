@@ -10,11 +10,11 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import type { SkillgraphSkillRow, SkillgraphSkillFilter } from "@/lib/orgDashboard/types";
-import { createSkillgraphSkillColumns } from "@/lib/dashboard/skillgraphColumns";
+import { createSkillgraphSkillColumns } from "@/lib/dashboard/userDashboard/skillgraphColumns";
 import {
   createOpacityScale,
   getSortingForFilter,
-} from "@/lib/dashboard/skillgraphTableUtils";
+} from "@/lib/dashboard/userDashboard/skillgraphTableUtils";
 import { SkillgraphDetailTable } from "./SkillgraphDetailTable";
 import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";

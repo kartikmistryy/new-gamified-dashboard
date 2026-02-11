@@ -1,7 +1,7 @@
 /** Performance Chart Plotly Shape Builders - zone backgrounds, event markers, annotations */
 
 import type { ChartEvent, ChartAnnotation } from "@/lib/orgDashboard/types";
-import type { NormalizedPerformanceDataPoint } from "@/lib/dashboard/performanceChart/types";
+import type { NormalizedPerformanceDataPoint } from "@/lib/dashboard/shared/performanceChart/types";
 import { PERFORMANCE_ZONES } from "@/lib/orgDashboard/orgPerformanceChartData";
 
 /** Build performance zone shapes (background rectangles) */

@@ -2,7 +2,7 @@
 
 import type { Data, Layout, Config } from "plotly.js";
 import type { ChartEvent, ChartAnnotation } from "@/lib/orgDashboard/types";
-import type { NormalizedPerformanceDataPoint } from "@/lib/dashboard/performanceChart/types";
+import type { NormalizedPerformanceDataPoint } from "@/lib/dashboard/shared/performanceChart/types";
 import { CHART_HEIGHT, MARGIN } from "@/lib/orgDashboard/orgPerformanceChartUtils";
 import { PERFORMANCE_BASELINES } from "@/lib/orgDashboard/orgPerformanceChartData";
 import {

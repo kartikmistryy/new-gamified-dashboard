@@ -5,7 +5,7 @@
  * navigation types, and helper types.
  */
 
-import type { NormalizedPerformanceDataPoint } from "@/lib/dashboard/performanceChart/types";
+import type { NormalizedPerformanceDataPoint } from "@/lib/dashboard/shared/performanceChart/types";
 
 // ============================================================================
 // Core Contributor Types

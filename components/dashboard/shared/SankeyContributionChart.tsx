@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import type { Config } from "plotly.js";
-import { buildSankeyPlotly } from "@/lib/dashboard/sankeyContributionPlotly";
+import { buildSankeyPlotly } from "@/lib/dashboard/repoDashboard/sankeyContributionPlotly";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 

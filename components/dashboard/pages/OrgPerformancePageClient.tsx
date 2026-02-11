@@ -7,7 +7,7 @@ import { DashboardSection } from "@/components/dashboard/shared/DashboardSection
 import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
 import { PerformanceChart } from "@/components/dashboard/shared/PerformanceChart";
 import { PerformanceTeamsTable } from "@/components/dashboard/orgDashboard/PerformanceTeamsTable";
-import { useTimeRange } from "@/lib/dashboard/TimeRangeContext";
+import { useTimeRange } from "@/lib/dashboard/shared/TimeRangeContext";
 import {
   TEAM_PERFORMANCE_ROWS,
   getChartInsightsMock,

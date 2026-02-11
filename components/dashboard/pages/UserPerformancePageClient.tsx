@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { useRouteParams } from "@/lib/RouteParamsProvider";
-import { useTimeRange } from "@/lib/dashboard/TimeRangeContext";
+import { useTimeRange } from "@/lib/dashboard/shared/TimeRangeContext";
 import { PerformanceChart } from "@/components/dashboard/shared/PerformanceChart";
 import { ContributorMetricsChart } from "@/components/dashboard/repoDashboard/ContributorMetricsChart";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
