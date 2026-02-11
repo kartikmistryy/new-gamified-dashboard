@@ -135,7 +135,7 @@ const repoSpofColumns: ColumnDef<OrgRepoSpofRow>[] = [
     id: "healthBar",
     header: "Module Health",
     enableSorting: false,
-    meta: { className: "w-48" },
+    meta: { className: "w-96" },
     cell: ({ row }) => {
       const { healthy, needsAttention, critical } = row.original.healthDistribution;
       const segments = [
