@@ -5,80 +5,26 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { GaugeWithInsights } from "@/components/dashboard/shared/GaugeWithInsights";
 import { SankeyContributionChart } from "@/components/dashboard/shared/SankeyContributionChart";
 import { RepoHealthBar, REPO_HEALTH_SEGMENTS, type RepoHealthSegment } from "@/components/dashboard/shared/RepoHealthBar";
-import { BaseTeamsTable, type BaseTeamsTableColumn } from "@/components/dashboard/shared/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
-import { UserAvatar } from "@/components/shared/UserAvatar";
+import { ModulesTable } from "@/components/dashboard/repoDashboard/ModulesTable";
 import {
   getContributorSpofData,
   calculateRepoSpofGaugeValue,
-  type ContributorSpofRow,
 } from "@/lib/dashboard/entities/contributor/mocks/spofMockData";
-import {
-  SPOF_CONTRIBUTOR_FILTER_TABS,
-  spofContributorSortFunction,
-  getSpofInsights,
-  type SpofContributorFilter,
-} from "@/lib/dashboard/entities/contributor/utils/spofHelpers";
+import { getSpofInsights } from "@/lib/dashboard/entities/contributor/utils/spofHelpers";
 import { buildRepoContributionFlow } from "@/lib/dashboard/entities/contributor/mocks/spofContributionData";
 import { CONTRIBUTOR_FALLBACK_COLORS } from "@/lib/dashboard/entities/contributor/utils/contributionFlowHelpers";
 import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/dashboard/entities/team/utils/utils";
-import { DASHBOARD_TEXT_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
-
-// SPOF contributor table columns
-const SPOF_CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorSpofRow, SpofContributorFilter>[] = [
-  {
-    key: "rank",
-    header: "Rank",
-    className: "w-14",
-    enableSorting: false,
-    render: (_, index) => {
-      const displayRank = index + 1;
-      return (
-        <span
-          className={
-            displayRank <= 3 ? "text-foreground font-bold" : DASHBOARD_TEXT_CLASSES.rankMuted
-          }
-        >
-          {displayRank}
-        </span>
-      );
-    },
-  },
-  {
-    key: "contributor",
-    header: "Contributor",
-    enableSorting: false,
-    render: (row) => (
-      <div className="flex items-center gap-3">
-        <UserAvatar userName={row.contributorName} className="size-4" size={16} />
-        <p className="font-medium text-gray-900">{row.contributorName}</p>
-      </div>
-    ),
-  },
-  {
-    key: "ownershipPct",
-    header: "% of Ownership",
-    className: "text-right",
-    enableSorting: true,
-    accessorFn: (row) => row.ownershipPct,
-    render: (row) => <span className="text-gray-700">{Math.round(row.ownershipPct)}%</span>,
-  },
-  {
-    key: "ownedModules",
-    header: "Owned Modules",
-    className: "text-right",
-    enableSorting: true,
-    accessorFn: (row) => row.ownedModules,
-    render: (row) => <span className="text-gray-700">{row.ownedModules}</span>,
-  },
-];
+import { getRepoModuleSPOFData } from "@/lib/dashboard/entities/repo/mocks/repoModuleMockData";
 
 export function RepoSpofPageClient() {
   const { repoId } = useRouteParams();
 
   // Data pipeline
   const contributors = useMemo(() => getContributorSpofData(repoId!, 6), [repoId]);
+
+  const modules = useMemo(() => getRepoModuleSPOFData(repoId!), [repoId]);
 
   const gaugeValue = useMemo(() => calculateRepoSpofGaugeValue(contributors), [contributors]);
 
@@ -138,7 +84,7 @@ export function RepoSpofPageClient() {
           />
         </DashboardSection>
 
-        <DashboardSection title="Repository Contribution Flow">
+        <DashboardSection title="SPOF Owner Distribution">
           <SankeyContributionChart
             flow={contributionFlow}
             colorMap={contributorColorMap}
@@ -151,15 +97,8 @@ export function RepoSpofPageClient() {
           <RepoHealthBar segments={repoHealthSegments} />
         </DashboardSection>
 
-        <DashboardSection title="Repository Contributors">
-          <BaseTeamsTable<ContributorSpofRow, SpofContributorFilter>
-            rows={contributors}
-            filterTabs={SPOF_CONTRIBUTOR_FILTER_TABS}
-            defaultFilter="highestRisk"
-            sortFunction={spofContributorSortFunction}
-            columns={SPOF_CONTRIBUTOR_COLUMNS}
-            getRowKey={(row) => row.contributorName}
-          />
+        <DashboardSection title="Modules">
+          <ModulesTable modules={modules} />
         </DashboardSection>
       </div>
     </TooltipProvider>
