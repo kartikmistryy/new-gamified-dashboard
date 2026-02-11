@@ -3,6 +3,7 @@ import type { PerformanceMetricConfig } from "./types";
 
 /**
  * Four performance metric configurations with meaningful data per CHARTS.md plan.
+ * Ordered by Impact on Score: High -> Heavy -> Medium -> Low
  *
  * Each metric has:
  * - Primary value prominently displayed
@@ -10,70 +11,49 @@ import type { PerformanceMetricConfig } from "./types";
  * - Insights: first = topic sentence (action), rest = bullet points (why/details)
  */
 export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
-  // Chart 1: Average Age of Code Deleted
+  // 1. Normalized Lines of Code (Impact: High - changed from Low)
   {
-    id: "avg-age-code-deleted",
-    title: "Average Age of Code Deleted",
+    id: "normalized-loc",
+    sectionTitle: "Meaningful Output",
+    title: "Normalized Lines of Code",
     severity: "Heavy",
     severityColor: "#CA3A31",
     bgColor: "#F9E3E2",
     iconColor: "#CA3A31",
-    icon: Hourglass,
-    primaryValue: "42",
-    primaryLabel: "days",
-    visualizationType: "donut",
-    breakdown: [
-      { label: "<14 days", value: 25, color: "#CA3A31" },
-      { label: "14d-1mo", value: 30, color: "#E9A23B" },
-      { label: "1-3mo", value: 28, color: "#7BA8E6" },
-      { label: ">3mo", value: 17, color: "#55B685" },
-    ],
-    insights: [
-      {
-        id: "topic",
-        text: "Needs attention — too much young code is being deleted. Consider improving upfront design reviews before implementation.",
-      },
-      {
-        id: "young-code",
-        text: "25% of deleted code is less than 2 weeks old, indicating rushed implementations that don't survive review.",
-      },
-      {
-        id: "mature-deletions",
-        text: "Only 17% of deletions target mature code (>3 months), suggesting limited intentional refactoring.",
-      },
-      {
-        id: "threshold",
-        text: "The 42-day average is below the healthy threshold of 60 days.",
-      },
-    ],
-  },
-
-  // Chart 2: Normalized Lines of Code
-  {
-    id: "normalized-loc",
-    title: "Normalized Lines of Code",
-    severity: "Low",
-    severityColor: "#6BC095",
-    bgColor: "#D9F9E6",
-    iconColor: "#55B685",
     icon: Code2,
-    primaryValue: "8,450",
+    primaryValue: "845",
     primaryLabel: "nLoC",
     visualizationType: "donut",
+    status: {
+      label: "On track",
+      color: "#55B685",
+    },
+    motivation: {
+      why: "Reflects meaningful contribution rather than raw volume, rewarding high-value work.",
+      how: "Raw lines weighted by type (core logic counts more than config/docs).",
+    },
     breakdown: [
       { label: "Core Logic", value: 50, color: "#55B685" },
       { label: "Tests", value: 25, color: "#7BA8E6" },
       { label: "Config", value: 15, color: "#E9A23B" },
       { label: "Docs", value: 10, color: "#9CA3AF" },
     ],
+    currentValue: 845,
+    thresholds: [
+      { min: 0, max: 200, label: "Critical", color: "#CA3A31" },
+      { min: 200, max: 500, label: "Concerning", color: "#E9A23B" },
+      { min: 500, max: 800, label: "Expected", color: "#7BA8E6" },
+      { min: 800, max: 1500, label: "Great", color: "#55B685" },
+    ],
+    trend: { direction: "up", value: "120 nLoC", upIsGood: true },
     insights: [
       {
         id: "topic",
-        text: "On track — weighted output is healthy with good focus on high-value work. Maintain current development practices.",
+        text: "Weighted output is healthy with good focus on high-value work. Maintain current development practices.",
       },
       {
         id: "weighted",
-        text: "12,800 raw lines translate to 8,450 normalized contribution (66% efficiency ratio).",
+        text: "12,800 raw lines translate to 845 normalized contribution (66% efficiency ratio).",
       },
       {
         id: "core-focus",
@@ -86,56 +66,82 @@ export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
     ],
   },
 
-  // Chart 3: Legacy Code Updated
+  // 2. Average Age of Code Deleted (Impact: Heavy - unchanged)
   {
-    id: "legacy-code-updated",
-    title: "Legacy Code Updated",
-    severity: "Medium",
-    severityColor: "#E9A23B",
-    bgColor: "#FCF3CC",
-    iconColor: "#E9A23B",
-    icon: RefreshCw,
-    primaryValue: "23",
-    primaryLabel: "%",
-    visualizationType: "donut",
-    breakdown: [
-      { label: "6mo-1yr", value: 52, color: "#55B685" },
-      { label: "1-2yr", value: 26, color: "#7BA8E6" },
-      { label: "2-3yr", value: 13, color: "#E9A23B" },
-      { label: ">3yr", value: 9, color: "#CA3A31" },
-    ],
-    insights: [
-      {
-        id: "topic",
-        text: "Below average — legacy systems may be accumulating debt. Consider dedicating sprint capacity to proactive maintenance.",
-      },
-      {
-        id: "low-legacy",
-        text: "Only 23% of changes touch code older than 6 months (target: 30-40%).",
-      },
-      {
-        id: "oldest-code",
-        text: "Updates to 3+ year old code represent just 9% of legacy work, despite these areas often needing the most attention.",
-      },
-      {
-        id: "risk",
-        text: "Low legacy engagement increases risk of critical failures in older systems.",
-      },
-    ],
-  },
-
-  // Chart 4: Churn Rate
-  {
-    id: "churn-rate",
-    title: "Churn Rate",
+    id: "avg-age-code-deleted",
+    sectionTitle: "Code Design Quality",
+    title: "Average Age of Code Deleted",
     severity: "Heavy",
     severityColor: "#CA3A31",
     bgColor: "#F9E3E2",
     iconColor: "#CA3A31",
+    icon: Hourglass,
+    primaryValue: "13",
+    primaryLabel: "days",
+    visualizationType: "donut",
+    status: {
+      label: "Needs attention",
+      color: "#CA3A31",
+    },
+    motivation: {
+      why: "Higher values indicate more stable, well-designed code that doesn't need frequent rewrites.",
+      how: "Average age of all deleted lines, weighted by commit history.",
+    },
+    breakdown: [
+      { label: "<14 days", value: 25, color: "#CA3A31" },
+      { label: "14d-1mo", value: 30, color: "#E9A23B" },
+      { label: "1-3mo", value: 28, color: "#7BA8E6" },
+      { label: ">3mo", value: 17, color: "#55B685" },
+    ],
+    currentValue: 13,
+    thresholds: [
+      { min: 0, max: 14, label: "Critical", color: "#CA3A31" },
+      { min: 14, max: 30, label: "Concerning", color: "#E9A23B" },
+      { min: 30, max: 60, label: "Expected", color: "#7BA8E6" },
+      { min: 60, max: 120, label: "Great", color: "#55B685" },
+    ],
+    trend: { direction: "down", value: "5 days", upIsGood: true },
+    insights: [
+      {
+        id: "topic",
+        text: "Too much young code is being deleted. Consider improving upfront design reviews before implementation.",
+      },
+      {
+        id: "young-code",
+        text: "25% of deleted code is less than 2 weeks old, indicating rushed implementations that don't survive review.",
+      },
+      {
+        id: "mature-deletions",
+        text: "Only 17% of deletions target mature code (>3 months), suggesting limited intentional refactoring.",
+      },
+      {
+        id: "threshold",
+        text: "The 13-day average is below the critical threshold of 14 days.",
+      },
+    ],
+  },
+
+  // 3. Churn Rate (Impact: Medium - changed from Heavy)
+  {
+    id: "churn-rate",
+    sectionTitle: "Development Efficiency",
+    title: "Churn Rate",
+    severity: "Medium",
+    severityColor: "#E9A23B",
+    bgColor: "#FCF3CC",
+    iconColor: "#E9A23B",
     icon: Repeat,
     primaryValue: "12.4",
     primaryLabel: "%",
     visualizationType: "barWithZones",
+    status: {
+      label: "Concerning",
+      color: "#E9A23B",
+    },
+    motivation: {
+      why: "High churn indicates rework cycles, often from unclear requirements or insufficient planning.",
+      how: "Ratio of deleted lines to added lines within the same time period.",
+    },
     currentValue: 12.4,
     thresholds: [
       { min: 0, max: 5, label: "Great", color: "#55B685" },
@@ -143,10 +149,11 @@ export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
       { min: 10, max: 20, label: "Concerning", color: "#E9A23B" },
       { min: 20, max: 100, label: "Critical", color: "#CA3A31" },
     ],
+    trend: { direction: "up", value: "2.6%", upIsGood: false },
     insights: [
       {
         id: "topic",
-        text: "Concerning — churn rate is above healthy range. Target reducing to <10% through better specs and design discussions.",
+        text: "Churn rate is above healthy range. Target reducing to <10% through better specs and design discussions.",
       },
       {
         id: "ratio",
@@ -159,6 +166,61 @@ export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
       {
         id: "correlation",
         text: "High churn often correlates with insufficient planning or over-reliance on trial-and-error coding.",
+      },
+    ],
+  },
+
+  // 4. Legacy Code Updated (Impact: Low - changed from Medium)
+  {
+    id: "legacy-code-updated",
+    sectionTitle: "Technical Debt Management",
+    title: "Legacy Code Updated",
+    severity: "Low",
+    severityColor: "#6BC095",
+    bgColor: "#D9F9E6",
+    iconColor: "#55B685",
+    icon: RefreshCw,
+    primaryValue: "23",
+    primaryLabel: "%",
+    visualizationType: "donut",
+    status: {
+      label: "Below average",
+      color: "#E9A23B",
+    },
+    motivation: {
+      why: "Healthy teams balance new features with legacy upkeep to prevent tech debt accumulation.",
+      how: "Percentage of changes touching code older than 6 months.",
+    },
+    breakdown: [
+      { label: "6mo-1yr", value: 52, color: "#55B685" },
+      { label: "1-2yr", value: 26, color: "#7BA8E6" },
+      { label: "2-3yr", value: 13, color: "#E9A23B" },
+      { label: ">3yr", value: 9, color: "#CA3A31" },
+    ],
+    currentValue: 23,
+    thresholds: [
+      { min: 0, max: 5, label: "Critical", color: "#CA3A31" },
+      { min: 5, max: 10, label: "Concerning", color: "#E9A23B" },
+      { min: 10, max: 20, label: "Expected", color: "#7BA8E6" },
+      { min: 20, max: 36, label: "Great", color:  "#55B685"},
+    ],
+    trend: { direction: "up", value: "4%", upIsGood: true },
+    insights: [
+      {
+        id: "topic",
+        text: "Legacy systems may be accumulating debt. Consider dedicating sprint capacity to proactive maintenance.",
+      },
+      {
+        id: "low-legacy",
+        text: "Only 23% of changes touch code older than 6 months (target: 30-40%).",
+      },
+      {
+        id: "oldest-code",
+        text: "Updates to 3+ year old code represent just 9% of legacy work, despite these areas often needing the most attention.",
+      },
+      {
+        id: "risk",
+        text: "Low legacy engagement increases risk of critical failures in older systems.",
       },
     ],
   },

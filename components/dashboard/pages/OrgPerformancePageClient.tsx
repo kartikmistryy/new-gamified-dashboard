@@ -27,8 +27,9 @@ import type { PerformanceMetricConfig } from "@/lib/orgDashboard/types";
 
 function MetricSectionRow({ metric }: { metric: PerformanceMetricConfig }) {
   return (
-    <DashboardSection title={metric.title}>
+    <DashboardSection title={metric.sectionTitle}>
       <div className="flex flex-col lg:flex-row items-stretch gap-[10px]">
+        {/* Column 1: Chart */}
         <PerformanceStatisticCard
           title={metric.title}
           severity={metric.severity}
@@ -42,13 +43,43 @@ function MetricSectionRow({ metric }: { metric: PerformanceMetricConfig }) {
           breakdown={metric.breakdown}
           thresholds={metric.thresholds}
           currentValue={metric.currentValue}
+          trend={metric.trend}
         />
-        <ChartInsights
-          insights={metric.insights}
-          variant="topicWithBullets"
-          iconStyle="button"
-          className="flex-1 min-w-0"
-        />
+        {/* Columns 2 & 3: Motivation and Insights in a grid for equal height */}
+        <div className="flex-[3] min-w-0 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-[10px]">
+          {/* Motivation (narrower) */}
+          {metric.motivation && (
+            <div className="rounded-[10px] border border-border p-4 space-y-3">
+              {/* Impact on score badge */}
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs text-muted-foreground">Impact on score:</span>
+                <span
+                  className="px-2 py-0.5 text-xs font-semibold rounded-lg text-white"
+                  style={{ backgroundColor: metric.severityColor }}
+                >
+                  {metric.severity}
+                </span>
+              </div>
+              <div>
+                <h4 className="text-xs font-semibold text-foreground uppercase tracking-wide mb-1">Why it matters</h4>
+                <p className="text-sm text-muted-foreground">{metric.motivation.why}</p>
+              </div>
+              <div>
+                <h4 className="text-xs font-semibold text-foreground uppercase tracking-wide mb-1">How it's calculated</h4>
+                <p className="text-sm text-muted-foreground">{metric.motivation.how}</p>
+              </div>
+            </div>
+          )}
+          {/* Insights (wider) */}
+          <ChartInsights
+            insights={metric.insights}
+            variant="topicWithBullets"
+            showTitle={false}
+            showIcon={false}
+            status={metric.status}
+            className=""
+          />
+        </div>
       </div>
     </DashboardSection>
   );
@@ -81,46 +112,47 @@ export function OrgPerformancePageClient() {
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
       <Card className="w-full border-none bg-white p-0 shadow-none">
         <CardContent className="flex w-full flex-col items-stretch space-y-8 px-0">
-          <DashboardSection title="Performance Tracking">
-            <div className="flex flex-row flex-wrap items-stretch gap-8">
-              <div className="flex shrink-0 min-w-[280px] max-w-[50%]">
+          {/* Top section: Performance Tracking + Percentile Chart side by side */}
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Left column: Gauge + Insights stacked vertically */}
+            <DashboardSection title="Performance Tracking" className="lg:w-1/3">
+              <div className="flex flex-col gap-4">
                 <GaugeSection
                   gaugeValue={DEFAULT_PERFORMANCE_GAUGE_VALUE}
                   labelVariant="performance"
                 />
-              </div>
-              <div className="flex-1 min-w-[280px]">
                 <ChartInsights insights={chartInsights} />
               </div>
-            </div>
-          </DashboardSection>
+            </DashboardSection>
 
-          {/* Four performance metric sections - between Performance Tracking and Percentile */}
+            {/* Right column: Percentile Chart */}
+            <DashboardSection title="Percentile (Normalized to Rolling Avg)" className="lg:flex-1">
+              <PerformanceChart
+                dataSource={{
+                  type: "org",
+                  data: [],
+                  generator: generateOrgPerformanceData,
+                }}
+                eventStrategy={{
+                  mode: "static",
+                  events: ORG_PERFORMANCE_HOLIDAYS,
+                }}
+                annotationStrategy={{
+                  mode: "static",
+                  annotations: ORG_PERFORMANCE_ANNOTATIONS,
+                }}
+                timeRange={timeRange}
+                entityVisibility={{
+                  visibleEntities: visibleTeams,
+                }}
+              />
+            </DashboardSection>
+          </div>
+
+          {/* Four performance metric sections */}
           {PERFORMANCE_METRICS.map((metric) => (
             <MetricSectionRow key={metric.id} metric={metric} />
           ))}
-
-          <DashboardSection title="Percentile (Normalized to Rolling Avg)">
-            <PerformanceChart
-              dataSource={{
-                type: "org",
-                data: [],
-                generator: generateOrgPerformanceData,
-              }}
-              eventStrategy={{
-                mode: "static",
-                events: ORG_PERFORMANCE_HOLIDAYS,
-              }}
-              annotationStrategy={{
-                mode: "static",
-                annotations: ORG_PERFORMANCE_ANNOTATIONS,
-              }}
-              timeRange={timeRange}
-              entityVisibility={{
-                visibleEntities: visibleTeams,
-              }}
-            />
-          </DashboardSection>
 
           <DashboardSection title="Teams" className="w-full">
             <PerformanceTeamsTable

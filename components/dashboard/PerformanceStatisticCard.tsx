@@ -2,16 +2,20 @@
 
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
+import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 import type { Data, Layout, Config } from "plotly.js";
 import type { MetricSeverity, DonutSegment, ThresholdZone } from "@/lib/orgDashboard/types";
 import {
   Card,
   CardHeader,
   CardTitle,
-  CardAction,
   CardContent,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Dynamically import Plotly to avoid SSR issues
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
@@ -38,20 +42,16 @@ type PerformanceStatisticCardProps = {
   thresholds?: ThresholdZone[];
   /** Current numeric value for positioning on threshold bar. */
   currentValue?: number;
+  /** Trend compared to previous period. */
+  trend?: {
+    direction: "up" | "down" | "flat";
+    value: string;
+    upIsGood: boolean;
+  };
 };
 
-/** Donut chart visualization with number | donut | legend layout. */
-function DonutVisualization({
-  primaryValue,
-  primaryLabel,
-  breakdown,
-  severityColor,
-}: {
-  primaryValue: string;
-  primaryLabel?: string;
-  breakdown: DonutSegment[];
-  severityColor: string;
-}) {
+/** Donut chart popover content */
+function DonutPopoverContent({ breakdown }: { breakdown: DonutSegment[] }) {
   const plotlyData = useMemo((): Data[] => {
     return [
       {
@@ -97,20 +97,7 @@ function DonutVisualization({
   );
 
   return (
-    <div className="flex items-center justify-center w-full gap-4">
-      {/* Big number on left */}
-      <div className="flex flex-col items-center justify-center">
-        <span className="text-4xl font-bold" style={{ color: severityColor }}>
-          {primaryValue}
-        </span>
-        {primaryLabel && (
-          <span className="text-sm text-gray-500">{primaryLabel}</span>
-        )}
-      </div>
-
-      {/* Vertical divider */}
-      <div className="h-16 w-px bg-gray-300" />
-
+    <div className="flex items-center gap-4 p-2">
       {/* Donut chart */}
       <div className="flex items-center justify-center">
         <Plot
@@ -121,7 +108,7 @@ function DonutVisualization({
         />
       </div>
 
-      {/* Legend on right */}
+      {/* Legend */}
       <div className="flex flex-col gap-1.5">
         {breakdown.map((segment) => (
           <div key={segment.label} className="flex items-center gap-2">
@@ -138,89 +125,202 @@ function DonutVisualization({
   );
 }
 
-/** Horizontal bar with threshold zones visualization. */
+/** Trend indicator showing direction and change value */
+function TrendIndicator({
+  direction,
+  value,
+  upIsGood,
+}: {
+  direction: "up" | "down" | "flat";
+  value: string;
+  upIsGood: boolean;
+}) {
+  const isUp = direction === "up";
+  const isDown = direction === "down";
+  const Icon = isUp ? TrendingUp : isDown ? TrendingDown : Minus;
+
+  // Determine color based on direction and whether up is good
+  let color = "#9CA3AF"; // flat = gray
+  if (isUp) {
+    color = upIsGood ? "#55B685" : "#CA3A31"; // up: green if good, red if bad
+  } else if (isDown) {
+    color = upIsGood ? "#CA3A31" : "#55B685"; // down: red if up is good, green if up is bad
+  }
+
+  return (
+    <div className="flex items-center gap-1" style={{ color }}>
+      <Icon size={16} strokeWidth={2} />
+      <span className="text-sm font-medium">{value}</span>
+    </div>
+  );
+}
+
+/** Horizontal bar with threshold zones and numbers */
+function ThresholdBar({
+  thresholds,
+  currentValue,
+}: {
+  thresholds: ThresholdZone[];
+  currentValue: number;
+}) {
+  const zoneCount = thresholds.length;
+  const zoneWidthPercent = 100 / zoneCount;
+
+  // Find marker position
+  let markerPosition = 0;
+  for (let i = 0; i < thresholds.length; i++) {
+    const zone = thresholds[i];
+    if (currentValue >= zone.min && currentValue < zone.max) {
+      const positionInZone = (currentValue - zone.min) / (zone.max - zone.min);
+      markerPosition = (i + positionInZone) * zoneWidthPercent;
+      break;
+    } else if (currentValue >= zone.max && i === thresholds.length - 1) {
+      markerPosition = 100;
+    }
+  }
+
+  return (
+    <div className="w-full overflow-visible px-2">
+      {/* Bar with zones */}
+      <div className="relative h-4 rounded-full overflow-hidden flex">
+        {thresholds.map((zone) => (
+          <div
+            key={zone.label}
+            className="h-full"
+            style={{
+              width: `${zoneWidthPercent}%`,
+              backgroundColor: zone.color,
+              opacity: 0.7,
+            }}
+          />
+        ))}
+        {/* Marker */}
+        <div
+          className="absolute top-0 h-full w-1 bg-gray-800 rounded-full"
+          style={{ left: `calc(${markerPosition}% - 2px)` }}
+        />
+      </div>
+
+      {/* Numbers between zones */}
+      <div className="relative flex mt-2 h-4 text-[10px] text-gray-500">
+        {thresholds.map((zone, i) => (
+          <div
+            key={`num-${zone.label}`}
+            className="relative"
+            style={{ width: `${zoneWidthPercent}%` }}
+          >
+            {/* Show number at left boundary of each zone */}
+            <span className="absolute left-0 -translate-x-1/2 whitespace-nowrap">{zone.min}</span>
+            {/* Show final number at right boundary of last zone */}
+            {i === thresholds.length - 1 && (
+              <span className="absolute right-0 translate-x-1/2 whitespace-nowrap">{zone.max}</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Get current zone color based on value and thresholds */
+function getZoneColor(thresholds: ThresholdZone[], currentValue: number): string {
+  for (const zone of thresholds) {
+    if (currentValue >= zone.min && currentValue < zone.max) {
+      return zone.color;
+    }
+  }
+  return thresholds[thresholds.length - 1]?.color ?? "#9CA3AF";
+}
+
+/** Donut visualization: shows number with hover tooltip for chart */
+function DonutVisualization({
+  primaryValue,
+  primaryLabel,
+  breakdown,
+  thresholds,
+  currentValue,
+  trend,
+}: {
+  primaryValue: string;
+  primaryLabel?: string;
+  breakdown: DonutSegment[];
+  thresholds?: ThresholdZone[];
+  currentValue?: number;
+  trend?: { direction: "up" | "down" | "flat"; value: string; upIsGood: boolean };
+}) {
+  const valueColor = thresholds && currentValue !== undefined
+    ? getZoneColor(thresholds, currentValue)
+    : "#374151";
+
+  return (
+    <div className="flex flex-col items-center gap-3 w-full">
+      {/* Primary value with trend stacked above unit */}
+      <div className="flex items-center justify-center">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <span className="text-6xl font-bold cursor-pointer" style={{ color: valueColor }}>
+              {primaryValue}
+            </span>
+          </TooltipTrigger>
+          <TooltipContent
+            side="right"
+            sideOffset={8}
+            className="bg-white border border-border shadow-lg rounded-lg p-0"
+          >
+            <DonutPopoverContent breakdown={breakdown} />
+          </TooltipContent>
+        </Tooltip>
+        {/* Right column: trend on top, unit below */}
+        <div className="flex flex-col items-start ml-1">
+          {trend && <TrendIndicator direction={trend.direction} value={trend.value} upIsGood={trend.upIsGood} />}
+          {primaryLabel && (
+            <span className="text-xl text-gray-500">{primaryLabel}</span>
+          )}
+        </div>
+      </div>
+
+      {/* Threshold bar */}
+      {thresholds && thresholds.length > 0 && currentValue !== undefined && (
+        <ThresholdBar thresholds={thresholds} currentValue={currentValue} />
+      )}
+    </div>
+  );
+}
+
+/** Bar-only visualization (no donut hover) */
 function BarWithZonesVisualization({
   primaryValue,
   primaryLabel,
   thresholds,
   currentValue,
-  severityColor,
+  trend,
 }: {
   primaryValue: string;
   primaryLabel?: string;
   thresholds: ThresholdZone[];
   currentValue: number;
-  severityColor: string;
+  trend?: { direction: "up" | "down" | "flat"; value: string; upIsGood: boolean };
 }) {
-  // Calculate marker position (0-100 scale based on max threshold)
-  const maxThreshold = Math.max(...thresholds.map((t) => t.max));
-  const markerPosition = Math.min((currentValue / maxThreshold) * 100, 100);
-
-  // Find which zone the current value falls into
-  const currentZone = thresholds.find(
-    (t) => currentValue >= t.min && currentValue < t.max,
-  ) || thresholds[thresholds.length - 1];
+  const valueColor = getZoneColor(thresholds, currentValue);
 
   return (
-    <div className="flex flex-col gap-3 w-full">
-      {/* Primary value */}
-      <div className="flex items-baseline gap-1">
-        <span className="text-4xl font-bold" style={{ color: severityColor }}>
+    <div className="flex flex-col items-center gap-3 w-full">
+      {/* Primary value with trend stacked above unit */}
+      <div className="flex items-center justify-center">
+        <span className="text-6xl font-bold" style={{ color: valueColor }}>
           {primaryValue}
         </span>
-        {primaryLabel && (
-          <span className="text-lg text-gray-500">{primaryLabel}</span>
-        )}
-      </div>
-
-      {/* Bar with zones */}
-      <div className="w-full">
-        <div className="relative h-5 rounded-full overflow-hidden flex">
-          {thresholds.map((zone) => {
-            const width = ((zone.max - zone.min) / maxThreshold) * 100;
-            return (
-              <div
-                key={zone.label}
-                className="h-full"
-                style={{
-                  width: `${width}%`,
-                  backgroundColor: zone.color,
-                  opacity: 0.7,
-                }}
-              />
-            );
-          })}
-          {/* Marker */}
-          <div
-            className="absolute top-0 h-full w-1 bg-gray-800 rounded-full"
-            style={{ left: `calc(${markerPosition}% - 2px)` }}
-          />
-        </div>
-
-        {/* Zone labels */}
-        <div className="flex mt-1">
-          {thresholds.map((zone) => {
-            const width = ((zone.max - zone.min) / maxThreshold) * 100;
-            return (
-              <div
-                key={zone.label}
-                className="text-center"
-                style={{ width: `${width}%` }}
-              >
-                <span className="text-[9px] text-gray-500">{zone.label}</span>
-              </div>
-            );
-          })}
+        {/* Right column: trend on top, unit below */}
+        <div className="flex flex-col items-start ml-1">
+          {trend && <TrendIndicator direction={trend.direction} value={trend.value} upIsGood={trend.upIsGood} />}
+          {primaryLabel && (
+            <span className="text-xl text-gray-500">{primaryLabel}</span>
+          )}
         </div>
       </div>
 
-      {/* Current zone indicator */}
-      <div
-        className="text-xs font-medium px-2 py-0.5 rounded w-fit"
-        style={{ backgroundColor: currentZone.color, color: "white" }}
-      >
-        {currentZone.label}
-      </div>
+      {/* Threshold bar */}
+      <ThresholdBar thresholds={thresholds} currentValue={currentValue} />
     </div>
   );
 }
@@ -238,12 +338,10 @@ export function PerformanceStatisticCard({
   breakdown,
   thresholds,
   currentValue,
+  trend,
 }: PerformanceStatisticCardProps) {
   return (
-    <Card
-      className="gap-3 rounded-[10px] border-none p-4 shadow-none min-w-0 flex-1"
-      style={{ backgroundColor: bgColor }}
-    >
+    <Card className="gap-3 rounded-[10px] border-none p-4 shadow-none min-w-0 flex-1 bg-white">
       <CardHeader className="gap-[10px] p-0">
         <CardTitle className="flex min-w-0 items-center gap-2 text-sm font-medium">
           <div
@@ -254,14 +352,6 @@ export function PerformanceStatisticCard({
           </div>
           <span className="truncate">{title}</span>
         </CardTitle>
-        <CardAction>
-          <Badge
-            className="rounded-lg font-semibold"
-            style={{ backgroundColor: severityColor, color: "#FAFAFA" }}
-          >
-            {severity}
-          </Badge>
-        </CardAction>
       </CardHeader>
 
       <CardContent className="w-full overflow-hidden p-0">
@@ -271,7 +361,9 @@ export function PerformanceStatisticCard({
             primaryValue={primaryValue}
             primaryLabel={primaryLabel}
             breakdown={breakdown}
-            severityColor={severityColor}
+            thresholds={thresholds}
+            currentValue={currentValue}
+            trend={trend}
           />
         ) : visualizationType === "barWithZones" && thresholds && thresholds.length > 0 ? (
           <BarWithZonesVisualization
@@ -279,7 +371,7 @@ export function PerformanceStatisticCard({
             primaryLabel={primaryLabel}
             thresholds={thresholds}
             currentValue={currentValue ?? 0}
-            severityColor={severityColor}
+            trend={trend}
           />
         ) : (
           /* Fallback: just show primary value */

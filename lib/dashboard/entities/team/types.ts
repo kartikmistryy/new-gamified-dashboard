@@ -266,6 +266,9 @@ export type ThresholdZone = {
 /** Configuration for a performance metric card (e.g. Churn Rate, Legacy Code Refactoring). */
 export type PerformanceMetricConfig = {
   id: string;
+  /** Plain language section title (e.g., "Code Design Quality"). */
+  sectionTitle: string;
+  /** Technical description shown as subtitle (e.g., "Average Age of Code Deleted"). */
   title: string;
   severity: MetricSeverity;
   severityColor: string;
@@ -273,7 +276,17 @@ export type PerformanceMetricConfig = {
   iconColor: string;
   /** Lucide icon component rendered in the card header. */
   icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>;
+  /** Status indicator for the metric (e.g., "On track", "Needs attention"). */
+  status?: {
+    label: string;
+    color: string;
+  };
   insights: ChartInsight[];
+  /** Explains why this metric matters and how it's calculated. */
+  motivation?: {
+    why: string;
+    how: string;
+  };
   /** Primary display value (e.g., "42 days", "8,450", "23%", "12.4%"). */
   primaryValue: string;
   /** Unit or label shown below the primary value. */
@@ -286,4 +299,11 @@ export type PerformanceMetricConfig = {
   thresholds?: ThresholdZone[];
   /** Current numeric value for positioning on threshold bar (0-100 scale or actual value). */
   currentValue?: number;
+  /** Trend compared to previous period. */
+  trend?: {
+    direction: "up" | "down" | "flat";
+    value: string;
+    /** If true, up = green (good), down = red (bad). If false, up = red (bad), down = green (good). */
+    upIsGood: boolean;
+  };
 };
