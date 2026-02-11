@@ -4,11 +4,11 @@ import { useMemo } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { generateUserPerformanceData, getUserMetricCards, getUserChartInsights } from "@/lib/userDashboard/mockData";
+import { generateUserPerformanceData, getUserMetricCards, getUserChartInsights } from "@/lib/dashboard/entities/user/mocks/mockData";
 import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
 import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { OverviewSummaryCard } from "@/components/dashboard/shared/OverviewSummaryCard";
-import { useRouteParams } from "@/lib/RouteParamsProvider";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 
 /**
  * User Dashboard Layout
@@ -51,7 +51,7 @@ export default function UserDashboardLayout({
   // Generate user initials for avatar fallback
   const userInitials = userData?.userName
     .split(" ")
-    .map((n) => n[0])
+    .map((n: string) => n[0])
     .join("")
     .toUpperCase()
     .slice(0, 2) || "U";

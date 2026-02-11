@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { ChaosMatrixChart } from "@/components/dashboard/orgDashboard/ChaosMatrixChart";
 import { BaseTeamsTable } from "@/components/dashboard/shared/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
-import { useTimeRange } from "@/lib/dashboard/shared/TimeRangeContext";
+import { useTimeRange } from "@/lib/dashboard/shared/contexts/TimeRangeContext";
 import { CollaborationNetworkGraph } from "@/components/dashboard/teamDashboard/CollaborationNetworkGraph";
 import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,16 +12,16 @@ import {
   getContributorDesignData,
   transformToChaosMatrixData,
   type ContributorDesignRow,
-} from "@/lib/repoDashboard/designMockData";
-import { getRepoCollaborationData } from "@/lib/repoDashboard/collaborationNetworkData";
-import type { ChartInsight } from "@/lib/orgDashboard/types";
+} from "@/lib/dashboard/entities/contributor/mocks/designMockData";
+import { getRepoCollaborationData } from "@/lib/dashboard/entities/contributor/charts/collaborationNetwork/collaborationNetworkData";
+import type { ChartInsight } from "@/lib/dashboard/entities/team/types";
 import {
   DESIGN_CONTRIBUTOR_FILTER_TABS,
   designContributorSortFunction,
   type DesignContributorFilter,
-} from "@/lib/repoDashboard/designHelpers";
-import { DESIGN_CONTRIBUTOR_COLUMNS } from "@/lib/repoDashboard/designTableColumns";
-import { useRouteParams } from "@/lib/RouteParamsProvider";
+} from "@/lib/dashboard/entities/contributor/utils/designHelpers";
+import { DESIGN_CONTRIBUTOR_COLUMNS } from "@/lib/dashboard/entities/contributor/tables/designTableColumns";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 
 export function RepoDesignPageClient() {
   const { repoId } = useRouteParams();

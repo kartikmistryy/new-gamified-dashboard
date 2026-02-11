@@ -11,14 +11,14 @@ import {
   categorizeChaos,
   median,
   generateSyntheticChaosPoints,
-} from "@/lib/orgDashboard/chaosMatrixData";
+} from "@/lib/dashboard/entities/team/charts/chaosMatrix/chaosMatrixData";
 import { useChaosMatrixAvatars } from "./useChaosMatrixAvatars";
 import {
   buildChaosMatrixLayout,
   CHAOS_MATRIX_CONFIG,
   type StackedPoint,
-} from "@/lib/orgDashboard/chaosMatrixConfig";
-import { processChaosMatrixData } from "@/lib/orgDashboard/chaosMatrixProcessing";
+} from "@/lib/dashboard/entities/team/charts/chaosMatrix/chaosMatrixConfig";
+import { processChaosMatrixData } from "@/lib/dashboard/entities/team/charts/chaosMatrix/chaosMatrixProcessing";
 
 // Dynamically import Plotly to avoid SSR issues
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });

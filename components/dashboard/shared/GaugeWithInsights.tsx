@@ -1,6 +1,6 @@
 import { D3Gauge } from "@/components/dashboard/shared/D3Gauge";
 import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
-import type { ChartInsight } from "@/lib/orgDashboard/types";
+import type { ChartInsight } from "@/lib/dashboard/entities/team/types";
 
 export type GaugeWithInsightsProps = {
   /** Gauge value (0-100) */

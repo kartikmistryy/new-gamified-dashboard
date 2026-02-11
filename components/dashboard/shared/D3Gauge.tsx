@@ -8,9 +8,9 @@ import {
   gaugeDegToD3Rad,
   getIndicatorXY,
   getSegmentAngleRangeDeg,
-} from "@/lib/gauge";
-import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+} from "@/lib/dashboard/shared/charts/gauge/gaugeUtils";
+import { createChartTooltip, type D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 const INDICATOR_ANIMATION_MS = 350;
 

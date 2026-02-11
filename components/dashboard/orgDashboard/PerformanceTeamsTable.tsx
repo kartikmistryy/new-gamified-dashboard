@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback } from "react";
-import type { TeamPerformanceRow, PerformanceTableFilter } from "@/lib/orgDashboard/types";
+import type { TeamPerformanceRow, PerformanceTableFilter } from "@/lib/dashboard/entities/team/types";
 import { BaseTeamsTable } from "@/components/dashboard/shared/BaseTeamsTable";
-import { PERFORMANCE_FILTER_TABS, performanceSortFunction } from "@/lib/orgDashboard/performanceTeamsTableConfig";
-import { createPerformanceColumns } from "@/lib/orgDashboard/performanceTeamsTableColumns";
+import { PERFORMANCE_FILTER_TABS, performanceSortFunction } from "@/lib/dashboard/entities/team/tables/performanceTeamsTableConfig";
+import { createPerformanceColumns } from "@/lib/dashboard/entities/team/tables/performanceTeamsTableColumns";
 
 type PerformanceTeamsTableProps = {
   rows: TeamPerformanceRow[];

@@ -3,13 +3,13 @@
 import { useMemo } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Card, CardContent } from "@/components/ui/card";
-import { getContributorPerformanceRowsForRepo } from "@/lib/repoDashboard/overviewMockData";
-import { calculateRepoGaugeValue, getContributorMetricCards, getContributorInsights } from "@/lib/repoDashboard/overviewHelpers";
+import { getContributorPerformanceRowsForRepo } from "@/lib/dashboard/entities/contributor/mocks/overviewMockData";
+import { calculateRepoGaugeValue, getContributorMetricCards, getContributorInsights } from "@/lib/dashboard/entities/contributor/utils/overviewHelpers";
 import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
 import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { OverviewSummaryCard } from "@/components/dashboard/shared/OverviewSummaryCard";
 import { ContributorTable } from "@/components/dashboard/repoDashboard/ContributorTable";
-import { useRouteParams } from "@/lib/RouteParamsProvider";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 
 export function RepoOverviewPageClient() {

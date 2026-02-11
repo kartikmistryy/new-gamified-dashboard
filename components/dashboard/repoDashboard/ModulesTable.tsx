@@ -12,15 +12,15 @@ import {
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
 import { ModuleDetailSheet } from "./ModuleDetailSheet";
-import type { ModuleSPOFData } from "@/lib/userDashboard/types";
+import type { ModuleSPOFData } from "@/lib/dashboard/entities/user/types";
 import {
   filterModules,
   sortModulesByRisk,
   type ModuleFilter,
   MODULE_FILTER_TABS,
-} from "@/lib/userDashboard/userSpofHelpers";
+} from "@/lib/dashboard/entities/user/utils/userSpofHelpers";
 import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
-import { createModuleColumns } from "@/lib/userDashboard/moduleTableColumns";
+import { createModuleColumns } from "@/lib/dashboard/entities/user/tables/moduleTableColumns";
 
 type ModulesTableProps = {
   modules: ModuleSPOFData[];

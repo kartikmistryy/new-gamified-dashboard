@@ -3,8 +3,8 @@
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import type { Config } from "plotly.js";
-import { buildSankeyPlotly } from "@/lib/dashboard/repoDashboard/sankeyContributionPlotly";
-import { DASHBOARD_BG_CLASSES } from "@/lib/orgDashboard/colors";
+import { buildSankeyPlotly } from "@/lib/dashboard/entities/contributor/charts/sankeyContribution/sankeyContributionPlotly";
+import { DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 

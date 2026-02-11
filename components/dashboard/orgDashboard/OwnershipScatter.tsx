@@ -3,20 +3,20 @@
 import { useMemo, useRef, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import type { Data, Layout, Config } from "plotly.js";
-import type { OwnershipTimeRangeKey, DeveloperPoint } from "@/lib/orgDashboard/ownershipScatterTypes";
-import { buildOwnershipChartData, WIDTH, HEIGHT } from "@/lib/orgDashboard/ownershipScatterUtils";
+import type { OwnershipTimeRangeKey, DeveloperPoint } from "@/lib/dashboard/entities/team/types";
+import { buildOwnershipChartData, WIDTH, HEIGHT } from "@/lib/dashboard/entities/team/charts/ownershipScatter/ownershipScatterUtils";
 import {
   buildOwnershipTraces,
   buildOwnershipLayout,
   OWNERSHIP_SCATTER_CONFIG,
-} from "@/lib/orgDashboard/ownershipScatterPlotly";
-import { DASHBOARD_COLORS, DASHBOARD_BG_CLASSES } from "@/lib/orgDashboard/colors";
+} from "@/lib/dashboard/entities/team/charts/ownershipScatter/ownershipScatterPlotly";
+import { DASHBOARD_COLORS, DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 
 // Dynamically import Plotly to avoid SSR issues
 // Note: react-plotly.js only exports a default export (external library)
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
-export type { OwnershipTimeRangeKey } from "@/lib/orgDashboard/ownershipScatterTypes";
+export type { OwnershipTimeRangeKey } from "@/lib/dashboard/entities/team/types";
 
 type OwnershipScatterProps = {
   data?: DeveloperPoint[];

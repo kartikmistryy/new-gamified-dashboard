@@ -3,13 +3,13 @@
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { SkillGraph } from "@/components/skillmap/SkillGraph";
 import { useMemo, Fragment } from "react";
-import { useRouteParams } from "@/lib/RouteParamsProvider";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 import { flexRender } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
 import { SkillgraphDetailTable } from "@/components/dashboard/userDashboard/SkillgraphDetailTable";
-import { buildUserSkillRowsFromRoadmap } from "@/lib/dashboard/userDashboard/userSkillGraphUtils";
-import { useUserSkillTable } from "@/lib/dashboard/userDashboard/useUserSkillTable";
+import { buildUserSkillRowsFromRoadmap } from "@/lib/dashboard/entities/user/charts/skillgraph/userSkillGraphUtils";
+import { useUserSkillTable } from "@/lib/dashboard/entities/user/charts/skillgraph/useUserSkillTable";
 
 export function UserSkillGraphPageClient() {
   const { userId } = useRouteParams();

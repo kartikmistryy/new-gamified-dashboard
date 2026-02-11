@@ -1,8 +1,8 @@
 "use client";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import type { ContributorCarouselNavigationProps } from "@/lib/dashboard/repoDashboard/contributorCarousel";
-import { calculateVisibleDots } from "@/lib/dashboard/repoDashboard/carouselNavigationUtils";
+import type { ContributorCarouselNavigationProps } from "@/lib/dashboard/entities/contributor/charts/contributorCarousel/contributorCarousel";
+import { calculateVisibleDots } from "@/lib/dashboard/entities/contributor/charts/contributorCarousel/carouselNavigationUtils";
 
 /** Carousel Navigation - arrows, dots, and counter with smart truncation */
 export function ContributorCarouselNavigation({

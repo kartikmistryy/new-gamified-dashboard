@@ -1,10 +1,10 @@
 import { useRef } from "react";
-import type { D3TooltipController } from "@/lib/chartTooltip";
-import type { UserPerformanceDataPoint } from "@/lib/userDashboard/userPerformanceChartData";
-import type { OrgPerformanceChartGeometry } from "@/lib/orgDashboard/orgPerformanceChartUtils";
-import { USER_PERFORMANCE_ZONES, USER_PERFORMANCE_BASELINES } from "@/lib/userDashboard/userPerformanceChartData";
-import { MARGIN } from "@/lib/orgDashboard/orgPerformanceChartUtils";
-import { formatXAxis } from "@/lib/orgDashboard/performanceChartHelpers";
+import type { D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
+import type { UserPerformanceDataPoint } from "@/lib/dashboard/entities/user/charts/performance/userPerformanceChartData";
+import type { OrgPerformanceChartGeometry } from "@/lib/dashboard/entities/team/utils/orgPerformanceChartUtils";
+import { USER_PERFORMANCE_ZONES, USER_PERFORMANCE_BASELINES } from "@/lib/dashboard/entities/user/charts/performance/userPerformanceChartData";
+import { MARGIN } from "@/lib/dashboard/entities/team/utils/orgPerformanceChartUtils";
+import { formatXAxis } from "@/lib/dashboard/entities/team/utils/performanceChartHelpers";
 
 export type PerformanceLine = {
   label: string;

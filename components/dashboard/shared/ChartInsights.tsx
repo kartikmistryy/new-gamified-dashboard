@@ -1,7 +1,7 @@
 "use client";
 
 import { Sparkles } from "lucide-react";
-import type { ChartInsight } from "@/lib/orgDashboard/types";
+import type { ChartInsight } from "@/lib/dashboard/entities/team/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export type ChartInsightsProps = {

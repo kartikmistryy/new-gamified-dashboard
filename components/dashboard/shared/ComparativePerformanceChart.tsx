@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useId } from "react";
-import type { ChartEvent, ChartAnnotation } from "@/lib/orgDashboard/types";
-import type { UserPerformanceDataPoint } from "@/lib/userDashboard/userPerformanceChartData";
+import type { ChartEvent, ChartAnnotation } from "@/lib/dashboard/entities/team/types";
+import type { UserPerformanceDataPoint } from "@/lib/dashboard/entities/user/charts/performance/userPerformanceChartData";
 import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 import {
   buildOrgPerformanceChartGeometry,
   CHART_HEIGHT,
   MARGIN,
-} from "@/lib/orgDashboard/orgPerformanceChartUtils";
-import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
-import { getStartDateForRange } from "@/lib/orgDashboard/performanceChartHelpers";
+} from "@/lib/dashboard/entities/team/utils/orgPerformanceChartUtils";
+import { createChartTooltip, type D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
+import { getStartDateForRange } from "@/lib/dashboard/entities/team/utils/performanceChartHelpers";
 import { ComparativePerformanceChartSVG, type PerformanceLine } from "@/components/dashboard/shared/ComparativePerformanceChartSVG";
 import { ComparativePerformanceChartLegend } from "@/components/dashboard/shared/ComparativePerformanceChartLegend";
 

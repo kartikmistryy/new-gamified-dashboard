@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import type { DesignTeamRow, DesignTableFilter } from "@/lib/orgDashboard/types";
+import type { DesignTeamRow, DesignTableFilter } from "@/lib/dashboard/entities/team/types";
 import { BaseTeamsTable } from "@/components/dashboard/shared/BaseTeamsTable";
-import { DESIGN_FILTER_TABS, designSortFunction } from "@/lib/orgDashboard/designTeamsTableConfig";
-import { createDesignColumns } from "@/lib/orgDashboard/designTeamsTableColumns";
+import { DESIGN_FILTER_TABS, designSortFunction } from "@/lib/dashboard/entities/team/tables/designTeamsTableConfig";
+import { createDesignColumns } from "@/lib/dashboard/entities/team/tables/designTeamsTableColumns";
 
 type DesignTeamsTableProps = {
   rows: DesignTeamRow[];

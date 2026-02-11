@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo, useRef, useEffect, useId } from "react";
-import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
-import { calculateBarChart, CHART_CONSTANTS } from "@/lib/dashboard/repoDashboard/contributorBarChartUtils";
+import { createChartTooltip, type D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
+import { calculateBarChart, CHART_CONSTANTS } from "@/lib/dashboard/entities/contributor/charts/contributorBarChart/contributorBarChartUtils";
 import { BarGroup, MedianLines, YAxisTicks } from "./ContributorBarChartComponents";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 export type ContributorCodeMetrics = {
   contributorName: string;

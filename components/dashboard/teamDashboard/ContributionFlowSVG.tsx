@@ -1,9 +1,9 @@
 import { format } from "d3";
-import type { D3TooltipController } from "@/lib/chartTooltip";
-import { buildFlowPath as buildTeamFlowPath } from "@/lib/teamDashboard/contributionFlowLayout";
-import { buildFlowPath as buildRepoFlowPath } from "@/lib/repoDashboard/contributionFlowLayout";
-import { formatRepoLabel, getRepoColor, withAlpha } from "@/lib/teamDashboard/contributionFlowHelpers";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import type { D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
+import { buildFlowPath as buildTeamFlowPath } from "@/lib/dashboard/entities/member/charts/contributionFlow/contributionFlowLayout";
+import { buildFlowPath as buildRepoFlowPath } from "@/lib/dashboard/entities/contributor/charts/contributionFlow/contributionFlowLayout";
+import { formatRepoLabel, getRepoColor, withAlpha } from "@/lib/dashboard/entities/member/utils/contributionFlowHelpers";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 type BaseNode = {
   id: string;

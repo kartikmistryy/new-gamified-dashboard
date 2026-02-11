@@ -12,18 +12,18 @@ import {
   getContributorSpofData,
   calculateRepoSpofGaugeValue,
   type ContributorSpofRow,
-} from "@/lib/repoDashboard/spofMockData";
+} from "@/lib/dashboard/entities/contributor/mocks/spofMockData";
 import {
   SPOF_CONTRIBUTOR_FILTER_TABS,
   spofContributorSortFunction,
   getSpofInsights,
   type SpofContributorFilter,
-} from "@/lib/repoDashboard/spofHelpers";
-import { buildRepoContributionFlow } from "@/lib/repoDashboard/spofContributionData";
-import { CONTRIBUTOR_FALLBACK_COLORS } from "@/lib/repoDashboard/contributionFlowHelpers";
-import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/orgDashboard/utils";
-import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
-import { useRouteParams } from "@/lib/RouteParamsProvider";
+} from "@/lib/dashboard/entities/contributor/utils/spofHelpers";
+import { buildRepoContributionFlow } from "@/lib/dashboard/entities/contributor/mocks/spofContributionData";
+import { CONTRIBUTOR_FALLBACK_COLORS } from "@/lib/dashboard/entities/contributor/utils/contributionFlowHelpers";
+import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/dashboard/entities/team/utils/utils";
+import { DASHBOARD_TEXT_CLASSES } from "@/lib/dashboard/shared/utils/colors";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 
 // SPOF contributor table columns
 const SPOF_CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorSpofRow, SpofContributorFilter>[] = [

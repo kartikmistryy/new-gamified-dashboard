@@ -2,9 +2,9 @@
 
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
-import { SPOF_TEAM_CONFIG } from "@/lib/orgDashboard/spofMockData";
-import type { SpofDataPoint } from "@/lib/orgDashboard/spofMockData";
-import { buildSpofPlotData, buildSpofPlotLayout, SPOF_PLOT_CONFIG } from "@/lib/orgDashboard/spofDistributionPlotly";
+import { SPOF_TEAM_CONFIG } from "@/lib/dashboard/entities/team/mocks/spofMockData";
+import type { SpofDataPoint } from "@/lib/dashboard/entities/team/mocks/spofMockData";
+import { buildSpofPlotData, buildSpofPlotLayout, SPOF_PLOT_CONFIG } from "@/lib/dashboard/entities/team/charts/spof/spofDistributionPlotly";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import type {
   SkillgraphTeamRow,
   SkillgraphSkillRow,
-} from "@/lib/orgDashboard/types";
+} from "@/lib/dashboard/entities/team/types";
 import { SkillgraphByTeamTable } from "./SkillgraphByTeamTable";
 import { SkillgraphBySkillTable } from "./SkillgraphBySkillTable";
 

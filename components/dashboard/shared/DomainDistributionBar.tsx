@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
-import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
-import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
+import { createChartTooltip, type D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 type DomainDistributionBarProps = {
   segments: { domain: string; value: number }[];

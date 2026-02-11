@@ -1,5 +1,5 @@
-import { PERFORMANCE_ZONES, PERFORMANCE_BASELINES } from "@/lib/orgDashboard/orgPerformanceChartData";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import { PERFORMANCE_ZONES, PERFORMANCE_BASELINES } from "@/lib/dashboard/entities/team/charts/performanceChart/orgPerformanceChartData";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 export function PerformanceChartLegend() {
   return (

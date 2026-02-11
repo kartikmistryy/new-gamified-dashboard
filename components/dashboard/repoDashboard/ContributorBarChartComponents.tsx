@@ -1,8 +1,8 @@
 /** Sub-components for ContributorPerformanceBarChart */
 
 import type { MouseEvent, MutableRefObject } from "react";
-import type { D3TooltipController } from "@/lib/chartTooltip";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import type { D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 const MARGIN = { top: 40, right: 60, bottom: 120, left: 80 };
 const BAR_WIDTH = 32;

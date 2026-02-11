@@ -1,11 +1,11 @@
 import { useRef } from "react";
-import type { D3TooltipController } from "@/lib/chartTooltip";
-import type { OrgPerformanceDataPoint } from "@/lib/orgDashboard/orgPerformanceChartData";
-import type { OrgPerformanceChartGeometry } from "@/lib/orgDashboard/orgPerformanceChartUtils";
-import { PERFORMANCE_ZONES, PERFORMANCE_BASELINES } from "@/lib/orgDashboard/orgPerformanceChartData";
-import { MARGIN } from "@/lib/orgDashboard/orgPerformanceChartUtils";
-import { formatXAxis } from "@/lib/orgDashboard/performanceChartHelpers";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import type { D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
+import type { OrgPerformanceDataPoint } from "@/lib/dashboard/entities/team/charts/performanceChart/orgPerformanceChartData";
+import type { OrgPerformanceChartGeometry } from "@/lib/dashboard/entities/team/utils/orgPerformanceChartUtils";
+import { PERFORMANCE_ZONES, PERFORMANCE_BASELINES } from "@/lib/dashboard/entities/team/charts/performanceChart/orgPerformanceChartData";
+import { MARGIN } from "@/lib/dashboard/entities/team/utils/orgPerformanceChartUtils";
+import { formatXAxis } from "@/lib/dashboard/entities/team/utils/performanceChartHelpers";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 type PerformanceChartSVGProps = {
   width: number;

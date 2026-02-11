@@ -1,12 +1,12 @@
 "use client";
 
 import { useMemo } from "react";
-import { useRouteParams } from "@/lib/RouteParamsProvider";
-import { useTimeRange } from "@/lib/dashboard/shared/TimeRangeContext";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
+import { useTimeRange } from "@/lib/dashboard/shared/contexts/TimeRangeContext";
 import { PerformanceChart } from "@/components/dashboard/shared/PerformanceChart";
 import { ContributorMetricsChart } from "@/components/dashboard/repoDashboard/ContributorMetricsChart";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
-import { getStartDateForRange } from "@/lib/orgDashboard/performanceChartHelpers";
+import { getStartDateForRange } from "@/lib/dashboard/entities/team/utils/performanceChartHelpers";
 import {
   generateUserPerformanceData,
   generateUserCumulativePerformanceData,
@@ -14,8 +14,8 @@ import {
   generateOrgMedianCumulativeData,
   USER_PERFORMANCE_EVENTS,
   USER_PERFORMANCE_ANNOTATIONS,
-} from "@/lib/userDashboard/userPerformanceChartData";
-import { generateUserPerformanceData as getUserData } from "@/lib/userDashboard/mockData";
+} from "@/lib/dashboard/entities/user/charts/performance/userPerformanceChartData";
+import { generateUserPerformanceData as getUserData } from "@/lib/dashboard/entities/user/mocks/mockData";
 
 /**
  * User Performance Page Client Component

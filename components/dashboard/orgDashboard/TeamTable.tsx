@@ -1,9 +1,9 @@
 "use client";
 
 import { ArrowRight, TrendingUp, TrendingDown, Star, Bomb, Puzzle, FlaskConical, BrickWall, AlertTriangle } from "lucide-react";
-import type { TeamPerformanceRow, TeamTableFilter } from "@/lib/orgDashboard/types";
-import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
-import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
+import type { TeamPerformanceRow, TeamTableFilter } from "@/lib/dashboard/entities/team/types";
+import { DASHBOARD_COLORS, DASHBOARD_TEXT_CLASSES } from "@/lib/dashboard/shared/utils/colors";
+import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
 import { BaseTeamsTable, type BaseTeamsTableColumn } from "@/components/dashboard/shared/BaseTeamsTable";
 import { SegmentBar } from "@/components/dashboard/shared/SegmentBar";
 import { TeamAvatar } from "@/components/shared/TeamAvatar";

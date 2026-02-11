@@ -11,10 +11,10 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import type { MemberPerformanceDataPoint, ViewMode } from "@/lib/teamDashboard/performanceTypes";
-import type { MemberPerformanceRow } from "@/lib/teamDashboard/types";
+import type { MemberPerformanceDataPoint, ViewMode } from "@/lib/dashboard/entities/member/types";
+import type { MemberPerformanceRow } from "@/lib/dashboard/entities/member/types";
 import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 type MemberPerformanceChartProps = {
   data: MemberPerformanceDataPoint[];

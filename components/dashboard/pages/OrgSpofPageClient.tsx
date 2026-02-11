@@ -10,9 +10,9 @@ import {
   SPOF_DATA,
   SPOF_TEAM_ROWS,
   SPOF_TEAM_CONFIG,
-} from "@/lib/orgDashboard/spofMockData";
-import { getChartInsightsMock } from "@/lib/orgDashboard/overviewMockData";
-import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/orgDashboard/utils";
+} from "@/lib/dashboard/entities/team/mocks/spofMockData";
+import { getChartInsightsMock } from "@/lib/dashboard/entities/team/mocks/overviewMockData";
+import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/dashboard/entities/team/utils/utils";
 
 const DEFAULT_SPOF_GAUGE_VALUE = 28;
 

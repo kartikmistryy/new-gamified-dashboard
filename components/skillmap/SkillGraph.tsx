@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback, useId, useMemo } from "react"
 import type { SkillData, D3HierarchyNode, SkillTooltipController } from "./skillGraphTypes";
 import { buildSkillData, loadD3Scripts, checkD3Libs } from "./skillGraphUtils";
 import { renderWorldView, renderDrilldownView } from "./skillGraphRenderers";
-import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
+import { createChartTooltip, type D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
 
 declare const d3: typeof import("d3") & {
   voronoiTreemap?: () => {

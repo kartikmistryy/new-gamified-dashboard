@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { ChaosMatrixChart } from "@/components/dashboard/orgDashboard/ChaosMatrixChart";
 import { BaseTeamsTable } from "@/components/dashboard/shared/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
-import { useTimeRange } from "@/lib/dashboard/shared/TimeRangeContext";
+import { useTimeRange } from "@/lib/dashboard/shared/contexts/TimeRangeContext";
 import { CollaborationNetworkGraph } from "@/components/dashboard/teamDashboard/CollaborationNetworkGraph";
 import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,16 +12,16 @@ import {
   getMemberDesignData,
   transformToChaosMatrixData,
   type MemberDesignRow,
-} from "@/lib/teamDashboard/designMockData";
-import { getTeamCollaborationData } from "@/lib/teamDashboard/collaborationNetworkData";
-import type { ChartInsight } from "@/lib/orgDashboard/types";
+} from "@/lib/dashboard/entities/member/mocks/designMockData";
+import { getTeamCollaborationData } from "@/lib/dashboard/entities/member/charts/collaborationNetwork/collaborationNetworkData";
+import type { ChartInsight } from "@/lib/dashboard/entities/team/types";
 import {
   DESIGN_MEMBER_FILTER_TABS,
   designMemberSortFunction,
   type DesignMemberFilter,
-} from "@/lib/teamDashboard/designHelpers";
-import { DESIGN_MEMBER_COLUMNS } from "@/lib/teamDashboard/designTableColumns";
-import { useRouteParams } from "@/lib/RouteParamsProvider";
+} from "@/lib/dashboard/entities/member/utils/designHelpers";
+import { DESIGN_MEMBER_COLUMNS } from "@/lib/dashboard/entities/member/tables/designTableColumns";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 
 export function TeamDesignPageClient() {
   const { teamId } = useRouteParams();

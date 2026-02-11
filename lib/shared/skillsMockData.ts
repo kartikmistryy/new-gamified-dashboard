@@ -5,7 +5,7 @@
  * team, repo, and user dashboards.
  */
 
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 // Re-export utilities for convenience
 export { noise, hashString } from "./mockDataUtils";

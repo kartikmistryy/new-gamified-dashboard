@@ -12,18 +12,18 @@ import {
   getMemberSpofData,
   calculateTeamSpofGaugeValue,
   type MemberSpofRow,
-} from "@/lib/teamDashboard/spofMockData";
+} from "@/lib/dashboard/entities/member/mocks/spofMockData";
 import {
   SPOF_MEMBER_FILTER_TABS,
   spofMemberSortFunction,
   getSpofInsights,
   type SpofMemberFilter,
-} from "@/lib/teamDashboard/spofHelpers";
-import { buildTeamContributionFlow } from "@/lib/teamDashboard/spofContributionData";
-import { MEMBER_FALLBACK_COLORS } from "@/lib/teamDashboard/contributionFlowHelpers";
-import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/orgDashboard/utils";
-import { DASHBOARD_TEXT_CLASSES } from "@/lib/orgDashboard/colors";
-import { useRouteParams } from "@/lib/RouteParamsProvider";
+} from "@/lib/dashboard/entities/member/utils/spofHelpers";
+import { buildTeamContributionFlow } from "@/lib/dashboard/entities/member/mocks/spofContributionData";
+import { MEMBER_FALLBACK_COLORS } from "@/lib/dashboard/entities/member/utils/contributionFlowHelpers";
+import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/dashboard/entities/team/utils/utils";
+import { DASHBOARD_TEXT_CLASSES } from "@/lib/dashboard/shared/utils/colors";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 
 // SPOF member table columns
 const SPOF_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberSpofRow, SpofMemberFilter>[] = [

@@ -1,6 +1,6 @@
 "use client";
 
-import { RouteParamsProvider } from '@/lib/RouteParamsProvider';
+import { RouteParamsProvider } from '@/lib/dashboard/shared/contexts/RouteParamsProvider';
 
 /**
  * Organization Layout

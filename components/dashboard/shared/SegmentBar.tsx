@@ -2,8 +2,8 @@
 
 import { useEffect, useId, useRef } from "react";
 import type { ComponentType, CSSProperties } from "react";
-import { getSegmentRoundedClass } from "@/lib/orgDashboard/tableUtils";
-import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
+import { getSegmentRoundedClass } from "@/lib/dashboard/entities/team/utils/tableUtils";
+import { createChartTooltip, type D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
 
 export type SegmentBarSegment = {
   bg?: string;

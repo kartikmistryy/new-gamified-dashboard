@@ -3,10 +3,10 @@
 "use client";
 
 import * as React from "react";
-import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
-import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
-import { getTrendIconForCount } from "@/lib/orgDashboard/spofTeamsTableUtils";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import { createChartTooltip, type D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
+import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
+import { getTrendIconForCount } from "@/lib/dashboard/entities/team/utils/spofTeamsTableUtils";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 type JoinedDistributionBarProps = {
   segments: { label: string; value: number; color: string }[];

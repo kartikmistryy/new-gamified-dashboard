@@ -2,11 +2,11 @@
 
 import { useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import type { ModuleSPOFData } from "@/lib/userDashboard/types";
+import type { ModuleSPOFData } from "@/lib/dashboard/entities/user/types";
 import { ArrowLeft } from "lucide-react";
-import { transformModulesToTreemapData } from "@/lib/userDashboard/spofTreemapUtils";
-import { buildTreemapOption } from "@/lib/userDashboard/spofTreemapConfig";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import { transformModulesToTreemapData } from "@/lib/dashboard/entities/user/charts/spof/spofTreemapUtils";
+import { buildTreemapOption } from "@/lib/dashboard/entities/user/charts/spof/spofTreemapConfig";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
 

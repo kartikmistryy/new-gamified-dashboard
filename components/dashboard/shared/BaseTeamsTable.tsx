@@ -19,9 +19,9 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/shared/Badge";
 import { SortableTableHeader } from "./SortableTableHeader";
-import { useTableFilter } from "@/lib/orgDashboard/useTableFilter";
+import { useTableFilter } from "@/lib/dashboard/entities/team/hooks/useTableFilter";
 import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
-import { DASHBOARD_BG_CLASSES } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 
 export type BaseTeamsTableColumn<T, F extends string> = {
   key: string;

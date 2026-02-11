@@ -2,13 +2,13 @@
 
 import { UserAvatar } from "@/components/shared/UserAvatar";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import type { ModuleSPOFData } from "@/lib/userDashboard/types";
+import type { ModuleSPOFData } from "@/lib/dashboard/entities/user/types";
 import {
   getTeamLoadColor,
   getTeamLoadPercentage,
   getSpofScoreColor,
   getContributorColor,
-} from "@/lib/userDashboard/moduleDetailSheetUtils";
+} from "@/lib/dashboard/entities/user/sheets/moduleDetailSheetUtils";
 
 type ModuleDetailSheetProps = {
   open: boolean;

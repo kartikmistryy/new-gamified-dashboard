@@ -7,7 +7,7 @@ import {
   getTeamPerformanceRowsForGauge,
   getOverviewSummaryCardsForGauge,
   getChartInsightsMock,
-} from "@/lib/orgDashboard/overviewMockData";
+} from "@/lib/dashboard/entities/team/mocks/overviewMockData";
 import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
 import { OverviewSummaryCard } from "@/components/dashboard/shared/OverviewSummaryCard";

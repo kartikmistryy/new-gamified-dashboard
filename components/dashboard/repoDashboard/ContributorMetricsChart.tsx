@@ -9,8 +9,8 @@ import {
   DEFAULT_HEIGHT,
   MINI_HEIGHT,
   type ContributorMetricDataPoint,
-} from "@/lib/dashboard/repoDashboard/contributorMetricsPlotly";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+} from "@/lib/dashboard/entities/contributor/charts/contributorMetrics/contributorMetricsPlotly";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 export type { ContributorMetricDataPoint };
 

@@ -1,22 +1,22 @@
 "use client";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
-import type { ChartInsight } from "@/lib/orgDashboard/types";
+import { createChartTooltip, type D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
+import type { ChartInsight } from "@/lib/dashboard/entities/team/types";
 import {
   buildCollaborationGraph,
   getCollaborationInsights,
   type CollaborationModule,
-} from "@/lib/teamDashboard/collaborationNetworkData";
-import { layoutGraph, type LayoutType } from "@/lib/teamDashboard/collaborationNetworkLayout";
+} from "@/lib/dashboard/entities/member/charts/collaborationNetwork/collaborationNetworkData";
+import { layoutGraph, type LayoutType } from "@/lib/dashboard/entities/member/charts/collaborationNetwork/collaborationNetworkLayout";
 import { getUserAvatarUrl } from "@/components/shared/UserAvatar";
 import {
   createColorScale,
   createEdgeWidthScale,
   calculateNodeRadius,
-} from "@/lib/dashboard/shared/collaborationNetworkScales";
-import { formatNodeTooltip, formatEdgeTooltip } from "@/lib/dashboard/shared/collaborationNetworkTooltips";
+} from "@/lib/dashboard/shared/utils/collaborationNetworkScales";
+import { formatNodeTooltip, formatEdgeTooltip } from "@/lib/dashboard/shared/utils/collaborationNetworkTooltips";
 import { CollaborationNetworkLegend } from "./CollaborationNetworkLegend";
-import { DASHBOARD_BG_CLASSES, DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_BG_CLASSES, DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 const CHART_HEIGHT = 540;
 const DEFAULT_THRESHOLD = 0.7;
 const DEFAULT_LAYOUT: LayoutType = "shell";

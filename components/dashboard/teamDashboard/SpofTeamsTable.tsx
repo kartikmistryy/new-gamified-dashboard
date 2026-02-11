@@ -12,15 +12,15 @@ import {
 } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
-import type { SpofTeamRow } from "@/lib/orgDashboard/spofMockData";
+import type { SpofTeamRow } from "@/lib/dashboard/entities/team/mocks/spofMockData";
 import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
 import {
   sortSpofTeams,
   SPOF_FILTER_TABS,
   type SpofTableFilter,
-} from "@/lib/orgDashboard/spofTeamsTableUtils";
-import { createSpofTeamsColumns } from "@/lib/orgDashboard/spofTeamsTableColumns";
-import { DASHBOARD_BG_CLASSES } from "@/lib/orgDashboard/colors";
+} from "@/lib/dashboard/entities/team/utils/spofTeamsTableUtils";
+import { createSpofTeamsColumns } from "@/lib/dashboard/entities/team/tables/spofTeamsTableColumns";
+import { DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 
 type SpofTeamsTableProps = {
   rows: SpofTeamRow[];

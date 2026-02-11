@@ -1,4 +1,4 @@
-import type { D3TooltipController } from "@/lib/chartTooltip";
+import type { D3TooltipController } from "@/lib/dashboard/shared/charts/tooltip/chartTooltip";
 
 export interface SkillData {
   name: string;

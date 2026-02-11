@@ -7,16 +7,16 @@ import { DashboardSection } from "@/components/dashboard/shared/DashboardSection
 import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
 import { PerformanceChart } from "@/components/dashboard/shared/PerformanceChart";
 import { PerformanceTeamsTable } from "@/components/dashboard/orgDashboard/PerformanceTeamsTable";
-import { useTimeRange } from "@/lib/dashboard/shared/TimeRangeContext";
+import { useTimeRange } from "@/lib/dashboard/shared/contexts/TimeRangeContext";
 import {
   TEAM_PERFORMANCE_ROWS,
   getChartInsightsMock,
-} from "@/lib/orgDashboard/overviewMockData";
+} from "@/lib/dashboard/entities/team/mocks/overviewMockData";
 import {
   ORG_PERFORMANCE_HOLIDAYS,
   ORG_PERFORMANCE_ANNOTATIONS,
   generateOrgPerformanceData,
-} from "@/lib/orgDashboard/orgPerformanceChartData";
+} from "@/lib/dashboard/entities/team/charts/performanceChart/orgPerformanceChartData";
 
 /** Default performance gauge value for the Performance Tracking section (0–100). */
 const DEFAULT_PERFORMANCE_GAUGE_VALUE = Math.floor(Math.random() * 100);

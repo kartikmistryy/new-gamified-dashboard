@@ -3,24 +3,24 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { useTimeRange } from "@/lib/dashboard/shared/TimeRangeContext";
+import { useTimeRange } from "@/lib/dashboard/shared/contexts/TimeRangeContext";
 import { GaugeWithInsights } from "@/components/dashboard/shared/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { BaseTeamsTable } from "@/components/dashboard/shared/BaseTeamsTable";
 import { PerformanceChart } from "@/components/dashboard/shared/PerformanceChart";
 import { ContributorMetricsChart } from "@/components/dashboard/repoDashboard/ContributorMetricsChart";
 import { ContributorCardsCarousel } from "@/components/dashboard/repoDashboard/ContributorCardsCarousel";
-import { generateRepoEvents, generateRepoAnnotations } from "@/lib/dashboard/shared/performanceChart/eventGenerators";
-import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/orgDashboard/utils";
+import { generateRepoEvents, generateRepoAnnotations } from "@/lib/dashboard/shared/charts/performanceChart/eventGenerators";
+import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/dashboard/entities/team/utils/utils";
 import {
   PERFORMANCE_FILTER_TABS,
   performanceSortFunction,
   type ContributorPerformanceWithDelta,
-} from "@/lib/repoDashboard/performanceTableConfig";
-import { PERFORMANCE_CONTRIBUTOR_COLUMNS } from "@/lib/repoDashboard/performanceTableColumns";
-import { useRouteParams } from "@/lib/RouteParamsProvider";
-import { PerformanceFilter } from "@/lib/repoDashboard/performanceTypes";
-import { useRepoPerformanceData } from "@/lib/repoDashboard/useRepoPerformanceData";
+} from "@/lib/dashboard/entities/contributor/tables/performanceTableConfig";
+import { PERFORMANCE_CONTRIBUTOR_COLUMNS } from "@/lib/dashboard/entities/contributor/tables/performanceTableColumns";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
+import { PerformanceFilter } from "@/lib/dashboard/entities/contributor/types";
+import { useRepoPerformanceData } from "@/lib/dashboard/entities/contributor/hooks/useRepoPerformanceData";
 
 export function RepoPerformancePageClient() {
   const { repoId } = useRouteParams();

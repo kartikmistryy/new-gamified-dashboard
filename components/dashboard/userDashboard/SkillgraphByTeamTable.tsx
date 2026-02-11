@@ -9,17 +9,17 @@ import {
   type SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import type { SkillgraphTeamRow, SkillgraphTableFilter } from "@/lib/orgDashboard/types";
-import { createSkillgraphTeamColumns } from "@/lib/dashboard/userDashboard/skillgraphTeamColumns";
+import type { SkillgraphTeamRow, SkillgraphTableFilter } from "@/lib/dashboard/entities/team/types";
+import { createSkillgraphTeamColumns } from "@/lib/dashboard/entities/user/charts/skillgraph/skillgraphTeamColumns";
 import {
   getTeamSkillUsageValue,
   getSortingForFilter,
-} from "@/lib/dashboard/userDashboard/skillgraphTeamTableUtils";
+} from "@/lib/dashboard/entities/user/charts/skillgraph/skillgraphTeamTableUtils";
 import { SkillgraphTeamDetailTable } from "./SkillgraphTeamDetailTable";
 import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
-import { DASHBOARD_BG_CLASSES } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 
 const SKILLGRAPH_TEAM_FILTER_TABS: { key: SkillgraphTableFilter; label: string }[] = [
   { key: "mostUsage", label: "Most Usage" },

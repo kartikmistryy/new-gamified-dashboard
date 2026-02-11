@@ -21,8 +21,8 @@
 
 import { UserAvatar } from "@/components/shared/UserAvatar";
 import { ArrowUpIcon, ArrowDownIcon, MinusIcon } from "lucide-react";
-import type { ContributorCarouselHeaderProps } from "@/lib/dashboard/repoDashboard/contributorCarousel";
-import { DEFAULT_METRIC_FORMATTERS } from "@/lib/dashboard/repoDashboard/contributorCarousel";
+import type { ContributorCarouselHeaderProps } from "@/lib/dashboard/entities/contributor/charts/contributorCarousel/contributorCarousel";
+import { DEFAULT_METRIC_FORMATTERS } from "@/lib/dashboard/entities/contributor/charts/contributorCarousel/contributorCarousel";
 
 /**
  * Trend icon mapping for type-safe trend indicators

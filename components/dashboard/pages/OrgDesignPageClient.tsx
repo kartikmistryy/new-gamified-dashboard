@@ -6,10 +6,10 @@ import { ChaosMatrixChart } from "@/components/dashboard/orgDashboard/ChaosMatri
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { DesignTeamsTable } from "@/components/dashboard/orgDashboard/DesignTeamsTable";
 import { OwnershipScatter } from "@/components/dashboard/orgDashboard/OwnershipScatter";
-import { useTimeRange } from "@/lib/dashboard/shared/TimeRangeContext";
-import { getChartInsightsMock } from "@/lib/orgDashboard/overviewMockData";
-import { DESIGN_TEAM_ROWS, getDesignTeamRowsForRange } from "@/lib/orgDashboard/designMockData";
-import type { DesignTableFilter } from "@/lib/orgDashboard/types";
+import { useTimeRange } from "@/lib/dashboard/shared/contexts/TimeRangeContext";
+import { getChartInsightsMock } from "@/lib/dashboard/entities/team/mocks/overviewMockData";
+import { DESIGN_TEAM_ROWS, getDesignTeamRowsForRange } from "@/lib/dashboard/entities/team/mocks/designMockData";
+import type { DesignTableFilter } from "@/lib/dashboard/entities/team/types";
 
 export function OrgDesignPageClient() {
   const { timeRange } = useTimeRange();

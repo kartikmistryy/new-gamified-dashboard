@@ -12,12 +12,12 @@ import {
   getContributorSkillRows,
   computeDomainWeights,
   type ContributorSkillsRow,
-} from "@/lib/repoDashboard/skillsMockData";
+} from "@/lib/dashboard/entities/contributor/mocks/skillsMockData";
 import {
   getSkillsInsights,
-} from "@/lib/repoDashboard/skillsHelpers";
-import type { SkillgraphTeamRow } from "@/lib/orgDashboard/types";
-import { useRouteParams } from "@/lib/RouteParamsProvider";
+} from "@/lib/dashboard/entities/contributor/utils/skillsHelpers";
+import type { SkillgraphTeamRow } from "@/lib/dashboard/entities/team/types";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 
 function mapContributorRowsToSkillgraphTeams(rows: ContributorSkillsRow[]): SkillgraphTeamRow[] {
   return rows.map((row) => ({

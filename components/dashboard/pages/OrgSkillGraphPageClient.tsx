@@ -2,13 +2,13 @@
 
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { SkillgraphTeamsTable } from "@/components/dashboard/userDashboard/SkillgraphTeamsTable";
-import { SKILLGRAPH_TEAM_ROWS } from "@/lib/orgDashboard/skillgraphMockData";
+import { SKILLGRAPH_TEAM_ROWS } from "@/lib/dashboard/entities/team/mocks/skillgraphMockData";
 import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
-import { getChartInsightsMock } from "@/lib/orgDashboard/overviewMockData";
+import { getChartInsightsMock } from "@/lib/dashboard/entities/team/mocks/overviewMockData";
 import { SkillGraph } from "@/components/skillmap/SkillGraph";
 import { useMemo, useState } from "react";
 import { roadmapData } from "@/components/skillmap/data/data";
-import type { SkillgraphSkillRow } from "@/lib/orgDashboard/types";
+import type { SkillgraphSkillRow } from "@/lib/dashboard/entities/team/types";
 
 const buildSkillRowsFromRoadmap = (): SkillgraphSkillRow[] => {
   const teams = SKILLGRAPH_TEAM_ROWS.slice(0, 3);
@@ -77,7 +77,7 @@ export function OrgSkillGraphPageClient() {
     const activeTeams = SKILLGRAPH_TEAM_ROWS.filter((row) => visibleTeams[row.teamName] !== false);
     const sourceRows = activeTeams.length > 0 ? activeTeams : SKILLGRAPH_TEAM_ROWS;
     sourceRows.forEach((row) => {
-      row.domainDistribution?.forEach((segment) => {
+      row.domainDistribution?.forEach((segment: { domain: string; value: number }) => {
         totals[segment.domain] = (totals[segment.domain] ?? 0) + segment.value;
       });
     });

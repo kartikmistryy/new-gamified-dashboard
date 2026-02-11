@@ -20,10 +20,10 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
-import type { ContributorCarouselSlideProps } from "@/lib/dashboard/repoDashboard/contributorCarousel";
+import type { ContributorCarouselSlideProps } from "@/lib/dashboard/entities/contributor/charts/contributorCarousel/contributorCarousel";
 import { ContributorCarouselHeader } from "./ContributorCarouselHeader";
 import { ContributorPerformanceChartAdapter } from "./ContributorPerformanceChartAdapter";
-import type { ContributorWithMetrics } from "@/lib/dashboard/repoDashboard/contributorCarousel";
+import type { ContributorWithMetrics } from "@/lib/dashboard/entities/contributor/charts/contributorCarousel/contributorCarousel";
 
 /**
  * Check if contributor has metrics for header display

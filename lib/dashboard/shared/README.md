@@ -1,6 +1,22 @@
 # Dashboard Shared Utilities
 
-This directory contains utilities shared across all dashboard types (org, team, repo, user).
+This directory contains utilities, types, hooks, and components shared across all dashboard entities (contributor, member, team, user).
+
+## Directory Structure
+
+```
+shared/
+├── types/          # Shared type definitions
+├── hooks/          # Shared React hooks
+├── utils/          # Shared utility functions and constants
+├── mocks/          # Shared mock data generators
+├── contexts/       # React contexts
+├── components/     # Shared React components
+└── charts/         # Chart-specific utilities
+    ├── gauge/
+    ├── tooltip/
+    └── performanceChart/
+```
 
 ## Time Range System
 
@@ -17,12 +33,12 @@ import { TIME_RANGE_OPTIONS } from '@/lib/shared/types/timeRangeTypes';
 ```
 
 ### Context Provider
-- **Location**: `/lib/dashboard/shared/TimeRangeContext.tsx`
+- **Location**: `/lib/dashboard/shared/contexts/TimeRangeContext.tsx`
 - **Provider**: `TimeRangeProvider` - Wraps the entire app (in `app/layout.tsx`)
 - **Hook**: `useTimeRange()` - Access time range state in any component
 
 ```typescript
-import { useTimeRange } from '@/lib/dashboard/shared/TimeRangeContext';
+import { useTimeRange } from '@/lib/dashboard/shared/contexts/TimeRangeContext';
 
 function MyComponent() {
   const { timeRange, setTimeRange, options } = useTimeRange();
@@ -33,28 +49,55 @@ function MyComponent() {
 ### Components
 - **TimeRangeFilter**: Dropdown filter component (works with or without context)
 - **GlobalTimeRangeFilter**: Global time range selector for dashboard
+- **RouteParamsProvider**: Context provider for route parameters
 
 ## Performance Chart System
 
 Shared chart configuration and utilities for performance visualizations.
 
 ### Key Files
-- `performanceChart/types.ts` - Chart data types
-- `performanceChart/transformers.ts` - Data transformation utilities
-- `performanceChart/eventGenerators.ts` - Event and annotation generators
-- `performanceChartConfig.ts` - Plotly configuration
-- `performanceChartShapes.ts` - SVG shape definitions
+- `charts/performanceChart/types.ts` - Chart data types
+- `charts/performanceChart/transformers.ts` - Data transformation utilities
+- `charts/performanceChart/eventGenerators.ts` - Event and annotation generators
+- `utils/performanceChartConfig.ts` - Plotly configuration
+- `utils/performanceChartShapes.ts` - SVG shape definitions
 
 ## Other Shared Utilities
 
-- **chartConstants.ts** - Color palettes, chart dimensions, styling constants
-- **trendHelpers.ts** - Trend calculation and formatting utilities
-- **collaborationNetworkScales.ts** - D3 scales for collaboration network graphs
-- **collaborationNetworkTooltips.ts** - Tooltip formatters for network graphs
+### Colors & Styling
+- **utils/colors.ts** - Centralized dashboard color palette (hex, Tailwind classes, badge styles)
+  ```typescript
+  import { DASHBOARD_COLORS, DASHBOARD_BG_CLASSES } from '@/lib/dashboard/shared/utils/colors';
+  ```
+
+### Chart Utilities
+- **utils/chartConstants.ts** - Chart dimensions, styling constants
+- **utils/trendHelpers.ts** - Trend calculation and formatting utilities
+- **utils/collaborationNetworkScales.ts** - D3 scales for collaboration network graphs
+- **utils/collaborationNetworkTooltips.ts** - Tooltip formatters for network graphs
+- **charts/tooltip/chartTooltip.ts** - Generic chart tooltip utilities
+- **charts/gauge/gaugeUtils.ts** - Gauge chart utilities
 
 ## Usage Guidelines
 
-1. **Import from shared/** when utilities are used across multiple dashboard types
-2. **Import from userDashboard/**, **repoDashboard/** for entity-specific utilities
+1. **Import from shared/** when utilities are used across multiple dashboard entities
+2. **Import from entities/{entity}/** for entity-specific utilities
 3. **Never duplicate** - if the same utility is needed elsewhere, move it to shared/
 4. **Document exports** - add new utilities to this README when created
+5. **Use barrel exports** - import from `shared/utils/` index for commonly used utilities
+
+## Import Patterns
+
+```typescript
+// Utilities
+import { DASHBOARD_COLORS } from '@/lib/dashboard/shared/utils/colors';
+import { chartConstants } from '@/lib/dashboard/shared/utils/chartConstants';
+
+// Contexts
+import { useTimeRange } from '@/lib/dashboard/shared/contexts/TimeRangeContext';
+import { useRouteParams } from '@/lib/dashboard/shared/contexts/RouteParamsProvider';
+
+// Chart utilities
+import { chartTooltip } from '@/lib/dashboard/shared/charts/tooltip/chartTooltip';
+import { gaugeUtils } from '@/lib/dashboard/shared/charts/gauge/gaugeUtils';
+```

@@ -3,9 +3,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { PerformanceChartLegend } from "@/components/dashboard/shared/PerformanceChartLegend";
-import type { PerformanceChartProps } from "@/lib/dashboard/shared/performanceChart/types";
-import { usePerformanceChartData } from "@/lib/dashboard/shared/performanceChart/usePerformanceChartData";
-import { buildPlotlyData, buildPlotlyLayout, PLOTLY_CONFIG } from "@/lib/dashboard/shared/performanceChartConfig";
+import type { PerformanceChartProps } from "@/lib/dashboard/shared/charts/performanceChart/types";
+import { usePerformanceChartData } from "@/lib/dashboard/shared/charts/performanceChart/usePerformanceChartData";
+import { buildPlotlyData, buildPlotlyLayout, PLOTLY_CONFIG } from "@/lib/dashboard/shared/utils/performanceChartConfig";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 

@@ -1,8 +1,8 @@
 /** Custom hook for Chaos Matrix avatar rendering */
 
 import { useCallback, useEffect, useRef, type RefObject } from "react";
-import type { StackedPoint } from "@/lib/orgDashboard/chaosMatrixConfig";
-import { CATEGORY_COLORS } from "@/lib/orgDashboard/chaosMatrixData";
+import type { StackedPoint } from "@/lib/dashboard/entities/team/charts/chaosMatrix/chaosMatrixConfig";
+import { CATEGORY_COLORS } from "@/lib/dashboard/entities/team/charts/chaosMatrix/chaosMatrixData";
 import { getTeamAvatarUrl } from "@/components/shared/TeamAvatar";
 
 export function useChaosMatrixAvatars(

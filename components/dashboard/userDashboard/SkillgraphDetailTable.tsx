@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
-import type { SkillgraphSkillRow } from "@/lib/orgDashboard/types";
+import type { SkillgraphSkillRow } from "@/lib/dashboard/entities/team/types";
 import { SkillgraphProgressBar } from "@/components/dashboard/userDashboard/SkillgraphProgressBar";
 import { TeamAvatar } from "@/components/shared/TeamAvatar";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";

@@ -3,31 +3,31 @@
 import { useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { useTimeRange } from "@/lib/dashboard/shared/TimeRangeContext";
+import { useTimeRange } from "@/lib/dashboard/shared/contexts/TimeRangeContext";
 import { GaugeWithInsights } from "@/components/dashboard/shared/GaugeWithInsights";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { BaseTeamsTable } from "@/components/dashboard/shared/BaseTeamsTable";
 import { PerformanceChart } from "@/components/dashboard/shared/PerformanceChart";
 import { ContributorMetricsChart } from "@/components/dashboard/repoDashboard/ContributorMetricsChart";
-import { generateTeamEvents, generateTeamAnnotations } from "@/lib/dashboard/shared/performanceChart/eventGenerators";
-import { useTeamPerformanceData } from "@/lib/teamDashboard/hooks/useTeamPerformanceData";
-import { PerformanceFilter } from "@/lib/teamDashboard/performanceTypes";
-import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/orgDashboard/utils";
+import { generateTeamEvents, generateTeamAnnotations } from "@/lib/dashboard/shared/charts/performanceChart/eventGenerators";
+import { useTeamPerformanceData } from "@/lib/dashboard/entities/member/hooks/useTeamPerformanceData";
+import { PerformanceFilter } from "@/lib/dashboard/entities/member/types";
+import { getGaugeColor, getPerformanceGaugeLabel } from "@/lib/dashboard/entities/team/utils/utils";
 import {
   PERFORMANCE_FILTER_TABS,
   performanceSortFunction,
   type MemberPerformanceWithDelta,
-} from "@/lib/teamDashboard/performanceTableConfig";
-import { PERFORMANCE_MEMBER_COLUMNS } from "@/lib/teamDashboard/performanceTableColumns";
-import { useRouteParams } from "@/lib/RouteParamsProvider";
-import { filterByTimeRange } from "@/lib/teamDashboard/performanceHelpers";
+} from "@/lib/dashboard/entities/member/tables/performanceTableConfig";
+import { PERFORMANCE_MEMBER_COLUMNS } from "@/lib/dashboard/entities/member/tables/performanceTableColumns";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
+import { filterByTimeRange } from "@/lib/dashboard/entities/member/utils/performanceHelpers";
 import {
   calculateCumulativeDiffDeltaByMember,
   buildTableRowsWithScaling,
   calculateTeamPerformanceValue,
   generateAggregateTeamData,
   calculateTeamBenchmarks,
-} from "@/lib/teamDashboard/teamPerformanceUtils";
+} from "@/lib/dashboard/entities/member/utils/teamPerformanceUtils";
 
 export function TeamPerformancePageClient() {
   const { teamId } = useRouteParams();

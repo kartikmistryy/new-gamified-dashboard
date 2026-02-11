@@ -6,9 +6,9 @@ import {
   getGaugeColor,
   getGaugeSecondaryLabel,
   getPerformanceGaugeLabel,
-} from "@/lib/orgDashboard/utils";
+} from "@/lib/dashboard/entities/team/utils/utils";
 import { D3Gauge } from "@/components/dashboard/shared/D3Gauge";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 type GaugeSectionProps = {
   gaugeValue: number;

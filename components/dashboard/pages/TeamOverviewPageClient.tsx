@@ -3,13 +3,13 @@
 import { useMemo } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Card, CardContent } from "@/components/ui/card";
-import { getMemberPerformanceRowsForTeam } from "@/lib/teamDashboard/overviewMockData";
-import { calculateTeamGaugeValue, getMemberMetricCards, getMemberInsights } from "@/lib/teamDashboard/overviewHelpers";
+import { getMemberPerformanceRowsForTeam } from "@/lib/dashboard/entities/member/mocks/overviewMockData";
+import { calculateTeamGaugeValue, getMemberMetricCards, getMemberInsights } from "@/lib/dashboard/entities/member/utils/overviewHelpers";
 import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
 import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { OverviewSummaryCard } from "@/components/dashboard/shared/OverviewSummaryCard";
 import { MemberTable } from "@/components/dashboard/teamDashboard/MemberTable";
-import { useRouteParams } from "@/lib/RouteParamsProvider";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 
 export function TeamOverviewPageClient() {

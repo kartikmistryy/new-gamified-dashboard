@@ -12,7 +12,7 @@ import {
 import { UserAvatar } from "@/components/shared/UserAvatar";
 import { Badge } from "@/components/ui/badge";
 import { ContributorMetricsChart, type ContributorMetricDataPoint } from "@/components/dashboard/repoDashboard/ContributorMetricsChart";
-import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
+import { DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 type ContributorCardData = {
   id: string;
