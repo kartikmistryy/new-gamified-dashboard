@@ -114,8 +114,8 @@ const repoSpofColumns: ColumnDef<OrgRepoSpofRow>[] = [
     header: "Rank",
     enableSorting: false,
     meta: { className: "w-14" },
-    cell: ({ row }) => {
-      const rank = row.index + 1;
+    cell: ({ row, table }) => {
+      const rank = table.getSortedRowModel().rows.findIndex(r => r.id === row.id) + 1;
       return (
         <span className={rank <= 3 ? "text-foreground font-bold" : DASHBOARD_TEXT_CLASSES.rankMuted}>
           {rank}

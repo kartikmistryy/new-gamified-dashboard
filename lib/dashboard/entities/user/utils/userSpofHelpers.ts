@@ -21,13 +21,20 @@ export type ModuleFilter =
   | "backupOwner";
 
 /**
- * Filter tab configurations for module table.
+ * Base filter tabs (used on Repo SPOF page — no user context).
+ */
+export const MODULE_FILTER_TABS_BASE: { key: ModuleFilter; label: string }[] = [
+  { key: "all", label: "All Modules" },
+  { key: "highRisk", label: "At Risk" },
+  { key: "mediumRisk", label: "Needs Attention" },
+  { key: "lowRisk", label: "Healthy" },
+];
+
+/**
+ * Full filter tabs including owner filters (used on User SPOF page).
  */
 export const MODULE_FILTER_TABS: { key: ModuleFilter; label: string }[] = [
-  { key: "all", label: "All Modules" },
-  { key: "highRisk", label: "High Risk" },
-  { key: "mediumRisk", label: "Medium Risk" },
-  { key: "lowRisk", label: "Low Risk" },
+  ...MODULE_FILTER_TABS_BASE,
   { key: "primaryOwner", label: "Primary Owner" },
   { key: "backupOwner", label: "Backup Owner" },
 ];
