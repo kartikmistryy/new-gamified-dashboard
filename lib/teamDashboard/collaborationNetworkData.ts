@@ -1,110 +1,32 @@
 import type { ChartInsight } from "@/lib/orgDashboard/types";
 import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
-import { noise, seedFromText, clamp, getRangeConfig } from "./collaborationNetworkUtils";
+import {
+  generateCollaborationData,
+  type CollaborationModule,
+  type CollaborationEdge,
+  type CollaborationGraphNode,
+  type CollaborationGraph,
+} from "@/lib/shared/collaborationNetworkGenerator";
 
-type CollaborationNodeSeed = {
-  id: string;
-  label: string;
-  doaNormalized: number;
-};
-
-export type CollaborationEdge = {
-  source: string;
-  target: string;
-  spofScore: number;
-  collaborationStrength: number;
-};
-
-export type CollaborationModule = {
-  id: string;
-  name: string;
-  nodes: CollaborationNodeSeed[];
-  edges: CollaborationEdge[];
-};
-
-export type CollaborationGraphNode = CollaborationNodeSeed & {
-  degree: number;
-};
-
-export type CollaborationGraph = {
-  nodes: CollaborationGraphNode[];
-  edges: CollaborationEdge[];
-  totalNodes: number;
-  isolatedCount: number;
-};
-
+/**
+ * Generate team collaboration network data
+ * Uses shared collaboration generator with team context
+ */
 export function getTeamCollaborationData(
   teamId: string,
   memberNames: string[],
   timeRange: TimeRangeKey = "max"
 ): CollaborationModule | undefined {
-  if (memberNames.length === 0) return undefined;
-
-  const rangeConfig = getRangeConfig(timeRange);
-  const moduleSeed = seedFromText(`${teamId}:team-collaboration:${timeRange}`) + rangeConfig.seedOffset;
-
-  const nodes = memberNames.map((name, memberIndex) => {
-    const id = name.toLowerCase().replace(/\s+/g, "-");
-    const nodeSeed = seedFromText(`${teamId}:${name}:overall:${memberIndex}`);
-    const baseDoa = 0.05 + noise(nodeSeed + moduleSeed) * 0.95;
-    const rangeShift = (noise(nodeSeed + moduleSeed + 13) - 0.5) * rangeConfig.doaVolatility;
-    const doaNormalized = clamp(baseDoa + rangeShift, 0.05, 1);
-    return {
-      id,
-      label: name,
-      doaNormalized,
-    };
-  });
-
-  const edges: CollaborationEdge[] = [];
-
-  // Guaranteed backbone so higher thresholds still show an interpretable network.
-  for (let i = 0; i < nodes.length; i++) {
-    const current = nodes[i];
-    const next = nodes[(i + 1) % nodes.length];
-    if (!current || !next || current.id === next.id) continue;
-
-    const ringSeed = seedFromText(`${current.id}:${next.id}:ring:${moduleSeed}`);
-    edges.push({
-      source: current.id,
-      target: next.id,
-      spofScore: clamp(0.7 + noise(ringSeed + 19) * 0.25, 0, 1),
-      collaborationStrength: clamp(0.6 + noise(ringSeed + 47) * 0.4, 0.15, 1),
-    });
-  }
-
-  const existingPairs = new Set(
-    edges.map((edge) => [edge.source, edge.target].sort().join("|"))
-  );
-
-  for (let i = 0; i < nodes.length; i++) {
-    for (let j = i + 1; j < nodes.length; j++) {
-      const pairKey = [nodes[i].id, nodes[j].id].sort().join("|");
-      if (existingPairs.has(pairKey)) continue;
-
-      const pairSeed = seedFromText(`${nodes[i].id}:${nodes[j].id}:${moduleSeed}`);
-      const affinity = noise(pairSeed + 31);
-      if (affinity < rangeConfig.affinityCutoff) continue;
-
-      const spofScore = clamp((nodes[i].doaNormalized + nodes[j].doaNormalized) / 2 + (affinity - 0.5) * 0.35, 0, 1);
-      const collaborationStrength = clamp(0.15 + noise(pairSeed + 67) * 0.85, 0.15, 1);
-
-      edges.push({
-        source: nodes[i].id,
-        target: nodes[j].id,
-        spofScore,
-        collaborationStrength,
-      });
-    }
-  }
-
-  return {
-    id: "team-overall",
-    name: "Team Collaboration",
-    nodes,
-    edges,
-  };
+  return generateCollaborationData(teamId, memberNames, "team", timeRange);
 }
+
+// Re-export types for backward compatibility
+export type {
+  CollaborationModule,
+  CollaborationEdge,
+  CollaborationGraphNode,
+  CollaborationGraph,
+};
 
 export function buildCollaborationGraph(
   moduleData: CollaborationModule | undefined,
