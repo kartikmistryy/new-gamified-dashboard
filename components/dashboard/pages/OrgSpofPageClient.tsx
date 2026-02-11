@@ -29,6 +29,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { UserAvatar } from "@/components/shared/UserAvatar";
+import { OwnerCell } from "@/components/dashboard/repoDashboard/ModuleTableComponents";
 
 import {
   type OrgRepoSpofRow,
@@ -56,6 +57,27 @@ const RISK_LEVEL_COLORS: Record<SpofRiskLevel, string> = {
 };
 
 const RISK_LEVELS: SpofRiskLevel[] = ["Severe", "High", "Medium", "Low"];
+
+// ---------------------------------------------------------------------------
+// Owner helpers
+// ---------------------------------------------------------------------------
+
+/** Map module status to primary-owner bar color */
+const STATUS_OWNER_COLOR: Record<string, string> = {
+  "At Risk": "#DD524C",
+  "Needs Attention": "#E87B35",
+  Healthy: "#55B685",
+};
+
+const BACKUP_OWNER_COLOR = "#94A3B8";
+
+/** Derive approximate ownership % using harmonic weights (1, 1/2, 1/3, …) */
+function deriveOwnershipPercents(ownerCount: number): number[] {
+  if (ownerCount === 0) return [];
+  const weights = Array.from({ length: ownerCount }, (_, i) => 1 / (i + 1));
+  const total = weights.reduce((s, w) => s + w, 0);
+  return weights.map((w) => Math.round((w / total) * 100));
+}
 
 // ---------------------------------------------------------------------------
 // Column definitions
@@ -169,30 +191,6 @@ function StatusBadge({ status }: { status: string }) {
         </Badge>
       );
   }
-}
-
-/** Display up to 3 owners with overflow indicator */
-function OwnersList({ owners }: { owners: string[] }) {
-  const displayOwners = owners.slice(0, 3);
-  const overflow = owners.length > 3 ? owners.length - 3 : 0;
-
-  return (
-    <div className="flex items-center gap-2">
-      <div className="flex -space-x-1">
-        {displayOwners.map((name) => (
-          <UserAvatar key={name} userName={name} className="size-6 border-2 border-white" size={24} />
-        ))}
-      </div>
-      {owners.length === 1 && <span className="text-sm">{owners[0]}</span>}
-      {owners.length === 2 && <span className="text-sm">{owners.join(", ")}</span>}
-      {owners.length >= 3 && (
-        <span className="text-sm text-gray-600">
-          {displayOwners.join(", ")}
-          {overflow > 0 && <span className="text-gray-400"> +{overflow}</span>}
-        </span>
-      )}
-    </div>
-  );
 }
 
 // ---------------------------------------------------------------------------
@@ -362,22 +360,60 @@ export function OrgSpofPageClient() {
                                   <TableHead className="w-20" />
                                   <TableHead>Module</TableHead>
                                   <TableHead>Status</TableHead>
-                                  <TableHead>SPOF Owner</TableHead>
+                                  <TableHead>Primary Owner</TableHead>
+                                  <TableHead>Backup Owners</TableHead>
                                 </TableRow>
                               </TableHeader>
                               <TableBody>
-                                {row.original.modules.map((mod) => (
-                                  <TableRow key={mod.moduleName}>
-                                    <TableCell />
-                                    <TableCell className="font-medium">{mod.moduleName}</TableCell>
-                                    <TableCell>
-                                      <StatusBadge status={mod.status} />
-                                    </TableCell>
-                                    <TableCell>
-                                      <OwnersList owners={mod.owners} />
-                                    </TableCell>
-                                  </TableRow>
-                                ))}
+                                {row.original.modules.map((mod) => {
+                                  const pcts = deriveOwnershipPercents(mod.owners.length);
+                                  const primaryColor = STATUS_OWNER_COLOR[mod.status] ?? BACKUP_OWNER_COLOR;
+                                  return (
+                                    <TableRow key={mod.moduleName}>
+                                      <TableCell />
+                                      <TableCell className="font-medium">{mod.moduleName}</TableCell>
+                                      <TableCell>
+                                        <StatusBadge status={mod.status} />
+                                      </TableCell>
+                                      <TableCell className="w-[260px]">
+                                        {mod.owners[0] ? (
+                                          <OwnerCell
+                                            name={mod.owners[0]}
+                                            percent={pcts[0]}
+                                            color={primaryColor}
+                                          />
+                                        ) : (
+                                          <span className="text-sm text-gray-400">—</span>
+                                        )}
+                                      </TableCell>
+                                      <TableCell className="w-[260px]">
+                                        {mod.owners.length === 2 ? (
+                                          <OwnerCell
+                                            name={mod.owners[1]}
+                                            percent={pcts[1]}
+                                            color={BACKUP_OWNER_COLOR}
+                                          />
+                                        ) : mod.owners.length > 2 ? (
+                                          <div className="flex items-center gap-2 min-w-0">
+                                            <div className="flex -space-x-2 shrink-0">
+                                              {mod.owners.slice(1, 4).map((name) => (
+                                                <UserAvatar key={name} userName={name} className="size-8 border-2 border-white" size={32} />
+                                              ))}
+                                            </div>
+                                            <span className="text-sm font-medium text-gray-900 truncate">
+                                              {mod.owners.slice(1, 3).join(", ")}
+                                              {mod.owners.length > 3 && (
+                                                <span className="text-gray-400"> +{mod.owners.length - 3}</span>
+                                              )}
+                                            </span>
+                                          </div>
+                                        ) : (
+                                          <span className="text-sm text-gray-400">—</span>
+                                        )}
+                                      </TableCell>
+                                    </TableRow>
+                                  );
+                                })}
                               </TableBody>
                             </Table>
                           </TableCell>
