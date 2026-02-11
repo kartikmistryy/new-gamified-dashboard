@@ -90,7 +90,8 @@ export function SidebarContentSections({
           isFavorited={isFavorited}
         />
       )}
-      <SidebarSection
+      {/* Teams section temporarily hidden - feature uncertain */}
+      {/* <SidebarSection
         title="Teams"
         icon={Users}
         items={allTeams}
@@ -114,6 +115,35 @@ export function SidebarContentSections({
             isFavorited={isFavorited("team", team.id)}
             onToggleFavorite={() => toggleFavorite("team", team.id)}
             showBackButton={teamId === team.id}
+            onBack={handleBack}
+            contentOnly={opts?.contentOnly}
+          />
+        )}
+      /> */}
+      <SidebarSection
+        title="Repositories"
+        icon={FolderOpen}
+        items={repositories}
+        visibleItems={visibleRepos}
+        showAll={showAllRepos}
+        onToggleShowAll={onToggleShowAllRepos}
+        showMoreThreshold={SIDEBAR_DISPLAY_LIMITS.REPOSITORIES}
+        emptyMessage="No repositories available"
+        isExpanded={isReposExpanded}
+        onToggleExpand={() => setIsReposExpanded((prev) => !prev)}
+        headingHref={getOrgPath(orgId, "repositories")}
+        isHighlighted={highlightedSection === "repositories"}
+        getKey={(repo) => repo.id}
+        renderItem={(repo, opts) => (
+          <SidebarListItem
+            type="repo"
+            id={repo.id}
+            name={repo.name}
+            href={getRepoPath(orgId, repo.id)}
+            isActive={repoId === repo.id}
+            isFavorited={isFavorited("repo", repo.id)}
+            onToggleFavorite={() => toggleFavorite("repo", repo.id)}
+            showBackButton={repoId === repo.id}
             onBack={handleBack}
             contentOnly={opts?.contentOnly}
           />
@@ -144,35 +174,6 @@ export function SidebarContentSections({
             isFavorited={isFavorited("person", person.id)}
             onToggleFavorite={() => toggleFavorite("person", person.id)}
             showBackButton={userId === person.id}
-            onBack={handleBack}
-            contentOnly={opts?.contentOnly}
-          />
-        )}
-      />
-      <SidebarSection
-        title="Repositories"
-        icon={FolderOpen}
-        items={repositories}
-        visibleItems={visibleRepos}
-        showAll={showAllRepos}
-        onToggleShowAll={onToggleShowAllRepos}
-        showMoreThreshold={SIDEBAR_DISPLAY_LIMITS.REPOSITORIES}
-        emptyMessage="No repositories available"
-        isExpanded={isReposExpanded}
-        onToggleExpand={() => setIsReposExpanded((prev) => !prev)}
-        headingHref={getOrgPath(orgId, "repositories")}
-        isHighlighted={highlightedSection === "repositories"}
-        getKey={(repo) => repo.id}
-        renderItem={(repo, opts) => (
-          <SidebarListItem
-            type="repo"
-            id={repo.id}
-            name={repo.name}
-            href={getRepoPath(orgId, repo.id)}
-            isActive={repoId === repo.id}
-            isFavorited={isFavorited("repo", repo.id)}
-            onToggleFavorite={() => toggleFavorite("repo", repo.id)}
-            showBackButton={repoId === repo.id}
             onBack={handleBack}
             contentOnly={opts?.contentOnly}
           />
