@@ -36,11 +36,16 @@ function MetricSectionRow({ metric }: { metric: PerformanceMetricConfig }) {
           bgColor={metric.bgColor}
           iconColor={metric.iconColor}
           icon={metric.icon}
-          chartData={metric.chartData}
+          primaryValue={metric.primaryValue}
+          primaryLabel={metric.primaryLabel}
+          visualizationType={metric.visualizationType}
+          breakdown={metric.breakdown}
+          thresholds={metric.thresholds}
+          currentValue={metric.currentValue}
         />
         <ChartInsights
           insights={metric.insights}
-          variant="paragraphs"
+          variant="topicWithBullets"
           iconStyle="button"
           className="flex-1 min-w-0"
         />
@@ -90,6 +95,11 @@ export function OrgPerformancePageClient() {
             </div>
           </DashboardSection>
 
+          {/* Four performance metric sections - between Performance Tracking and Percentile */}
+          {PERFORMANCE_METRICS.map((metric) => (
+            <MetricSectionRow key={metric.id} metric={metric} />
+          ))}
+
           <DashboardSection title="Percentile (Normalized to Rolling Avg)">
             <PerformanceChart
               dataSource={{
@@ -111,11 +121,6 @@ export function OrgPerformancePageClient() {
               }}
             />
           </DashboardSection>
-
-          {/* Four performance metric sections from Figma design */}
-          {PERFORMANCE_METRICS.map((metric) => (
-            <MetricSectionRow key={metric.id} metric={metric} />
-          ))}
 
           <DashboardSection title="Teams" className="w-full">
             <PerformanceTeamsTable

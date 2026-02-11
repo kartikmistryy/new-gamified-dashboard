@@ -2,70 +2,15 @@ import { Hourglass, Code2, RefreshCw, Repeat } from "lucide-react";
 import type { PerformanceMetricConfig } from "./types";
 
 /**
- * Generate mock weekly time-series data for a metric chart.
- * Creates ~12 data points with a base value and some variance.
- */
-function generateWeeklyData(
-  baseValue: number,
-  variance: number,
-  weeks = 12,
-): { date: string; value: number }[] {
-  const data: { date: string; value: number }[] = [];
-  const today = new Date();
-
-  for (let i = weeks - 1; i >= 0; i--) {
-    const date = new Date(today);
-    date.setDate(date.getDate() - i * 7);
-    const dateStr = date.toISOString().split("T")[0];
-
-    // Generate a value that trends slightly and has noise
-    const trend = ((weeks - 1 - i) / (weeks - 1)) * variance * 0.3;
-    const noise = (Math.random() - 0.5) * variance;
-    const value = Math.max(0, Math.round(baseValue + trend + noise));
-
-    data.push({ date: dateStr, value });
-  }
-
-  return data;
-}
-
-const SHARED_INSIGHTS_TEXT = [
-  {
-    id: "baseline",
-    text: "Performance stayed mostly above baseline, with the median clustering in the P40\u2013P60 band throughout the year.",
-  },
-  {
-    id: "milestones",
-    text: 'Leadership and delivery milestones drive outsized gains, pushing results into the P70+ "Excellent" range.',
-  },
-  {
-    id: "disruption",
-    text: "Team disruption has immediate impact, as seen in the sharp mid-year dip during the Architect\u2019s leave.",
-  },
-  {
-    id: "holiday",
-    text: "Holiday effects are real but temporary, causing short dips without long-term degradation.",
-  },
-  {
-    id: "recovery",
-    text: "Recovery speed is strong, with performance rebounding within weeks after each downturn.",
-  },
-  {
-    id: "volatility",
-    text: "End-of-year volatility reflects seasonality, not a structural decline in performance.",
-  },
-];
-
-/**
- * Four performance metric configurations matching the Figma design.
+ * Four performance metric configurations with meaningful data per CHARTS.md plan.
  *
  * Each metric has:
- * - Severity badge with color
- * - Colored card background
- * - Mock chart data (~12 weeks)
- * - Chart Insights paragraphs
+ * - Primary value prominently displayed
+ * - Breakdown data for donut visualization (metrics 1-3) or threshold zones (metric 4)
+ * - Insights: first = topic sentence (action), rest = bullet points (why/details)
  */
 export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
+  // Chart 1: Average Age of Code Deleted
   {
     id: "avg-age-code-deleted",
     title: "Average Age of Code Deleted",
@@ -74,9 +19,36 @@ export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
     bgColor: "#F9E3E2",
     iconColor: "#CA3A31",
     icon: Hourglass,
-    chartData: generateWeeklyData(180, 60),
-    insights: SHARED_INSIGHTS_TEXT,
+    primaryValue: "42",
+    primaryLabel: "days",
+    visualizationType: "donut",
+    breakdown: [
+      { label: "<14 days", value: 25, color: "#CA3A31" },
+      { label: "14d-1mo", value: 30, color: "#E9A23B" },
+      { label: "1-3mo", value: 28, color: "#7BA8E6" },
+      { label: ">3mo", value: 17, color: "#55B685" },
+    ],
+    insights: [
+      {
+        id: "topic",
+        text: "Needs attention — too much young code is being deleted. Consider improving upfront design reviews before implementation.",
+      },
+      {
+        id: "young-code",
+        text: "25% of deleted code is less than 2 weeks old, indicating rushed implementations that don't survive review.",
+      },
+      {
+        id: "mature-deletions",
+        text: "Only 17% of deletions target mature code (>3 months), suggesting limited intentional refactoring.",
+      },
+      {
+        id: "threshold",
+        text: "The 42-day average is below the healthy threshold of 60 days.",
+      },
+    ],
   },
+
+  // Chart 2: Normalized Lines of Code
   {
     id: "normalized-loc",
     title: "Normalized Lines of Code",
@@ -85,20 +57,74 @@ export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
     bgColor: "#D9F9E6",
     iconColor: "#55B685",
     icon: Code2,
-    chartData: generateWeeklyData(1200, 400),
-    insights: SHARED_INSIGHTS_TEXT,
+    primaryValue: "8,450",
+    primaryLabel: "nLoC",
+    visualizationType: "donut",
+    breakdown: [
+      { label: "Core Logic", value: 50, color: "#55B685" },
+      { label: "Tests", value: 25, color: "#7BA8E6" },
+      { label: "Config", value: 15, color: "#E9A23B" },
+      { label: "Docs", value: 10, color: "#9CA3AF" },
+    ],
+    insights: [
+      {
+        id: "topic",
+        text: "On track — weighted output is healthy with good focus on high-value work. Maintain current development practices.",
+      },
+      {
+        id: "weighted",
+        text: "12,800 raw lines translate to 8,450 normalized contribution (66% efficiency ratio).",
+      },
+      {
+        id: "core-focus",
+        text: "Half of contributions target core business logic, indicating focus on high-value work.",
+      },
+      {
+        id: "test-coverage",
+        text: "Test coverage contributions (25%) align with quality-first development practices.",
+      },
+    ],
   },
+
+  // Chart 3: Legacy Code Updated
   {
-    id: "legacy-code-refactoring",
-    title: "Legacy Code Refactoring",
+    id: "legacy-code-updated",
+    title: "Legacy Code Updated",
     severity: "Medium",
-    severityColor: "#E2B53E",
-    bgColor: "#FDF9C9",
-    iconColor: "#E2B53E",
+    severityColor: "#E9A23B",
+    bgColor: "#FCF3CC",
+    iconColor: "#E9A23B",
     icon: RefreshCw,
-    chartData: generateWeeklyData(45, 20),
-    insights: SHARED_INSIGHTS_TEXT,
+    primaryValue: "23",
+    primaryLabel: "%",
+    visualizationType: "donut",
+    breakdown: [
+      { label: "6mo-1yr", value: 52, color: "#55B685" },
+      { label: "1-2yr", value: 26, color: "#7BA8E6" },
+      { label: "2-3yr", value: 13, color: "#E9A23B" },
+      { label: ">3yr", value: 9, color: "#CA3A31" },
+    ],
+    insights: [
+      {
+        id: "topic",
+        text: "Below average — legacy systems may be accumulating debt. Consider dedicating sprint capacity to proactive maintenance.",
+      },
+      {
+        id: "low-legacy",
+        text: "Only 23% of changes touch code older than 6 months (target: 30-40%).",
+      },
+      {
+        id: "oldest-code",
+        text: "Updates to 3+ year old code represent just 9% of legacy work, despite these areas often needing the most attention.",
+      },
+      {
+        id: "risk",
+        text: "Low legacy engagement increases risk of critical failures in older systems.",
+      },
+    ],
   },
+
+  // Chart 4: Churn Rate
   {
     id: "churn-rate",
     title: "Churn Rate",
@@ -107,7 +133,33 @@ export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
     bgColor: "#F9E3E2",
     iconColor: "#CA3A31",
     icon: Repeat,
-    chartData: generateWeeklyData(25, 12),
-    insights: SHARED_INSIGHTS_TEXT,
+    primaryValue: "12.4",
+    primaryLabel: "%",
+    visualizationType: "barWithZones",
+    currentValue: 12.4,
+    thresholds: [
+      { min: 0, max: 5, label: "Great", color: "#55B685" },
+      { min: 5, max: 10, label: "Expected", color: "#7BA8E6" },
+      { min: 10, max: 20, label: "Concerning", color: "#E9A23B" },
+      { min: 20, max: 100, label: "Critical", color: "#CA3A31" },
+    ],
+    insights: [
+      {
+        id: "topic",
+        text: "Concerning — churn rate is above healthy range. Target reducing to <10% through better specs and design discussions.",
+      },
+      {
+        id: "ratio",
+        text: "12.4% means roughly 1 in 8 lines of new code gets deleted (healthy range: 5-10%).",
+      },
+      {
+        id: "trend",
+        text: "Churn increased from 9.8% last period, suggesting growing rework cycles.",
+      },
+      {
+        id: "correlation",
+        text: "High churn often correlates with insufficient planning or over-reliance on trial-and-error coding.",
+      },
+    ],
   },
 ];

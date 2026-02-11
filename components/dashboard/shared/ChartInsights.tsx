@@ -10,8 +10,9 @@ export type ChartInsightsProps = {
    * Rendering variant:
    * - "bullets" (default): renders insights as a bullet list (<ul>/<li>)
    * - "paragraphs": renders insights as separate paragraphs, matching the Figma metric-section style
+   * - "topicWithBullets": first insight as bold topic sentence, rest as bullet points
    */
-  variant?: "bullets" | "paragraphs";
+  variant?: "bullets" | "paragraphs" | "topicWithBullets";
   /**
    * Icon display style:
    * - "inline" (default): Sparkles icon inline next to the heading text
@@ -54,7 +55,26 @@ export function ChartInsights({
         </h2>
       </CardTitle>
       <CardContent>
-        {variant === "paragraphs" ? (
+        {variant === "topicWithBullets" ? (
+          <div className="space-y-3">
+            {/* First insight as topic sentence */}
+            {insights.length > 0 && (
+              <p className="text-sm font-medium text-foreground">
+                {insights[0].text}
+              </p>
+            )}
+            {/* Rest as bullet points */}
+            {insights.length > 1 && (
+              <ul className="list-disc space-y-1.5 pl-5 text-muted-foreground">
+                {insights.slice(1).map(({ id, text }) => (
+                  <li key={id} className="text-sm">
+                    {text}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ) : variant === "paragraphs" ? (
           <div className="space-y-3 text-sm text-muted-foreground">
             {insights.map(({ id, text }) => (
               <p key={id}>{text}</p>

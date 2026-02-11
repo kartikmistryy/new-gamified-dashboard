@@ -248,6 +248,21 @@ export type StackedBinData = {
 /** Severity level for performance metric cards. */
 export type MetricSeverity = "Heavy" | "Medium" | "Low";
 
+/** A segment in a donut chart breakdown. */
+export type DonutSegment = {
+  label: string;
+  value: number;
+  color: string;
+};
+
+/** A threshold zone for horizontal bar visualization. */
+export type ThresholdZone = {
+  min: number;
+  max: number;
+  label: string;
+  color: string;
+};
+
 /** Configuration for a performance metric card (e.g. Churn Rate, Legacy Code Refactoring). */
 export type PerformanceMetricConfig = {
   id: string;
@@ -258,6 +273,17 @@ export type PerformanceMetricConfig = {
   iconColor: string;
   /** Lucide icon component rendered in the card header. */
   icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>;
-  chartData: { date: string; value: number }[];
   insights: ChartInsight[];
+  /** Primary display value (e.g., "42 days", "8,450", "23%", "12.4%"). */
+  primaryValue: string;
+  /** Unit or label shown below the primary value. */
+  primaryLabel?: string;
+  /** Type of visualization: 'donut' for categorical breakdown, 'barWithZones' for threshold-based. */
+  visualizationType: "donut" | "barWithZones";
+  /** Breakdown segments for donut chart visualization. */
+  breakdown?: DonutSegment[];
+  /** Threshold zones for bar visualization (only used when visualizationType is 'barWithZones'). */
+  thresholds?: ThresholdZone[];
+  /** Current numeric value for positioning on threshold bar (0-100 scale or actual value). */
+  currentValue?: number;
 };
