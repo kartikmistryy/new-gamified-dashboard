@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 export type D3TooltipController = {
   show: (html: string, x: number, y: number) => void;
@@ -14,10 +15,10 @@ const TOOLTIP_STYLES: Record<string, string> = {
   opacity: "0",
   padding: "10px 12px",
   borderRadius: "10px",
-  background: "#ffffff",
-  border: "1px solid #e5e7eb",
-  color: "#111827",
-  boxShadow: "0 12px 24px rgba(15, 23, 42, 0.12)",
+  background: DASHBOARD_COLORS.chartBackground,
+  border: `1px solid ${DASHBOARD_COLORS.gray200}`,
+  color: DASHBOARD_COLORS.gray900,
+  boxShadow: `0 12px 24px ${DASHBOARD_COLORS.gray950}1F`,
   fontSize: "12px",
   lineHeight: "1.4",
   maxWidth: "280px",

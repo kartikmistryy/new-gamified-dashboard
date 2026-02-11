@@ -46,7 +46,7 @@ export function enrichContributorsWithMetrics(
 
 /** Calculate cumulative diff delta by contributor */
 export function calculateCumulativeDiffDelta(
-  timeFilteredData: any[],
+  timeFilteredData: ContributorPerformanceDataPoint[],
   contributors: EnrichedContributor[]
 ): Map<string, number> {
   const totals = new Map<string, number>();

@@ -6,6 +6,7 @@ import type { ModuleSPOFData } from "@/lib/userDashboard/types";
 import { ArrowLeft } from "lucide-react";
 import { transformModulesToTreemapData } from "@/lib/userDashboard/spofTreemapUtils";
 import { buildTreemapOption } from "@/lib/userDashboard/spofTreemapConfig";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
 
@@ -70,15 +71,15 @@ export function SPOFTreemap({ modules, currentUserId, className = "" }: SPOFTree
 
       <div className="mt-6 flex flex-wrap gap-4 justify-center text-sm">
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded" style={{ backgroundColor: "#55B685" }} />
+          <div className="w-4 h-4 rounded" style={{ backgroundColor: DASHBOARD_COLORS.excellent }} />
           <span className="text-gray-700">Low Risk (0-30)</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded" style={{ backgroundColor: "#E87B35" }} />
+          <div className="w-4 h-4 rounded" style={{ backgroundColor: DASHBOARD_COLORS.warning }} />
           <span className="text-gray-700">Medium Risk (31-70)</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded" style={{ backgroundColor: "#DD524C" }} />
+          <div className="w-4 h-4 rounded" style={{ backgroundColor: DASHBOARD_COLORS.danger }} />
           <span className="text-gray-700">High Risk (71-100)</span>
         </div>
       </div>

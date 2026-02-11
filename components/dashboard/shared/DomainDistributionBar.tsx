@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef } from "react";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 type DomainDistributionBarProps = {
   segments: { domain: string; value: number }[];
@@ -40,8 +41,8 @@ export function DomainDistributionBar({
               const tooltip = tooltipRef.current;
               if (!tooltip) return;
               tooltip.show(
-                `<div style="font-weight:600; color:#0f172a;">${segment.domain}</div>` +
-                  `<div style="color:#6b7280;">Count: ${segment.value}</div>`,
+                `<div style="font-weight:600; color:${DASHBOARD_COLORS.gray950};">${segment.domain}</div>` +
+                  `<div style="color:${DASHBOARD_COLORS.gray500};">Count: ${segment.value}</div>`,
                 event.clientX + 12,
                 event.clientY + 12
               );

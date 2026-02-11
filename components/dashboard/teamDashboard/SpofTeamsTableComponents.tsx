@@ -6,6 +6,7 @@ import * as React from "react";
 import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 import { hexToRgba } from "@/lib/orgDashboard/tableUtils";
 import { getTrendIconForCount } from "@/lib/orgDashboard/spofTeamsTableUtils";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 type JoinedDistributionBarProps = {
   segments: { label: string; value: number; color: string }[];
@@ -42,8 +43,8 @@ export function JoinedDistributionBar({ segments, valueLabel }: JoinedDistributi
               const tooltip = tooltipRef.current;
               if (!tooltip) return;
               tooltip.show(
-                `<div style="font-weight:600; color:#0f172a;">${segment.label}</div>` +
-                  `<div style="color:#6b7280;">${valueLabel}: ${segment.value}</div>`,
+                `<div style="font-weight:600; color:${DASHBOARD_COLORS.gray950};">${segment.label}</div>` +
+                  `<div style="color:${DASHBOARD_COLORS.gray500};">${valueLabel}: ${segment.value}</div>`,
                 event.clientX + 12,
                 event.clientY + 12
               );

@@ -16,6 +16,7 @@ import {
 } from "@/lib/dashboard/shared/collaborationNetworkScales";
 import { formatNodeTooltip, formatEdgeTooltip } from "@/lib/dashboard/shared/collaborationNetworkTooltips";
 import { CollaborationNetworkLegend } from "./CollaborationNetworkLegend";
+import { DASHBOARD_BG_CLASSES, DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 const CHART_HEIGHT = 540;
 const DEFAULT_THRESHOLD = 0.7;
 const DEFAULT_LAYOUT: LayoutType = "shell";
@@ -77,7 +78,7 @@ export function CollaborationNetworkGraph({ data, onInsightsChange }: Collaborat
 
   return (
     <div className="w-full min-w-0" ref={wrapperRef}>
-      <div className="rounded-xl border border-gray-100 bg-[#e8edf5] p-4">
+      <div className={`rounded-xl border border-gray-100 ${DASHBOARD_BG_CLASSES.bgLight} p-4`}>
         <div className="flex min-w-0 items-stretch gap-4">
           {/* Main SVG Chart */}
           <svg
@@ -101,7 +102,7 @@ export function CollaborationNetworkGraph({ data, onInsightsChange }: Collaborat
                     y1={source.y}
                     x2={target.x}
                     y2={target.y}
-                    stroke="#94a3b8"
+                    stroke={DASHBOARD_COLORS.slate400}
                     strokeOpacity={isHovered ? 0.8 : 0.5}
                     strokeWidth={edgeWidthScale(edge.collaborationStrength)}
                     onMouseEnter={(event) => {

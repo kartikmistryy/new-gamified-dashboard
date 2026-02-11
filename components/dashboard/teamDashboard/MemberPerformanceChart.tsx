@@ -31,7 +31,7 @@ const MEMBER_LINE_COLORS = [
   DASHBOARD_COLORS.danger,
   DASHBOARD_COLORS.caution,
   DASHBOARD_COLORS.stable,
-  "#2563eb",
+  DASHBOARD_COLORS.blueChart,
 ];
 
 export function MemberPerformanceChart({
@@ -101,23 +101,23 @@ export function MemberPerformanceChart({
   return (
     <ResponsiveContainer width="100%" height={400}>
       <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+        <CartesianGrid strokeDasharray="3 3" stroke={DASHBOARD_COLORS.gray200} />
         <XAxis
           dataKey="date"
           tickFormatter={formatXAxis}
-          stroke="#9ca3af"
+          stroke={DASHBOARD_COLORS.gray400}
           style={{ fontSize: 11 }}
         />
         <YAxis
           domain={[0, 100]}
-          stroke="#9ca3af"
+          stroke={DASHBOARD_COLORS.gray400}
           style={{ fontSize: 11 }}
           label={{ value: "Performance Value", angle: -90, position: "insideLeft" }}
         />
         <Tooltip
           contentStyle={{
             backgroundColor: "white",
-            border: "1px solid #d1d5db",
+            border: `1px solid ${DASHBOARD_COLORS.gray300}`,
             borderRadius: "0.375rem",
             fontSize: 12,
           }}
@@ -128,7 +128,7 @@ export function MemberPerformanceChart({
             type="monotone"
             dataKey="teamAverage"
             name="Team Average"
-            stroke="#2563eb"
+            stroke={DASHBOARD_COLORS.blueChart}
             strokeWidth={2}
             dot={{ r: 3 }}
             isAnimationActive={true}

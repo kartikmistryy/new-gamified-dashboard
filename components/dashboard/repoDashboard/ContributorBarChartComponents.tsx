@@ -2,6 +2,7 @@
 
 import type { MouseEvent, MutableRefObject } from "react";
 import type { D3TooltipController } from "@/lib/chartTooltip";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 const MARGIN = { top: 40, right: 60, bottom: 120, left: 80 };
 const BAR_WIDTH = 32;
@@ -72,7 +73,7 @@ export function YAxisTicks({ ticks, innerHeight }: YAxisTicksProps) {
         x2={MARGIN.left}
         y1={MARGIN.top}
         y2={MARGIN.top + innerHeight}
-        stroke="#d1d5db"
+        stroke={DASHBOARD_COLORS.gray300}
         strokeWidth={1}
       />
       {ticks.map((tick, i) => (
@@ -82,7 +83,7 @@ export function YAxisTicks({ ticks, innerHeight }: YAxisTicksProps) {
             x2={MARGIN.left}
             y1={tick.y}
             y2={tick.y}
-            stroke={tick.isZero ? "#1f2937" : "#9ca3af"}
+            stroke={tick.isZero ? DASHBOARD_COLORS.gray800 : DASHBOARD_COLORS.gray400}
             strokeWidth={tick.isZero ? 2 : 1}
           />
           <text
@@ -135,7 +136,7 @@ export function BarGroup({ bar, tooltipRef, innerHeight }: BarGroupProps) {
     onMouseEnter: (e: MouseEvent<SVGElement>) => {
       tooltipRef.current?.show(
         `<div style="font-weight:600; color:${color};">${prefix}${value.toLocaleString()} ${name}</div>` +
-          `<div style="color:#6b7280; margin-top:4px;">${bar.contributorName}</div>`,
+          `<div style="color:${DASHBOARD_COLORS.gray500}; margin-top:4px;">${bar.contributorName}</div>`,
         e.clientX + 12,
         e.clientY + 12
       );
@@ -151,18 +152,18 @@ export function BarGroup({ bar, tooltipRef, innerHeight }: BarGroupProps) {
         y={bar.deletionsBar.y}
         width={BAR_WIDTH}
         height={bar.deletionsBar.height}
-        fill="#ef4444"
+        fill={DASHBOARD_COLORS.red}
         className="cursor-pointer transition-opacity hover:opacity-80"
-        {...createHandlers(bar.deletionsBar.value, "deletions", "#ef4444", "-")}
+        {...createHandlers(bar.deletionsBar.value, "deletions", DASHBOARD_COLORS.red, "-")}
       />
       <rect
         x={bar.additionsBar.x}
         y={bar.additionsBar.y}
         width={BAR_WIDTH}
         height={bar.additionsBar.height}
-        fill="#10b981"
+        fill={DASHBOARD_COLORS.green}
         className="cursor-pointer transition-opacity hover:opacity-80"
-        {...createHandlers(bar.additionsBar.value, "additions", "#10b981", "+")}
+        {...createHandlers(bar.additionsBar.value, "additions", DASHBOARD_COLORS.green, "+")}
       />
       <text
         x={bar.groupX + BAR_WIDTH + BAR_GAP / 2}

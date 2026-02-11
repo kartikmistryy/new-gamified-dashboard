@@ -10,6 +10,7 @@ import {
   MINI_HEIGHT,
   type ContributorMetricDataPoint,
 } from "@/lib/dashboard/repoDashboard/contributorMetricsPlotly";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 export type { ContributorMetricDataPoint };
 
@@ -29,7 +30,7 @@ type ContributorMetricsChartProps = {
 export function ContributorMetricsChart({
   data,
   contributorName = "Contributor",
-  contributorColor = "#3b82f6",
+  contributorColor = DASHBOARD_COLORS.blueTailwind,
   title,
   subtitle,
   showMiniVersion = false,

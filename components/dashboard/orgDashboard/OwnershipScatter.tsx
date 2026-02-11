@@ -10,6 +10,7 @@ import {
   buildOwnershipLayout,
   OWNERSHIP_SCATTER_CONFIG,
 } from "@/lib/orgDashboard/ownershipScatterPlotly";
+import { DASHBOARD_COLORS, DASHBOARD_BG_CLASSES } from "@/lib/orgDashboard/colors";
 
 // Dynamically import Plotly to avoid SSR issues
 // Note: react-plotly.js only exports a default export (external library)
@@ -71,17 +72,17 @@ export function OwnershipScatter({ data, range = "max" }: OwnershipScatterProps)
         <div className="flex items-center gap-2">
           <div
             className="h-3 w-3 shrink-0 rounded-full"
-            style={{ backgroundColor: "#22c55e" }}
+            style={{ backgroundColor: DASHBOARD_COLORS.greenLight }}
           />
           <span className="text-xs font-medium">Outlier (High Ownership)</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#ef4444]" />
+          <div className={`h-2.5 w-2.5 shrink-0 rounded-full ${DASHBOARD_BG_CLASSES.red}`} />
           <span className="text-xs font-medium">Outlier (Low Ownership)</span>
         </div>
         <div className="flex items-center gap-2">
           <svg className="h-3 w-3 shrink-0" viewBox="0 0 12 12" preserveAspectRatio="none" aria-hidden>
-            <line x1={0} y1={6} x2={12} y2={6} stroke="#6b7280" strokeWidth={1.5} strokeDasharray="4 4" />
+            <line x1={0} y1={6} x2={12} y2={6} stroke={DASHBOARD_COLORS.gray500} strokeWidth={1.5} strokeDasharray="4 4" />
           </svg>
           <span className="text-xs font-medium">Trend</span>
         </div>

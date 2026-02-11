@@ -19,6 +19,7 @@ import { SkillgraphDetailTable } from "./SkillgraphDetailTable";
 import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
+import { DASHBOARD_BG_CLASSES } from "@/lib/orgDashboard/colors";
 
 const SKILLGRAPH_SKILL_FILTER_TABS: { key: SkillgraphSkillFilter; label: string }[] = [
   { key: "mostUsage", label: "Most Popular" },
@@ -127,7 +128,7 @@ export function SkillgraphBySkillTable({
               table.getRowModel().rows.map((row) => (
                 <Fragment key={row.id}>
                   <TableRow
-                    className={`border-[#E5E5E5] hover:bg-gray-50/80 ${row.getIsExpanded() ? "bg-muted" : ""}`}
+                    className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80 ${row.getIsExpanded() ? "bg-muted" : ""}`}
                   >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell

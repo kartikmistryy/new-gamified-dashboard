@@ -20,6 +20,7 @@ import {
   type SpofTableFilter,
 } from "@/lib/orgDashboard/spofTeamsTableUtils";
 import { createSpofTeamsColumns } from "@/lib/orgDashboard/spofTeamsTableColumns";
+import { DASHBOARD_BG_CLASSES } from "@/lib/orgDashboard/colors";
 
 type SpofTeamsTableProps = {
   rows: SpofTeamRow[];
@@ -76,7 +77,7 @@ export function SpofTeamsTable({ rows, visibleTeams, onVisibilityChange }: SpofT
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows.map((row) => (
-              <TableRow key={row.original.teamName} className="border-[#E5E5E5] hover:bg-gray-50/80">
+              <TableRow key={row.original.teamName} className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80`}>
                 {row.getVisibleCells().map((cell) => (
                   <TableCell
                     key={cell.id}

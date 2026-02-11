@@ -2,6 +2,7 @@
 
 import type { MemberPerformanceWithDelta } from "./performanceTableConfig";
 import type { MemberPerformanceRow } from "./types";
+import type { MemberPerformanceDataPoint } from "./performanceTypes";
 
 export interface EnrichedMember {
   memberName: string;
@@ -19,7 +20,7 @@ export interface AggregateTeamDataPoint {
 
 /** Calculate cumulative diff delta by member */
 export function calculateCumulativeDiffDeltaByMember(
-  timeFilteredData: any[],
+  timeFilteredData: MemberPerformanceDataPoint[],
   members: MemberPerformanceRow[]
 ): Map<string, number> {
   const totals = new Map<string, number>();
@@ -70,7 +71,7 @@ export function calculateTeamPerformanceValue(members: MemberPerformanceRow[]): 
 
 /** Generate aggregate team cumulative data with realistic variations */
 export function generateAggregateTeamData(
-  timeFilteredData: any[],
+  timeFilteredData: MemberPerformanceDataPoint[],
   members: MemberPerformanceRow[],
   teamId: string
 ): AggregateTeamDataPoint[] {

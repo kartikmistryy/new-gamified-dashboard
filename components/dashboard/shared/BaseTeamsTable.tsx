@@ -21,6 +21,7 @@ import { Badge } from "@/components/shared/Badge";
 import { SortableTableHeader } from "./SortableTableHeader";
 import { useTableFilter } from "@/lib/orgDashboard/useTableFilter";
 import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
+import { DASHBOARD_BG_CLASSES } from "@/lib/orgDashboard/colors";
 
 export type BaseTeamsTableColumn<T, F extends string> = {
   key: string;
@@ -119,7 +120,7 @@ export function BaseTeamsTable<T, F extends string>({
             {table.getRowModel().rows.map((row) => (
               <TableRow
                 key={getRowKey(row.original)}
-                className="border-[#E5E5E5] hover:bg-gray-50/80"
+                className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80`}
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell

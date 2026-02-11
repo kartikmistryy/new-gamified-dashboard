@@ -1,6 +1,14 @@
 import type { ContributionNode } from "./spofContributionData";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
-export const CONTRIBUTOR_FALLBACK_COLORS = ["#3b82f6", "#22c55e", "#f59e0b", "#a855f7", "#06b6d4", "#ef4444"];
+export const CONTRIBUTOR_FALLBACK_COLORS = [
+  DASHBOARD_COLORS.blueTailwind,
+  DASHBOARD_COLORS.greenLight,
+  DASHBOARD_COLORS.amber,
+  DASHBOARD_COLORS.purple,
+  DASHBOARD_COLORS.cyan,
+  DASHBOARD_COLORS.red,
+];
 
 export function formatModuleLabel(label: string): string {
   return label
@@ -10,9 +18,9 @@ export function formatModuleLabel(label: string): string {
 }
 
 export function getModuleColor(node: ContributionNode): string {
-  if (node.health === "healthy") return "#10b981";
-  if (node.health === "needsAttention") return "#f59e0b";
-  return "#ef4444";
+  if (node.health === "healthy") return DASHBOARD_COLORS.green;
+  if (node.health === "needsAttention") return DASHBOARD_COLORS.amber;
+  return DASHBOARD_COLORS.red;
 }
 
 export function withAlpha(hex: string, alpha: number): string {

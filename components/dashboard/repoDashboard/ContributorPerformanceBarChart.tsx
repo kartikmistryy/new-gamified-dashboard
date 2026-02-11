@@ -4,6 +4,7 @@ import { useMemo, useRef, useEffect, useId } from "react";
 import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
 import { calculateBarChart, CHART_CONSTANTS } from "@/lib/dashboard/repoDashboard/contributorBarChartUtils";
 import { BarGroup, MedianLines, YAxisTicks } from "./ContributorBarChartComponents";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 export type ContributorCodeMetrics = {
   contributorName: string;
@@ -64,7 +65,7 @@ export function ContributorPerformanceBarChart({
             y={MARGIN.top}
             width={chart.innerWidth}
             height={chart.innerHeight}
-            fill="#f9fafb"
+            fill={DASHBOARD_COLORS.gray50}
           />
 
           <MedianLines medianLines={chart.medianLines} innerWidth={chart.innerWidth} />
@@ -75,7 +76,7 @@ export function ContributorPerformanceBarChart({
             x2={MARGIN.left + chart.innerWidth}
             y1={chart.centerY}
             y2={chart.centerY}
-            stroke="#1f2937"
+            stroke={DASHBOARD_COLORS.gray800}
             strokeWidth={2}
           />
 

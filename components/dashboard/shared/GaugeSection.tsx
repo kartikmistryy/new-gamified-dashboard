@@ -8,6 +8,7 @@ import {
   getPerformanceGaugeLabel,
 } from "@/lib/orgDashboard/utils";
 import { D3Gauge } from "@/components/dashboard/shared/D3Gauge";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 type GaugeSectionProps = {
   gaugeValue: number;
@@ -51,15 +52,15 @@ export function GaugeSection({
               __html: `
                 .timespan-toggle[data-slot="toggle-group"] button {
                   background-color: white;
-                  color: #111827;
-                  border: 1px solid #e5e7eb;
+                  color: ${DASHBOARD_COLORS.gray900};
+                  border: 1px solid ${DASHBOARD_COLORS.gray200};
                   border-radius: 4px !important;
                 }
                 .timespan-toggle[data-slot="toggle-group"] button:hover,
                 .timespan-toggle[data-slot="toggle-group"] button[data-state="on"] {
-                  background-color: #111827 !important;
+                  background-color: ${DASHBOARD_COLORS.gray900} !important;
                   color: white !important;
-                  border-color: #111827 !important;
+                  border-color: ${DASHBOARD_COLORS.gray900} !important;
                 }
               `,
             }}

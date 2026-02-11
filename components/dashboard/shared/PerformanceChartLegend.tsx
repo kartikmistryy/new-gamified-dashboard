@@ -1,4 +1,5 @@
 import { PERFORMANCE_ZONES, PERFORMANCE_BASELINES } from "@/lib/orgDashboard/orgPerformanceChartData";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 export function PerformanceChartLegend() {
   return (
@@ -40,8 +41,8 @@ export function PerformanceChartLegend() {
       </div>
       <div className="flex min-w-0 items-center gap-1.5">
         <svg width="24" height="8" className="shrink-0 overflow-visible">
-          <line x1="0" y1="4" x2="16" y2="4" stroke="#2563eb" strokeWidth="2" />
-          <circle cx="20" cy="4" r="3" fill="#2563eb" />
+          <line x1="0" y1="4" x2="16" y2="4" stroke={DASHBOARD_COLORS.blueChart} strokeWidth="2" />
+          <circle cx="20" cy="4" r="3" fill={DASHBOARD_COLORS.blueChart} />
         </svg>
         <span className="truncate text-gray-600">Normalized Median</span>
       </div>

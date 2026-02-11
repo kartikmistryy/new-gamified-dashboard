@@ -10,6 +10,7 @@
 import { useMemo } from "react";
 import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 import { TIME_RANGE_OPTIONS } from "@/lib/shared/types/timeRangeTypes";
+import type { MemberPerformanceRow } from "../types";
 import { getMemberPerformanceRowsForTeam } from "../overviewMockData";
 import { generateMemberPerformanceTimeSeries } from "../performanceMockData";
 import {
@@ -23,7 +24,7 @@ import {
  * Generates deterministic change and churn rate values for members
  * Uses member name and index as seed for consistent results
  */
-function addPerformanceMetrics(rows: any[], teamId: string) {
+function addPerformanceMetrics(rows: MemberPerformanceRow[], teamId: string) {
   return rows.map((row, index) => {
     // Use member name and index as seed for deterministic values
     const seed1 = row.memberName.charCodeAt(0) + index * 100;

@@ -12,6 +12,7 @@ import {
 import { UserAvatar } from "@/components/shared/UserAvatar";
 import { Badge } from "@/components/ui/badge";
 import { ContributorMetricsChart, type ContributorMetricDataPoint } from "@/components/dashboard/repoDashboard/ContributorMetricsChart";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 type ContributorCardData = {
   id: string;
@@ -47,12 +48,12 @@ function getContributorColor(rank: number, customColor?: string): string {
 
   // Assign colors based on rank
   const colors = [
-    "#3b82f6", // blue
-    "#10b981", // emerald
-    "#f59e0b", // amber
-    "#8b5cf6", // violet
-    "#ec4899", // pink
-    "#06b6d4", // cyan
+    DASHBOARD_COLORS.blueTailwind, // blue
+    DASHBOARD_COLORS.green, // emerald
+    DASHBOARD_COLORS.amber, // amber
+    DASHBOARD_COLORS.violet, // violet
+    DASHBOARD_COLORS.pink, // pink
+    DASHBOARD_COLORS.cyan, // cyan
   ];
 
   return colors[(rank - 1) % colors.length];

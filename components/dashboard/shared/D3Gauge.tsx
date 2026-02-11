@@ -10,6 +10,7 @@ import {
   getSegmentAngleRangeDeg,
 } from "@/lib/gauge";
 import { createChartTooltip, type D3TooltipController } from "@/lib/chartTooltip";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 const INDICATOR_ANIMATION_MS = 350;
 
@@ -137,8 +138,8 @@ export function D3Gauge({
                 const tooltip = tooltipRef.current;
                 if (!tooltip) return;
                 tooltip.show(
-                  `<div style="font-weight:600; color:#0f172a;">${seg.key.replace(/-/g, " ")}</div>` +
-                    `<div style="color:#2563eb;">Range: ${rangeLabel}</div>`,
+                  `<div style="font-weight:600; color:${DASHBOARD_COLORS.gray950};">${seg.key.replace(/-/g, " ")}</div>` +
+                    `<div style="color:${DASHBOARD_COLORS.blueChart};">Range: ${rangeLabel}</div>`,
                   event.clientX + 12,
                   event.clientY + 12
                 );
@@ -156,15 +157,15 @@ export function D3Gauge({
         cx={animatedDot.x}
         cy={animatedDot.y}
         r={dotFillR}
-        fill="#111827"
-        stroke="#ffffff"
+        fill={DASHBOARD_COLORS.gray900}
+        stroke={DASHBOARD_COLORS.chartBackground}
         strokeWidth={dotStrokeWidth}
         onMouseEnter={(event) => {
           const tooltip = tooltipRef.current;
           if (!tooltip) return;
           tooltip.show(
-            `<div style="font-weight:600; color:#0f172a;">${label}</div>` +
-              `<div style="color:#2563eb;">Value: ${valueDisplay ?? Math.round(value)}</div>`,
+            `<div style="font-weight:600; color:${DASHBOARD_COLORS.gray950};">${label}</div>` +
+              `<div style="color:${DASHBOARD_COLORS.blueChart};">Value: ${valueDisplay ?? Math.round(value)}</div>`,
             event.clientX + 12,
             event.clientY + 12
           );

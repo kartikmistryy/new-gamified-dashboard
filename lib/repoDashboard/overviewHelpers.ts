@@ -1,5 +1,6 @@
 import type { ContributorPerformanceRow } from "./types";
 import type { OverviewSummaryCardConfig, ChartInsight } from "@/lib/orgDashboard/types";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 /** Base card config (same as team dashboard, but for contributors instead of members) */
 const BASE_CARD_CONFIG: Omit<OverviewSummaryCardConfig, "count">[] = [
@@ -9,8 +10,8 @@ const BASE_CARD_CONFIG: Omit<OverviewSummaryCardConfig, "count">[] = [
     priority: "Optimal",
     descriptionLine1: "Low SPOF",
     descriptionLine2: "Skilled AI Builder",
-    bg: "#D9F9E6",
-    iconColor: "#55B685",
+    bg: DASHBOARD_COLORS.bgGreenLight,
+    iconColor: DASHBOARD_COLORS.excellent,
     badgeColor: "text-white bg-[#6BC095]"
   },
   {
@@ -19,8 +20,8 @@ const BASE_CARD_CONFIG: Omit<OverviewSummaryCardConfig, "count">[] = [
     priority: "P0",
     descriptionLine1: "High SPOF",
     descriptionLine2: "Unskilled Vibe Coder",
-    bg: "#F9E3E2",
-    iconColor: "#CA3A31",
+    bg: DASHBOARD_COLORS.bgRedLight,
+    iconColor: DASHBOARD_COLORS.danger,
     badgeColor: "text-white bg-[#CA3A31]"
   },
   {
@@ -29,8 +30,8 @@ const BASE_CARD_CONFIG: Omit<OverviewSummaryCardConfig, "count">[] = [
     priority: "P1",
     descriptionLine1: "High SPOF",
     descriptionLine2: "Skilled AI Builder",
-    bg: "#FCEED8",
-    iconColor: "#E87B35",
+    bg: DASHBOARD_COLORS.bgOrangeLight,
+    iconColor: DASHBOARD_COLORS.warning,
     badgeColor: "text-white bg-[#E87B35]"
   },
   {
@@ -39,8 +40,8 @@ const BASE_CARD_CONFIG: Omit<OverviewSummaryCardConfig, "count">[] = [
     priority: "P1",
     descriptionLine1: "High SPOF",
     descriptionLine2: "Manual Coder",
-    bg: "#FCEED8",
-    iconColor: "#E87B35",
+    bg: DASHBOARD_COLORS.bgOrangeLight,
+    iconColor: DASHBOARD_COLORS.warning,
     badgeColor: "text-white bg-[#E9A23B]"
   },
   {
@@ -49,8 +50,8 @@ const BASE_CARD_CONFIG: Omit<OverviewSummaryCardConfig, "count">[] = [
     priority: "P2",
     descriptionLine1: "Low SPOF",
     descriptionLine2: "Unskilled Vibe Coder",
-    bg: "#FCF3CC",
-    iconColor: "#E9A23B",
+    bg: DASHBOARD_COLORS.bgYellowLight,
+    iconColor: DASHBOARD_COLORS.caution,
     badgeColor: "text-white bg-[#E9A23B]"
   },
   {
@@ -59,8 +60,8 @@ const BASE_CARD_CONFIG: Omit<OverviewSummaryCardConfig, "count">[] = [
     priority: "P3",
     descriptionLine1: "Low SPOF",
     descriptionLine2: "Manual Coder",
-    bg: "#E5ECF6",
-    iconColor: "#7BA8E6",
+    bg: DASHBOARD_COLORS.bgBlueLight,
+    iconColor: DASHBOARD_COLORS.blueAccent,
     badgeColor: "text-white bg-[#7BA8E6]"
   },
 ];

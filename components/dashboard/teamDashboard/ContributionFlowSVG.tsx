@@ -3,6 +3,7 @@ import type { D3TooltipController } from "@/lib/chartTooltip";
 import { buildFlowPath as buildTeamFlowPath } from "@/lib/teamDashboard/contributionFlowLayout";
 import { buildFlowPath as buildRepoFlowPath } from "@/lib/repoDashboard/contributionFlowLayout";
 import { formatRepoLabel, getRepoColor, withAlpha } from "@/lib/teamDashboard/contributionFlowHelpers";
+import { DASHBOARD_COLORS } from "@/lib/orgDashboard/colors";
 
 type BaseNode = {
   id: string;
@@ -73,14 +74,14 @@ export function ContributionFlowSVG({
             key={`${link.source}-${link.target}-${index}`}
             d={path}
             fill="none"
-            stroke={withAlpha(memberColorMap.get(link.sourceNode.label) ?? "#3b82f6", 0.3)}
+            stroke={withAlpha(memberColorMap.get(link.sourceNode.label) ?? DASHBOARD_COLORS.blueTailwind, 0.3)}
             strokeWidth={strokeWidth}
             strokeLinecap="round"
             onMouseEnter={(event) => {
               tooltipRef.current?.show(
-                `<div style=\"font-weight:600; color:#0f172a;\">${link.sourceNode.label} → ${formatRepoLabel(link.targetNode.label)}</div>` +
-                  `<div style=\"color:#1e40af;\">Contribution: ${numberFormat(link.value)}</div>` +
-                  `<div style=\"color:#475569;\">Share of member output: ${link.percentage.toFixed(1)}%</div>`,
+                `<div style=\"font-weight:600; color:${DASHBOARD_COLORS.gray950};\">${link.sourceNode.label} → ${formatRepoLabel(link.targetNode.label)}</div>` +
+                  `<div style=\"color:${DASHBOARD_COLORS.blue800};\">Contribution: ${numberFormat(link.value)}</div>` +
+                  `<div style=\"color:${DASHBOARD_COLORS.slate600};\">Share of member output: ${link.percentage.toFixed(1)}%</div>`,
                 event.clientX + 12,
                 event.clientY + 12
               );
@@ -101,10 +102,10 @@ export function ContributionFlowSVG({
             rx={3}
             fill={
               isLeftSide(node.side)
-                ? (memberColorMap.get(node.label) ?? "#3b82f6")
+                ? (memberColorMap.get(node.label) ?? DASHBOARD_COLORS.blueTailwind)
                 : getRepoColor(node as any)
             }
-            stroke="rgba(15, 23, 42, 0.28)"
+            stroke={`${DASHBOARD_COLORS.gray950}47`}
             strokeWidth={0.6}
           />
           <text

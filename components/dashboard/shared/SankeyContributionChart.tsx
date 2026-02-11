@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import type { Config } from "plotly.js";
 import { buildSankeyPlotly } from "@/lib/dashboard/repoDashboard/sankeyContributionPlotly";
+import { DASHBOARD_BG_CLASSES } from "@/lib/orgDashboard/colors";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
@@ -55,7 +56,7 @@ export function SankeyContributionChart({
 
   if (flow.nodes.length === 0 || flow.links.length === 0) {
     return (
-      <div className="w-full rounded-xl bg-[#e8edf5] p-6">
+      <div className={`w-full rounded-xl ${DASHBOARD_BG_CLASSES.bgLight} p-6`}>
         <p className="text-sm text-slate-600">Not enough data to render contribution flow.</p>
       </div>
     );
