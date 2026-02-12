@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Layers, Users } from "lucide-react";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { Info, Layers, Users } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { SankeyContributionChart } from "@/components/dashboard/shared/SankeyContributionChart";
 import { RepoHealthBar, REPO_HEALTH_SEGMENTS, type RepoHealthSegment } from "@/components/dashboard/shared/RepoHealthBar";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
@@ -385,8 +385,16 @@ export function RepoSpofPageClient() {
           {/* Min ownership slider for real data */}
           {useRealData && (
             <div className="mb-4 flex items-center gap-4">
-              <label className="text-sm text-gray-600 whitespace-nowrap">
+              <label className="text-sm text-gray-600 whitespace-nowrap flex items-center gap-1">
                 Min Ownership:
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Info className="size-4 text-gray-400 cursor-help" />
+                  </TooltipTrigger>
+                  <TooltipContent side="top" className="max-w-xs text-sm">
+                    <p>Filter contributors by minimum ownership percentage. Only shows contributors who own at least this percentage of a module.</p>
+                  </TooltipContent>
+                </Tooltip>
               </label>
               <input
                 type="range"
@@ -456,8 +464,16 @@ export function RepoSpofPageClient() {
               )}
               {/* SPOF score threshold slider */}
               <div className="flex items-center gap-4">
-                <label className="text-sm text-gray-600 whitespace-nowrap">
+                <label className="text-sm text-gray-600 whitespace-nowrap flex items-center gap-1">
                   SPOF Score:
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Info className="size-4 text-gray-400 cursor-help" />
+                    </TooltipTrigger>
+                    <TooltipContent side="top" className="max-w-xs text-sm">
+                      <p>Minimum degree of authorship (DOA) threshold. Higher values show only contributors with stronger ownership signals on files.</p>
+                    </TooltipContent>
+                  </Tooltip>
                 </label>
                 <input
                   type="range"

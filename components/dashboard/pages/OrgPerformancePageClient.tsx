@@ -13,6 +13,7 @@ import {
   TEAM_PERFORMANCE_ROWS,
   getChartInsightsMock,
 } from "@/lib/dashboard/entities/team/mocks/overviewMockData";
+import { getTimeRangeComparisonLabel } from "@/lib/shared/types/timeRangeTypes";
 import {
   ORG_PERFORMANCE_HOLIDAYS,
   ORG_PERFORMANCE_ANNOTATIONS,
@@ -89,6 +90,7 @@ function MetricSectionRow({ metric }: { metric: PerformanceMetricConfig }) {
 export function OrgPerformancePageClient() {
   const { timeRange } = useTimeRange();
   const chartInsights = useMemo(() => getChartInsightsMock(), []);
+  const comparisonLabel = getTimeRangeComparisonLabel(timeRange);
 
   // Initialize visibility state - all teams visible by default
   const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
@@ -151,7 +153,7 @@ export function OrgPerformancePageClient() {
           </div>
 
           {/* Core Metrics */}
-          <DashboardSection title="Core Metrics">
+          <DashboardSection title="Core Metrics" subtitle={`Trends compared ${comparisonLabel}`}>
             <div className="flex flex-col gap-8">
               {PERFORMANCE_METRICS.map((metric) => (
                 <MetricSectionRow key={metric.id} metric={metric} />
@@ -160,7 +162,7 @@ export function OrgPerformancePageClient() {
           </DashboardSection>
 
           {/* Detailed Breakdowns: nLoC by operation type */}
-          <DashboardSection title="Detailed Breakdowns">
+          <DashboardSection title="Detailed Breakdowns" subtitle={`Normalized Lines of Code (nLoC) by operation type · Trends compared ${comparisonLabel}`}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {OPERATION_BREAKDOWN_DATA.map((op) => (
                 <OperationBreakdownCard key={op.operation} {...op} />
