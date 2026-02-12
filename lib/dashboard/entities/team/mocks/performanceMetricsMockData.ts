@@ -247,14 +247,14 @@ export const OPERATION_BREAKDOWN_DATA: OperationBreakdownCard[] = [
   },
   {
     operation: "delete",
-    label: "Delete",
+    label: "Deleted",
     nLoC: 85,
     trend: { direction: "down", value: "-12", upIsGood: true },
     insight: "Intentional cleanup activity. Removing legacy code to reduce technical debt.",
   },
   {
     operation: "selfDelete",
-    label: "SelfDelete",
+    label: "SelfDeleted",
     nLoC: 30,
     trend: { direction: "up", value: "+8", upIsGood: false },
     insight: "Slight increase in self-deletions. Monitor for potential rework patterns.",
