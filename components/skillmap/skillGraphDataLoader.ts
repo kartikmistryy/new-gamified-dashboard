@@ -14,9 +14,39 @@ export interface RoadmapIndexEntry {
   type: "role" | "skill";
   name: string;
   group: string;
+  file: string;
   totalSubCheckpoints: number;
   levels: RoadmapLevelEntry[];
 }
+
+/* ── Detail file types (checkpoint definitions) ───────── */
+
+export interface DetailSubCheckpoint {
+  id: string;
+  title: string;
+}
+
+export interface DetailCheckpoint {
+  id: string;
+  title: string;
+  subCheckpoints: DetailSubCheckpoint[];
+}
+
+export interface DetailLevel {
+  level: "basic" | "intermediate" | "advanced";
+  label: string;
+  checkpoints: DetailCheckpoint[];
+}
+
+export interface DetailRoadmapEntry {
+  roadmap: string;
+  group: string;
+  type: "role" | "skill";
+  levels: DetailLevel[];
+}
+
+/** Map from roadmap name → detail entry (checkpoint definitions) */
+export type RoadmapDetailMap = Map<string, DetailRoadmapEntry>;
 
 export interface EngineerIndexEntry {
   userId: string;
@@ -39,6 +69,8 @@ export interface SkillGraphRawData {
   roadmaps: RoadmapIndexEntry[];
   engineerIndex: EngineerIndexEntry[];
   engineers: EngineerData[];
+  /** Roadmap name → full checkpoint definitions */
+  detailMap: RoadmapDetailMap;
 }
 
 /* ── Fetch helpers ─────────────────────────────────────── */
@@ -73,11 +105,27 @@ export async function loadSkillGraphFullData(): Promise<SkillGraphFullData> {
     fetchJson<{ engineers: EngineerIndexEntry[] }>("engineers/index.json"),
   ]);
 
-  const engineers = await Promise.all(
-    engineerIdx.engineers.map((eng) =>
-      fetchJson<EngineerData>(`engineers/${eng.file}`)
-    )
-  );
+  // Collect unique detail files and load them in parallel with engineers
+  const uniqueFiles = [...new Set(roadmapIndex.roadmaps.map((r) => r.file))];
+
+  const [engineers, ...detailArrays] = await Promise.all([
+    Promise.all(
+      engineerIdx.engineers.map((eng) =>
+        fetchJson<EngineerData>(`engineers/${eng.file}`)
+      ),
+    ),
+    ...uniqueFiles.map((file) =>
+      fetchJson<DetailRoadmapEntry[]>(`roadmaps/${file}`)
+    ),
+  ]);
+
+  // Build name → detail lookup
+  const detailMap: RoadmapDetailMap = new Map();
+  for (const entries of detailArrays) {
+    for (const entry of entries) {
+      detailMap.set(entry.roadmap, entry);
+    }
+  }
 
   const stats = aggregateStats(roadmapIndex.roadmaps, engineers);
 
@@ -90,6 +138,7 @@ export async function loadSkillGraphFullData(): Promise<SkillGraphFullData> {
       roadmaps: roadmapIndex.roadmaps,
       engineerIndex: engineerIdx.engineers,
       engineers,
+      detailMap,
     },
   };
 }

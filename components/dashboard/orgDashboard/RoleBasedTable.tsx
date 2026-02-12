@@ -5,7 +5,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import type { RoleRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
-import { PeopleStackedBar, StatusBadge } from "./PeopleStackedBar";
+import { PeopleStackedBar, ProficiencyProgressBar } from "./PeopleStackedBar";
 import { CheckpointRows } from "./CheckpointRows";
 import { Button } from "@/components/ui/button";
 import {
@@ -148,7 +148,7 @@ function RoleRow({ role, rank, isExpanded, onToggle, showAll }: RoleRowProps) {
           </div>
         </TableCell>
         <TableCell>
-          <StatusBadge level={role.proficiencyLevel} />
+          <ProficiencyProgressBar percent={role.progressPercent} />
         </TableCell>
         <TableCell>
           <PeopleStackedBar counts={role.developerCounts} />
@@ -156,8 +156,8 @@ function RoleRow({ role, rank, isExpanded, onToggle, showAll }: RoleRowProps) {
       </TableRow>
       {isExpanded ? (
         <TableRow className="hover:bg-transparent">
-          <TableCell colSpan={5} className="p-0">
-            <CheckpointRows
+<TableCell colSpan={5} className="p-0 pl-8">
+                    <CheckpointRows
               checkpoints={allCheckpoints}
               showAll={showAll}
               skillRoadmapLabels={skillLabels}

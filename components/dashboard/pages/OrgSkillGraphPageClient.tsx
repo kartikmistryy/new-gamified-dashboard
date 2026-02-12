@@ -10,9 +10,11 @@ import {
   type SkillGraphFullData,
 } from "@/components/skillmap/skillGraphDataLoader";
 import { transformToTableData } from "@/components/skillmap/skillGraphTableTransform";
+import type { OrgSkillTableTab } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
 
 export function OrgSkillGraphPageClient() {
   const [fullData, setFullData] = useState<SkillGraphFullData | null>(null);
+  const [tab, setTab] = useState<OrgSkillTableTab>("role");
 
   useEffect(() => {
     loadSkillGraphFullData().then(setFullData).catch(console.error);
@@ -33,9 +35,36 @@ export function OrgSkillGraphPageClient() {
         </div>
       </DashboardSection>
 
-      <DashboardSection title="Skills" className="py-6">
+      <DashboardSection
+        title="Skills"
+        className="py-6"
+        actionLayout="row"
+        action={
+          <div className="inline-flex rounded-full bg-gray-100 p-1">
+            <button
+              type="button"
+              onClick={() => setTab("role")}
+              className={`px-4 py-2 text-xs font-semibold shadow-none rounded-full transition ${
+                tab === "role" ? "bg-white text-gray-900" : "text-gray-600"
+              }`}
+            >
+              Role-Based
+            </button>
+            <button
+              type="button"
+              onClick={() => setTab("skill")}
+              className={`px-4 py-2 text-xs font-semibold shadow-none rounded-full transition ${
+                tab === "skill" ? "bg-white text-gray-900" : "text-gray-600"
+              }`}
+            >
+              Skill-Based
+            </button>
+          </div>
+        }
+      >
         {tableData ? (
           <OrgSkillsTableSection
+            tab={tab}
             skillData={tableData.skillBased}
             roleData={tableData.roleBased}
           />

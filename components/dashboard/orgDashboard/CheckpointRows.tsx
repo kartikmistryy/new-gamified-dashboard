@@ -8,7 +8,7 @@ import {
   filterUnlockedCheckpoints,
 } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
 import { DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
-import { PeopleStackedBar, StatusBadge } from "./PeopleStackedBar";
+import { PeopleStackedBar, ProficiencyProgressBar } from "./PeopleStackedBar";
 import { SubCheckpointRows } from "./SubCheckpointRows";
 import { Button } from "@/components/ui/button";
 import {
@@ -113,7 +113,7 @@ export function CheckpointRows({
                   </div>
                 </TableCell>
                 <TableCell>
-                  <StatusBadge level={cp.proficiencyLevel} />
+                  <ProficiencyProgressBar percent={cp.progressPercent} />
                 </TableCell>
                 <TableCell>
                   <PeopleStackedBar counts={cp.developerCounts} />
@@ -121,10 +121,11 @@ export function CheckpointRows({
               </TableRow>
               {isExpanded && hasSubCheckpoints ? (
                 <TableRow className="hover:bg-transparent">
-                  <TableCell colSpan={4} className="p-0">
+                  <TableCell colSpan={4} className="p-0 pl-8">
                     <SubCheckpointRows
                       checkpoint={cp.checkpoint}
                       showAll={showAll}
+                      unlockCounts={cp.subCheckpointUnlockCounts}
                     />
                   </TableCell>
                 </TableRow>

@@ -5,7 +5,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import type { SkillsRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
-import { PeopleStackedBar, StatusBadge } from "./PeopleStackedBar";
+import { PeopleStackedBar, ProficiencyProgressBar } from "./PeopleStackedBar";
 import { CheckpointRows } from "./CheckpointRows";
 import { Button } from "@/components/ui/button";
 import {
@@ -112,7 +112,7 @@ export function SkillBasedTable({ data, showAll }: SkillBasedTableProps) {
                       </div>
                     </TableCell>
                     <TableCell>
-                      <StatusBadge level={skill.proficiencyLevel} />
+                      <ProficiencyProgressBar percent={skill.progressPercent} />
                     </TableCell>
                     <TableCell>
                       <PeopleStackedBar counts={skill.developerCounts} />
@@ -120,7 +120,7 @@ export function SkillBasedTable({ data, showAll }: SkillBasedTableProps) {
                   </TableRow>
                   {isExpanded ? (
                     <TableRow className="hover:bg-transparent">
-                      <TableCell colSpan={5} className="p-0">
+                      <TableCell colSpan={5} className="p-0 pl-8">
                         <CheckpointRows
                           checkpoints={skill.checkpoints}
                           showAll={showAll}

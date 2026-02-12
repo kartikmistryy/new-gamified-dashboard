@@ -52,6 +52,12 @@ export type DeveloperProgress = {
   checkpointProgress: Record<string, number>; // checkpointId -> unlockedCount
 };
 
+/** Pre-computed sub-checkpoint unlock count (for graph-sourced data) */
+export type SubCheckpointUnlockCount = {
+  subCheckpoint: SubCheckpoint;
+  unlockedByCount: number;
+};
+
 /** Computed progress for a checkpoint (for display) */
 export type CheckpointProgressData = {
   checkpoint: Checkpoint;
@@ -67,6 +73,8 @@ export type CheckpointProgressData = {
     intermediate: RoadmapDeveloper[];
     advanced: RoadmapDeveloper[];
   };
+  /** Pre-computed sub-checkpoint unlock counts (graph-sourced data). */
+  subCheckpointUnlockCounts?: SubCheckpointUnlockCount[];
 };
 
 /** Computed progress for a skills roadmap (for display) */

@@ -1,21 +1,25 @@
 /**
  * Transform SkillGraph JSON data into table-compatible types.
  *
- * Bridges the gap between graph JSON (roadmaps/index.json + engineers/*.json)
- * and the existing table types (SkillsRoadmapProgressData / RoleRoadmapProgressData).
+ * Uses detail roadmap files for real checkpoint/sub-checkpoint names,
+ * and engineer completions for precise per-checkpoint people stats.
  */
 
 import type {
   SkillGraphRawData,
   RoadmapIndexEntry,
-  RoadmapLevelEntry,
+  DetailRoadmapEntry,
+  DetailCheckpoint,
   EngineerData,
   EngineerIndexEntry,
+  RoadmapDetailMap,
 } from "./skillGraphDataLoader";
 import type {
   CheckpointPhase,
   RoadmapDeveloper,
   Checkpoint,
+  SubCheckpoint,
+  SubCheckpointUnlockCount,
   CheckpointProgressData,
   SkillsRoadmapProgressData,
   RoleRoadmapProgressData,
@@ -27,20 +31,19 @@ import { getProficiencyLevel } from "@/lib/dashboard/entities/roadmap/utils/prog
 // Engineer helpers
 // =============================================================================
 
-/** Build a RoadmapDeveloper from the engineer index */
 function toRoadmapDeveloper(eng: EngineerIndexEntry): RoadmapDeveloper {
   return { id: eng.userId, name: eng.name };
 }
 
-/** Get the completion count for a roadmap key from an engineer's data */
-function getEngineerCompletions(eng: EngineerData, key: string): number {
+/** Get the set of completed sub-checkpoint IDs for a roadmap key */
+function getCompletionSet(eng: EngineerData, key: string): Set<string> {
   const record = eng.roadmaps[key];
-  if (!record) return 0;
-  return Object.keys(record.completions).length;
+  if (!record) return new Set();
+  return new Set(Object.keys(record.completions));
 }
 
 // =============================================================================
-// Developer grouping by proficiency
+// Developer grouping
 // =============================================================================
 
 type DevelopersByLevel = {
@@ -49,7 +52,7 @@ type DevelopersByLevel = {
   advanced: RoadmapDeveloper[];
 };
 
-const emptyDevelopersByLevel = (): DevelopersByLevel => ({
+const emptyByLevel = (): DevelopersByLevel => ({
   basic: [],
   intermediate: [],
   advanced: [],
@@ -60,21 +63,18 @@ function groupEngineers(
   engineers: EngineerData[],
   getPercent: (eng: EngineerData) => number,
 ): DevelopersByLevel {
-  const result = emptyDevelopersByLevel();
-
+  const result = emptyByLevel();
   engineers.forEach((eng, i) => {
     const pct = getPercent(eng);
     const level = getProficiencyLevel(pct);
     if (!level) return;
-    const dev = toRoadmapDeveloper(engineerIndex[i]);
-    result[level].push(dev);
+    result[level].push(toRoadmapDeveloper(engineerIndex[i]));
   });
-
   return result;
 }
 
 // =============================================================================
-// Level → Checkpoint conversion
+// Detail → Checkpoint conversion (real names + sub-checkpoints)
 // =============================================================================
 
 const LEVEL_TO_PHASE: Record<string, CheckpointPhase> = {
@@ -83,77 +83,84 @@ const LEVEL_TO_PHASE: Record<string, CheckpointPhase> = {
   advanced: "Advanced",
 };
 
-/** Create synthetic checkpoints from roadmap levels (no sub-checkpoints) */
-function levelsToCheckpoints(
-  roadmapKey: string,
-  levels: RoadmapLevelEntry[],
-): Checkpoint[] {
-  return levels.map((lvl) => ({
-    id: `${roadmapKey}::${lvl.level}`,
-    name: lvl.label,
-    phase: LEVEL_TO_PHASE[lvl.level] ?? "Basic",
-    subCheckpoints: [],
+/** Convert a detail checkpoint to the table Checkpoint type */
+function toCheckpoint(dc: DetailCheckpoint, phase: CheckpointPhase): Checkpoint {
+  const subCheckpoints: SubCheckpoint[] = dc.subCheckpoints.map((sc, i) => ({
+    id: sc.id,
+    name: sc.title,
+    index: i,
   }));
+  return { id: dc.id, name: dc.title, phase, subCheckpoints };
 }
 
-/**
- * Approximate completions per level.
- * Assumes completions fill basic→intermediate→advanced sequentially.
- */
-function splitCompletionsByLevel(
-  totalCompletions: number,
-  levels: RoadmapLevelEntry[],
-): number[] {
-  let remaining = totalCompletions;
-  return levels.map((lvl) => {
-    const assigned = Math.min(remaining, lvl.subCheckpointCount);
-    remaining = Math.max(0, remaining - lvl.subCheckpointCount);
-    return assigned;
-  });
+/** Build all Checkpoint[] from a detail roadmap entry */
+function detailToCheckpoints(detail: DetailRoadmapEntry): Checkpoint[] {
+  const checkpoints: Checkpoint[] = [];
+  for (const level of detail.levels) {
+    const phase = LEVEL_TO_PHASE[level.level] ?? "Basic";
+    for (const dc of level.checkpoints) {
+      checkpoints.push(toCheckpoint(dc, phase));
+    }
+  }
+  return checkpoints;
+}
+
+/** Collect all sub-checkpoint IDs from a Checkpoint */
+function subCheckpointIds(cp: Checkpoint): string[] {
+  return cp.subCheckpoints.map((sc) => sc.id);
 }
 
 // =============================================================================
-// Checkpoint progress (per-level)
+// Per-checkpoint progress
 // =============================================================================
 
-function buildCheckpointProgressForLevel(
-  roadmap: RoadmapIndexEntry,
-  levelIndex: number,
-  checkpoint: Checkpoint,
+function buildCheckpointProgress(
+  cp: Checkpoint,
+  roadmapKey: string,
   engineerIndex: EngineerIndexEntry[],
   engineers: EngineerData[],
 ): CheckpointProgressData {
-  const level = roadmap.levels[levelIndex];
-  const subCount = level.subCheckpointCount;
-  if (subCount === 0) {
+  const scIds = subCheckpointIds(cp);
+  const total = scIds.length;
+  if (total === 0) {
     return {
-      checkpoint,
+      checkpoint: cp,
       progressPercent: 0,
       proficiencyLevel: null,
       developerCounts: { basic: 0, intermediate: 0, advanced: 0 },
-      developersByLevel: emptyDevelopersByLevel(),
+      developersByLevel: emptyByLevel(),
     };
   }
 
-  const getLevelPercent = (eng: EngineerData): number => {
-    const total = getEngineerCompletions(eng, roadmap.key);
-    const perLevel = splitCompletionsByLevel(total, roadmap.levels);
-    return (perLevel[levelIndex] / subCount) * 100;
+  const getCpPercent = (eng: EngineerData): number => {
+    const completions = getCompletionSet(eng, roadmapKey);
+    const done = scIds.filter((id) => completions.has(id)).length;
+    return (done / total) * 100;
   };
 
-  const developersByLevel = groupEngineers(engineerIndex, engineers, getLevelPercent);
+  const developersByLevel = groupEngineers(engineerIndex, engineers, getCpPercent);
 
   let sum = 0;
   let count = 0;
-  engineers.forEach((eng) => {
-    if (!eng.roadmaps[roadmap.key]) return;
-    sum += getLevelPercent(eng);
+  for (const eng of engineers) {
+    if (!eng.roadmaps[roadmapKey]) continue;
+    sum += getCpPercent(eng);
     count++;
-  });
+  }
   const avgPercent = count > 0 ? sum / count : 0;
 
+  // Per-sub-checkpoint unlock counts
+  const subCheckpointUnlockCounts: SubCheckpointUnlockCount[] = cp.subCheckpoints.map((sub) => {
+    let unlocked = 0;
+    for (const eng of engineers) {
+      const completions = getCompletionSet(eng, roadmapKey);
+      if (completions.has(sub.id)) unlocked++;
+    }
+    return { subCheckpoint: sub, unlockedByCount: unlocked };
+  });
+
   return {
-    checkpoint,
+    checkpoint: cp,
     progressPercent: Math.round(avgPercent),
     proficiencyLevel: getProficiencyLevel(avgPercent),
     developerCounts: {
@@ -162,48 +169,48 @@ function buildCheckpointProgressForLevel(
       advanced: developersByLevel.advanced.length,
     },
     developersByLevel,
+    subCheckpointUnlockCounts,
   };
 }
 
 // =============================================================================
-// SkillsRoadmapProgressData builder
+// Per-roadmap progress
 // =============================================================================
 
-function buildOneSkillRoadmapProgress(
+function buildOneRoadmapProgress(
   roadmap: RoadmapIndexEntry,
+  detailMap: RoadmapDetailMap,
   engineerIndex: EngineerIndexEntry[],
   engineers: EngineerData[],
 ): SkillsRoadmapProgressData {
+  const detail = detailMap.get(roadmap.name);
+  const checkpoints = detail ? detailToCheckpoints(detail) : [];
   const totalSub = roadmap.totalSubCheckpoints;
-  const checkpoints = levelsToCheckpoints(roadmap.key, roadmap.levels);
 
-  // Overall roadmap percent per engineer
+  // Overall roadmap percent
   const getRoadmapPercent = (eng: EngineerData): number => {
     if (totalSub === 0) return 0;
-    return (getEngineerCompletions(eng, roadmap.key) / totalSub) * 100;
+    const completions = getCompletionSet(eng, roadmap.key);
+    return (completions.size / totalSub) * 100;
   };
 
   const developersByLevel = groupEngineers(engineerIndex, engineers, getRoadmapPercent);
 
   let sum = 0;
   let count = 0;
-  engineers.forEach((eng) => {
-    if (!eng.roadmaps[roadmap.key]) return;
+  for (const eng of engineers) {
+    if (!eng.roadmaps[roadmap.key]) continue;
     sum += getRoadmapPercent(eng);
     count++;
-  });
+  }
   const avgPercent = count > 0 ? sum / count : 0;
 
-  const checkpointProgress = checkpoints.map((cp, i) =>
-    buildCheckpointProgressForLevel(roadmap, i, cp, engineerIndex, engineers),
+  const checkpointProgress = checkpoints.map((cp) =>
+    buildCheckpointProgress(cp, roadmap.key, engineerIndex, engineers),
   );
 
   return {
-    roadmap: {
-      id: roadmap.key,
-      name: roadmap.name,
-      checkpoints,
-    },
+    roadmap: { id: roadmap.key, name: roadmap.name, checkpoints },
     progressPercent: Math.round(avgPercent),
     proficiencyLevel: getProficiencyLevel(avgPercent),
     developerCounts: {
@@ -227,18 +234,18 @@ export interface SkillGraphTableData {
 
 /** Transform raw graph JSON into table-compatible data */
 export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableData {
-  const { roadmaps, engineerIndex, engineers } = raw;
+  const { roadmaps, engineerIndex, engineers, detailMap } = raw;
 
-  // Skill-based: all roadmaps with type "skill"
+  // Skill-based
   const skillRoadmaps = roadmaps.filter((r) => r.type === "skill");
   const skillBased = skillRoadmaps.map((r) =>
-    buildOneSkillRoadmapProgress(r, engineerIndex, engineers),
+    buildOneRoadmapProgress(r, detailMap, engineerIndex, engineers),
   );
 
-  // Role-based: all roadmaps with type "role", wrapped in RoleRoadmapProgressData
+  // Role-based
   const roleRoadmaps = roadmaps.filter((r) => r.type === "role");
   const roleBased = roleRoadmaps.map((r) => {
-    const inner = buildOneSkillRoadmapProgress(r, engineerIndex, engineers);
+    const inner = buildOneRoadmapProgress(r, detailMap, engineerIndex, engineers);
 
     const roleRoadmap: RoleRoadmap = {
       id: r.key,

@@ -1,7 +1,7 @@
 "use client";
 
 import { LockOpen, Lock } from "lucide-react";
-import type { Checkpoint } from "@/lib/dashboard/entities/roadmap/types";
+import type { Checkpoint, SubCheckpointUnlockCount } from "@/lib/dashboard/entities/roadmap/types";
 import { getSubCheckpointUnlockCounts } from "@/lib/dashboard/entities/roadmap/utils/progressUtils";
 import { DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import {
@@ -16,14 +16,16 @@ import {
 type SubCheckpointRowsProps = {
   checkpoint: Checkpoint;
   showAll: boolean;
+  /** Pre-computed unlock counts (graph-sourced data). Falls back to mock if absent. */
+  unlockCounts?: SubCheckpointUnlockCount[];
 };
 
 /**
  * L3 nested table: Sub-checkpoints inside an expanded checkpoint.
  * Shows unlock status (locked/unlocked icon) and unlock count.
  */
-export function SubCheckpointRows({ checkpoint, showAll }: SubCheckpointRowsProps) {
-  const subData = getSubCheckpointUnlockCounts(checkpoint);
+export function SubCheckpointRows({ checkpoint, showAll, unlockCounts }: SubCheckpointRowsProps) {
+  const subData = unlockCounts ?? getSubCheckpointUnlockCounts(checkpoint);
   const filtered = showAll ? subData : subData.filter((s) => s.unlockedByCount > 0);
 
   if (filtered.length === 0) {
