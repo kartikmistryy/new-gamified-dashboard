@@ -1,0 +1,302 @@
+[
+  {
+    "roadmap": "Prompt Engineering",
+    "group": "Emerging Technology",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "llm-basics",
+            "title": "LLM Basics (How They Work)",
+            "subCheckpoints": [
+              {
+                "id": "transformer-architecture",
+                "title": "Transformer Architecture Overview"
+              },
+              {
+                "id": "tokenization",
+                "title": "Tokenization & Vocabulary"
+              },
+              {
+                "id": "autoregressive-generation",
+                "title": "Autoregressive Text Generation"
+              },
+              {
+                "id": "training-vs-inference",
+                "title": "Training vs Inference Modes"
+              }
+            ]
+          },
+          {
+            "id": "prompt-anatomy",
+            "title": "Prompt Anatomy",
+            "subCheckpoints": [
+              {
+                "id": "instruction-context",
+                "title": "Instruction vs Context vs Output"
+              },
+              {
+                "id": "prompt-structure",
+                "title": "Effective Prompt Structure & Formatting"
+              },
+              {
+                "id": "clarity-specificity",
+                "title": "Clarity & Specificity Best Practices"
+              }
+            ]
+          },
+          {
+            "id": "zero-shot-prompting",
+            "title": "Zero-Shot Prompting",
+            "subCheckpoints": [
+              {
+                "id": "direct-instructions",
+                "title": "Writing Direct Instructions"
+              },
+              {
+                "id": "task-framing",
+                "title": "Task Framing & Question Formulation"
+              },
+              {
+                "id": "zero-shot-limitations",
+                "title": "When Zero-Shot Works & Fails"
+              }
+            ]
+          },
+          {
+            "id": "few-shot-prompting",
+            "title": "Few-Shot Prompting",
+            "subCheckpoints": [
+              {
+                "id": "example-selection",
+                "title": "Selecting & Ordering Examples"
+              },
+              {
+                "id": "format-consistency",
+                "title": "Format Consistency in Examples"
+              },
+              {
+                "id": "example-quality",
+                "title": "Example Quality & Diversity"
+              }
+            ]
+          },
+          {
+            "id": "role-prompting",
+            "title": "Role Prompting",
+            "subCheckpoints": [
+              {
+                "id": "persona-assignment",
+                "title": "Assigning Personas & Expertise"
+              },
+              {
+                "id": "tone-style",
+                "title": "Controlling Tone & Style via Role"
+              },
+              {
+                "id": "role-limitations",
+                "title": "Role Boundaries & Constraints"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "chain-of-thought",
+            "title": "Chain-of-Thought Prompting",
+            "subCheckpoints": [
+              {
+                "id": "cot-basics",
+                "title": "Step-by-Step Reasoning Triggers"
+              },
+              {
+                "id": "explicit-vs-implicit",
+                "title": "Explicit vs Implicit CoT"
+              },
+              {
+                "id": "cot-applications",
+                "title": "Applying CoT to Complex Tasks"
+              }
+            ]
+          },
+          {
+            "id": "structured-output",
+            "title": "Structured Output",
+            "subCheckpoints": [
+              {
+                "id": "json-xml-output",
+                "title": "Requesting JSON, XML & Markdown"
+              },
+              {
+                "id": "output-schemas",
+                "title": "Defining Output Schemas & Formats"
+              },
+              {
+                "id": "parsing-reliability",
+                "title": "Ensuring Parseable & Reliable Output"
+              }
+            ]
+          },
+          {
+            "id": "system-prompts",
+            "title": "System Prompts",
+            "subCheckpoints": [
+              {
+                "id": "system-vs-user",
+                "title": "System vs User Message Roles"
+              },
+              {
+                "id": "system-design",
+                "title": "Designing Effective System Instructions"
+              },
+              {
+                "id": "global-behavior",
+                "title": "Setting Global Behavior & Constraints"
+              }
+            ]
+          },
+          {
+            "id": "prompt-chaining",
+            "title": "Prompt Chaining",
+            "subCheckpoints": [
+              {
+                "id": "multi-step-workflows",
+                "title": "Multi-Step Workflow Design"
+              },
+              {
+                "id": "intermediate-outputs",
+                "title": "Passing Intermediate Outputs"
+              },
+              {
+                "id": "error-handling-chains",
+                "title": "Error Handling & Recovery in Chains"
+              }
+            ]
+          },
+          {
+            "id": "temperature-parameters",
+            "title": "Temperature & Parameters",
+            "subCheckpoints": [
+              {
+                "id": "temperature-effects",
+                "title": "Temperature, Top-P & Nucleus Sampling"
+              },
+              {
+                "id": "parameter-tuning",
+                "title": "When to Adjust Parameters"
+              },
+              {
+                "id": "max-tokens-stop",
+                "title": "Max Tokens & Stop Sequences"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "evaluation-testing",
+            "title": "Evaluation & Testing",
+            "subCheckpoints": [
+              {
+                "id": "prompt-evaluation-metrics",
+                "title": "Evaluation Metrics for Prompts"
+              },
+              {
+                "id": "a-b-testing",
+                "title": "A/B Testing & Prompt Variants"
+              },
+              {
+                "id": "regression-testing",
+                "title": "Regression Testing Prompt Behavior"
+              }
+            ]
+          },
+          {
+            "id": "rag-integration",
+            "title": "RAG Integration",
+            "subCheckpoints": [
+              {
+                "id": "context-injection",
+                "title": "Injecting Retrieved Context into Prompts"
+              },
+              {
+                "id": "retrieval-optimization",
+                "title": "Optimizing Retrieval for Prompts"
+              },
+              {
+                "id": "citation-attribution",
+                "title": "Citation & Source Attribution"
+              }
+            ]
+          },
+          {
+            "id": "function-calling",
+            "title": "Function Calling",
+            "subCheckpoints": [
+              {
+                "id": "tool-definitions",
+                "title": "Defining Tools & Function Schemas"
+              },
+              {
+                "id": "tool-choice-prompting",
+                "title": "Prompting for Tool Selection"
+              },
+              {
+                "id": "multi-tool-orchestration",
+                "title": "Multi-Tool Orchestration Prompts"
+              }
+            ]
+          },
+          {
+            "id": "multi-modal-prompting",
+            "title": "Multi-Modal Prompting",
+            "subCheckpoints": [
+              {
+                "id": "image-text-prompts",
+                "title": "Combining Image & Text in Prompts"
+              },
+              {
+                "id": "vision-tasks",
+                "title": "Vision Tasks: Analysis, OCR, Description"
+              },
+              {
+                "id": "modality-constraints",
+                "title": "Handling Modality Constraints & Fallbacks"
+              }
+            ]
+          },
+          {
+            "id": "prompt-security",
+            "title": "Prompt Security (Injection Prevention)",
+            "subCheckpoints": [
+              {
+                "id": "injection-attacks",
+                "title": "Understanding Prompt Injection Attacks"
+              },
+              {
+                "id": "defense-strategies",
+                "title": "Defense Strategies & Input Sanitization"
+              },
+              {
+                "id": "user-input-boundaries",
+                "title": "Separating User Input from Instructions"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

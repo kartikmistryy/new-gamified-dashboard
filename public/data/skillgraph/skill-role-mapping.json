@@ -1,0 +1,342 @@
+{
+  "metadata": {
+    "title": "Skill-Based & Role-Based Roadmaps Intersection Mapping",
+    "roleBasedGroups": 9,
+    "roleBasedRoles": 28,
+    "skillBasedGroups": 8,
+    "skillBasedSkills": 45
+  },
+  "byRole": {
+    "Web Development": {
+      "roles": {
+        "Frontend": {
+          "skills": {
+            "Programming Languages": ["JavaScript", "TypeScript"],
+            "Frontend Technologies": ["HTML", "CSS", "React", "Vue", "Angular", "Next.js", "Design System"],
+            "DevOps & Cloud Infrastructure": ["Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms"]
+          }
+        },
+        "Backend": {
+          "skills": {
+            "Programming Languages": ["JavaScript", "TypeScript", "Python", "Java", "PHP", "Ruby", "Go", "Rust"],
+            "Backend Frameworks & Platforms": ["Node.js", "Spring Boot", "Django", "Laravel", "Ruby on Rails", "ASP.NET Core", "WordPress"],
+            "Databases & Data Storage": ["SQL", "PostgreSQL", "MongoDB", "Redis", "Elasticsearch"],
+            "DevOps & Cloud Infrastructure": ["Docker", "AWS", "Cloudflare", "Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms", "System Design", "Design Architecture"]
+          }
+        },
+        "Full Stack": {
+          "skills": {
+            "Programming Languages": ["JavaScript", "TypeScript", "Python"],
+            "Frontend Technologies": ["HTML", "CSS", "React", "Vue", "Angular", "Next.js"],
+            "Backend Frameworks & Platforms": ["Node.js", "Django", "Spring Boot", "Laravel", "Ruby on Rails", "ASP.NET Core"],
+            "Databases & Data Storage": ["SQL", "PostgreSQL", "MongoDB", "Redis"],
+            "DevOps & Cloud Infrastructure": ["Docker", "AWS", "Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms", "System Design", "Design Architecture"]
+          }
+        }
+      }
+    },
+    "Mobile Development": {
+      "roles": {
+        "Android": {
+          "skills": {
+            "Programming Languages": ["Kotlin", "Java", "JavaScript", "TypeScript"],
+            "Mobile & Cross-Platform": ["Flutter", "React Native"],
+            "DevOps & Cloud Infrastructure": ["Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms"]
+          }
+        },
+        "iOS": {
+          "skills": {
+            "Programming Languages": ["Swift & Swift UI", "JavaScript", "TypeScript"],
+            "Mobile & Cross-Platform": ["Flutter", "React Native"],
+            "DevOps & Cloud Infrastructure": ["Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms"]
+          }
+        }
+      }
+    },
+    "DevOps & Security": {
+      "roles": {
+        "DevOps": {
+          "skills": {
+            "Programming Languages": ["Python", "Go", "Rust"],
+            "Databases & Data Storage": ["SQL", "PostgreSQL", "Redis"],
+            "DevOps & Cloud Infrastructure": ["Docker", "Kubernetes", "AWS", "Terraform", "Cloudflare", "Linux", "Shell / Bash", "Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms", "System Design", "Design Architecture"]
+          }
+        },
+        "DevSecOps": {
+          "skills": {
+            "Programming Languages": ["Python", "Go"],
+            "DevOps & Cloud Infrastructure": ["Docker", "Kubernetes", "AWS", "Terraform", "Linux", "Shell / Bash", "Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms", "System Design"]
+          }
+        },
+        "Cyber Security": {
+          "skills": {
+            "Programming Languages": ["Python", "Go", "Rust"],
+            "DevOps & Cloud Infrastructure": ["Linux", "Shell / Bash", "Docker", "AWS", "Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms"]
+          }
+        }
+      }
+    },
+    "AI & Machine Learning": {
+      "roles": {
+        "AI Engineer": {
+          "skills": {
+            "Programming Languages": ["Python", "JavaScript", "TypeScript"],
+            "Databases & Data Storage": ["SQL", "PostgreSQL", "MongoDB", "Elasticsearch"],
+            "DevOps & Cloud Infrastructure": ["Docker", "Kubernetes", "AWS"],
+            "Emerging Technology": ["Prompt Engineering"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms", "System Design"]
+          }
+        },
+        "AI and Data Scientist": {
+          "skills": {
+            "Programming Languages": ["Python"],
+            "Databases & Data Storage": ["SQL", "PostgreSQL"],
+            "DevOps & Cloud Infrastructure": ["Docker", "AWS"],
+            "Emerging Technology": ["Prompt Engineering"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms"]
+          }
+        },
+        "Machine Learning": {
+          "skills": {
+            "Programming Languages": ["Python", "C++"],
+            "Databases & Data Storage": ["SQL", "PostgreSQL"],
+            "DevOps & Cloud Infrastructure": ["Docker", "AWS"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms"]
+          }
+        },
+        "MLOps": {
+          "skills": {
+            "Programming Languages": ["Python", "Go"],
+            "Databases & Data Storage": ["SQL", "PostgreSQL"],
+            "DevOps & Cloud Infrastructure": ["Docker", "Kubernetes", "AWS", "Terraform", "Git and GitHub", "Linux", "Shell / Bash"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms", "Design Architecture"]
+          }
+        },
+        "AI Agents": {
+          "skills": {
+            "Programming Languages": ["Python", "JavaScript", "TypeScript"],
+            "Emerging Technology": ["Prompt Engineering"],
+            "DevOps & Cloud Infrastructure": ["Docker", "AWS"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms"]
+          }
+        },
+        "AI Red Teaming": {
+          "skills": {
+            "Programming Languages": ["Python"],
+            "Emerging Technology": ["Prompt Engineering"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms"]
+          }
+        }
+      }
+    },
+    "Data & Analytics": {
+      "roles": {
+        "Data Analyst": {
+          "skills": {
+            "Programming Languages": ["Python", "SQL"],
+            "Databases & Data Storage": ["PostgreSQL", "Elasticsearch"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms"]
+          }
+        },
+        "Data Engineer": {
+          "skills": {
+            "Programming Languages": ["Python", "Java", "SQL"],
+            "Databases & Data Storage": ["PostgreSQL", "MongoDB", "Redis", "Elasticsearch"],
+            "DevOps & Cloud Infrastructure": ["Docker", "Kubernetes", "AWS", "Terraform", "Linux", "Shell / Bash", "Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms"]
+          }
+        },
+        "BI Analyst": {
+          "skills": {
+            "Programming Languages": ["Python", "SQL"],
+            "Databases & Data Storage": ["PostgreSQL", "Elasticsearch"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms"]
+          }
+        }
+      }
+    },
+    "Game Development": {
+      "roles": {
+        "Game Developer": {
+          "skills": {
+            "Programming Languages": ["C++", "Rust", "Java"],
+            "DevOps & Cloud Infrastructure": ["Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms", "System Design"]
+          }
+        },
+        "Server Side Game Developer": {
+          "skills": {
+            "Programming Languages": ["C++", "Java", "Go", "Rust"],
+            "Databases & Data Storage": ["SQL", "PostgreSQL", "Redis"],
+            "DevOps & Cloud Infrastructure": ["Docker", "AWS", "Linux", "Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms", "System Design", "Design Architecture"]
+          }
+        }
+      }
+    },
+    "Design & Architecture": {
+      "roles": {
+        "UX Design": {
+          "skills": {
+            "Frontend Technologies": ["HTML", "CSS", "Design System"],
+            "CS Fundamentals & System Design": ["Computer Science"]
+          }
+        },
+        "API Design": {
+          "skills": {
+            "Programming Languages": ["JavaScript", "TypeScript", "Python", "Java", "Go"],
+            "Backend Frameworks & Platforms": ["Node.js", "Spring Boot", "Django"],
+            "Databases & Data Storage": ["SQL", "PostgreSQL"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms", "System Design", "Design Architecture"]
+          }
+        },
+        "Software Architect": {
+          "skills": {
+            "Programming Languages": ["JavaScript", "TypeScript", "Python", "Java", "Go", "Rust"],
+            "Databases & Data Storage": ["SQL", "PostgreSQL", "MongoDB", "Redis", "Elasticsearch"],
+            "DevOps & Cloud Infrastructure": ["Docker", "Kubernetes", "AWS", "Terraform", "Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms", "System Design", "Design Architecture"]
+          }
+        }
+      }
+    },
+    "Management & Leadership": {
+      "roles": {
+        "Product Manager": {
+          "skills": {
+            "DevOps & Cloud Infrastructure": ["Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "System Design"]
+          }
+        },
+        "Engineering Manager": {
+          "skills": {
+            "DevOps & Cloud Infrastructure": ["Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms", "System Design", "Design Architecture"]
+          }
+        }
+      }
+    },
+    "Specialized Support Roles": {
+      "roles": {
+        "QA": {
+          "skills": {
+            "Programming Languages": ["JavaScript", "TypeScript", "Python"],
+            "Databases & Data Storage": ["SQL"],
+            "DevOps & Cloud Infrastructure": ["Docker", "Linux", "Shell / Bash", "Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms"]
+          }
+        },
+        "Technical Writer": {
+          "skills": {
+            "Frontend Technologies": ["HTML", "CSS"],
+            "DevOps & Cloud Infrastructure": ["Git and GitHub"]
+          }
+        },
+        "Developer Relations": {
+          "skills": {
+            "Programming Languages": ["JavaScript", "TypeScript", "Python"],
+            "Frontend Technologies": ["React", "Next.js"],
+            "Backend Frameworks & Platforms": ["Node.js"],
+            "DevOps & Cloud Infrastructure": ["Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science"]
+          }
+        },
+        "Blockchain": {
+          "skills": {
+            "Programming Languages": ["Rust", "Go", "JavaScript", "TypeScript"],
+            "Databases & Data Storage": ["SQL", "PostgreSQL"],
+            "DevOps & Cloud Infrastructure": ["Docker", "Linux", "Git and GitHub"],
+            "CS Fundamentals & System Design": ["Computer Science", "Data Structures & Algorithms", "System Design"]
+          }
+        }
+      }
+    }
+  },
+  "bySkill": {
+    "Programming Languages": {
+      "skills": {
+        "JavaScript": ["Frontend", "Backend", "Full Stack", "Android", "iOS", "AI Engineer", "AI Agents", "QA", "Developer Relations", "API Design", "Software Architect", "Blockchain"],
+        "TypeScript": ["Frontend", "Backend", "Full Stack", "Android", "iOS", "AI Engineer", "AI Agents", "QA", "Developer Relations", "API Design", "Software Architect", "Blockchain"],
+        "Python": ["Backend", "Full Stack", "DevOps", "DevSecOps", "Cyber Security", "AI Engineer", "AI and Data Scientist", "Machine Learning", "MLOps", "AI Agents", "AI Red Teaming", "Data Analyst", "Data Engineer", "BI Analyst", "QA", "Developer Relations", "API Design", "Software Architect"],
+        "Java": ["Backend", "Android", "Data Engineer", "Game Developer", "Server Side Game Developer", "API Design", "Software Architect"],
+        "C++": ["Machine Learning", "Game Developer", "Server Side Game Developer"],
+        "Rust": ["Backend", "DevOps", "Cyber Security", "Game Developer", "Server Side Game Developer", "Software Architect", "Blockchain"],
+        "Go": ["Backend", "DevOps", "DevSecOps", "Cyber Security", "MLOps", "Server Side Game Developer", "API Design", "Software Architect", "Blockchain"],
+        "PHP": ["Backend"],
+        "Ruby": ["Backend"],
+        "Kotlin": ["Android"],
+        "Swift & Swift UI": ["iOS"]
+      }
+    },
+    "Frontend Technologies": {
+      "skills": {
+        "HTML": ["Frontend", "Full Stack", "UX Design", "Technical Writer"],
+        "CSS": ["Frontend", "Full Stack", "UX Design", "Technical Writer"],
+        "React": ["Frontend", "Full Stack", "Developer Relations"],
+        "Vue": ["Frontend", "Full Stack"],
+        "Angular": ["Frontend", "Full Stack"],
+        "Next.js": ["Frontend", "Full Stack", "Developer Relations"],
+        "Design System": ["Frontend", "UX Design"]
+      }
+    },
+    "Backend Frameworks & Platforms": {
+      "skills": {
+        "Node.js": ["Backend", "Full Stack", "Developer Relations", "API Design"],
+        "Spring Boot": ["Backend", "Full Stack", "API Design"],
+        "Django": ["Backend", "Full Stack", "API Design"],
+        "Laravel": ["Backend", "Full Stack"],
+        "Ruby on Rails": ["Backend", "Full Stack"],
+        "ASP.NET Core": ["Backend", "Full Stack"],
+        "WordPress": ["Backend"]
+      }
+    },
+    "Mobile & Cross-Platform": {
+      "skills": {
+        "Flutter": ["Android", "iOS"],
+        "React Native": ["Android", "iOS"]
+      }
+    },
+    "Databases & Data Storage": {
+      "skills": {
+        "SQL": ["Backend", "Full Stack", "DevOps", "AI Engineer", "AI and Data Scientist", "Machine Learning", "MLOps", "Data Analyst", "Data Engineer", "BI Analyst", "Server Side Game Developer", "QA", "API Design", "Software Architect", "Blockchain"],
+        "PostgreSQL": ["Backend", "Full Stack", "DevOps", "AI Engineer", "AI and Data Scientist", "Machine Learning", "MLOps", "Data Analyst", "Data Engineer", "BI Analyst", "Server Side Game Developer", "API Design", "Software Architect", "Blockchain"],
+        "MongoDB": ["Backend", "Full Stack", "AI Engineer", "Data Engineer", "Software Architect"],
+        "Redis": ["Backend", "Full Stack", "DevOps", "Data Engineer", "Server Side Game Developer", "Software Architect"],
+        "Elasticsearch": ["Backend", "AI Engineer", "Data Analyst", "Data Engineer", "BI Analyst", "Software Architect"]
+      }
+    },
+    "DevOps & Cloud Infrastructure": {
+      "skills": {
+        "Docker": ["Backend", "Full Stack", "DevOps", "DevSecOps", "Cyber Security", "AI Engineer", "AI and Data Scientist", "Machine Learning", "MLOps", "AI Agents", "Data Engineer", "Server Side Game Developer", "QA", "Software Architect", "Blockchain"],
+        "Kubernetes": ["DevOps", "DevSecOps", "AI Engineer", "MLOps", "Data Engineer", "Software Architect"],
+        "AWS": ["Backend", "Full Stack", "DevOps", "DevSecOps", "Cyber Security", "AI Engineer", "AI and Data Scientist", "Machine Learning", "MLOps", "AI Agents", "Data Engineer", "Server Side Game Developer", "Software Architect"],
+        "Terraform": ["DevOps", "DevSecOps", "MLOps", "Data Engineer", "Software Architect"],
+        "Cloudflare": ["Backend", "DevOps"],
+        "Linux": ["DevOps", "DevSecOps", "Cyber Security", "MLOps", "Data Engineer", "Server Side Game Developer", "QA", "Blockchain"],
+        "Shell / Bash": ["DevOps", "DevSecOps", "Cyber Security", "MLOps", "Data Engineer", "QA"],
+        "Git and GitHub": ["Frontend", "Backend", "Full Stack", "Android", "iOS", "DevOps", "DevSecOps", "MLOps", "Data Engineer", "Game Developer", "Server Side Game Developer", "Software Architect", "Product Manager", "Engineering Manager", "QA", "Technical Writer", "Developer Relations", "Blockchain"]
+      }
+    },
+    "CS Fundamentals & System Design": {
+      "skills": {
+        "Computer Science": ["Frontend", "Backend", "Full Stack", "Android", "iOS", "DevOps", "DevSecOps", "Cyber Security", "AI Engineer", "AI and Data Scientist", "Machine Learning", "MLOps", "AI Agents", "AI Red Teaming", "Data Analyst", "Data Engineer", "BI Analyst", "Game Developer", "Server Side Game Developer", "UX Design", "API Design", "Software Architect", "Product Manager", "Engineering Manager", "QA", "Developer Relations", "Blockchain"],
+        "Data Structures & Algorithms": ["Frontend", "Backend", "Full Stack", "Android", "iOS", "DevOps", "DevSecOps", "Cyber Security", "AI Engineer", "AI and Data Scientist", "Machine Learning", "MLOps", "AI Agents", "AI Red Teaming", "Data Analyst", "Data Engineer", "BI Analyst", "Game Developer", "Server Side Game Developer", "API Design", "Software Architect", "Engineering Manager", "QA", "Blockchain"],
+        "System Design": ["Backend", "Full Stack", "DevOps", "DevSecOps", "AI Engineer", "Data Engineer", "Game Developer", "Server Side Game Developer", "API Design", "Software Architect", "Product Manager", "Engineering Manager", "Blockchain"],
+        "Design Architecture": ["Backend", "Full Stack", "DevOps", "MLOps", "Server Side Game Developer", "API Design", "Software Architect", "Engineering Manager"]
+      }
+    },
+    "Emerging Technology": {
+      "skills": {
+        "Prompt Engineering": ["AI Engineer", "AI and Data Scientist", "AI Agents", "AI Red Teaming"]
+      }
+    }
+  }
+}

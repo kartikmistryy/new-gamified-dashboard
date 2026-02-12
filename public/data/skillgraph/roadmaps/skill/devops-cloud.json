@@ -1,0 +1,1786 @@
+[
+  {
+    "roadmap": "Docker",
+    "group": "DevOps & Cloud Infrastructure",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "containers-vs-vms",
+            "title": "Containers vs Virtual Machines",
+            "subCheckpoints": [
+              {
+                "id": "understand-container-concept",
+                "title": "Understand what containers are and how they differ from VMs"
+              },
+              {
+                "id": "resource-isolation",
+                "title": "Learn resource isolation and sharing in containers"
+              },
+              {
+                "id": "when-to-use-containers",
+                "title": "Identify use cases where containers are preferred over VMs"
+              }
+            ]
+          },
+          {
+            "id": "images-dockerfile",
+            "title": "Images & Dockerfile",
+            "subCheckpoints": [
+              {
+                "id": "create-dockerfile",
+                "title": "Write a basic Dockerfile with FROM, RUN, and CMD"
+              },
+              {
+                "id": "build-images",
+                "title": "Build Docker images from Dockerfiles"
+              },
+              {
+                "id": "image-layers",
+                "title": "Understand image layers and caching"
+              },
+              {
+                "id": "best-practices-dockerfile",
+                "title": "Apply Dockerfile best practices (minimal base, .dockerignore)"
+              }
+            ]
+          },
+          {
+            "id": "running-containers",
+            "title": "Running Containers",
+            "subCheckpoints": [
+              {
+                "id": "run-port-mapping",
+                "title": "Run containers with port mapping and environment variables"
+              },
+              {
+                "id": "interactive-detached",
+                "title": "Use interactive (-it) and detached (-d) modes"
+              },
+              {
+                "id": "logs-exec",
+                "title": "View logs and exec into running containers"
+              },
+              {
+                "id": "stop-remove",
+                "title": "Stop, remove, and manage container lifecycle"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "volumes",
+            "title": "Volumes",
+            "subCheckpoints": [
+              {
+                "id": "volume-types",
+                "title": "Understand named volumes, bind mounts, and tmpfs"
+              },
+              {
+                "id": "persist-data",
+                "title": "Persist data across container restarts"
+              },
+              {
+                "id": "volume-inspect",
+                "title": "Inspect and manage volumes with docker volume commands"
+              }
+            ]
+          },
+          {
+            "id": "networking",
+            "title": "Docker Networking",
+            "subCheckpoints": [
+              {
+                "id": "network-drivers",
+                "title": "Understand bridge, host, and overlay network drivers"
+              },
+              {
+                "id": "create-networks",
+                "title": "Create custom networks and connect containers"
+              },
+              {
+                "id": "container-communication",
+                "title": "Enable container-to-container communication by name"
+              }
+            ]
+          },
+          {
+            "id": "docker-compose",
+            "title": "Docker Compose",
+            "subCheckpoints": [
+              {
+                "id": "compose-yml",
+                "title": "Write docker-compose.yml for multi-container apps"
+              },
+              {
+                "id": "compose-commands",
+                "title": "Use compose up, down, and scale commands"
+              },
+              {
+                "id": "compose-networking",
+                "title": "Configure services, networks, and volumes in Compose"
+              },
+              {
+                "id": "compose-env",
+                "title": "Use environment variables and .env files"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "multi-stage-builds",
+            "title": "Multi-Stage Builds",
+            "subCheckpoints": [
+              {
+                "id": "multi-stage-concept",
+                "title": "Understand multi-stage build concept and benefits"
+              },
+              {
+                "id": "reduce-image-size",
+                "title": "Reduce final image size by separating build and runtime stages"
+              },
+              {
+                "id": "multi-stage-dockerfile",
+                "title": "Write a multi-stage Dockerfile for a compiled application"
+              }
+            ]
+          },
+          {
+            "id": "registries",
+            "title": "Container Registries",
+            "subCheckpoints": [
+              {
+                "id": "push-pull",
+                "title": "Push and pull images to Docker Hub and private registries"
+              },
+              {
+                "id": "registry-auth",
+                "title": "Configure registry authentication"
+              },
+              {
+                "id": "tags-strategies",
+                "title": "Use semantic versioning and tag strategies"
+              }
+            ]
+          },
+          {
+            "id": "docker-security",
+            "title": "Docker Security",
+            "subCheckpoints": [
+              {
+                "id": "non-root-user",
+                "title": "Run containers as non-root user"
+              },
+              {
+                "id": "image-scanning",
+                "title": "Scan images for vulnerabilities"
+              },
+              {
+                "id": "secrets-management",
+                "title": "Manage secrets securely (Docker secrets, env files)"
+              }
+            ]
+          },
+          {
+            "id": "optimization",
+            "title": "Image & Build Optimization",
+            "subCheckpoints": [
+              {
+                "id": "layer-caching",
+                "title": "Optimize layer order for better caching"
+              },
+              {
+                "id": "slim-images",
+                "title": "Use Alpine and distroless base images"
+              },
+              {
+                "id": "build-args",
+                "title": "Use build arguments for parameterized builds"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Kubernetes",
+    "group": "DevOps & Cloud Infrastructure",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "cluster-architecture",
+            "title": "Cluster Architecture (Pods & Nodes)",
+            "subCheckpoints": [
+              {
+                "id": "control-plane-components",
+                "title": "Understand control plane components (API server, etcd, scheduler)"
+              },
+              {
+                "id": "nodes-workloads",
+                "title": "Understand nodes and how workloads run on them"
+              },
+              {
+                "id": "pod-concept",
+                "title": "Learn pod concept: smallest deployable unit"
+              },
+              {
+                "id": "kubelet-kube-proxy",
+                "title": "Understand kubelet and kube-proxy on worker nodes"
+              }
+            ]
+          },
+          {
+            "id": "deployments-services",
+            "title": "Deployments & Services",
+            "subCheckpoints": [
+              {
+                "id": "create-deployment",
+                "title": "Create a Deployment with replicas"
+              },
+              {
+                "id": "rolling-updates",
+                "title": "Perform rolling updates and rollbacks"
+              },
+              {
+                "id": "service-types",
+                "title": "Create ClusterIP, NodePort, and LoadBalancer services"
+              },
+              {
+                "id": "expose-apps",
+                "title": "Expose applications internally and externally"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "configmaps-secrets",
+            "title": "ConfigMaps & Secrets",
+            "subCheckpoints": [
+              {
+                "id": "create-configmap",
+                "title": "Create ConfigMaps from files, literals, or env"
+              },
+              {
+                "id": "mount-configmap",
+                "title": "Mount ConfigMaps as env vars or volume"
+              },
+              {
+                "id": "create-secrets",
+                "title": "Create and use Secrets for sensitive data"
+              },
+              {
+                "id": "secrets-encoding",
+                "title": "Understand base64 encoding and best practices"
+              }
+            ]
+          },
+          {
+            "id": "namespaces",
+            "title": "Namespaces",
+            "subCheckpoints": [
+              {
+                "id": "namespace-concept",
+                "title": "Understand namespace isolation and resource quotas"
+              },
+              {
+                "id": "create-namespaces",
+                "title": "Create and manage namespaces"
+              },
+              {
+                "id": "default-namespaces",
+                "title": "Work with kube-system and default namespaces"
+              }
+            ]
+          },
+          {
+            "id": "helm",
+            "title": "Helm",
+            "subCheckpoints": [
+              {
+                "id": "helm-concepts",
+                "title": "Understand charts, releases, and values"
+              },
+              {
+                "id": "install-charts",
+                "title": "Install and upgrade Helm charts"
+              },
+              {
+                "id": "create-chart",
+                "title": "Create a basic Helm chart with templates"
+              }
+            ]
+          },
+          {
+            "id": "ingress",
+            "title": "Ingress",
+            "subCheckpoints": [
+              {
+                "id": "ingress-resource",
+                "title": "Create Ingress resources for HTTP routing"
+              },
+              {
+                "id": "ingress-controller",
+                "title": "Configure Ingress controller (nginx, traefik)"
+              },
+              {
+                "id": "path-based-routing",
+                "title": "Set up path-based and host-based routing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "storage",
+            "title": "Persistent Storage",
+            "subCheckpoints": [
+              {
+                "id": "pv-pvc",
+                "title": "Create PersistentVolumes and PersistentVolumeClaims"
+              },
+              {
+                "id": "storage-classes",
+                "title": "Use StorageClasses for dynamic provisioning"
+              },
+              {
+                "id": "statefulsets",
+                "title": "Deploy stateful applications with StatefulSets"
+              }
+            ]
+          },
+          {
+            "id": "rbac",
+            "title": "RBAC",
+            "subCheckpoints": [
+              {
+                "id": "rbac-concepts",
+                "title": "Understand Roles, RoleBindings, ClusterRoles"
+              },
+              {
+                "id": "create-rbac",
+                "title": "Create RBAC policies for service accounts"
+              },
+              {
+                "id": "least-privilege",
+                "title": "Apply least-privilege access principles"
+              }
+            ]
+          },
+          {
+            "id": "monitoring",
+            "title": "Monitoring",
+            "subCheckpoints": [
+              {
+                "id": "metrics-server",
+                "title": "Install and use Metrics Server"
+              },
+              {
+                "id": "prometheus-grafana",
+                "title": "Set up Prometheus and Grafana for observability"
+              },
+              {
+                "id": "liveness-readiness",
+                "title": "Configure liveness and readiness probes"
+              }
+            ]
+          },
+          {
+            "id": "auto-scaling",
+            "title": "Auto-Scaling",
+            "subCheckpoints": [
+              {
+                "id": "hpa",
+                "title": "Configure Horizontal Pod Autoscaler (HPA)"
+              },
+              {
+                "id": "vpa",
+                "title": "Use Vertical Pod Autoscaler for resource optimization"
+              },
+              {
+                "id": "cluster-autoscaler",
+                "title": "Understand Cluster Autoscaler for node scaling"
+              }
+            ]
+          },
+          {
+            "id": "operators",
+            "title": "Operators",
+            "subCheckpoints": [
+              {
+                "id": "operator-concept",
+                "title": "Understand Operator pattern and CRDs"
+              },
+              {
+                "id": "install-operators",
+                "title": "Install and use community operators"
+              },
+              {
+                "id": "custom-resources",
+                "title": "Create Custom Resource Definitions (CRDs)"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "AWS",
+    "group": "DevOps & Cloud Infrastructure",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "iam",
+            "title": "IAM (Identity and Access Management)",
+            "subCheckpoints": [
+              {
+                "id": "users-groups",
+                "title": "Create users, groups, and attach policies"
+              },
+              {
+                "id": "roles",
+                "title": "Create and assume IAM roles"
+              },
+              {
+                "id": "policy-json",
+                "title": "Write and understand IAM policy JSON"
+              },
+              {
+                "id": "best-practices-iam",
+                "title": "Apply least privilege and MFA best practices"
+              }
+            ]
+          },
+          {
+            "id": "ec2",
+            "title": "EC2",
+            "subCheckpoints": [
+              {
+                "id": "launch-instance",
+                "title": "Launch EC2 instances with different instance types"
+              },
+              {
+                "id": "security-groups",
+                "title": "Configure security groups and key pairs"
+              },
+              {
+                "id": "ebs-volumes",
+                "title": "Attach and manage EBS volumes"
+              },
+              {
+                "id": "connect-ssh",
+                "title": "Connect to instances via SSH"
+              }
+            ]
+          },
+          {
+            "id": "s3",
+            "title": "S3",
+            "subCheckpoints": [
+              {
+                "id": "create-buckets",
+                "title": "Create S3 buckets and understand naming rules"
+              },
+              {
+                "id": "upload-download",
+                "title": "Upload and download objects via console and CLI"
+              },
+              {
+                "id": "storage-classes",
+                "title": "Understand S3 storage classes (Standard, IA, Glacier)"
+              },
+              {
+                "id": "bucket-policies",
+                "title": "Configure bucket policies and access control"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "rds",
+            "title": "RDS",
+            "subCheckpoints": [
+              {
+                "id": "create-rds-instance",
+                "title": "Create RDS instances (MySQL, PostgreSQL)"
+              },
+              {
+                "id": "multi-az",
+                "title": "Configure Multi-AZ for high availability"
+              },
+              {
+                "id": "rds-backups",
+                "title": "Set up automated backups and snapshots"
+              }
+            ]
+          },
+          {
+            "id": "lambda",
+            "title": "Lambda",
+            "subCheckpoints": [
+              {
+                "id": "create-lambda",
+                "title": "Create Lambda functions (Node.js, Python)"
+              },
+              {
+                "id": "triggers",
+                "title": "Configure event triggers (API Gateway, S3)"
+              },
+              {
+                "id": "lambda-iam",
+                "title": "Set up Lambda execution roles and permissions"
+              }
+            ]
+          },
+          {
+            "id": "vpc",
+            "title": "VPC",
+            "subCheckpoints": [
+              {
+                "id": "vpc-subnets",
+                "title": "Create VPC with public and private subnets"
+              },
+              {
+                "id": "internet-gateway",
+                "title": "Configure Internet Gateway and NAT Gateway"
+              },
+              {
+                "id": "security-groups-nacls",
+                "title": "Use security groups and NACLs for network security"
+              }
+            ]
+          },
+          {
+            "id": "cloudfront",
+            "title": "CloudFront",
+            "subCheckpoints": [
+              {
+                "id": "create-distribution",
+                "title": "Create CloudFront distributions"
+              },
+              {
+                "id": "origins",
+                "title": "Configure S3 and custom origins"
+              },
+              {
+                "id": "cache-behaviors",
+                "title": "Set cache behaviors and invalidation"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "ecs-eks",
+            "title": "ECS & EKS",
+            "subCheckpoints": [
+              {
+                "id": "ecs-clusters",
+                "title": "Deploy containers on ECS (Fargate and EC2)"
+              },
+              {
+                "id": "task-definitions",
+                "title": "Create task definitions and services"
+              },
+              {
+                "id": "eks-basics",
+                "title": "Set up and manage EKS clusters"
+              }
+            ]
+          },
+          {
+            "id": "sqs-sns",
+            "title": "SQS & SNS",
+            "subCheckpoints": [
+              {
+                "id": "sqs-queues",
+                "title": "Create SQS queues and send/receive messages"
+              },
+              {
+                "id": "sns-topics",
+                "title": "Create SNS topics and subscriptions"
+              },
+              {
+                "id": "event-driven",
+                "title": "Build event-driven architectures with SQS/SNS"
+              }
+            ]
+          },
+          {
+            "id": "cloudwatch",
+            "title": "CloudWatch",
+            "subCheckpoints": [
+              {
+                "id": "metrics-alarms",
+                "title": "Create custom metrics and alarms"
+              },
+              {
+                "id": "cloudwatch-logs",
+                "title": "Centralize logs with CloudWatch Logs"
+              },
+              {
+                "id": "dashboards",
+                "title": "Build CloudWatch dashboards"
+              }
+            ]
+          },
+          {
+            "id": "route-53",
+            "title": "Route 53",
+            "subCheckpoints": [
+              {
+                "id": "dns-records",
+                "title": "Create and manage DNS records"
+              },
+              {
+                "id": "routing-policies",
+                "title": "Use routing policies (failover, weighted)"
+              },
+              {
+                "id": "health-checks",
+                "title": "Configure health checks and failover"
+              }
+            ]
+          },
+          {
+            "id": "cost-optimization",
+            "title": "Cost Optimization",
+            "subCheckpoints": [
+              {
+                "id": "reserved-instances",
+                "title": "Use Reserved Instances and Savings Plans"
+              },
+              {
+                "id": "cost-explorer",
+                "title": "Analyze costs with Cost Explorer"
+              },
+              {
+                "id": "rightsizing",
+                "title": "Right-size resources and clean up unused resources"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Terraform",
+    "group": "DevOps & Cloud Infrastructure",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "hcl-basics",
+            "title": "HCL Basics",
+            "subCheckpoints": [
+              {
+                "id": "syntax-blocks",
+                "title": "Learn HCL syntax: blocks, arguments, attributes"
+              },
+              {
+                "id": "data-types",
+                "title": "Use strings, numbers, lists, and maps"
+              },
+              {
+                "id": "expressions",
+                "title": "Write expressions and interpolations"
+              }
+            ]
+          },
+          {
+            "id": "providers",
+            "title": "Providers",
+            "subCheckpoints": [
+              {
+                "id": "provider-config",
+                "title": "Configure providers (AWS, GCP, Azure)"
+              },
+              {
+                "id": "provider-versioning",
+                "title": "Pin provider versions"
+              },
+              {
+                "id": "init-providers",
+                "title": "Run terraform init to download providers"
+              }
+            ]
+          },
+          {
+            "id": "resources",
+            "title": "Resources",
+            "subCheckpoints": [
+              {
+                "id": "define-resources",
+                "title": "Define resources with required and optional arguments"
+              },
+              {
+                "id": "resource-dependencies",
+                "title": "Understand implicit and explicit dependencies"
+              },
+              {
+                "id": "plan-apply",
+                "title": "Run terraform plan and apply"
+              },
+              {
+                "id": "destroy",
+                "title": "Safely destroy infrastructure"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "state-management",
+            "title": "State Management",
+            "subCheckpoints": [
+              {
+                "id": "state-file",
+                "title": "Understand tfstate and its purpose"
+              },
+              {
+                "id": "state-commands",
+                "title": "Use terraform state list, show, and mv"
+              },
+              {
+                "id": "state-locking",
+                "title": "Implement state locking for team collaboration"
+              }
+            ]
+          },
+          {
+            "id": "modules",
+            "title": "Modules",
+            "subCheckpoints": [
+              {
+                "id": "create-module",
+                "title": "Create reusable modules"
+              },
+              {
+                "id": "module-inputs",
+                "title": "Define inputs and outputs for modules"
+              },
+              {
+                "id": "use-modules",
+                "title": "Use public and private module registries"
+              }
+            ]
+          },
+          {
+            "id": "workspaces",
+            "title": "Workspaces",
+            "subCheckpoints": [
+              {
+                "id": "workspace-concept",
+                "title": "Understand workspace concept for environments"
+              },
+              {
+                "id": "create-workspaces",
+                "title": "Create and switch between workspaces"
+              },
+              {
+                "id": "workspace-state",
+                "title": "Manage separate state per workspace"
+              }
+            ]
+          },
+          {
+            "id": "variables",
+            "title": "Variables",
+            "subCheckpoints": [
+              {
+                "id": "input-variables",
+                "title": "Define input variables with types and defaults"
+              },
+              {
+                "id": "outputs",
+                "title": "Define outputs for exported values"
+              },
+              {
+                "id": "tfvars",
+                "title": "Use terraform.tfvars and -var for variable values"
+              },
+              {
+                "id": "locals",
+                "title": "Use locals for computed values"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "backends",
+            "title": "Backends",
+            "subCheckpoints": [
+              {
+                "id": "remote-backend",
+                "title": "Configure S3, GCS, or Azure backend"
+              },
+              {
+                "id": "backend-migration",
+                "title": "Migrate local state to remote backend"
+              },
+              {
+                "id": "backend-config",
+                "title": "Use backend configuration blocks"
+              }
+            ]
+          },
+          {
+            "id": "cicd-integration",
+            "title": "CI/CD Integration",
+            "subCheckpoints": [
+              {
+                "id": "pipeline-terraform",
+                "title": "Run Terraform in GitHub Actions, GitLab CI, or Jenkins"
+              },
+              {
+                "id": "plan-apply-separation",
+                "title": "Separate plan and apply stages in pipelines"
+              },
+              {
+                "id": "atlantis",
+                "title": "Use Terraform automation tools (Atlantis, Terraform Cloud)"
+              }
+            ]
+          },
+          {
+            "id": "best-practices",
+            "title": "Best Practices",
+            "subCheckpoints": [
+              {
+                "id": "code-organization",
+                "title": "Organize code with directory structure and modules"
+              },
+              {
+                "id": "tfsec-checkov",
+                "title": "Use tfsec or Checkov for security scanning"
+              },
+              {
+                "id": "terratest",
+                "title": "Write tests with Terratest or terragrunt"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Cloudflare",
+    "group": "DevOps & Cloud Infrastructure",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "dns-management",
+            "title": "DNS Management",
+            "subCheckpoints": [
+              {
+                "id": "add-domain",
+                "title": "Add and verify domains in Cloudflare"
+              },
+              {
+                "id": "dns-records",
+                "title": "Create A, AAAA, CNAME, and MX records"
+              },
+              {
+                "id": "dns-proxy",
+                "title": "Understand orange/cloud proxy and DNS-only"
+              },
+              {
+                "id": "cname-flattening",
+                "title": "Use CNAME flattening for root domains"
+              }
+            ]
+          },
+          {
+            "id": "cdn",
+            "title": "CDN",
+            "subCheckpoints": [
+              {
+                "id": "caching-levels",
+                "title": "Understand Cloudflare caching and edge locations"
+              },
+              {
+                "id": "cache-rules",
+                "title": "Create Page Rules and Cache Rules"
+              },
+              {
+                "id": "purge-cache",
+                "title": "Purge cache manually and via API"
+              }
+            ]
+          },
+          {
+            "id": "ssl-tls",
+            "title": "SSL/TLS",
+            "subCheckpoints": [
+              {
+                "id": "ssl-modes",
+                "title": "Configure Full, Full (Strict), and Flexible SSL"
+              },
+              {
+                "id": "origin-certificates",
+                "title": "Generate and install Origin Certificates"
+              },
+              {
+                "id": "tls-versions",
+                "title": "Set TLS version and cipher preferences"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "workers",
+            "title": "Workers",
+            "subCheckpoints": [
+              {
+                "id": "create-worker",
+                "title": "Create and deploy a Cloudflare Worker"
+              },
+              {
+                "id": "worker-routes",
+                "title": "Configure routes and triggers"
+              },
+              {
+                "id": "worker-kv",
+                "title": "Use Workers KV for key-value storage"
+              },
+              {
+                "id": "worker-env",
+                "title": "Use environment variables and secrets"
+              }
+            ]
+          },
+          {
+            "id": "pages",
+            "title": "Pages",
+            "subCheckpoints": [
+              {
+                "id": "pages-project",
+                "title": "Create a Pages project from Git"
+              },
+              {
+                "id": "custom-domains",
+                "title": "Configure custom domains for Pages"
+              },
+              {
+                "id": "pages-functions",
+                "title": "Use Pages Functions for serverless endpoints"
+              }
+            ]
+          },
+          {
+            "id": "firewall-rules",
+            "title": "Firewall Rules",
+            "subCheckpoints": [
+              {
+                "id": "create-rules",
+                "title": "Create firewall rules with expressions"
+              },
+              {
+                "id": "rule-actions",
+                "title": "Set actions: allow, block, challenge"
+              },
+              {
+                "id": "waf-managed",
+                "title": "Use managed rulesets (OWASP, Cloudflare)"
+              }
+            ]
+          },
+          {
+            "id": "rate-limiting",
+            "title": "Rate Limiting",
+            "subCheckpoints": [
+              {
+                "id": "create-rate-limit",
+                "title": "Create rate limiting rules"
+              },
+              {
+                "id": "rate-limit-actions",
+                "title": "Configure threshold and mitigation actions"
+              },
+              {
+                "id": "bypass-rules",
+                "title": "Set up bypass rules for trusted traffic"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "load-balancing",
+            "title": "Load Balancing",
+            "subCheckpoints": [
+              {
+                "id": "create-pool",
+                "title": "Create origin pools and health checks"
+              },
+              {
+                "id": "lb-rules",
+                "title": "Configure load balancer with steering policies"
+              },
+              {
+                "id": "session-affinity",
+                "title": "Set up session affinity when needed"
+              }
+            ]
+          },
+          {
+            "id": "r2-storage",
+            "title": "R2 Storage",
+            "subCheckpoints": [
+              {
+                "id": "create-bucket",
+                "title": "Create R2 buckets"
+              },
+              {
+                "id": "r2-api",
+                "title": "Upload and manage objects via API"
+              },
+              {
+                "id": "r2-s3-compat",
+                "title": "Use S3-compatible API and bindings"
+              }
+            ]
+          },
+          {
+            "id": "zero-trust",
+            "title": "Zero Trust",
+            "subCheckpoints": [
+              {
+                "id": "access-policies",
+                "title": "Create Access policies and applications"
+              },
+              {
+                "id": "identity-providers",
+                "title": "Configure identity providers (Google, GitHub)"
+              },
+              {
+                "id": "warp-client",
+                "title": "Deploy WARP client for device posture"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Linux",
+    "group": "DevOps & Cloud Infrastructure",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "file-system",
+            "title": "File System",
+            "subCheckpoints": [
+              {
+                "id": "fhs",
+                "title": "Understand FHS: /, /home, /var, /etc, /usr"
+              },
+              {
+                "id": "navigate-directories",
+                "title": "Navigate with cd, pwd, ls"
+              },
+              {
+                "id": "paths-absolute-relative",
+                "title": "Use absolute and relative paths"
+              },
+              {
+                "id": "inodes-links",
+                "title": "Understand inodes and hard/soft links"
+              }
+            ]
+          },
+          {
+            "id": "commands",
+            "title": "Essential Commands",
+            "subCheckpoints": [
+              {
+                "id": "file-ops",
+                "title": "Create, copy, move, rename, delete files (touch, cp, mv, rm)"
+              },
+              {
+                "id": "view-files",
+                "title": "View files with cat, less, head, tail"
+              },
+              {
+                "id": "search-find",
+                "title": "Search with find and locate"
+              },
+              {
+                "id": "man-help",
+                "title": "Use man, --help, and info for documentation"
+              }
+            ]
+          },
+          {
+            "id": "permissions",
+            "title": "Permissions",
+            "subCheckpoints": [
+              {
+                "id": "read-write-execute",
+                "title": "Understand rwx for user, group, others"
+              },
+              {
+                "id": "chmod-chown",
+                "title": "Change permissions with chmod and ownership with chown"
+              },
+              {
+                "id": "umask",
+                "title": "Understand umask for default permissions"
+              },
+              {
+                "id": "suid-sgid",
+                "title": "Know special bits: suid, sgid, sticky"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "process-management",
+            "title": "Process Management",
+            "subCheckpoints": [
+              {
+                "id": "ps-top",
+                "title": "List processes with ps and top"
+              },
+              {
+                "id": "kill-signals",
+                "title": "Send signals with kill and killall"
+              },
+              {
+                "id": "background-jobs",
+                "title": "Run jobs in background with & and nohup"
+              },
+              {
+                "id": "nice-renice",
+                "title": "Adjust process priority with nice and renice"
+              }
+            ]
+          },
+          {
+            "id": "networking",
+            "title": "Networking",
+            "subCheckpoints": [
+              {
+                "id": "ip-ss",
+                "title": "Use ip, ss for network configuration and connections"
+              },
+              {
+                "id": "ping-curl",
+                "title": "Test connectivity with ping, curl, wget"
+              },
+              {
+                "id": "netstat-ports",
+                "title": "Check listening ports and connections"
+              },
+              {
+                "id": "resolv-conf",
+                "title": "Configure /etc/resolv.conf and hosts"
+              }
+            ]
+          },
+          {
+            "id": "package-management",
+            "title": "Package Management",
+            "subCheckpoints": [
+              {
+                "id": "apt-yum",
+                "title": "Use apt or yum/dnf for package management"
+              },
+              {
+                "id": "update-upgrade",
+                "title": "Update and upgrade packages safely"
+              },
+              {
+                "id": "repositories",
+                "title": "Add and manage repositories"
+              },
+              {
+                "id": "dpkg-rpm",
+                "title": "Install .deb or .rpm packages manually"
+              }
+            ]
+          },
+          {
+            "id": "systemd",
+            "title": "systemd",
+            "subCheckpoints": [
+              {
+                "id": "services",
+                "title": "Manage services with systemctl start, stop, enable"
+              },
+              {
+                "id": "status-journal",
+                "title": "Check status and view logs with journalctl"
+              },
+              {
+                "id": "unit-files",
+                "title": "Create and modify unit files"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "shell-scripting",
+            "title": "Shell Scripting",
+            "subCheckpoints": [
+              {
+                "id": "shebang",
+                "title": "Write scripts with shebang and execute permissions"
+              },
+              {
+                "id": "variables-loops",
+                "title": "Use variables, conditionals, and loops"
+              },
+              {
+                "id": "functions",
+                "title": "Define and call functions"
+              }
+            ]
+          },
+          {
+            "id": "security",
+            "title": "Security",
+            "subCheckpoints": [
+              {
+                "id": "sudo",
+                "title": "Configure sudoers and privilege escalation"
+              },
+              {
+                "id": "firewall",
+                "title": "Configure firewalld or ufw"
+              },
+              {
+                "id": "ssh-keys",
+                "title": "Set up SSH key authentication"
+              },
+              {
+                "id": "fail2ban",
+                "title": "Use fail2ban for brute-force protection"
+              }
+            ]
+          },
+          {
+            "id": "performance-monitoring",
+            "title": "Performance Monitoring",
+            "subCheckpoints": [
+              {
+                "id": "disk-io",
+                "title": "Monitor disk I/O with iostat"
+              },
+              {
+                "id": "memory",
+                "title": "Analyze memory with free and /proc/meminfo"
+              },
+              {
+                "id": "sar",
+                "title": "Use sar for historical performance data"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Shell / Bash",
+    "group": "DevOps & Cloud Infrastructure",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "syntax-variables",
+            "title": "Syntax & Variables",
+            "subCheckpoints": [
+              {
+                "id": "shebang-execution",
+                "title": "Use shebang and make scripts executable"
+              },
+              {
+                "id": "variables-assignment",
+                "title": "Declare and use variables ($VAR, ${VAR})"
+              },
+              {
+                "id": "env-vars",
+                "title": "Use environment variables and export"
+              },
+              {
+                "id": "quoting",
+                "title": "Understand single vs double quotes and escaping"
+              }
+            ]
+          },
+          {
+            "id": "control-flow",
+            "title": "Control Flow",
+            "subCheckpoints": [
+              {
+                "id": "if-else",
+                "title": "Write if/elif/else conditionals"
+              },
+              {
+                "id": "test-brackets",
+                "title": "Use test and [ ] for conditions"
+              },
+              {
+                "id": "for-while",
+                "title": "Use for and while loops"
+              },
+              {
+                "id": "case",
+                "title": "Use case statements for pattern matching"
+              }
+            ]
+          },
+          {
+            "id": "functions",
+            "title": "Functions",
+            "subCheckpoints": [
+              {
+                "id": "define-function",
+                "title": "Define and call functions"
+              },
+              {
+                "id": "function-args",
+                "title": "Pass arguments and use $1, $2, $@"
+              },
+              {
+                "id": "return-values",
+                "title": "Return values and exit codes"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "text-processing",
+            "title": "Text Processing (grep, sed, awk)",
+            "subCheckpoints": [
+              {
+                "id": "grep-regex",
+                "title": "Use grep with regex, -E, -v, -r"
+              },
+              {
+                "id": "sed-substitute",
+                "title": "Use sed for search and replace"
+              },
+              {
+                "id": "awk-fields",
+                "title": "Use awk for field extraction and processing"
+              },
+              {
+                "id": "cut-sort-uniq",
+                "title": "Use cut, sort, uniq for data manipulation"
+              }
+            ]
+          },
+          {
+            "id": "file-operations",
+            "title": "File Operations",
+            "subCheckpoints": [
+              {
+                "id": "read-files",
+                "title": "Read files line by line"
+              },
+              {
+                "id": "test-file-ops",
+                "title": "Use test -f, -d, -e for file checks"
+              },
+              {
+                "id": "readlink-realpath",
+                "title": "Resolve paths with readlink and realpath"
+              }
+            ]
+          },
+          {
+            "id": "pipes-redirection",
+            "title": "Pipes & Redirection",
+            "subCheckpoints": [
+              {
+                "id": "pipes",
+                "title": "Chain commands with pipes (|)"
+              },
+              {
+                "id": "stdin-stdout-stderr",
+                "title": "Redirect stdin, stdout, stderr (>, >>, 2>)"
+              },
+              {
+                "id": "here-docs",
+                "title": "Use here documents and here strings"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "scripting-best-practices",
+            "title": "Scripting Best Practices",
+            "subCheckpoints": [
+              {
+                "id": "set-e-o",
+                "title": "Use set -e, set -o pipefail for error handling"
+              },
+              {
+                "id": "trap",
+                "title": "Use trap for cleanup on exit"
+              },
+              {
+                "id": "shellcheck",
+                "title": "Lint scripts with ShellCheck"
+              }
+            ]
+          },
+          {
+            "id": "cron-jobs",
+            "title": "Cron Jobs",
+            "subCheckpoints": [
+              {
+                "id": "crontab-syntax",
+                "title": "Understand crontab syntax (minute, hour, day)"
+              },
+              {
+                "id": "edit-crontab",
+                "title": "Add and manage cron jobs"
+              },
+              {
+                "id": "cron-environment",
+                "title": "Handle environment in cron (PATH, shell)"
+              }
+            ]
+          },
+          {
+            "id": "debugging",
+            "title": "Debugging",
+            "subCheckpoints": [
+              {
+                "id": "bash-x",
+                "title": "Use bash -x for trace debugging"
+              },
+              {
+                "id": "set-verbose",
+                "title": "Use set -x and set -v"
+              },
+              {
+                "id": "common-pitfalls",
+                "title": "Avoid common pitfalls (unquoted vars, word splitting)"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Git and GitHub",
+    "group": "DevOps & Cloud Infrastructure",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "init-basic-commands",
+            "title": "Init & Basic Commands",
+            "subCheckpoints": [
+              {
+                "id": "git-init",
+                "title": "Initialize repositories with git init"
+              },
+              {
+                "id": "add-commit",
+                "title": "Add and commit changes (git add, git commit)"
+              },
+              {
+                "id": "status-log",
+                "title": "Check status and view history (git status, git log)"
+              },
+              {
+                "id": "diff",
+                "title": "Compare changes with git diff"
+              }
+            ]
+          },
+          {
+            "id": "branching-merging",
+            "title": "Branching & Merging",
+            "subCheckpoints": [
+              {
+                "id": "create-branch",
+                "title": "Create and switch branches (git branch, git checkout)"
+              },
+              {
+                "id": "merge-branch",
+                "title": "Merge branches into main"
+              },
+              {
+                "id": "track-branches",
+                "title": "Track remote branches"
+              }
+            ]
+          },
+          {
+            "id": "remote-repos",
+            "title": "Remote Repositories",
+            "subCheckpoints": [
+              {
+                "id": "add-remote",
+                "title": "Add and manage remotes (git remote)"
+              },
+              {
+                "id": "push-pull",
+                "title": "Push and pull changes"
+              },
+              {
+                "id": "fetch",
+                "title": "Fetch and understand fetch vs pull"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "pull-requests",
+            "title": "Pull Requests",
+            "subCheckpoints": [
+              {
+                "id": "create-pr",
+                "title": "Create pull requests on GitHub"
+              },
+              {
+                "id": "review-pr",
+                "title": "Review and request changes"
+              },
+              {
+                "id": "merge-strategies",
+                "title": "Use merge, squash, and rebase merge options"
+              }
+            ]
+          },
+          {
+            "id": "conflict-resolution",
+            "title": "Conflict Resolution",
+            "subCheckpoints": [
+              {
+                "id": "identify-conflicts",
+                "title": "Identify merge conflicts"
+              },
+              {
+                "id": "resolve-conflicts",
+                "title": "Resolve conflicts manually"
+              },
+              {
+                "id": "abort-merge",
+                "title": "Abort merge or rebase when needed"
+              }
+            ]
+          },
+          {
+            "id": "git-flow",
+            "title": "Git Flow",
+            "subCheckpoints": [
+              {
+                "id": "git-flow-concept",
+                "title": "Understand Git Flow branching model"
+              },
+              {
+                "id": "feature-branches",
+                "title": "Work with feature, release, and hotfix branches"
+              },
+              {
+                "id": "trunk-based",
+                "title": "Compare with trunk-based development"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "github-actions",
+            "title": "GitHub Actions",
+            "subCheckpoints": [
+              {
+                "id": "workflow-yml",
+                "title": "Create GitHub Actions workflows"
+              },
+              {
+                "id": "ci-pipeline",
+                "title": "Build CI pipelines (test, build, deploy)"
+              },
+              {
+                "id": "secrets-env",
+                "title": "Use secrets and environment variables"
+              }
+            ]
+          },
+          {
+            "id": "hooks",
+            "title": "Git Hooks",
+            "subCheckpoints": [
+              {
+                "id": "pre-commit",
+                "title": "Use pre-commit and pre-push hooks"
+              },
+              {
+                "id": "commit-msg",
+                "title": "Enforce commit message format with commit-msg"
+              },
+              {
+                "id": "husky",
+                "title": "Set up hooks with Husky or similar tools"
+              }
+            ]
+          },
+          {
+            "id": "advanced-commands",
+            "title": "Advanced Commands (rebase, cherry-pick)",
+            "subCheckpoints": [
+              {
+                "id": "interactive-rebase",
+                "title": "Use interactive rebase to rewrite history"
+              },
+              {
+                "id": "cherry-pick",
+                "title": "Cherry-pick commits between branches"
+              },
+              {
+                "id": "stash",
+                "title": "Stash and apply changes with git stash"
+              },
+              {
+                "id": "reflog",
+                "title": "Recover commits with git reflog"
+              }
+            ]
+          },
+          {
+            "id": "monorepo-strategies",
+            "title": "Monorepo Strategies",
+            "subCheckpoints": [
+              {
+                "id": "monorepo-tools",
+                "title": "Use Turborepo, Nx, or Lerna for monorepos"
+              },
+              {
+                "id": "sparse-checkout",
+                "title": "Use sparse checkout for large repos"
+              },
+              {
+                "id": "submodules-subtrees",
+                "title": "Understand submodules vs subtrees"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

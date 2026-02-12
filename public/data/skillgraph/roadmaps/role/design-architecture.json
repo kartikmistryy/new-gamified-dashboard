@@ -1,0 +1,696 @@
+[
+  {
+    "roadmap": "UX Design",
+    "group": "Design & Architecture",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "design-thinking",
+            "title": "Design Thinking",
+            "subCheckpoints": [
+              {
+                "id": "empathize-phase",
+                "title": "Master the empathize phase and user interviews"
+              },
+              {
+                "id": "define-problem",
+                "title": "Define problem statements and user needs"
+              },
+              {
+                "id": "ideate-solutions",
+                "title": "Ideate and brainstorm solutions"
+              },
+              {
+                "id": "iterate-prototype",
+                "title": "Prototype and iterate based on feedback"
+              }
+            ]
+          },
+          {
+            "id": "user-research",
+            "title": "User Research",
+            "subCheckpoints": [
+              {
+                "id": "research-methods",
+                "title": "Understand qualitative and quantitative research methods"
+              },
+              {
+                "id": "user-personas",
+                "title": "Create user personas and journey maps"
+              },
+              {
+                "id": "research-synthesis",
+                "title": "Synthesize research findings into insights"
+              }
+            ]
+          },
+          {
+            "id": "wireframing",
+            "title": "Wireframing",
+            "subCheckpoints": [
+              {
+                "id": "low-fidelity-wireframes",
+                "title": "Create low-fidelity wireframes (paper or digital)"
+              },
+              {
+                "id": "layout-hierarchy",
+                "title": "Apply layout principles and visual hierarchy"
+              },
+              {
+                "id": "wireframe-tools",
+                "title": "Use wireframing tools effectively"
+              }
+            ]
+          },
+          {
+            "id": "visual-design-principles",
+            "title": "Visual Design Principles",
+            "subCheckpoints": [
+              {
+                "id": "color-typography",
+                "title": "Apply color theory and typography basics"
+              },
+              {
+                "id": "spacing-alignment",
+                "title": "Use spacing, alignment, and grid systems"
+              },
+              {
+                "id": "visual-balance",
+                "title": "Create visual balance and harmony"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "information-architecture",
+            "title": "Information Architecture",
+            "subCheckpoints": [
+              {
+                "id": "content-structure",
+                "title": "Structure content and navigation logically"
+              },
+              {
+                "id": "card-sorting",
+                "title": "Conduct card sorting and tree testing"
+              },
+              {
+                "id": "sitemaps",
+                "title": "Create sitemaps and user flows"
+              }
+            ]
+          },
+          {
+            "id": "figma-prototyping",
+            "title": "Prototyping (Figma)",
+            "subCheckpoints": [
+              {
+                "id": "figma-interface",
+                "title": "Navigate Figma interface and components"
+              },
+              {
+                "id": "interactive-prototypes",
+                "title": "Build interactive prototypes with transitions"
+              },
+              {
+                "id": "prototype-feedback",
+                "title": "Share prototypes and gather feedback"
+              }
+            ]
+          },
+          {
+            "id": "usability-testing",
+            "title": "Usability Testing",
+            "subCheckpoints": [
+              {
+                "id": "test-planning",
+                "title": "Plan and script usability tests"
+              },
+              {
+                "id": "moderate-sessions",
+                "title": "Moderate testing sessions and observe"
+              },
+              {
+                "id": "analyze-findings",
+                "title": "Analyze findings and prioritize improvements"
+              }
+            ]
+          },
+          {
+            "id": "interaction-design",
+            "title": "Interaction Design",
+            "subCheckpoints": [
+              {
+                "id": "micro-interactions",
+                "title": "Design micro-interactions and feedback"
+              },
+              {
+                "id": "state-transitions",
+                "title": "Define loading, error, and empty states"
+              },
+              {
+                "id": "gesture-patterns",
+                "title": "Apply gesture and animation patterns"
+              }
+            ]
+          },
+          {
+            "id": "accessibility",
+            "title": "Accessibility",
+            "subCheckpoints": [
+              {
+                "id": "wcag-guidelines",
+                "title": "Understand WCAG guidelines and levels"
+              },
+              {
+                "id": "color-contrast",
+                "title": "Ensure color contrast and readable text"
+              },
+              {
+                "id": "keyboard-screen-reader",
+                "title": "Design for keyboard and screen reader use"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "design-systems",
+            "title": "Design Systems",
+            "subCheckpoints": [
+              {
+                "id": "component-library",
+                "title": "Build and maintain component libraries"
+              },
+              {
+                "id": "design-tokens",
+                "title": "Create design tokens and theming"
+              },
+              {
+                "id": "documentation",
+                "title": "Document usage and governance"
+              }
+            ]
+          },
+          {
+            "id": "responsive-design",
+            "title": "Responsive Design",
+            "subCheckpoints": [
+              {
+                "id": "breakpoints",
+                "title": "Define breakpoints and fluid layouts"
+              },
+              {
+                "id": "mobile-first",
+                "title": "Apply mobile-first design approach"
+              },
+              {
+                "id": "adaptive-components",
+                "title": "Design adaptive components across devices"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "API Design",
+    "group": "Design & Architecture",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "http-fundamentals",
+            "title": "HTTP Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "methods-status-codes",
+                "title": "Understand HTTP methods and status codes"
+              },
+              {
+                "id": "headers-request-response",
+                "title": "Use headers, request and response structure"
+              },
+              {
+                "id": "content-types",
+                "title": "Work with content types (JSON, XML)"
+              }
+            ]
+          },
+          {
+            "id": "rest-principles",
+            "title": "REST Principles",
+            "subCheckpoints": [
+              {
+                "id": "resource-identification",
+                "title": "Identify resources and URI design"
+              },
+              {
+                "id": "stateless-constraints",
+                "title": "Apply stateless and uniform interface constraints"
+              },
+              {
+                "id": "restful-verbs",
+                "title": "Map CRUD operations to HTTP verbs"
+              }
+            ]
+          },
+          {
+            "id": "api-first-design",
+            "title": "API-First Design",
+            "subCheckpoints": [
+              {
+                "id": "contract-first",
+                "title": "Adopt contract-first development approach"
+              },
+              {
+                "id": "design-before-code",
+                "title": "Design API contracts before implementation"
+              },
+              {
+                "id": "consumer-perspective",
+                "title": "Design from consumer perspective"
+              }
+            ]
+          },
+          {
+            "id": "openapi-swagger",
+            "title": "OpenAPI/Swagger",
+            "subCheckpoints": [
+              {
+                "id": "openapi-spec",
+                "title": "Write OpenAPI specifications"
+              },
+              {
+                "id": "generate-docs",
+                "title": "Generate API documentation from specs"
+              },
+              {
+                "id": "validate-requests",
+                "title": "Validate requests against schema"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "api-versioning",
+            "title": "API Versioning",
+            "subCheckpoints": [
+              {
+                "id": "version-strategies",
+                "title": "Choose versioning strategy (URL, header, query)"
+              },
+              {
+                "id": "backward-compatibility",
+                "title": "Maintain backward compatibility"
+              },
+              {
+                "id": "deprecation-path",
+                "title": "Plan deprecation and migration paths"
+              }
+            ]
+          },
+          {
+            "id": "error-handling",
+            "title": "Error Handling",
+            "subCheckpoints": [
+              {
+                "id": "error-responses",
+                "title": "Design consistent error response format"
+              },
+              {
+                "id": "error-codes",
+                "title": "Use appropriate HTTP status codes for errors"
+              },
+              {
+                "id": "troubleshooting-info",
+                "title": "Include troubleshooting information in errors"
+              }
+            ]
+          },
+          {
+            "id": "authentication-patterns",
+            "title": "Authentication Patterns",
+            "subCheckpoints": [
+              {
+                "id": "api-keys-oauth",
+                "title": "Implement API keys and OAuth 2.0"
+              },
+              {
+                "id": "jwt-tokens",
+                "title": "Use JWT for stateless authentication"
+              },
+              {
+                "id": "security-best-practices",
+                "title": "Apply authentication security best practices"
+              }
+            ]
+          },
+          {
+            "id": "rate-limiting",
+            "title": "Rate Limiting",
+            "subCheckpoints": [
+              {
+                "id": "rate-limit-strategies",
+                "title": "Design rate limit strategies (per user, per IP)"
+              },
+              {
+                "id": "headers-throttling",
+                "title": "Return rate limit headers and handle throttling"
+              },
+              {
+                "id": "quota-tiers",
+                "title": "Implement quota tiers and usage policies"
+              }
+            ]
+          },
+          {
+            "id": "graphql",
+            "title": "GraphQL",
+            "subCheckpoints": [
+              {
+                "id": "graphql-schema",
+                "title": "Design GraphQL schemas and types"
+              },
+              {
+                "id": "queries-mutations",
+                "title": "Implement queries and mutations"
+              },
+              {
+                "id": "resolvers-n-plus-one",
+                "title": "Optimize resolvers and avoid N+1 problems"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "grpc",
+            "title": "gRPC",
+            "subCheckpoints": [
+              {
+                "id": "protocol-buffers",
+                "title": "Define services with Protocol Buffers"
+              },
+              {
+                "id": "streaming-patterns",
+                "title": "Implement streaming (client, server, bidirectional)"
+              },
+              {
+                "id": "grpc-vs-rest",
+                "title": "Evaluate when to use gRPC vs REST"
+              }
+            ]
+          },
+          {
+            "id": "api-governance",
+            "title": "API Governance",
+            "subCheckpoints": [
+              {
+                "id": "design-standards",
+                "title": "Establish API design standards and style guides"
+              },
+              {
+                "id": "review-process",
+                "title": "Implement API review and approval process"
+              },
+              {
+                "id": "metrics-monitoring",
+                "title": "Track API metrics and adoption"
+              }
+            ]
+          },
+          {
+            "id": "developer-experience",
+            "title": "Developer Experience",
+            "subCheckpoints": [
+              {
+                "id": "sdk-documentation",
+                "title": "Create SDKs and comprehensive documentation"
+              },
+              {
+                "id": "sandbox-examples",
+                "title": "Provide sandbox environments and code examples"
+              },
+              {
+                "id": "feedback-onboarding",
+                "title": "Improve onboarding and gather developer feedback"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Software Architect",
+    "group": "Design & Architecture",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "programming-fundamentals",
+            "title": "Programming Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "data-structures",
+                "title": "Master core data structures and algorithms"
+              },
+              {
+                "id": "control-flow",
+                "title": "Understand control flow and modular design"
+              },
+              {
+                "id": "error-handling-memory",
+                "title": "Handle errors and understand memory management"
+              }
+            ]
+          },
+          {
+            "id": "design-patterns",
+            "title": "Design Patterns",
+            "subCheckpoints": [
+              {
+                "id": "creational-patterns",
+                "title": "Apply creational patterns (Factory, Singleton, Builder)"
+              },
+              {
+                "id": "structural-patterns",
+                "title": "Apply structural patterns (Adapter, Decorator, Facade)"
+              },
+              {
+                "id": "behavioral-patterns",
+                "title": "Apply behavioral patterns (Observer, Strategy, Command)"
+              }
+            ]
+          },
+          {
+            "id": "solid-principles",
+            "title": "SOLID Principles",
+            "subCheckpoints": [
+              {
+                "id": "single-responsibility",
+                "title": "Apply Single Responsibility Principle"
+              },
+              {
+                "id": "open-closed",
+                "title": "Apply Open/Closed and Liskov Substitution"
+              },
+              {
+                "id": "interface-dependency",
+                "title": "Apply Interface Segregation and Dependency Inversion"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "system-design",
+            "title": "System Design",
+            "subCheckpoints": [
+              {
+                "id": "requirements-gathering",
+                "title": "Gather and analyze system requirements"
+              },
+              {
+                "id": "high-level-design",
+                "title": "Create high-level architecture diagrams"
+              },
+              {
+                "id": "component-interaction",
+                "title": "Define component boundaries and interactions"
+              }
+            ]
+          },
+          {
+            "id": "architectural-patterns",
+            "title": "Architectural Patterns",
+            "subCheckpoints": [
+              {
+                "id": "monolith-structure",
+                "title": "Design modular monolith architecture"
+              },
+              {
+                "id": "microservices-boundaries",
+                "title": "Define microservices boundaries and communication"
+              },
+              {
+                "id": "serverless-events",
+                "title": "Design serverless and event-driven systems"
+              }
+            ]
+          },
+          {
+            "id": "data-modeling",
+            "title": "Data Modeling",
+            "subCheckpoints": [
+              {
+                "id": "schema-design",
+                "title": "Design relational and document schemas"
+              },
+              {
+                "id": "normalization-denormalization",
+                "title": "Balance normalization vs denormalization"
+              },
+              {
+                "id": "data-flows",
+                "title": "Model data flows and consistency requirements"
+              }
+            ]
+          },
+          {
+            "id": "scalability",
+            "title": "Scalability",
+            "subCheckpoints": [
+              {
+                "id": "horizontal-vertical",
+                "title": "Apply horizontal and vertical scaling strategies"
+              },
+              {
+                "id": "load-balancing",
+                "title": "Implement load balancing and caching"
+              },
+              {
+                "id": "bottleneck-analysis",
+                "title": "Identify and address bottlenecks"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "security-architecture",
+            "title": "Security Architecture",
+            "subCheckpoints": [
+              {
+                "id": "threat-modeling",
+                "title": "Conduct threat modeling and risk assessment"
+              },
+              {
+                "id": "defense-in-depth",
+                "title": "Apply defense-in-depth and least privilege"
+              },
+              {
+                "id": "encryption-secrets",
+                "title": "Design encryption and secrets management"
+              }
+            ]
+          },
+          {
+            "id": "cloud-architecture",
+            "title": "Cloud Architecture",
+            "subCheckpoints": [
+              {
+                "id": "cloud-services",
+                "title": "Select appropriate cloud services and regions"
+              },
+              {
+                "id": "hybrid-multi-cloud",
+                "title": "Design for hybrid and multi-cloud when needed"
+              },
+              {
+                "id": "cost-optimization",
+                "title": "Optimize for cost and performance"
+              }
+            ]
+          },
+          {
+            "id": "documentation",
+            "title": "Documentation",
+            "subCheckpoints": [
+              {
+                "id": "architecture-decision-records",
+                "title": "Write Architecture Decision Records (ADRs)"
+              },
+              {
+                "id": "runbooks-diagrams",
+                "title": "Maintain runbooks and current diagrams"
+              },
+              {
+                "id": "knowledge-transfer",
+                "title": "Facilitate knowledge transfer and onboarding"
+              }
+            ]
+          },
+          {
+            "id": "trade-off-analysis",
+            "title": "Trade-off Analysis",
+            "subCheckpoints": [
+              {
+                "id": "evaluate-alternatives",
+                "title": "Evaluate alternatives with pros and cons"
+              },
+              {
+                "id": "constraint-priorities",
+                "title": "Balance constraints (cost, performance, complexity)"
+              },
+              {
+                "id": "communicate-decisions",
+                "title": "Communicate trade-offs and rationales to stakeholders"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

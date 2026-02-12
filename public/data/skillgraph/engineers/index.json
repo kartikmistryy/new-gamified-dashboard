@@ -1,0 +1,396 @@
+{
+  "generatedAt": "2026-02-13T08:00:00Z",
+  "totalEngineers": 20,
+  "engineers": [
+    {
+      "userId": "eng-001",
+      "name": "Alice Chen",
+      "file": "eng-001.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 3,
+      "totalCompletions": 49,
+      "roadmapKeys": [
+        "role:Frontend",
+        "role:Backend",
+        "skill:Node.js"
+      ]
+    },
+    {
+      "userId": "eng-002",
+      "name": "Bob Zhang",
+      "file": "eng-002.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 9,
+      "totalCompletions": 141,
+      "roadmapKeys": [
+        "role:Frontend Beginner",
+        "role:Frontend",
+        "skill:JavaScript",
+        "skill:TypeScript",
+        "skill:Vue",
+        "skill:CSS",
+        "skill:HTML",
+        "skill:Git and GitHub",
+        "skill:Node.js"
+      ]
+    },
+    {
+      "userId": "eng-003",
+      "name": "Carol Liu",
+      "file": "eng-003.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 9,
+      "totalCompletions": 153,
+      "roadmapKeys": [
+        "role:Frontend Beginner",
+        "role:Frontend",
+        "skill:JavaScript",
+        "skill:TypeScript",
+        "skill:React",
+        "skill:Next.js",
+        "skill:HTML",
+        "skill:CSS",
+        "skill:Git and GitHub"
+      ]
+    },
+    {
+      "userId": "eng-004",
+      "name": "David Wang",
+      "file": "eng-004.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 14,
+      "totalCompletions": 218,
+      "roadmapKeys": [
+        "role:Backend Beginner",
+        "role:Backend",
+        "role:Full Stack",
+        "skill:JavaScript",
+        "skill:TypeScript",
+        "skill:Node.js",
+        "skill:PostgreSQL",
+        "skill:SQL",
+        "skill:Redis",
+        "skill:MongoDB",
+        "skill:Docker",
+        "skill:AWS",
+        "skill:Git and GitHub",
+        "skill:System Design"
+      ]
+    },
+    {
+      "userId": "eng-005",
+      "name": "Emily Park",
+      "file": "eng-005.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 10,
+      "totalCompletions": 119,
+      "roadmapKeys": [
+        "role:Backend Beginner",
+        "role:Backend",
+        "skill:Python",
+        "skill:Django",
+        "skill:SQL",
+        "skill:PostgreSQL",
+        "skill:Docker",
+        "skill:Git and GitHub",
+        "skill:Linux",
+        "skill:Redis"
+      ]
+    },
+    {
+      "userId": "eng-006",
+      "name": "Frank Lee",
+      "file": "eng-006.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 9,
+      "totalCompletions": 105,
+      "roadmapKeys": [
+        "role:Backend Beginner",
+        "role:Backend",
+        "skill:Java",
+        "skill:Spring Boot",
+        "skill:SQL",
+        "skill:PostgreSQL",
+        "skill:Docker",
+        "skill:Git and GitHub",
+        "skill:Redis"
+      ]
+    },
+    {
+      "userId": "eng-007",
+      "name": "Grace Kim",
+      "file": "eng-007.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 10,
+      "totalCompletions": 103,
+      "roadmapKeys": [
+        "role:Backend Beginner",
+        "role:Backend",
+        "skill:JavaScript",
+        "skill:TypeScript",
+        "skill:Node.js",
+        "skill:SQL",
+        "skill:PostgreSQL",
+        "skill:MongoDB",
+        "skill:Git and GitHub",
+        "skill:Docker"
+      ]
+    },
+    {
+      "userId": "eng-008",
+      "name": "Henry Wu",
+      "file": "eng-008.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 10,
+      "totalCompletions": 119,
+      "roadmapKeys": [
+        "role:Backend",
+        "role:DevOps Beginner",
+        "skill:Go",
+        "skill:SQL",
+        "skill:PostgreSQL",
+        "skill:Redis",
+        "skill:Docker",
+        "skill:Linux",
+        "skill:Git and GitHub",
+        "skill:Shell / Bash"
+      ]
+    },
+    {
+      "userId": "eng-009",
+      "name": "Iris Tanaka",
+      "file": "eng-009.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 6,
+      "totalCompletions": 66,
+      "roadmapKeys": [
+        "role:iOS",
+        "skill:Swift & SwiftUI",
+        "skill:React Native",
+        "skill:JavaScript",
+        "skill:TypeScript",
+        "skill:Git and GitHub"
+      ]
+    },
+    {
+      "userId": "eng-010",
+      "name": "Jack Morrison",
+      "file": "eng-010.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 6,
+      "totalCompletions": 70,
+      "roadmapKeys": [
+        "role:Android",
+        "skill:Kotlin",
+        "skill:Java",
+        "skill:React Native",
+        "skill:JavaScript",
+        "skill:Git and GitHub"
+      ]
+    },
+    {
+      "userId": "eng-011",
+      "name": "Kevin Patel",
+      "file": "eng-011.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 7,
+      "totalCompletions": 117,
+      "roadmapKeys": [
+        "role:Android",
+        "role:iOS",
+        "skill:React Native",
+        "skill:JavaScript",
+        "skill:TypeScript",
+        "skill:React",
+        "skill:Git and GitHub"
+      ]
+    },
+    {
+      "userId": "eng-012",
+      "name": "Linda Garcia",
+      "file": "eng-012.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 12,
+      "totalCompletions": 213,
+      "roadmapKeys": [
+        "role:DevOps Beginner",
+        "role:DevOps",
+        "role:DevSecOps",
+        "skill:Docker",
+        "skill:Kubernetes",
+        "skill:AWS",
+        "skill:Terraform",
+        "skill:Linux",
+        "skill:Shell / Bash",
+        "skill:Git and GitHub",
+        "skill:Python",
+        "skill:Go"
+      ]
+    },
+    {
+      "userId": "eng-013",
+      "name": "Mike O'Brien",
+      "file": "eng-013.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 9,
+      "totalCompletions": 117,
+      "roadmapKeys": [
+        "role:DevOps Beginner",
+        "role:DevOps",
+        "skill:Docker",
+        "skill:AWS",
+        "skill:Linux",
+        "skill:Shell / Bash",
+        "skill:Git and GitHub",
+        "skill:Python",
+        "skill:Terraform"
+      ]
+    },
+    {
+      "userId": "eng-014",
+      "name": "Nancy Huang",
+      "file": "eng-014.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 10,
+      "totalCompletions": 122,
+      "roadmapKeys": [
+        "role:Data Engineer",
+        "role:Data Analyst",
+        "skill:Python",
+        "skill:SQL",
+        "skill:PostgreSQL",
+        "skill:MongoDB",
+        "skill:Elasticsearch",
+        "skill:Docker",
+        "skill:AWS",
+        "skill:Git and GitHub"
+      ]
+    },
+    {
+      "userId": "eng-015",
+      "name": "Oscar Rivera",
+      "file": "eng-015.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 7,
+      "totalCompletions": 79,
+      "roadmapKeys": [
+        "role:Data Analyst",
+        "role:BI Analyst",
+        "skill:Python",
+        "skill:SQL",
+        "skill:PostgreSQL",
+        "skill:Elasticsearch",
+        "skill:Git and GitHub"
+      ]
+    },
+    {
+      "userId": "eng-016",
+      "name": "Priya Sharma",
+      "file": "eng-016.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 11,
+      "totalCompletions": 134,
+      "roadmapKeys": [
+        "role:AI Engineer",
+        "role:AI Agents",
+        "skill:Python",
+        "skill:JavaScript",
+        "skill:TypeScript",
+        "skill:SQL",
+        "skill:PostgreSQL",
+        "skill:Docker",
+        "skill:AWS",
+        "skill:Prompt Engineering",
+        "skill:Git and GitHub"
+      ]
+    },
+    {
+      "userId": "eng-017",
+      "name": "Quinn Foster",
+      "file": "eng-017.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 9,
+      "totalCompletions": 86,
+      "roadmapKeys": [
+        "role:QA",
+        "skill:JavaScript",
+        "skill:TypeScript",
+        "skill:Python",
+        "skill:SQL",
+        "skill:Docker",
+        "skill:Linux",
+        "skill:Shell / Bash",
+        "skill:Git and GitHub"
+      ]
+    },
+    {
+      "userId": "eng-018",
+      "name": "Rachel Yamamoto",
+      "file": "eng-018.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 6,
+      "totalCompletions": 97,
+      "roadmapKeys": [
+        "role:UX Design",
+        "role:Frontend Beginner",
+        "skill:HTML",
+        "skill:CSS",
+        "skill:Design System",
+        "skill:Git and GitHub"
+      ]
+    },
+    {
+      "userId": "eng-019",
+      "name": "Sam Chen",
+      "file": "eng-019.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 9,
+      "totalCompletions": 116,
+      "roadmapKeys": [
+        "role:Engineering Manager",
+        "role:Backend",
+        "role:Software Architect",
+        "skill:JavaScript",
+        "skill:TypeScript",
+        "skill:Python",
+        "skill:System Design",
+        "skill:Design Architecture",
+        "skill:Git and GitHub"
+      ]
+    },
+    {
+      "userId": "eng-020",
+      "name": "Tina Williams",
+      "file": "eng-020.json",
+      "createdAt": "2026-01-05T00:00:00Z",
+      "lastScannedAt": "2026-02-13T08:00:00Z",
+      "roadmapCount": 4,
+      "totalCompletions": 36,
+      "roadmapKeys": [
+        "role:Product Manager",
+        "skill:System Design",
+        "skill:Git and GitHub",
+        "skill:Computer Science"
+      ]
+    }
+  ]
+}

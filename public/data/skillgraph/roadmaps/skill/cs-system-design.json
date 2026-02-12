@@ -1,0 +1,898 @@
+[
+  {
+    "roadmap": "Computer Science",
+    "group": "CS Fundamentals & System Design",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "binary-number-systems",
+            "title": "Binary & Number Systems",
+            "subCheckpoints": [
+              {
+                "id": "binary-representation",
+                "title": "Binary, Decimal & Hexadecimal Conversion"
+              },
+              {
+                "id": "binary-operations",
+                "title": "Binary Arithmetic & Bitwise Operations"
+              },
+              {
+                "id": "signed-unsigned",
+                "title": "Signed vs Unsigned Integers"
+              }
+            ]
+          },
+          {
+            "id": "boolean-logic",
+            "title": "Boolean Logic",
+            "subCheckpoints": [
+              {
+                "id": "logic-gates",
+                "title": "AND, OR, NOT, XOR Logic Gates"
+              },
+              {
+                "id": "truth-tables",
+                "title": "Truth Tables & Logical Expressions"
+              },
+              {
+                "id": "de-morgans",
+                "title": "De Morgan's Laws & Simplification"
+              }
+            ]
+          },
+          {
+            "id": "computer-architecture",
+            "title": "Computer Architecture",
+            "subCheckpoints": [
+              {
+                "id": "cpu-memory",
+                "title": "CPU, RAM & Storage Hierarchy"
+              },
+              {
+                "id": "instruction-cycle",
+                "title": "Fetch-Decode-Execute Cycle"
+              },
+              {
+                "id": "i-o-systems",
+                "title": "Input/Output Systems & Buses"
+              }
+            ]
+          },
+          {
+            "id": "os-concepts",
+            "title": "Operating System Concepts",
+            "subCheckpoints": [
+              {
+                "id": "processes-threads",
+                "title": "Processes vs Threads"
+              },
+              {
+                "id": "memory-management",
+                "title": "Memory Management & Virtual Memory"
+              },
+              {
+                "id": "scheduling",
+                "title": "CPU Scheduling Algorithms"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "networking-basics",
+            "title": "Networking Basics",
+            "subCheckpoints": [
+              {
+                "id": "tcp-ip",
+                "title": "TCP/IP & OSI Model"
+              },
+              {
+                "id": "http-https",
+                "title": "HTTP/HTTPS & REST Basics"
+              },
+              {
+                "id": "dns-networking",
+                "title": "DNS, IP Addressing & Subnetting"
+              }
+            ]
+          },
+          {
+            "id": "databases-intro",
+            "title": "Databases Introduction",
+            "subCheckpoints": [
+              {
+                "id": "relational-basics",
+                "title": "Relational Model & SQL Basics"
+              },
+              {
+                "id": "acid-transactions",
+                "title": "ACID & Transactions"
+              },
+              {
+                "id": "normalization",
+                "title": "Normalization & Schema Design"
+              }
+            ]
+          },
+          {
+            "id": "programming-paradigms",
+            "title": "Programming Paradigms",
+            "subCheckpoints": [
+              {
+                "id": "imperative-declarative",
+                "title": "Imperative vs Declarative"
+              },
+              {
+                "id": "oop-functional",
+                "title": "OOP vs Functional Programming"
+              },
+              {
+                "id": "paradigm-comparison",
+                "title": "When to Use Each Paradigm"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "compilers-interpreters",
+            "title": "Compilers & Interpreters",
+            "subCheckpoints": [
+              {
+                "id": "lexing-parsing",
+                "title": "Lexical Analysis & Parsing"
+              },
+              {
+                "id": "ast-codegen",
+                "title": "AST, Intermediate Representation & Codegen"
+              },
+              {
+                "id": "jit-compilation",
+                "title": "JIT Compilation & Runtime Optimization"
+              }
+            ]
+          },
+          {
+            "id": "software-engineering-principles",
+            "title": "Software Engineering Principles",
+            "subCheckpoints": [
+              {
+                "id": "testing-strategies",
+                "title": "Unit, Integration & E2E Testing"
+              },
+              {
+                "id": "version-control",
+                "title": "Version Control & CI/CD Pipelines"
+              },
+              {
+                "id": "code-review",
+                "title": "Code Review & Refactoring"
+              }
+            ]
+          },
+          {
+            "id": "ethics-in-computing",
+            "title": "Ethics in Computing",
+            "subCheckpoints": [
+              {
+                "id": "privacy-security",
+                "title": "Privacy, Security & Data Ethics"
+              },
+              {
+                "id": "ai-bias",
+                "title": "AI Bias & Fairness"
+              },
+              {
+                "id": "responsible-tech",
+                "title": "Responsible Technology & Sustainability"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Data Structures & Algorithms",
+    "group": "CS Fundamentals & System Design",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "arrays-strings",
+            "title": "Arrays & Strings",
+            "subCheckpoints": [
+              {
+                "id": "array-operations",
+                "title": "Array Traversal, Insertion & Deletion"
+              },
+              {
+                "id": "string-manipulation",
+                "title": "String Manipulation & Substrings"
+              },
+              {
+                "id": "two-pointer",
+                "title": "Two Pointer Technique"
+              }
+            ]
+          },
+          {
+            "id": "linked-lists",
+            "title": "Linked Lists",
+            "subCheckpoints": [
+              {
+                "id": "singly-linked",
+                "title": "Singly Linked List Operations"
+              },
+              {
+                "id": "doubly-linked",
+                "title": "Doubly Linked List"
+              },
+              {
+                "id": "cycle-detection",
+                "title": "Cycle Detection & Fast-Slow Pointers"
+              }
+            ]
+          },
+          {
+            "id": "stacks-queues",
+            "title": "Stacks & Queues",
+            "subCheckpoints": [
+              {
+                "id": "stack-operations",
+                "title": "Stack Push, Pop & LIFO"
+              },
+              {
+                "id": "queue-operations",
+                "title": "Queue Enqueue, Dequeue & FIFO"
+              },
+              {
+                "id": "stack-queue-applications",
+                "title": "Classic Applications (Matching, BFS)"
+              }
+            ]
+          },
+          {
+            "id": "complexity-analysis",
+            "title": "Complexity Analysis (Big-O)",
+            "subCheckpoints": [
+              {
+                "id": "big-o-notation",
+                "title": "Big-O, Omega & Theta Notation"
+              },
+              {
+                "id": "space-time-tradeoff",
+                "title": "Time vs Space Complexity Tradeoffs"
+              },
+              {
+                "id": "amortized-analysis",
+                "title": "Amortized Analysis Basics"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "hash-tables",
+            "title": "Hash Tables",
+            "subCheckpoints": [
+              {
+                "id": "hash-functions",
+                "title": "Hash Functions & Collision Handling"
+              },
+              {
+                "id": "hashmap-applications",
+                "title": "HashMap Applications"
+              },
+              {
+                "id": "hash-set",
+                "title": "HashSet for Duplicate Detection"
+              }
+            ]
+          },
+          {
+            "id": "trees-bst-avl",
+            "title": "Trees (BST, AVL)",
+            "subCheckpoints": [
+              {
+                "id": "binary-search-tree",
+                "title": "Binary Search Tree Operations"
+              },
+              {
+                "id": "avl-rotations",
+                "title": "AVL Tree & Rotations"
+              },
+              {
+                "id": "tree-traversals",
+                "title": "Inorder, Preorder, Postorder Traversal"
+              }
+            ]
+          },
+          {
+            "id": "sorting-algorithms",
+            "title": "Sorting Algorithms",
+            "subCheckpoints": [
+              {
+                "id": "comparison-sorts",
+                "title": "Merge Sort, Quick Sort, Heap Sort"
+              },
+              {
+                "id": "linear-sorts",
+                "title": "Counting Sort & Radix Sort"
+              },
+              {
+                "id": "sorting-complexity",
+                "title": "Stability & Complexity Comparison"
+              }
+            ]
+          },
+          {
+            "id": "searching-algorithms",
+            "title": "Searching Algorithms",
+            "subCheckpoints": [
+              {
+                "id": "binary-search",
+                "title": "Binary Search & Variants"
+              },
+              {
+                "id": "bfs-dfs",
+                "title": "BFS & DFS for Graph/Tree Search"
+              },
+              {
+                "id": "search-applications",
+                "title": "Search in Rotated & Sorted Arrays"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "graphs",
+            "title": "Graphs",
+            "subCheckpoints": [
+              {
+                "id": "graph-representation",
+                "title": "Adjacency List vs Matrix"
+              },
+              {
+                "id": "graph-algorithms",
+                "title": "Dijkstra, Bellman-Ford, Floyd-Warshall"
+              },
+              {
+                "id": "topological-sort",
+                "title": "Topological Sort & Minimum Spanning Tree"
+              }
+            ]
+          },
+          {
+            "id": "dynamic-programming",
+            "title": "Dynamic Programming",
+            "subCheckpoints": [
+              {
+                "id": "memoization-tabulation",
+                "title": "Memoization vs Tabulation"
+              },
+              {
+                "id": "dp-patterns",
+                "title": "1D & 2D DP Patterns"
+              },
+              {
+                "id": "dp-classic",
+                "title": "Classic DP Problems (Knapsack, LCS)"
+              }
+            ]
+          },
+          {
+            "id": "greedy-algorithms",
+            "title": "Greedy Algorithms",
+            "subCheckpoints": [
+              {
+                "id": "greedy-strategy",
+                "title": "Greedy Choice & Optimal Substructure"
+              },
+              {
+                "id": "greedy-problems",
+                "title": "Interval Scheduling, Huffman"
+              },
+              {
+                "id": "greedy-vs-dp",
+                "title": "When Greedy Works vs DP"
+              }
+            ]
+          },
+          {
+            "id": "recursion-backtracking",
+            "title": "Recursion & Backtracking",
+            "subCheckpoints": [
+              {
+                "id": "recursion-basics",
+                "title": "Base Cases & Recursive Calls"
+              },
+              {
+                "id": "backtracking-patterns",
+                "title": "Backtracking for Permutations & Subsets"
+              },
+              {
+                "id": "divide-conquer",
+                "title": "Divide & Conquer Strategies"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "System Design",
+    "group": "CS Fundamentals & System Design",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "requirements-gathering",
+            "title": "Requirements Gathering",
+            "subCheckpoints": [
+              {
+                "id": "functional-requirements",
+                "title": "Functional vs Non-Functional Requirements"
+              },
+              {
+                "id": "clarifying-questions",
+                "title": "Asking Clarifying Questions"
+              },
+              {
+                "id": "scope-definition",
+                "title": "Scope Definition & Constraints"
+              }
+            ]
+          },
+          {
+            "id": "estimation",
+            "title": "Estimation",
+            "subCheckpoints": [
+              {
+                "id": "traffic-estimation",
+                "title": "Traffic & Scale Estimation"
+              },
+              {
+                "id": "storage-estimation",
+                "title": "Storage & Bandwidth Estimation"
+              },
+              {
+                "id": "back-envelope",
+                "title": "Back-of-Envelope Calculations"
+              }
+            ]
+          },
+          {
+            "id": "api-design",
+            "title": "API Design",
+            "subCheckpoints": [
+              {
+                "id": "rest-principles",
+                "title": "REST Principles & Resource Design"
+              },
+              {
+                "id": "http-methods",
+                "title": "HTTP Methods & Status Codes"
+              },
+              {
+                "id": "api-versioning",
+                "title": "API Versioning & Pagination"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "databases-sql-nosql",
+            "title": "Databases (SQL vs NoSQL)",
+            "subCheckpoints": [
+              {
+                "id": "sql-vs-nosql",
+                "title": "SQL vs NoSQL Tradeoffs"
+              },
+              {
+                "id": "sharding-replication",
+                "title": "Sharding & Replication"
+              },
+              {
+                "id": "database-selection",
+                "title": "Choosing the Right Database"
+              }
+            ]
+          },
+          {
+            "id": "caching",
+            "title": "Caching",
+            "subCheckpoints": [
+              {
+                "id": "cache-strategies",
+                "title": "Cache-Aside, Write-Through, Write-Behind"
+              },
+              {
+                "id": "cache-invalidation",
+                "title": "Cache Invalidation & TTL"
+              },
+              {
+                "id": "distributed-cache",
+                "title": "Redis & Distributed Caching"
+              }
+            ]
+          },
+          {
+            "id": "load-balancing-cdn",
+            "title": "Load Balancing & CDN",
+            "subCheckpoints": [
+              {
+                "id": "load-balancers",
+                "title": "Load Balancer Types & Algorithms"
+              },
+              {
+                "id": "cdn-basics",
+                "title": "CDN for Static Assets"
+              },
+              {
+                "id": "latency-optimization",
+                "title": "Latency & Geographic Distribution"
+              }
+            ]
+          },
+          {
+            "id": "message-queues",
+            "title": "Message Queues",
+            "subCheckpoints": [
+              {
+                "id": "queue-concepts",
+                "title": "Pub/Sub vs Message Queues"
+              },
+              {
+                "id": "async-processing",
+                "title": "Async Processing & Decoupling"
+              },
+              {
+                "id": "message-brokers",
+                "title": "Kafka, RabbitMQ, SQS Basics"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "microservices",
+            "title": "Microservices",
+            "subCheckpoints": [
+              {
+                "id": "service-decomposition",
+                "title": "Service Decomposition & Boundaries"
+              },
+              {
+                "id": "service-communication",
+                "title": "Sync vs Async Service Communication"
+              },
+              {
+                "id": "microservice-challenges",
+                "title": "Distributed Transactions & Saga"
+              }
+            ]
+          },
+          {
+            "id": "distributed-systems",
+            "title": "Distributed Systems",
+            "subCheckpoints": [
+              {
+                "id": "consensus-algorithms",
+                "title": "Consensus (Paxos, Raft)"
+              },
+              {
+                "id": "distributed-storage",
+                "title": "Distributed Storage & Consistency"
+              },
+              {
+                "id": "fault-tolerance",
+                "title": "Fault Tolerance & Replication"
+              }
+            ]
+          },
+          {
+            "id": "cap-theorem",
+            "title": "CAP Theorem",
+            "subCheckpoints": [
+              {
+                "id": "cap-tradeoffs",
+                "title": "Consistency, Availability, Partition Tolerance"
+              },
+              {
+                "id": "pacelc",
+                "title": "PACELC & Real-World Tradeoffs"
+              },
+              {
+                "id": "choosing-cap",
+                "title": "Choosing CAP for Your System"
+              }
+            ]
+          },
+          {
+            "id": "real-world-designs",
+            "title": "Real-World System Designs",
+            "subCheckpoints": [
+              {
+                "id": "url-shortener",
+                "title": "URL Shortener (TinyURL)"
+              },
+              {
+                "id": "chat-system",
+                "title": "Chat System (Slack/Messenger)"
+              },
+              {
+                "id": "design-interviews",
+                "title": "System Design Interview Patterns"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Design Architecture",
+    "group": "CS Fundamentals & System Design",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "design-principles",
+            "title": "Design Principles (SOLID, DRY, KISS)",
+            "subCheckpoints": [
+              {
+                "id": "solid-principles",
+                "title": "SOLID: Single Responsibility to DIP"
+              },
+              {
+                "id": "dry-kiss",
+                "title": "DRY, KISS & YAGNI"
+              },
+              {
+                "id": "applying-principles",
+                "title": "Applying Principles in Code"
+              }
+            ]
+          },
+          {
+            "id": "creational-patterns",
+            "title": "Creational Design Patterns",
+            "subCheckpoints": [
+              {
+                "id": "singleton-factory",
+                "title": "Singleton & Factory Method"
+              },
+              {
+                "id": "abstract-factory-builder",
+                "title": "Abstract Factory & Builder"
+              },
+              {
+                "id": "prototype",
+                "title": "Prototype Pattern"
+              }
+            ]
+          },
+          {
+            "id": "architectural-patterns-basic",
+            "title": "Architectural Patterns (MVC, MVVM)",
+            "subCheckpoints": [
+              {
+                "id": "mvc-pattern",
+                "title": "Model-View-Controller"
+              },
+              {
+                "id": "mvvm-pattern",
+                "title": "Model-View-ViewModel"
+              },
+              {
+                "id": "layered-architecture",
+                "title": "Layered Architecture Basics"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "structural-patterns",
+            "title": "Structural Design Patterns",
+            "subCheckpoints": [
+              {
+                "id": "adapter-decorator",
+                "title": "Adapter & Decorator"
+              },
+              {
+                "id": "facade-proxy",
+                "title": "Facade & Proxy"
+              },
+              {
+                "id": "composite-bridge",
+                "title": "Composite & Bridge"
+              }
+            ]
+          },
+          {
+            "id": "behavioral-patterns",
+            "title": "Behavioral Design Patterns",
+            "subCheckpoints": [
+              {
+                "id": "observer-strategy",
+                "title": "Observer & Strategy"
+              },
+              {
+                "id": "command-template",
+                "title": "Command & Template Method"
+              },
+              {
+                "id": "iterator-state",
+                "title": "Iterator & State"
+              }
+            ]
+          },
+          {
+            "id": "clean-architecture",
+            "title": "Clean Architecture",
+            "subCheckpoints": [
+              {
+                "id": "dependency-inversion",
+                "title": "Dependency Inversion & Layers"
+              },
+              {
+                "id": "use-cases",
+                "title": "Use Cases & Entities"
+              },
+              {
+                "id": "ports-adapters",
+                "title": "Ports & Adapters (Hexagonal)"
+              }
+            ]
+          },
+          {
+            "id": "domain-driven-design",
+            "title": "Domain-Driven Design",
+            "subCheckpoints": [
+              {
+                "id": "ubiquitous-language",
+                "title": "Ubiquitous Language & Bounded Contexts"
+              },
+              {
+                "id": "entities-value-objects",
+                "title": "Entities, Value Objects & Aggregates"
+              },
+              {
+                "id": "ddd-tactical",
+                "title": "Domain Events & Repositories"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "event-driven-architecture",
+            "title": "Event-Driven Architecture",
+            "subCheckpoints": [
+              {
+                "id": "event-sourcing",
+                "title": "Event Sourcing Basics"
+              },
+              {
+                "id": "cqrs",
+                "title": "CQRS Pattern"
+              },
+              {
+                "id": "event-choreography",
+                "title": "Event Choreography vs Orchestration"
+              }
+            ]
+          },
+          {
+            "id": "api-gateway-patterns",
+            "title": "API Gateway Patterns",
+            "subCheckpoints": [
+              {
+                "id": "gateway-responsibilities",
+                "title": "Routing, Auth, Rate Limiting"
+              },
+              {
+                "id": "bff-pattern",
+                "title": "Backend-for-Frontend (BFF)"
+              },
+              {
+                "id": "gateway-implementation",
+                "title": "Kong, AWS API Gateway Concepts"
+              }
+            ]
+          },
+          {
+            "id": "data-architecture",
+            "title": "Data Architecture",
+            "subCheckpoints": [
+              {
+                "id": "data-modeling",
+                "title": "Data Modeling for Scale"
+              },
+              {
+                "id": "data-pipelines",
+                "title": "ETL, ELT & Data Pipelines"
+              },
+              {
+                "id": "data-governance",
+                "title": "Data Governance & Lineage"
+              }
+            ]
+          },
+          {
+            "id": "documentation",
+            "title": "Documentation",
+            "subCheckpoints": [
+              {
+                "id": "architecture-docs",
+                "title": "Architecture Decision Records (ADR)"
+              },
+              {
+                "id": "c4-model",
+                "title": "C4 Model & Diagrams"
+              },
+              {
+                "id": "api-documentation",
+                "title": "API Documentation (OpenAPI, AsyncAPI)"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

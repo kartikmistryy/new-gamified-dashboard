@@ -1,0 +1,1172 @@
+[
+  {
+    "roadmap": "Frontend Beginner",
+    "group": "Web Development",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "internet",
+            "title": "Internet",
+            "subCheckpoints": [
+              {
+                "id": "how-internet-works",
+                "title": "How does the Internet work?"
+              },
+              {
+                "id": "what-is-http",
+                "title": "What is HTTP / HTTPS?"
+              },
+              {
+                "id": "what-is-domain",
+                "title": "What is a Domain Name?"
+              }
+            ]
+          },
+          {
+            "id": "html",
+            "title": "HTML",
+            "subCheckpoints": [
+              {
+                "id": "html-basics",
+                "title": "HTML Basics & Document Structure"
+              },
+              {
+                "id": "semantic-html",
+                "title": "Semantic HTML Elements"
+              },
+              {
+                "id": "forms",
+                "title": "Forms and Input Types"
+              }
+            ]
+          },
+          {
+            "id": "css",
+            "title": "CSS",
+            "subCheckpoints": [
+              {
+                "id": "selectors-box-model",
+                "title": "Selectors, Box Model & Specificity"
+              },
+              {
+                "id": "flexbox-grid",
+                "title": "Flexbox & Grid Layout"
+              },
+              {
+                "id": "responsive-design",
+                "title": "Responsive Design & Media Queries"
+              }
+            ]
+          },
+          {
+            "id": "javascript-basics",
+            "title": "JavaScript Basics",
+            "subCheckpoints": [
+              {
+                "id": "variables-control-flow",
+                "title": "Variables, Data Types & Control Flow"
+              },
+              {
+                "id": "functions-scope",
+                "title": "Functions & Scope"
+              },
+              {
+                "id": "dom-events",
+                "title": "DOM Manipulation & Events"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "version-control",
+            "title": "Version Control",
+            "subCheckpoints": [
+              {
+                "id": "git-basics",
+                "title": "Git Basics (init, add, commit, push, pull)"
+              },
+              {
+                "id": "branching",
+                "title": "Branching & Merging"
+              },
+              {
+                "id": "github",
+                "title": "GitHub & Pull Requests"
+              }
+            ]
+          },
+          {
+            "id": "package-managers",
+            "title": "Package Managers",
+            "subCheckpoints": [
+              {
+                "id": "npm-yarn",
+                "title": "npm & yarn Basics"
+              },
+              {
+                "id": "package-json",
+                "title": "Understanding package.json"
+              }
+            ]
+          },
+          {
+            "id": "css-frameworks",
+            "title": "CSS Frameworks",
+            "subCheckpoints": [
+              {
+                "id": "tailwind",
+                "title": "Tailwind CSS"
+              },
+              {
+                "id": "sass",
+                "title": "Sass / SCSS Basics"
+              }
+            ]
+          },
+          {
+            "id": "javascript-intermediate",
+            "title": "JavaScript Intermediate",
+            "subCheckpoints": [
+              {
+                "id": "es6-features",
+                "title": "ES6+ Features (Arrow Functions, Destructuring)"
+              },
+              {
+                "id": "async-await",
+                "title": "Promises & Async/Await"
+              },
+              {
+                "id": "fetch-api",
+                "title": "Fetch API & HTTP Requests"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "frontend-framework",
+            "title": "Learn a Framework",
+            "subCheckpoints": [
+              {
+                "id": "react",
+                "title": "React Basics"
+              },
+              {
+                "id": "vue",
+                "title": "Vue.js Basics"
+              },
+              {
+                "id": "angular",
+                "title": "Angular Basics"
+              }
+            ]
+          },
+          {
+            "id": "build-tools",
+            "title": "Build Tools",
+            "subCheckpoints": [
+              {
+                "id": "vite",
+                "title": "Vite"
+              },
+              {
+                "id": "module-bundling",
+                "title": "Module Bundling Concepts"
+              }
+            ]
+          },
+          {
+            "id": "web-performance",
+            "title": "Web Performance Basics",
+            "subCheckpoints": [
+              {
+                "id": "image-optimization",
+                "title": "Image Optimization & Lazy Loading"
+              },
+              {
+                "id": "lighthouse",
+                "title": "Lighthouse Audits & Core Web Vitals"
+              }
+            ]
+          },
+          {
+            "id": "ai-in-dev",
+            "title": "AI in Development",
+            "subCheckpoints": [
+              {
+                "id": "ai-assisted-coding",
+                "title": "AI Assisted Coding (Cursor, Copilot)"
+              },
+              {
+                "id": "prompt-engineering",
+                "title": "Prompt Engineering Basics"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Frontend",
+    "group": "Web Development",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "internet",
+            "title": "Internet",
+            "subCheckpoints": [
+              {
+                "id": "how-internet-works",
+                "title": "How does the Internet work?"
+              },
+              {
+                "id": "http-https",
+                "title": "What is HTTP / HTTPS?"
+              },
+              {
+                "id": "dns-hosting",
+                "title": "DNS, Domain Names & Hosting"
+              }
+            ]
+          },
+          {
+            "id": "html",
+            "title": "HTML",
+            "subCheckpoints": [
+              {
+                "id": "semantic-html",
+                "title": "Semantic HTML & Accessibility"
+              },
+              {
+                "id": "forms-validation",
+                "title": "Forms and Validation"
+              },
+              {
+                "id": "seo-basics",
+                "title": "SEO Basics"
+              }
+            ]
+          },
+          {
+            "id": "css",
+            "title": "CSS",
+            "subCheckpoints": [
+              {
+                "id": "layout",
+                "title": "Flexbox, Grid & Responsive Design"
+              },
+              {
+                "id": "animations",
+                "title": "Animations & Transitions"
+              },
+              {
+                "id": "css-variables",
+                "title": "CSS Variables & Custom Properties"
+              }
+            ]
+          },
+          {
+            "id": "javascript",
+            "title": "JavaScript",
+            "subCheckpoints": [
+              {
+                "id": "core-js",
+                "title": "Core Syntax, DOM & Events"
+              },
+              {
+                "id": "es6-plus",
+                "title": "ES6+ Features & Modules"
+              },
+              {
+                "id": "async",
+                "title": "Promises, Async/Await & Fetch API"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "typescript",
+            "title": "TypeScript",
+            "subCheckpoints": [
+              {
+                "id": "types-interfaces",
+                "title": "Type Annotations & Interfaces"
+              },
+              {
+                "id": "generics",
+                "title": "Generics & Utility Types"
+              },
+              {
+                "id": "ts-config",
+                "title": "tsconfig & Framework Integration"
+              }
+            ]
+          },
+          {
+            "id": "frontend-framework",
+            "title": "Frontend Frameworks",
+            "subCheckpoints": [
+              {
+                "id": "react",
+                "title": "React (JSX, Hooks, State)"
+              },
+              {
+                "id": "vue",
+                "title": "Vue.js (Composition API, Pinia)"
+              },
+              {
+                "id": "angular",
+                "title": "Angular (Components, Services, RxJS)"
+              }
+            ]
+          },
+          {
+            "id": "css-architecture",
+            "title": "CSS Architecture",
+            "subCheckpoints": [
+              {
+                "id": "tailwind",
+                "title": "Tailwind CSS"
+              },
+              {
+                "id": "css-modules",
+                "title": "CSS Modules / CSS-in-JS"
+              },
+              {
+                "id": "sass",
+                "title": "Sass / SCSS"
+              }
+            ]
+          },
+          {
+            "id": "build-tools",
+            "title": "Build Tools",
+            "subCheckpoints": [
+              {
+                "id": "vite",
+                "title": "Vite"
+              },
+              {
+                "id": "webpack",
+                "title": "Webpack & Module Bundling"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "unit-testing",
+                "title": "Unit Testing (Jest, Vitest)"
+              },
+              {
+                "id": "e2e",
+                "title": "E2E Testing (Playwright, Cypress)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "meta-frameworks",
+            "title": "Meta Frameworks",
+            "subCheckpoints": [
+              {
+                "id": "nextjs",
+                "title": "Next.js (SSR, SSG, ISR)"
+              },
+              {
+                "id": "nuxt-astro",
+                "title": "Nuxt.js / Astro / Remix"
+              }
+            ]
+          },
+          {
+            "id": "state-management",
+            "title": "State Management",
+            "subCheckpoints": [
+              {
+                "id": "client-state",
+                "title": "Redux / Zustand / Pinia"
+              },
+              {
+                "id": "server-state",
+                "title": "TanStack Query / SWR"
+              }
+            ]
+          },
+          {
+            "id": "web-performance",
+            "title": "Web Performance",
+            "subCheckpoints": [
+              {
+                "id": "core-web-vitals",
+                "title": "Core Web Vitals & Lighthouse"
+              },
+              {
+                "id": "code-splitting",
+                "title": "Code Splitting & Tree Shaking"
+              },
+              {
+                "id": "service-workers",
+                "title": "Service Workers & Caching"
+              }
+            ]
+          },
+          {
+            "id": "web-security",
+            "title": "Web Security",
+            "subCheckpoints": [
+              {
+                "id": "cors-csp",
+                "title": "CORS & Content Security Policy"
+              },
+              {
+                "id": "xss-csrf",
+                "title": "XSS & CSRF Prevention"
+              }
+            ]
+          },
+          {
+            "id": "ai-in-dev",
+            "title": "AI in Development",
+            "subCheckpoints": [
+              {
+                "id": "ai-coding",
+                "title": "AI Assisted Coding & Prompting"
+              },
+              {
+                "id": "ai-agents",
+                "title": "AI Agents, MCP & Implementing AI"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Backend Beginner",
+    "group": "Web Development",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "internet",
+            "title": "Internet",
+            "subCheckpoints": [
+              {
+                "id": "how-internet-works",
+                "title": "How does the Internet work?"
+              },
+              {
+                "id": "http-https",
+                "title": "What is HTTP / HTTPS?"
+              },
+              {
+                "id": "how-apis-work",
+                "title": "How do APIs work?"
+              }
+            ]
+          },
+          {
+            "id": "os-knowledge",
+            "title": "OS & General Knowledge",
+            "subCheckpoints": [
+              {
+                "id": "terminal",
+                "title": "Terminal / Command Line Basics"
+              },
+              {
+                "id": "os-basics",
+                "title": "How OSes Work (Processes, Memory)"
+              }
+            ]
+          },
+          {
+            "id": "pick-a-language",
+            "title": "Pick a Language",
+            "subCheckpoints": [
+              {
+                "id": "nodejs",
+                "title": "JavaScript (Node.js)"
+              },
+              {
+                "id": "python",
+                "title": "Python"
+              },
+              {
+                "id": "alternatives",
+                "title": "Go / Java / C#"
+              }
+            ]
+          },
+          {
+            "id": "version-control",
+            "title": "Version Control",
+            "subCheckpoints": [
+              {
+                "id": "git-basics",
+                "title": "Git Basics"
+              },
+              {
+                "id": "github",
+                "title": "GitHub & Pull Requests"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "relational-db",
+            "title": "Relational Databases",
+            "subCheckpoints": [
+              {
+                "id": "sql-basics",
+                "title": "SQL Basics (SELECT, INSERT, UPDATE, DELETE)"
+              },
+              {
+                "id": "postgres-mysql",
+                "title": "PostgreSQL or MySQL"
+              },
+              {
+                "id": "table-design",
+                "title": "Table Design & Relationships"
+              }
+            ]
+          },
+          {
+            "id": "rest-api",
+            "title": "REST APIs",
+            "subCheckpoints": [
+              {
+                "id": "http-methods",
+                "title": "HTTP Methods & Status Codes"
+              },
+              {
+                "id": "crud",
+                "title": "Building CRUD Endpoints"
+              },
+              {
+                "id": "api-testing",
+                "title": "API Testing (Postman / Insomnia)"
+              }
+            ]
+          },
+          {
+            "id": "auth-basics",
+            "title": "Authentication Basics",
+            "subCheckpoints": [
+              {
+                "id": "session-cookie",
+                "title": "Cookie & Session-based Auth"
+              },
+              {
+                "id": "jwt",
+                "title": "JWT (JSON Web Tokens)"
+              },
+              {
+                "id": "password-hashing",
+                "title": "Password Hashing (bcrypt)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "nosql",
+            "title": "NoSQL Databases",
+            "subCheckpoints": [
+              {
+                "id": "mongodb",
+                "title": "MongoDB Basics"
+              },
+              {
+                "id": "sql-vs-nosql",
+                "title": "When to use SQL vs NoSQL"
+              }
+            ]
+          },
+          {
+            "id": "caching",
+            "title": "Caching",
+            "subCheckpoints": [
+              {
+                "id": "redis",
+                "title": "Redis Basics"
+              },
+              {
+                "id": "cache-strategies",
+                "title": "Cache Invalidation Strategies"
+              }
+            ]
+          },
+          {
+            "id": "deployment",
+            "title": "Basic Deployment",
+            "subCheckpoints": [
+              {
+                "id": "docker",
+                "title": "Docker Basics"
+              },
+              {
+                "id": "cloud",
+                "title": "Cloud Platforms Overview (AWS, GCP)"
+              },
+              {
+                "id": "cicd",
+                "title": "CI/CD Concepts"
+              }
+            ]
+          },
+          {
+            "id": "security",
+            "title": "Web Security Basics",
+            "subCheckpoints": [
+              {
+                "id": "sql-injection",
+                "title": "SQL Injection Prevention"
+              },
+              {
+                "id": "xss-csrf",
+                "title": "XSS & CSRF Protection"
+              },
+              {
+                "id": "input-validation",
+                "title": "Input Validation & Sanitization"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Backend",
+    "group": "Web Development",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "internet",
+            "title": "Internet",
+            "subCheckpoints": [
+              {
+                "id": "how-internet-works",
+                "title": "How does the Internet work?"
+              },
+              {
+                "id": "http-https",
+                "title": "HTTP / HTTPS & APIs"
+              },
+              {
+                "id": "dns-hosting",
+                "title": "DNS, Domain Names & Hosting"
+              }
+            ]
+          },
+          {
+            "id": "os-knowledge",
+            "title": "OS & General Knowledge",
+            "subCheckpoints": [
+              {
+                "id": "terminal",
+                "title": "Terminal & Shell Commands"
+              },
+              {
+                "id": "processes-threads",
+                "title": "Processes, Threads & Concurrency"
+              },
+              {
+                "id": "memory-io",
+                "title": "Memory Management & I/O"
+              }
+            ]
+          },
+          {
+            "id": "language",
+            "title": "Pick a Language",
+            "subCheckpoints": [
+              {
+                "id": "nodejs",
+                "title": "JavaScript (Node.js)"
+              },
+              {
+                "id": "python-java",
+                "title": "Python / Java / Go"
+              }
+            ]
+          },
+          {
+            "id": "version-control",
+            "title": "Version Control",
+            "subCheckpoints": [
+              {
+                "id": "git",
+                "title": "Git Fundamentals & Branching"
+              },
+              {
+                "id": "github",
+                "title": "GitHub & Code Review"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "relational-db",
+            "title": "Relational Databases",
+            "subCheckpoints": [
+              {
+                "id": "sql-advanced",
+                "title": "SQL Advanced (Joins, CTEs, Window Functions)"
+              },
+              {
+                "id": "indexes-optimization",
+                "title": "Indexes & Query Optimization"
+              },
+              {
+                "id": "orm",
+                "title": "ORMs (Prisma, SQLAlchemy, Hibernate)"
+              }
+            ]
+          },
+          {
+            "id": "apis",
+            "title": "API Design",
+            "subCheckpoints": [
+              {
+                "id": "rest",
+                "title": "REST API Best Practices"
+              },
+              {
+                "id": "graphql",
+                "title": "GraphQL Fundamentals"
+              },
+              {
+                "id": "documentation",
+                "title": "OpenAPI / Swagger Documentation"
+              }
+            ]
+          },
+          {
+            "id": "auth",
+            "title": "Authentication & Authorization",
+            "subCheckpoints": [
+              {
+                "id": "jwt-oauth",
+                "title": "JWT & OAuth 2.0"
+              },
+              {
+                "id": "rbac",
+                "title": "Role-Based Access Control (RBAC)"
+              },
+              {
+                "id": "sso",
+                "title": "SSO & OpenID Connect"
+              }
+            ]
+          },
+          {
+            "id": "caching",
+            "title": "Caching",
+            "subCheckpoints": [
+              {
+                "id": "redis",
+                "title": "Redis & Server-Side Caching"
+              },
+              {
+                "id": "http-caching",
+                "title": "HTTP Caching & CDN"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "unit-integration",
+                "title": "Unit & Integration Testing"
+              },
+              {
+                "id": "tdd",
+                "title": "Test-Driven Development"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "architecture",
+            "title": "Software Architecture",
+            "subCheckpoints": [
+              {
+                "id": "microservices",
+                "title": "Monolith vs Microservices"
+              },
+              {
+                "id": "event-driven",
+                "title": "Event-Driven & Serverless"
+              },
+              {
+                "id": "ddd",
+                "title": "Domain-Driven Design (DDD)"
+              }
+            ]
+          },
+          {
+            "id": "message-brokers",
+            "title": "Message Brokers",
+            "subCheckpoints": [
+              {
+                "id": "kafka-rabbitmq",
+                "title": "Kafka & RabbitMQ"
+              },
+              {
+                "id": "patterns",
+                "title": "Message Queue Patterns"
+              }
+            ]
+          },
+          {
+            "id": "containers",
+            "title": "Containerization & CI/CD",
+            "subCheckpoints": [
+              {
+                "id": "docker",
+                "title": "Docker & Docker Compose"
+              },
+              {
+                "id": "k8s",
+                "title": "Kubernetes Basics"
+              },
+              {
+                "id": "cicd",
+                "title": "CI/CD Pipelines"
+              }
+            ]
+          },
+          {
+            "id": "scaling",
+            "title": "Scaling & Observability",
+            "subCheckpoints": [
+              {
+                "id": "load-balancing",
+                "title": "Load Balancing & Sharding"
+              },
+              {
+                "id": "monitoring",
+                "title": "Logging, Monitoring & Tracing"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Full Stack",
+    "group": "Web Development",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "internet",
+            "title": "Internet",
+            "subCheckpoints": [
+              {
+                "id": "how-internet-works",
+                "title": "How the Internet, HTTP & DNS work"
+              },
+              {
+                "id": "browsers",
+                "title": "Browsers & How They Render Pages"
+              }
+            ]
+          },
+          {
+            "id": "html-css",
+            "title": "HTML & CSS",
+            "subCheckpoints": [
+              {
+                "id": "html-semantics",
+                "title": "Semantic HTML, Forms & Accessibility"
+              },
+              {
+                "id": "css-layout",
+                "title": "Flexbox, Grid & Responsive Design"
+              },
+              {
+                "id": "css-animations",
+                "title": "Variables, Animations & Transitions"
+              }
+            ]
+          },
+          {
+            "id": "javascript",
+            "title": "JavaScript",
+            "subCheckpoints": [
+              {
+                "id": "core-js",
+                "title": "Core Syntax, DOM & Events"
+              },
+              {
+                "id": "es6-async",
+                "title": "ES6+, Async/Await & Fetch API"
+              },
+              {
+                "id": "modules",
+                "title": "Modules (import/export)"
+              }
+            ]
+          },
+          {
+            "id": "version-control",
+            "title": "Version Control",
+            "subCheckpoints": [
+              {
+                "id": "git",
+                "title": "Git Fundamentals & Branching"
+              },
+              {
+                "id": "github",
+                "title": "GitHub & Pull Requests"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "frontend-framework",
+            "title": "Frontend Framework",
+            "subCheckpoints": [
+              {
+                "id": "react",
+                "title": "React (JSX, Hooks, State)"
+              },
+              {
+                "id": "tailwind-css-arch",
+                "title": "Tailwind CSS & CSS Architecture"
+              },
+              {
+                "id": "typescript",
+                "title": "TypeScript Integration"
+              }
+            ]
+          },
+          {
+            "id": "backend",
+            "title": "Backend Framework",
+            "subCheckpoints": [
+              {
+                "id": "nodejs-express",
+                "title": "Node.js + Express.js"
+              },
+              {
+                "id": "alternatives",
+                "title": "Python + Django / Flask"
+              }
+            ]
+          },
+          {
+            "id": "databases",
+            "title": "Databases",
+            "subCheckpoints": [
+              {
+                "id": "sql",
+                "title": "PostgreSQL / MySQL (SQL, Joins, Indexes)"
+              },
+              {
+                "id": "nosql",
+                "title": "MongoDB (Documents, Queries)"
+              },
+              {
+                "id": "orm",
+                "title": "ORMs (Prisma, Sequelize)"
+              }
+            ]
+          },
+          {
+            "id": "auth",
+            "title": "Authentication & APIs",
+            "subCheckpoints": [
+              {
+                "id": "rest-api",
+                "title": "REST API Design & CRUD"
+              },
+              {
+                "id": "jwt-oauth",
+                "title": "JWT & OAuth 2.0 Authentication"
+              },
+              {
+                "id": "api-docs",
+                "title": "Swagger / OpenAPI Documentation"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "frontend-tests",
+                "title": "Frontend Unit & E2E Testing"
+              },
+              {
+                "id": "backend-tests",
+                "title": "Backend Integration & API Testing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "meta-frameworks",
+            "title": "Meta Frameworks",
+            "subCheckpoints": [
+              {
+                "id": "nextjs",
+                "title": "Next.js (SSR, SSG, API Routes)"
+              },
+              {
+                "id": "t3-stack",
+                "title": "T3 Stack (tRPC + Prisma + Tailwind)"
+              }
+            ]
+          },
+          {
+            "id": "devops",
+            "title": "DevOps & Deployment",
+            "subCheckpoints": [
+              {
+                "id": "docker",
+                "title": "Docker & Docker Compose"
+              },
+              {
+                "id": "cicd",
+                "title": "CI/CD & Cloud Deployment"
+              },
+              {
+                "id": "env-secrets",
+                "title": "Environment Variables & Secrets"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "title": "Performance & Security",
+            "subCheckpoints": [
+              {
+                "id": "frontend-perf",
+                "title": "Core Web Vitals & Code Splitting"
+              },
+              {
+                "id": "backend-perf",
+                "title": "Caching (Redis) & Query Optimization"
+              },
+              {
+                "id": "security",
+                "title": "OWASP Top 10 & Security Best Practices"
+              }
+            ]
+          },
+          {
+            "id": "realtime",
+            "title": "Real-Time & Architecture",
+            "subCheckpoints": [
+              {
+                "id": "websockets",
+                "title": "WebSockets & Socket.io"
+              },
+              {
+                "id": "architecture",
+                "title": "Monolith vs Microservices vs Serverless"
+              }
+            ]
+          },
+          {
+            "id": "ai-in-dev",
+            "title": "AI in Development",
+            "subCheckpoints": [
+              {
+                "id": "ai-coding",
+                "title": "AI Assisted Coding & Prompting"
+              },
+              {
+                "id": "ai-features",
+                "title": "Implementing AI in Full Stack Apps"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

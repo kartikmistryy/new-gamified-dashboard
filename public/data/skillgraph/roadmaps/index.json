@@ -1,0 +1,2212 @@
+{
+  "generatedAt": "2026-02-13T08:00:00Z",
+  "totalRoadmaps": 76,
+  "roleCount": 31,
+  "skillCount": 45,
+  "roadmaps": [
+    {
+      "key": "role:AI Engineer",
+      "type": "role",
+      "name": "AI Engineer",
+      "group": "AI & Machine Learning",
+      "version": "1.0",
+      "file": "role/ai-machine-learning.json",
+      "totalSubCheckpoints": 35,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 11
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 15
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:AI and Data Scientist",
+      "type": "role",
+      "name": "AI and Data Scientist",
+      "group": "AI & Machine Learning",
+      "version": "1.0",
+      "file": "role/ai-machine-learning.json",
+      "totalSubCheckpoints": 34,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 13
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:Machine Learning",
+      "type": "role",
+      "name": "Machine Learning",
+      "group": "AI & Machine Learning",
+      "version": "1.0",
+      "file": "role/ai-machine-learning.json",
+      "totalSubCheckpoints": 30,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 2,
+          "subCheckpointCount": 6
+        }
+      ]
+    },
+    {
+      "key": "role:MLOps",
+      "type": "role",
+      "name": "MLOps",
+      "group": "AI & Machine Learning",
+      "version": "1.0",
+      "file": "role/ai-machine-learning.json",
+      "totalSubCheckpoints": 30,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:AI Agents",
+      "type": "role",
+      "name": "AI Agents",
+      "group": "AI & Machine Learning",
+      "version": "1.0",
+      "file": "role/ai-machine-learning.json",
+      "totalSubCheckpoints": 31,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 13
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:AI Red Teaming",
+      "type": "role",
+      "name": "AI Red Teaming",
+      "group": "AI & Machine Learning",
+      "version": "1.0",
+      "file": "role/ai-machine-learning.json",
+      "totalSubCheckpoints": 30,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:Data Analyst",
+      "type": "role",
+      "name": "Data Analyst",
+      "group": "Data & Analytics",
+      "version": "1.0",
+      "file": "role/data-analytics.json",
+      "totalSubCheckpoints": 32,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 14
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 2,
+          "subCheckpointCount": 6
+        }
+      ]
+    },
+    {
+      "key": "role:Data Engineer",
+      "type": "role",
+      "name": "Data Engineer",
+      "group": "Data & Analytics",
+      "version": "1.0",
+      "file": "role/data-analytics.json",
+      "totalSubCheckpoints": 31,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 13
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:BI Analyst",
+      "type": "role",
+      "name": "BI Analyst",
+      "group": "Data & Analytics",
+      "version": "1.0",
+      "file": "role/data-analytics.json",
+      "totalSubCheckpoints": 30,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:UX Design",
+      "type": "role",
+      "name": "UX Design",
+      "group": "Design & Architecture",
+      "version": "1.0",
+      "file": "role/design-architecture.json",
+      "totalSubCheckpoints": 34,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 13
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 15
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 2,
+          "subCheckpointCount": 6
+        }
+      ]
+    },
+    {
+      "key": "role:API Design",
+      "type": "role",
+      "name": "API Design",
+      "group": "Design & Architecture",
+      "version": "1.0",
+      "file": "role/design-architecture.json",
+      "totalSubCheckpoints": 36,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 15
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:Software Architect",
+      "type": "role",
+      "name": "Software Architect",
+      "group": "Design & Architecture",
+      "version": "1.0",
+      "file": "role/design-architecture.json",
+      "totalSubCheckpoints": 33,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "role:DevOps Beginner",
+      "type": "role",
+      "name": "DevOps Beginner",
+      "group": "DevOps & Security",
+      "version": "1.0",
+      "file": "role/devops-security.json",
+      "totalSubCheckpoints": 31,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 13
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:DevOps",
+      "type": "role",
+      "name": "DevOps",
+      "group": "DevOps & Security",
+      "version": "1.0",
+      "file": "role/devops-security.json",
+      "totalSubCheckpoints": 31,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:DevSecOps",
+      "type": "role",
+      "name": "DevSecOps",
+      "group": "DevOps & Security",
+      "version": "1.0",
+      "file": "role/devops-security.json",
+      "totalSubCheckpoints": 30,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "role:Cyber Security",
+      "type": "role",
+      "name": "Cyber Security",
+      "group": "DevOps & Security",
+      "version": "1.0",
+      "file": "role/devops-security.json",
+      "totalSubCheckpoints": 30,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "role:Game Developer",
+      "type": "role",
+      "name": "Game Developer",
+      "group": "Game Development",
+      "version": "1.0",
+      "file": "role/game-development.json",
+      "totalSubCheckpoints": 46,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 15
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 20
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 11
+        }
+      ]
+    },
+    {
+      "key": "role:Server Side Game Developer",
+      "type": "role",
+      "name": "Server Side Game Developer",
+      "group": "Game Development",
+      "version": "1.0",
+      "file": "role/game-development.json",
+      "totalSubCheckpoints": 45,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 14
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 16
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 15
+        }
+      ]
+    },
+    {
+      "key": "role:Product Manager",
+      "type": "role",
+      "name": "Product Manager",
+      "group": "Management & Leadership",
+      "version": "1.0",
+      "file": "role/management-leadership.json",
+      "totalSubCheckpoints": 45,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 14
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 18
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 13
+        }
+      ]
+    },
+    {
+      "key": "role:Engineering Manager",
+      "type": "role",
+      "name": "Engineering Manager",
+      "group": "Management & Leadership",
+      "version": "1.0",
+      "file": "role/management-leadership.json",
+      "totalSubCheckpoints": 44,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 14
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 17
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 13
+        }
+      ]
+    },
+    {
+      "key": "role:Android",
+      "type": "role",
+      "name": "Android",
+      "group": "Mobile Development",
+      "version": "1.0",
+      "file": "role/mobile-development.json",
+      "totalSubCheckpoints": 39,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 15
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "role:iOS",
+      "type": "role",
+      "name": "iOS",
+      "group": "Mobile Development",
+      "version": "1.0",
+      "file": "role/mobile-development.json",
+      "totalSubCheckpoints": 36,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "role:QA",
+      "type": "role",
+      "name": "QA",
+      "group": "Specialized Support Roles",
+      "version": "1.0",
+      "file": "role/specialized-support.json",
+      "totalSubCheckpoints": 35,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 15
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 8
+        }
+      ]
+    },
+    {
+      "key": "role:Technical Writer",
+      "type": "role",
+      "name": "Technical Writer",
+      "group": "Specialized Support Roles",
+      "version": "1.0",
+      "file": "role/specialized-support.json",
+      "totalSubCheckpoints": 36,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 15
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:Developer Relations",
+      "type": "role",
+      "name": "Developer Relations",
+      "group": "Specialized Support Roles",
+      "version": "1.0",
+      "file": "role/specialized-support.json",
+      "totalSubCheckpoints": 33,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:Blockchain",
+      "type": "role",
+      "name": "Blockchain",
+      "group": "Specialized Support Roles",
+      "version": "1.0",
+      "file": "role/specialized-support.json",
+      "totalSubCheckpoints": 36,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 15
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:Frontend Beginner",
+      "type": "role",
+      "name": "Frontend Beginner",
+      "group": "Web Development",
+      "version": "1.0",
+      "file": "role/web-development.json",
+      "totalSubCheckpoints": 31,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "role:Frontend",
+      "type": "role",
+      "name": "Frontend",
+      "group": "Web Development",
+      "version": "1.0",
+      "file": "role/web-development.json",
+      "totalSubCheckpoints": 36,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 13
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 5,
+          "subCheckpointCount": 11
+        }
+      ]
+    },
+    {
+      "key": "role:Backend Beginner",
+      "type": "role",
+      "name": "Backend Beginner",
+      "group": "Web Development",
+      "version": "1.0",
+      "file": "role/web-development.json",
+      "totalSubCheckpoints": 29,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        }
+      ]
+    },
+    {
+      "key": "role:Backend",
+      "type": "role",
+      "name": "Backend",
+      "group": "Web Development",
+      "version": "1.0",
+      "file": "role/web-development.json",
+      "totalSubCheckpoints": 33,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 13
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        }
+      ]
+    },
+    {
+      "key": "role:Full Stack",
+      "type": "role",
+      "name": "Full Stack",
+      "group": "Web Development",
+      "version": "1.0",
+      "file": "role/web-development.json",
+      "totalSubCheckpoints": 35,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 13
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 5,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "skill:Node.js",
+      "type": "skill",
+      "name": "Node.js",
+      "group": "Backend Frameworks & Platforms",
+      "version": "1.0",
+      "file": "skill/backend-frameworks.json",
+      "totalSubCheckpoints": 32,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 11
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 5,
+          "subCheckpointCount": 11
+        }
+      ]
+    },
+    {
+      "key": "skill:Spring Boot",
+      "type": "skill",
+      "name": "Spring Boot",
+      "group": "Backend Frameworks & Platforms",
+      "version": "1.0",
+      "file": "skill/backend-frameworks.json",
+      "totalSubCheckpoints": 30,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 11
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        }
+      ]
+    },
+    {
+      "key": "skill:Django",
+      "type": "skill",
+      "name": "Django",
+      "group": "Backend Frameworks & Platforms",
+      "version": "1.0",
+      "file": "skill/backend-frameworks.json",
+      "totalSubCheckpoints": 28,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "skill:Laravel",
+      "type": "skill",
+      "name": "Laravel",
+      "group": "Backend Frameworks & Platforms",
+      "version": "1.0",
+      "file": "skill/backend-frameworks.json",
+      "totalSubCheckpoints": 28,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 5,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "skill:Ruby on Rails",
+      "type": "skill",
+      "name": "Ruby on Rails",
+      "group": "Backend Frameworks & Platforms",
+      "version": "1.0",
+      "file": "skill/backend-frameworks.json",
+      "totalSubCheckpoints": 27,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 8
+        }
+      ]
+    },
+    {
+      "key": "skill:ASP.NET Core",
+      "type": "skill",
+      "name": "ASP.NET Core",
+      "group": "Backend Frameworks & Platforms",
+      "version": "1.0",
+      "file": "skill/backend-frameworks.json",
+      "totalSubCheckpoints": 25,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 7
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 8
+        }
+      ]
+    },
+    {
+      "key": "skill:WordPress",
+      "type": "skill",
+      "name": "WordPress",
+      "group": "Backend Frameworks & Platforms",
+      "version": "1.0",
+      "file": "skill/backend-frameworks.json",
+      "totalSubCheckpoints": 28,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 11
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 8
+        }
+      ]
+    },
+    {
+      "key": "skill:Computer Science",
+      "type": "skill",
+      "name": "Computer Science",
+      "group": "CS Fundamentals & System Design",
+      "version": "1.0",
+      "file": "skill/cs-system-design.json",
+      "totalSubCheckpoints": 30,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "skill:Data Structures & Algorithms",
+      "type": "skill",
+      "name": "Data Structures & Algorithms",
+      "group": "CS Fundamentals & System Design",
+      "version": "1.0",
+      "file": "skill/cs-system-design.json",
+      "totalSubCheckpoints": 36,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "skill:System Design",
+      "type": "skill",
+      "name": "System Design",
+      "group": "CS Fundamentals & System Design",
+      "version": "1.0",
+      "file": "skill/cs-system-design.json",
+      "totalSubCheckpoints": 33,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "skill:Design Architecture",
+      "type": "skill",
+      "name": "Design Architecture",
+      "group": "CS Fundamentals & System Design",
+      "version": "1.0",
+      "file": "skill/cs-system-design.json",
+      "totalSubCheckpoints": 33,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "skill:SQL",
+      "type": "skill",
+      "name": "SQL",
+      "group": "Databases & Data Storage",
+      "version": "1.0",
+      "file": "skill/databases.json",
+      "totalSubCheckpoints": 28,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 8
+        }
+      ]
+    },
+    {
+      "key": "skill:PostgreSQL",
+      "type": "skill",
+      "name": "PostgreSQL",
+      "group": "Databases & Data Storage",
+      "version": "1.0",
+      "file": "skill/databases.json",
+      "totalSubCheckpoints": 26,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 8
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 8
+        }
+      ]
+    },
+    {
+      "key": "skill:MongoDB",
+      "type": "skill",
+      "name": "MongoDB",
+      "group": "Databases & Data Storage",
+      "version": "1.0",
+      "file": "skill/databases.json",
+      "totalSubCheckpoints": 24,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 8
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 6
+        }
+      ]
+    },
+    {
+      "key": "skill:Redis",
+      "type": "skill",
+      "name": "Redis",
+      "group": "Databases & Data Storage",
+      "version": "1.0",
+      "file": "skill/databases.json",
+      "totalSubCheckpoints": 25,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 8
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 8
+        }
+      ]
+    },
+    {
+      "key": "skill:Elasticsearch",
+      "type": "skill",
+      "name": "Elasticsearch",
+      "group": "Databases & Data Storage",
+      "version": "1.0",
+      "file": "skill/databases.json",
+      "totalSubCheckpoints": 27,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 8
+        }
+      ]
+    },
+    {
+      "key": "skill:Docker",
+      "type": "skill",
+      "name": "Docker",
+      "group": "DevOps & Cloud Infrastructure",
+      "version": "1.0",
+      "file": "skill/devops-cloud.json",
+      "totalSubCheckpoints": 33,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 11
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "skill:Kubernetes",
+      "type": "skill",
+      "name": "Kubernetes",
+      "group": "DevOps & Cloud Infrastructure",
+      "version": "1.0",
+      "file": "skill/devops-cloud.json",
+      "totalSubCheckpoints": 36,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 2,
+          "subCheckpointCount": 8
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 13
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 5,
+          "subCheckpointCount": 15
+        }
+      ]
+    },
+    {
+      "key": "skill:AWS",
+      "type": "skill",
+      "name": "AWS",
+      "group": "DevOps & Cloud Infrastructure",
+      "version": "1.0",
+      "file": "skill/devops-cloud.json",
+      "totalSubCheckpoints": 39,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 5,
+          "subCheckpointCount": 15
+        }
+      ]
+    },
+    {
+      "key": "skill:Terraform",
+      "type": "skill",
+      "name": "Terraform",
+      "group": "DevOps & Cloud Infrastructure",
+      "version": "1.0",
+      "file": "skill/devops-cloud.json",
+      "totalSubCheckpoints": 32,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 13
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "skill:Cloudflare",
+      "type": "skill",
+      "name": "Cloudflare",
+      "group": "DevOps & Cloud Infrastructure",
+      "version": "1.0",
+      "file": "skill/devops-cloud.json",
+      "totalSubCheckpoints": 32,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 13
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "skill:Linux",
+      "type": "skill",
+      "name": "Linux",
+      "group": "DevOps & Cloud Infrastructure",
+      "version": "1.0",
+      "file": "skill/devops-cloud.json",
+      "totalSubCheckpoints": 37,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 15
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        }
+      ]
+    },
+    {
+      "key": "skill:Shell / Bash",
+      "type": "skill",
+      "name": "Shell / Bash",
+      "group": "DevOps & Cloud Infrastructure",
+      "version": "1.0",
+      "file": "skill/devops-cloud.json",
+      "totalSubCheckpoints": 30,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 11
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "skill:Git and GitHub",
+      "type": "skill",
+      "name": "Git and GitHub",
+      "group": "DevOps & Cloud Infrastructure",
+      "version": "1.0",
+      "file": "skill/devops-cloud.json",
+      "totalSubCheckpoints": 32,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 13
+        }
+      ]
+    },
+    {
+      "key": "skill:Prompt Engineering",
+      "type": "skill",
+      "name": "Prompt Engineering",
+      "group": "Emerging Technology",
+      "version": "1.0",
+      "file": "skill/emerging-technology.json",
+      "totalSubCheckpoints": 46,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 5,
+          "subCheckpointCount": 16
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 15
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 5,
+          "subCheckpointCount": 15
+        }
+      ]
+    },
+    {
+      "key": "skill:HTML",
+      "type": "skill",
+      "name": "HTML",
+      "group": "Frontend Technologies",
+      "version": "1.0",
+      "file": "skill/frontend-technologies.json",
+      "totalSubCheckpoints": 40,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 16
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "skill:CSS",
+      "type": "skill",
+      "name": "CSS",
+      "group": "Frontend Technologies",
+      "version": "1.0",
+      "file": "skill/frontend-technologies.json",
+      "totalSubCheckpoints": 40,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 16
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 16
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 2,
+          "subCheckpointCount": 8
+        }
+      ]
+    },
+    {
+      "key": "skill:React",
+      "type": "skill",
+      "name": "React",
+      "group": "Frontend Technologies",
+      "version": "1.0",
+      "file": "skill/frontend-technologies.json",
+      "totalSubCheckpoints": 44,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 20
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "skill:Vue",
+      "type": "skill",
+      "name": "Vue",
+      "group": "Frontend Technologies",
+      "version": "1.0",
+      "file": "skill/frontend-technologies.json",
+      "totalSubCheckpoints": 36,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 16
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 2,
+          "subCheckpointCount": 8
+        }
+      ]
+    },
+    {
+      "key": "skill:Angular",
+      "type": "skill",
+      "name": "Angular",
+      "group": "Frontend Technologies",
+      "version": "1.0",
+      "file": "skill/frontend-technologies.json",
+      "totalSubCheckpoints": 40,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 16
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "skill:Next.js",
+      "type": "skill",
+      "name": "Next.js",
+      "group": "Frontend Technologies",
+      "version": "1.0",
+      "file": "skill/frontend-technologies.json",
+      "totalSubCheckpoints": 40,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 16
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "skill:Design System",
+      "type": "skill",
+      "name": "Design System",
+      "group": "Frontend Technologies",
+      "version": "1.0",
+      "file": "skill/frontend-technologies.json",
+      "totalSubCheckpoints": 40,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 4,
+          "subCheckpointCount": 16
+        }
+      ]
+    },
+    {
+      "key": "skill:Flutter",
+      "type": "skill",
+      "name": "Flutter",
+      "group": "Mobile & Cross-Platform",
+      "version": "1.0",
+      "file": "skill/mobile-cross-platform.json",
+      "totalSubCheckpoints": 52,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 5,
+          "subCheckpointCount": 20
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 20
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "skill:React Native",
+      "type": "skill",
+      "name": "React Native",
+      "group": "Mobile & Cross-Platform",
+      "version": "1.0",
+      "file": "skill/mobile-cross-platform.json",
+      "totalSubCheckpoints": 52,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 5,
+          "subCheckpointCount": 20
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 5,
+          "subCheckpointCount": 20
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 12
+        }
+      ]
+    },
+    {
+      "key": "skill:JavaScript",
+      "type": "skill",
+      "name": "JavaScript",
+      "group": "Programming Languages",
+      "version": "1.0",
+      "file": "skill/programming-languages.json",
+      "totalSubCheckpoints": 28,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 2,
+          "subCheckpointCount": 6
+        }
+      ]
+    },
+    {
+      "key": "skill:TypeScript",
+      "type": "skill",
+      "name": "TypeScript",
+      "group": "Programming Languages",
+      "version": "1.0",
+      "file": "skill/programming-languages.json",
+      "totalSubCheckpoints": 27,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 2,
+          "subCheckpointCount": 6
+        }
+      ]
+    },
+    {
+      "key": "skill:Python",
+      "type": "skill",
+      "name": "Python",
+      "group": "Programming Languages",
+      "version": "1.0",
+      "file": "skill/programming-languages.json",
+      "totalSubCheckpoints": 31,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "skill:Java",
+      "type": "skill",
+      "name": "Java",
+      "group": "Programming Languages",
+      "version": "1.0",
+      "file": "skill/programming-languages.json",
+      "totalSubCheckpoints": 32,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 11
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "skill:C++",
+      "type": "skill",
+      "name": "C++",
+      "group": "Programming Languages",
+      "version": "1.0",
+      "file": "skill/programming-languages.json",
+      "totalSubCheckpoints": 31,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "skill:Rust",
+      "type": "skill",
+      "name": "Rust",
+      "group": "Programming Languages",
+      "version": "1.0",
+      "file": "skill/programming-languages.json",
+      "totalSubCheckpoints": 33,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "skill:Go",
+      "type": "skill",
+      "name": "Go",
+      "group": "Programming Languages",
+      "version": "1.0",
+      "file": "skill/programming-languages.json",
+      "totalSubCheckpoints": 31,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 3,
+          "subCheckpointCount": 9
+        }
+      ]
+    },
+    {
+      "key": "skill:PHP",
+      "type": "skill",
+      "name": "PHP",
+      "group": "Programming Languages",
+      "version": "1.0",
+      "file": "skill/programming-languages.json",
+      "totalSubCheckpoints": 28,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 2,
+          "subCheckpointCount": 6
+        }
+      ]
+    },
+    {
+      "key": "skill:Ruby",
+      "type": "skill",
+      "name": "Ruby",
+      "group": "Programming Languages",
+      "version": "1.0",
+      "file": "skill/programming-languages.json",
+      "totalSubCheckpoints": 26,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 1,
+          "subCheckpointCount": 4
+        }
+      ]
+    },
+    {
+      "key": "skill:Kotlin",
+      "type": "skill",
+      "name": "Kotlin",
+      "group": "Programming Languages",
+      "version": "1.0",
+      "file": "skill/programming-languages.json",
+      "totalSubCheckpoints": 28,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 2,
+          "subCheckpointCount": 6
+        }
+      ]
+    },
+    {
+      "key": "skill:Swift & SwiftUI",
+      "type": "skill",
+      "name": "Swift & SwiftUI",
+      "group": "Programming Languages",
+      "version": "1.0",
+      "file": "skill/programming-languages.json",
+      "totalSubCheckpoints": 28,
+      "levels": [
+        {
+          "level": "basic",
+          "label": "Basic",
+          "checkpointCount": 3,
+          "subCheckpointCount": 10
+        },
+        {
+          "level": "intermediate",
+          "label": "Intermediate",
+          "checkpointCount": 4,
+          "subCheckpointCount": 12
+        },
+        {
+          "level": "advanced",
+          "label": "Advanced",
+          "checkpointCount": 2,
+          "subCheckpointCount": 6
+        }
+      ]
+    }
+  ]
+}
