@@ -7,6 +7,7 @@ import type { SpofRiskLevel } from "@/lib/dashboard/entities/team/data/orgSpofDa
 import type {
   ModuleSPOFData,
   ModuleOwner,
+  ModuleStatus,
   SPOFScoreRange,
 } from "@/lib/dashboard/entities/user/types";
 
@@ -128,7 +129,7 @@ export type AvailableRepo = (typeof AVAILABLE_REPOS)[number];
 // ---------------------------------------------------------------------------
 
 /** Get module status from bus factor */
-function getModuleStatus(busFactor: number): RepoSpofModuleStatus {
+function getModuleStatus(busFactor: number): ModuleStatus {
   if (busFactor <= 1) return "At Risk";
   if (busFactor === 2) return "Needs Attention";
   return "Healthy";
@@ -304,6 +305,7 @@ function transformToRepoSpofData(
       spofScore,
       size: moduleData.fileCount,
       scoreRange: getScoreRange(spofScore),
+      status,
       primaryOwner,
       backupOwners,
       activeContributors: uniqueContributors.size,

@@ -8,9 +8,17 @@ import type {
   ModuleSPOFData,
   ModuleOwner,
   ModuleCapability,
+  ModuleStatus,
   CapabilityContributor,
 } from "../../user/types";
 import { getScoreRange } from "../../user/utils/userSpofHelpers";
+
+/** Get module status from spofScore (for mock data - approximates busFactor) */
+function getModuleStatusFromScore(spofScore: number): ModuleStatus {
+  if (spofScore >= 70) return "At Risk";
+  if (spofScore >= 40) return "Needs Attention";
+  return "Healthy";
+}
 
 /** Mock user names for module owners */
 const MOCK_USERS = [
@@ -123,7 +131,7 @@ function getTeamLoad(spofScore: number): "Low Pressure" | "Medium Pressure" | "H
 
 /** Generates mock module SPOF data for a specific repository */
 export function getRepoModuleSPOFData(repoId: string): ModuleSPOFData[] {
-  const modules: Array<Omit<ModuleSPOFData, "id" | "scoreRange" | "primaryOwner" | "backupOwners" | "repoName">> = [
+  const modules: Array<Omit<ModuleSPOFData, "id" | "scoreRange" | "status" | "primaryOwner" | "backupOwners" | "repoName">> = [
     // High risk modules
     { name: "Deployment Module", spofScore: 85, size: 220 },
     { name: "Payment Module", spofScore: 88, size: 220 },
@@ -167,6 +175,7 @@ export function getRepoModuleSPOFData(repoId: string): ModuleSPOFData[] {
       repoName: repoId,
       ...module,
       scoreRange: getScoreRange(module.spofScore),
+      status: getModuleStatusFromScore(module.spofScore),
       primaryOwner,
       backupOwners,
       description: generateModuleDescription(module.name),

@@ -6,9 +6,17 @@ import type {
   ModuleSPOFData,
   ModuleOwner,
   ModuleCapability,
+  ModuleStatus,
   CapabilityContributor,
 } from "../types";
 import { getScoreRange } from "../utils/userSpofHelpers";
+
+/** Get module status from spofScore (for mock data - approximates busFactor) */
+function getModuleStatusFromScore(spofScore: number): ModuleStatus {
+  if (spofScore >= 70) return "At Risk";
+  if (spofScore >= 40) return "Needs Attention";
+  return "Healthy";
+}
 
 /** Mock user names for module owners */
 const MOCK_USERS = [
@@ -127,7 +135,7 @@ export function getUserModuleSPOFData(userId: string, userName: string = "Alice"
     "payment-processing-service"
   ];
 
-  const modules: Array<Omit<ModuleSPOFData, "id" | "scoreRange" | "primaryOwner" | "backupOwners" | "repoName">> = [
+  const modules: Array<Omit<ModuleSPOFData, "id" | "scoreRange" | "status" | "primaryOwner" | "backupOwners" | "repoName">> = [
     // High risk modules (red) - SPOF score 71-100
     { name: "Deployment Module", spofScore: 85, size: 220 },
     { name: "Payment Module", spofScore: 88, size: 220 },
@@ -185,6 +193,7 @@ export function getUserModuleSPOFData(userId: string, userName: string = "Alice"
       repoName: repos[index % repos.length],
       ...module,
       scoreRange: getScoreRange(module.spofScore),
+      status: getModuleStatusFromScore(module.spofScore),
       primaryOwner: isUserPrimaryOwner ? currentUserOwner : otherOwner,
       backupOwners: [isUserPrimaryOwner ? otherOwner : currentUserOwner],
       description: generateModuleDescription(module.name),

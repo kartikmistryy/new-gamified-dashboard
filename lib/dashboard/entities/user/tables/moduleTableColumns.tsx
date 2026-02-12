@@ -4,7 +4,7 @@ import type { ColumnDef } from "@tanstack/react-table";
 import type { ModuleSPOFData } from "../types";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
-import { getStatusBadgeStyle, getOwnershipColor } from "../utils/moduleTableUtils";
+import { getStatusBadgeStyleFromStatus, getOwnershipColorFromStatus } from "../utils/moduleTableUtils";
 import { OwnerCell } from "@/components/dashboard/repoDashboard/ModuleTableComponents";
 import { UserAvatar } from "@/components/shared/UserAvatar";
 
@@ -37,11 +37,11 @@ export function createModuleColumns(): ColumnDef<ModuleSPOFData, unknown>[] {
       id: "status",
       header: "Status",
       accessorFn: (row) => {
-        const riskOrder = { high: 3, medium: 2, low: 1 };
-        return riskOrder[row.scoreRange];
+        const statusOrder = { "At Risk": 3, "Needs Attention": 2, "Healthy": 1 };
+        return statusOrder[row.status];
       },
       cell: ({ row }) => {
-        const badge = getStatusBadgeStyle(row.original.scoreRange);
+        const badge = getStatusBadgeStyleFromStatus(row.original.status);
         return (
           <span
             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
@@ -61,7 +61,7 @@ export function createModuleColumns(): ColumnDef<ModuleSPOFData, unknown>[] {
       header: "Primary Owner",
       accessorFn: (row) => row.primaryOwner.ownershipPercent,
       cell: ({ row }) => {
-        const ownershipColor = getOwnershipColor(row.original.scoreRange);
+        const ownershipColor = getOwnershipColorFromStatus(row.original.status);
         return (
           <OwnerCell
             name={row.original.primaryOwner.name}

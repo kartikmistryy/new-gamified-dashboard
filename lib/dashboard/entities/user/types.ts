@@ -117,6 +117,9 @@ export type ModuleCapability = {
   spofScore?: number;
 };
 
+/** Module status based on bus factor */
+export type ModuleStatus = "At Risk" | "Needs Attention" | "Healthy";
+
 export type ModuleSPOFData = {
   id: string;
   name: string;
@@ -124,6 +127,8 @@ export type ModuleSPOFData = {
   spofScore: number;
   size: number;
   scoreRange: SPOFScoreRange;
+  /** Status derived from bus factor (not spofScore) */
+  status: ModuleStatus;
   primaryOwner: ModuleOwner;
   backupOwners: ModuleOwner[];
   description?: string;
