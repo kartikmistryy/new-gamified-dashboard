@@ -1,0 +1,155 @@
+"use client";
+
+import { Fragment, useMemo, useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import type { RoleRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
+import { DASHBOARD_TEXT_CLASSES } from "@/lib/dashboard/shared/utils/colors";
+import { PeopleStackedBar, StatusBadge } from "./PeopleStackedBar";
+import { CheckpointRows } from "./CheckpointRows";
+import { Button } from "@/components/ui/button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
+type RoleBasedTableProps = {
+  data: RoleRoadmapProgressData[];
+  showAll: boolean;
+};
+
+/**
+ * Role-Based Skills Table — L1 level.
+ * Each row is a Role Roadmap. Expanding shows:
+ * 1. All Checkpoints across all skill roadmaps (sorted by phase)
+ * 2. Skill Roadmap labels (pure display) after all checkpoints
+ */
+export function RoleBasedTable({ data, showAll }: RoleBasedTableProps) {
+  const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
+
+  const toggleExpand = (id: string) => {
+    setExpandedIds((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
+
+  return (
+    <div className="rounded-sm border-none overflow-hidden bg-white">
+      <Table>
+        <TableHeader className="border-0">
+          <TableRow className="border-none hover:bg-transparent">
+            <TableHead className="w-12 text-foreground font-medium">Rank</TableHead>
+            <TableHead className="text-foreground font-medium">Role Name</TableHead>
+            <TableHead className="text-foreground font-medium">Status</TableHead>
+            <TableHead className="text-foreground font-medium">People</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {data.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan={4} className="h-24 text-center text-gray-500">
+                No roles to display.
+              </TableCell>
+            </TableRow>
+          ) : (
+            data.map((role, index) => (
+              <RoleRow
+                key={role.roleRoadmap.id}
+                role={role}
+                rank={index + 1}
+                isExpanded={expandedIds.has(role.roleRoadmap.id)}
+                onToggle={() => toggleExpand(role.roleRoadmap.id)}
+                showAll={showAll}
+              />
+            ))
+          )}
+        </TableBody>
+      </Table>
+    </div>
+  );
+}
+
+// =============================================================================
+// RoleRow — Single role row with expansion logic
+// =============================================================================
+
+type RoleRowProps = {
+  role: RoleRoadmapProgressData;
+  rank: number;
+  isExpanded: boolean;
+  onToggle: () => void;
+  showAll: boolean;
+};
+
+function RoleRow({ role, rank, isExpanded, onToggle, showAll }: RoleRowProps) {
+  /** Merge all checkpoints from all skill roadmaps for this role */
+  const allCheckpoints = useMemo(
+    () => role.skillsRoadmaps.flatMap((sr) => sr.checkpoints),
+    [role.skillsRoadmaps]
+  );
+
+  /** Skill roadmap names for display labels */
+  const skillLabels = useMemo(
+    () => role.skillsRoadmaps.map((sr) => sr.roadmap.name),
+    [role.skillsRoadmaps]
+  );
+
+  return (
+    <Fragment>
+      <TableRow className="border-[#E5E5E5] hover:bg-gray-50/80">
+        <TableCell className="w-12">
+          <div className="flex items-center gap-1">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="size-7 text-muted-foreground"
+              onClick={onToggle}
+              aria-expanded={isExpanded}
+              aria-label={
+                isExpanded
+                  ? `Collapse ${role.roleRoadmap.name}`
+                  : `Expand ${role.roleRoadmap.name}`
+              }
+            >
+              {isExpanded ? (
+                <ChevronUp className="opacity-60" aria-hidden />
+              ) : (
+                <ChevronDown className="opacity-60" aria-hidden />
+              )}
+            </Button>
+            <span
+              className={
+                rank <= 3
+                  ? "text-foreground font-bold"
+                  : DASHBOARD_TEXT_CLASSES.rankMuted
+              }
+            >
+              {rank}
+            </span>
+          </div>
+        </TableCell>
+        <TableCell>
+          <span className="font-medium text-gray-900">{role.roleRoadmap.name}</span>
+        </TableCell>
+        <TableCell>
+          <StatusBadge level={role.proficiencyLevel} />
+        </TableCell>
+        <TableCell>
+          <PeopleStackedBar counts={role.developerCounts} />
+        </TableCell>
+      </TableRow>
+      {isExpanded && (
+        <CheckpointRows
+          checkpoints={allCheckpoints}
+          showAll={showAll}
+          skillRoadmapLabels={skillLabels}
+        />
+      )}
+    </Fragment>
+  );
+}
