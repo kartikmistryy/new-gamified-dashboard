@@ -12,12 +12,13 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import {
-  AI_ENGINEER_ROLE,
+  ROLE_ROADMAPS,
   SKILLS_ROADMAPS,
   calculateRoleRoadmapProgress,
   calculateSkillsRoadmapProgress,
   getProficiencyColor,
 } from "@/lib/dashboard/entities/roadmap";
+import type { RoleRoadmap } from "@/lib/dashboard/entities/roadmap";
 import type {
   RoadmapViewMode,
   RoadmapFilterMode,
@@ -323,13 +324,14 @@ function SkillsRoadmapRow({
 // =============================================================================
 
 type RoleRoadmapRowProps = {
+  roleRoadmap: RoleRoadmap;
   onCountClick: (context: SidePanelContext) => void;
   filterMode: RoadmapFilterMode;
 };
 
-function RoleRoadmapRow({ onCountClick, filterMode }: RoleRoadmapRowProps) {
+function RoleRoadmapRow({ roleRoadmap, onCountClick, filterMode }: RoleRoadmapRowProps) {
   const [expanded, setExpanded] = useState(false);
-  const data = useMemo(() => calculateRoleRoadmapProgress(AI_ENGINEER_ROLE), []);
+  const data = useMemo(() => calculateRoleRoadmapProgress(roleRoadmap), [roleRoadmap]);
 
   const handleCountClick = (level: "basic" | "proficient" | "advanced") => {
     onCountClick({
@@ -362,7 +364,6 @@ function RoleRoadmapRow({ onCountClick, filterMode }: RoleRoadmapRowProps) {
             )}
           </Button>
           <span className="font-medium text-gray-900">{data.roleRoadmap.name}</span>
-          <span className="ml-2 text-xs text-gray-500">(Role)</span>
         </TableCell>
         <TableCell>
           <div className="flex items-center gap-2">
@@ -435,7 +436,12 @@ export function RoadmapProgressTable({
       <Table>
         <TableHeader>
           <TableRow className="hover:bg-transparent">
-            <TableHead className="w-[300px]">Roadmap</TableHead>
+            <TableHead className="w-[300px]">
+              <span>Roadmap</span>
+              <span className="ml-2 px-1.5 py-0.5 rounded bg-gray-100 text-gray-500 text-xs font-normal">
+                {viewMode === "role" ? "Role" : "Skill"}
+              </span>
+            </TableHead>
             <TableHead className="w-[200px]">Progress</TableHead>
             <TableHead className="text-center w-[100px]">
               <span className="text-amber-600">Basic</span>
@@ -450,7 +456,14 @@ export function RoadmapProgressTable({
         </TableHeader>
         <TableBody>
           {viewMode === "role" ? (
-            <RoleRoadmapRow onCountClick={onSidePanelOpen} filterMode={filterMode} />
+            ROLE_ROADMAPS.map((roleRoadmap) => (
+              <RoleRoadmapRow
+                key={roleRoadmap.id}
+                roleRoadmap={roleRoadmap}
+                onCountClick={onSidePanelOpen}
+                filterMode={filterMode}
+              />
+            ))
           ) : (
             filteredSkillsRoadmaps.map((skillsRoadmap) => (
               <SkillsRoadmapRow
