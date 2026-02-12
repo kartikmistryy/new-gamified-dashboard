@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState, useMemo } from "react";
+import { Fragment, useState, useMemo, useCallback } from "react";
 import {
   flexRender,
   getCoreRowModel,
@@ -242,7 +242,7 @@ export function OrgSpofPageClient() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* SPOF Risk Indicator Card */}
         <div className="rounded-[10px] p-6 flex flex-col justify-center">
-          <p className="text-sm text-gray-500 mb-3">SPOF Risk is:</p>
+          <p className="text-sm text-gray-500 mb-3">Single Point of Failure (SPOF) Risk is:</p>
 
           {/* Large risk level display */}
           <div className="flex items-baseline gap-2 mb-4">
@@ -449,17 +449,6 @@ export function OrgSpofPageClient() {
           </div>
 
           <p className="mt-4 text-center text-sm text-gray-400">All Loaded</p>
-        </div>
-      </DashboardSection>
-
-      {/* SPOF Distribution Chart */}
-      <DashboardSection title="SPOF Owner Distribution">
-        <div className="bg-white rounded-lg">
-          <SpofDistributionChart
-            data={SPOF_DATA}
-            visibleTeams={visibleTeams}
-            showNormalFit
-          />
         </div>
       </DashboardSection>
     </div>

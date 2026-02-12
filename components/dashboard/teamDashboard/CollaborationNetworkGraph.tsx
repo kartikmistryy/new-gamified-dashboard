@@ -17,7 +17,7 @@ import { formatNodeTooltip, formatEdgeTooltip } from "@/lib/dashboard/shared/uti
 import { CollaborationNetworkLegend } from "./CollaborationNetworkLegend";
 import { DASHBOARD_BG_CLASSES, DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 const CHART_HEIGHT = 540;
-const DEFAULT_THRESHOLD = 0.7;
+const DEFAULT_THRESHOLD = 0.75;
 const DEFAULT_LAYOUT: LayoutType = "spring";
 
 type CollaborationNetworkGraphProps = {

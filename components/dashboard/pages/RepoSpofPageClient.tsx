@@ -63,7 +63,7 @@ export function RepoSpofPageClient() {
 
   // State for chart sliders (filter controls)
   const [sankeyMinOwnership, setSankeyMinOwnership] = useState(5); // Default 5%
-  const [collaborationThreshold, setCollaborationThreshold] = useState(0.5); // Default 0.5 DOA
+  const [collaborationThreshold, setCollaborationThreshold] = useState(0.75); // Default 0.75 SPOF Score
 
   // Load real data on mount
   useEffect(() => {
