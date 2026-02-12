@@ -14,11 +14,7 @@ import type {
   OutlierDeveloper,
   OutlierPriority,
 } from "@/lib/dashboard/entities/team/types";
-import {
-  OWNERSHIP_STYLES,
-  CHAOS_STYLES,
-  SPOF_STYLES,
-} from "@/lib/dashboard/entities/team/mocks/outliersMockData";
+import { SPOF_STYLES } from "@/lib/dashboard/entities/team/mocks/outliersMockData";
 
 type OutliersTableProps = {
   developers: OutlierDeveloper[];
@@ -27,24 +23,18 @@ type OutliersTableProps = {
 
 type ViewMode = "outliers" | "all";
 
-const SECTION_CONFIG: Record<OutlierPriority, { label: string; bgColor: string; textColor: string; dotColor: string }> = {
+const SECTION_CONFIG: Record<OutlierPriority, { label: string; bgColor: string }> = {
   critical: {
-    label: "Critical",
-    bgColor: "bg-red-50",
-    textColor: "text-red-700",
-    dotColor: "bg-red-500",
+    label: "Lower than expected",
+    bgColor: "bg-red-500",
   },
   attention: {
-    label: "Needs Attention",
-    bgColor: "bg-amber-50",
-    textColor: "text-amber-700",
-    dotColor: "bg-amber-500",
+    label: "Higher than expected",
+    bgColor: "bg-amber-500",
   },
   normal: {
-    label: "Normal",
-    bgColor: "bg-green-50",
-    textColor: "text-green-700",
-    dotColor: "bg-green-500",
+    label: "As expected",
+    bgColor: "bg-green-500",
   },
 };
 
@@ -54,8 +44,6 @@ type DeveloperRowProps = {
 };
 
 function DeveloperRow({ dev, index }: DeveloperRowProps) {
-  const ownershipStyle = OWNERSHIP_STYLES[dev.ownershipCategory];
-  const chaosStyle = CHAOS_STYLES[dev.chaosCategory];
   const spofStyle = SPOF_STYLES[dev.spofAssessment];
 
   return (
@@ -72,7 +60,7 @@ function DeveloperRow({ dev, index }: DeveloperRowProps) {
         </span>
       </TableCell>
 
-      {/* Name */}
+      {/* Name + Quadrant subtitle */}
       <TableCell>
         <div className="flex items-center gap-3">
           <div className="h-8 w-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs font-medium shrink-0">
@@ -85,35 +73,9 @@ function DeveloperRow({ dev, index }: DeveloperRowProps) {
           </div>
           <div className="min-w-0">
             <p className="font-medium text-gray-900 truncate">{dev.name}</p>
-            <p className="text-xs text-gray-400">{dev.team}</p>
+            <p className="text-xs text-gray-400">{dev.chaosCategory}</p>
           </div>
         </div>
-      </TableCell>
-
-      {/* Ownership Category */}
-      <TableCell>
-        <span
-          className={cn(
-            "px-2.5 py-1 text-xs font-medium rounded-full whitespace-nowrap",
-            ownershipStyle.bgColor,
-            ownershipStyle.textColor
-          )}
-        >
-          {ownershipStyle.label}
-        </span>
-      </TableCell>
-
-      {/* Chaos Category */}
-      <TableCell>
-        <span
-          className={cn(
-            "px-2.5 py-1 text-xs font-medium rounded-full whitespace-nowrap",
-            chaosStyle.bgColor,
-            chaosStyle.textColor
-          )}
-        >
-          {dev.chaosCategory}
-        </span>
       </TableCell>
 
       {/* SPOF Assessment */}
@@ -132,23 +94,23 @@ function DeveloperRow({ dev, index }: DeveloperRowProps) {
   );
 }
 
-type SectionHeaderProps = {
-  priority: OutlierPriority;
-  count: number;
-};
 
-function SectionHeader({ priority, count }: SectionHeaderProps) {
+function SectionHeader({ priority }: { priority: OutlierPriority }) {
   const config = SECTION_CONFIG[priority];
 
   return (
-    <TableRow className={config.bgColor}>
-      <TableCell colSpan={5} className="py-2.5">
+    <TableRow>
+      <TableCell colSpan={3} className="py-3 border-t border-border">
         <div className="flex items-center gap-2">
-          <div className={cn("w-2 h-2 rounded-full", config.dotColor)} />
-          <span className={cn("text-sm font-semibold", config.textColor)}>
+          <span className="text-sm text-gray-500">Share of Ownership</span>
+          <span
+            className={cn(
+              "px-2.5 py-0.5 text-xs font-semibold rounded-full text-white",
+              config.bgColor
+            )}
+          >
             {config.label}
           </span>
-          <span className={cn("text-sm", config.textColor)}>({count})</span>
         </div>
       </TableCell>
     </TableRow>
@@ -228,8 +190,6 @@ export function OutliersTable({ developers, className }: OutliersTableProps) {
             <TableRow className="bg-gray-50">
               <TableHead className="w-[50px] text-center">#</TableHead>
               <TableHead>Name</TableHead>
-              <TableHead>Expected Share of Ownership</TableHead>
-              <TableHead>Quadrant</TableHead>
               <TableHead>SPOF Assessment</TableHead>
             </TableRow>
           </TableHeader>
@@ -252,7 +212,7 @@ export function OutliersTable({ developers, className }: OutliersTableProps) {
             })}
             {sectionsToShow.every((p) => grouped[p].length === 0) && (
               <TableRow>
-                <TableCell colSpan={5} className="text-center py-8 text-gray-400">
+                <TableCell colSpan={3} className="text-center py-8 text-gray-400">
                   No developers to display
                 </TableCell>
               </TableRow>
@@ -273,7 +233,7 @@ type SectionRowsProps = {
 function SectionRows({ priority, developers, startIndex }: SectionRowsProps) {
   return (
     <>
-      <SectionHeader priority={priority} count={developers.length} />
+      <SectionHeader priority={priority} />
       {developers.map((dev, idx) => (
         <DeveloperRow key={dev.id} dev={dev} index={startIndex + idx} />
       ))}
