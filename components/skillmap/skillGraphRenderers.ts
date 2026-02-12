@@ -205,8 +205,8 @@ const attachNodeInteractions = (
       const parentLabel = node.parent?.data.name ? ` · ${node.parent.data.name}` : "";
       tooltip.show(
         `<strong style="color:#0f172a;">${node.data.name}${parentLabel}</strong>` +
-          `<div style="color:#6b7280;">Ownership: ${ownership}</div>` +
-          `<div style="color:#6b7280;">Frequency: ${frequency}</div>` +
+          `<div style="color:#6b7280;">People: ${ownership}</div>` +
+          `<div style="color:#6b7280;">Avg. Proficiency: ${frequency}%</div>` +
           `<div style="color:#2563eb;">% of ${tooltipLabel}: ${pct}%</div>`,
         event.clientX + 12,
         event.clientY + 12

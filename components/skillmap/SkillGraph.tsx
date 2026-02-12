@@ -355,7 +355,7 @@ export function SkillGraph({ width = 800, height = 800, domainWeights, skillVisi
             </div>
             <div className="grid gap-0.5">
               <div className="text-[13px] font-semibold text-gray-900">Size</div>
-              <div className="text-xs text-gray-500 leading-tight">How well I know this skill</div>
+              <div className="text-xs text-gray-500 leading-tight">Number of people with this skill</div>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -371,7 +371,7 @@ export function SkillGraph({ width = 800, height = 800, domainWeights, skillVisi
             <div className="grid gap-0.5">
               <div className="text-[13px] font-semibold text-gray-900">Color intensity</div>
               <div className="text-xs text-gray-500 leading-tight">
-                How frequent (proficient) I use this skill
+                Average proficiency level
               </div>
             </div>
           </div>
