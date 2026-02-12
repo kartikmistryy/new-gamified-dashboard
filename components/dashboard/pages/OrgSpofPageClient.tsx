@@ -35,12 +35,16 @@ import {
   type OrgRepoSpofRow,
   type OrgRepoSpofFilter,
   type SpofRiskLevel,
+  type SpofOwnerFilter,
   ORG_REPO_SPOF_ROWS,
   ORG_SPOF_TOTALS,
   ORG_REPO_SPOF_FILTER_TABS,
   ORG_HEALTH_SEGMENTS,
   ORG_SPOF_RISK_LEVEL,
+  ORG_SPOF_OWNERS,
+  SPOF_OWNER_FILTER_TABS,
   sortOrgRepoSpof,
+  sortSpofOwners,
 } from "@/lib/dashboard/entities/team/data/orgSpofDataLoader";
 import {
   SPOF_DATA,
@@ -185,8 +189,16 @@ const STATUS_BADGE_COLORS: Record<string, string> = {
   Healthy: DASHBOARD_COLORS.excellent,
 };
 
+/** Map internal status to display label (unifies "At Risk" → "Critical" to match health bar) */
+const STATUS_DISPLAY_LABELS: Record<string, string> = {
+  "At Risk": "Critical",
+  "Needs Attention": "Needs Attention",
+  Healthy: "Healthy",
+};
+
 function StatusBadge({ status }: { status: string }) {
   const color = STATUS_BADGE_COLORS[status] ?? DASHBOARD_COLORS.excellent;
+  const displayLabel = STATUS_DISPLAY_LABELS[status] ?? status;
   return (
     <span
       className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
@@ -195,7 +207,7 @@ function StatusBadge({ status }: { status: string }) {
         color,
       }}
     >
-      {status}
+      {displayLabel}
     </span>
   );
 }
@@ -211,6 +223,12 @@ export function OrgSpofPageClient() {
     { id: "spofModuleCount", desc: true },
   ]);
 
+  // SPOF Owners table state
+  const [ownerFilter, setOwnerFilter] = useState<SpofOwnerFilter>("mostSpofModules");
+
+  // Repo view toggle state
+  const [repoView, setRepoView] = useState<"spof" | "all">("spof");
+
   // SPOF Distribution Chart state
   const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
@@ -223,6 +241,11 @@ export function OrgSpofPageClient() {
   const sortedRows = useMemo(
     () => sortOrgRepoSpof(ORG_REPO_SPOF_ROWS, currentFilter),
     [currentFilter],
+  );
+
+  const sortedOwners = useMemo(
+    () => sortSpofOwners(ORG_SPOF_OWNERS, ownerFilter),
+    [ownerFilter],
   );
 
   const table = useReactTable({
@@ -332,12 +355,46 @@ export function OrgSpofPageClient() {
       {/* SPOF Repositories — expandable repo-level table */}
       <DashboardSection title="SPOF Repositories">
         <div className="w-full">
-          <FilterBadges
-            filterTabs={ORG_REPO_SPOF_FILTER_TABS}
-            currentFilter={currentFilter}
-            onFilterChange={setCurrentFilter}
-          />
+          {/* View toggle + Filter badges row */}
+          <div className="flex items-center justify-between mb-4">
+            {/* Repo view toggle */}
+            <div className="inline-flex rounded-lg border border-gray-200 p-1 bg-gray-50">
+              <button
+                onClick={() => setRepoView("spof")}
+                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+                  repoView === "spof"
+                    ? "bg-white text-gray-900 shadow-sm"
+                    : "text-gray-500 hover:text-gray-700"
+                }`}
+              >
+                SPOF Repos
+              </button>
+              <button
+                onClick={() => setRepoView("all")}
+                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+                  repoView === "all"
+                    ? "bg-white text-gray-900 shadow-sm"
+                    : "text-gray-500 hover:text-gray-700"
+                }`}
+              >
+                All Repos
+              </button>
+            </div>
 
+            <FilterBadges
+              filterTabs={ORG_REPO_SPOF_FILTER_TABS}
+              currentFilter={currentFilter}
+              onFilterChange={setCurrentFilter}
+            />
+          </div>
+
+          {repoView === "all" ? (
+            <div className="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-12 text-center">
+              <p className="text-gray-500 text-sm">
+                All repositories view coming soon. Currently showing SPOF repositories only.
+              </p>
+            </div>
+          ) : (
           <div className="rounded-sm border-none overflow-hidden bg-white">
             <Table>
               <TableHeader className="border-0">
@@ -387,7 +444,10 @@ export function OrgSpofPageClient() {
                                   return (
                                     <TableRow key={mod.moduleName}>
                                       <TableCell />
-                                      <TableCell className="font-medium">{mod.moduleName}</TableCell>
+                                      <TableCell className="font-medium pl-8">
+                                        <span className="text-gray-400 mr-2">└</span>
+                                        {mod.moduleName}
+                                      </TableCell>
                                       <TableCell>
                                         <StatusBadge status={mod.status} />
                                       </TableCell>
@@ -441,6 +501,90 @@ export function OrgSpofPageClient() {
                   <TableRow>
                     <TableCell colSpan={repoSpofColumns.length} className="h-24 text-center">
                       No results.
+                    </TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+          )}
+
+          <p className="mt-4 text-center text-sm text-gray-400">All Loaded</p>
+        </div>
+      </DashboardSection>
+
+      {/* SPOF Owners Table */}
+      <DashboardSection title="SPOF Owners">
+        <div className="w-full">
+          <FilterBadges
+            filterTabs={SPOF_OWNER_FILTER_TABS}
+            currentFilter={ownerFilter}
+            onFilterChange={setOwnerFilter}
+          />
+
+          <div className="rounded-sm border-none overflow-hidden bg-white">
+            <Table>
+              <TableHeader className="border-0">
+                <TableRow className="border-none hover:bg-transparent">
+                  <TableHead className="w-14">Rank</TableHead>
+                  <TableHead>Owner</TableHead>
+                  <TableHead className="text-right"># SPOF Modules</TableHead>
+                  <TableHead>Repositories</TableHead>
+                  <TableHead>Severity Breakdown</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {sortedOwners.length > 0 ? (
+                  sortedOwners.map((owner, index) => (
+                    <TableRow key={owner.name} className="border-[#E5E5E5] hover:bg-gray-50/80">
+                      <TableCell>
+                        <span className={index < 3 ? "text-foreground font-bold" : DASHBOARD_TEXT_CLASSES.rankMuted}>
+                          {index + 1}
+                        </span>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          <UserAvatar userName={owner.name} className="size-8" size={32} />
+                          <span className="font-medium text-gray-900">{owner.name}</span>
+                        </div>
+                      </TableCell>
+                      <TableCell className="text-right text-gray-900">
+                        {owner.spofModuleCount}
+                      </TableCell>
+                      <TableCell>
+                        <span className="text-sm text-gray-600">
+                          {owner.repositories.slice(0, 3).join(", ")}
+                          {owner.repositories.length > 3 && (
+                            <span className="text-gray-400"> +{owner.repositories.length - 3}</span>
+                          )}
+                        </span>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          {owner.severityCounts.critical > 0 && (
+                            <span
+                              className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium"
+                              style={{ backgroundColor: hexToRgba(DASHBOARD_COLORS.danger, 0.15), color: DASHBOARD_COLORS.danger }}
+                            >
+                              {owner.severityCounts.critical} Critical
+                            </span>
+                          )}
+                          {owner.severityCounts.needsAttention > 0 && (
+                            <span
+                              className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium"
+                              style={{ backgroundColor: hexToRgba(DASHBOARD_COLORS.warning, 0.15), color: DASHBOARD_COLORS.warning }}
+                            >
+                              {owner.severityCounts.needsAttention} Needs Attention
+                            </span>
+                          )}
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={5} className="h-24 text-center">
+                      No SPOF owners found.
                     </TableCell>
                   </TableRow>
                 )}
