@@ -694,42 +694,155 @@ const seededRandom = (seed: number): (() => number) => {
   };
 };
 
-/** Checkpoints that are "advanced" and no one has unlocked yet */
-const ADVANCED_CHECKPOINT_IDS = new Set([
-  // AI & ML
-  "mlops",
-  "computer-vision",
-  // Backend
-  "rust-backend",
-  "grpc",
-  // Data Engineering
-  "data-mesh",
-  "realtime-ml",
-  // Frontend
-  "performance-fe",
-  "testing-fe",
-  // Mobile
-  "mobile-perf",
-  "flutter",
-  // DevOps
-  "platform-eng",
-  "observability",
-  // Cloud
-  "multi-cloud",
-  "finops",
-  // Testing
-  "test-architecture",
-  "chaos-eng",
-  // Security
-  "devsecops",
-  "incident-response",
-  // Leadership
-  "org-design",
-  "exec-presence",
-  // Product & Design
-  "design-ops",
-  "product-strategy",
-]);
+// =============================================================================
+// Developer Archetypes & Company Profile
+// =============================================================================
+
+type DeveloperArchetype = {
+  id: string;
+  baseLevel: number;
+  canUnlockAdvanced: boolean;
+  skillMultipliers: Record<string, number>;
+};
+
+const ARCHETYPES: DeveloperArchetype[] = [
+  {
+    id: "data-ai-specialist",
+    baseLevel: 0.75,
+    canUnlockAdvanced: true,
+    skillMultipliers: {
+      "data-engineering": 1.4,
+      "ai-ml": 1.3,
+      backend: 1.2,
+      cloud: 1.1,
+      devops: 0.8,
+      frontend: 0.5,
+      mobile: 0.2,
+      "product-design": 0.3,
+      testing: 0.6,
+      security: 0.5,
+      leadership: 0.4,
+    },
+  },
+  {
+    id: "fullstack-senior",
+    baseLevel: 0.7,
+    canUnlockAdvanced: true,
+    skillMultipliers: {
+      frontend: 1.3,
+      backend: 1.3,
+      devops: 1.2,
+      testing: 1.0,
+      cloud: 0.9,
+      "ai-ml": 0.4,
+      "data-engineering": 0.5,
+      mobile: 0.4,
+      "product-design": 0.6,
+      security: 0.7,
+      leadership: 0.6,
+    },
+  },
+  {
+    id: "backend-dev",
+    baseLevel: 0.55,
+    canUnlockAdvanced: false,
+    skillMultipliers: {
+      backend: 1.4,
+      cloud: 1.1,
+      devops: 0.9,
+      "data-engineering": 0.8,
+      testing: 0.7,
+      frontend: 0.5,
+      "ai-ml": 0.4,
+      mobile: 0.2,
+      "product-design": 0.2,
+      security: 0.6,
+      leadership: 0.3,
+    },
+  },
+  {
+    id: "junior-generalist",
+    baseLevel: 0.28,
+    canUnlockAdvanced: false,
+    skillMultipliers: {
+      frontend: 0.9,
+      backend: 1.0,
+      devops: 0.6,
+      "ai-ml": 0.5,
+      "data-engineering": 0.5,
+      cloud: 0.5,
+      testing: 0.7,
+      mobile: 0.4,
+      "product-design": 0.4,
+      security: 0.4,
+      leadership: 0.2,
+    },
+  },
+  {
+    id: "other-specialist",
+    baseLevel: 0.45,
+    canUnlockAdvanced: false,
+    skillMultipliers: {
+      mobile: 1.3,
+      "product-design": 1.2,
+      testing: 1.1,
+      security: 1.0,
+      frontend: 0.8,
+      backend: 0.6,
+      devops: 0.5,
+      cloud: 0.4,
+      "ai-ml": 0.2,
+      "data-engineering": 0.3,
+      leadership: 0.5,
+    },
+  },
+];
+
+/** Company skill strengths - this company excels in Data/AI/FullStack */
+const COMPANY_SKILL_STRENGTH: Record<string, number> = {
+  // Strong areas (company focus)
+  backend: 1.3,
+  "data-engineering": 1.25,
+  "ai-ml": 1.2,
+  frontend: 1.1,
+  devops: 1.05,
+  cloud: 1.0,
+  // Weak areas (not company focus)
+  testing: 0.85,
+  security: 0.8,
+  leadership: 0.7,
+  "product-design": 0.65,
+  mobile: 0.55,
+};
+
+/** Map checkpoint ID to its parent skill ID */
+const getSkillIdForCheckpoint = (checkpointId: string): string | null => {
+  for (const [skillId, roadmap] of Object.entries(SKILLS_ROADMAPS)) {
+    if (roadmap.checkpoints.some((c) => c.id === checkpointId)) {
+      return skillId;
+    }
+  }
+  return null;
+};
+
+/** Get checkpoint phase by ID */
+const getCheckpointPhase = (checkpointId: string): CheckpointPhase | null => {
+  for (const roadmap of Object.values(SKILLS_ROADMAPS)) {
+    const checkpoint = roadmap.checkpoints.find((c) => c.id === checkpointId);
+    if (checkpoint) return checkpoint.phase;
+  }
+  return null;
+};
+
+/** Get archetype for a developer based on index */
+const getArchetypeForDeveloper = (devIndex: number): DeveloperArchetype => {
+  // Distribution: 8 data/ai, 6 fullstack, 6 backend, 6 junior, 4 other
+  if (devIndex < 8) return ARCHETYPES[0]; // data-ai-specialist
+  if (devIndex < 14) return ARCHETYPES[1]; // fullstack-senior
+  if (devIndex < 20) return ARCHETYPES[2]; // backend-dev
+  if (devIndex < 26) return ARCHETYPES[3]; // junior-generalist
+  return ARCHETYPES[4]; // other-specialist
+};
 
 /** Generate mock progress for all developers */
 const generateMockProgress = (): DeveloperProgress[] => {
@@ -737,27 +850,47 @@ const generateMockProgress = (): DeveloperProgress[] => {
   const random = seededRandom(42); // Fixed seed for reproducibility
 
   return MOCK_DEVELOPERS.map((dev, devIndex) => {
-    // Each developer has a "skill level" that affects their overall progress
-    // Distribute developers across skill levels for variety
-    const skillLevel = random() * 0.6 + (devIndex % 5) * 0.1; // 0.0 to 1.0
-
+    const archetype = getArchetypeForDeveloper(devIndex);
     const checkpointProgress: Record<string, number> = {};
 
     checkpointIds.forEach((checkpointId) => {
-      // Advanced checkpoints have 0 progress for everyone
-      if (ADVANCED_CHECKPOINT_IDS.has(checkpointId)) {
+      const skillId = getSkillIdForCheckpoint(checkpointId);
+      const phase = getCheckpointPhase(checkpointId);
+      if (!skillId || !phase) {
         checkpointProgress[checkpointId] = 0;
         return;
       }
 
+      // Start with archetype base level
+      let progress = archetype.baseLevel;
+
+      // Apply archetype skill multiplier
+      const archetypeMultiplier = archetype.skillMultipliers[skillId] ?? 1.0;
+      progress *= archetypeMultiplier;
+
+      // Apply company-wide skill strength
+      const companyMultiplier = COMPANY_SKILL_STRENGTH[skillId] ?? 1.0;
+      progress *= companyMultiplier;
+
+      // Phase difficulty - Advanced requires canUnlockAdvanced
+      const phaseMultiplier =
+        phase === "Basic"
+          ? 1.0
+          : phase === "Intermediate"
+            ? 0.8
+            : archetype.canUnlockAdvanced
+              ? 0.45
+              : 0.0;
+      progress *= phaseMultiplier;
+
+      // Add variance (±25%)
+      progress *= 0.75 + random() * 0.5;
+
+      // Clamp to 0-1
+      progress = Math.max(0, Math.min(1, progress));
+
       const totalSubs = getCheckpointSize(checkpointId);
-      // Higher skill level = more likely to have more unlocked
-      // Add some randomness for variety
-      const progressFactor = skillLevel * (0.7 + random() * 0.6);
-      const unlockedCount = Math.min(
-        totalSubs,
-        Math.floor(totalSubs * progressFactor)
-      );
+      const unlockedCount = Math.floor(totalSubs * progress);
       checkpointProgress[checkpointId] = unlockedCount;
     });
 
