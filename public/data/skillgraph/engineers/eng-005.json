@@ -4,34 +4,6 @@
   "createdAt": "2026-01-05T00:00:00Z",
   "lastScannedAt": "2026-02-13T08:00:00Z",
   "roadmaps": {
-    "role:Backend Beginner": {
-      "roadmapVersion": "1.0",
-      "firstUnlockedAt": "2026-01-07T08:00:00Z",
-      "lastActivityAt": "2026-02-12T08:00:00Z",
-      "completions": {
-        "how-internet-works": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 22},
-        "http-https": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 28},
-        "how-apis-work": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 24},
-        "terminal": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 26},
-        "os-basics": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 12},
-        "python": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 36},
-        "git-basics": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 28},
-        "github": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 26},
-        "sql-basics": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 26},
-        "postgres-mysql": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 22},
-        "table-design": {"firstDetectedAt": "2026-01-16T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 18},
-        "http-methods": {"firstDetectedAt": "2026-01-13T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 24},
-        "crud": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 26},
-        "api-testing": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 14},
-        "session-cookie": {"firstDetectedAt": "2026-01-20T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 12},
-        "jwt": {"firstDetectedAt": "2026-01-22T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 18},
-        "password-hashing": {"firstDetectedAt": "2026-01-23T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 14},
-        "redis": {"firstDetectedAt": "2026-01-28T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 10},
-        "docker": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 8},
-        "sql-injection": {"firstDetectedAt": "2026-01-30T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 10},
-        "xss-csrf": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 5}
-      }
-    },
     "role:Backend": {
       "roadmapVersion": "1.0",
       "firstUnlockedAt": "2026-01-08T08:00:00Z",

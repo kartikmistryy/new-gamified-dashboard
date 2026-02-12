@@ -4,38 +4,6 @@
   "createdAt": "2026-01-05T00:00:00Z",
   "lastScannedAt": "2026-02-13T08:00:00Z",
   "roadmaps": {
-    "role:Frontend Beginner": {
-      "roadmapVersion": "1.0",
-      "firstUnlockedAt": "2026-01-07T08:00:00Z",
-      "lastActivityAt": "2026-02-12T08:00:00Z",
-      "completions": {
-        "how-internet-works": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 22},
-        "what-is-http": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 28},
-        "what-is-domain": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-01-25T08:00:00Z", "detectionCount": 5},
-        "html-basics": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 32},
-        "semantic-html": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 30},
-        "forms": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 18},
-        "selectors-box-model": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 35},
-        "flexbox-grid": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 36},
-        "responsive-design": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 28},
-        "variables-control-flow": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 34},
-        "functions-scope": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 31},
-        "dom-events": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 29},
-        "git-basics": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 25},
-        "branching": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 14},
-        "github": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 28},
-        "npm-yarn": {"firstDetectedAt": "2026-01-11T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 26},
-        "package-json": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 12},
-        "tailwind": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 24},
-        "sass": {"firstDetectedAt": "2026-01-20T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 6},
-        "es6-features": {"firstDetectedAt": "2026-01-11T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 28},
-        "async-await": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 22},
-        "fetch-api": {"firstDetectedAt": "2026-01-13T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 18},
-        "vue": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 30},
-        "vite": {"firstDetectedAt": "2026-01-20T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 20},
-        "image-optimization": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 4}
-      }
-    },
     "role:Frontend": {
       "roadmapVersion": "1.0",
       "firstUnlockedAt": "2026-01-08T08:00:00Z",

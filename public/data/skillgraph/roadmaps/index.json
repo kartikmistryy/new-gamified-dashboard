@@ -1,7 +1,7 @@
 {
   "generatedAt": "2026-02-13T08:00:00Z",
-  "totalRoadmaps": 76,
-  "roleCount": 31,
+  "totalRoadmaps": 73,
+  "roleCount": 28,
   "skillCount": 45,
   "roadmaps": [
     {
@@ -349,35 +349,6 @@
           "label": "Advanced",
           "checkpointCount": 4,
           "subCheckpointCount": 12
-        }
-      ]
-    },
-    {
-      "key": "role:DevOps Beginner",
-      "type": "role",
-      "name": "DevOps Beginner",
-      "group": "DevOps & Security",
-      "version": "1.0",
-      "file": "role/devops-security.json",
-      "totalSubCheckpoints": 31,
-      "levels": [
-        {
-          "level": "basic",
-          "label": "Basic",
-          "checkpointCount": 4,
-          "subCheckpointCount": 13
-        },
-        {
-          "level": "intermediate",
-          "label": "Intermediate",
-          "checkpointCount": 3,
-          "subCheckpointCount": 9
-        },
-        {
-          "level": "advanced",
-          "label": "Advanced",
-          "checkpointCount": 3,
-          "subCheckpointCount": 9
         }
       ]
     },
@@ -759,35 +730,6 @@
       ]
     },
     {
-      "key": "role:Frontend Beginner",
-      "type": "role",
-      "name": "Frontend Beginner",
-      "group": "Web Development",
-      "version": "1.0",
-      "file": "role/web-development.json",
-      "totalSubCheckpoints": 31,
-      "levels": [
-        {
-          "level": "basic",
-          "label": "Basic",
-          "checkpointCount": 4,
-          "subCheckpointCount": 12
-        },
-        {
-          "level": "intermediate",
-          "label": "Intermediate",
-          "checkpointCount": 4,
-          "subCheckpointCount": 10
-        },
-        {
-          "level": "advanced",
-          "label": "Advanced",
-          "checkpointCount": 4,
-          "subCheckpointCount": 9
-        }
-      ]
-    },
-    {
       "key": "role:Frontend",
       "type": "role",
       "name": "Frontend",
@@ -813,35 +755,6 @@
           "label": "Advanced",
           "checkpointCount": 5,
           "subCheckpointCount": 11
-        }
-      ]
-    },
-    {
-      "key": "role:Backend Beginner",
-      "type": "role",
-      "name": "Backend Beginner",
-      "group": "Web Development",
-      "version": "1.0",
-      "file": "role/web-development.json",
-      "totalSubCheckpoints": 29,
-      "levels": [
-        {
-          "level": "basic",
-          "label": "Basic",
-          "checkpointCount": 4,
-          "subCheckpointCount": 10
-        },
-        {
-          "level": "intermediate",
-          "label": "Intermediate",
-          "checkpointCount": 3,
-          "subCheckpointCount": 9
-        },
-        {
-          "level": "advanced",
-          "label": "Advanced",
-          "checkpointCount": 4,
-          "subCheckpointCount": 10
         }
       ]
     },
