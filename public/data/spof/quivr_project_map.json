@@ -1,0 +1,751 @@
+{
+  "Knowledge Base Management": {
+    "description": "Allows users to create, manage, and persist secure, self-contained knowledge repositories (called 'Brains'). This module handles the entire lifecycle of a knowledge source, from its creation and configuration to storing its associated data.",
+    "functions": {
+      "Brain Lifecycle and RAG Orchestration": {
+        "files": [
+          {
+            "path": "docs/docs/vectorstores/pgvector.md",
+            "description": "This file provides documentation about PGVector, likely detailing its usage and integration as a vector store within the Quivr application.",
+            "spof": false
+          },
+          {
+            "path": "docs/docs/vectorstores/index.md",
+            "description": "This file serves as the main index or landing page for documentation related to vector stores within the 'quivr' project. It likely introduces the concept of vector stores and links to more detailed information.",
+            "spof": false
+          },
+          {
+            "path": "docs/docs/brain/index.md",
+            "description": "This document describes the 'Brain' component in Quivr, which stores and processes knowledge for retrieval. It provides quick-start examples for creating and interacting with a brain using code.",
+            "spof": false
+          },
+          {
+            "path": "docs/docs/brain/brain.md",
+            "description": "This file serves as documentation for the 'brain' module within the 'quivr_core' package. It likely auto-generates content from the module's source code.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/__init__.py",
+            "description": "Initializes the 'quivr_core' package, making core components like 'Brain' available and automatically discovering and registering processor plugins defined as entry points.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/brain/brain_defaults.py",
+            "description": "This file defines default implementations for essential RAG components within the `quivr_core`'s brain module, including functions to build a default vector database, provide a default embedder, and configure a default LLM endpoint.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/brain/brain.py",
+            "description": "This file defines the `Brain` class, a core component for managing a knowledge base. It orchestrates the storage, processing, indexing, and retrieval of information from various files using vector databases, embeddings, and a Retrieval Augmented Generation (RAG) workflow.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/brain/info.py",
+            "description": "This file defines data structures (dataclasses) to aggregate and present various information about a 'brain' entity, including its chat history, LLM configuration, and storage details, often formatted for display using `rich.tree.Tree`.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/brain/__init__.py",
+            "description": "This `__init__.py` file serves as the package initializer for the `brain` module, exposing the `Brain` class as part of the package's public API.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/brain/serialization.py",
+            "description": "This file defines Pydantic models for serializing the 'Brain' object, including its configurations for vector databases, storage, LLM endpoints, and embedders. It provides the schema for representing a Quivr Brain's state and various component settings.",
+            "spof": true
+          },
+          {
+            "path": "core/tests/test_brain.py",
+            "description": "This file contains unit tests for the `Brain` class in the `quivr_core` library, covering its initialization from files and documents, search capabilities, question-answering methods, and information retrieval functions.",
+            "spof": true
+          },
+          {
+            "path": "examples/save_load_brain.py",
+            "description": "This file demonstrates how to create, save, and load a 'Brain' object using the quivr_core library, including reading content from a temporary file.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Jacopo Chevallard",
+            "percent": 65
+          },
+          {
+            "name": "Stan Girard",
+            "percent": 19
+          },
+          {
+            "name": "AmineDiro",
+            "percent": 10
+          }
+        ]
+      },
+      "Pluggable File Storage and Abstraction": {
+        "files": [
+          {
+            "path": "docs/docs/examples/custom_storage.md",
+            "description": "This file is a placeholder document intended to provide an example or documentation for implementing custom or transparent storage solutions within the Quivr project.",
+            "spof": false
+          },
+          {
+            "path": "docs/docs/storage/local_storage.md",
+            "description": "This file documents the `local_storage` module within the `quivr_core.storage` library, providing information on its functionality and usage for handling local data storage.",
+            "spof": false
+          },
+          {
+            "path": "docs/docs/storage/base.md",
+            "description": "This file provides documentation for the `StorageBase` component within the `quivr_core.storage` module, likely serving as an autogenerated reference for the base storage interface or class.",
+            "spof": false
+          },
+          {
+            "path": "docs/docs/storage/index.md",
+            "description": "This document explains the Storage class in quivr-core, detailing its role in managing files for a 'brain' and outlining available implementations like LocalStorage and TransparentStorage.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/storage/file.py",
+            "description": "This file defines the `QuivrFile` class for representing and managing files within the Quivr system, including utilities for loading file metadata, determining extensions, and handling asynchronous file operations.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/storage/storage_base.py",
+            "description": "Defines the abstract base class `StorageBase`, which establishes the common interface and required methods for various storage system implementations within the Quivr application, such as uploading, retrieving, and removing files.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/storage/local_storage.py",
+            "description": "This file defines concrete implementations for local file storage (`LocalStorage`) and an in-memory transparent storage (`TransparentStorage`) for `QuivrFile` objects within the Quivr application, enabling functionalities like uploading, retrieving, and managing files.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/files/__init__.py",
+            "description": "This `__init__.py` file makes the `QuivrFile` class directly accessible when importing from the `quivr_core.files` package. It serves as the package's entry point for the `QuivrFile` component.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/files/file.py",
+            "description": "This file defines the `QuivrFile` class, which represents a file within the Quivr system, handling its metadata, serialization, and basic asynchronous I/O operations. It also includes utilities for file extension recognition and loading file data.",
+            "spof": true
+          },
+          {
+            "path": "core/tests/test_quivr_file.py",
+            "description": "This file contains unit tests for the `QuivrFile` class, verifying its creation and the correct assignment of attributes and metadata.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AmineDiro",
+            "percent": 100
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 22,
+      "spofCount": 4
+    },
+    "busFactor": 1,
+    "authorCount": 3
+  },
+  "AI-Powered Q&A and Chat": {
+    "description": "Provides an intelligent conversational interface for users to ask questions and receive context-aware answers from their knowledge bases. This module leverages Retrieval-Augmented Generation (RAG) and can be extended with external tools like web search to enhance its capabilities.",
+    "functions": {
+      "Example Applications and Documentation": {
+        "files": [
+          {
+            "path": "docs/docs/examples/chatbot.md",
+            "description": "This document provides instructions for setting up and running a chatbot example using Quivr and Chainlit. It explains how to allow users to upload a text file and ask questions based on its content, detailing the installation, usage, and underlying workflow.",
+            "spof": true
+          },
+          {
+            "path": "docs/docs/examples/index.md",
+            "description": "This file serves as the main index or landing page for documentation examples within the project.",
+            "spof": false
+          },
+          {
+            "path": "docs/docs/examples/chatbot_voice_flask.md",
+            "description": "This document provides an example of a voice-activated chatbot built with Flask and Quivr, allowing users to upload text files and interact with their content through speech-to-text and text-to-speech.",
+            "spof": true
+          },
+          {
+            "path": "docs/docs/examples/chatbot_voice.md",
+            "description": "This document provides a guide on how to build and use a voice-enabled chatbot with Quivr and Chainlit. It details the setup, installation, running instructions, and usage for interacting with text files via both text and speech.",
+            "spof": true
+          },
+          {
+            "path": "docs/docs/workflows/index.md",
+            "description": "This file introduces and provides examples of workflows. These workflows are designed to help users create their own agentic RAG (Retrieval-Augmented Generation) systems.",
+            "spof": true
+          },
+          {
+            "path": "docs/docs/workflows/examples/rag_with_web_search.md",
+            "description": "This document provides a step-by-step guide and code examples for setting up an agentic RAG (Retrieval-Augmented Generation) workflow with web search capabilities using the Quivr framework. It details the YAML configuration for the workflow, API key setup, and Python code to create a brain and interact with it.",
+            "spof": true
+          },
+          {
+            "path": "docs/docs/workflows/examples/basic_rag.md",
+            "description": "This document provides a step-by-step guide on how to set up and use a basic Retrieval Augmented Generation (RAG) workflow with the Quivr library. It covers API key configuration, workflow definition using a YAML file, brain creation, and initiating a chat interface.",
+            "spof": true
+          },
+          {
+            "path": "docs/docs/quickstart.md",
+            "description": "This document provides a quickstart guide for using the Quivr library, detailing steps to set up API keys, create a 'brain' from files, and launch an interactive chat. It also covers customizing brain configurations and deploying with Chainlit.",
+            "spof": false
+          },
+          {
+            "path": "docs/docs/config/index.md",
+            "description": "This file provides documentation on how to configure the application using Pydantic-based classes and YAML, specifically detailing parameters for RAG retrieval workflows, including workflow structure, history, reranker, and LLM settings.",
+            "spof": true
+          },
+          {
+            "path": "core/CHANGELOG.md",
+            "description": "This file is a changelog documenting all the version updates, new features, and bug fixes for the 'core' component of the Quivr project.",
+            "spof": true
+          },
+          {
+            "path": "core/example_workflows",
+            "description": "This directory is designated to store illustrative example workflow definitions for the `quivr` core system. Its primary role is to showcase how to implement or configure core functionalities. Currently, it appears to be empty.",
+            "spof": false
+          },
+          {
+            "path": "examples/chatbot/chainlit.md",
+            "description": "This markdown file provides an example and instructions for setting up and running a chatbot using Quivr and Chainlit. The chatbot allows users to upload a text file and then ask questions about its content.",
+            "spof": false
+          },
+          {
+            "path": "examples/chatbot/public",
+            "description": "This directory is typically intended to host static assets such as HTML, CSS, JavaScript, images, or other public-facing files for the chatbot example application. These resources are directly served by a web server without any server-side processing.",
+            "spof": false
+          },
+          {
+            "path": "examples/chatbot/README.md",
+            "description": "This README provides instructions for setting up and running a chatbot example built with Quivr and Chainlit. The chatbot allows users to upload a text file and interactively ask questions about its content.",
+            "spof": true
+          },
+          {
+            "path": "examples/chatbot/.chainlit/translations",
+            "description": "This directory is intended to store localization or translation files for the Chainlit chatbot example. It would contain various language files to support multi-language interfaces within the chatbot application.",
+            "spof": false
+          },
+          {
+            "path": "examples/chatbot/main.py",
+            "description": "This file implements a Chainlit chatbot that allows users to upload a text file, which then serves as the knowledge base for a RAG-based question-answering system using the `quivr_core` library.",
+            "spof": true
+          },
+          {
+            "path": "examples/chatbot_voice/README.md",
+            "description": "This README describes a chatbot example built with Quivr and Chainlit, demonstrating how users can upload a text file and then ask questions about its content. It covers installation, running the chatbot, and its usage.",
+            "spof": true
+          },
+          {
+            "path": "examples/chatbot_voice/main.py",
+            "description": "This file implements a Chainlit-based multimodal (text and voice) chatbot. It uses Quivr for Retrieval Augmented Generation (RAG) over user-uploaded text files and integrates with OpenAI's Whisper for speech-to-text and TTS for text-to-speech capabilities.",
+            "spof": true
+          },
+          {
+            "path": "examples/chatbot_voice/chainlit.md",
+            "description": "This file is a markdown guide for a Quivr-based chatbot example that leverages Chainlit for its user interface. It provides instructions on setting up, running, and using the chatbot to ask questions about uploaded text files.",
+            "spof": true
+          },
+          {
+            "path": "examples/chatbot_voice/.chainlit/translations",
+            "description": "This directory is intended to store translation files for the Chainlit chatbot voice example. Its purpose is to support localization and provide multi-language capabilities for the user interface or chatbot responses within this specific example application.",
+            "spof": false
+          },
+          {
+            "path": "examples/chatbot_voice/public",
+            "description": "This `public` directory is intended to hold static web assets, such as HTML, CSS, or JavaScript files, for the `chatbot_voice` example. These files would typically be served directly to the client as part of the example application.",
+            "spof": false
+          },
+          {
+            "path": "examples/simple_question/README.md",
+            "description": "This is a placeholder README file for a 'simple-question' example project, intended to be filled with a description of that project.",
+            "spof": false
+          },
+          {
+            "path": "examples/simple_question/simple_question.py",
+            "description": "This file provides a simple example demonstrating the use of the `quivr_core` library. It creates a temporary file with sample text, initializes a `Brain` from this file, and then asks a question to retrieve information from the `Brain`.",
+            "spof": true
+          },
+          {
+            "path": "examples/simple_question/simple_question_streaming.py",
+            "description": "This script demonstrates how to use the Quivr `Brain` for streaming question answering, initializing it with a temporary document and showcasing two different RAG pipelines (`QuivrQARAG` and `QuivrQARAGLangGraph`). It loads environment variables and saves the created brain locally.",
+            "spof": false
+          },
+          {
+            "path": "examples/simple_question_megaparse.py",
+            "description": "This script demonstrates a simple interactive question-answering system using the 'quivr_core' library. It initializes a 'brain' from a PDF document, allowing users to ask questions and receive answers generated by an OpenAI GPT-4o model with RAG capabilities.",
+            "spof": true
+          },
+          {
+            "path": "examples/quivr-whisper/README.md",
+            "description": "This README details the Quivr-Whisper web application, which allows users to ask questions via audio, leveraging OpenAI's Whisper for transcription and text-to-speech, and integrating with the Quivr API. It provides comprehensive instructions for setting up, installing, and running the application locally.",
+            "spof": true
+          },
+          {
+            "path": "examples/quivr-whisper/app.py",
+            "description": "This Flask application provides a web interface for a Retrieval Augmented Generation (RAG) system using Quivr, allowing users to upload text files to create a knowledge base and then interact with it via speech-to-text and text-to-speech through OpenAI's Whisper and TTS APIs.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Aditya Nandan",
+            "percent": 48
+          },
+          {
+            "name": "Jacopo Chevallard",
+            "percent": 25
+          },
+          {
+            "name": "Stan Girard",
+            "percent": 18
+          }
+        ]
+      },
+      "Conversation State Management": {
+        "files": [
+          {
+            "path": "docs/docs/brain/chat.md",
+            "description": "This document describes the `ChatHistory` class, which stores conversations between the user and the LLM, crucial for providing context in the Retrieval-Augmented Generation (RAG) process. It explains how chat history is managed and utilized to improve LLM responses.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/rag/entities/chat.py",
+            "description": "This file defines the `ChatHistory` class, which manages and stores chat conversations as a sequence of `ChatMessage` objects. It provides methods for appending, retrieving, and converting chat messages, handling both human and AI interactions.",
+            "spof": false
+          },
+          {
+            "path": "core/tests/test_chat_history.py",
+            "description": "This file contains unit tests for the `ChatHistory` class, verifying its functionality for managing and retrieving chat messages, including message appending, history retrieval, and pairing messages.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Jacopo Chevallard",
+            "percent": 100
+          }
+        ]
+      },
+      "Retrieval-Augmented Generation (RAG) Core": {
+        "files": [
+          {
+            "path": "docs/docs/config/config.md",
+            "description": "This file documents the various configuration entities for the Quivr Retrieval-Augmented Generation (RAG) system, including settings for retrieval, workflow, LLM endpoints, and rerankers. It also lists supported LLM model suppliers and reranker options.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/rag/quivr_rag.py",
+            "description": "This file implements the core Retrieval Augmented Generation (RAG) logic for the QuivrQA system, providing synchronous and asynchronous methods to answer questions based on retrieved documents and chat history.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/rag/prompts.py",
+            "description": "This file defines and manages various prompt templates used throughout the Quivr application for different AI functionalities, such as RAG (Retrieval Augmented Generation), task rephrasing, chat with LLMs, and user intent detection. It centralizes the configuration of prompts to guide language model behavior.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/rag/entities/models.py",
+            "description": "This file defines data models (Pydantic models and TypedDicts) for entities and responses used within the Retrieval Augmented Generation (RAG) system of the Quivr application, including chat messages, knowledge sources, and structured RAG outputs.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/rag/quivr_rag_langgraph.py",
+            "description": "This file defines the `QuivrQARAGLangGraph` class, which implements a Retrieval Augmented Generation (RAG) system using LangGraph for orchestrating multi-step question answering processes. It integrates LLMs, vector stores, and document re-rankers to manage complex conversational states and task completion.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/rag/utils.py",
+            "description": "This file provides utility functions for processing, formatting, and parsing information related to Retrieval Augmented Generation (RAG) within the `quivr_core` framework. It handles LLM messages, tool calls, document aggregation, and response metadata.",
+            "spof": true
+          },
+          {
+            "path": "core/tests/fixture_chunks.py",
+            "description": "This file sets up and runs a RAG (Retrieval Augmented Generation) pipeline using LangChain and Quivr components. It streams a detailed AI response to a user query and saves the generated message chunks to a JSONL file.",
+            "spof": true
+          },
+          {
+            "path": "core/tests/test_utils.py",
+            "description": "This file contains unit tests for utility functions in `quivr_core.rag.utils` that handle AI message chunks, tool calls, and model function-calling capabilities. It ensures proper parsing, accumulation, and extraction of information from AI responses, especially in streaming scenarios.",
+            "spof": true
+          },
+          {
+            "path": "core/tests/test_quivr_rag.py",
+            "description": "This file contains asynchronous unit tests for the `QuivrQARAGLangGraph` class, verifying its streaming question-answering capabilities and the structure of streamed responses, including chunking and metadata handling.",
+            "spof": true
+          },
+          {
+            "path": "core/README.md",
+            "description": "This README file describes the 'quivr-core' package, identified as the Retrieval Augmented Generation (RAG) component of Quivr.com, and includes installation instructions and licensing information.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Jacopo Chevallard",
+            "percent": 67
+          },
+          {
+            "name": "Chloé Daems",
+            "percent": 12
+          },
+          {
+            "name": "Stan Girard",
+            "percent": 11
+          }
+        ]
+      },
+      "LLM and External Tool Integration": {
+        "files": [
+          {
+            "path": "core/quivr_core/rag/entities/config.py",
+            "description": "This file defines configuration classes and enumerations for various components within the Quivr system, primarily focusing on Large Language Models (LLMs) from different suppliers, web search tools, and rerankers. It centralizes default LLM parameters such as context/output token limits and tokenizer information.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/llm_tools/llm_tools.py",
+            "description": "This file serves as a factory for creating various LLM (Language Model) tools, organizing them into categories like web search or other functionalities. It provides a `LLMToolFactory` class to instantiate specific tools based on their name and configuration.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/llm_tools/entity.py",
+            "description": "This file defines structures for organizing, wrapping, and registering LLM tools, including a `ToolRegistry` for dynamic tool creation and management within the 'Quivr' framework.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/llm_tools/other_tools.py",
+            "description": "This file defines a category for miscellaneous large language model tools and provides a factory function to create a `cited_answer` tool. It integrates these 'other' tools into the Quivr core framework.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/llm_tools/web_search_tools.py",
+            "description": "This file defines and manages web search tools, specifically integrating the Tavily search API into the Quivr core system using LangChain components. It provides a structured way to create, register, and access web search functionalities.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/llm/__init__.py",
+            "description": "This `__init__.py` file defines the `llm` package for `quivr_core`, primarily exposing the `LLMEndpoint` class for interacting with Large Language Models.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/llm/llm_endpoint.py",
+            "description": "This file defines classes for managing Language Model (LLM) endpoints, including their dynamic instantiation from various providers and efficient tokenization with caching mechanisms. It serves as a central component for configuring and interacting with different LLMs.",
+            "spof": true
+          },
+          {
+            "path": "core/tests/test_config.py",
+            "description": "This file contains unit tests for verifying the default configurations of LLM endpoint and retrieval settings within the `quivr_core` library.",
+            "spof": false
+          },
+          {
+            "path": "core/tests/test_llm_endpoint.py",
+            "description": "This file contains unit tests for the `LLMEndpoint` class, verifying its instantiation from configuration objects and direct constructor, as well as its ability to handle different LLM models and API settings.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Jacopo Chevallard",
+            "percent": 77
+          },
+          {
+            "name": "Chloé Daems",
+            "percent": 12
+          },
+          {
+            "name": "AmineDiro",
+            "percent": 7
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 49,
+      "spofCount": 33
+    },
+    "busFactor": 2,
+    "authorCount": 6
+  },
+  "Infrastructure": {
+    "description": "",
+    "functions": {
+      "Build & Configuration": {
+        "files": [
+          {
+            "path": "docs/docs/examples/assets",
+            "description": "This directory is designated to store static assets, such as images or diagrams, that are referenced by the examples within the project's documentation. It serves as a centralized location for multimedia content directly supporting documentation examples.",
+            "spof": false
+          },
+          {
+            "path": "docs/docs/css",
+            "description": "This directory is intended to store custom CSS stylesheets specifically for the project's documentation. It centralizes styling rules to ensure a consistent visual presentation across the documentation pages.",
+            "spof": false
+          },
+          {
+            "path": "docs/docs/index.md",
+            "description": "This file serves as the main index for the Quivr documentation, introducing Quivr's features as a GenerativeAI personal assistant and providing a quick start guide for installation and usage.",
+            "spof": true
+          },
+          {
+            "path": "docs/docs/config/base_config.md",
+            "description": "This file documents the `quivr_core.base_config` class, which serves as a base class for configuration settings within the Quivr project. It describes the fundamental structure and options for configurations.",
+            "spof": false
+          },
+          {
+            "path": "docs/overrides",
+            "description": "This directory is intended to house custom overrides for the default documentation styling or content. As an empty directory, it likely serves as a placeholder for potential future customization of the `docs` section within the `quivr` repository.",
+            "spof": false
+          },
+          {
+            "path": "docs/README.md",
+            "description": "This file is a placeholder README for the documentation directory, awaiting content to describe the project's documentation.",
+            "spof": true
+          },
+          {
+            "path": "docs/src/docs/__init__.py",
+            "description": "This is an initialization file for the 'docs' Python subpackage within the documentation source, containing a simple test function.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/base_config.py",
+            "description": "This file defines `QuivrBaseConfig`, a Pydantic base class for configuration within the `quivr-core` library. It provides a method to load configuration instances from YAML files.",
+            "spof": false
+          },
+          {
+            "path": "core/scripts",
+            "description": "This directory is designated for housing various scripts pertinent to the core functionality of the Quivr project. Although currently empty, it serves as a placeholder for utility, maintenance, or automation scripts that operate at the core level.",
+            "spof": false
+          },
+          {
+            "path": "core/tests/processor/data/guidelines_code.md",
+            "description": "This file contains comprehensive guidelines and best practices for backend code development within the Quivr project, covering aspects from code structure and database interactions to testing, security, and CI/CD.",
+            "spof": false
+          },
+          {
+            "path": "core/tests/conftest.py",
+            "description": "This file defines pytest fixtures that provide mock objects, test data, and essential resources for various tests within the Quivr project. It sets up a consistent and isolated environment for testing different components like file processing, LLM interactions, and embeddings.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Stan Girard",
+            "percent": 98
+          },
+          {
+            "name": "Jacopo Chevallard",
+            "percent": 2
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 11,
+      "spofCount": 3
+    },
+    "busFactor": 1,
+    "authorCount": 2
+  },
+  "Data Ingestion & Processing": {
+    "description": "Connects to and extracts information from various data sources and file formats, such as PDFs, text files, and office documents. It automatically processes and structures this content to make it ready for intelligent search within a knowledge base.",
+    "functions": {
+      "Ingestion Clients & SDK": {
+        "files": [
+          {
+            "path": "docs/docs/workflows/examples/basic_ingestion.md",
+            "description": "This document provides a step-by-step guide for setting up a basic document ingestion and chat workflow using the Quivr library, including API key configuration, workflow YAML, and Python code examples.",
+            "spof": true
+          },
+          {
+            "path": "examples/quivr-whisper/static/app.js",
+            "description": "This JavaScript file implements the frontend logic for an audio recording and processing application. It handles audio input (recording or file upload), real-time audio visualization, silence detection, and interaction with a backend API for audio transcription or analysis.",
+            "spof": true
+          },
+          {
+            "path": "examples/pdf_document_from_yaml.py",
+            "description": "This script demonstrates how to ingest a PDF document into a `quivr_core` Brain using a configuration loaded from a YAML file. It then queries the Brain with a series of questions, comparing the generated answers against predefined truths.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Aditya Nandan",
+            "percent": 65
+          },
+          {
+            "name": "Stan Girard",
+            "percent": 26
+          },
+          {
+            "name": "Jacopo Chevallard",
+            "percent": 9
+          }
+        ]
+      },
+      "File Format Parsing Engine": {
+        "files": [
+          {
+            "path": "docs/docs/parsers/index.md",
+            "description": "This file serves as the index for documentation on Quivr's parsers, which are used to extract structured data from various sources.",
+            "spof": false
+          },
+          {
+            "path": "docs/docs/parsers/simple.md",
+            "description": "This file documents the `Simple Txt` processor implementation within the `quivr_core` library, detailing its usage and configuration options.",
+            "spof": false
+          },
+          {
+            "path": "docs/docs/parsers/megaparse.md",
+            "description": "This file provides documentation for the Megaparse processor implementation within the Quivr project, likely detailing its functionality as a parser.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/processor/implementations/simple_txt_processor.py",
+            "description": "This file defines the SimpleTxtProcessor class, which processes plain text (.txt) files by reading their content and splitting it into chunks using a recursive character splitting algorithm.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/processor/implementations/tika_processor.py",
+            "description": "This file defines the TikaProcessor, which utilizes an Apache Tika server to extract text from supported file types (e.g., PDFs) and then splits the extracted content into smaller, manageable chunks for further processing.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/processor/implementations/default.py",
+            "description": "This file dynamically creates and defines various document processor classes for different file types (e.g., PDF, CSV, DOCX). Each processor utilizes Langchain loaders to read documents and `tiktoken` based text splitting to prepare content for further use.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/processor/implementations/megaparse_processor.py",
+            "description": "This file defines the MegaparseProcessor, which integrates with the MegaParse SDK to parse various document types and then splits the content into chunks using a configurable text splitter, typically based on tiktoken.",
+            "spof": false
+          },
+          {
+            "path": "core/tests/processor/test_tika_processor.py",
+            "description": "This file contains unit tests for the `TikaProcessor` component, verifying its ability to process PDF files and handle exceptions when interacting with a Tika server.",
+            "spof": false
+          },
+          {
+            "path": "core/tests/processor/community/test_markdown_processor.py",
+            "description": "Tests for the MarkdownProcessor, ensuring it can correctly process Markdown files and handles invalid file types appropriately.",
+            "spof": true
+          },
+          {
+            "path": "core/tests/processor/docx/test_docx.py",
+            "description": "This file contains unit tests for the DOCXProcessor, verifying its ability to successfully process DOCX files and handle invalid file types.",
+            "spof": true
+          },
+          {
+            "path": "core/tests/processor/epub/test_epub_processor.py",
+            "description": "This file contains unit tests for the `EpubProcessor`, verifying its functionality in processing EPUB files, including handling valid content, potentially empty EPUBs, and gracefully failing with non-EPUB inputs.",
+            "spof": true
+          },
+          {
+            "path": "core/tests/processor/pdf/test_unstructured_pdf_processor.py",
+            "description": "This file contains unit tests for the `UnstructuredPDFProcessor`, verifying its ability to process PDF files and ensuring it correctly raises an error for non-PDF file types.",
+            "spof": true
+          },
+          {
+            "path": "core/tests/processor/odt/test_odt.py",
+            "description": "This file contains unit tests for the ODTProcessor, verifying its ability to process OpenDocument Text files successfully and handle expected errors or invalid inputs.",
+            "spof": true
+          },
+          {
+            "path": "examples/pdf_parsing_tika.py",
+            "description": "This file demonstrates how to initialize and interact with a `quivr_core.Brain` instance for Retrieval Augmented Generation (RAG), loading a PDF file and using fake LLM and embedding models for testing. It provides a simple command-line interface to ask questions and receive answers from the brain.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AmineDiro",
+            "percent": 50
+          },
+          {
+            "name": "Chloé Daems",
+            "percent": 49
+          },
+          {
+            "name": "Jacopo Chevallard",
+            "percent": 1
+          }
+        ]
+      },
+      "Pluggable Processor Framework": {
+        "files": [
+          {
+            "path": "core/quivr_core/processor/splitter.py",
+            "description": "This file defines the configuration for document splitting (chunking), including chunk size and overlap, used within the core processing logic of the Quivr application.",
+            "spof": false
+          },
+          {
+            "path": "core/quivr_core/processor/processor_base.py",
+            "description": "This file defines an abstract base class, `ProcessorBase`, for processing various file types within the Quivr system. It provides a standardized interface and common logic for checking file support, enriching document metadata, and delegating specific file processing to concrete subclasses.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/processor/registry.py",
+            "description": "This file implements a registry system for file processors, allowing different processor classes to be associated with specific file extensions and dynamically loaded based on priority. It provides mechanisms for registering, retrieving, and managing processor implementations within the `quivr-core` library.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/config.py",
+            "description": "This file defines configuration models and enumerations for the 'Megaparse' component, including parser types, parsing strategies, and methods for loading configuration from YAML files.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/language/models.py",
+            "description": "This file defines a Python `Enum` named `Language` that lists a comprehensive set of human languages, mapping their ISO 639-1 or similar codes to their full names. It is likely used for internationalization, language selection, or data processing related to different languages.",
+            "spof": true
+          },
+          {
+            "path": "core/quivr_core/language/utils.py",
+            "description": "This file provides utility functions for language detection, specifically offering a function to detect the language of a given text using `ftlangdetect` and return it as a `Language` enum.",
+            "spof": true
+          },
+          {
+            "path": "core/tests/processor/test_default_implementations.py",
+            "description": "This file contains unit tests for the `_build_processor` utility, which dynamically constructs processor classes based on a given loader and supported file extensions. It verifies the properties and behavior of these dynamically generated processor classes.",
+            "spof": false
+          },
+          {
+            "path": "core/tests/processor/test_txt_processor.py",
+            "description": "This file contains unit tests for the `TikTokenTxtProcessor` in the `quivr_core` library, specifically verifying its ability to process and chunk text files correctly.",
+            "spof": true
+          },
+          {
+            "path": "core/tests/processor/test_simple_txt_processor.py",
+            "description": "This file contains unit tests for the `SimpleTxtProcessor` and its `recursive_character_splitter` component, verifying their ability to process text files, split content, and handle unsupported file types.",
+            "spof": false
+          },
+          {
+            "path": "core/tests/processor/test_registry.py",
+            "description": "This file contains unit tests for the processor registry module, verifying the functionality for registering, retrieving, and managing document processors based on file extensions within the Quivr Core library.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Jacopo Chevallard",
+            "percent": 52
+          },
+          {
+            "name": "Chloé Daems",
+            "percent": 38
+          },
+          {
+            "name": "AmineDiro",
+            "percent": 10
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 27,
+      "spofCount": 18
+    },
+    "busFactor": 1,
+    "authorCount": 4
+  }
+}

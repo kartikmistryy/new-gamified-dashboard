@@ -1,0 +1,1973 @@
+{
+  "Utility": {
+    "description": "",
+    "functions": {
+      "General Utility": {
+        "files": [
+          {
+            "path": "javascript/localStorage.js",
+            "description": "This file provides utility functions for safely setting, getting, and removing items from the browser's local storage, including error handling.",
+            "spof": true
+          },
+          {
+            "path": "test/test_torch_utils.py",
+            "description": "This file contains unit tests for the `torch_utils.get_param` function, verifying its ability to correctly extract the device and data type of a PyTorch module's parameters, including when the module is wrapped within another object.",
+            "spof": true
+          },
+          {
+            "path": "modules/errors.py",
+            "description": "This module provides utility functions for handling, recording, formatting, and displaying exceptions, as well as checking software versions and reporting discrepancies to the user.",
+            "spof": false
+          },
+          {
+            "path": "modules/fifo_lock.py",
+            "description": "This file defines a FIFOLock class, a thread synchronization primitive that ensures threads acquire a lock in a First-In, First-Out (FIFO) order, preventing starvation.",
+            "spof": true
+          },
+          {
+            "path": "modules/patches.py",
+            "description": "This file provides utility functions for patching and unpatching methods or functions in modules or classes dynamically at runtime. It allows for temporary replacement of functionality while retaining the original function for potential restoration.",
+            "spof": true
+          },
+          {
+            "path": "modules/timer.py",
+            "description": "This file provides a utility for timing code execution, allowing for measurement of total time and specific categories/subcategories. It includes a `Timer` class for tracking execution times and a `TimerSubcategory` context manager for hierarchical timing, and initializes a global startup timer.",
+            "spof": true
+          },
+          {
+            "path": "modules/sd_hijack_utils.py",
+            "description": "This file defines a `CondFunc` class that acts as a conditional function hijacker, allowing an original function's behavior to be replaced by a substitute function based on a specified condition.",
+            "spof": false
+          },
+          {
+            "path": "modules/util.py",
+            "description": "This file provides a collection of utility functions for file system operations, including natural sorting, file listing and walking, path manipulation, cached file metadata access, and cross-platform folder opening, along with a topological sort algorithm.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 45
+          },
+          {
+            "name": "w-e-w",
+            "percent": 18
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 10
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 8,
+      "spofCount": 5
+    },
+    "busFactor": 3,
+    "authorCount": 6
+  },
+  "Application Management & UI": {
+    "description": "The central user interface and configuration system that provides access to all features, manages global settings, and controls the application's appearance and behavior.",
+    "functions": {
+      "UI Component Library & Interactivity": {
+        "files": [
+          {
+            "path": "javascript/hints.js",
+            "description": "This JavaScript file defines a collection of tooltips and hints for various UI elements in the Stable Diffusion web UI. It maps UI labels and emojis to their descriptive explanations.",
+            "spof": false
+          },
+          {
+            "path": "javascript/notification.js",
+            "description": "This script monitors a gallery for newly generated images and sends a browser notification, optionally with a sound, when a new leading image is detected. It also handles requesting notification permissions.",
+            "spof": false
+          },
+          {
+            "path": "javascript/dragdrop.js",
+            "description": "This file implements drag-and-drop functionality for images and URLs into Gradio image elements and prompt text areas, and also enables pasting images from the clipboard into image elements.",
+            "spof": false
+          },
+          {
+            "path": "javascript/aspectRatioOverlay.js",
+            "description": "This script dynamically displays an aspect ratio overlay on images within the 'img2img' tab of the UI, reflecting changes made to width and height input fields. It helps users visualize the output image's aspect ratio in real-time.",
+            "spof": false
+          },
+          {
+            "path": "javascript/contextMenus.js",
+            "description": "This file implements a system for adding and managing custom context menus on specific HTML elements within the Gradio application, allowing for dynamic addition/removal of menu options and event handling.",
+            "spof": false
+          },
+          {
+            "path": "javascript/imageMaskFix.js",
+            "description": "This script provides a temporary fix for an issue in the Stable Diffusion WebUI, ensuring that image mask canvases are correctly resized and positioned to match their corresponding preview images within the Gradio interface, especially on UI updates and window resizing.",
+            "spof": false
+          },
+          {
+            "path": "javascript/resizeHandle.js",
+            "description": "This script implements resizable split-pane layouts for elements with the class 'resize-handle-row', allowing users to drag a handle to adjust column widths. It includes touch support, double-click/double-tap reset functionality, and responsiveness for mobile views.",
+            "spof": false
+          },
+          {
+            "path": "javascript/inputAccordion.js",
+            "description": "This JavaScript file customizes Gradio accordion elements, adding a visible checkbox within the label to control its open/closed state and linking it to an underlying Gradio checkbox for functionality.",
+            "spof": true
+          },
+          {
+            "path": "javascript/ui.js",
+            "description": "This file contains various JavaScript functions for interacting with the Stable Diffusion web UI, including managing galleries, switching tabs, handling form submissions, and setting up UI elements for user convenience.",
+            "spof": false
+          },
+          {
+            "path": "modules/ui.py",
+            "description": "This file is responsible for defining and managing the Gradio-based user interface (UI) for the Stable Diffusion Web UI application, including UI components, settings, and interactions.",
+            "spof": false
+          },
+          {
+            "path": "modules/ui_components.py",
+            "description": "This file defines custom Gradio UI components, mostly extending standard Gradio elements to ensure proper integration within Gradio forms or to provide specialized functionalities like input-enabled accordions and pre-configured dropdowns.",
+            "spof": false
+          },
+          {
+            "path": "modules/ui_toprow.py",
+            "description": "This file defines the `Toprow` class, which is responsible for creating and managing the top-row user interface elements in the Stable Diffusion WebUI, including prompt input fields, generation controls, and various utility buttons and style options.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/mobile/javascript/mobile.js",
+            "description": "This script dynamically adjusts the UI layout for the 'txt2img' and 'img2img' tabs, specifically rearranging the generate button and applying a 'mobile' class, based on whether the interface is detected as being in a mobile-like state.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC",
+            "percent": 22
+          },
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 20
+          },
+          {
+            "name": "Tim Patton",
+            "percent": 17
+          }
+        ]
+      },
+      "Core Application Framework & Diagnostics": {
+        "files": [
+          {
+            "path": "javascript/profilerVisualization.js",
+            "description": "This JavaScript file provides functions to fetch, process, and display hierarchical profiling data in an interactive HTML table, with features like sorting, cutoffs, and expandable/collapsible sections.",
+            "spof": true
+          },
+          {
+            "path": "modules/restart.py",
+            "description": "This file provides functions to stop or restart the application by signaling the parent process, typically via a temporary file, and checking if restarting is enabled via an environment variable.",
+            "spof": true
+          },
+          {
+            "path": "modules/sysinfo.py",
+            "description": "This file gathers and formats comprehensive system information, including CPU, RAM, Python environment, installed packages, Git status, and application-specific settings, into a JSON string for diagnostics and reporting.",
+            "spof": true
+          },
+          {
+            "path": "modules/shared_state.py",
+            "description": "This file defines the `State` class, which manages the global state and progress of ongoing processes, such as image generation, within the application. It provides methods to update parameters like sampling steps, handle interruptions, and manage server commands like restarts.",
+            "spof": true
+          },
+          {
+            "path": "modules/shared_total_tqdm.py",
+            "description": "This file defines the `TotalTQDM` class, which manages a global `tqdm` progress bar to display the overall progress of a process within the application, integrating with shared state and options.",
+            "spof": true
+          },
+          {
+            "path": "modules/shared_cmd_options.py",
+            "description": "This file initializes and parses command-line arguments for the Stable Diffusion WebUI, including options provided by preloaded extensions. It then derives additional configuration flags based on the parsed arguments.",
+            "spof": true
+          },
+          {
+            "path": "modules/shared.py",
+            "description": "This file serves as a central hub for global variables, shared configurations, and common resources used across the Stable Diffusion Web UI application. It defines and initializes critical objects, settings, and utility functions that various modules access and modify during runtime.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 27
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 19
+          },
+          {
+            "name": "Robert Barron",
+            "percent": 18
+          }
+        ]
+      },
+      "Application Settings Management": {
+        "files": [
+          {
+            "path": "javascript/settings.js",
+            "description": "This JavaScript file manages the display and search functionality of the settings interface. It handles showing/hiding settings tabs, filtering settings based on user input, and organizing settings into categories within a Gradio-based application.",
+            "spof": true
+          },
+          {
+            "path": "javascript/ui_settings_hints.js",
+            "description": "This file dynamically injects descriptive hints and comments into the UI's settings tab and provides functionality to display quick settings information in a popup.",
+            "spof": false
+          },
+          {
+            "path": "modules/config_states.py",
+            "description": "This file manages saving and restoring the application's (webui) and its extensions' configurations, including their Git commit states, to allow reverting to known working versions.",
+            "spof": true
+          },
+          {
+            "path": "modules/options.py",
+            "description": "This file defines a robust system for managing application settings, including their definitions, UI integration hints, persistence, and validation. It provides classes and methods to store, load, save, and interact with various configuration options.",
+            "spof": true
+          },
+          {
+            "path": "modules/shared_options.py",
+            "description": "This file defines and categorizes various configurable options for the Stable Diffusion Web UI, including settings for image saving, output paths, upscaling, and face restoration. It uses OptionInfo objects to structure these settings, their default values, and UI components.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_loadsave.py",
+            "description": "This file defines a class `UiLoadsave` that manages saving, loading, and applying default values for Gradio UI components. It allows users to persist and update their preferred settings across sessions, offering an interface to review and apply changes to these defaults.",
+            "spof": false
+          },
+          {
+            "path": "modules/ui_settings.py",
+            "description": "This file defines the Gradio user interface for managing application settings. It provides functions to create UI components for individual settings, organize them into various tabs, and handle the saving and loading of these settings.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/canvas-zoom-and-pan/scripts/hotkey_config.py",
+            "description": "This file defines and registers a set of configuration options and hotkeys for canvas-related functionalities within the application, including controls for zooming, brush size adjustments, canvas movement, and display settings.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/extra-options-section/scripts/extra_options_section.py",
+            "description": "This script implements an extension for the Stable Diffusion WebUI that allows users to display selected settings directly on the txt2img and img2img tabs as 'extra options'. It dynamically generates UI components for these chosen settings and applies them during image generation.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 60
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 17
+          },
+          {
+            "name": "w-e-w",
+            "percent": 7
+          }
+        ]
+      },
+      "Image Viewer & Canvas Tools": {
+        "files": [
+          {
+            "path": "javascript/imageviewerGamepad.js",
+            "description": "This file implements image navigation functionality (previous/next) for a modal lightbox using connected gamepads or wheel events, primarily for VR controllers, with debouncing mechanisms.",
+            "spof": true
+          },
+          {
+            "path": "javascript/imageviewer.js",
+            "description": "This file implements a JavaScript-based lightbox-style image viewer for Gradio applications, allowing users to view gallery images in a full-screen modal with navigation, saving, zooming, and other preview functionalities.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/canvas-zoom-and-pan/javascript/zoom.js",
+            "description": "This JavaScript file implements zoom, pan, and hotkey functionality for image manipulation elements within the Stable Diffusion WebUI. It manages user input for canvas interactions and adjusts image display properties.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Danil Boldyrev",
+            "percent": 48
+          },
+          {
+            "name": "Aarni Koskela",
+            "percent": 14
+          },
+          {
+            "name": "Andray",
+            "percent": 13
+          }
+        ]
+      },
+      "Theming & Localization": {
+        "files": [
+          {
+            "path": "javascript/localization.js",
+            "description": "This file implements client-side localization for the web UI, dynamically translating text content, titles, and placeholders based on a provided translation dictionary. It also handles Right-To-Left (RTL) language styling and provides functionality to dump detected translations.",
+            "spof": false
+          },
+          {
+            "path": "modules/localization.py",
+            "description": "This file manages the loading and preparation of localization data from JSON files, consolidating them into a JavaScript object for a web UI. It discovers localization files from specified directories and combines their content.",
+            "spof": false
+          },
+          {
+            "path": "modules/shared_gradio_themes.py",
+            "description": "This file manages Gradio themes for the application. It provides functions to load themes from Hugging Face Hub or a local cache, apply them, and resolve theme-specific variables, ensuring theme consistency and customization options.",
+            "spof": false
+          },
+          {
+            "path": "modules/ui_gradio_extensions.py",
+            "description": "This file is responsible for dynamically injecting custom JavaScript and CSS into the Gradio UI templates, enabling extensions, localization, and theme customization for the Stable Diffusion web UI.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Aarni Koskela",
+            "percent": 33
+          },
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 31
+          },
+          {
+            "name": "w-e-w",
+            "percent": 18
+          }
+        ]
+      },
+      "Generation Task & Output Management": {
+        "files": [
+          {
+            "path": "javascript/progressbar.js",
+            "description": "This JavaScript file handles the display and updating of a progress bar and live previews for ongoing tasks, likely image generation, by periodically polling a backend API. It includes functionality for formatting time, updating the document title, and managing wake locks.",
+            "spof": false
+          },
+          {
+            "path": "modules/progress.py",
+            "description": "This file defines and manages task progress tracking, including queues, active tasks, and completion status, providing an API for monitoring task execution and generating live previews within the Stable Diffusion WebUI.",
+            "spof": false
+          },
+          {
+            "path": "modules/infotext_versions.py",
+            "description": "This file defines version constants and functions to parse version strings. Its primary purpose is to apply backward compatibility settings to Stable Diffusion WebUI parameters based on the detected generation version, adjusting for changes in features like prompt editing, samplers, and refiners.",
+            "spof": true
+          },
+          {
+            "path": "modules/infotext_utils.py",
+            "description": "This file provides utility functions for parsing and managing generation parameters (infotext) from Stable Diffusion outputs. It also handles the logic for pasting these parameters and associated images between different UI components and tabs in the web interface.",
+            "spof": false
+          },
+          {
+            "path": "modules/processing_scripts/sampler.py",
+            "description": "This file defines a UI component (`ScriptSampler`) for selecting and configuring image sampling parameters (steps, sampling method, and scheduler type) within the Stable Diffusion Web UI. It integrates with Gradio to create interactive controls for these settings.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_common.py",
+            "description": "This file provides common UI utilities for the Stable Diffusion WebUI, including functions for displaying generation information, saving images and their metadata (with CSV logging and optional zipping), and defining the structure of output panels in the Gradio interface.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 37
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 21
+          },
+          {
+            "name": "w-e-w",
+            "percent": 17
+          }
+        ]
+      },
+      "Extra Networks Management": {
+        "files": [
+          {
+            "path": "javascript/extraNetworks.js",
+            "description": "This JavaScript file implements the client-side logic for managing 'extra networks' in the Stable Diffusion WebUI, handling their display, search, sorting, and integration into prompt text areas.",
+            "spof": false
+          },
+          {
+            "path": "modules/ui_extra_networks_checkpoints_user_metadata.py",
+            "description": "This file defines a Gradio UI component for editing user-defined metadata associated with Stable Diffusion checkpoints, including descriptions, notes, and preferred VAEs.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_extra_networks_checkpoints.py",
+            "description": "This file defines a UI page for managing and displaying model checkpoints within the 'Extra Networks' section of the Stable Diffusion Web UI. It provides functionality to list, filter, and generate display data for checkpoint models, including previews and metadata.",
+            "spof": false
+          },
+          {
+            "path": "modules/ui_extra_networks_user_metadata.py",
+            "description": "This file defines a `UserMetadataEditor` class that provides a Gradio-based user interface for editing and saving user-defined metadata (such as descriptions and notes) and managing preview images for 'extra networks' items in the stable-diffusion-webui.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_extra_networks.py",
+            "description": "This file defines the backend API endpoints and UI logic for managing, displaying, and serving content (previews, metadata, cards) related to 'extra networks' within the Stable Diffusion Web UI.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Sj-Si",
+            "percent": 56
+          },
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 22
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 6
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 47,
+      "spofCount": 18
+    },
+    "busFactor": 2,
+    "authorCount": 12
+  },
+  "Model Customization & Fine-Tuning": {
+    "description": "Enables personalization of the AI's output by training and integrating custom concepts, styles, or characters using techniques like LoRA, Textual Inversion, and Hypernetworks.",
+    "functions": {
+      "Textual Inversion Management": {
+        "files": [
+          {
+            "path": "javascript/textualInversion.js",
+            "description": "This JavaScript file defines a function to initiate the training process for a textual inversion model. It handles progress reporting and interacts with a Gradio application interface.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_extra_networks_textual_inversion.py",
+            "description": "This file defines the UI page and logic for displaying and managing Textual Inversion embeddings within the Stable Diffusion WebUI's extra networks section. It handles loading embeddings, creating UI items with details like previews and descriptions, and listing available embeddings.",
+            "spof": false
+          },
+          {
+            "path": "modules/textual_inversion/ui.py",
+            "description": "This file defines the user interface (UI) functions for creating and training textual inversion embeddings within the Stable Diffusion web UI. It handles the logic for operations such as initializing and training these embeddings.",
+            "spof": false
+          },
+          {
+            "path": "modules/textual_inversion/saving_settings.py",
+            "description": "This file defines sets of parameters related to textual inversion and hypernetwork training, and provides a function to save these training settings to a timestamped JSON file.",
+            "spof": false
+          },
+          {
+            "path": "modules/textual_inversion/textual_inversion.py",
+            "description": "This file defines the core logic for managing Textual Inversion embeddings, including classes for representing embeddings, handling their storage and retrieval from the filesystem, and maintaining a database of loaded embeddings for use within the Stable Diffusion Web UI.",
+            "spof": false
+          },
+          {
+            "path": "modules/textual_inversion/image_embedding.py",
+            "description": "This file provides utilities for embedding and extracting textual inversion (or similar) data, specifically PyTorch tensors, into and from image files using steganographic techniques, and also includes functions for image captioning.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC",
+            "percent": 23
+          },
+          {
+            "name": "DepFA",
+            "percent": 18
+          },
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 12
+          }
+        ]
+      },
+      "Hypernetwork Management": {
+        "files": [
+          {
+            "path": "modules/extra_networks_hypernet.py",
+            "description": "This file defines the `ExtraNetworkHypernet` class, which integrates hypernetworks as an 'extra network' type within the Stable Diffusion WebUI, managing their activation and application during image generation.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_extra_networks_hypernets.py",
+            "description": "This file defines the UI page and logic for displaying and managing Hypernetworks within the Stable Diffusion WebUI's extra networks tab. It handles listing hypernetwork items, generating their display data, and managing previews.",
+            "spof": false
+          },
+          {
+            "path": "modules/hypernetworks/ui.py",
+            "description": "This file defines the user interface (UI) functions for creating and training hypernetworks within the Gradio application. It provides the front-end logic to interact with the core hypernetwork creation and training modules.",
+            "spof": false
+          },
+          {
+            "path": "modules/hypernetworks/hypernetwork.py",
+            "description": "This file defines the classes for creating, managing, and training hypernetworks, which are small neural networks used to modulate the weights of a larger model, typically in the context of Stable Diffusion.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC",
+            "percent": 20
+          },
+          {
+            "name": "Muhammad Rizqi Nur",
+            "percent": 14
+          },
+          {
+            "name": "aria1th",
+            "percent": 14
+          }
+        ]
+      },
+      "Core Model Operations & Utilities": {
+        "files": [
+          {
+            "path": "modules/extras.py",
+            "description": "This file provides utilities for managing Stable Diffusion models, including functions to merge model checkpoints, read and write model configurations, extract metadata from images, and bake in VAEs.",
+            "spof": false
+          },
+          {
+            "path": "modules/ui_checkpoint_merger.py",
+            "description": "This file defines the Gradio user interface and logic for merging Stable Diffusion checkpoint models. It allows users to select multiple models, choose interpolation methods, configure output settings, and manage metadata for the merged model.",
+            "spof": true
+          },
+          {
+            "path": "modules/sd_hijack.py",
+            "description": "This file implements a system for dynamically modifying and optimizing Stable Diffusion models within the web UI, primarily by patching core components like attention mechanisms, UNet forward passes, and text embedders to support features like custom optimizations, textual inversion, and model conversions.",
+            "spof": false
+          },
+          {
+            "path": "modules/textual_inversion/learn_schedule.py",
+            "description": "This file defines classes for managing and applying a learning rate schedule during a training process, allowing the learning rate to dynamically change at specified steps.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/Lora/lora_logger.py",
+            "description": "This file defines a custom colored logging formatter and configures a logger named 'lora' to use it, providing colorized output to the console for log messages.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 53
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 25
+          },
+          {
+            "name": "Chris OBryan",
+            "percent": 3
+          }
+        ]
+      },
+      "LoRA Integration Framework": {
+        "files": [
+          {
+            "path": "extensions-builtin/Lora/lora_patches.py",
+            "description": "This file defines a class `LoraPatches` responsible for applying and reverting monkey-patches to various PyTorch neural network module methods (like `forward` and `_load_from_state_dict`) to integrate Lora-specific functionalities.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/Lora/lora.py",
+            "description": "This file serves as an interface to the `networks` module, exposing various functionalities and data structures specifically related to Lora (Low-Rank Adaptation) models, such as available models, aliases, hashes, and loaded instances.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/Lora/ui_edit_user_metadata.py",
+            "description": "This file defines a Gradio-based user interface editor for managing and displaying custom metadata for Lora models, including training tags and activation prompts. It allows users to edit descriptions, SD versions, activation text, preferred weights, negative prompts, and notes for Lora models.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/Lora/preload.py",
+            "description": "This file defines command-line arguments for specifying the directories where Lora and LyCORIS network models are located, including a backward-compatible option for LyCORIS.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/Lora/extra_networks_lora.py",
+            "description": "This file defines the `ExtraNetworkLora` class, which manages the activation, parameter parsing, and loading of Lora extra networks, including handling their hashes and reporting any operational errors.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/Lora/networks.py",
+            "description": "This file handles the loading and application of various Lora (Low-Rank Adaptation) network weights to the Stable Diffusion model. It includes logic for converting naming conventions from different sources (like Diffusers) to the internal model structure and supports multiple Lora network types.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/Lora/ui_extra_networks_lora.py",
+            "description": "This file defines the UI page and logic for displaying, filtering, and managing Lora models within the 'Extra Networks' section of the Stable Diffusion WebUI, including generating item data and handling user metadata.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/Lora/scripts/lora_script.py",
+            "description": "This script integrates LoRA (Low-Rank Adaptation) models into the Stable Diffusion WebUI, managing their loading, patching, UI options, API endpoints, and processing of LoRA tags within prompts and infotext.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 57
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 15
+          },
+          {
+            "name": "Kohaku-Blueleaf",
+            "percent": 10
+          }
+        ]
+      },
+      "Low-Rank Network Implementation": {
+        "files": [
+          {
+            "path": "extensions-builtin/Lora/network_full.py",
+            "description": "This file defines a 'full' network module for Lora, specifically handling 'diff' weights and an optional bias. It provides the logic to create and apply these weight differences within a network.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/Lora/network_hada.py",
+            "description": "This file defines the Hada (Hypernetwork Additive) network module for Lora, implementing how to create and apply Hada-style weight modifications within a neural network. It specifically handles the reconstruction of weights from Hada components.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/Lora/network.py",
+            "description": "This file defines data structures and base logic for loading, managing, and applying LoRA (Low-Rank Adaptation) network weights and their associated metadata within a Stable Diffusion environment, including support for different SD versions and module types like DoRA.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/Lora/network_ia3.py",
+            "description": "This file defines the IA3 (Infused Adapter by re-scaling Activation) module type for neural networks, implementing specific weight scaling and modification logic within the network architecture.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/Lora/network_glora.py",
+            "description": "This file implements the GLORA (Generalized Low-Rank Adaptation) network module, a type of LoRA, for the stable-diffusion-webui, defining how GLORA weights are structured and applied to modify model layers.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/Lora/lyco_helpers.py",
+            "description": "This file provides utility functions for various low-rank decomposition and reconstruction methods used in neural network weight adaptation, including Conventional, CP (Compound Product), and Kronecker Product factorization for weights.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/Lora/network_norm.py",
+            "description": "This file defines a network module for normalization layers, handling the application of `w_norm` and `b_norm` weights within a larger neural network framework. It prepares these normalization parameters for use in a `calc_updown` operation, likely for LoRA models.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/Lora/network_oft.py",
+            "description": "This file implements Orthogonal Fine-Tuning (OFT) and Block Orthogonal Fine-Tuning (BOFT) modules, used to apply parameter-efficient updates to neural network weights, compatible with `kohya-ss` and `LyCORIS` implementations.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/Lora/network_lora.py",
+            "description": "This file defines classes for creating and applying Lora (Low-Rank Adaptation) modules within a neural network, handling different weight formats and module types like linear and convolutional layers for model fine-tuning. It facilitates the integration of Lora weights into existing model architectures.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/Lora/network_lokr.py",
+            "description": "This file implements the Low-Rank Kronecker (LoKr) decomposition for neural network weights. It defines how to create and apply LoKr modules, reconstructing full weights from their decomposed Kronecker product components.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "v0xie",
+            "percent": 62
+          },
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 23
+          },
+          {
+            "name": "Kohaku-Blueleaf",
+            "percent": 15
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 33,
+      "spofCount": 14
+    },
+    "busFactor": 2,
+    "authorCount": 6
+  },
+  "Extensibility & Plugin Management": {
+    "description": "A flexible framework that allows users to install, manage, and develop third-party extensions, enabling a rich ecosystem of community-driven features and integrations.",
+    "functions": {
+      "Extension Lifecycle & UI Management": {
+        "files": [
+          {
+            "path": "javascript/extensions.js",
+            "description": "This file contains JavaScript functions for managing extensions within the Stable Diffusion web UI, including enabling/disabling, updating, installing, and restoring their configuration states. It handles interactions with the Gradio interface elements related to extensions.",
+            "spof": false
+          },
+          {
+            "path": "modules/gradio_extensons.py",
+            "description": "This file patches various Gradio components and methods to extend their functionality, adding custom CSS classes, script callbacks, tooltip support, and modifying configuration handling for the Stable Diffusion WebUI.",
+            "spof": true
+          },
+          {
+            "path": "modules/extensions.py",
+            "description": "This file is responsible for managing extensions within the application, including discovering them, loading their metadata, and handling their status and Git-based update operations.",
+            "spof": false
+          },
+          {
+            "path": "modules/ui_extensions.py",
+            "description": "This file manages the user interface and backend logic for extensions and configuration states within the Stable Diffusion WebUI. It provides functionalities to list, enable, disable, and update extensions, as well as to save, restore, and display different configuration snapshots of the WebUI and its installed extensions.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 25
+          },
+          {
+            "name": "w-e-w",
+            "percent": 16
+          },
+          {
+            "name": "Andray",
+            "percent": 15
+          }
+        ]
+      },
+      "Scripting & Callback Execution Engine": {
+        "files": [
+          {
+            "path": "modules/script_callbacks.py",
+            "description": "This file implements a comprehensive callback management system, allowing modules and extensions to register and execute custom functions at various stages and events within the Stable Diffusion Web UI application lifecycle.",
+            "spof": false
+          },
+          {
+            "path": "modules/script_loading.py",
+            "description": "This file handles the dynamic loading of Python modules, specifically designed to discover and execute 'preload.py' scripts within extension directories to allow extensions to perform early setup or argument parsing.",
+            "spof": false
+          },
+          {
+            "path": "modules/scripts.py",
+            "description": "This file defines the base `Script` class and related argument classes, providing interfaces for extensions and custom scripts to integrate with and modify various stages of the image generation and processing pipeline in Stable Diffusion WebUI.",
+            "spof": false
+          },
+          {
+            "path": "scripts/custom_code.py",
+            "description": "This script provides a UI element in the Stable Diffusion Web UI to allow users to input and execute custom Python code. It enables dynamic modification of processing parameters and workflows through an `exec`-like mechanism, provided the `--allow-code` option is enabled.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/ScuNET/preload.py",
+            "description": "This file defines a preload function that adds a command-line argument for specifying the directory containing ScuNET model files within the stable-diffusion-webui application.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 47
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 17
+          },
+          {
+            "name": "wfjsw",
+            "percent": 10
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 9,
+      "spofCount": 2
+    },
+    "busFactor": 1,
+    "authorCount": 2
+  },
+  "Image Analysis & Prompting Tools": {
+    "description": "Includes features to analyze an existing image and automatically generate a descriptive text prompt. Also provides advanced tools to help users craft and refine their prompts for better results.",
+    "functions": {
+      "Prompt Authoring and Style Management": {
+        "files": [
+          {
+            "path": "javascript/edit-order.js",
+            "description": "This script enables reordering of comma-separated items within text input fields (likely prompt fields) by pressing Alt+Left or Alt+Right arrow keys.",
+            "spof": true
+          },
+          {
+            "path": "javascript/edit-attention.js",
+            "description": "This JavaScript file implements keyboard shortcuts (Ctrl/Meta + ArrowUp/Down) to adjust attention weights for selected text within prompt input fields. It allows users to increase or decrease numerical weights associated with parts of a prompt, and handles automatic selection of words or parenthesized blocks.",
+            "spof": false
+          },
+          {
+            "path": "javascript/token-counters.js",
+            "description": "This script manages and displays token counters for prompt textareas in the Stable Diffusion WebUI, specifically for text-to-image and image-to-image generation. It sets up event listeners to update token counts and controls their visibility based on user options.",
+            "spof": false
+          },
+          {
+            "path": "modules/ui_prompt_styles.py",
+            "description": "This file defines the Gradio UI and backend logic for managing and applying user-defined 'prompt styles' within the Stable Diffusion web UI. It allows users to create, edit, save, delete, and apply predefined text snippets (styles) to their prompts and negative prompts.",
+            "spof": true
+          },
+          {
+            "path": "modules/styles.py",
+            "description": "This file defines classes and functions for managing and applying/extracting 'prompt styles' used in text-to-image generation. It handles loading, saving, and applying predefined prompt snippets from/to CSV files.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/prompt-bracket-checker/javascript/prompt-bracket-checker.js",
+            "description": "This script checks for balanced round, square, and curly brackets in the prompt and negative prompt text boxes within the Stable Diffusion WebUI. It visually indicates bracket mismatches and provides details via a tooltip.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Charlie Joynt",
+            "percent": 23
+          },
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 22
+          },
+          {
+            "name": "missionfloyd",
+            "percent": 16
+          }
+        ]
+      },
+      "Image-to-Prompt Generation": {
+        "files": [
+          {
+            "path": "test/test_extras.py",
+            "description": "This file contains unit tests for the 'extra' API endpoints of the Stable Diffusion web UI, specifically focusing on single image operations like upscaling, PNG information retrieval, and image interrogation. It verifies that these API calls return a successful status code.",
+            "spof": true
+          },
+          {
+            "path": "modules/deepbooru.py",
+            "description": "This file implements the DeepDanbooru image tagging functionality, loading a pre-trained deepbooru model to analyze images and generate descriptive tags based on their content and user-defined preferences.",
+            "spof": false
+          },
+          {
+            "path": "modules/deepbooru_model.py",
+            "description": "This file defines the architecture for the DeepDanbooru neural network model, specifically designed for image tagging using PyTorch.",
+            "spof": true
+          },
+          {
+            "path": "modules/interrogate.py",
+            "description": "This file provides functionality to 'interrogate' an image using BLIP and CLIP models, generating a descriptive caption and identifying relevant categories (e.g., artists, styles) to describe the image's content.",
+            "spof": false
+          },
+          {
+            "path": "models/deepbooru",
+            "description": "This directory is designated to store models and related files for DeepBooru, an AI image tagging system often used with Stable Diffusion. It would typically contain checkpoint files or weights specific to DeepBooru's operation.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC",
+            "percent": 68
+          },
+          {
+            "name": "Aarni Koskela",
+            "percent": 6
+          },
+          {
+            "name": "JC_Array",
+            "percent": 6
+          }
+        ]
+      },
+      "Advanced Prompt Parsing and Scheduling": {
+        "files": [
+          {
+            "path": "modules/sd_emphasis.py",
+            "description": "This file defines a system for handling emphasized text within prompts, providing different strategies (e.g., Original, No Norm, Ignore, None) to modify how token embeddings are processed by neural networks like CLIP based on emphasis multipliers.",
+            "spof": true
+          },
+          {
+            "path": "modules/prompt_parser.py",
+            "description": "This file provides functionality for parsing and scheduling complex text prompts (including step-based changes, alternations, and weighting) for Stable Diffusion models. It processes these prompts to generate step-wise learned conditioning tensors for the diffusion process.",
+            "spof": false
+          },
+          {
+            "path": "modules/processing_scripts/comments.py",
+            "description": "This file provides functionality to allow users to include comments in their Stable Diffusion prompts, which are then stripped out before prompt processing or tokenization. It includes a script and callback to remove text following '#' in a prompt.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 50
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 19
+          },
+          {
+            "name": "Robert Barron",
+            "percent": 8
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 14,
+      "spofCount": 6
+    },
+    "busFactor": 3,
+    "authorCount": 7
+  },
+  "Image Post-Processing & Enhancement": {
+    "description": "A suite of tools to improve and refine images after generation, including high-resolution upscaling, automated face restoration, and applying various enhancement models.",
+    "functions": {
+      "Post-Processing Orchestration & UI": {
+        "files": [
+          {
+            "path": "javascript/hires_fix.js",
+            "description": "This JavaScript file defines a function that dynamically adjusts the user interface elements related to Hires fix resolution settings in the Stable Diffusion web UI. It controls the visibility and active state of upscale and resize options based on current settings and user preferences.",
+            "spof": true
+          },
+          {
+            "path": "modules/postprocessing.py",
+            "description": "This file implements the core logic for image post-processing operations within the Stable Diffusion WebUI, including upscaling, face restoration, and other enhancements. It handles processing single images or batches from directories and integrates with various post-processing scripts.",
+            "spof": false
+          },
+          {
+            "path": "modules/scripts_auto_postprocessing.py",
+            "description": "This file integrates post-processing scripts into the main user interface of the Stable Diffusion WebUI by wrapping them and making them accessible as standard UI scripts.",
+            "spof": true
+          },
+          {
+            "path": "modules/scripts_postprocessing.py",
+            "description": "This file defines classes and a framework for managing and executing post-processing scripts on images within the Stable Diffusion WebUI. It provides an interface for scripts to define their UI, process images, and manage image metadata.",
+            "spof": false
+          },
+          {
+            "path": "modules/ui_postprocessing.py",
+            "description": "This file defines the Gradio user interface for the post-processing section of the Stable Diffusion web UI. It allows users to perform various post-processing operations on single images, image batches, or images from a specified directory.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 43
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 32
+          },
+          {
+            "name": "Haoming",
+            "percent": 10
+          }
+        ]
+      },
+      "Face Restoration": {
+        "files": [
+          {
+            "path": "test/test_face_restorers.py",
+            "description": "This file contains pytest tests for face restoration models like GFPGAN and CodeFormer. It verifies that these models correctly process an input image with faces, producing an output image of the same dimensions but with visible changes.",
+            "spof": true
+          },
+          {
+            "path": "modules/face_restoration.py",
+            "description": "This file provides functionality for applying face restoration models to images. It includes a base class for face restoration and a function to select and apply a restoration model based on user-defined options.",
+            "spof": true
+          },
+          {
+            "path": "modules/codeformer_model.py",
+            "description": "This file implements the CodeFormer face restoration model, providing a class to load the model and apply face restoration with configurable weight. It integrates CodeFormer into the `stable-diffusion-webui` project's face restoration system.",
+            "spof": true
+          },
+          {
+            "path": "modules/face_restoration_utils.py",
+            "description": "This file provides utilities and an abstract base class for integrating face restoration models, handling face detection, cropping, restoration, and blending within images.",
+            "spof": true
+          },
+          {
+            "path": "modules/gfpgan_model.py",
+            "description": "This file implements the integration of the GFPGAN model for face restoration within the system, handling model loading, device management, and the actual face restoration process. It provides a `FaceRestorerGFPGAN` class and functions to set up and apply GFPGAN for fixing faces in images.",
+            "spof": true
+          },
+          {
+            "path": "scripts/postprocessing_gfpgan.py",
+            "description": "This file defines a post-processing script for the Stable Diffusion Web UI that integrates GFPGAN to enhance and restore faces in generated images. It provides a UI component for users to control the visibility of the GFPGAN effect.",
+            "spof": false
+          },
+          {
+            "path": "scripts/postprocessing_codeformer.py",
+            "description": "This script implements a post-processing module for the Stable Diffusion Web UI that uses the CodeFormer model to restore or enhance faces in generated images, with adjustable visibility and weight parameters.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Aarni Koskela",
+            "percent": 81
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 9
+          },
+          {
+            "name": "d8ahazard",
+            "percent": 3
+          }
+        ]
+      },
+      "Upscaling Model Integration": {
+        "files": [
+          {
+            "path": "modules/esrgan_model.py",
+            "description": "This file implements an ESRGAN (Enhanced Super-Resolution Generative Adversarial Networks) upscaler for images, handling model loading from local files or URLs and performing the upscaling operation.",
+            "spof": false
+          },
+          {
+            "path": "modules/dat_model.py",
+            "description": "This file implements an image upscaler specifically for DAT (Deep Anisotropic Transformer) models within the Stable Diffusion Web UI. It handles loading local DAT models and includes predefined remote DAT models, providing methods for model management and performing upscaling operations.",
+            "spof": true
+          },
+          {
+            "path": "modules/hat_model.py",
+            "description": "This file implements an upscaler using the HAT (High-Resolution ANisotropic Transformer) model architecture. It integrates HAT models into the Stable Diffusion WebUI's upscaling framework, handling model loading and image upscaling.",
+            "spof": true
+          },
+          {
+            "path": "modules/realesrgan_model.py",
+            "description": "This file implements the RealESRGAN upscaling functionality for the stable-diffusion-webui, providing a class to load, manage, and apply various RealESRGAN models to images.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/SwinIR/preload.py",
+            "description": "This file defines a preload function to add a command-line argument for specifying the directory containing SwinIR model files. It sets a default path for these models within the application's general models directory.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/SwinIR/scripts/swinir_model.py",
+            "description": "This file implements an Upscaler class for the SwinIR image upscaling algorithm, integrating it into the system by defining model loading, upscaling logic, and user interface settings for its configuration.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/LDSR/preload.py",
+            "description": "This file preloads a command-line argument for specifying the directory where LDSR (Latent Diffusion Super Resolution) model files are located, defaulting to a subdirectory within the application's models path.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/LDSR/scripts/ldsr_model.py",
+            "description": "This file implements the LDSR (Latent Diffusion Super-Resolution) upscaler, handling model loading, configuration, and integration into the application's upscaling pipeline.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/LDSR/ldsr_model_arch.py",
+            "description": "This file implements the Latent Diffusion Super-Resolution (LDSR) functionality, handling model loading, image preprocessing, and the core diffusion sampling process for image upscaling. It integrates as an extension within a Stable Diffusion Web UI environment.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/LDSR/vqvae_quantize.py",
+            "description": "This file defines a PyTorch module, `VectorQuantizer2`, which implements an improved vector quantization layer. It's used in VQ-VAE architectures to map continuous latent representations to discrete codebook entries, enabling discrete representation learning and generating quantized outputs.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/LDSR/sd_hijack_autoencoder.py",
+            "description": "This file re-implements the VQModel and VQModelInterface classes, originally from the `compvis/stable-diffusion` repository, into `ldm.models.autoencoder` to support the LDSR upscaler, as these components were removed in subsequent repository versions.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/LDSR/sd_hijack_ddpm_v1.py",
+            "description": "This file reinstates the original DDPM (Denoising Diffusion Probabilistic Models) logic from the Stable Diffusion V1 repository, which supports Vector Quantization (VQ). This is necessary for models like LDSR that rely on VQ for correct operation, as the V2 DDPM implementation does not support it.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/ScuNET/scripts/scunet_model.py",
+            "description": "This file implements the ScuNET model as an upscaler/denoiser within the Stable Diffusion WebUI, enabling image processing and providing UI settings for its tiling parameters.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Aarni Koskela",
+            "percent": 53
+          },
+          {
+            "name": "wywywywy",
+            "percent": 19
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 9
+          }
+        ]
+      },
+      "Upscaling Execution Framework": {
+        "files": [
+          {
+            "path": "modules/upscaler.py",
+            "description": "This file defines an abstract base class for image upscalers and provides concrete implementations for basic image resizing methods (Lanczos, Nearest) and a 'None' upscaler. It serves as a framework for integrating various image upscaling techniques within the application.",
+            "spof": false
+          },
+          {
+            "path": "modules/upscaler_utils.py",
+            "description": "This file provides utility functions for image upscaling, including conversions between PIL Image and PyTorch Tensor formats, and implements two different strategies for tiled upscaling to handle large images efficiently with deep learning models.",
+            "spof": true
+          },
+          {
+            "path": "scripts/sd_upscale.py",
+            "description": "This script implements an 'SD upscale' feature for the Stable Diffusion WebUI, allowing users to upscale an image by processing it in smaller tiles to manage VRAM usage.",
+            "spof": false
+          },
+          {
+            "path": "scripts/postprocessing_upscale.py",
+            "description": "This file defines a post-processing script for the Stable Diffusion WebUI, enabling users to upscale images with various upscalers, scaling modes (by factor or to specific dimensions), and advanced options like dual upscalers and size limits. It provides both a comprehensive and a simplified UI for image upscaling.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Aarni Koskela",
+            "percent": 33
+          },
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 23
+          },
+          {
+            "name": "Andray",
+            "percent": 19
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 29,
+      "spofCount": 17
+    },
+    "busFactor": 2,
+    "authorCount": 9
+  },
+  "Image Generation": {
+    "description": "Provides the core text-to-image and image-to-image capabilities, allowing users to create new artwork from text prompts or modify existing pictures through techniques like inpainting.",
+    "functions": {
+      "Core Generation Workflows": {
+        "files": [
+          {
+            "path": "test/test_txt2img.py",
+            "description": "This file contains integration tests for the 'txt2img' (text-to-image) API endpoint of the Stable Diffusion web UI, verifying its functionality with various request parameters.",
+            "spof": true
+          },
+          {
+            "path": "test/test_img2img.py",
+            "description": "This file contains automated tests for the `img2img` API endpoint of the Stable Diffusion Web UI. It verifies basic functionality, inpainting with and without masks, and SD upscaling by sending requests and checking for a 200 status code.",
+            "spof": false
+          },
+          {
+            "path": "modules/masking.py",
+            "description": "This file provides utility functions for manipulating image masks and their associated crop regions, including finding masked areas, expanding regions to fit aspect ratios, and filling masked content using blur.",
+            "spof": true
+          },
+          {
+            "path": "modules/img2img.py",
+            "description": "This file provides the core logic for image-to-image (img2img) generation within the Stable Diffusion WebUI, including various modes like inpainting and batch processing. It handles image input, parameter processing, and calls the underlying Stable Diffusion model for image generation.",
+            "spof": false
+          },
+          {
+            "path": "modules/txt2img.py",
+            "description": "This file implements the core text-to-image (txt2img) generation logic for the Stable Diffusion Web UI, including setting up processing parameters, executing image generation, and providing functionality for upscaling previously generated images.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/soft-inpainting/scripts/soft_inpainting.py",
+            "description": "This script implements 'Soft Inpainting' functionalities for Stable Diffusion, focusing on advanced blending of latent image representations and adaptive masking techniques. It aims to improve detail preservation and mask influence during the inpainting process.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "w-e-w",
+            "percent": 22
+          },
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 21
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 15
+          }
+        ]
+      },
+      "Diffusion Sampling Engine": {
+        "files": [
+          {
+            "path": "modules/sd_samplers_cfg_denoiser.py",
+            "description": "This file defines the `CFGDenoiser` class, which is a wrapper for a stable diffusion model's UNet that performs classifier-free guidance, enabling image generation using both positive and negative prompts. It handles conditioning tensors, applies scaling, and manages the denoising process.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_samplers_timesteps.py",
+            "description": "This file defines timestep-based samplers (e.g., DDIM, PLMS, UniPC) for Stable Diffusion, providing common wrappers, denoising logic, and sampling methods for both text-to-image and image-to-image generation within the web UI framework.",
+            "spof": true
+          },
+          {
+            "path": "modules/processing_scripts/refiner.py",
+            "description": "This script defines a UI component for the Stable Diffusion WebUI, enabling users to apply a 'refiner' model during image generation. It allows selection of a refiner checkpoint and specifies the fraction of sampling steps at which to switch to it.",
+            "spof": true
+          },
+          {
+            "path": "scripts/img2imgalt.py",
+            "description": "This script implements an alternative image-to-image (img2img) sampling method for the Stable Diffusion web UI. It focuses on decoding an image into its underlying noise, which can then be combined with random noise and resampled using various customizable parameters.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 57
+          },
+          {
+            "name": "CodeHatchling",
+            "percent": 27
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 3
+          }
+        ]
+      },
+      "Generation Model Asset Management": {
+        "files": [
+          {
+            "path": "models/karlo",
+            "description": "This directory is designated for storing model files related to the 'Karlo' component within the stable-diffusion-webui project. It likely serves as a placeholder or repository for specific Karlo-compatible models.",
+            "spof": false
+          },
+          {
+            "path": "models/VAE",
+            "description": "This directory is designated to store Variational AutoEncoder (VAE) models used by the Stable Diffusion WebUI. VAE models are crucial for encoding and decoding images efficiently within the diffusion process. Although currently empty, it serves as the intended location for these specialized model files.",
+            "spof": false
+          },
+          {
+            "path": "models/VAE-approx",
+            "description": "This directory is designated for storing VAE (Variational Autoencoder) approximation models used by the Stable Diffusion Web UI. Users would typically place downloaded or custom VAE approximation files here for the application to utilize during image generation.",
+            "spof": false
+          }
+        ],
+        "contributors": []
+      }
+    },
+    "stats": {
+      "totalFiles": 13,
+      "spofCount": 4
+    },
+    "busFactor": 2,
+    "authorCount": 7
+  },
+  "API for Automation & Integration": {
+    "description": "Provides a programmatic interface (API) for developers to integrate image generation and processing capabilities into external applications, scripts, and automated workflows.",
+    "functions": {
+      "API Endpoint Management": {
+        "files": [
+          {
+            "path": "test/test_utils.py",
+            "description": "This file contains integration tests for the Stable Diffusion Web UI API. It verifies the functionality of reading and writing API options and checks the accessibility of various API endpoints.",
+            "spof": true
+          },
+          {
+            "path": "modules/api/api.py",
+            "description": "This file defines the core API endpoints and functionality for the Stable Diffusion Web UI, including image processing, encoding/decoding, and other backend utilities using FastAPI.",
+            "spof": false
+          },
+          {
+            "path": "modules/api/models.py",
+            "description": "This file defines Pydantic models for various API requests and responses within the Stable Diffusion Web UI, including dynamic model generation for processing parameters.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 20
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 11
+          },
+          {
+            "name": "Bruno Seoane",
+            "percent": 9
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 3,
+      "spofCount": 1
+    },
+    "busFactor": 3,
+    "authorCount": 4
+  },
+  "Infrastructure": {
+    "description": "",
+    "functions": {
+      "Build & Configuration": {
+        "files": [
+          {
+            "path": "test/conftest.py",
+            "description": "This file configures the pytest testing framework for the Stable Diffusion WebUI project. It defines utility functions to load test files (e.g., images to base64) and provides pytest fixtures for test data and environment initialization.",
+            "spof": true
+          },
+          {
+            "path": "test/test_files",
+            "description": "This directory is designated to store files required by the test suite for the `stable-diffusion-webui` project. These files typically serve as test fixtures, input data, or expected outputs for various tests. Its current emptiness suggests it might be dynamically populated or intended for future test data.",
+            "spof": false
+          },
+          {
+            "path": "modules/cmd_args.py",
+            "description": "This file defines and parses the command-line arguments for the Stable Diffusion Web UI application, controlling various settings related to environment setup, model paths, performance optimizations, and UI configuration.",
+            "spof": false
+          },
+          {
+            "path": "modules/logging_config.py",
+            "description": "This file defines and sets up a standardized logging configuration for the application, optionally integrating with `tqdm` for progress bar compatibility and `rich` for enhanced output. It configures the root logger with a specific format and handler based on environment variables or provided log level.",
+            "spof": false
+          },
+          {
+            "path": "modules/gitpython_hack.py",
+            "description": "This file customizes GitPython by subclassing its Git and Repo objects to explicitly avoid using persistent Git processes. It implements direct subprocess calls for specific Git operations like `cat-file` for object header and data streaming.",
+            "spof": true
+          },
+          {
+            "path": "modules/paths_internal.py",
+            "description": "This module defines and initializes various internal file system paths used by the application, derived from the script's location, environment variables, or early command-line arguments. It's designed to be safely imported before all dependencies are installed.",
+            "spof": false
+          },
+          {
+            "path": "modules/profiling.py",
+            "description": "This file provides a PyTorch profiler context manager, allowing users to enable CPU and/or CUDA profiling based on application settings. It exports the profiling results to a Chrome trace file for analysis.",
+            "spof": true
+          },
+          {
+            "path": "modules/ngrok.py",
+            "description": "This file provides utility functions to establish a public internet connection for a local server using ngrok. It handles authentication tokens, basic authentication, and connection options for the ngrok tunnel.",
+            "spof": false
+          },
+          {
+            "path": "modules/initialize_util.py",
+            "description": "This file contains various utility functions for initializing and configuring the Stable Diffusion WebUI environment, including fixing library issues, setting up server options, handling signals, and configuring middleware.",
+            "spof": true
+          },
+          {
+            "path": "modules/launch_utils.py",
+            "description": "This script provides utility functions for the Stable Diffusion WebUI, handling environment setup, Python dependency management, Git operations (cloning, pulling, version checks), and extension installation. It ensures the system is correctly configured before launching the main program.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 34
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 21
+          },
+          {
+            "name": "Aarni Koskela",
+            "percent": 12
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 10,
+      "spofCount": 4
+    },
+    "busFactor": 2,
+    "authorCount": 8
+  },
+  "Core Generation Engine": {
+    "description": "The foundational engine that manages core operations such as loading AI models, orchestrating the image generation process, and optimizing performance across different hardware and memory constraints.",
+    "functions": {
+      "Hardware Abstraction and Execution": {
+        "files": [
+          {
+            "path": "modules/memmon.py",
+            "description": "This file implements a multi-threaded GPU memory usage monitor for PyTorch applications. It tracks and reports various memory statistics, including free, active, reserved, and peak usage, to help diagnose memory issues.",
+            "spof": true
+          },
+          {
+            "path": "modules/npu_specific.py",
+            "description": "This file provides utility functions for detecting and interacting with NPU (Neural Processing Unit) devices within a PyTorch environment, including checking for NPU availability and managing NPU memory.",
+            "spof": true
+          },
+          {
+            "path": "modules/mac_specific.py",
+            "description": "This file provides functions to detect the availability of Apple's Metal Performance Shaders (MPS) and implements various workarounds and optimizations for PyTorch operations when running on the MPS backend, addressing known compatibility and performance issues.",
+            "spof": false
+          },
+          {
+            "path": "modules/torch_utils.py",
+            "description": "This file provides utility functions for working with PyTorch models and tensors. It includes functions to retrieve the first parameter from a model and to determine an appropriate floating-point type based on the device.",
+            "spof": false
+          },
+          {
+            "path": "modules/devices.py",
+            "description": "This file centralizes utility functions and configurations for detecting and managing various hardware devices (CPU, CUDA, MPS, XPU, NPU), handling device-specific memory, and setting data types and precision for model operations within the Stable Diffusion WebUI.",
+            "spof": false
+          },
+          {
+            "path": "modules/xpu_specific.py",
+            "description": "This file provides XPU (Intel GPU) specific functionalities, optimizations, and workarounds for PyTorch operations within the Stable Diffusion WebUI, ensuring compatibility and performance on Intel XPU devices.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Kohaku-Blueleaf",
+            "percent": 29
+          },
+          {
+            "name": "Nuullll",
+            "percent": 19
+          },
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 13
+          }
+        ]
+      },
+      "Model and Asset Management": {
+        "files": [
+          {
+            "path": "modules/hashes.py",
+            "description": "This module provides functions for calculating and caching SHA256 hashes of files, including a specialized hashing method for SafeTensors files, to efficiently retrieve or compute file integrity checks.",
+            "spof": false
+          },
+          {
+            "path": "modules/modelloader.py",
+            "description": "This file provides utility functions for loading various types of models and associated files, including downloading from URLs, searching local directories, and managing upscalers and Spandrel models within the stable-diffusion-webui application.",
+            "spof": false
+          },
+          {
+            "path": "modules/extra_networks.py",
+            "description": "This file defines the core framework for managing and integrating 'extra networks' (e.g., Hypernets, LoRAs) within the Stable Diffusion WebUI. It handles parsing extra network syntax from prompts, registering different network types, and activating/deactivating them during image generation.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_models_types.py",
+            "description": "This file defines the `WebuiSdModel` class, extending `LatentDiffusion` with type hints for various attributes specific to Stable Diffusion models used within the web UI, such as model hash, checkpoint information, version, and optimization flags.",
+            "spof": true
+          },
+          {
+            "path": "modules/sd_models_config.py",
+            "description": "This module provides functions to determine the correct configuration file (e.g., .yaml) for various Stable Diffusion models based on their state dictionaries or filenames.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_vae_taesd.py",
+            "description": "This file implements and provides utilities for loading Tiny AutoEncoder for Stable Diffusion (TAESD) models, which are used for efficient encoding and decoding of latent spaces in Stable Diffusion. It handles downloading and managing different TAESD models based on the Stable Diffusion version.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_vae.py",
+            "description": "This file manages the loading, caching, and selection of VAE (Variational AutoEncoder) models for Stable Diffusion, allowing users to switch between different VAEs based on settings or model checkpoints. It defines functions to find available VAEs, resolve which VAE to use, and apply its weights to the Stable Diffusion model.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_models_xl.py",
+            "description": "This file adapts the Stable Diffusion XL (SDXL) model from the `sgm` library to integrate with the existing Stable Diffusion WebUI codebase. It achieves this by dynamically adding methods to SGM classes and adjusting model parameters for compatibility with older SD models like SD1.5.",
+            "spof": false
+          },
+          {
+            "path": "modules/safe.py",
+            "description": "This module provides a secure unpickling mechanism for PyTorch models ('.pt' files) to mitigate supply-chain attacks by restricting deserialized classes, and it replaces the default 'torch.load' function with this safe version.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_vae_approx.py",
+            "description": "This file implements a lightweight neural network for approximating VAE (Variational Autoencoder) decoding in Stable Diffusion, optimizing for speed over full VAE reconstruction. It includes functionality to load or download pre-trained approximation models based on the specific Stable Diffusion variant being used.",
+            "spof": true
+          },
+          {
+            "path": "modules/sd_models.py",
+            "description": "This file manages the discovery, registration, loading, and transformation of Stable Diffusion model checkpoints, including handling different model types and their state dictionaries.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_unet.py",
+            "description": "This file provides functionality to manage and dynamically swap different UNet implementations within the Stable Diffusion Web UI, allowing for custom UNet models to be loaded, activated, and deactivated.",
+            "spof": true
+          },
+          {
+            "path": "models/Stable-diffusion",
+            "description": "This directory is designated for storing Stable Diffusion model checkpoints and related files used by the Stable Diffusion WebUI. It serves as the primary location for housing the core AI models required for image generation.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 41
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 20
+          },
+          {
+            "name": "Aarni Koskela",
+            "percent": 8
+          }
+        ]
+      },
+      "Application Initialization and Task Orchestration": {
+        "files": [
+          {
+            "path": "modules/import_hook.py",
+            "description": "This file implements conditional import hacks to manage dependencies: it disables 'xformers' unless specified and patches a changed import path for 'torchvision.transforms.functional_tensor' to maintain compatibility.",
+            "spof": false
+          },
+          {
+            "path": "modules/call_queue.py",
+            "description": "This file provides utility functions and decorators for wrapping Gradio API calls, managing a FIFO queue for tasks, tracking execution progress, handling errors, and collecting performance and resource usage statistics.",
+            "spof": false
+          },
+          {
+            "path": "modules/initialize.py",
+            "description": "This file manages the initialization process for the Stable Diffusion Web UI, including importing necessary libraries, checking software versions, and setting up various models and components like samplers, extensions, and upscalers.",
+            "spof": true
+          },
+          {
+            "path": "modules/paths.py",
+            "description": "This file is responsible for locating the Stable Diffusion repository and its associated dependencies (like SDXL, BLIP, k-diffusion), and dynamically adding their paths to the Python import search path. It also includes workarounds for specific module import conflicts and missing dependencies.",
+            "spof": false
+          },
+          {
+            "path": "modules/shared_init.py",
+            "description": "This file provides the `initialize` function, which sets up various shared configurations, device settings, and core components for the Stable Diffusion WebUI application. It centralizes the early initialization of global resources required by other modules.",
+            "spof": false
+          },
+          {
+            "path": "modules/shared_items.py",
+            "description": "This file provides utility functions and a shared class to manage and access various dynamically loaded resources, models, and configurations used across the Stable Diffusion Web UI, acting as a central point for component lists.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 52
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 15
+          },
+          {
+            "name": "Andray",
+            "percent": 10
+          }
+        ]
+      },
+      "Generation Performance Optimization": {
+        "files": [
+          {
+            "path": "modules/lowvram.py",
+            "description": "This file implements a low VRAM optimization strategy for Stable Diffusion models by dynamically moving model components between CPU and GPU as needed during inference. It helps run large models on systems with limited GPU memory.",
+            "spof": true
+          },
+          {
+            "path": "modules/sd_disable_initialization.py",
+            "description": "This file provides context managers to control the initialization and loading of machine learning models, specifically to prevent immediate allocation of weights to save memory or disable certain initialization processes.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_hijack_checkpoint.py",
+            "description": "This file implements a mechanism to hijack and wrap specific forward methods of Latent Diffusion Model (LDM) attention and residual blocks with `torch.utils.checkpoint.checkpoint` for gradient checkpointing, allowing for memory optimization during training or inference. It provides functions to apply and remove these modifications dynamically.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_hijack_ip2p.py",
+            "description": "This file contains a utility function `should_hijack_ip2p` that determines if a Stable Diffusion checkpoint requires a 'pix2pix' specific modification. It checks if 'pix2pix' is present in the checkpoint's filename but not in its associated configuration file.",
+            "spof": false
+          },
+          {
+            "path": "modules/sub_quadratic_attention.py",
+            "description": "This file implements a memory-efficient dot-product self-attention mechanism, based on the 'Self-attention Does Not Need O(n2) Memory' paper, using chunking and checkpointing to reduce memory requirements.",
+            "spof": true
+          },
+          {
+            "path": "modules/sd_hijack_optimizations.py",
+            "description": "This file defines and manages various optimization strategies for attention mechanisms within Stable Diffusion models, allowing dynamic selection of different implementations (e.g., xformers, scaled dot product, split attention) to improve performance or memory usage.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_hijack_unet.py",
+            "description": "This file implements various monkey patches and custom classes to optimize the Stable Diffusion UNet, primarily focusing on mixed-precision support (float16/float32), memory efficiency, and handling flexible image dimensions by modifying PyTorch and diffusion model components.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/hypertile/scripts/hypertile_script.py",
+            "description": "This script integrates the Hypertile optimization technique into the Stable Diffusion WebUI, enabling users to configure and apply Hypertile to U-Net and VAE models for improved performance during image generation, including support for hires fix and XYZ grid options.",
+            "spof": true
+          },
+          {
+            "path": "extensions-builtin/hypertile/hypertile.py",
+            "description": "This file implements the Hypertile module for optimizing attention layers in Stable Diffusion models (SD-1.5 U-Net, VAE, and SD-XL) by splitting them into tiles. It defines target attention layers and provides utility functions for tile size calculation.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 46
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 17
+          },
+          {
+            "name": "brkirch",
+            "percent": 13
+          }
+        ]
+      },
+      "Diffusion Sampling and Scheduling": {
+        "files": [
+          {
+            "path": "modules/rng_philox.py",
+            "description": "This file implements a random number generator that imitates the behavior and output of `torch.randn` on a CUDA device, but runs on the CPU. It uses the Philox 4x32 algorithm and the Box-Muller transform to produce standard normal random variables.",
+            "spof": true
+          },
+          {
+            "path": "modules/processing.py",
+            "description": "This file defines the core `StableDiffusionProcessing` dataclass, encapsulating all parameters and state for an image generation task in Stable Diffusion. It also includes utility functions for image manipulation, color correction, masking, and model conditioning.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_schedulers.py",
+            "description": "This file defines and registers various sigma scheduling strategies used in diffusion models, including custom implementations and those from the k_diffusion library. These schedulers determine the step sizes for the denoising process.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_samplers_extra.py",
+            "description": "This file implements the 'restart sampling' method for improving generative processes, as described in a 2023 paper. It modifies diffusion model sampling steps, potentially re-sampling from earlier states, to enhance generated output.",
+            "spof": true
+          },
+          {
+            "path": "modules/sd_samplers_timesteps_impl.py",
+            "description": "This file implements various sampling algorithms for diffusion models, including DDIM, CFG++ enhanced DDIM, PLMS, and UniPC, used for the denoising process in stable diffusion.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_samplers_kdiffusion.py",
+            "description": "This file integrates K-diffusion samplers into the Stable Diffusion WebUI, defining various K-diffusion sampling methods and their associated parameters for both text-to-image and image-to-image generation.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_samplers_lcm.py",
+            "description": "This file implements classes and functions required to integrate Latent Consistency Model (LCM) sampling into the Stable Diffusion WebUI, adapting k-diffusion's denoiser and sampler for LCM-specific operations. It defines a custom denoiser, a sampling loop, and a sampler class for LCM.",
+            "spof": true
+          },
+          {
+            "path": "modules/sd_samplers.py",
+            "description": "This file manages and provides access to various diffusion model samplers, aggregating them from different modules like k-diffusion and LCM. It includes functionalities for sampler creation, lookup, and parsing sampler/scheduler information from text, also handling their visibility and compatibility.",
+            "spof": false
+          },
+          {
+            "path": "modules/rng.py",
+            "description": "This module provides utility functions for controlled random number generation, specifically for normal distributions, supporting global and local seeding, different backend implementations (CPU, GPU, NV), and spherical linear interpolation for blending. It includes a class for managing image-specific random noise generation with multiple seeds and subseeds.",
+            "spof": true
+          },
+          {
+            "path": "modules/sd_samplers_common.py",
+            "description": "This file provides common utilities, data structures, and a base class for various samplers in Stable Diffusion. It includes functions for VAE approximation, latent-to-image conversion, sampler configuration, and managing the sampling process including refiner application.",
+            "spof": false
+          },
+          {
+            "path": "modules/models/diffusion/uni_pc/sampler.py",
+            "description": "Implements the UniPC (Unified Predictor-Corrector) sampler for diffusion models, providing a method to generate images within the Stable Diffusion Web UI based on a given model and conditioning.",
+            "spof": true
+          },
+          {
+            "path": "modules/models/diffusion/uni_pc/__init__.py",
+            "description": "This `__init__.py` file serves to make the `UniPCSampler` class directly accessible when importing the `uni_pc` package, simplifying its usage within the diffusion models module.",
+            "spof": true
+          },
+          {
+            "path": "modules/models/diffusion/uni_pc/uni_pc.py",
+            "description": "This file implements utilities for handling various noise schedules in diffusion models and provides a wrapper function to adapt diffusion models for continuous-time ODE solvers, such as DPM-Solver.",
+            "spof": true
+          },
+          {
+            "path": "modules/models/diffusion/ddpm_edit.py",
+            "description": "This file implements a Denoising Diffusion Probabilistic Model (DDPM) as a PyTorch Lightning module, incorporating functionalities like EMA, diffusion schedules, and checkpoint loading, adapted from Stable Diffusion for projects like InstructPix2Pix.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 35
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 17
+          },
+          {
+            "name": "CodeHatchling",
+            "percent": 6
+          }
+        ]
+      },
+      "Text Conditioning and Prompt Processing": {
+        "files": [
+          {
+            "path": "modules/sd_hijack_open_clip.py",
+            "description": "This file defines custom CLIP embedder classes for OpenCLIP models within the Stable Diffusion WebUI. It extends the base CLIP embedding functionality to handle text tokenization and generate text embeddings, likely incorporating support for custom words or specialized processing.",
+            "spof": true
+          },
+          {
+            "path": "modules/sd_hijack_xlmr.py",
+            "description": "This file defines a custom embedder for XLM-RoBERTa models, `FrozenXLMREmbedderWithCustomWords`, within the Stable Diffusion WebUI. It extends CLIP embedding functionality to handle XLMR tokenization, custom words, and generate text embeddings for the UNet.",
+            "spof": true
+          },
+          {
+            "path": "modules/sd_hijack_clip.py",
+            "description": "This file defines classes and methods for processing and encoding text prompts for Stable Diffusion models, handling prompt chunking, textual inversion embeddings, and preparing text inputs for a CLIP-like text encoder.",
+            "spof": false
+          },
+          {
+            "path": "modules/sd_hijack_clip_old.py",
+            "description": "This file provides older implementations for processing text input to a CLIP embedder, handling tokenization, custom embeddings, emphasis multipliers, and token length management. It likely serves as a fallback or historical version of text processing logic within the stable diffusion web UI.",
+            "spof": true
+          },
+          {
+            "path": "modules/xlmr.py",
+            "description": "This file defines custom configuration and model classes, extending `transformers` XLM-RoBERTa to include a linear projection layer and custom pooling for generating text embeddings or features.",
+            "spof": false
+          },
+          {
+            "path": "modules/xlmr_m18.py",
+            "description": "This file defines custom configurations and a model based on XLM-RoBERTa for sequence encoding. It extends the XLM-RoBERTa model with a transformation layer to project hidden states into a specified dimension, enabling it for tasks like representation learning.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 36
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 35
+          },
+          {
+            "name": "superhero-7",
+            "percent": 20
+          }
+        ]
+      },
+      "Stable Diffusion 3 Engine": {
+        "files": [
+          {
+            "path": "modules/models/sd3/other_impls.py",
+            "description": "This file contains custom implementations of core neural network components and a complete CLIP text model, along with specialized tokenizers for Stable Diffusion 3 (SD3), designed to integrate with the stable-diffusion-webui project.",
+            "spof": true
+          },
+          {
+            "path": "modules/models/sd3/sd3_model.py",
+            "description": "This file defines the core classes for inferencing with a Stable Diffusion 3 (SD3) model, including its denoiser, VAE, and text conditioning components. It manages model loading, latent processing, and applying the diffusion model.",
+            "spof": true
+          },
+          {
+            "path": "modules/models/sd3/sd3_impls.py",
+            "description": "This file implements core components for the Stable Diffusion 3 (SD3) model, including its diffusion process, sampling methods, and parts of the Variational Autoencoder (VAE).",
+            "spof": true
+          },
+          {
+            "path": "modules/models/sd3/mmdit.py",
+            "description": "This file implements the core components for the MM-DiT (Multi-Modal Diffusion Transformer) model used in Stable Diffusion 3 (SD3). It includes modules for patch embedding, positional embeddings, timestep and vector embeddings, and a self-attention mechanism.",
+            "spof": true
+          },
+          {
+            "path": "modules/models/sd3/sd3_cond.py",
+            "description": "This file implements the text conditioning pipeline for Stable Diffusion 3 (SD3) models, integrating and managing CLIP L, CLIP G, and T5 XXL text encoders. It handles tokenization, model loading, and the concatenation of text embeddings for conditioning the diffusion process.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Alex \"mcmonkey\" Goodwin",
+            "percent": 66
+          },
+          {
+            "name": "AUTOMATIC1111",
+            "percent": 34
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 59,
+      "spofCount": 29
+    },
+    "busFactor": 2,
+    "authorCount": 20
+  },
+  "Creative Exploration & Batch Processing": {
+    "description": "Offers powerful tools for artists and researchers to systematically experiment with prompts and parameters by generating large grids or batches of images to explore creative possibilities.",
+    "functions": {
+      "Systematic Image Generation & Exploration": {
+        "files": [
+          {
+            "path": "modules/images.py",
+            "description": "This file provides utility functions for image manipulation and organization within the Stable Diffusion WebUI. It includes functionalities for creating image grids, splitting and combining images, drawing annotations, and resizing images.",
+            "spof": false
+          },
+          {
+            "path": "modules/processing_scripts/seed.py",
+            "description": "This file defines the UI and backend logic for managing seed, subseed, and seed resizing parameters within the Stable Diffusion web UI. It allows users to set seeds, use random seeds, reuse seeds from previous generations, and configure variation seeds and their strength.",
+            "spof": true
+          },
+          {
+            "path": "scripts/loopback.py",
+            "description": "This script implements an img2img loopback feature for Stable Diffusion WebUI. It repeatedly feeds the output of an image generation back as input for the next iteration, allowing for progressive image refinement or transformation over multiple 'loops' with adjustable denoising strength and optional prompt interrogation.",
+            "spof": false
+          },
+          {
+            "path": "scripts/xyz_grid.py",
+            "description": "This script defines the logic and available parameters for generating XYZ plots in Stable Diffusion WebUI. It allows users to create grids of images by systematically varying multiple generation parameters (e.g., seeds, samplers, checkpoints, CFG scale).",
+            "spof": false
+          },
+          {
+            "path": "scripts/prompts_from_file.py",
+            "description": "This script for the Stable Diffusion WebUI allows users to generate multiple images by processing a list of prompts provided in a file or textbox. Each line can specify a prompt and optional image generation parameters to override the default settings for individual image generation jobs.",
+            "spof": false
+          },
+          {
+            "path": "scripts/prompt_matrix.py",
+            "description": "This script for Stable Diffusion WebUI generates a grid of images by systematically varying parts of a user-defined prompt, allowing exploration of different prompt combinations and their visual effects.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "w-e-w",
+            "percent": 20
+          },
+          {
+            "name": "AUTOMATIC",
+            "percent": 15
+          },
+          {
+            "name": "CodeHatchling",
+            "percent": 14
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 6,
+      "spofCount": 1
+    },
+    "busFactor": 1,
+    "authorCount": 3
+  },
+  "Training Data Preparation": {
+    "description": "A specialized toolkit for users training their own AI models, providing automated image processing functions like intelligent cropping, captioning, and other dataset augmentations.",
+    "functions": {
+      "Intelligent Image Cropping and Resizing": {
+        "files": [
+          {
+            "path": "modules/textual_inversion/autocrop.py",
+            "description": "This file provides functions for intelligently cropping images by identifying points of interest such as faces, corners, and high-entropy regions. It uses OpenCV and PIL to analyze image content and determine an optimal focal point for cropping.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/postprocessing-for-training/scripts/postprocessing_autosized_crop.py",
+            "description": "This file defines a post-processing script for Stable Diffusion WebUI that automatically crops images to an optimal size. It allows users to configure dimension, area, and error thresholds, along with a resizing objective, to find the best crop for each image.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/postprocessing-for-training/scripts/postprocessing_focal_crop.py",
+            "description": "This script provides an automatic focal point cropping post-processing feature for images, allowing users to define weights for face, entropy, and edge detection to guide the cropping. It is designed to crop images to a target size while maintaining areas of interest.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/postprocessing-for-training/scripts/postprocessing_split_oversized.py",
+            "description": "This script provides a post-processing module for splitting oversized images into smaller, more manageable parts, with optional overlap, within the Stable Diffusion Web UI. It is designed to handle images that exceed a defined threshold relative to target dimensions.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "w-e-w",
+            "percent": 41
+          },
+          {
+            "name": "captin411",
+            "percent": 39
+          },
+          {
+            "name": "Aarni Koskela",
+            "percent": 19
+          }
+        ]
+      },
+      "Dataset Augmentation and Loading": {
+        "files": [
+          {
+            "path": "modules/textual_inversion/dataset.py",
+            "description": "This file implements custom dataset and data loader classes for training personalized text-to-image models (e.g., textual inversion). It handles loading images and their associated text, preprocessing them into latent representations, and grouping them for efficient batching during training.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/postprocessing-for-training/scripts/postprocessing_create_flipped_copies.py",
+            "description": "This script defines a post-processing step for images, allowing users to generate flipped copies (horizontal, vertical, or both) of an input image. These flipped copies are then added to the set of processed images.",
+            "spof": false
+          },
+          {
+            "path": "extensions-builtin/postprocessing-for-training/scripts/postprocessing_caption.py",
+            "description": "This script provides a post-processing extension for Stable Diffusion WebUI to generate and append additional captions to an image using Deepbooru or BLIP models, primarily for training datasets.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "AUTOMATIC",
+            "percent": 30
+          },
+          {
+            "name": "flamelaw",
+            "percent": 25
+          },
+          {
+            "name": "Shondoit",
+            "percent": 12
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 7,
+      "spofCount": 0
+    },
+    "busFactor": 2,
+    "authorCount": 2
+  }
+}

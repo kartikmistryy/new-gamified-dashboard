@@ -1,0 +1,1305 @@
+{
+  "Interactive Generation Interface": {
+    "description": "Provides a comprehensive web-based user interface for real-time interaction with language models, featuring modes for conversational chat, structured notebook-style generation, and character-based role-playing.",
+    "functions": {
+      "Chat Interface & Logic": {
+        "files": [
+          {
+            "path": "docs/13 - Keyboard Shortcuts.md",
+            "description": "This file documents the keyboard shortcuts available within the text-generation-webui application, categorized by general functions and those specific to the chat interface.",
+            "spof": true
+          },
+          {
+            "path": "docs/01 - Chat Tab.md",
+            "description": "This document describes the functionalities and features of the 'Chat Tab' in the text-generation-webui, detailing input controls, chat history management, and various chat modes (Chat, Instruct, Chat-instruct) with their respective prompt formatting and use cases for different model types.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_chat.py",
+            "description": "This file defines and creates the Gradio user interface components for the chat functionality, including chat history, input, controls, and character management, within the text-generation-webui application.",
+            "spof": true
+          },
+          {
+            "path": "modules/chat.py",
+            "description": "Manages the core logic for chat interactions within the text-generation-webui, including prompt generation, message formatting, history management, and integration with various chat components and model output parsing.",
+            "spof": true
+          },
+          {
+            "path": "extensions/google_translate/script.py",
+            "description": "This file implements a Gradio extension that uses Google Translate to automatically translate user input to English and model output from English to a chosen language. It provides UI controls for activation and language selection.",
+            "spof": true
+          },
+          {
+            "path": "js/global_scope_js.js",
+            "description": "This file contains client-side JavaScript functions for handling user interactions within a chat interface, including copying messages, branching conversations, editing messages, navigating message history, and managing UI updates through morphdom.",
+            "spof": false
+          },
+          {
+            "path": "js/main.js",
+            "description": "This JavaScript file manages the main user interface interactions for the text-generation-webui chat, including keyboard shortcuts, chat scrolling behavior, and dynamic updates like syntax highlighting and generation status.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 87
+          },
+          {
+            "name": "Underscore",
+            "percent": 8
+          },
+          {
+            "name": "Katehuuh",
+            "percent": 3
+          }
+        ]
+      },
+      "Generation UI & Application Platform": {
+        "files": [
+          {
+            "path": "docs/02 - Default and Notebook Tabs.md",
+            "description": "This document describes the 'Default' and 'Notebook' tabs within the text-generation-webui interface, detailing their functionalities, input/output sections, and available buttons for text generation and interaction.",
+            "spof": true
+          },
+          {
+            "path": "modules/block_requests.py",
+            "description": "This file implements monkey-patching for `requests.get`, `builtins.open`, and `builtins.print` to intercept and modify network requests, local file access (specifically for web UI templates), and console output for custom behavior or security.",
+            "spof": true
+          },
+          {
+            "path": "modules/prompts.py",
+            "description": "This file manages loading and creating prompt text files for the text generation web UI, including initializing new prompts and counting tokens within a given text.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_parameters.py",
+            "description": "This file defines and creates the user interface (UI) components for adjusting text generation parameters and other application settings within a Gradio-based web UI. It uses various Gradio elements like sliders, dropdowns, and checkboxes to allow users to configure generation settings.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_file_saving.py",
+            "description": "This file defines the Gradio user interface components and backend logic for saving and deleting various user-created data, including text files, character definitions, and presets within the web UI.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_session.py",
+            "description": "This file defines the Gradio UI and backend logic for managing user session settings, extensions, and boolean command-line flags within the text-generation-webui application.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_notebook.py",
+            "description": "This file defines the Gradio UI components and event handlers for the 'Notebook' tab in the text generation web UI, allowing users to input text, generate responses, manage prompts, and view outputs in various formats like raw text, markdown, HTML, logits, and tokens.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_default.py",
+            "description": "This file defines the default Gradio user interface for a text generation web application, including input/output textboxes, generation controls, prompt management, and various output display tabs. It also sets up the interactive event handlers for these UI components.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui.py",
+            "description": "This file defines and configures the user interface (UI) for the text generation web UI, including loading CSS/JavaScript, setting the Gradio theme, and listing various input elements for model parameters and generation settings.",
+            "spof": true
+          },
+          {
+            "path": "modules/gradio_hijack.py",
+            "description": "This file 'hijacks' or patches the Gradio library to customize its behavior, including enhancing security by restricting host access, extending component functionality with tooltips and JavaScript injection, and disabling certain Gradio features like the launch counter.",
+            "spof": true
+          },
+          {
+            "path": "js/save_files.js",
+            "description": "This JavaScript file provides utility functions for saving data (specifically chat history and session information) as JSON files to the user's local system. It includes functions for generating timestamped filenames and initiating file downloads in the browser.",
+            "spof": true
+          },
+          {
+            "path": "js/switch_tabs.js",
+            "description": "This JavaScript file provides utility functions for programmatically switching between different tabs or sections of a web user interface, primarily by simulating button clicks and scrolling the view to the top.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 96
+          },
+          {
+            "name": "LawnMauer",
+            "percent": 1
+          },
+          {
+            "name": "Alidr79",
+            "percent": 1
+          }
+        ]
+      },
+      "UI Rendering & Client-Side Assets": {
+        "files": [
+          {
+            "path": "modules/sane_markdown_lists.py",
+            "description": "This file implements a Python-Markdown extension to modify the default behavior of lists, ensuring more 'sane' processing for ordered and unordered lists, especially regarding indentation and nesting.",
+            "spof": true
+          },
+          {
+            "path": "css/highlightjs",
+            "description": "This directory is intended to store CSS stylesheets specifically for the Highlight.js library. Its role is to provide styling for syntax highlighting within the text-generation-webui project.",
+            "spof": false
+          },
+          {
+            "path": "css/Inter",
+            "description": "This directory is designated to house Cascading Style Sheet (CSS) files or font assets related to the \"Inter\" typeface. Its role is to manage the styling and display of the Inter font within the text-generation-webui application.",
+            "spof": false
+          },
+          {
+            "path": "css/NotoSans",
+            "description": "This directory is designated to store files for the Noto Sans font. It serves as a specific location within the CSS resources to provide the necessary font assets for styling the text-generation-webui application.",
+            "spof": false
+          },
+          {
+            "path": "css/katex/fonts",
+            "description": "This directory is intended to store font files specifically used by the KaTeX library. These fonts are crucial for rendering mathematical equations correctly within the 'text-generation-webui' application.",
+            "spof": false
+          },
+          {
+            "path": "js/show_controls.js",
+            "description": "This JavaScript file defines a function to toggle the visibility of UI controls and sidebars, such as navigation, past chats, and extensions, on a web page. It handles showing or hiding these elements based on a boolean input.",
+            "spof": true
+          },
+          {
+            "path": "js/dark_theme.js",
+            "description": "This file provides a JavaScript function to toggle between light and dark UI themes, which includes switching syntax highlighting stylesheets and re-applying highlighting to code blocks.",
+            "spof": true
+          },
+          {
+            "path": "js/katex",
+            "description": "This directory is intended to contain JavaScript files and assets for integrating KaTeX, a TeX math rendering library, into the text-generation-webui application. Its purpose is to enable the display of mathematical notation within the user interface.",
+            "spof": false
+          },
+          {
+            "path": "js/highlightjs",
+            "description": "This directory is intended to contain JavaScript files and related assets for the Highlight.js library, which is used for syntax highlighting. It supports the web interface's ability to display code snippets with proper formatting. Although currently empty, its purpose is to manage these presentation resources.",
+            "spof": false
+          },
+          {
+            "path": "js/morphdom",
+            "description": "This directory is intended to house JavaScript code related to the 'morphdom' library. It likely serves to efficiently update and patch the Document Object Model (DOM) within the `text-generation-webui` project, contributing to faster UI rendering.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "mamei16",
+            "percent": 60
+          },
+          {
+            "name": "oobabooga",
+            "percent": 40
+          },
+          {
+            "name": "missionfloyd",
+            "percent": 0
+          }
+        ]
+      },
+      "Character Management & Gallery": {
+        "files": [
+          {
+            "path": "extensions/gallery/script.js",
+            "description": "This script manages the visibility of a 'gallery' extension, primarily displaying it only when the 'Chat' tab is active and the chat mode element is visible, while hiding it for other tabs. It also includes a function to navigate to the first page of the gallery.",
+            "spof": true
+          },
+          {
+            "path": "extensions/gallery/script.py",
+            "description": "This script implements a Gradio extension that creates a dynamic character gallery. It displays characters found in `user_data/characters`, allows filtering, and integrates character selection with other UI components.",
+            "spof": false
+          },
+          {
+            "path": "js/update_big_picture.js",
+            "description": "This file contains a JavaScript function that updates the source of a profile picture element, appending a timestamp to the URL to bypass browser caching and ensure the latest image is loaded.",
+            "spof": true
+          },
+          {
+            "path": "user_data/characters",
+            "description": "This directory is designated for storing user-defined character profiles and data within the text-generation-webui application. It holds configurations and information related to various AI characters that users create or manage for text generation tasks.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 66
+          },
+          {
+            "name": "Lounger",
+            "percent": 19
+          },
+          {
+            "name": "conanak99",
+            "percent": 9
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 33,
+      "spofCount": 23
+    },
+    "busFactor": 1,
+    "authorCount": 4
+  },
+  "Application Management & Deployment": {
+    "description": "Simplifies installation, updates, and deployment across various platforms (including Docker), and provides utilities for downloading and managing AI models.",
+    "functions": {
+      "Application Deployment and Installation": {
+        "files": [
+          {
+            "path": "docs/09 - Docker.md",
+            "description": "This document provides detailed instructions for installing and launching the text-generation-webui using Docker Compose across various operating systems including Ubuntu, Manjaro, and Windows, covering dependencies, setup, and startup steps.",
+            "spof": true
+          },
+          {
+            "path": "docs/README.md",
+            "description": "This file is a local mirror of the project's documentation wiki, intended for receiving contributions that will later be synced to the main wiki.",
+            "spof": true
+          },
+          {
+            "path": "docker/TensorRT-LLM",
+            "description": "This directory is intended for Docker-related files that integrate NVIDIA's TensorRT-LLM with the `text-generation-webui` application. Its purpose is to provide the necessary context for building Docker images optimized for accelerated large language model inference.",
+            "spof": false
+          },
+          {
+            "path": "docker/nvidia",
+            "description": "This directory is intended to house Docker-related configurations and files specifically optimized for NVIDIA GPU environments within the `text-generation-webui` project. It would typically contain Dockerfiles or build contexts that leverage NVIDIA's CUDA toolkit for enhanced performance. Currently, it appears to be empty or serves as a placeholder for such specialized configurations.",
+            "spof": false
+          },
+          {
+            "path": "extensions/ngrok/README.md",
+            "description": "This README provides instructions on how to integrate and configure ngrok with the `text-generation-webui` to expose it publicly. It covers installation, running instructions, and configuration examples for authentication and authtoken management.",
+            "spof": false
+          },
+          {
+            "path": "requirements/full",
+            "description": "This directory is intended to store the full set of dependency requirements for the 'text-generation-webui' project. It likely defines all necessary packages for a complete installation and full functionality.",
+            "spof": false
+          },
+          {
+            "path": "requirements/portable",
+            "description": "This directory is intended to house specific dependency requirements or configuration files for a portable installation of the `text-generation-webui`. Its role is to define the necessary environment for running the application in a self-contained manner.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 48
+          },
+          {
+            "name": "Shixian Sheng",
+            "percent": 24
+          },
+          {
+            "name": "bobzilla",
+            "percent": 21
+          }
+        ]
+      },
+      "Core Configuration and Resource Management": {
+        "files": [
+          {
+            "path": "docs/08 - Additional Tips.md",
+            "description": "This document provides additional tips and instructions for users of the text-generation-webui, covering features like audio notifications, DeepSpeed integration for optimized model loading, and other miscellaneous usage advice.",
+            "spof": true
+          },
+          {
+            "path": "modules/utils.py",
+            "description": "This file provides a collection of utility functions for the text-generation-webui application, including file saving/deletion, string manipulation, and extensive functions for discovering and listing available models, presets, extensions, and other resources.",
+            "spof": true
+          },
+          {
+            "path": "modules/shared.py",
+            "description": "This file defines global variables and sets up an extensive command-line argument parser for configuring the 'text-generation-webui' application, covering aspects like model loading, generation settings, image processing, and various backend-specific options.",
+            "spof": true
+          },
+          {
+            "path": "user_data/models",
+            "description": "This directory is designated for storing user-specific model files or configurations for the `text-generation-webui` application. It serves as a personal repository for AI models utilized by the user. As it is currently empty, it awaits the addition of custom or downloaded model assets.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 91
+          },
+          {
+            "name": "Googolplexed",
+            "percent": 4
+          },
+          {
+            "name": "Diner Burger",
+            "percent": 2
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 11,
+      "spofCount": 5
+    },
+    "busFactor": 1,
+    "authorCount": 2
+  },
+  "Extensibility & API Integration": {
+    "description": "Provides a powerful extension system for adding new features and an OpenAI-compatible API for integrating the platform's generation capabilities into other applications and services.",
+    "functions": {
+      "Extension Management & Execution": {
+        "files": [
+          {
+            "path": "docs/06 - Session Tab.md",
+            "description": "This document describes the functionalities of the 'Session Tab' in text-generation-webui, including applying settings, managing extensions (installation and updates), and saving UI defaults.",
+            "spof": false
+          },
+          {
+            "path": "docs/07 - Extensions.md",
+            "description": "This document provides comprehensive instructions and details on how extensions work within the text-generation-webui, including how to define, load, and write them, along with a list of built-in extensions.",
+            "spof": true
+          },
+          {
+            "path": "modules/extensions.py",
+            "description": "This file manages the loading, initialization, and application of various extensions, allowing them to modify text processing, state, UI elements, and other core functionalities within the application. It serves as a central dispatcher for integrating modular enhancements.",
+            "spof": true
+          },
+          {
+            "path": "extensions/ngrok/script.py",
+            "description": "This script sets up an ngrok ingress for the text-generation-webui, allowing external access to the local web UI, with customizable parameters from settings.",
+            "spof": false
+          },
+          {
+            "path": "extensions/example/script.py",
+            "description": "This file serves as an example or template for creating extensions for the text-generation-webui. It demonstrates various functions that can be overridden to customize the web UI's behavior at different stages of text generation and chat interaction.",
+            "spof": true
+          },
+          {
+            "path": "user_data/extensions",
+            "description": "This directory is intended to store user-installed or custom extensions for the `text-generation-webui` application. It allows users to add new features or modify existing functionality through plugins. Currently, no extensions are present.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 93
+          },
+          {
+            "name": "Wojtab",
+            "percent": 3
+          },
+          {
+            "name": "bobzilla",
+            "percent": 1
+          }
+        ]
+      },
+      "OpenAI-Compatible API Server": {
+        "files": [
+          {
+            "path": "docs/12 - OpenAI API.md",
+            "description": "This document describes how to use the OpenAI-compatible API provided by text-generation-webui. It includes instructions for starting the API, details on various endpoints like completions, chat, and image generation, and provides example API calls in curl and Python.",
+            "spof": true
+          },
+          {
+            "path": "extensions/openai/errors.py",
+            "description": "This file defines custom exception classes for handling various errors related to OpenAI API interactions, including general OpenAI errors, invalid requests, and service unavailability.",
+            "spof": true
+          },
+          {
+            "path": "extensions/openai/logits.py",
+            "description": "This file defines a helper function `_get_next_logits` for the OpenAI extension, processing input parameters and calling the core `get_next_logits` function to retrieve next token logits based on the provided prompt and state.",
+            "spof": true
+          },
+          {
+            "path": "extensions/openai/tokens.py",
+            "description": "This file provides utility functions for encoding text into tokens, decoding tokens back into text, and counting the number of tokens in a given input for text generation purposes.",
+            "spof": false
+          },
+          {
+            "path": "extensions/openai/embeddings.py",
+            "description": "This file manages the loading and initialization of text embedding models, providing functions to generate embeddings from input text and format them for an OpenAI-like API response.",
+            "spof": false
+          },
+          {
+            "path": "extensions/openai/moderations.py",
+            "description": "This file implements a content moderation system that uses embeddings to score input text against predefined categories like 'sexual' or 'hate' and determine if it should be flagged. It calculates moderation scores based on the similarity between input text embeddings and category embeddings.",
+            "spof": true
+          },
+          {
+            "path": "extensions/openai/utils.py",
+            "description": "This file provides utility functions for an OpenAI extension, including converting float arrays to base64, managing Cloudflare tunnels, and parsing/sanitizing tool call objects from text responses.",
+            "spof": true
+          },
+          {
+            "path": "extensions/openai/script.py",
+            "description": "This file implements a FastAPI web server that provides an OpenAI-compatible API interface for text generation, chat completions, model management, embeddings, image generation, audio transcriptions, and moderation services. It integrates with the 'text-generation-webui' project's functionalities, including streaming responses and API key authentication.",
+            "spof": true
+          },
+          {
+            "path": "extensions/openai/completions.py",
+            "description": "This file implements an OpenAI API-compatible endpoint for chat completions within the text-generation-webui, handling request parsing, parameter processing, message history conversion, and multimodal content before delegating to internal text generation modules.",
+            "spof": false
+          },
+          {
+            "path": "extensions/openai/typing.py",
+            "description": "This file defines Pydantic models for the API requests and responses of the `text-generation-webui` project. It covers data structures for text generation, chat completions, embeddings, tokenization, model management, tool definitions, and image generation.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 67
+          },
+          {
+            "name": "matatonic",
+            "percent": 11
+          },
+          {
+            "name": "Jonas",
+            "percent": 9
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 16,
+      "spofCount": 10
+    },
+    "busFactor": 1,
+    "authorCount": 3
+  },
+  "Image Generation & Vision": {
+    "description": "Enables the generation of images from text prompts and the use of multimodal models that can interpret and discuss image inputs, integrating visual capabilities directly into the chat.",
+    "functions": {
+      "Multimodal Image Interpretation": {
+        "files": [
+          {
+            "path": "docs/Multimodal Tutorial.md",
+            "description": "This tutorial provides instructions on how to use multimodal models with vision capabilities in the text-generation-webui, covering model download, loading, and interacting with images. It details steps for both GGUF and ExLlamaV3 models.",
+            "spof": true
+          },
+          {
+            "path": "extensions/send_pictures/script.py",
+            "description": "This script provides an extension for a web-based text generation UI, enabling users to send captioned pictures in chat. It utilizes a BLIP model to automatically generate descriptions for uploaded images, which are then integrated into the chat as messages.",
+            "spof": true
+          },
+          {
+            "path": "user_data/mmproj",
+            "description": "This directory is intended to store user-specific data or configurations related to multimodal projects or models within the `text-generation-webui` application. As part of the `user_data` structure, it likely serves as a placeholder for user-generated or customized multimedia project assets.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 99
+          },
+          {
+            "name": "Φφ",
+            "percent": 1
+          }
+        ]
+      },
+      "Text-to-Image Generation": {
+        "files": [
+          {
+            "path": "docs/Image Generation Tutorial.md",
+            "description": "This tutorial provides instructions on how to set up and use image generation features within the text-generation-webui, covering installation, model management, image generation, and API usage.",
+            "spof": true
+          },
+          {
+            "path": "modules/image_utils.py",
+            "description": "This file provides utility functions for handling images, including opening from paths, converting between PIL Image objects and base64 strings, and extracting images from structured message content or attachments.",
+            "spof": true
+          },
+          {
+            "path": "modules/image_models.py",
+            "description": "This module provides functionality for loading, configuring, and managing image generation models, including support for various quantization methods, data types, attention backends, and CPU offloading. It integrates with Diffusers pipelines for image model operations.",
+            "spof": true
+          },
+          {
+            "path": "extensions/openai/images.py",
+            "description": "Provides an OpenAI-compatible API endpoint for generating images using locally loaded diffusion models. It processes image generation requests, uses a shared diffusion model, and returns base64-encoded images.",
+            "spof": true
+          },
+          {
+            "path": "extensions/sd_api_pictures/script.py",
+            "description": "This file is an extension for `text-generation-webui` that integrates Stable Diffusion API functionality, allowing the generation of images based on text prompts and managing VRAM resources between the LLM and the SD model. It can operate in manual or interactive modes, triggering image generation based on user input or model output.",
+            "spof": false
+          },
+          {
+            "path": "user_data/image_models",
+            "description": "This directory is intended to store user-specific image generation models for the text-generation-webui application. It serves as a designated location for custom or downloaded models that extend the application's image generation capabilities.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 98
+          },
+          {
+            "name": "Φφ",
+            "percent": 1
+          },
+          {
+            "name": "Manuel Schmid",
+            "percent": 0
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 9,
+      "spofCount": 6
+    },
+    "busFactor": 1,
+    "authorCount": 3
+  },
+  "Model Hub & Backend Management": {
+    "description": "Enables loading, configuring, and managing a wide variety of large language models and inference backends, providing flexibility and compatibility with different hardware (CPU, NVIDIA, AMD) and model formats.",
+    "functions": {
+      "Model Lifecycle & UI Management": {
+        "files": [
+          {
+            "path": "docs/11 - AMD Setup.md",
+            "description": "This document provides instructions for setting up an AMD GPU in Linux for text-generation-webui, including ROCm SDK requirements and necessary script modifications.",
+            "spof": false
+          },
+          {
+            "path": "docs/04 - Model Tab.md",
+            "description": "This document provides an overview and detailed explanation of the 'Model Tab' in text-generation-webui, describing various model loaders (e.g., Transformers, ExLlamav2, AutoGPTQ, llama.cpp) and their specific configuration options for loading and managing AI models.",
+            "spof": true
+          },
+          {
+            "path": "modules/torch_utils.py",
+            "description": "This file provides utility functions for managing PyTorch devices, such as detecting the active accelerator (CUDA, MPS, XPU, NPU, or CPU), and for clearing memory caches on these devices.",
+            "spof": true
+          },
+          {
+            "path": "modules/ui_model_menu.py",
+            "description": "This file defines the user interface (UI) components for model management in text-generation-webui, including model selection, loading/unloading, and configuration of various model parameters and settings.",
+            "spof": true
+          },
+          {
+            "path": "modules/models.py",
+            "description": "This file manages the loading, unloading, and reloading of various large language models (LLMs) supported by the text generation web UI, including different backend implementations like Transformers, ExLlama, TensorRT-LLM, and Llama.cpp.",
+            "spof": true
+          },
+          {
+            "path": "modules/loaders.py",
+            "description": "This file defines and manages model loading and sampling parameters for different backend loaders (e.g., llama.cpp, Transformers, ExLlamav2/v3) within the text-generation-webui, including functions to dynamically control their visibility in a Gradio interface.",
+            "spof": true
+          },
+          {
+            "path": "extensions/openai/models.py",
+            "description": "This file provides functions for managing and listing AI models and LoRAs, including loading and unloading them. It also formats model lists for an OpenAI-compatible API.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 90
+          },
+          {
+            "name": "Katehuuh",
+            "percent": 3
+          },
+          {
+            "name": "Petr Korolev",
+            "percent": 1
+          }
+        ]
+      },
+      "Inference Backend Integration": {
+        "files": [
+          {
+            "path": "docs/What Works.md",
+            "description": "This file documents the capabilities and feature support of different model loaders within the text-generation-webui project. It specifically outlines which loaders support LoRA functionalities, multimodal extensions, and perplexity evaluation.",
+            "spof": true
+          },
+          {
+            "path": "modules/tensorrt_llm.py",
+            "description": "This file defines a `TensorRTLLMModel` class for loading and interacting with TensorRT-LLM models, providing methods for model initialization and text generation with streaming support within the `text-generation-webui` framework.",
+            "spof": true
+          },
+          {
+            "path": "modules/exllamav3.py",
+            "description": "This file defines the `Exllamav3Model` class, which provides an interface for loading and interacting with ExLlamaV3 models within the text-generation-webui. It handles model and cache initialization, speculative decoding setup, and multimodal image processing for generation.",
+            "spof": false
+          },
+          {
+            "path": "modules/deepspeed_parameters.py",
+            "description": "This file defines a function to generate a DeepSpeed configuration dictionary, supporting both NVMe and CPU parameter offloading based on input parameters.",
+            "spof": true
+          },
+          {
+            "path": "modules/exllamav2_hf.py",
+            "description": "This file provides a Hugging Face Transformers-compatible wrapper for the ExLlamaV2 inference library, enabling efficient text generation and model loading with various caching and GPU configuration options.",
+            "spof": true
+          },
+          {
+            "path": "modules/llama_cpp_server.py",
+            "description": "This file defines the LlamaServer class, which acts as a client for interacting with a llama.cpp server. It handles model initialization, text tokenization/detokenization, text generation (including streaming and multimodal support), and parameter preparation for inference requests.",
+            "spof": true
+          },
+          {
+            "path": "modules/exllamav2.py",
+            "description": "This file defines the Exllamav2Model class, providing an interface to load ExLlamaV2 models, configure their settings (like cache type, GPU split, speculative decoding), and perform text generation with various sampling parameters.",
+            "spof": true
+          },
+          {
+            "path": "modules/exllamav3_hf.py",
+            "description": "This file defines a wrapper class, `Exllamav3HF`, that integrates ExllamaV3 models with the Hugging Face `transformers` library API. It allows ExllamaV3 models to be loaded and used as `PreTrainedModel` instances, supporting functionalities like text generation and custom caching strategies.",
+            "spof": true
+          },
+          {
+            "path": "modules/transformers_loader.py",
+            "description": "This file provides utilities for loading Hugging Face Transformers models and tokenizers, supporting various configurations like quantization, DeepSpeed, and GPU memory management. It also defines custom stopping criteria and logit processors for text generation.",
+            "spof": true
+          },
+          {
+            "path": "extensions/superboogav2/nltk_data/corpora/stopwords",
+            "description": "This directory is designated for storing NLTK (Natural Language Toolkit) stopwords data. These stopwords are common words used in natural language processing to filter out less significant terms during text analysis. Its presence indicates a dependency on or usage of NLTK resources for linguistic processing within the `text-generation-webui` project.",
+            "spof": false
+          },
+          {
+            "path": "extensions/superboogav2/nltk_data/taggers/averaged_perceptron_tagger",
+            "description": "This directory is part of the NLTK data structure within the `superboogav2` extension of `text-generation-webui`. It is designated to store data files, such as trained models, for the Averaged Perceptron Tagger used in natural language processing tasks.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 85
+          },
+          {
+            "name": "Katehuuh",
+            "percent": 11
+          },
+          {
+            "name": "altoiddealer",
+            "percent": 1
+          }
+        ]
+      },
+      "Model Configuration & Metadata Parsing": {
+        "files": [
+          {
+            "path": "modules/metadata_gguf.py",
+            "description": "This file defines GGUF (GGML Unified Format) data types and provides functions to parse and load metadata from GGUF-formatted files. It handles various data types including integers, floats, booleans, strings, and arrays found in GGUF metadata.",
+            "spof": true
+          },
+          {
+            "path": "modules/models_settings.py",
+            "description": "This file handles the loading, parsing, and management of model-specific settings and metadata from various sources (e.g., GGUF, Hugging Face config.json, YAML) to configure text generation models. It infers the correct model loader and extracts parameters like context size, instruction templates, and rope settings.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 95
+          },
+          {
+            "name": "Sergey 'Jin' Bostandzhyan",
+            "percent": 2
+          },
+          {
+            "name": "Googolplexed",
+            "percent": 1
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 20,
+      "spofCount": 16
+    },
+    "busFactor": 1,
+    "authorCount": 1
+  },
+  "Advanced Generation Control": {
+    "description": "Offers granular control over the text generation process, including fine-grained parameter tuning, result presetting, and the ability to enforce specific output structures using grammars.",
+    "functions": {
+      "Generation Parameter and Preset Management": {
+        "files": [
+          {
+            "path": "docs/03 - Parameters Tab.md",
+            "description": "This document describes the various parameters, presets, and decoding techniques available in the 'Parameters Tab' of the text-generation-webui for controlling Large Language Model (LLM) output generation.",
+            "spof": false
+          },
+          {
+            "path": "modules/presets.py",
+            "description": "This file defines and manages text generation presets, including loading them from YAML files, providing default parameter values, and applying them to a UI state. It handles parameter merging and filtering based on defaults.",
+            "spof": true
+          },
+          {
+            "path": "user_data/presets",
+            "description": "This directory is designated for storing user-defined presets for text generation configurations. It allows users of the `text-generation-webui` to save and load customized settings or parameters. Although currently empty, it serves as the central location for personalized generation profiles.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 91
+          },
+          {
+            "name": "Cats",
+            "percent": 7
+          },
+          {
+            "name": "Philipp Emanuel Weidmann",
+            "percent": 1
+          }
+        ]
+      },
+      "Advanced Sampling and Logits Processing": {
+        "files": [
+          {
+            "path": "modules/logits.py",
+            "description": "This file provides functions to retrieve the next token logits (probabilities) from a loaded language model. It supports various model backends and can format the output for display or as a dictionary.",
+            "spof": true
+          },
+          {
+            "path": "modules/sampler_hijack.py",
+            "description": "This file implements various custom logits processing strategies, including dynamic temperature, quadratic sampling, tail-free sampling, top-A, top-n-sigma, and XTC, extending Hugging Face Transformers' generation capabilities. It customizes how token probabilities (logits) are modified during text generation to influence output characteristics.",
+            "spof": false
+          },
+          {
+            "path": "extensions/character_bias/script.py",
+            "description": "This script implements a character bias feature for a text generation web UI, allowing users to inject predefined or custom bias strings into the bot's prefix messages. It uses Gradio for its user interface.",
+            "spof": false
+          },
+          {
+            "path": "extensions/long_replies/script.py",
+            "description": "This file is an extension for text-generation-webui that enforces a minimum reply length by preventing the generation of newline tokens until the specified length is reached, with a configurable minimum length via the UI.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 75
+          },
+          {
+            "name": "Philipp Emanuel Weidmann",
+            "percent": 9
+          },
+          {
+            "name": "kalomaze",
+            "percent": 5
+          }
+        ]
+      },
+      "Grammar-Constrained Generation": {
+        "files": [
+          {
+            "path": "modules/grammar/logits_process.py",
+            "description": "This file implements a `LogitsProcessor` that applies grammar constraints during text generation. It filters prediction scores to ensure only grammatically valid tokens are considered for the next step.",
+            "spof": true
+          },
+          {
+            "path": "modules/grammar/grammar_utils.py",
+            "description": "This file provides functionality for parsing and encoding EBNF grammars, enabling the definition and processing of structured text generation rules. It is a direct copy from a Transformers library PR.",
+            "spof": true
+          },
+          {
+            "path": "user_data/grammars",
+            "description": "This directory is designated for storing user-defined grammar files. These grammars likely control the structure or format of text generated by the `text-generation-webui` application. It serves as a placeholder where users are expected to add their custom grammar definitions.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 90
+          },
+          {
+            "name": "A0nameless0man",
+            "percent": 10
+          },
+          {
+            "name": "altoiddealer",
+            "percent": 0
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 10,
+      "spofCount": 5
+    },
+    "busFactor": 1,
+    "authorCount": 1
+  },
+  "Model Fine-Tuning & Personalization": {
+    "description": "Provides an integrated training interface for customizing and fine-tuning language models using techniques like LoRA, allowing users to adapt models to specific tasks or datasets.",
+    "functions": {
+      "Fine-Tuning Job Orchestration": {
+        "files": [
+          {
+            "path": "docs/05 - Training Tab.md",
+            "description": "This document provides a comprehensive guide on training LoRAs (Low-Rank Adaptation) using the WebUI, covering step-by-step instructions from dataset preparation to evaluation and parameter tuning. It explains key concepts like format files, raw text settings, and essential training parameters such as VRAM, Rank, Learning Rate, and Loss.",
+            "spof": true
+          },
+          {
+            "path": "modules/training.py",
+            "description": "This file defines the Gradio user interface and parameters for training LoRA (Low-Rank Adaptation) models within the text-generation-webui application.",
+            "spof": false
+          },
+          {
+            "path": "extensions/Training_PRO/matplotgraph.py",
+            "description": "This file contains a function to generate and save a Matplotlib graph visualizing the learning rate and loss over training epochs for a given LoRA model, based on data stored in a JSON file.",
+            "spof": true
+          },
+          {
+            "path": "extensions/Training_PRO/README.md",
+            "description": "This README.md describes `Training_PRO`, an expanded and re-worked training tab for `text-generation-webui`. It details advanced features like custom schedulers, improved chunking, DEMENTOR LEARNING, and clarified batch size handling for fine-tuning large language models.",
+            "spof": false
+          },
+          {
+            "path": "extensions/Training_PRO/custom_scheduler.py",
+            "description": "This file defines several custom learning rate schedulers for PyTorch optimizers and integrates NEFTune noise injection, primarily for use with the Hugging Face Transformers library in a training context.",
+            "spof": true
+          },
+          {
+            "path": "extensions/Training_PRO/train_utils.py",
+            "description": "This file provides utility functions for managing LoRA models and advanced text processing, including sentence splitting and segmenting text into precise, potentially overlapping, blocks while respecting sentence boundaries and token limits, likely for training or data preparation within the `text-generation-webui` project.",
+            "spof": true
+          },
+          {
+            "path": "extensions/Training_PRO/script.py",
+            "description": "This script defines a Gradio-based web UI extension for the text-generation-webui, enabling users to fine-tune large language models using LoRA (Low-Rank Adaptation) and other parameter-efficient techniques. It provides a user interface to configure various training parameters, manage checkpoints, and monitor the training process.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 72
+          },
+          {
+            "name": "FartyPants",
+            "percent": 13
+          },
+          {
+            "name": "FartyPants (FP HAM)",
+            "percent": 8
+          }
+        ]
+      },
+      "LoRA Adapter & Asset Management": {
+        "files": [
+          {
+            "path": "modules/LoRA.py",
+            "description": "This file manages the application of LoRA (Low-Rank Adaptation) adapters to large language models, supporting both ExLlamaV2 and Hugging Face Transformers-based models. It includes functions for adding, merging, and dynamically loading LoRAs based on the active model type.",
+            "spof": true
+          },
+          {
+            "path": "user_data/loras",
+            "description": "This directory is intended to store user-specific LoRA (Low-Rank Adaptation) models for the text-generation-webui. Users can place their downloaded or custom-trained LoRAs here for use with the application.",
+            "spof": false
+          },
+          {
+            "path": "user_data/training/datasets",
+            "description": "This directory is intended to store datasets used for training within the `text-generation-webui` application. It likely holds user-specific data prepared for model fine-tuning or other training processes.",
+            "spof": false
+          },
+          {
+            "path": "user_data/training/formats",
+            "description": "This directory is intended to store definitions or configurations for various data formats used during the training process within the text-generation-webui application. It likely holds user-specific or custom format specifications relevant to model training data.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 78
+          },
+          {
+            "name": "Petr Korolev",
+            "percent": 9
+          },
+          {
+            "name": "Forkoz",
+            "percent": 5
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 11,
+      "spofCount": 5
+    },
+    "busFactor": 2,
+    "authorCount": 3
+  },
+  "Infrastructure": {
+    "description": "",
+    "functions": {
+      "Build & Configuration": {
+        "files": [
+          {
+            "path": "modules/logging_colors.py",
+            "description": "This file initializes and configures a detailed logging system for the application, using `rich` for console output and a custom `RingBuffer` for in-memory log storage. It also sets specific logging levels for various third-party libraries.",
+            "spof": true
+          },
+          {
+            "path": "docker/cpu",
+            "description": "This directory is intended to house Docker-related configurations and files specifically tailored for running the text-generation-webui project on CPU-only environments. It provides the necessary setup to containerize the application without GPU support.",
+            "spof": false
+          },
+          {
+            "path": "docker/amd",
+            "description": "This directory is intended to house Docker-related files and configurations specifically optimized or built for AMD (x86_64) architectures. Its purpose is to facilitate the containerization of the text-generation-webui application on systems using AMD processors.",
+            "spof": false
+          },
+          {
+            "path": "docker/intel",
+            "description": "This directory is designated for Docker-related configurations and files specifically optimized for Intel hardware within the text-generation-webui project. Although currently empty, it likely serves as a placeholder for future Intel-specific Docker setups or optimizations.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 100
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 4,
+      "spofCount": 1
+    },
+    "busFactor": 1,
+    "authorCount": 1
+  },
+  "Performance & Quality Analytics": {
+    "description": "Offers tools to evaluate and visualize model performance, including perplexity scoring and color-coded feedback on the quality of generated text.",
+    "functions": {
+      "Model Performance Evaluation & Visualization": {
+        "files": [
+          {
+            "path": "modules/evaluate.py",
+            "description": "This file implements functions for calculating and managing perplexity evaluations for language models. It handles loading datasets, computing perplexity scores, and saving/loading evaluation results to/from a CSV file.",
+            "spof": true
+          },
+          {
+            "path": "extensions/perplexity_colors/script.py",
+            "description": "This Python script implements an extension for `text-generation-webui` that visualizes the quality of generated text by coloring tokens based on their perplexity and probability. It uses a custom LogitsProcessor to collect these metrics during text generation and then applies color styling to the output HTML.",
+            "spof": true
+          },
+          {
+            "path": "extensions/superboogav2/benchmark_texts",
+            "description": "This directory is intended to store text files or datasets used for benchmarking the 'superboogav2' extension within the text-generation-webui project. It serves as a dedicated location for test cases or input data for performance evaluation.",
+            "spof": false
+          },
+          {
+            "path": "extensions/superboogav2/benchmark.py",
+            "description": "This module provides a benchmark function to evaluate the performance of an embedding pipeline by processing configuration files, retrieving text based on questions, and scoring the results against predefined criteria. It logs the evaluation metrics to a timestamped file.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "SeanScripts",
+            "percent": 82
+          },
+          {
+            "name": "oobabooga",
+            "percent": 14
+          },
+          {
+            "name": "HideLord",
+            "percent": 2
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 4,
+      "spofCount": 3
+    },
+    "busFactor": 2,
+    "authorCount": 3
+  },
+  "Knowledge Management & Context Augmentation": {
+    "description": "Enhances model responses by integrating external knowledge from web searches or user-provided documents, creating a persistent knowledge base for more context-aware conversations.",
+    "functions": {
+      "Knowledge Base Population": {
+        "files": [
+          {
+            "path": "modules/web_search.py",
+            "description": "This file provides utilities for performing web searches, downloading web pages, converting HTML content to Markdown, and integrating these search results as attachments into a history object, truncating content as needed.",
+            "spof": true
+          },
+          {
+            "path": "extensions/superbooga/download_urls.py",
+            "description": "This file provides utility functions to download content from a list of URLs, supporting concurrent downloads and yielding progress updates.",
+            "spof": true
+          },
+          {
+            "path": "extensions/superbooga/chromadb.py",
+            "description": "This file defines a `ChromaCollector` class that serves as a wrapper around ChromaDB, providing functionalities to embed, store, and retrieve text chunks with custom sorting and time-weighted similarity options.",
+            "spof": true
+          },
+          {
+            "path": "extensions/superboogav2/api.py",
+            "description": "This module implements an HTTP API server for interacting with a ChromaDB vector database. It provides endpoints for adding, deleting, clearing, and querying data in the database.",
+            "spof": true
+          },
+          {
+            "path": "extensions/superboogav2/data_preprocessor.py",
+            "description": "This module provides utilities for preprocessing text before conversion to embeddings, including normalization, cleaning, and linguistic processing. It also offers functionality for summarizing long texts by extracting key sentences using text-ranking.",
+            "spof": true
+          },
+          {
+            "path": "extensions/superboogav2/download_urls.py",
+            "description": "This file provides functions to concurrently download web page content from multiple URLs, extract clean text from the HTML, and feed it into a text collector for further processing.",
+            "spof": true
+          },
+          {
+            "path": "extensions/superboogav2/data_processor.py",
+            "description": "This module processes a text corpus by splitting it into context-rich chunks, applying various text preprocessing steps, and then adding these processed chunks to a ChromaDB collector for storage and retrieval.",
+            "spof": false
+          },
+          {
+            "path": "extensions/superboogav2/chromadb.py",
+            "description": "This file implements a `ChromaCollector` class for managing a ChromaDB collection, handling the storage and retrieval of text embeddings. It includes features like caching embeddings, merging overlapping text chunks, applying time-based weighting, and filtering retrieved results.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 75
+          },
+          {
+            "name": "HideLord",
+            "percent": 19
+          },
+          {
+            "name": "Alireza Ghasemi",
+            "percent": 6
+          }
+        ]
+      },
+      "Extension Integration and Configuration": {
+        "files": [
+          {
+            "path": "extensions/superbooga/script.py",
+            "description": "This script defines an extension for text-generation-webui that creates and manages a local ChromaDB, using it to store and retrieve text chunks from various sources (text, URLs, files) to provide contextual information for text generation, acting as a form of long-term memory.",
+            "spof": true
+          },
+          {
+            "path": "extensions/superboogav2/README.md",
+            "description": "This README file provides an overview, installation instructions, and usage details for the SuperboogaV2 extension, which enhances Large Language Models by integrating external text, URLs, and various file types to provide more context-aware responses.",
+            "spof": true
+          },
+          {
+            "path": "extensions/superboogav2/optimize.py",
+            "description": "This module implements a hyperparameter optimization routine for an embedding application using Optuna. It finds the best hyperparameters by iteratively benchmarking different configurations and saves the optimal set.",
+            "spof": false
+          },
+          {
+            "path": "extensions/superboogav2/parameters.py",
+            "description": "This module provides a singleton `Parameters` class to manage all hyperparameters for the embedding application, loading them from a `config.json` file. It includes various getter and setter functions for accessing and modifying these settings.",
+            "spof": true
+          },
+          {
+            "path": "extensions/superboogav2/script.py",
+            "description": "This script provides the UI and backend logic for the `superboogav2` extension, managing the ingestion of data from various sources (text, files, URLs) into a ChromaDB collector. It also handles API management, benchmarking, and optimization of data processing settings.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Alireza Ghasemi",
+            "percent": 51
+          },
+          {
+            "name": "HideLord",
+            "percent": 31
+          },
+          {
+            "name": "oobabooga",
+            "percent": 16
+          }
+        ]
+      },
+      "Context Injection and Prompt Augmentation": {
+        "files": [
+          {
+            "path": "extensions/superboogav2/notebook_handler.py",
+            "description": "This module handles modifying notebook text by identifying user input, preprocessing it, retrieving relevant contextual information, and injecting it back into the text at a specified point.",
+            "spof": false
+          },
+          {
+            "path": "extensions/superboogav2/utils.py",
+            "description": "This module provides utility functions for text generation. It includes functions to create formatted context strings using predefined parameters and to generate metadata dictionaries with a specified source.",
+            "spof": true
+          },
+          {
+            "path": "extensions/superboogav2/chat_handler.py",
+            "description": "This module modifies chat prompts and history by integrating context from a vector database, optionally based on user input or an injection strategy, before the main chat generation process.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "HideLord",
+            "percent": 61
+          },
+          {
+            "name": "oobabooga",
+            "percent": 24
+          },
+          {
+            "name": "TheInvisibleMage",
+            "percent": 15
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 16,
+      "spofCount": 11
+    },
+    "busFactor": 1,
+    "authorCount": 4
+  },
+  "Utility": {
+    "description": "",
+    "functions": {
+      "General Utility": {
+        "files": [
+          {
+            "path": "modules/callbacks.py",
+            "description": "This file defines the `Iteratorize` class, which transforms functions that use callbacks into lazy, thread-safe iterators. It enables asynchronous, callback-driven processes to be consumed synchronously through iteration.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 89
+          },
+          {
+            "name": "kalomaze",
+            "percent": 3
+          },
+          {
+            "name": "Alex \"mcmonkey\" Goodwin",
+            "percent": 2
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 1,
+      "spofCount": 1
+    },
+    "busFactor": 1,
+    "authorCount": 1
+  },
+  "Voice & Audio Processing": {
+    "description": "Provides speech-to-text for voice input and text-to-speech for generating audio output, enabling voice-based conversations with the AI.",
+    "functions": {
+      "Speech-to-Text Transcription": {
+        "files": [
+          {
+            "path": "extensions/whisper_stt/readme.md",
+            "description": "This README file describes the 'whisper_stt' extension, which enables voice input in chat mode using a microphone, and provides instructions for configuring its settings.",
+            "spof": true
+          },
+          {
+            "path": "extensions/whisper_stt/script.js",
+            "description": "This JavaScript file provides client-side functionality for a Gradio application, enabling users to record audio via their microphone, convert it to Base64, and populate a UI element for a Whisper Speech-to-Text (STT) service.",
+            "spof": true
+          },
+          {
+            "path": "extensions/whisper_stt/script.py",
+            "description": "This file implements a Whisper-based speech-to-text (STT) extension for the text-generation-webui, providing a Gradio interface to record audio, transcribe it, and optionally submit the transcription automatically.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "TimStrauven",
+            "percent": 66
+          },
+          {
+            "name": "mamei16",
+            "percent": 16
+          },
+          {
+            "name": "oobabooga",
+            "percent": 6
+          }
+        ]
+      },
+      "Text-to-Speech Synthesis": {
+        "files": [
+          {
+            "path": "extensions/coqui_tts/script.py",
+            "description": "This script implements a Coqui TTS (XTTSv2) extension for a Gradio-based text generation web UI, enabling text-to-speech functionality for generated responses with configurable voices, languages, and playback options.",
+            "spof": false
+          },
+          {
+            "path": "extensions/coqui_tts/voices",
+            "description": "This directory is intended to store voice models or configurations specifically for the Coqui TTS extension within the `text-generation-webui` project. Its purpose is to centralize and manage the different voice options available for text-to-speech generation.",
+            "spof": false
+          },
+          {
+            "path": "extensions/silero_tts/tts_preprocessor.py",
+            "description": "This file contains a text preprocessor for a Text-to-Speech (TTS) system, performing various text normalization tasks such as converting numbers to words, expanding abbreviations, and cleaning punctuation and whitespace.",
+            "spof": true
+          },
+          {
+            "path": "extensions/silero_tts/script.py",
+            "description": "This script implements an extension for the text-generation-webui that integrates Silero Text-to-Speech (TTS) functionality. It generates audio from text responses, provides a Gradio interface for TTS configuration, and manages audio playback and history display.",
+            "spof": false
+          },
+          {
+            "path": "extensions/silero_tts/test_tts.py",
+            "description": "This file is a test script for the Silero TTS extension, designed to synthesize speech from a given text input using the Silero TTS model, save it as an audio file, and output an HTML audio tag for playback.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "oobabooga",
+            "percent": 40
+          },
+          {
+            "name": "kanttouchthis",
+            "percent": 21
+          },
+          {
+            "name": "da3dsoul",
+            "percent": 14
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 8,
+      "spofCount": 4
+    },
+    "busFactor": 3,
+    "authorCount": 6
+  }
+}

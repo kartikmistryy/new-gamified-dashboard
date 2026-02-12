@@ -1,0 +1,2851 @@
+{
+  "Security & Privacy": {
+    "description": "Implements features to protect sessions and user data, including end-to-end encryption, two-factor authentication (2FA), and a privacy mode that can blank the remote screen during a session.",
+    "functions": {
+      "Community and Security Policies": {
+        "files": [
+          {
+            "path": "docs/CODE_OF_CONDUCT-PL.md",
+            "description": "This file is the Polish translation of the Contributor Covenant Code of Conduct, outlining behavioral standards, enforcement procedures, and consequences for participants in the community.",
+            "spof": true
+          },
+          {
+            "path": "docs/CODE_OF_CONDUCT-NO.md",
+            "description": "This file contains the Norwegian version of the Contributor Covenant Code of Conduct for the RustDesk project, outlining expected behaviors and enforcement procedures for community members.",
+            "spof": true
+          },
+          {
+            "path": "docs/CODE_OF_CONDUCT-DE.md",
+            "description": "This file is the German version of the Code of Conduct for contributors, outlining expected behaviors, unacceptable actions, and enforcement procedures within the RustDesk community. It details commitments to an inclusive environment and consequences for violations.",
+            "spof": true
+          },
+          {
+            "path": "docs/CODE_OF_CONDUCT-NL.md",
+            "description": "This document outlines the Code of Conduct for contributors and community members, defining acceptable and unacceptable behaviors, and detailing the enforcement guidelines and consequences for violations within the RustDesk community in Dutch.",
+            "spof": true
+          },
+          {
+            "path": "docs/SECURITY-NL.md",
+            "description": "This file outlines the security policy for the RustDesk project, detailing how users can responsibly report security vulnerabilities via email.",
+            "spof": true
+          },
+          {
+            "path": "docs/CODE_OF_CONDUCT-RO.md",
+            "description": "This file contains the Contributor Code of Conduct for the RustDesk project, written in Romanian. It outlines expected behaviors, unacceptable actions, enforcement responsibilities, and consequences for contributors to foster a welcoming and inclusive community.",
+            "spof": true
+          },
+          {
+            "path": "docs/SECURITY-DE.md",
+            "description": "This document outlines the security policy for RustDesk in German, detailing how users can responsibly report security vulnerabilities via email.",
+            "spof": true
+          },
+          {
+            "path": "docs/SECURITY-IT.md",
+            "description": "This file outlines the security policy for the RustDesk project, detailing how users should responsibly report discovered vulnerabilities via email.",
+            "spof": true
+          },
+          {
+            "path": "docs/CODE_OF_CONDUCT.md",
+            "description": "This file contains the Contributor Covenant Code of Conduct, outlining behavioral expectations, unacceptable conduct, and enforcement procedures for participants in the RustDesk community to foster an inclusive environment.",
+            "spof": false
+          },
+          {
+            "path": "docs/CODE_OF_CONDUCT-ZH.md",
+            "description": "This file is the Chinese version of the Contributor Covenant Code of Conduct. It outlines expected behavior, commitments, standards, and enforcement policies for community members and contributors.",
+            "spof": true
+          },
+          {
+            "path": "docs/SECURITY.md",
+            "description": "This document outlines the security policy for the RustDesk project, providing instructions on how to responsibly report security vulnerabilities via email.",
+            "spof": true
+          },
+          {
+            "path": "docs/CODE_OF_CONDUCT-RU.md",
+            "description": "This file provides the Russian version of the project's Code of Conduct, detailing expected behavior, unacceptable actions, and enforcement procedures for participants and contributors. It aims to foster a respectful and inclusive community environment.",
+            "spof": true
+          },
+          {
+            "path": "docs/CODE_OF_CONDUCT-KR.md",
+            "description": "This file contains the Korean version of the Contributor Covenant Code of Conduct, outlining expected behaviors and enforcement policies for community participation.",
+            "spof": true
+          },
+          {
+            "path": "docs/SECURITY-RO.md",
+            "description": "This document outlines the security policy for the RustDesk project in Romanian, providing instructions for users to responsibly report security vulnerabilities via email.",
+            "spof": true
+          },
+          {
+            "path": "docs/SECURITY-NO.md",
+            "description": "This document provides security guidelines for the RustDesk project, instructing users on how to responsibly report discovered vulnerabilities via email, while also noting the absence of a bug bounty program.",
+            "spof": true
+          },
+          {
+            "path": "docs/SECURITY-KR.md",
+            "description": "This document outlines the security policy for the RustDesk project, requesting users to report vulnerabilities responsibly via email to info@rustdesk.com, and noting the absence of a bug bounty program.",
+            "spof": true
+          },
+          {
+            "path": "docs/SECURITY-PL.md",
+            "description": "This document outlines RustDesk's security policy, detailing how users should report security vulnerabilities. It provides an email address for responsible disclosure and notes the absence of a bug bounty program.",
+            "spof": true
+          },
+          {
+            "path": "docs/SECURITY-JP.md",
+            "description": "This document outlines the security policy for the RustDesk project, providing instructions for responsibly reporting security vulnerabilities via email. It also states the current absence of a bug bounty program.",
+            "spof": true
+          },
+          {
+            "path": "docs/SECURITY-TR.md",
+            "description": "This document outlines the security policy for the RustDesk project, detailing how users can responsibly report security vulnerabilities. It encourages reporting issues via email to info@rustdesk.com, noting that there is currently no bug bounty program.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "VenusGirl❤",
+            "percent": 29
+          },
+          {
+            "name": "Daniel",
+            "percent": 28
+          },
+          {
+            "name": "Luca-rickrolled-himself",
+            "percent": 23
+          }
+        ]
+      },
+      "Authentication and Integrity Services": {
+        "files": [
+          {
+            "path": "res/job.py",
+            "description": "This script provides a command-line interface for interacting with a task management API, primarily for creating, managing, and monitoring file signing tasks for executables and other file types.",
+            "spof": true
+          },
+          {
+            "path": "res/pam.d",
+            "description": "This `pam.d` directory is likely intended to store Pluggable Authentication Modules (PAM) configuration files for RustDesk on Unix-like systems. Although currently empty, its presence suggests a potential role in handling authentication services. It might serve as a placeholder for custom or future PAM integration.",
+            "spof": false
+          },
+          {
+            "path": "src/auth_2fa.rs",
+            "description": "This file implements two-factor authentication (2FA) using TOTP (Time-based One-Time Password), including generation, verification, and persistence. It also integrates with Telegram bots for sending 2FA codes and managing bot credentials.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "rustdesk",
+            "percent": 82
+          },
+          {
+            "name": "fufesou",
+            "percent": 13
+          },
+          {
+            "name": "RustDesk",
+            "percent": 2
+          }
+        ]
+      },
+      "Privacy Mode": {
+        "files": [
+          {
+            "path": "src/privacy_mode.rs",
+            "description": "This file defines a privacy mode system with platform-specific implementations for Windows and macOS. It provides a trait for privacy mode functionality and manages switching between different implementations, allowing clients to turn privacy mode on or off for specific connections.",
+            "spof": false
+          },
+          {
+            "path": "src/privacy_mode/macos.rs",
+            "description": "This file implements the `PrivacyMode` trait specifically for macOS, using an external C function to enable or disable the system's privacy mode. It manages the state of privacy mode for a given connection ID on macOS.",
+            "spof": true
+          },
+          {
+            "path": "src/privacy_mode/win_mag.rs",
+            "description": "This file implements a screen capturer for Windows using the Magnifier API, specifically designed for privacy mode to exclude designated privacy windows from the capture.",
+            "spof": true
+          },
+          {
+            "path": "src/privacy_mode/win_input.rs",
+            "description": "This file implements Windows low-level keyboard and mouse hooks to enforce a \"privacy mode\" by intercepting and potentially blocking user input. It allows disabling the privacy mode via a 'Ctrl+P' key combination.",
+            "spof": true
+          },
+          {
+            "path": "src/privacy_mode/win_topmost_window.rs",
+            "description": "This file implements Windows-specific privacy mode functionality for RustDesk by creating a dedicated process, injecting a DLL into it, and managing a privacy window to enforce privacy during remote sessions.",
+            "spof": true
+          },
+          {
+            "path": "src/privacy_mode/win_virtual_display.rs",
+            "description": "This file implements a privacy mode feature for Windows by managing and manipulating virtual displays using the Windows API. It creates, configures, and sets virtual displays as primary to obscure the physical display content.",
+            "spof": true
+          },
+          {
+            "path": "src/privacy_mode/win_exclude_from_capture.rs",
+            "description": "This file implements a Windows-specific privacy mode that prevents screen capture, checking for Windows 10 version 2004 or later for compatibility.",
+            "spof": true
+          },
+          {
+            "path": "src/common.rs",
+            "description": "This file defines common utilities, constants, and global states used throughout the RustDesk application. It includes definitions for input handling, platform-specific configurations, feature compatibility checks, and application role management.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 50
+          },
+          {
+            "name": "rustdesk",
+            "percent": 31
+          },
+          {
+            "name": "Bin Li",
+            "percent": 9
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 30,
+      "spofCount": 26
+    },
+    "busFactor": 5,
+    "authorCount": 15
+  },
+  "Infrastructure": {
+    "description": "",
+    "functions": {
+      "Build & Configuration": {
+        "files": [
+          {
+            "path": "docs/CONTRIBUTING-TR.md",
+            "description": "This document outlines the guidelines and procedures for contributing to the RustDesk project, including rules for pull requests, commit messages, and communication. It serves as a guide for anyone wishing to submit code or changes to the repository.",
+            "spof": true
+          },
+          {
+            "path": "docs/CONTRIBUTING-NO.md",
+            "description": "This document outlines the guidelines and procedures for contributing to the RustDesk project, including pull request requirements, commit policies, and communication channels. It serves as a guide for anyone looking to help develop RustDesk.",
+            "spof": true
+          },
+          {
+            "path": "docs/CONTRIBUTING-IT.md",
+            "description": "This document outlines the guidelines for contributing to the RustDesk project, including pull request procedures, coding standards, and communication channels. It serves as a guide for developers wishing to submit changes or new features.",
+            "spof": true
+          },
+          {
+            "path": "docs/CONTRIBUTING-RU.md",
+            "description": "This document provides guidelines for contributing to the RustDesk project, covering the pull request process, commit standards, and community conduct. It serves as a guide for developers looking to contribute code or other improvements.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-UA.md",
+            "description": "This file is the Ukrainian language README for the RustDesk project, providing an overview of the remote desktop application, build instructions, file structure, and screenshots.",
+            "spof": false
+          },
+          {
+            "path": "docs/CONTRIBUTING-PL.md",
+            "description": "This file provides guidelines for contributing to the RustDesk project, detailing the process for pull requests, commit requirements, and communication channels. It is the Polish version of the contributing document.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-ZH.md",
+            "description": "This is the Chinese README file for the RustDesk remote desktop software, providing an overview of its features, build instructions (including Docker), architecture, and usage details.",
+            "spof": false
+          },
+          {
+            "path": "docs/CONTRIBUTING-ID.md",
+            "description": "This document outlines the guidelines for contributing to the RustDesk project, including instructions for pull requests, commit best practices, and communication channels.",
+            "spof": true
+          },
+          {
+            "path": "docs/CONTRIBUTING-NL.md",
+            "description": "This document provides guidelines for contributing to the RustDesk project. It outlines the process for submitting pull requests, commit requirements, and communication channels for contributors.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-PL.md",
+            "description": "This file is the Polish README for the RustDesk project, providing an overview of the remote desktop software, instructions for compilation, and details on its architecture.",
+            "spof": false
+          },
+          {
+            "path": "docs/README-GR.md",
+            "description": "This file is the Greek translation of the RustDesk project's README, providing an overview of the remote desktop software, build instructions, and project structure.",
+            "spof": false
+          },
+          {
+            "path": "docs/README-RU.md",
+            "description": "This is the Russian language README file for the RustDesk remote desktop software, providing an overview of the project, build instructions for various platforms (including Docker), and details on its file structure. It also includes disclaimers and links to related resources.",
+            "spof": true
+          },
+          {
+            "path": "docs/CONTRIBUTING.md",
+            "description": "This file provides guidelines for contributing to the RustDesk project, detailing the process for pull requests, commit requirements, and communication channels.",
+            "spof": false
+          },
+          {
+            "path": "docs/README-CS.md",
+            "description": "This file is the Czech localization of the RustDesk project's README, providing an overview, build instructions, and file structure for the remote desktop software.",
+            "spof": true
+          },
+          {
+            "path": "docs/CONTRIBUTING-DE.md",
+            "description": "This document outlines the guidelines and procedures for contributing to the RustDesk project, including instructions for pull requests, commit requirements, and communication channels. It is the German version of the contribution guide.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-DA.md",
+            "description": "This is the Danish README file for the RustDesk project. It provides an overview of RustDesk, build instructions for various platforms and Docker, an explanation of the file structure, and screenshots.",
+            "spof": false
+          },
+          {
+            "path": "docs/README-FI.md",
+            "description": "This file is the Finnish localization of the RustDesk README, providing an overview of the remote desktop software, instructions for building it, its dependencies, and a breakdown of its file structure.",
+            "spof": true
+          },
+          {
+            "path": "docs/CONTRIBUTING-JP.md",
+            "description": "This file provides guidelines for contributing to the RustDesk project, including pull request procedures, commit standards, and communication channels. It is the Japanese version of the contributing document.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-NO.md",
+            "description": "This is the Norwegian (NO) README file for RustDesk, providing an overview of the remote desktop software, instructions on how to build it from source or with Docker, its file structure, and links to related resources.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-FR.md",
+            "description": "This file is the French-language README for the RustDesk project, providing an overview of the remote desktop software, instructions for building it from source, and details on its project structure.",
+            "spof": true
+          },
+          {
+            "path": "docs/CONTRIBUTING-ZH.md",
+            "description": "This file provides guidelines for contributing to the RustDesk project, detailing the process for submitting Pull Requests, important considerations for commits, and communication channels. It serves as a comprehensive guide for developers looking to contribute to the project.",
+            "spof": true
+          },
+          {
+            "path": "docs/CONTRIBUTING-RO.md",
+            "description": "This file provides guidelines for contributing to the RustDesk project, covering procedures for pull requests, commit requirements, and communication channels for contributors. It is written in Romanian.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-ES.md",
+            "description": "This file is the Spanish-language README for the RustDesk remote desktop software. It provides an overview of RustDesk, instructions for compilation (including dependencies and Docker), details on the file structure, and screenshots of the application.",
+            "spof": true
+          },
+          {
+            "path": "docs/CONTRIBUTING-KR.md",
+            "description": "This file provides guidelines for contributing to the RustDesk project. It outlines the process for submitting contributions, pull request checklists, and communication channels for contributors.",
+            "spof": false
+          },
+          {
+            "path": "docs/README-KR.md",
+            "description": "This file is the Korean-language README for the RustDesk remote desktop software, providing an overview, build instructions (including dependencies and Docker), file structure, and screenshots.",
+            "spof": false
+          },
+          {
+            "path": "docs/README-ML.md",
+            "description": "This is the Malayalam localization of the RustDesk project's README file, providing an overview of the remote desktop software, build instructions, dependencies, and file structure in Malayalam.",
+            "spof": true
+          },
+          {
+            "path": "flutter/test",
+            "description": "This directory is designated to contain automated tests for the `flutter` application component within the RustDesk project. Although currently empty, its purpose is to host unit, widget, or integration tests to ensure code quality and functionality.",
+            "spof": false
+          },
+          {
+            "path": "flutter/ios/Runner.xcworkspace/xcshareddata",
+            "description": "This directory is a standard component of an Xcode workspace (`Runner.xcworkspace`) within a Flutter project's iOS integration. It is designed to store shared project-level data, such as build schemes or breakpoint configurations, that are accessible to all developers working on the project. Its current emptiness indicates that no such shared data has been explicitly defined or committed for this workspace.",
+            "spof": false
+          },
+          {
+            "path": "flutter/ios/Runner.xcodeproj/xcshareddata/xcschemes",
+            "description": "This directory stores shared Xcode schemes for the `Runner.xcodeproj` within the Flutter iOS project. These schemes define how the iOS application is built, run, tested, and archived by Xcode, ensuring consistent configurations across development environments.",
+            "spof": false
+          },
+          {
+            "path": "flutter/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata",
+            "description": "This directory is a standard location within an Xcode workspace (`.xcworkspace`) used to store shared development data, primarily build schemes. Its purpose is to ensure consistent build, run, and test configurations across all developers working on the iOS portion of the Flutter project. Being empty indicates no shared schemes or specific configurations are currently committed for this workspace.",
+            "spof": false
+          },
+          {
+            "path": "flutter/macos/Runner.xcworkspace/xcshareddata",
+            "description": "This directory contains shared configuration data for the Xcode workspace, specifically for the Flutter macOS application 'rustdesk'. It typically stores settings like schemes and build configurations that are shared among developers working on the project.",
+            "spof": false
+          },
+          {
+            "path": "flutter/macos/Runner/Configs",
+            "description": "This directory is intended to store configuration files specifically for the macOS runner of the RustDesk Flutter application. It serves as a placeholder for various build configurations or environment-specific settings for the macOS desktop client, even if currently empty.",
+            "spof": false
+          },
+          {
+            "path": "flutter/macos/Runner.xcodeproj/xcshareddata/xcschemes",
+            "description": "This directory stores shared Xcode build schemes for the `Runner.xcodeproj` project, which defines how the macOS Flutter application is built, tested, and run. These schemes ensure consistent development and build configurations across different developer environments for the RustDesk project.",
+            "spof": false
+          },
+          {
+            "path": "flutter/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata",
+            "description": "This directory is part of an Xcode workspace within a Flutter project for macOS. It is intended to store shared project data, such as build scheme configurations or breakpoint settings, that are common among developers. As it is currently empty, it serves as a placeholder for these shared developer settings.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/gradle/wrapper",
+            "description": "This directory holds the Gradle Wrapper files, essential for ensuring a consistent build environment for the Android module of the Flutter application. It guarantees that the project is built using a specific Gradle version, simplifying setup and preventing build inconsistencies across different developer machines.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/app/src/profile",
+            "description": "This directory is designated for profile-specific source code or resources for the Android application within the Flutter project. It would contain configurations or assets intended for 'profile' build variants, distinct from debug or release builds, though it is currently empty.",
+            "spof": false
+          },
+          {
+            "path": "res/msi/README.md",
+            "description": "This README details the RustDesk MSI installer project, providing instructions for building, usage, and relevant technical information. It focuses on using Visual Studio and WiX Toolset to create Windows Installer packages for RustDesk.",
+            "spof": true
+          },
+          {
+            "path": "res/msi/preprocess.py",
+            "description": "This Python script preprocesses WiX (Windows Installer XML) source files for the RustDesk application, dynamically generating and modifying installer configurations based on various command-line arguments such as application name, version, and distribution directory.",
+            "spof": true
+          },
+          {
+            "path": "res/msi/CustomActions/pch.cpp",
+            "description": "This is the source file that includes the pre-compiled header (pch.h). It is necessary for compilation to succeed when using pre-compiled headers in the project.",
+            "spof": true
+          },
+          {
+            "path": "res/msi/CustomActions/pch.h",
+            "description": "This file is a precompiled header (PCH) for a C++ project. It's used to improve build performance by compiling frequently used headers only once.",
+            "spof": true
+          },
+          {
+            "path": "res/msi/CustomActions/dllmain.cpp",
+            "description": "This file defines the entry point for a DLL used in MSI custom actions, handling global initialization and finalization when the DLL is attached to or detached from a process.",
+            "spof": true
+          },
+          {
+            "path": "res/msi/CustomActions/ReadConfig.cpp",
+            "description": "This file provides functions to read configuration values from a file. It includes utilities to trim whitespace and specifically extracts a value associated with a given key from a configuration file.",
+            "spof": true
+          },
+          {
+            "path": "res/msi/CustomActions/framework.h",
+            "description": "This header file provides common declarations and includes necessary Windows and WiX utility headers for developing custom actions within a Microsoft Installer (MSI) package.",
+            "spof": true
+          },
+          {
+            "path": "res/msi/CustomActions/CustomActions.cpp",
+            "description": "This file contains C++ custom actions for a Windows Installer (MSI) package, handling tasks such as process termination, file cleanup during uninstallation, and managing Windows Firewall rules for the application.",
+            "spof": true
+          },
+          {
+            "path": "res/msi/Package/Language",
+            "description": "This directory is intended to store language-specific resources or localization files for the RustDesk MSI installer package. It likely contains translations or configuration related to different languages supported during the installation process.",
+            "spof": false
+          },
+          {
+            "path": "res/msi/Package/Fragments",
+            "description": "This directory is likely intended to contain modular WiX (Windows Installer XML) fragments used in the creation of the RustDesk MSI package. These fragments would define specific components, files, or registry entries for the Windows installer.",
+            "spof": false
+          },
+          {
+            "path": "res/msi/Package/UI",
+            "description": "This directory likely holds resources or configurations specifically for the User Interface (UI) of the MSI installer package for RustDesk. Its role is to define the visual components and interactive elements presented to the user during the software installation process.",
+            "spof": false
+          },
+          {
+            "path": "res/msi/Package/Components",
+            "description": "This directory contains the definitions or configurations for individual components within the RustDesk MSI installer package. These components are fundamental units that specify how various files, registry entries, and other resources are installed on a Windows system.",
+            "spof": false
+          },
+          {
+            "path": "res/inline-sciter.py",
+            "description": "This script pre-processes UI assets (HTML, CSS, and TIS files) by inlining their content and then embeds them as Rust byte array constants into a generated Rust source file, `src/ui/inline.rs`.",
+            "spof": true
+          },
+          {
+            "path": "res/DEBIAN",
+            "description": "This directory is intended to hold metadata and control files required for building Debian packages (.deb) for the RustDesk application. It plays a crucial role in defining package information, dependencies, and installation scripts for Debian-based systems, even if currently empty.",
+            "spof": false
+          },
+          {
+            "path": "res/fdroid/patches",
+            "description": "This directory contains patches specifically designed for the F-Droid build of RustDesk. These patches likely address F-Droid specific requirements, such as removing proprietary dependencies or adjusting the build process for inclusion in the F-Droid app store.",
+            "spof": false
+          },
+          {
+            "path": "res/vcpkg/ffmpeg/patch",
+            "description": "This directory contains custom patches specifically for the FFmpeg library, which are applied when FFmpeg is integrated or built using vcpkg within the RustDesk project. These patches likely provide project-specific modifications or fixes to the FFmpeg source code.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/build.rs",
+            "description": "This build script compiles and links external C/C++ libraries (like libyuv, libvpx, aom) for a Rust project, handling platform-specific linking methods and generating FFI bindings using bindgen.",
+            "spof": false
+          },
+          {
+            "path": "libs/virtual_display/dylib/build.rs",
+            "description": "This build script (`build.rs`) compiles a C source file (`IddController.c`) into a static library named `win_virtual_display` specifically for Windows targets. It configures the C compiler with platform-specific flags to integrate a virtual display implementation.",
+            "spof": false
+          },
+          {
+            "path": "libs/enigo/build.rs",
+            "description": "This Rust build script conditionally generates configuration for library paths based on the operating system, primarily for X11 libraries on Linux, and links necessary system libraries like `dl` or `c`.",
+            "spof": false
+          },
+          {
+            "path": "libs/portable/build.rs",
+            "description": "This build script (`build.rs`) is used on Windows to embed resources like an icon and manifest file into the compiled executable using the `winres` crate.",
+            "spof": true
+          },
+          {
+            "path": ".claude/commands/reflection.md",
+            "description": "This document outlines a structured, multi-phase process for an AI (Claude) to analyze and improve its own instructions, commands, and configuration for optimizing its performance as a code assistant. It details steps for identifying issues, proposing changes, interacting with a human for feedback, and implementing approved modifications.",
+            "spof": true
+          },
+          {
+            "path": "fastlane/metadata/android/fr-FR",
+            "description": "This directory contains Fastlane metadata specific to the Android platform for the RustDesk application. It holds localized assets and information for the French (France) region, used during the app store deployment process.",
+            "spof": false
+          },
+          {
+            "path": "fastlane/metadata/android/nl-NL",
+            "description": "This directory stores Fastlane metadata for the Android version of the RustDesk application. Specifically, it contains localization assets and information tailored for the Dutch (nl-NL) language and region, used for app store listings and other release processes.",
+            "spof": false
+          },
+          {
+            "path": "fastlane/metadata/android/zh-CN",
+            "description": "This directory stores Fastlane metadata for the Android version of the RustDesk application, specifically containing localized information for Simplified Chinese (zh-CN). It holds content relevant to app store listings or other Fastlane automation tasks for this specific locale.",
+            "spof": false
+          },
+          {
+            "path": "fastlane/metadata/android/en-US/images/sevenInchScreenshots",
+            "description": "This directory is designated for storing screenshots of the Android application optimized for 7-inch tablet displays. These images are specifically for the English (en-US) localization of the app's Google Play Store listing, as managed by Fastlane.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 30
+          },
+          {
+            "name": "VenusGirl❤",
+            "percent": 12
+          },
+          {
+            "name": "rustdesk",
+            "percent": 10
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 61,
+      "spofCount": 29
+    },
+    "busFactor": 2,
+    "authorCount": 21
+  },
+  "Self-Hosted Infrastructure & Administration": {
+    "description": "Delivers the server-side software and tools necessary to create a private, self-hosted remote access network. It includes capabilities for user management, device grouping, access control, and reviewing audit logs.",
+    "functions": {
+      "Server Administration CLI": {
+        "files": [
+          {
+            "path": "docs/CODE_OF_CONDUCT-JP.md",
+            "description": "This document outlines the code of conduct for the community, detailing expected behaviors, prohibited actions, and the enforcement process for maintaining a respectful and inclusive environment. It serves as a guide for all contributors and members regarding acceptable conduct and consequences for violations.",
+            "spof": true
+          },
+          {
+            "path": "docs/CODE_OF_CONDUCT-TR.md",
+            "description": "This file is the Turkish translation of the Contributor Code of Conduct, outlining expected behaviors, responsibilities, and enforcement guidelines for participants in the RustDesk community. It aims to foster an inclusive and harassment-free environment.",
+            "spof": true
+          },
+          {
+            "path": "res/devices.py",
+            "description": "This script provides a command-line interface for managing devices via an API, allowing users to view, enable, disable, delete, and assign properties to devices based on various filters.",
+            "spof": true
+          },
+          {
+            "path": "res/user-groups.py",
+            "description": "This script provides a command-line interface for managing user groups and users within those groups by interacting with an API. It supports operations like viewing, creating, updating, and deleting user groups, as well as viewing and adding users to groups.",
+            "spof": false
+          },
+          {
+            "path": "res/users.py",
+            "description": "This Python script provides a command-line interface for managing users via an API, allowing operations such as viewing, creating, inviting, deleting, enabling/disabling, and managing 2FA/login verification for users.",
+            "spof": true
+          },
+          {
+            "path": "res/strategies.py",
+            "description": "This Python script provides a command-line interface to manage 'strategies' on a server, including listing, viewing, enabling, disabling, and assigning strategies to devices, users, or device groups via API calls.",
+            "spof": true
+          },
+          {
+            "path": "res/device-groups.py",
+            "description": "This script provides a command-line interface for managing device groups and assigning/unassigning devices to them via an API. It supports operations like viewing, creating, updating, and deleting device groups, as well as listing devices and managing their membership in groups.",
+            "spof": false
+          },
+          {
+            "path": "res/audits.py",
+            "description": "This script provides a command-line interface to retrieve and display various types of audit logs (connection, file, alarm, console) from an API. It includes functions for formatting timestamps and converting numerical audit codes into human-readable descriptions.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "21pages",
+            "percent": 95
+          },
+          {
+            "name": "rustdesk",
+            "percent": 4
+          },
+          {
+            "name": "Ikko Eltociear Ashimine",
+            "percent": 1
+          }
+        ]
+      },
+      "Client-Server Integration": {
+        "files": [
+          {
+            "path": "src/naming.rs",
+            "description": "This file provides a utility for generating a unique, encoded name for a RustDesk custom server executable based on provided server configuration details (key, host, API, relay), and can also parse custom server configuration from a string.",
+            "spof": false
+          },
+          {
+            "path": "src/hbbs_http/sync.rs",
+            "description": "This file manages the periodic collection and synchronization of local system information (sysinfo) with the RustDesk (hbbs) server. It uploads system details, handles configuration updates, and maintains a heartbeat with the server.",
+            "spof": false
+          },
+          {
+            "path": "src/hbbs_http/account.rs",
+            "description": "Manages OpenID Connect (OIDC) authentication for user accounts, including requesting authorization, polling for status, and handling user and device session data.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 61
+          },
+          {
+            "name": "rustdesk",
+            "percent": 24
+          },
+          {
+            "name": "21pages",
+            "percent": 11
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 11,
+      "spofCount": 7
+    },
+    "busFactor": 2,
+    "authorCount": 5
+  },
+  "Client Application Shell": {
+    "description": "Provides the cross-platform graphical user interface for desktop (Windows, macOS, Linux) and mobile (Android, iOS). It manages application settings, an address book, automatic software updates, and platform-specific integrations like the system tray.",
+    "functions": {
+      "Internationalization Management": {
+        "files": [
+          {
+            "path": "docs/README-JP.md",
+            "description": "This file is the Japanese-language README for the RustDesk project. It provides an overview of the remote desktop software, instructions for building it from source, details on its file structure, and screenshots.",
+            "spof": false
+          },
+          {
+            "path": "docs/README-IT.md",
+            "description": "This file is the Italian README for the RustDesk remote desktop software. It provides an overview of the project, features, build instructions, and file structure in Italian.",
+            "spof": false
+          },
+          {
+            "path": "docs/README-EO.md",
+            "description": "This file is the Esperanto (EO) translation of the RustDesk README documentation, providing an overview of the remote desktop application, build instructions, dependencies, and file structure.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-ID.md",
+            "description": "This file is the Indonesian localization of the RustDesk README, providing an overview of the remote desktop software, instructions for building and using it, and details on its file structure and features.",
+            "spof": false
+          },
+          {
+            "path": "docs/README-RO.md",
+            "description": "This file is the Romanian localization of the RustDesk README, providing information about the RustDesk remote desktop solution, including build instructions and file structure.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-FA.md",
+            "description": "This is the Farsi (Persian) README file for the RustDesk remote desktop software. It provides an overview of RustDesk, details on building it from source, its dependencies, folder structure, and includes screenshots.",
+            "spof": false
+          },
+          {
+            "path": "docs/README-HU.md",
+            "description": "This file is the Hungarian translation of the RustDesk project's main README, providing an overview, build instructions, and file structure details for the remote desktop software.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-DE.md",
+            "description": "This file is the German-language README for RustDesk, a remote-desktop software. It provides an overview of RustDesk's features, instructions for compiling the software on various platforms and with Docker, details its file structure, and includes screenshots.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-NL.md",
+            "description": "This is the Dutch-language README file for the RustDesk remote desktop application. It provides an overview of the software, instructions for building it on various platforms and with Docker, details on its file structure, and links to downloads and community resources.",
+            "spof": false
+          },
+          {
+            "path": "docs/README-PTBR.md",
+            "description": "This is the Brazilian Portuguese README file for the RustDesk project, providing an overview of the remote desktop software, instructions for compilation, file structure, and screenshots.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-VN.md",
+            "description": "This file is the Vietnamese translation of the RustDesk project's README, providing an overview of the remote desktop software, build instructions, and contribution guidelines, specifically encouraging Vietnamese translations.",
+            "spof": false
+          },
+          {
+            "path": "docs/README-TR.md",
+            "description": "This file is the Turkish README for the RustDesk project, providing an overview of the remote desktop software, including its features, build instructions, file structure, and links for downloads and community support.",
+            "spof": true
+          },
+          {
+            "path": "docs/README-AR.md",
+            "description": "This file is the Arabic language README for the RustDesk project, providing an overview of the remote desktop software, instructions on how to build it, its architecture, and other relevant information.",
+            "spof": true
+          },
+          {
+            "path": "res/lang.py",
+            "description": "This Python script serves as a utility for managing internationalization (i18n) files in a Rust project. It provides functionalities to convert translation strings between Rust's string map format and CSV, and to expand/synchronize language files based on a template.",
+            "spof": true
+          },
+          {
+            "path": "src/lang/ca.rs",
+            "description": "This file contains the Catalan localization strings for the application. It defines a HashMap mapping English phrases to their Catalan translations, used for internationalization.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/README.md",
+            "description": "This README file provides instructions for language translation within the RustDesk project, detailing the template file and the required format for translation entries.",
+            "spof": true
+          },
+          {
+            "path": "src/lang/ar.rs",
+            "description": "This file contains Arabic localization strings for the application, mapping English phrases to their Arabic translations using a static HashMap.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/bg.rs",
+            "description": "This file contains Bulgarian language translations for the RustDesk application. It defines a static hash map of English strings to their Bulgarian equivalents.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/da.rs",
+            "description": "This file provides Danish translations for the application's user interface and messages, serving as the localization file for the Danish language.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/cn.rs",
+            "description": "This file contains localization strings for the Chinese language, mapping English phrases to their Chinese translations for the application's user interface.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/fr.rs",
+            "description": "This file contains French translations for the application's user interface, mapping English strings to their French equivalents. It serves as a localization resource for the RustDesk application.",
+            "spof": true
+          },
+          {
+            "path": "src/lang/cs.rs",
+            "description": "This file provides Czech language translations for the RustDesk application. It defines a static HashMap containing key-value pairs where keys are English strings and values are their corresponding Czech translations.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/be.rs",
+            "description": "This file contains a hash map providing localization strings for the Belarusian language. It maps English phrases to their Belarusian equivalents for the application's user interface.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/el.rs",
+            "description": "This file provides Greek localization strings for the application. It contains a HashMap mapping English phrases to their Greek translations, used for internationalization (i18n).",
+            "spof": false
+          },
+          {
+            "path": "src/lang/de.rs",
+            "description": "This file contains German translations for the application's user interface, mapping English strings to their German equivalents for localization purposes.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/es.rs",
+            "description": "This file contains Spanish language translations for the application's user interface. It defines a HashMap mapping English strings to their Spanish equivalents.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/et.rs",
+            "description": "This file provides Estonian language translations for the application's user interface, storing key-value pairs of English strings and their Estonian equivalents.",
+            "spof": true
+          },
+          {
+            "path": "src/lang/en.rs",
+            "description": "This file contains a collection of English strings used for internationalization (i18n) in the RustDesk application, mapping translation keys to their corresponding English text.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/id.rs",
+            "description": "This file contains Indonesian localization strings for the RustDesk application. It maps English phrases to their Indonesian translations for UI elements and messages.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/eo.rs",
+            "description": "This file contains the Esperanto (eo) localization strings for the application. It maps English phrases to their Esperanto translations, used for internationalization.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/he.rs",
+            "description": "This file contains Hebrew translations for the application's user interface, used for internationalization (i18n) purposes. It maps English strings to their Hebrew equivalents.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/fa.rs",
+            "description": "This file provides Persian (Farsi) language translations for the application's user interface, mapping English strings to their localized equivalents. It serves as a localization resource for the application.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/eu.rs",
+            "description": "This file provides the Basque (eu) translations for the application's user interface and messages. It maps English strings to their corresponding Basque localized versions.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/kz.rs",
+            "description": "This file contains Kazakh (kz) language translations for the application's user interface, mapping English strings to their Kazakh equivalents.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/hr.rs",
+            "description": "This file contains the Croatian localization strings for the application. It defines a HashMap that maps English phrases to their Croatian translations, used for internationalization (i18n).",
+            "spof": false
+          },
+          {
+            "path": "src/lang/lv.rs",
+            "description": "This file contains Latvian translations for various UI elements and messages within the application, likely used for internationalization (i18n).",
+            "spof": false
+          },
+          {
+            "path": "src/lang/ko.rs",
+            "description": "This file provides Korean (ko) translations for the application's user interface, storing them in a static hash map for localization.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/ja.rs",
+            "description": "This file contains a Rust HashMap used for localization, specifically providing Japanese translations for various strings used in the application's user interface and messages.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/hu.rs",
+            "description": "This file provides Hungarian localization strings for the RustDesk application. It maps English phrases to their Hungarian translations for various UI elements and messages.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/sk.rs",
+            "description": "This file contains the Slovak language localization strings for the application. It maps English phrases to their Slovak translations.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/ge.rs",
+            "description": "This file contains Georgian (ge) translations for various strings used in the application's user interface, stored as a static HashMap.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/vi.rs",
+            "description": "This file provides Vietnamese translations for various strings used in the application's user interface, functioning as a localization file for the `vi` language.",
+            "spof": true
+          },
+          {
+            "path": "src/lang/ru.rs",
+            "description": "This file provides Russian language localization strings for the application. It contains a `HashMap` mapping English keys to their Russian translations for various UI elements and messages.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/ro.rs",
+            "description": "This file contains Romanian language translations for the application's user interface, mapping English strings to their Romanian equivalents. It is used for localization purposes.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/th.rs",
+            "description": "This file provides Thai (th) language translations for various strings used within the application, likely part of a localization system. It maps English phrases to their Thai equivalents.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/nb.rs",
+            "description": "This file contains a Rust HashMap used for internationalization, mapping English strings to their Norwegian (nb) translations. It serves as the localization data for the RustDesk application in Norwegian.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/lt.rs",
+            "description": "This file contains a collection of localized strings for the RustDesk application, specifically providing Lithuanian translations for various UI elements and messages.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/pl.rs",
+            "description": "This file provides Polish language translations for the RustDesk application. It contains a HashMap mapping English strings to their Polish equivalents for UI and other textual elements.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/sv.rs",
+            "description": "This file provides Swedish (sv) translations for the application's user interface, mapping English phrases to their Swedish equivalents. It functions as a localization file for the RustDesk application.",
+            "spof": true
+          },
+          {
+            "path": "src/lang/sc.rs",
+            "description": "This file contains Sardinian (sc) translations for the RustDesk application, used for internationalization (i18n). It maps English strings to their corresponding Sardinian phrases.",
+            "spof": true
+          },
+          {
+            "path": "src/lang/uk.rs",
+            "description": "This file contains Ukrainian translations for the RustDesk application's user interface, mapping English strings to their Ukrainian equivalents. It is used for localization (i18n).",
+            "spof": false
+          },
+          {
+            "path": "src/lang/pt_PT.rs",
+            "description": "This file contains a lazy-loaded HashMap used for internationalization, providing Portuguese (Portugal) translations for various user interface strings in the RustDesk application.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/sl.rs",
+            "description": "This file contains Slovenian language translations for the RustDesk application. It provides a mapping of English strings to their Slovenian equivalents for UI localization.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/nl.rs",
+            "description": "This file provides localization strings for the RustDesk application in Dutch, mapping English phrases to their Dutch equivalents. It is used to display the user interface and messages in the Dutch language.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/fi.rs",
+            "description": "This file contains Finnish (fi) language translations for the application's user interface strings. It defines a static HashMap mapping English phrases to their Finnish equivalents for internationalization purposes.",
+            "spof": true
+          },
+          {
+            "path": "src/lang/sq.rs",
+            "description": "This file contains the Albanian (sq) language translations for the RustDesk application, storing key-value pairs of English strings and their Albanian equivalents in a HashMap.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/ptbr.rs",
+            "description": "This file provides the Brazilian Portuguese translations for the application's user interface and messages, serving as a localization resource.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/sr.rs",
+            "description": "This file provides Serbian language translations for the RustDesk application's user interface and messages. It defines a static HashMap containing English strings mapped to their Serbian equivalents.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/it.rs",
+            "description": "This file contains Italian language translations for the RustDesk application. It defines a HashMap that maps English strings to their Italian equivalents for localization purposes.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/tw.rs",
+            "description": "This file provides Traditional Chinese (Taiwan) translations for the application's user interface, mapping English strings to their localized counterparts. It serves as a language localization file for RustDesk.",
+            "spof": false
+          },
+          {
+            "path": "src/lang/tr.rs",
+            "description": "This file provides Turkish localization strings for the application, mapping English phrases to their Turkish equivalents for UI and other textual content.",
+            "spof": true
+          },
+          {
+            "path": "src/lang/ta.rs",
+            "description": "This file provides Tamil language translations for the application's user interface elements. It uses a static HashMap to store English strings mapped to their Tamil equivalents.",
+            "spof": true
+          },
+          {
+            "path": "src/lang.rs",
+            "description": "This file manages the application's internationalization (i18n) by loading and applying translations for various languages. It includes logic for selecting the active language based on user settings or system locale, performing text translation, and handling dynamic placeholders and branding replacements.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 12
+          },
+          {
+            "name": "minh",
+            "percent": 7
+          },
+          {
+            "name": "21pages",
+            "percent": 7
+          }
+        ]
+      },
+      "Flutter UI Components": {
+        "files": [
+          {
+            "path": "flutter/README.md",
+            "description": "This README file provides an introduction to the flutter_hbb project, offering a brief overview and essential resources for getting started with this Flutter application.",
+            "spof": false
+          },
+          {
+            "path": "flutter/assets",
+            "description": "This directory is intended to store static assets for the Flutter application, such as images, fonts, or other resource files that are bundled with the app. It serves as a central location for all non-code resources required by the Flutter UI.",
+            "spof": false
+          },
+          {
+            "path": "flutter/lib/models",
+            "description": "This directory is intended to store data models or business logic entities specific to the Flutter application. It would typically define the structure of data used and manipulated within the application.",
+            "spof": false
+          },
+          {
+            "path": "flutter/lib/common/widgets",
+            "description": "This directory is designated for housing common, reusable UI widgets within the Flutter application. Its purpose is to promote UI consistency and enable efficient code reuse across different parts of the user interface.",
+            "spof": false
+          },
+          {
+            "path": "flutter/lib/desktop/pages",
+            "description": "This directory is designated to contain the individual UI pages or screens specifically developed for the desktop version of the RustDesk Flutter application. It serves as a structural container for distinct top-level views that users can interact with.",
+            "spof": false
+          },
+          {
+            "path": "flutter/lib/desktop/widgets",
+            "description": "This directory is designated to contain custom Flutter widgets specifically tailored for desktop applications within the RustDesk project. It would serve as a repository for reusable UI components designed for the desktop environment.",
+            "spof": false
+          },
+          {
+            "path": "flutter/lib/mobile/pages",
+            "description": "This directory is intended to contain the top-level UI pages or screens specific to the mobile application within the RustDesk Flutter project. It serves as a logical grouping for all mobile-facing presentation components.",
+            "spof": false
+          },
+          {
+            "path": "flutter/lib/mobile/widgets",
+            "description": "This directory is intended to contain reusable UI widget components specifically designed for the mobile version of the RustDesk Flutter application. These widgets would encapsulate visual elements and their behavior, promoting code reusability and a consistent look and feel across the mobile interface.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "tschettervictor",
+            "percent": 55
+          },
+          {
+            "name": "csf",
+            "percent": 45
+          }
+        ]
+      },
+      "Unix-like Platform Integration": {
+        "files": [
+          {
+            "path": "flutter/linux/my_application.h",
+            "description": "This header file declares the `MyApplication` class, which represents a Flutter-based application built upon the GTK framework for Linux.",
+            "spof": true
+          },
+          {
+            "path": "flutter/linux/flutter",
+            "description": "This directory is designated for Flutter application components specific to the Linux operating system. It would typically contain platform-specific entry points and build configurations required for the Flutter desktop embedder on Linux.",
+            "spof": false
+          },
+          {
+            "path": "flutter/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md",
+            "description": "This README provides instructions on how to customize the launch screen assets for the Flutter iOS project.",
+            "spof": false
+          },
+          {
+            "path": "flutter/ios/Runner/Assets.xcassets/AppIcon.appiconset",
+            "description": "This directory is responsible for storing all the various image assets for the iOS application icon in a Flutter project. It contains different resolutions and sizes of the app icon to support various Apple devices and display scales. This structure is standard for iOS asset catalogs to manage app icons.",
+            "spof": false
+          },
+          {
+            "path": "flutter/ios/Runner/Base.lproj",
+            "description": "This directory is typically used in iOS projects to store base localization resources, such as `Localizable.strings` and storyboards, for the default language. Although empty, its presence indicates an intention to support localization for the Flutter Runner application on iOS.",
+            "spof": false
+          },
+          {
+            "path": "flutter/ios/Flutter",
+            "description": "This directory typically serves as a container for the Flutter engine and platform-specific build files for the iOS part of a Flutter application. It would generally include files crucial for integrating Flutter into the iOS project, such as generated plugin registrations and build settings. Its current emptiness suggests that these contents are either generated at build time or omitted in this specific repository snapshot.",
+            "spof": false
+          },
+          {
+            "path": "flutter/macos/Flutter",
+            "description": "This directory is part of the RustDesk project's Flutter application, specifically for the macOS platform. It is likely intended to contain platform-specific Flutter code, plugins, or build artifacts for the macOS target. Its current emptiness suggests that its contents might be dynamically generated during the build process or it is awaiting specific platform integrations.",
+            "spof": false
+          },
+          {
+            "path": "flutter/macos/Runner/Base.lproj",
+            "description": "This directory is intended to store the base localization resources for the macOS Runner application of the RustDesk Flutter project. It typically contains default language-specific strings and UI elements that are part of the core application bundle, ensuring a fallback for non-specific localizations.",
+            "spof": false
+          },
+          {
+            "path": "src/service.rs",
+            "description": "This file defines the entry point (`main` function) for the RustDesk service, specifically handling service initialization and startup routines on macOS, while being a no-op on other operating systems.",
+            "spof": true
+          },
+          {
+            "path": "src/tray.rs",
+            "description": "This file manages the system tray icon for the RustDesk application, providing functionality to display application status (like session count), open the main application, or stop the service via a tray menu.",
+            "spof": false
+          },
+          {
+            "path": "src/platform/delegate.rs",
+            "description": "This file implements macOS-specific application delegate logic and menu bar creation for the Rustdesk application. It handles various application lifecycle events, menu item actions, and URL scheme handling using Cocoa/Objective-C bindings.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "rustdesk",
+            "percent": 50
+          },
+          {
+            "name": "RustDesk",
+            "percent": 17
+          },
+          {
+            "name": "21pages",
+            "percent": 14
+          }
+        ]
+      },
+      "Application Core & FFI": {
+        "files": [
+          {
+            "path": "flutter/lib/native",
+            "description": "This directory within the Flutter application is likely designated for integrating platform-specific native code or FFI bindings. Although currently empty, its naming convention suggests it serves as a placeholder for code that interacts directly with the underlying operating system.",
+            "spof": false
+          },
+          {
+            "path": "src/core_main.rs",
+            "description": "This file contains the `core_main` function, which serves as the main entry point for the RustDesk application, handling command-line argument parsing, platform-specific initialization, and orchestrating the application's startup and core lifecycle events.",
+            "spof": false
+          },
+          {
+            "path": "src/ipc.rs",
+            "description": "This file defines the data structures and message types used for Inter-Process Communication (IPC) within the RustDesk application. It enables various functionalities such as remote control, file transfer, clipboard synchronization, and application configuration through serialized messages.",
+            "spof": false
+          },
+          {
+            "path": "src/flutter_ffi.rs",
+            "description": "This file defines the Foreign Function Interface (FFI) bindings for the RustDesk Flutter application, providing functions for session management, event handling, and platform-specific initialization logic.",
+            "spof": false
+          },
+          {
+            "path": "src/main.rs",
+            "description": "This file serves as the main entry point for the RustDesk application, orchestrating different functionalities (GUI, CLI, or mobile-specific tests) based on compilation targets and enabled features.",
+            "spof": false
+          },
+          {
+            "path": "src/updater.rs",
+            "description": "This file implements the software update mechanism, handling automatic and manual checks for new versions, downloading update files, and initiating the installation process while considering active user connections.",
+            "spof": true
+          },
+          {
+            "path": "src/flutter.rs",
+            "description": "This file serves as the core Foreign Function Interface (FFI) bridge between the RustDesk application's Rust backend and its Flutter user interface. It handles initial application startup, manages UI sessions and event streams, and facilitates video and texture rendering for Flutter displays.",
+            "spof": false
+          },
+          {
+            "path": "src/ui.rs",
+            "description": "This file initializes and manages the graphical user interface (GUI) for the application using the Sciter framework. It handles UI rendering, event processing, and exposes backend functionalities to the frontend.",
+            "spof": false
+          },
+          {
+            "path": "src/ui_interface.rs",
+            "description": "This file defines data structures and utility functions for managing the user interface's state and application configuration within RustDesk, supporting cross-platform operations and integration with UI frameworks like Flutter.",
+            "spof": false
+          },
+          {
+            "path": "src/lib.rs",
+            "description": "This file is the root of a Rust library, acting as a central orchestrator for its diverse modules and their conditional compilation across different platforms and features.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 54
+          },
+          {
+            "name": "21pages",
+            "percent": 24
+          },
+          {
+            "name": "rustdesk",
+            "percent": 6
+          }
+        ]
+      },
+      "Windows Native Shell": {
+        "files": [
+          {
+            "path": "flutter/windows/runner/resource.h",
+            "description": "This is a Visual C++ generated header file that defines resource IDs, such as `IDI_APP_ICON`, used in a Windows application's resource script (Runner.rc).",
+            "spof": true
+          },
+          {
+            "path": "flutter/windows/runner/utils.cpp",
+            "description": "This file provides Windows-specific utility functions for a Flutter application, including console management (attaching a console and redirecting output) and converting command-line arguments from UTF-16 to UTF-8.",
+            "spof": true
+          },
+          {
+            "path": "flutter/windows/runner/win32_window.h",
+            "description": "This file defines the `Win32Window` class, providing an abstract base for a high DPI-aware Win32 window, intended for specialization with custom rendering and input handling in Flutter applications on Windows.",
+            "spof": true
+          },
+          {
+            "path": "flutter/windows/runner/main.cpp",
+            "description": "This file serves as the main entry point (wWinMain) for the RustDesk Flutter application on Windows, handling command-line arguments, integrating with the Rust core, and initializing the Flutter UI window.",
+            "spof": false
+          },
+          {
+            "path": "flutter/windows/runner/flutter_window.h",
+            "description": "This file defines the `FlutterWindow` class, a specialized Win32 window designed to host and run a Flutter application within a desktop environment. It integrates with the Flutter engine to display Dart projects.",
+            "spof": true
+          },
+          {
+            "path": "flutter/windows/runner/win32_desktop.cpp",
+            "description": "This file provides utility functions for Windows desktop management, specifically for retrieving monitor work area dimensions, fitting a window within that area, and programmatically moving the mouse cursor.",
+            "spof": true
+          },
+          {
+            "path": "flutter/windows/runner/win32_desktop.h",
+            "description": "This file defines utility functions for interacting with the Windows desktop environment, such as getting the work area, fitting windows to it, and manipulating the mouse cursor.",
+            "spof": true
+          },
+          {
+            "path": "flutter/windows/runner/flutter_window.cpp",
+            "description": "This file defines the `FlutterWindow` class, which manages the lifecycle of a Flutter application within a native Windows window, including plugin registration, interop with native desktop features (like mouse control), and handling Windows messages.",
+            "spof": true
+          },
+          {
+            "path": "flutter/windows/runner/win32_window.cpp",
+            "description": "This file implements the Win32Window class, which provides core functionality for creating, managing, and interacting with a native Windows window to host a Flutter application, including handling DPI scaling, window messages, and child content.",
+            "spof": false
+          },
+          {
+            "path": "flutter/windows/runner/resources",
+            "description": "This directory is designated for storing platform-specific resources for the Windows desktop runner of the Flutter application. It would typically hold assets such as icons, splash screens, or configuration files required for the Windows build of the RustDesk Flutter application.",
+            "spof": false
+          },
+          {
+            "path": "flutter/windows/flutter",
+            "description": "This empty directory is likely intended to house generated Flutter engine files or C++ runner code specific to the Windows platform. It serves as a placeholder for the necessary components that embed the Flutter application within the Windows environment.",
+            "spof": false
+          },
+          {
+            "path": "res/msi/CustomActions/Common.h",
+            "description": "This header file defines common utility functions for Windows system-level operations, including managing firewall rules, Windows services, configuration reading, and driver/printer installation/uninstallation.",
+            "spof": true
+          },
+          {
+            "path": "res/msi/CustomActions/ServiceUtils.cpp",
+            "description": "This file contains C++ utility functions for managing Windows services, including creating, deleting, starting, stopping, and querying the status of services.",
+            "spof": true
+          },
+          {
+            "path": "libs/portable/src/ui.rs",
+            "description": "This file defines a basic native Windows GUI application that displays an animated GIF and a static image label, handling UI creation, layout, and GIF animation logic.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Jonathan Gilbert",
+            "percent": 59
+          },
+          {
+            "name": "fufesou",
+            "percent": 20
+          },
+          {
+            "name": "21pages",
+            "percent": 16
+          }
+        ]
+      },
+      "Android Native Shell": {
+        "files": [
+          {
+            "path": "flutter/android/app/src/main/res/mipmap-mdpi",
+            "description": "This directory contains application icons specifically designed for medium-density (mdpi) Android screens. It ensures that the app icon displays correctly on devices with this particular screen density.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/app/src/main/res/drawable-v21",
+            "description": "This directory is intended to store Android drawable resources specifically designed for API Level 21 (Android 5.0 Lollipop) and higher. It allows the Android portion of the Flutter application to provide version-specific graphical assets. Although currently empty, its purpose is to support modern UI elements and visual enhancements.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/app/src/main/res/mipmap-xxhdpi",
+            "description": "This directory is intended to store launcher icons for the Android application, specifically optimized for extra-extra high-density (xxhdpi) screens. It's part of the standard Android resource structure within a Flutter project.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/app/src/main/res/drawable",
+            "description": "This directory is designated for storing drawable resources for the Android part of the Flutter application. It would typically contain images, icons, and other graphical assets used within the Android application's UI.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/app/src/main/res/mipmap-xhdpi",
+            "description": "This directory is designated for storing mipmap resources tailored for extra high-density (xhdpi) screens within the Android application. Mipmaps here typically include app icons and launch images, ensuring optimal display on devices with xhdpi resolution.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/app/src/main/res/values",
+            "description": "This directory is a standard Android resource folder designed to store various XML-defined resources such as strings, dimensions, styles, and colors. These values are typically used across the application and can be localized. Although currently empty, its purpose is to centralize common resource definitions for the Android application.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/app/src/main/res/values-night",
+            "description": "This directory contains Android resource files, such as colors or styles, that are specifically defined or overridden for the application when it is running in night (dark) mode. It ensures the Flutter app's Android component adapts its visual appearance appropriately for dark themes.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/app/src/main/res/xml",
+            "description": "This `res/xml` directory is designated for storing miscellaneous XML resources specific to the Android platform within the Flutter application. It would typically contain configurations like searchable items, app widget layouts, or other structured data required by the Android build. Although currently empty, its purpose is to host Android-specific XML assets not categorized elsewhere.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/app/src/main/res/mipmap-anydpi-v26",
+            "description": "This directory is intended to store adaptive icon resources (mipmaps) for an Android application, specifically targeting devices running Android 8.0 (API level 26) and higher. It typically contains XML definitions for the foreground and background layers of adaptive app icons, allowing them to conform to different shapes and masks provided by the device launcher.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/app/src/main/res/mipmap-hdpi",
+            "description": "This directory is intended to store application launcher icons or other bitmap resources specifically optimized for high-density (HDPI) Android screens. It ensures that the Flutter application's icons display correctly on devices with this screen density.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/app/src/main/res/mipmap-xxxhdpi",
+            "description": "This directory is designated to store launcher icons for the Android application. These icons would be specifically optimized for extra-extra-extra-high density (xxxhdpi) screens, ensuring optimal display quality on such devices.",
+            "spof": false
+          },
+          {
+            "path": "flutter/android/app/src/main/kotlin/com/carriez/flutter_hbb",
+            "description": "This directory contains the primary Kotlin source code for the Android application component of the RustDesk Flutter project. It hosts core Android-specific logic, platform integrations, and the main entry point for the Flutter-based client on Android.",
+            "spof": false
+          },
+          {
+            "path": "fastlane/metadata/android/en-US/images/phoneScreenshots",
+            "description": "This directory is responsible for storing phone screenshots of the Android application, specifically for the US English localization. These images are used by Fastlane to generate app store metadata, appearing on app store listings to showcase the application.",
+            "spof": false
+          }
+        ],
+        "contributors": []
+      },
+      "Address Book API Tooling": {
+        "files": [
+          {
+            "path": "res/ab.py",
+            "description": "This Python script provides functions to interact with the RustDesk API for managing address books, including operations to view, add, update, and delete peers, tags, and shared address book profiles.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "21pages",
+            "percent": 100
+          }
+        ]
+      },
+      "Portable Application Builder": {
+        "files": [
+          {
+            "path": "libs/portable/src/main.rs",
+            "description": "This file acts as a launcher and setup utility for a portable RustDesk application. It extracts embedded binaries, handles version metadata, performs platform-specific setup (e.g., Windows RuntimeBroker copying), and executes the main application.",
+            "spof": true
+          },
+          {
+            "path": "libs/portable/src/bin_reader.rs",
+            "description": "This file defines structures and logic for reading embedded binary data from the application, decompressing it, verifying its integrity via MD5, and writing it to the filesystem as individual files.",
+            "spof": false
+          },
+          {
+            "path": "libs/portable/src/res",
+            "description": "This directory is intended to house resource files (e.g., images, icons, localization data) specifically for the `portable` library component of the RustDesk application. As it is currently empty, it serves as a placeholder for future resources or indicates resources are dynamically generated or bundled elsewhere during the build process.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "21pages",
+            "percent": 79
+          },
+          {
+            "name": "fufesou",
+            "percent": 7
+          },
+          {
+            "name": "Integral",
+            "percent": 5
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 123,
+      "spofCount": 32
+    },
+    "busFactor": 3,
+    "authorCount": 19
+  },
+  "Remote Session Control": {
+    "description": "Provides the core remote desktop experience, allowing users to view and control a remote computer's screen, keyboard, and mouse in real-time. This module also includes streaming audio from the remote device.",
+    "functions": {
+      "Remote Input Simulation": {
+        "files": [
+          {
+            "path": "flutter/linux/bump_mouse.h",
+            "description": "This header file declares the `bump_mouse` function, which is likely used to programmatically move the mouse cursor by specified horizontal (dx) and vertical (dy) displacements.",
+            "spof": true
+          },
+          {
+            "path": "flutter/linux/bump_mouse_x11.h",
+            "description": "This header file declares a function `bump_mouse_x11` which is likely used to programmatically move the mouse cursor by a specified offset (`dx`, `dy`) on Linux systems using the X11 display server.",
+            "spof": true
+          },
+          {
+            "path": "src/platform/linux.rs",
+            "description": "This file implements Linux-specific platform functionalities for RustDesk, focusing on X11 display server interactions for tasks like cursor control, display information, and managing system environment variables and terminal settings.",
+            "spof": true
+          },
+          {
+            "path": "src/server/rdp_input.rs",
+            "description": "This file implements keyboard and mouse input control for Wayland sessions on the server side, utilizing the D-Bus remote desktop portal to send input events.",
+            "spof": false
+          },
+          {
+            "path": "src/server/input_service.rs",
+            "description": "This file manages and synchronizes input states (mouse, keyboard lock keys, window focus) for remote desktop or remote control operations, translating incoming input events into local system actions across different operating systems.",
+            "spof": true
+          },
+          {
+            "path": "src/server/uinput.rs",
+            "description": "This file implements both client and server components for virtual input devices, allowing remote control of keyboard and mouse actions via inter-process communication (IPC) and utilizing Linux's `uinput` module for simulation.",
+            "spof": true
+          },
+          {
+            "path": "src/keyboard.rs",
+            "description": "This file manages keyboard input, state, and event processing, handling OS-specific behaviors and translating raw events for remote control or special actions. It tracks modifier keys and provides functionalities like keyboard grabbing and releasing.",
+            "spof": true
+          },
+          {
+            "path": "libs/enigo/README.md",
+            "description": "This file is the README for the `enigo` Rust crate, providing information on its purpose as a cross-platform input simulation library, listing supported operating systems, and offering usage examples and runtime dependency instructions.",
+            "spof": false
+          },
+          {
+            "path": "libs/enigo/examples/mouse.rs",
+            "description": "This Rust example demonstrates mouse control using the `enigo` crate, including moving the cursor, clicking, and scrolling, with platform-specific adjustments for scroll intensity.",
+            "spof": false
+          },
+          {
+            "path": "libs/enigo/examples/keyboard.rs",
+            "description": "This file demonstrates using the `enigo` crate to simulate keyboard input, specifically typing a string and performing a 'select all' (Ctrl+A) action.",
+            "spof": false
+          },
+          {
+            "path": "libs/enigo/examples/key.rs",
+            "description": "This file is an example demonstrating how to use the 'enigo' library in Rust to simulate keyboard input, specifically pressing 'Shift + .' and 'Shift + -' after a short delay.",
+            "spof": true
+          },
+          {
+            "path": "libs/enigo/examples/dsl.rs",
+            "description": "This file is an example demonstrating the Enigo library's Domain Specific Language (DSL) feature, simulating keyboard input to type 'Hello World! ❤️' and then select all text.",
+            "spof": false
+          },
+          {
+            "path": "libs/enigo/examples/timer.rs",
+            "description": "This file is an example demonstrating the `enigo` library's keyboard control capabilities. It simulates typing a string \"Hello World! ❤️\" and then performs a 'select all' action (Ctrl+A), also measuring the time taken for the typing sequence.",
+            "spof": false
+          },
+          {
+            "path": "libs/enigo/src/lib.rs",
+            "description": "This file is the main library crate for Enigo, a cross-platform Rust library designed to simulate mouse and keyboard input events as if they were made by actual hardware.",
+            "spof": false
+          },
+          {
+            "path": "libs/enigo/src/dsl.rs",
+            "description": "This file defines a Domain Specific Language (DSL) for programmatic keyboard control. It includes functions to parse a string containing key presses, key releases, and special modifier keys, then execute these commands using the Enigo library.",
+            "spof": false
+          },
+          {
+            "path": "libs/enigo/src/macos/mod.rs",
+            "description": "This file serves as the main module for the macOS-specific implementation of the Enigo library. It defines the core Enigo struct and related constants, along with keycodes, for interacting with macOS input events.",
+            "spof": true
+          },
+          {
+            "path": "libs/enigo/src/macos/keycodes.rs",
+            "description": "This file defines macOS virtual key codes as constants, which are used to represent physical keys independently of keyboard layout for input emulation or handling.",
+            "spof": false
+          },
+          {
+            "path": "libs/enigo/src/macos/macos_impl.rs",
+            "description": "This file provides the macOS-specific implementation for the `enigo` library, enabling simulation of mouse and keyboard input events using Core Graphics and Objective-C runtime functions.",
+            "spof": true
+          },
+          {
+            "path": "libs/enigo/src/linux/mod.rs",
+            "description": "This file acts as the main module for the Linux-specific implementation of the `enigo` library, aggregating submodules like `nix_impl` and `xdo`. It publicly exposes the `Enigo` struct from the `nix_impl` module, which likely provides the core functionality for input event emulation on Linux.",
+            "spof": true
+          },
+          {
+            "path": "libs/enigo/src/linux/xdo.rs",
+            "description": "This file implements XDO-based input emulation for Linux, providing mouse and keyboard control functionalities. It uses the `libxdo-sys` library to translate abstract input actions into system-level events.",
+            "spof": true
+          },
+          {
+            "path": "libs/enigo/src/linux/nix_impl.rs",
+            "description": "This file implements the Linux-specific input control for the Enigo library, providing keyboard and mouse automation. It adapts its behavior based on whether an X11 environment is detected, using `xdo` and `tfc` for X11 or custom handlers for other environments.",
+            "spof": false
+          },
+          {
+            "path": "libs/enigo/src/win/keycodes.rs",
+            "description": "This file defines Windows virtual key codes as Rust constants, mapping common keyboard keys to their hexadecimal VK codes for Windows operating systems.",
+            "spof": false
+          },
+          {
+            "path": "libs/enigo/src/win/mod.rs",
+            "description": "This file serves as the main module for the Windows-specific implementation of the Enigo library, defining its structure and re-exporting core components like the Enigo struct and keycodes for Windows input simulation.",
+            "spof": true
+          },
+          {
+            "path": "libs/enigo/src/win/win_impl.rs",
+            "description": "This file provides the Windows-specific implementation for the Enigo library, enabling programmatic control of mouse and keyboard inputs on the Windows operating system.",
+            "spof": false
+          },
+          {
+            "path": "libs/libxdo-sys-stub/src/lib.rs",
+            "description": "This file provides a dynamic loading wrapper for the libxdo library, enabling its API to be used at runtime without requiring a static installation, which is beneficial for environments like Wayland.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 91
+          },
+          {
+            "name": "rustdesk",
+            "percent": 2
+          },
+          {
+            "name": "Sahil Yeole",
+            "percent": 2
+          }
+        ]
+      },
+      "Screen and Camera Capture": {
+        "files": [
+          {
+            "path": "flutter/lib/desktop/screen",
+            "description": "This directory is designated to house Flutter UI components and logic specifically tailored for desktop screen functionalities within the RustDesk application. It likely pertains to features like screen sharing, display management, or adapting the UI for different desktop screen configurations. Currently empty, it serves as a placeholder for future development in this area.",
+            "spof": false
+          },
+          {
+            "path": "src/server/portable_service.rs",
+            "description": "This file implements the server-side logic for a portable service, utilizing shared memory to facilitate screen capture, cursor information exchange, and inter-process communication.",
+            "spof": false
+          },
+          {
+            "path": "src/server/video_service.rs",
+            "description": "This file manages video capture, encoding, and streaming services for the application. It handles screen capturing (including platform-specific implementations and privacy modes), video frame processing, and coordination across client connections.",
+            "spof": false
+          },
+          {
+            "path": "src/server/display_service.rs",
+            "description": "This file implements a service responsible for detecting and managing system display changes, including resolution handling and screen capture capabilities, for the server-side of RustDesk.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/README.md",
+            "description": "This README file introduces the `scrap` library, a cross-platform screen recording tool. It details its usage, API, frame format, and system requirements for Windows, macOS, and Linux.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/examples/list.rs",
+            "description": "This file is an example program demonstrating how to list all available displays and their resolutions using the `scrap` library.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/examples/ffplay.rs",
+            "description": "This file is an example demonstrating how to capture screen frames using the `scrap` crate and pipe them to `ffplay` for real-time display. It continuously captures the primary display's output and streams it as raw video data.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/examples/capture_mag.rs",
+            "description": "This Rust example demonstrates screen capturing on Windows using `scrap::CapturerMag`, showing how to capture all available displays, exclude specific windows, and save the captured frames as PNG images.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/examples/screenshot.rs",
+            "description": "This file demonstrates how to capture screenshots from all available displays using the `scrap` crate, processing the raw pixel data, and saving two different versions of each screenshot as PNG images.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/lib.rs",
+            "description": "This file is the main library entry point for the 'scrap' crate, providing platform-specific screen scraping or screen capture functionalities. It conditionally compiles and exposes modules for different operating systems like macOS, Windows, Linux, and Android.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/common/linux.rs",
+            "description": "This file provides a unified interface for screen capturing and display management on Linux, abstracting the differences between X11 and Wayland display servers. It defines `Capturer` and `Display` enums that can represent either X11 or Wayland specific implementations, allowing for consistent interaction regardless of the underlying display system.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/x11.rs",
+            "description": "This file provides common X11-specific implementations for screen capturing and display management. It defines structures for capturing screen frames, handling pixel buffers, and interacting with X11 displays.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/wayland.rs",
+            "description": "This file provides Wayland display and screen capturing functionality, leveraging PipeWire to enumerate displays and capture frames in various pixel formats. It defines `Capturer` and `Display` structs for interacting with Wayland displays.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/android.rs",
+            "description": "This file implements screen capturing and display management functionalities specifically for Android, including obtaining screen dimensions, capturing pixel data, and handling display scaling.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/mod.rs",
+            "description": "This module serves as the central hub for screen capturing and video processing functionalities, defining common data structures, traits, and OS-specific implementations for handling video frames, pixel buffers, and codecs across different platforms.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/quartz.rs",
+            "description": "This file provides a macOS-specific screen capture implementation using the Quartz API, including a `Capturer` struct for acquiring display frames and a `Display` struct for enumerating and querying display information.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/camera.rs",
+            "description": "This file provides a platform-specific API for interacting with system cameras (primarily on Windows and Linux) to query available cameras, retrieve their information, and capture video frames for remote desktop functionalities.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/dxgi.rs",
+            "description": "This file provides Rust structures and implementations for screen capturing and display management using DXGI (DirectX Graphics Infrastructure) on Windows, including capturing frames, managing pixel buffers, and enumerating display properties.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/wayland/README.md",
+            "description": "This README documents the origin of the Wayland screen capture code (derived from Weylus) and lists the necessary dependencies for its operation on Ubuntu.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/wayland/capturable.rs",
+            "description": "This file defines traits and enums for screen/window capture functionality on Wayland, including pixel data formats (`PixelProvider`), a recorder interface (`Recorder`), and a capturable object interface (`Capturable`). It provides core abstractions for capturing and processing visual content.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/wayland/display.rs",
+            "description": "This file is responsible for discovering, caching, and managing Wayland display information, including identifying the primary monitor and calculating the total desktop area, often by invoking external system commands like xrandr, kscreen-doctor, and gdbus.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/android/mod.rs",
+            "description": "This file serves as the module entry point for Android-specific functionalities within the 'scrap' library, primarily re-exporting its Foreign Function Interface (FFI) components.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/quartz/capturer.rs",
+            "description": "This file defines the `Capturer` struct, responsible for capturing display frames from a specific screen using macOS Core Graphics APIs, and processing them with a provided handler function.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/quartz/config.rs",
+            "description": "This file defines a configuration structure for display streaming parameters and provides a method to convert this configuration into a Core Foundation Dictionary suitable for use with Apple's Core Graphics Display Stream API.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/quartz/display.rs",
+            "description": "This file defines a `Display` struct and its associated methods for interacting with macOS displays. It uses the Core Graphics API via FFI to query display properties like ID, dimensions, scale, and various states (e.g., primary, online, active).",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/quartz/mod.rs",
+            "description": "This file serves as the main module for the `quartz` library, re-exporting its core components like capturer, config, display, and frame. It also defines a global, lazily-initialized flag to enable or disable Retina display support.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/quartz/ffi.rs",
+            "description": "This file provides Foreign Function Interface (FFI) bindings for interacting with macOS/iOS frameworks, including CoreGraphics for display streaming, IOSurface for buffer management, CoreFoundation, and Grand Central Dispatch.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/quartz/frame.rs",
+            "description": "This file defines a `Frame` struct that wraps a macOS `IOSurface` to manage and access its pixel data. It provides methods to convert the `IOSurface` content into a BGRA byte array, handling resource management like locking and unlocking.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/x11/ffi.rs",
+            "description": "This file provides Rust FFI bindings for the XCB (X-protocol C-language Binding) library and its shared memory (shm) and RandR (Resize and Rotate) extensions, enabling interaction with the X Window System for screen capturing and monitor information.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/x11/capturer.rs",
+            "description": "This file defines an X11 screen capturer that uses shared memory to efficiently capture screen content and provide it as byte slices for analysis or display.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/x11/display.rs",
+            "description": "This file defines the `Display` struct and its associated methods, representing an X11 display or screen within the `scrap` library. It manages properties such as dimensions, root window, and pixel format.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/x11/mod.rs",
+            "description": "This file serves as the root module for X11-specific screen scraping functionalities, re-exporting modules for capturing, display interaction, iteration, and server communication. It also declares an FFI module for X11 bindings.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/x11/iter.rs",
+            "description": "This file defines an iterator (`DisplayIter`) for traversing and retrieving information about X11 screens and monitors connected to a display server. It uses the XCB library to query display properties and configuration.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/x11/server.rs",
+            "description": "This file defines the `Server` struct for managing a connection to an X11 server using the XCB library, including methods for connecting, enumerating displays, and checking X11 Shared Memory (SHM) availability.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/dxgi/gdi.rs",
+            "description": "This file implements screen capturing functionality using the Windows GDI (Graphics Device Interface) API, allowing for the acquisition of screen frames as pixel data and performing some image manipulations.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/dxgi/mod.rs",
+            "description": "This file implements a screen capture mechanism for Windows using DirectX Graphics Infrastructure (DXGI). It leverages D3D11 for device and context management, handles screen duplication, and includes video processing for screen rotation.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/dxgi/mag.rs",
+            "description": "This file implements a Rust binding and wrapper for the Windows Magnification API, providing functionalities for screen capturing based on the Magnification.dll.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 46
+          },
+          {
+            "name": "21pages",
+            "percent": 41
+          },
+          {
+            "name": "dignow",
+            "percent": 6
+          }
+        ]
+      },
+      "Media Stream Encoding and QoS": {
+        "files": [
+          {
+            "path": "res/vcpkg/libyuv",
+            "description": "This directory is intended to house the `libyuv` library, a dependency used for YUV color space conversions. Its placement within the `vcpkg` path suggests it's managed as a third-party C/C++ library for the RustDesk project. Though currently empty, its role is to contain or reference the necessary `libyuv` source or build artifacts.",
+            "spof": false
+          },
+          {
+            "path": "res/vcpkg/aom",
+            "description": "This directory is intended for managing the AOMedia Video 1 (AOM) codec dependency for the RustDesk project, specifically through the vcpkg package manager. It likely serves as a designated location or placeholder for vcpkg-managed files related to the AOM library.",
+            "spof": false
+          },
+          {
+            "path": "res/vcpkg/libvpx",
+            "description": "This directory is designated to contain the `libvpx` library, a dependency managed by vcpkg for the RustDesk project. Its purpose is to provide video encoding and decoding capabilities to the application. Although currently empty, it serves as the intended installation target for `libvpx` components.",
+            "spof": false
+          },
+          {
+            "path": "res/vcpkg/opus",
+            "description": "This directory is intended to house the Opus audio codec library, managed as a dependency by vcpkg for the RustDesk project. It likely serves as a target location for vcpkg installation, contributing to RustDesk's resources.",
+            "spof": false
+          },
+          {
+            "path": "res/vcpkg/mfx-dispatch",
+            "description": "While currently empty, this directory is designated to house components related to Intel Media SDK (MFX) dispatching within the `rustdesk` project's `vcpkg` integration. Its purpose is to facilitate hardware video acceleration by providing a location for MFX-specific libraries or configuration files during the build process.",
+            "spof": false
+          },
+          {
+            "path": "src/client/helper.rs",
+            "description": "This file defines data structures for monitoring stream quality and provides helper functions for creating voice call request and response messages for client-side communication.",
+            "spof": false
+          },
+          {
+            "path": "src/server/video_qos.rs",
+            "description": "This file implements the Quality of Service (QoS) control for video streaming, dynamically adjusting frames per second (FPS) and bitrate ratio based on network conditions (delay) and user preferences to optimize performance.",
+            "spof": true
+          },
+          {
+            "path": "src/server/audio_service.rs",
+            "description": "This file implements a platform-specific audio service for the server, handling audio input capture (including loopback on some systems), processing (resampling, rechanneling), and Opus encoding for transmission, with support for restarting the service and managing input devices.",
+            "spof": false
+          },
+          {
+            "path": "src/hbbs_http/record_upload.rs",
+            "description": "This file implements a background service for uploading recorded session data (like screen recordings) to a remote API server. It processes recording states to handle new files, incremental frame uploads, final 'tail' data, and file removal.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/examples/benchmark.rs",
+            "description": "This file implements a benchmark for various video codecs (VP8, VP9, AV1, and optionally hardware H264/H265) by capturing screen frames and measuring the performance of their encoding and decoding processes.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/examples/record-screen.rs",
+            "description": "This file implements a command-line tool for simple WebM screen recording, capturing frames from the display, encoding them using VP8 or VP9, and multiplexing them into a WebM video file.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/bindings/vpx_ffi.h",
+            "description": "This header file provides Foreign Function Interface (FFI) bindings for the VPx video codec library, including headers for VP8 encoding, decoding, and general VPx codec utilities.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/bindings/yuv_ffi.h",
+            "description": "This file acts as a Foreign Function Interface (FFI) header, importing various functions from the libyuv library for YUV and ARGB color space conversion and rotation operations.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/bindings/aom_ffi.h",
+            "description": "This header file aggregates declarations from various AOM (Alliance for Open Media) library headers, likely serving as a central point for FFI (Foreign Function Interface) bindings to the AV1 video codec functionality.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/vpx.rs",
+            "description": "This file provides Rust FFI (Foreign Function Interface) bindings and utility implementations (like `Default`) for interacting with the `vpx` (VP8/VP9 video codec) library.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/mediacodec.rs",
+            "description": "This file implements a video decoder using Android's MediaCodec API, specifically for H.264 and H.265 formats. It handles decoding video streams and converting the output to RGB formats (ARGB/ABGR).",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/common/hwcodec.rs",
+            "description": "This file implements hardware-accelerated video encoding and decoding functionalities using the `hwcodec` library, specifically for RAM-based operations, including configuration, bitrate calculation, and platform-specific adjustments.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/vpxcodec.rs",
+            "description": "This file implements VP8 and VP9 video encoding and decoding functionalities using the libvpx library for the RustDesk application. It provides an `EncoderApi` for configuring and managing video streams.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/convert.rs",
+            "description": "This file provides functions for converting between different pixel formats, primarily from various RGB formats (BGRA, RGBA, RGB565LE) to several YUV formats (I420, NV12, I444), and also between BGRA and RGBA. It leverages FFI to call external YUV conversion functions.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/codec.rs",
+            "description": "This file defines and manages video encoding and decoding capabilities, abstracting various codecs (VPX, AOM, H.264/H.265) and dynamically selecting the optimal encoder based on peer decoding support and system resources.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/aom.rs",
+            "description": "This file implements an AV1 video encoder using the AOMedia Codec Library (libaom), configured for real-time encoding and screen content optimization, likely following WebRTC guidelines.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/vram.rs",
+            "description": "This file implements a VRAM-based hardware video encoder, `VRamEncoder`, for efficient screen capture and streaming. It provides functionality to initialize, configure, and manage video encoding using GPU memory.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/common/record.rs",
+            "description": "This file defines the core logic for recording video streams, handling various codecs and output formats like WebM or MP4. It manages the recording context, file creation, writing encoded video frames, and state changes during the recording process.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "21pages",
+            "percent": 82
+          },
+          {
+            "name": "fufesou",
+            "percent": 10
+          },
+          {
+            "name": "RustDesk",
+            "percent": 4
+          }
+        ]
+      },
+      "Core Session and Platform Services": {
+        "files": [
+          {
+            "path": "src/client/io_loop.rs",
+            "description": "This file defines the `Remote` struct and its `io_loop` method, which manages the core asynchronous I/O and communication for a client connection in RustDesk, including data transfer, clipboard, and file operations.",
+            "spof": false
+          },
+          {
+            "path": "src/platform/macos.rs",
+            "description": "This file provides macOS-specific implementations for functionalities such as display and cursor management, checking system permissions (e.g., screen recording, accessibility), and managing background services (launch daemons/agents).",
+            "spof": false
+          },
+          {
+            "path": "src/platform/mod.rs",
+            "description": "This module acts as an abstraction layer for platform-specific functionalities, conditionally importing and defining modules and functions tailored for Windows, macOS, Linux, and Android operating systems. It handles system-level operations such as service installation, process management, display resolution changes, and input device handling.",
+            "spof": true
+          },
+          {
+            "path": "src/platform/privileges_scripts",
+            "description": "This directory is intended to house platform-specific scripts responsible for managing or elevating system privileges within the RustDesk application. These scripts ensure the application can perform operations requiring special permissions on different operating systems.",
+            "spof": false
+          },
+          {
+            "path": "src/platform/windows.rs",
+            "description": "This Rust file provides Windows-specific implementations for various system interactions required by the RustDesk application, such as detailed cursor and window management, process and display information retrieval, and other low-level Windows API operations.",
+            "spof": true
+          },
+          {
+            "path": "src/client.rs",
+            "description": "This file defines the `Client` struct responsible for establishing and managing remote desktop connections. It handles network communication, authentication, input/output (screen, audio, clipboard), and platform-specific client-side operations.",
+            "spof": false
+          },
+          {
+            "path": "src/plugin/native_handlers/session.rs",
+            "description": "This file defines a native plugin handler for RustDesk, managing remote desktop sessions by providing functionality for their creation, control, and removal. It also handles callbacks for raw session image data to be displayed in the UI.",
+            "spof": true
+          },
+          {
+            "path": "src/ui_session_interface.rs",
+            "description": "This file defines the `Session` struct and related helper types, managing the state, configuration, and permissions for a remote desktop/control session, including handling connection, display, and input settings.",
+            "spof": false
+          },
+          {
+            "path": "src/server/connection.rs",
+            "description": "This file defines and manages the server-side logic for a remote desktop connection, handling its lifecycle, various functionalities like input, audio, file transfer, and permissions, and maintaining session state.",
+            "spof": false
+          },
+          {
+            "path": "src/ui/remote.rs",
+            "description": "This file implements the `InvokeUiSession` trait for the `SciterHandler` struct, providing UI logic and interactions for a remote desktop session using the Sciter UI framework, including display updates, cursor management, permissions, and file transfer status.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/android/ffi.rs",
+            "description": "This file implements the JNI (Java Native Interface) bridge for an Android application, handling communication between Java and Rust for tasks like receiving media frames, clipboard data, and media codec information, as well as sending input events to Java.",
+            "spof": false
+          },
+          {
+            "path": "libs/hbb_common",
+            "description": "This directory is intended to house common utility functions or shared modules (`hbb_common`) used across the `rustdesk` project's libraries. Although currently empty, its name suggests a role in providing foundational, reusable components for the application.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 53
+          },
+          {
+            "name": "21pages",
+            "percent": 21
+          },
+          {
+            "name": "rustdesk",
+            "percent": 9
+          }
+        ]
+      },
+      "Virtual Display Management": {
+        "files": [
+          {
+            "path": "src/platform/win_device.rs",
+            "description": "This file provides Rust bindings and high-level functions for managing Windows hardware devices and their drivers, including installation, uninstallation, and inter-process communication (IPC) via `DeviceIoControl`.",
+            "spof": true
+          },
+          {
+            "path": "src/virtual_display_manager.rs",
+            "description": "This file manages virtual displays, providing an abstraction layer over different virtual display driver implementations (RustDesk IDD and Amyuni IDD). It handles operations such as plugging in/out virtual monitors, including headless ones, and checking for system compatibility.",
+            "spof": true
+          },
+          {
+            "path": "libs/virtual_display/README.md",
+            "description": "This is a README file for the `virtual_display` library/module, providing a brief overview and a link to its detailed documentation.",
+            "spof": true
+          },
+          {
+            "path": "libs/virtual_display/dylib/README.md",
+            "description": "This README explains the concept of a virtual display for computers without a monitor, detailing its implementation and usage across various operating systems, with a focus on Windows.",
+            "spof": false
+          },
+          {
+            "path": "libs/virtual_display/dylib/examples/idd_controller.rs",
+            "description": "This file is a Windows-specific example or testing utility for a virtual display driver, allowing users to install/uninstall the driver, create/destroy virtual display devices, and plug in/out virtual monitors interactively.",
+            "spof": true
+          },
+          {
+            "path": "libs/virtual_display/dylib/src/lib.rs",
+            "description": "This file implements the core logic for a virtual display driver, primarily targeting Windows, providing functions for driver installation, uninstallation, device management, and virtual monitor control (plug-in, plug-out, and mode updates).",
+            "spof": true
+          },
+          {
+            "path": "libs/virtual_display/dylib/src/win10/IddController.h",
+            "description": "This header file defines the API for managing a virtual display driver (RustDeskIddDriver) on Windows 10. It includes functions for driver installation/uninstallation, creating/managing virtual display devices, and controlling virtual monitors (plugging in/out, updating modes).",
+            "spof": false
+          },
+          {
+            "path": "libs/virtual_display/dylib/src/win10/IddController.c",
+            "description": "This file implements functionalities for managing the RustDesk Indirect Display Driver (Idd) on Windows, including installation, uninstallation, creation, and checking the status of the virtual display device.",
+            "spof": true
+          },
+          {
+            "path": "libs/virtual_display/dylib/src/win10/Public.h",
+            "description": "This header file defines IOCTLs, data structures, and error codes for controlling a virtual display driver on Windows 10, including operations for plugging in/out virtual monitors and updating their modes.",
+            "spof": false
+          },
+          {
+            "path": "libs/virtual_display/dylib/src/win10/mod.rs",
+            "description": "This file defines an interface for interacting with the RustDeskIddDriver on Windows 10, including driver installation paths and functions to retrieve messages from the underlying C-based driver. It serves as a bridge for virtual display functionalities specific to Windows.",
+            "spof": false
+          },
+          {
+            "path": "libs/virtual_display/dylib/src/win10/idd.rs",
+            "description": "This file provides FFI bindings and type definitions for interacting with Windows 10 Indirect Display Driver (IDD) functionalities, enabling the management and control of virtual displays.",
+            "spof": false
+          },
+          {
+            "path": "libs/virtual_display/examples/virtual_display_1.rs",
+            "description": "This file provides a Windows-specific example and interactive utility for testing and managing a virtual display driver and devices, allowing installation/uninstallation, device creation, and virtual monitor control.",
+            "spof": true
+          },
+          {
+            "path": "libs/virtual_display/src/lib.rs",
+            "description": "This module provides a Rust FFI layer for dynamically loading and interacting with an external virtual display driver library. It defines the driver's API, handles library loading, and exposes functions for managing virtual display devices and monitors.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 97
+          },
+          {
+            "name": "21pages",
+            "percent": 1
+          },
+          {
+            "name": "luzpaz",
+            "percent": 1
+          }
+        ]
+      },
+      "Linux Desktop Portal Integration": {
+        "files": [
+          {
+            "path": "src/platform/linux_desktop_manager.rs",
+            "description": "This file manages Linux desktop sessions, including starting and stopping X sessions, handling user authentication (PAM), and managing display environments for remote access or headless scenarios.",
+            "spof": true
+          },
+          {
+            "path": "src/server/wayland.rs",
+            "description": "This file manages Wayland screen capture functionality using the `scrap` library and PipeWire, including initialization, display enumeration, error handling, and providing capturers for individual displays within the RustDesk server.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/wayland.rs",
+            "description": "This file organizes modules related to Wayland screen capturing and display management. It likely handles interactions with Wayland protocols for remote desktop functionality.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/wayland/request_portal.rs",
+            "description": "This file provides Rust D-Bus bindings for the `org.freedesktop.portal.Request` interface, enabling interaction with the XDG Desktop Portal to handle requests and responses.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/wayland/remote_desktop_portal.rs",
+            "description": "This file provides Rust bindings for the `org.freedesktop.portal.RemoteDesktop` D-Bus interface, enabling interaction with the XDG Desktop Portal for remote desktop functionalities like input injection and session management. It was autogenerated using `dbus-codegen-rust`.",
+            "spof": true
+          },
+          {
+            "path": "libs/scrap/src/wayland/screencast_portal.rs",
+            "description": "This file provides the autogenerated Rust interface and implementation for interacting with the `org.freedesktop.portal.ScreenCast` D-Bus service, enabling screen casting functionality for applications.",
+            "spof": false
+          },
+          {
+            "path": "libs/scrap/src/wayland/pipewire.rs",
+            "description": "This file implements screen capturing on Wayland using PipeWire and GStreamer, interfacing with Freedesktop portals for remote desktop and screen sharing functionalities. It manages D-Bus sessions, handles display information, and provides `Capturable` and `Recorder` implementations.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 82
+          },
+          {
+            "name": "Nathan Saslavsky",
+            "percent": 11
+          },
+          {
+            "name": "Sahil Yeole",
+            "percent": 6
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 117,
+      "spofCount": 58
+    },
+    "busFactor": 2,
+    "authorCount": 14
+  },
+  "Utility": {
+    "description": "",
+    "functions": {
+      "General Utility": {
+        "files": [
+          {
+            "path": "flutter/lib/utils",
+            "description": "This directory is intended to store general utility functions and helper classes for the Flutter application of RustDesk. It centralizes reusable code snippets that support various parts of the application logic.",
+            "spof": false
+          },
+          {
+            "path": "flutter/lib/common/formatter",
+            "description": "This directory is intended to house utility functions or classes responsible for formatting data within the Flutter application. Its purpose is to provide reusable formatting logic for various data types or display requirements. Although currently empty, its name suggests it will contain common formatters for the project.",
+            "spof": false
+          },
+          {
+            "path": "flutter/windows/runner/utils.h",
+            "description": "This header file defines utility functions for the Flutter Windows runner, including console management, UTF-16 to UTF-8 string conversion, and command-line argument retrieval.",
+            "spof": true
+          },
+          {
+            "path": "examples/ipc.rs",
+            "description": "This file is an example or test program for RustDesk's Inter-Process Communication (IPC) functionality, capable of running as either an IPC server or client to send and receive messages.",
+            "spof": true
+          },
+          {
+            "path": "src/hbbs_http.rs",
+            "description": "This file defines a custom HTTP response type (HbbHttpResponse) for RustDesk, handling JSON parsing and error extraction from `reqwest` responses. It also integrates various HTTP-related modules for tasks like downloading, uploading, and synchronization.",
+            "spof": true
+          },
+          {
+            "path": "src/server/service.rs",
+            "description": "This file defines a generic service and subscriber pattern, enabling the creation and management of services that handle subscriptions, send messages, and run operations in background threads with concurrency control and error handling.",
+            "spof": false
+          },
+          {
+            "path": "src/hbbs_http/http_client.rs",
+            "description": "This file provides utilities for creating and configuring HTTP clients (synchronous and asynchronous) using `reqwest`, handling various TLS backends, proxy settings, and dynamic fallback mechanisms for TLS configuration based on connection attempts.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 72
+          },
+          {
+            "name": "21pages",
+            "percent": 19
+          },
+          {
+            "name": "yuluo",
+            "percent": 4
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 7,
+      "spofCount": 4
+    },
+    "busFactor": 3,
+    "authorCount": 5
+  },
+  "Connection Management & Relay": {
+    "description": "Manages device discovery and establishes secure, end-to-end encrypted connections. It supports connecting via a public rendezvous network, directly over a LAN, or through a self-hosted relay server.",
+    "functions": {
+      "Peer Discovery and Connection Brokering": {
+        "files": [
+          {
+            "path": "flutter/lib/common/hbbs",
+            "description": "This directory likely serves as a placeholder or contains common code related to the Home Buddy Bootstrap Server (HBBS) within the Flutter application. It would typically house functionalities for connecting to, managing, or interacting with the RustDesk relay/rendezvous server from the Flutter client.",
+            "spof": false
+          },
+          {
+            "path": "src/custom_server.rs",
+            "description": "This file defines the `CustomServer` structure and provides functions to parse custom server configurations from various string formats, including those embedded in filenames, often involving base64 decoding and cryptographic verification.",
+            "spof": true
+          },
+          {
+            "path": "src/rendezvous_mediator.rs",
+            "description": "This file implements the RendezvousMediator, a core component responsible for managing connections to RustDesk rendezvous servers, including starting various related services, handling registration, and maintaining communication via UDP and other protocols.",
+            "spof": false
+          },
+          {
+            "path": "src/lan.rs",
+            "description": "This file handles local area network (LAN) peer discovery for RustDesk clients, including broadcasting discovery requests, listening for responses, and sending Wake-on-LAN (WoL) packets.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "rustdesk",
+            "percent": 46
+          },
+          {
+            "name": "21pages",
+            "percent": 32
+          },
+          {
+            "name": "fufesou",
+            "percent": 18
+          }
+        ]
+      },
+      "Connection UI and Platform Integration": {
+        "files": [
+          {
+            "path": "res/msi/CustomActions/FirewallRules.cpp",
+            "description": "This C++ file manages Windows Firewall rules, specifically adding and removing application-specific rules with edge traversal options. It uses Windows Firewall APIs to configure inbound and outbound connections.",
+            "spof": true
+          },
+          {
+            "path": "src/ui_cm_interface.rs",
+            "description": "This file defines the interface and logic for managing client connections within the UI, handling connection lifecycle, user interaction features like file transfer limits and voice calls, and platform-specific behaviors.",
+            "spof": true
+          },
+          {
+            "path": "src/server/dbus.rs",
+            "description": "This file implements D-Bus client and server functionality for RustDesk on Linux, enabling inter-process communication primarily for handling \"uni links\" or new connection requests. It allows the application to respond to system-wide commands, such as opening new connections, by communicating between different RustDesk processes.",
+            "spof": false
+          },
+          {
+            "path": "src/ui/cm.rs",
+            "description": "This file implements the Sciter-specific user interface and event handling for the Connection Manager, bridging backend connection logic with the Sciter frontend for managing remote desktop sessions.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 92
+          },
+          {
+            "name": "21pages",
+            "percent": 3
+          },
+          {
+            "name": "csf",
+            "percent": 2
+          }
+        ]
+      },
+      "Secure Session and Service Management": {
+        "files": [
+          {
+            "path": "src/cli.rs",
+            "description": "This file defines a client `Session` responsible for handling login, password prompts, and other client-side interactions. It also includes functions for testing client connectivity and initiating port forwarding connections.",
+            "spof": false
+          },
+          {
+            "path": "src/kcp_stream.rs",
+            "description": "This file implements a KCP (Kjeldstad Command Protocol) stream abstraction over UDP sockets, providing reliable, ordered data transfer. It offers functionalities to accept incoming KCP connections and establish new KCP connections.",
+            "spof": true
+          },
+          {
+            "path": "src/server.rs",
+            "description": "This file defines the core server logic for handling incoming connections and managing various services (audio, video, input, clipboard, etc.) in a remote desktop application. It sets up secure TCP and relay connections, initializes services, and manages their lifecycle.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "rustdesk",
+            "percent": 43
+          },
+          {
+            "name": "21pages",
+            "percent": 39
+          },
+          {
+            "name": "fufesou",
+            "percent": 12
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 11,
+      "spofCount": 5
+    },
+    "busFactor": 2,
+    "authorCount": 4
+  },
+  "Plugin & Extension Framework": {
+    "description": "Provides a system for extending the application's core functionality with third-party plugins. It manages the lifecycle, configuration, and communication for custom extensions.",
+    "functions": {
+      "Plugin UI Integration": {
+        "files": [
+          {
+            "path": "flutter/lib/web/plugin",
+            "description": "This directory is intended to house web-specific plugins for the Flutter application within the RustDesk project. It would contain platform-specific implementations or integrations required when running the Flutter app in a web browser environment.",
+            "spof": false
+          },
+          {
+            "path": "flutter/lib/plugin/widgets",
+            "description": "This directory is intended to house custom UI widgets specifically designed for Flutter plugins within the RustDesk application. These widgets would provide specific user interface components or integrate plugin-related functionalities into the Flutter frontend.",
+            "spof": false
+          },
+          {
+            "path": "src/plugin/native_handlers/ui.rs",
+            "description": "This file defines a native plugin handler for UI-related interactions, enabling communication and callback mechanisms between the Rust backend and the Flutter frontend for tasks like selecting peers and registering UI entries.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Kingtous",
+            "percent": 82
+          },
+          {
+            "name": "dignow",
+            "percent": 18
+          }
+        ]
+      },
+      "Plugin Host API & FFI Bridge": {
+        "files": [
+          {
+            "path": "flutter/lib/plugin/utils",
+            "description": "This directory is intended to house utility functions, helper methods, or common classes specifically designed to support the functionality of the surrounding Flutter plugin. It provides reusable code to simplify tasks and offer general services within the plugin's scope.",
+            "spof": false
+          },
+          {
+            "path": "flutter/ios/Runner/Runner-Bridging-Header.h",
+            "description": "This bridging header integrates Objective-C/C headers, specifically for Flutter plugin registration and generated Rust FFI bindings, into the Swift codebase of the Flutter iOS application.",
+            "spof": true
+          },
+          {
+            "path": "src/plugin/errno.rs",
+            "description": "This file defines a collection of integer constants representing various error codes used within the RustDesk application, categorized by their origin (plugins, RustDesk callbacks) and handling responsibility. It serves as a central registry for error numbers in the system.",
+            "spof": true
+          },
+          {
+            "path": "src/plugin/native.rs",
+            "description": "This file provides the FFI (Foreign Function Interface) callback (`cb_native_data`) for handling native calls from an external C library, dispatching them to registered Rust handlers. It also defines the structure for native return values.",
+            "spof": true
+          },
+          {
+            "path": "src/plugin/plog.rs",
+            "description": "This file provides a Foreign Function Interface (FFI) for logging, allowing C/C++ plugins to write log messages through the Rust `log` crate. It defines log level constants and a `plugin_log` function to process incoming log requests.",
+            "spof": true
+          },
+          {
+            "path": "src/plugin/callback_ext.rs",
+            "description": "This file provides external callback support for plugins, specifically handling requests to block or unblock user input for a remote peer.",
+            "spof": true
+          },
+          {
+            "path": "src/plugin/callback_msg.rs",
+            "description": "This file defines a C-callable callback function (`cb_msg`) that allows plugins to send various types of messages to peers, the UI, configuration systems, or the main RustDesk application, including handling specific requests like plugin signature verification.",
+            "spof": true
+          },
+          {
+            "path": "src/plugin/native_handlers/mod.rs",
+            "description": "This module defines a system for registering and dispatching native calls (methods) to specific handlers, acting as a central registry for various native functionalities, including session and UI-related actions.",
+            "spof": true
+          },
+          {
+            "path": "src/plugin/native_handlers/macros.rs",
+            "description": "This file defines utility macros for string-based method dispatching and handling in Rust, including checking method prefixes and conditional execution based on method names. They are likely used to facilitate a plugin or dynamic call system.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 78
+          },
+          {
+            "name": "Kingtous",
+            "percent": 19
+          },
+          {
+            "name": "yuluo",
+            "percent": 2
+          }
+        ]
+      },
+      "Plugin Lifecycle & Configuration Management": {
+        "files": [
+          {
+            "path": "src/plugin/desc.rs",
+            "description": "This file defines data structures for describing a plugin or component, including its metadata, user interface elements, configuration, and event listeners. The `Desc` struct serves as the primary descriptor, which can be deserialized from a C string.",
+            "spof": true
+          },
+          {
+            "path": "src/plugin/manager.rs",
+            "description": "This file manages the lifecycle of RustDesk plugins, including fetching available plugins, handling installation and uninstallation, and communicating plugin status to the UI.",
+            "spof": true
+          },
+          {
+            "path": "src/plugin/config.rs",
+            "description": "This file manages various configuration settings for the application, especially for plugins, handling shared, peer-specific, and overall manager configurations with persistence and FFI capabilities.",
+            "spof": true
+          },
+          {
+            "path": "src/plugin/ipc.rs",
+            "description": "This file defines the Inter-Process Communication (IPC) interface for managing application plugins, including their configuration, loading, reloading, and uninstallation. It provides client functions to send plugin-related requests and a handler for processing incoming plugin commands.",
+            "spof": true
+          },
+          {
+            "path": "src/plugin/plugins.rs",
+            "description": "This file defines the interface, loading mechanism, and management for dynamically loaded plugins, including their initialization, lifecycle, and communication callbacks.",
+            "spof": true
+          },
+          {
+            "path": "src/plugin/mod.rs",
+            "description": "This module acts as the central hub for the RustDesk plugin system, managing plugin loading, unloading, installation, uninstallation, configuration, and event handling. It also provides common utility functions for interoperability with native C interfaces for plugins.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 95
+          },
+          {
+            "name": "Integral",
+            "percent": 2
+          },
+          {
+            "name": "dignow",
+            "percent": 1
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 18,
+      "spofCount": 15
+    },
+    "busFactor": 1,
+    "authorCount": 3
+  },
+  "Remote Printing": {
+    "description": "Enables users to print documents from the remote computer to a printer connected to their local machine, streamlining workflows across different physical locations.",
+    "functions": {
+      "Virtual Printer Lifecycle and Data Service": {
+        "files": [
+          {
+            "path": "res/msi/CustomActions/DeviceUtils.cpp",
+            "description": "This file contains C++ code for Windows custom actions, specifically providing a utility function to uninstall a device driver based on its hardware ID.",
+            "spof": true
+          },
+          {
+            "path": "res/msi/CustomActions/RemotePrinter.cpp",
+            "description": "This file implements custom actions for a Windows Installer (MSI) to manage the installation and uninstallation of the RustDesk virtual printer, handling tasks such as adding/deleting printer ports and drivers.",
+            "spof": true
+          },
+          {
+            "path": "src/server/printer_service.rs",
+            "description": "This file implements a service for interacting with an external printer driver adapter DLL to retrieve print data, enabling remote printing functionality.",
+            "spof": true
+          },
+          {
+            "path": "libs/remote_printer/src/lib.rs",
+            "description": "This file contains Windows-specific logic for managing a virtual printer, including installation, uninstallation, and retrieval of printer-related names for the RustDesk application.",
+            "spof": true
+          },
+          {
+            "path": "libs/remote_printer/src/setup/printer.rs",
+            "description": "This file provides Rust functions for managing local printers on Windows, including enumeration, checking existence, adding, and deleting printers using the Windows printing API.",
+            "spof": true
+          },
+          {
+            "path": "libs/remote_printer/src/setup/setup.rs",
+            "description": "This file manages the installation, update, and uninstallation of a remote printer, including handling its associated driver and local port setup on Windows systems.",
+            "spof": true
+          },
+          {
+            "path": "libs/remote_printer/src/setup/driver.rs",
+            "description": "This file provides functions for installing, uninstalling, and enumerating Windows printer drivers, likely for remote printing functionalities. It interacts directly with the Windows Spooler API to manage driver packages and installations.",
+            "spof": true
+          },
+          {
+            "path": "libs/remote_printer/src/setup/port.rs",
+            "description": "This file manages local printer ports on Windows, providing functions to enumerate, check the existence of, add, and delete printer ports using Win32 API calls.",
+            "spof": true
+          },
+          {
+            "path": "libs/remote_printer/src/setup/mod.rs",
+            "description": "This file provides core utilities and functions for interacting with the Windows printing subsystem, including enumerating printer-related objects and checking the installation status of a RustDesk printer. It leverages various Windows API calls for printer management and setup.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 100
+          },
+          {
+            "name": "Jonathan Gilbert",
+            "percent": 0
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 9,
+      "spofCount": 9
+    },
+    "busFactor": 1,
+    "authorCount": 1
+  },
+  "TCP Tunneling & Port Forwarding": {
+    "description": "Offers advanced networking capabilities that allow users to securely access other network services on the remote machine, such as a web server or database, through the established remote connection.",
+    "functions": {
+      "TCP Tunneling and Port Forwarding": {
+        "files": [
+          {
+            "path": "src/port_forward.rs",
+            "description": "This file implements the client-side logic for establishing and managing port forwarding and RDP (Remote Desktop Protocol) connections through the RustDesk infrastructure, including local listening, authentication, and data forwarding.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "21pages",
+            "percent": 50
+          },
+          {
+            "name": "rustdesk",
+            "percent": 33
+          },
+          {
+            "name": "RustDesk",
+            "percent": 9
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 1,
+      "spofCount": 0
+    },
+    "busFactor": 2,
+    "authorCount": 2
+  },
+  "File Transfer & Clipboard Sync": {
+    "description": "Enables seamless file transfers between local and remote computers and provides a synchronized clipboard for copying and pasting text, images, and other content across devices.",
+    "functions": {
+      "Clipboard Synchronization & Protocol Management": {
+        "files": [
+          {
+            "path": "src/clipboard_file.rs",
+            "description": "This file handles the conversion between internal clipboard file structures (`ClipboardFile`) and network-transmissible protocol buffer messages (`Message`, `Cliprdr`) for various clipboard operations, particularly focusing on file transfer functionalities.",
+            "spof": true
+          },
+          {
+            "path": "src/clipboard.rs",
+            "description": "This file implements the core clipboard management and synchronization logic for RustDesk, handling various data formats including text, images, and file transfers, with platform-specific adaptations for Windows, Linux, and macOS.",
+            "spof": true
+          },
+          {
+            "path": "src/client/screenshot.rs",
+            "description": "This file manages a single, globally accessible screenshot, providing functionality to store it and then save it to a file or copy it to the clipboard based on a specified action.",
+            "spof": true
+          },
+          {
+            "path": "src/client/file_trait.rs",
+            "description": "This file defines the `FileManager` trait, an interface for abstracting various local and remote file system operations, and managing file transfer jobs within the application.",
+            "spof": true
+          },
+          {
+            "path": "src/server/clipboard_service.rs",
+            "description": "This file implements a service responsible for monitoring and processing clipboard changes, including text and file clipboard operations, with platform-specific implementations for Android, Windows, and Unix-like systems.",
+            "spof": true
+          },
+          {
+            "path": "src/hbbs_http/downloader.rs",
+            "description": "This file implements an asynchronous file downloader module that manages concurrent downloads, tracks their progress, allows cancellation, and stores downloaded data either in memory or directly to a specified file path.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/README.md",
+            "description": "This document describes the network clipboard library, detailing its architecture and implementation for copying files and text across a network. It explains the underlying protocol adapted from Remote Desktop Protocol, including specific implementations for Windows and Linux/OSX.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/context_send.rs",
+            "description": "This file defines a singleton responsible for managing the lifecycle and access to a `CliprdrServiceContext` used for clipboard operations, particularly for file transfers. It provides methods to enable, disable, and interact with this context globally.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/cliprdr.h",
+            "description": "This header file defines data structures and function prototypes for a clipboard redirection protocol, enabling communication and data exchange related to clipboard operations between client and server components.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/lib.rs",
+            "description": "This Rust library provides core functionality for handling clipboard operations, including remote file transfer, by defining message types, error handling, and and managing communication channels for client connections.",
+            "spof": false
+          },
+          {
+            "path": "libs/clipboard/src/platform/mod.rs",
+            "description": "This file provides platform-specific implementations for clipboard services, conditionally compiling code for Windows and macOS (via Unix) environments.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/platform/unix/filetype.rs",
+            "description": "This file defines data structures for file types and descriptions, along with methods to parse file metadata from a specific binary clipboard format into Rust objects on Unix systems.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/docs/assets",
+            "description": "This directory is intended to store static assets, such as images or diagrams, used within the documentation for the `clipboard` library. While currently empty, its purpose is to support the documentation by providing a location for supplementary media files.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 82
+          },
+          {
+            "name": "RustDesk",
+            "percent": 6
+          },
+          {
+            "name": "rustdesk",
+            "percent": 5
+          }
+        ]
+      },
+      "Windows Clipboard Redirection Client": {
+        "files": [
+          {
+            "path": "libs/clipboard/build.rs",
+            "description": "This `build.rs` script compiles a C source file (`wf_cliprdr.c`) into a static library specifically for Windows targets. It integrates this C implementation, likely for clipboard functionalities, into the Rust project during the build process.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/platform/windows.rs",
+            "description": "This file provides the Windows-specific implementation details for clipboard functionality, primarily consisting of FFI (Foreign Function Interface) bindings and data structures for the Clipboard Redirection Protocol (CLIPRDR).",
+            "spof": false
+          },
+          {
+            "path": "libs/clipboard/src/windows/wf_cliprdr.c",
+            "description": "This file implements the Windows-specific client-side logic for the FreeRDP clipboard redirection (Cliprdr) protocol, handling clipboard synchronization between a remote desktop session and the local Windows machine.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 77
+          },
+          {
+            "name": "cailue",
+            "percent": 21
+          },
+          {
+            "name": "dignow",
+            "percent": 1
+          }
+        ]
+      },
+      "macOS Native Pasteboard Integration": {
+        "files": [
+          {
+            "path": "libs/clipboard/src/platform/unix/macos/README.md",
+            "description": "This README explains the macOS-specific implementation for file pasting in RustDesk, detailing the use of temporary files and `fsevent` to handle paste operations due to `fuse` limitations.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/platform/unix/macos/paste_observer.rs",
+            "description": "This file implements a `PasteObserver` for macOS that monitors filesystem events in the user's home directory to detect when a pasted file operation has completed, specifically looking for newly created files matching a source file name.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/platform/unix/macos/mod.rs",
+            "description": "This file defines the core module structure and message handling logic for the clipboard functionality on the macOS platform within the RustDesk project, including sub-modules for pasteboard interaction and data provision.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/platform/unix/macos/item_data_provider.rs",
+            "description": "This file defines a macOS Objective-C-compatible pasteboard data provider responsible for handling file URL types, creating temporary files, and communicating their paths when data is requested from the pasteboard.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/platform/unix/macos/paste_task.rs",
+            "description": "Manages the process of pasting/downloading files received via a clipboard, handling file content reception, progress tracking, and task cancellation for macOS.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/platform/unix/macos/pasteboard_context.rs",
+            "description": "Manages the macOS pasteboard (clipboard) context for a clipboard redirection service, facilitating file transfers and handling temporary files created during the process.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 100
+          }
+        ]
+      },
+      "Unix FUSE Virtual Filesystem": {
+        "files": [
+          {
+            "path": "libs/clipboard/src/platform/unix/fuse/cs.rs",
+            "description": "This file implements a FUSE (Filesystem in Userspace) server and client in Rust, designed to expose clipboard data as a virtual, read-only filesystem on Unix-like platforms. It handles various FUSE operations like directory listing, file lookups, and reading file content.",
+            "spof": false
+          },
+          {
+            "path": "libs/clipboard/src/platform/unix/fuse/mod.rs",
+            "description": "This file implements a FUSE (Filesystem in Userspace) based virtual filesystem for handling clipboard file transfers in RustDesk, supporting both client and server roles. It manages mounting, unmounting, and interactions with the FUSE filesystem for file data exchange.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/platform/unix/mod.rs",
+            "description": "This file defines common types, constants, and modules for clipboard-related file transfer operations on Unix-like platforms (Linux, macOS), including file attribute flags and data format IDs. It sets up the groundwork for handling file-related clipboard interactions and file sharing mechanisms.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/platform/unix/serv_files.rs",
+            "description": "This file manages and serves clipboard files for a Unix-based system, handling requests for file metadata (size) and content ranges. It maintains a cache of local files, converts the file list into a protocol data unit (PDU), and provides an interface for reading file contents.",
+            "spof": true
+          },
+          {
+            "path": "libs/clipboard/src/platform/unix/local_file.rs",
+            "description": "This file defines the `LocalFile` struct, representing a file or directory on a Unix-like system, and includes functionality to gather file metadata, serialize it into a binary format, read file contents, and recursively construct lists of files and directories for clipboard operations.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 99
+          },
+          {
+            "name": "Integral",
+            "percent": 1
+          },
+          {
+            "name": "ClSlaid",
+            "percent": 1
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 27,
+      "spofCount": 23
+    },
+    "busFactor": 1,
+    "authorCount": 6
+  },
+  "Remote Terminal Access": {
+    "description": "Allows users to open a remote command-line terminal on the target machine, enabling system administration and execution of shell commands directly.",
+    "functions": {
+      "Terminal Session Management": {
+        "files": [
+          {
+            "path": "src/platform/gtk_sudo.rs",
+            "description": "This file provides functionality for executing commands with elevated privileges (sudo) on Linux, offering both a command-line interface and a GTK-based graphical user interface for password prompting and process management.",
+            "spof": true
+          },
+          {
+            "path": "src/server/terminal_helper.rs",
+            "description": "This file implements a Windows-specific helper process that runs as the logged-in user to create a ConPTY (console pseudo-terminal) and shell, addressing compatibility issues when initiated by a SYSTEM service. It also provides utilities for named pipe communication and safe management of Windows process handles.",
+            "spof": true
+          },
+          {
+            "path": "src/server/terminal_service.rs",
+            "description": "This file manages persistent terminal services, including their creation, lifecycle, cleanup, and interaction with underlying pseudo-terminal processes for remote access and control, with platform-specific handling for Windows.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 73
+          },
+          {
+            "name": "RustDesk",
+            "percent": 21
+          },
+          {
+            "name": "21pages",
+            "percent": 6
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 3,
+      "spofCount": 2
+    },
+    "busFactor": 2,
+    "authorCount": 3
+  },
+  "Collaborative Whiteboard": {
+    "description": "Provides an interactive whiteboard for real-time drawing and annotation during a remote session, facilitating visual collaboration between users.",
+    "functions": {
+      "Whiteboard Core Implementation": {
+        "files": [
+          {
+            "path": "src/whiteboard/server.rs",
+            "description": "This file implements the server-side logic for the whiteboard feature, handling inter-process communication (IPC) to receive and dispatch whiteboard events to the UI event loop, and managing visual elements like ripples for user interaction feedback.",
+            "spof": true
+          },
+          {
+            "path": "src/whiteboard/win_linux.rs",
+            "description": "This file provides utilities for rendering text onto a `tiny-skia` pixmap, including loading system fonts via `fontdb`, parsing font outlines with `ttf-parser`, and drawing text with a rounded background.",
+            "spof": true
+          },
+          {
+            "path": "src/whiteboard/mod.rs",
+            "description": "This file defines the core data structures (`CustomEvent`, `Cursor`) and orchestrates platform-specific modules for a whiteboard feature, handling both client and server components and platform-specific event loops.",
+            "spof": true
+          },
+          {
+            "path": "src/whiteboard/windows.rs",
+            "description": "This file implements the main event loop and rendering logic for a transparent, always-on-top whiteboard or overlay window on Windows, displaying custom cursors, text, and ripple effects for user interactions.",
+            "spof": true
+          },
+          {
+            "path": "src/whiteboard/macos.rs",
+            "description": "This file manages macOS-specific window creation and drawing for the RustDesk whiteboard feature. It creates transparent, always-on-top overlay windows on each display to render remote cursors, their text labels, and visual ripples using CoreGraphics.",
+            "spof": true
+          },
+          {
+            "path": "src/whiteboard/client.rs",
+            "description": "This file implements the client-side logic for a whiteboard feature, managing connections, processing whiteboard events (like cursor movements), and communicating with a separate whiteboard process via inter-process communication (IPC).",
+            "spof": true
+          },
+          {
+            "path": "src/whiteboard/linux.rs",
+            "description": "This file implements a transparent, always-on-top whiteboard application for Linux (X11/Xwayland) using `winit` and `softbuffer`. It handles drawing user cursors and ripples, and uses X11 shape extension for mouse event passthrough.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "fufesou",
+            "percent": 100
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 7,
+      "spofCount": 7
+    },
+    "busFactor": 1,
+    "authorCount": 1
+  }
+}
