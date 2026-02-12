@@ -49,11 +49,12 @@ export function SkillgraphDetailTable({
     <Table className="table-fixed">
       <TableHeader>
         <TableRow className="hover:bg-transparent">
+          <TableHead className="w-20" />
           {(["team", "usage", "progress"] as const).map((key) => {
             const isSorted = sortState?.key === key;
             const label = key === "team" ? detailHeaderLabel : key === "usage" ? "Skill Usage" : "Skill Completion";
             return (
-              <TableHead key={key} className="w-1/3">
+              <TableHead key={key}>
                 <button
                   type="button"
                   className="inline-flex items-center gap-1 text-left text-foreground font-medium text-sm"
@@ -79,18 +80,19 @@ export function SkillgraphDetailTable({
         {sortedDetails.length > 0 ? (
           sortedDetails.map((detail, index) => (
             <TableRow key={`${detail.team}-${index}`} className="border-0 hover:bg-gray-50/70">
-              <TableCell className="font-medium text-gray-900 w-1/3">
+              <TableCell />
+              <TableCell className="font-medium text-gray-900">
                 {detail.team}
               </TableCell>
-              <TableCell className="text-gray-700 w-1/3">{detail.usage}</TableCell>
-              <TableCell className="w-1/3">
+              <TableCell className="text-gray-700">{detail.usage}</TableCell>
+              <TableCell>
                 <SkillgraphProgressBar value={detail.progress} />
               </TableCell>
             </TableRow>
           ))
         ) : (
           <TableRow className="border-0 hover:bg-transparent">
-            <TableCell colSpan={3} className="h-14 text-center text-sm text-gray-500">
+            <TableCell colSpan={4} className="h-14 text-center text-sm text-gray-500">
               No details available.
             </TableCell>
           </TableRow>
