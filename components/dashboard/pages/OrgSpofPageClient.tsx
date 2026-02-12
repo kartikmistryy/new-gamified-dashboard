@@ -18,6 +18,7 @@ import { DashboardSection } from "@/components/dashboard/shared/DashboardSection
 import { RepoHealthBar } from "@/components/dashboard/shared/RepoHealthBar";
 import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
 import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
+import { SpofDistributionChart } from "@/components/dashboard/teamDashboard/SpofDistributionChart";
 import {
   Table,
   TableBody,
@@ -41,6 +42,10 @@ import {
   ORG_SPOF_RISK_LEVEL,
   sortOrgRepoSpof,
 } from "@/lib/dashboard/entities/team/data/orgSpofDataLoader";
+import {
+  SPOF_DATA,
+  SPOF_TEAM_CONFIG,
+} from "@/lib/dashboard/entities/team/mocks/spofMockData";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
 import { getRepoPath } from "@/lib/routes";
@@ -205,6 +210,15 @@ export function OrgSpofPageClient() {
   const [sorting, setSorting] = useState<SortingState>([
     { id: "spofModuleCount", desc: true },
   ]);
+
+  // SPOF Distribution Chart state
+  const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
+    const init: Record<string, boolean> = {};
+    for (const team of SPOF_TEAM_CONFIG) {
+      init[team.name] = true;
+    }
+    return init;
+  });
 
   const sortedRows = useMemo(
     () => sortOrgRepoSpof(ORG_REPO_SPOF_ROWS, currentFilter),
@@ -435,6 +449,17 @@ export function OrgSpofPageClient() {
           </div>
 
           <p className="mt-4 text-center text-sm text-gray-400">All Loaded</p>
+        </div>
+      </DashboardSection>
+
+      {/* SPOF Distribution Chart */}
+      <DashboardSection title="SPOF Owner Distribution">
+        <div className="bg-white rounded-lg">
+          <SpofDistributionChart
+            data={SPOF_DATA}
+            visibleTeams={visibleTeams}
+            showNormalFit
+          />
         </div>
       </DashboardSection>
     </div>
