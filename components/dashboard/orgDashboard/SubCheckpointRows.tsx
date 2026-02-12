@@ -62,7 +62,7 @@ export function SubCheckpointRows({ checkpoint, showAll }: SubCheckpointRowsProp
               </TableCell>
               <TableCell>
                 {isUnlocked ? (
-                  <span className="inline-flex items-center gap-1.5 text-emerald-600 text-sm font-medium">
+                  <span className="inline-flex items-center gap-1.5 text-purple-600 text-sm font-medium">
                     <LockOpen className="size-3.5" aria-hidden />
                     Unlocked
                   </span>

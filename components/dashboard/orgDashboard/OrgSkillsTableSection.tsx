@@ -112,10 +112,10 @@ export function OrgSkillsTableSection() {
           <span className="size-2.5 rounded-full bg-amber-400" /> Basic
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="size-2.5 rounded-full bg-blue-500" /> Proficient
+          <span className="size-2.5 rounded-full bg-blue-500" /> Intermediate
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="size-2.5 rounded-full bg-emerald-500" /> Advanced
+          <span className="size-2.5 rounded-full bg-purple-500" /> Advanced
         </span>
       </div>
 

@@ -1,5 +1,5 @@
 /** Proficiency level based on progress percentage */
-export type ProficiencyLevel = "basic" | "proficient" | "advanced";
+export type ProficiencyLevel = "basic" | "intermediate" | "advanced";
 
 /** Checkpoint difficulty phase */
 export type CheckpointPhase = "Basic" | "Intermediate" | "Advanced";
@@ -59,12 +59,12 @@ export type CheckpointProgressData = {
   proficiencyLevel: ProficiencyLevel | null; // null if 0%
   developerCounts: {
     basic: number;
-    proficient: number;
+    intermediate: number;
     advanced: number;
   };
   developersByLevel: {
     basic: RoadmapDeveloper[];
-    proficient: RoadmapDeveloper[];
+    intermediate: RoadmapDeveloper[];
     advanced: RoadmapDeveloper[];
   };
 };
@@ -76,12 +76,12 @@ export type SkillsRoadmapProgressData = {
   proficiencyLevel: ProficiencyLevel | null;
   developerCounts: {
     basic: number;
-    proficient: number;
+    intermediate: number;
     advanced: number;
   };
   developersByLevel: {
     basic: RoadmapDeveloper[];
-    proficient: RoadmapDeveloper[];
+    intermediate: RoadmapDeveloper[];
     advanced: RoadmapDeveloper[];
   };
   checkpoints: CheckpointProgressData[];
@@ -94,12 +94,12 @@ export type RoleRoadmapProgressData = {
   proficiencyLevel: ProficiencyLevel | null;
   developerCounts: {
     basic: number;
-    proficient: number;
+    intermediate: number;
     advanced: number;
   };
   developersByLevel: {
     basic: RoadmapDeveloper[];
-    proficient: RoadmapDeveloper[];
+    intermediate: RoadmapDeveloper[];
     advanced: RoadmapDeveloper[];
   };
   skillsRoadmaps: SkillsRoadmapProgressData[];
@@ -118,7 +118,7 @@ export type SidePanelContext = {
   name: string;
   developersByLevel: {
     basic: RoadmapDeveloper[];
-    proficient: RoadmapDeveloper[];
+    intermediate: RoadmapDeveloper[];
     advanced: RoadmapDeveloper[];
   };
 } | null;

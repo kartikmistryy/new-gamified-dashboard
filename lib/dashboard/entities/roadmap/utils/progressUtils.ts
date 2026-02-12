@@ -23,7 +23,7 @@ import {
 export const getProficiencyLevel = (percent: number): ProficiencyLevel | null => {
   if (percent <= 0) return null;
   if (percent <= 33) return "basic";
-  if (percent <= 66) return "proficient";
+  if (percent <= 66) return "intermediate";
   return "advanced";
 };
 
@@ -32,10 +32,10 @@ export const getProficiencyColor = (level: ProficiencyLevel | null): string => {
   switch (level) {
     case "basic":
       return "#F59E0B"; // amber
-    case "proficient":
+    case "intermediate":
       return "#3B82F6"; // blue
     case "advanced":
-      return "#10B981"; // green
+      return "#8B5CF6"; // purple
     default:
       return "#D1D5DB"; // gray
   }
@@ -96,13 +96,13 @@ const getDevRoleRoadmapPercent = (
 
 type DevelopersByLevel = {
   basic: RoadmapDeveloper[];
-  proficient: RoadmapDeveloper[];
+  intermediate: RoadmapDeveloper[];
   advanced: RoadmapDeveloper[];
 };
 
 const emptyDevelopersByLevel = (): DevelopersByLevel => ({
   basic: [],
-  proficient: [],
+  intermediate: [],
   advanced: [],
 });
 
@@ -152,7 +152,7 @@ export const calculateCheckpointProgress = (
     proficiencyLevel: getProficiencyLevel(avgPercent),
     developerCounts: {
       basic: developersByLevel.basic.length,
-      proficient: developersByLevel.proficient.length,
+      intermediate: developersByLevel.intermediate.length,
       advanced: developersByLevel.advanced.length,
     },
     developersByLevel,
@@ -189,7 +189,7 @@ export const calculateSkillsRoadmapProgress = (
     proficiencyLevel: getProficiencyLevel(avgPercent),
     developerCounts: {
       basic: developersByLevel.basic.length,
-      proficient: developersByLevel.proficient.length,
+      intermediate: developersByLevel.intermediate.length,
       advanced: developersByLevel.advanced.length,
     },
     developersByLevel,
@@ -230,7 +230,7 @@ export const calculateRoleRoadmapProgress = (
     proficiencyLevel: getProficiencyLevel(avgPercent),
     developerCounts: {
       basic: developersByLevel.basic.length,
-      proficient: developersByLevel.proficient.length,
+      intermediate: developersByLevel.intermediate.length,
       advanced: developersByLevel.advanced.length,
     },
     developersByLevel,

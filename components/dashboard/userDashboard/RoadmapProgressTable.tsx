@@ -78,15 +78,15 @@ function ProgressBar({ percent, className = "" }: ProgressBarProps) {
 
 type CountBadgeProps = {
   count: number;
-  level: "basic" | "proficient" | "advanced";
+  level: "basic" | "intermediate" | "advanced";
   onClick: () => void;
 };
 
 function CountBadge({ count, level, onClick }: CountBadgeProps) {
   const colors = {
     basic: "bg-amber-100 text-amber-700 hover:bg-amber-200",
-    proficient: "bg-blue-100 text-blue-700 hover:bg-blue-200",
-    advanced: "bg-green-100 text-green-700 hover:bg-green-200",
+    intermediate: "bg-blue-100 text-blue-700 hover:bg-blue-200",
+    advanced: "bg-purple-100 text-purple-700 hover:bg-purple-200",
   };
 
   if (count === 0) {
@@ -151,7 +151,7 @@ function CheckpointRow({ data, onCountClick, indentLevel }: CheckpointRowProps) 
     (data.progressPercent / 100) * data.checkpoint.subCheckpoints.length
   );
 
-  const handleCountClick = (level: "basic" | "proficient" | "advanced") => {
+  const handleCountClick = (level: "basic" | "intermediate" | "advanced") => {
     onCountClick({
       type: "checkpoint",
       id: data.checkpoint.id,
@@ -197,9 +197,9 @@ function CheckpointRow({ data, onCountClick, indentLevel }: CheckpointRowProps) 
         </TableCell>
         <TableCell className="text-center">
           <CountBadge
-            count={data.developerCounts.proficient}
-            level="proficient"
-            onClick={() => handleCountClick("proficient")}
+            count={data.developerCounts.intermediate}
+            level="intermediate"
+            onClick={() => handleCountClick("intermediate")}
           />
         </TableCell>
         <TableCell className="text-center">
@@ -244,7 +244,7 @@ function SkillsRoadmapRow({
   const [expanded, setExpanded] = useState(false);
   const paddingLeft = indentLevel === 0 ? "pl-4" : "pl-12";
 
-  const handleCountClick = (level: "basic" | "proficient" | "advanced") => {
+  const handleCountClick = (level: "basic" | "intermediate" | "advanced") => {
     onCountClick({
       type: "roadmap",
       id: data.roadmap.id,
@@ -293,9 +293,9 @@ function SkillsRoadmapRow({
         </TableCell>
         <TableCell className="text-center">
           <CountBadge
-            count={data.developerCounts.proficient}
-            level="proficient"
-            onClick={() => handleCountClick("proficient")}
+            count={data.developerCounts.intermediate}
+            level="intermediate"
+            onClick={() => handleCountClick("intermediate")}
           />
         </TableCell>
         <TableCell className="text-center">
@@ -333,7 +333,7 @@ function RoleRoadmapRow({ roleRoadmap, onCountClick, filterMode }: RoleRoadmapRo
   const [expanded, setExpanded] = useState(false);
   const data = useMemo(() => calculateRoleRoadmapProgress(roleRoadmap), [roleRoadmap]);
 
-  const handleCountClick = (level: "basic" | "proficient" | "advanced") => {
+  const handleCountClick = (level: "basic" | "intermediate" | "advanced") => {
     onCountClick({
       type: "roadmap",
       id: data.roleRoadmap.id,
@@ -380,9 +380,9 @@ function RoleRoadmapRow({ roleRoadmap, onCountClick, filterMode }: RoleRoadmapRo
         </TableCell>
         <TableCell className="text-center">
           <CountBadge
-            count={data.developerCounts.proficient}
-            level="proficient"
-            onClick={() => handleCountClick("proficient")}
+            count={data.developerCounts.intermediate}
+            level="intermediate"
+            onClick={() => handleCountClick("intermediate")}
           />
         </TableCell>
         <TableCell className="text-center">
@@ -447,10 +447,10 @@ export function RoadmapProgressTable({
               <span className="text-amber-600">Basic</span>
             </TableHead>
             <TableHead className="text-center w-[100px]">
-              <span className="text-blue-600">Proficient</span>
+              <span className="text-blue-600">Intermediate</span>
             </TableHead>
             <TableHead className="text-center w-[100px]">
-              <span className="text-green-600">Advanced</span>
+              <span className="text-purple-600">Advanced</span>
             </TableHead>
           </TableRow>
         </TableHeader>

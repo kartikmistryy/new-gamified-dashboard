@@ -22,14 +22,14 @@ export type OrgSkillSortMode = "mostProficient" | "mostUnlocked";
 // Sort & Filter Helpers
 // =============================================================================
 
-export function getTotalPeople(counts: { basic: number; proficient: number; advanced: number }) {
-  return counts.basic + counts.proficient + counts.advanced;
+export function getTotalPeople(counts: { basic: number; intermediate: number; advanced: number }) {
+  return counts.basic + counts.intermediate + counts.advanced;
 }
 
 function sortByMode<
   T extends {
     progressPercent: number;
-    developerCounts: { basic: number; proficient: number; advanced: number };
+    developerCounts: { basic: number; intermediate: number; advanced: number };
   },
 >(data: T[], sortMode: OrgSkillSortMode): T[] {
   return [...data].sort((a, b) => {

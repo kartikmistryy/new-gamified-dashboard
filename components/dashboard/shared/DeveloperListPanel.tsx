@@ -114,8 +114,8 @@ export function DeveloperListPanel({ context, onClose }: DeveloperListPanelProps
             colorClass="text-amber-600"
           />
           <DeveloperColumn
-            title="Proficient"
-            developers={context.developersByLevel.proficient}
+            title="Intermediate"
+            developers={context.developersByLevel.intermediate}
             colorClass="text-blue-600"
           />
           <DeveloperColumn

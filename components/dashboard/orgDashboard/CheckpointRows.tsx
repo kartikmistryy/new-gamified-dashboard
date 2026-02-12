@@ -25,7 +25,7 @@ const EXPANDER_CELL = "align-middle [&:has([aria-expanded])]:w-px [&:has([aria-e
 const PHASE_STYLES: Record<string, string> = {
   Basic: "text-amber-700 bg-amber-50",
   Intermediate: "text-blue-700 bg-blue-50",
-  Advanced: "text-emerald-700 bg-emerald-50",
+  Advanced: "text-purple-700 bg-purple-50",
 };
 
 // =============================================================================
