@@ -4,8 +4,6 @@ import { DashboardSection } from "@/components/dashboard/shared/DashboardSection
 import { SkillgraphTeamsTable } from "@/components/dashboard/userDashboard/SkillgraphTeamsTable";
 import { RoadmapProgressSection } from "@/components/dashboard/userDashboard/RoadmapProgressSection";
 import { SKILLGRAPH_TEAM_ROWS } from "@/lib/dashboard/entities/team/mocks/skillgraphMockData";
-import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
-import { getChartInsightsMock } from "@/lib/dashboard/entities/team/mocks/overviewMockData";
 import { SkillGraph } from "@/components/skillmap/SkillGraph";
 import { useMemo, useState } from "react";
 import { roadmapData } from "@/components/skillmap/data/data";
@@ -55,7 +53,6 @@ const buildSkillRowsFromRoadmap = (): SkillgraphSkillRow[] => {
 };
 
 export function OrgSkillGraphPageClient() {
-  const chartInsights = useMemo(() => getChartInsightsMock(), []);
   const skillRows = useMemo(() => buildSkillRowsFromRoadmap(), []);
   const [skillgraphView, setSkillgraphView] = useState<"team" | "skill">("team");
   const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
@@ -93,10 +90,6 @@ export function OrgSkillGraphPageClient() {
   return (
     <div className="flex flex-col gap-12 px-6 pb-12 bg-white text-gray-900 min-h-screen">
       <DashboardSection title="Organization Skills Graph" className="py-6">
-        <ChartInsights insights={chartInsights} />
-      </DashboardSection>
-
-      <DashboardSection title="" className="py-6">
         <div className="flex justify-center">
           <div className="h-[700px] w-[850px] flex items-center justify-center">
             <SkillGraph width={700} height={700} domainWeights={domainWeights} skillVisibility={visibleDomains} />
