@@ -444,7 +444,7 @@ export function OrgSpofPageClient() {
                                   return (
                                     <TableRow key={mod.moduleName}>
                                       <TableCell />
-                                      <TableCell className="font-medium pl-8">
+                                      <TableCell className="font-medium pl-2">
                                         <span className="text-gray-400 mr-2">└</span>
                                         {mod.moduleName}
                                       </TableCell>
