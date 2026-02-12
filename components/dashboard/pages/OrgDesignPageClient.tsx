@@ -115,7 +115,7 @@ export function OrgDesignPageClient() {
       <DashboardSection title="Developer Performance Matrix">
         <div className="flex flex-row flex-wrap items-stretch gap-4">
           {/* Column 1: Chart */}
-          <div className="flex-[2] min-w-[300px] max-w-[700px] overflow-hidden">
+          <div className="flex-[2] min-w-[400px] overflow-hidden">
             <ChaosMatrixChart
               range={FIXED_TIME_RANGE}
               visibleTeams={visibleTeams}
