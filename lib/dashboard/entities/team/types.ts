@@ -307,3 +307,19 @@ export type PerformanceMetricConfig = {
     upIsGood: boolean;
   };
 };
+
+/** Operation type for nLoC breakdown. */
+export type OperationType = "add" | "update" | "delete" | "selfDelete";
+
+/** Configuration for an operation breakdown card in the Detailed Breakdowns section. */
+export type OperationBreakdownCard = {
+  operation: OperationType;
+  label: string;
+  nLoC: number;
+  trend: {
+    direction: "up" | "down" | "flat";
+    value: string;
+    upIsGood: boolean;
+  };
+  insight: string;
+};

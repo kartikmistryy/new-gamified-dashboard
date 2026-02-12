@@ -1,5 +1,5 @@
 import { Hourglass, Code2, RefreshCw, Repeat } from "lucide-react";
-import type { PerformanceMetricConfig } from "./types";
+import type { PerformanceMetricConfig, OperationBreakdownCard } from "@/lib/dashboard/entities/team/types";
 
 /**
  * Four performance metric configurations with meaningful data per CHARTS.md plan.
@@ -223,5 +223,40 @@ export const PERFORMANCE_METRICS: PerformanceMetricConfig[] = [
         text: "Low legacy engagement increases risk of critical failures in older systems.",
       },
     ],
+  },
+];
+
+/**
+ * Operation breakdown data for Detailed Breakdowns section.
+ * Sum of all nLoC values = 845 (matches Normalized Lines of Code in Core Metrics).
+ */
+export const OPERATION_BREAKDOWN_DATA: OperationBreakdownCard[] = [
+  {
+    operation: "update",
+    label: "Updated",
+    nLoC: 280,
+    trend: { direction: "up", value: "+42", upIsGood: true },
+    insight: "Active codebase maintenance. Update activity shows engagement with existing systems.",
+  },
+  {
+    operation: "add",
+    label: "Added",
+    nLoC: 450,
+    trend: { direction: "up", value: "+65", upIsGood: true },
+    insight: "Strong new feature output. Addition rate reflects healthy sprint velocity.",
+  },
+  {
+    operation: "delete",
+    label: "Delete",
+    nLoC: 85,
+    trend: { direction: "down", value: "-12", upIsGood: true },
+    insight: "Intentional cleanup activity. Removing legacy code to reduce technical debt.",
+  },
+  {
+    operation: "selfDelete",
+    label: "SelfDelete",
+    nLoC: 30,
+    trend: { direction: "up", value: "+8", upIsGood: false },
+    insight: "Slight increase in self-deletions. Monitor for potential rework patterns.",
   },
 ];

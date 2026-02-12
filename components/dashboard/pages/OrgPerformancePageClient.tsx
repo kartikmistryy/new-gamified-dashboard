@@ -18,16 +18,17 @@ import {
   ORG_PERFORMANCE_ANNOTATIONS,
   generateOrgPerformanceData,
 } from "@/lib/dashboard/entities/team/charts/performanceChart/orgPerformanceChartData";
-import { PERFORMANCE_METRICS } from "@/lib/dashboard/entities/team/mocks/performanceMetricsMockData";
+import { PERFORMANCE_METRICS, OPERATION_BREAKDOWN_DATA } from "@/lib/dashboard/entities/team/mocks/performanceMetricsMockData";
+import { OperationBreakdownCard } from "@/components/dashboard/OperationBreakdownCard";
 
 /** Default performance gauge value for the Performance Tracking section (0–100). */
 const DEFAULT_PERFORMANCE_GAUGE_VALUE = Math.floor(Math.random() * 100);
 
-import type { PerformanceMetricConfig } from "@/lib/orgDashboard/types";
+import type { PerformanceMetricConfig } from "@/lib/dashboard/entities/team/types";
 
 function MetricSectionRow({ metric }: { metric: PerformanceMetricConfig }) {
   return (
-    <DashboardSection title={metric.sectionTitle}>
+    <DashboardSection title={metric.sectionTitle} titleSize="small">
       <div className="flex flex-col lg:flex-row items-stretch gap-[10px]">
         {/* Column 1: Chart */}
         <PerformanceStatisticCard
@@ -149,10 +150,23 @@ export function OrgPerformancePageClient() {
             </DashboardSection>
           </div>
 
-          {/* Four performance metric sections */}
-          {PERFORMANCE_METRICS.map((metric) => (
-            <MetricSectionRow key={metric.id} metric={metric} />
-          ))}
+          {/* Core Metrics */}
+          <DashboardSection title="Core Metrics">
+            <div className="flex flex-col gap-8">
+              {PERFORMANCE_METRICS.map((metric) => (
+                <MetricSectionRow key={metric.id} metric={metric} />
+              ))}
+            </div>
+          </DashboardSection>
+
+          {/* Detailed Breakdowns: nLoC by operation type */}
+          <DashboardSection title="Detailed Breakdowns">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {OPERATION_BREAKDOWN_DATA.map((op) => (
+                <OperationBreakdownCard key={op.operation} {...op} />
+              ))}
+            </div>
+          </DashboardSection>
 
           <DashboardSection title="Teams" className="w-full">
             <PerformanceTeamsTable

@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 import type { Data, Layout, Config } from "plotly.js";
-import type { MetricSeverity, DonutSegment, ThresholdZone } from "@/lib/orgDashboard/types";
+import type { MetricSeverity, DonutSegment, ThresholdZone } from "@/lib/dashboard/entities/team/types";
 import {
   Card,
   CardHeader,
