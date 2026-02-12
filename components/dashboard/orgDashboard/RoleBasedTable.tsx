@@ -4,6 +4,7 @@ import { Fragment, useMemo, useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import type { RoleRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
+import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
 import { PeopleStackedBar, StatusBadge } from "./PeopleStackedBar";
 import { CheckpointRows } from "./CheckpointRows";
 import { Button } from "@/components/ui/button";
@@ -137,7 +138,14 @@ function RoleRow({ role, rank, isExpanded, onToggle, showAll }: RoleRowProps) {
           </span>
         </TableCell>
         <TableCell>
-          <span className="font-medium text-gray-900">{role.roleRoadmap.name}</span>
+          <div className="flex items-center gap-3">
+            <div
+              className="size-4 rounded shrink-0"
+              style={{ backgroundColor: getColorForDomain(role.roleRoadmap.name) }}
+              aria-hidden
+            />
+            <span className="font-medium text-gray-900">{role.roleRoadmap.name}</span>
+          </div>
         </TableCell>
         <TableCell>
           <StatusBadge level={role.proficiencyLevel} />

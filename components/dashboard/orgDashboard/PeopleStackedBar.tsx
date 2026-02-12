@@ -2,6 +2,7 @@
 
 import type { ProficiencyLevel } from "@/lib/dashboard/entities/roadmap/types";
 import { getProficiencyColor } from "@/lib/dashboard/entities/roadmap/utils/progressUtils";
+import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
 
 // =============================================================================
 // PeopleStackedBar — Stacked bar showing Basic/Proficient/Advanced + counts
@@ -32,7 +33,7 @@ export function PeopleStackedBar({ counts }: PeopleStackedBarProps) {
 }
 
 // =============================================================================
-// StatusBadge — Proficiency level indicator (●  label)
+// StatusBadge — Pill badge with tinted background (matches Org SPOF style)
 // =============================================================================
 
 const LEVEL_LABELS: Record<ProficiencyLevel, string> = {
@@ -50,8 +51,13 @@ export function StatusBadge({ level }: StatusBadgeProps) {
   const color = getProficiencyColor(level);
 
   return (
-    <span className="inline-flex items-center gap-1.5 text-sm font-medium" style={{ color }}>
-      <span className="size-2 rounded-full" style={{ backgroundColor: color }} />
+    <span
+      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium"
+      style={{
+        backgroundColor: hexToRgba(color, 0.25),
+        color,
+      }}
+    >
       {LEVEL_LABELS[level]}
     </span>
   );
