@@ -1,102 +1,113 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { SlidersHorizontal } from "lucide-react";
 import {
   type OrgSkillTableTab,
   type OrgSkillSortMode,
   buildSkillBasedData,
   buildRoleBasedData,
 } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
+import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
+import { Badge } from "@/components/shared/Badge";
 import { SkillBasedTable } from "./SkillBasedTable";
 import { RoleBasedTable } from "./RoleBasedTable";
-import { Button } from "@/components/ui/button";
 
 // =============================================================================
-// Constants
+// Filter Tabs (same pattern as other dashboard tables)
 // =============================================================================
 
-const TABS: { key: OrgSkillTableTab; label: string }[] = [
-  { key: "skill", label: "Skill-Based" },
-  { key: "role", label: "Role-Based" },
+type OrgSkillCombinedFilter =
+  | "skill:mostProficient"
+  | "skill:mostUnlocked"
+  | "role:mostProficient"
+  | "role:mostUnlocked";
+
+const SKILL_FILTER_TABS: { key: OrgSkillCombinedFilter; label: string }[] = [
+  { key: "skill:mostProficient", label: "Most Proficient" },
+  { key: "skill:mostUnlocked", label: "Most Unlocked" },
 ];
 
-const SORT_OPTIONS: { key: OrgSkillSortMode; label: string }[] = [
-  { key: "mostProficient", label: "Most Proficient" },
-  { key: "mostUnlocked", label: "Most Unlocked" },
+const ROLE_FILTER_TABS: { key: OrgSkillCombinedFilter; label: string }[] = [
+  { key: "role:mostProficient", label: "Most Proficient" },
+  { key: "role:mostUnlocked", label: "Most Unlocked" },
 ];
 
+function parseFilter(filter: OrgSkillCombinedFilter): {
+  tab: OrgSkillTableTab;
+  sort: OrgSkillSortMode;
+} {
+  const [tab, sort] = filter.split(":") as [OrgSkillTableTab, OrgSkillSortMode];
+  return { tab, sort };
+}
+
 // =============================================================================
-// OrgSkillsTableSection — Tab switching, sort/filter, renders table
+// OrgSkillsTableSection
 // =============================================================================
 
 export function OrgSkillsTableSection() {
-  const [activeTab, setActiveTab] = useState<OrgSkillTableTab>("skill");
-  const [sortMode, setSortMode] = useState<OrgSkillSortMode>("mostProficient");
+  const [activeFilter, setActiveFilter] =
+    useState<OrgSkillCombinedFilter>("skill:mostProficient");
   const [showAll, setShowAll] = useState(true);
 
-  const skillData = useMemo(() => buildSkillBasedData(sortMode), [sortMode]);
-  const roleData = useMemo(() => buildRoleBasedData(sortMode), [sortMode]);
+  const { tab, sort } = parseFilter(activeFilter);
+
+  const handleTabSwitch = (newTab: OrgSkillTableTab) => {
+    setActiveFilter(`${newTab}:${sort}`);
+  };
+
+  const skillData = useMemo(() => buildSkillBasedData(sort), [sort]);
+  const roleData = useMemo(() => buildRoleBasedData(sort), [sort]);
+
+  const filterTabs = tab === "skill" ? SKILL_FILTER_TABS : ROLE_FILTER_TABS;
 
   return (
-    <div className="flex flex-col gap-4">
-      {/* Controls bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        {/* Tab buttons */}
-        <div className="flex gap-1 rounded-lg bg-gray-100 p-1">
-          {TABS.map((tab) => (
-            <button
-              key={tab.key}
-              type="button"
-              onClick={() => setActiveTab(tab.key)}
-              className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
-                activeTab === tab.key
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Right controls: Sort + Filter toggle */}
-        <div className="flex items-center gap-3">
-          {/* Sort selector */}
-          <div className="flex items-center gap-1.5">
-            <SlidersHorizontal className="size-4 text-gray-400" aria-hidden />
-            <div className="flex gap-1 rounded-lg bg-gray-100 p-0.5">
-              {SORT_OPTIONS.map((opt) => (
-                <button
-                  key={opt.key}
-                  type="button"
-                  onClick={() => setSortMode(opt.key)}
-                  className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
-                    sortMode === opt.key
-                      ? "bg-white text-gray-900 shadow-sm"
-                      : "text-gray-500 hover:text-gray-700"
-                  }`}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Unlocked filter toggle */}
-          <Button
-            variant={showAll ? "outline" : "default"}
-            size="sm"
-            className="text-xs"
-            onClick={() => setShowAll((prev) => !prev)}
+    <div className="flex flex-col gap-0">
+      {/* View mode tabs */}
+      <div className="flex flex-wrap items-center gap-3 mb-4">
+        <div className="flex gap-2">
+          <Badge
+            onClick={() => handleTabSwitch("skill")}
+            className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
+              tab === "skill"
+                ? "bg-gray-900 text-white hover:bg-gray-800"
+                : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
+            }`}
           >
-            {showAll ? "Show All" : "Unlocked Only"}
-          </Button>
+            Skill-Based
+          </Badge>
+          <Badge
+            onClick={() => handleTabSwitch("role")}
+            className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
+              tab === "role"
+                ? "bg-gray-900 text-white hover:bg-gray-800"
+                : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
+            }`}
+          >
+            Role-Based
+          </Badge>
         </div>
+        <span className="text-gray-300">|</span>
+        <Badge
+          onClick={() => setShowAll((prev) => !prev)}
+          className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
+            !showAll
+              ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
+              : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
+          }`}
+        >
+          {showAll ? "Show All" : "Unlocked Only"}
+        </Badge>
       </div>
 
+      {/* Sort filter badges (same pattern as other dashboard tables) */}
+      <FilterBadges
+        filterTabs={filterTabs}
+        currentFilter={activeFilter}
+        onFilterChange={setActiveFilter}
+      />
+
       {/* People legend */}
-      <div className="flex items-center gap-4 text-xs text-gray-500">
+      <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
         <span className="inline-flex items-center gap-1.5">
           <span className="size-2.5 rounded-full bg-amber-400" /> Basic
         </span>
@@ -109,7 +120,7 @@ export function OrgSkillsTableSection() {
       </div>
 
       {/* Table */}
-      {activeTab === "skill" ? (
+      {tab === "skill" ? (
         <SkillBasedTable data={skillData} showAll={showAll} />
       ) : (
         <RoleBasedTable data={roleData} showAll={showAll} />
