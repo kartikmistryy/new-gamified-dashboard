@@ -3,15 +3,6 @@
 import { LockOpen, Lock } from "lucide-react";
 import type { Checkpoint, SubCheckpointUnlockCount } from "@/lib/dashboard/entities/roadmap/types";
 import { getSubCheckpointUnlockCounts } from "@/lib/dashboard/entities/roadmap/utils/progressUtils";
-import { DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 
 type SubCheckpointRowsProps = {
   checkpoint: Checkpoint;
@@ -21,8 +12,8 @@ type SubCheckpointRowsProps = {
 };
 
 /**
- * L3 nested table: Sub-checkpoints inside an expanded checkpoint.
- * Shows unlock status (locked/unlocked icon) and unlock count.
+ * L3: Sub-checkpoints rendered as compact badges inside an expanded checkpoint.
+ * Unlocked = purple badge with count. Locked = gray badge.
  */
 export function SubCheckpointRows({ checkpoint, showAll, unlockCounts }: SubCheckpointRowsProps) {
   const subData = unlockCounts ?? getSubCheckpointUnlockCounts(checkpoint);
@@ -30,60 +21,37 @@ export function SubCheckpointRows({ checkpoint, showAll, unlockCounts }: SubChec
 
   if (filtered.length === 0) {
     return (
-      <Table>
-        <TableBody>
-          <TableRow className="border-0 hover:bg-transparent">
-            <TableCell className="py-2 text-sm text-gray-400 italic">
-              No sub-checkpoints to display.
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+      <div className="px-4 py-3 text-sm text-gray-400 italic">
+        No sub-checkpoints to display.
+      </div>
     );
   }
 
   return (
-    <Table>
-      <TableHeader>
-        <TableRow className="hover:bg-muted/30!">
-          <TableHead className="w-32" />
-          <TableHead>Sub-Checkpoint</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>People</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {filtered.map((item) => {
-          const isUnlocked = item.unlockedByCount > 0;
-          return (
-            <TableRow
-              key={item.subCheckpoint.id}
-              className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/50`}
-            >
-              <TableCell className="w-32" />
-              <TableCell className="text-sm text-gray-700">
-                {item.subCheckpoint.name}
-              </TableCell>
-              <TableCell>
-                {isUnlocked ? (
-                  <span className="inline-flex items-center gap-1.5 text-purple-600 text-sm font-medium">
-                    <LockOpen className="size-3.5" aria-hidden />
-                    Unlocked
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center gap-1.5 text-gray-400 text-sm">
-                    <Lock className="size-3.5" aria-hidden />
-                    Locked
-                  </span>
-                )}
-              </TableCell>
-              <TableCell className="text-sm text-gray-700">
-                {isUnlocked ? `${item.unlockedByCount} people` : "—"}
-              </TableCell>
-            </TableRow>
-          );
-        })}
-      </TableBody>
-    </Table>
+    <div className="flex flex-wrap gap-2 px-4 py-3">
+      {filtered.map((item) => {
+        const isUnlocked = item.unlockedByCount > 0;
+        return (
+          <span
+            key={item.subCheckpoint.id}
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium ${
+              isUnlocked
+                ? "bg-purple-50 text-purple-700"
+                : "bg-gray-100 text-gray-400"
+            }`}
+          >
+            {isUnlocked ? (
+              <LockOpen className="size-3" aria-hidden />
+            ) : (
+              <Lock className="size-3" aria-hidden />
+            )}
+            {item.subCheckpoint.name}
+            {isUnlocked && (
+              <span className="text-purple-500 font-normal">({item.unlockedByCount})</span>
+            )}
+          </span>
+        );
+      })}
+    </div>
   );
 }

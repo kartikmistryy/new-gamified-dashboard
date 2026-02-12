@@ -66,41 +66,39 @@ export function CheckpointRows({
 
           return (
             <Fragment key={cp.checkpoint.id}>
-              {/* ── Phase group header ── */}
-              {isNewGroup && phaseColor ? (
-                <TableRow className="border-0 hover:bg-transparent">
-                  <TableCell className="w-32" style={tint} />
-                  <TableCell colSpan={3} className="py-1.5" style={tint}>
-                    <span className={BADGE_CLASS} style={badgeStyle(phaseColor)}>
-                      {cp.checkpoint.phase}
-                    </span>
-                  </TableCell>
-                </TableRow>
-              ) : null}
-
               {/* ── Checkpoint data row ── */}
               <TableRow className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80`}>
-                <TableCell className="w-32 text-right pr-0 align-middle" style={tint}>
-                  {hasSubCheckpoints ? (
-                    <Button
-                      className="size-7 text-muted-foreground"
-                      onClick={() => toggleExpand(cp.checkpoint.id)}
-                      aria-expanded={isExpanded}
-                      aria-label={
-                        isExpanded
-                          ? `Collapse ${cp.checkpoint.name}`
-                          : `Expand ${cp.checkpoint.name}`
-                      }
-                      size="icon"
-                      variant="ghost"
+                <TableCell className="w-32 pr-0 align-middle relative" style={tint}>
+                  {isNewGroup && phaseColor ? (
+                    <span
+                      className={`${BADGE_CLASS} absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}
+                      style={badgeStyle(phaseColor)}
                     >
-                      {isExpanded ? (
-                        <ChevronUpIcon className="opacity-60" aria-hidden />
-                      ) : (
-                        <ChevronDownIcon className="opacity-60" aria-hidden />
-                      )}
-                    </Button>
+                      {cp.checkpoint.phase}
+                    </span>
                   ) : null}
+                  <div className="flex justify-end">
+                    {hasSubCheckpoints ? (
+                      <Button
+                        className="size-7 text-muted-foreground"
+                        onClick={() => toggleExpand(cp.checkpoint.id)}
+                        aria-expanded={isExpanded}
+                        aria-label={
+                          isExpanded
+                            ? `Collapse ${cp.checkpoint.name}`
+                            : `Expand ${cp.checkpoint.name}`
+                        }
+                        size="icon"
+                        variant="ghost"
+                      >
+                        {isExpanded ? (
+                          <ChevronUpIcon className="opacity-60" aria-hidden />
+                        ) : (
+                          <ChevronDownIcon className="opacity-60" aria-hidden />
+                        )}
+                      </Button>
+                    ) : null}
+                  </div>
                 </TableCell>
                 <TableCell style={tint}>
                   <span className="font-medium text-gray-900">
