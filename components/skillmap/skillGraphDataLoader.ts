@@ -1,25 +1,44 @@
 import type { SkillData } from "./skillGraphTypes";
 
-/* ── Raw JSON types ────────────────────────────────────── */
+/* ── Raw JSON types (exported for table transform) ────── */
 
-interface RoadmapIndexEntry {
+export interface RoadmapLevelEntry {
+  level: "basic" | "intermediate" | "advanced";
+  label: string;
+  checkpointCount: number;
+  subCheckpointCount: number;
+}
+
+export interface RoadmapIndexEntry {
   key: string;
   type: "role" | "skill";
   name: string;
   group: string;
   totalSubCheckpoints: number;
+  levels: RoadmapLevelEntry[];
 }
 
-interface EngineerIndexEntry {
+export interface EngineerIndexEntry {
+  userId: string;
+  name: string;
   file: string;
 }
 
-interface EngineerRoadmapRecord {
+export interface EngineerRoadmapRecord {
   completions: Record<string, unknown>;
 }
 
-interface EngineerData {
+export interface EngineerData {
+  userId: string;
+  name: string;
   roadmaps: Record<string, EngineerRoadmapRecord>;
+}
+
+/** Raw data from JSON files — shared between chart and table */
+export interface SkillGraphRawData {
+  roadmaps: RoadmapIndexEntry[];
+  engineerIndex: EngineerIndexEntry[];
+  engineers: EngineerData[];
 }
 
 /* ── Fetch helpers ─────────────────────────────────────── */
@@ -36,14 +55,26 @@ async function fetchJson<T>(path: string): Promise<T> {
 
 export type SkillGraphBundle = { role: SkillData; skill: SkillData };
 
+/** Full result containing both chart bundle and raw data for table transforms */
+export interface SkillGraphFullData {
+  chart: SkillGraphBundle;
+  raw: SkillGraphRawData;
+}
+
 export async function loadAllSkillGraphData(): Promise<SkillGraphBundle> {
-  const [roadmapIndex, engineerIndex] = await Promise.all([
+  const full = await loadSkillGraphFullData();
+  return full.chart;
+}
+
+/** Load everything: chart bundle + raw data for table consumption */
+export async function loadSkillGraphFullData(): Promise<SkillGraphFullData> {
+  const [roadmapIndex, engineerIdx] = await Promise.all([
     fetchJson<{ roadmaps: RoadmapIndexEntry[] }>("roadmaps/index.json"),
     fetchJson<{ engineers: EngineerIndexEntry[] }>("engineers/index.json"),
   ]);
 
   const engineers = await Promise.all(
-    engineerIndex.engineers.map((eng) =>
+    engineerIdx.engineers.map((eng) =>
       fetchJson<EngineerData>(`engineers/${eng.file}`)
     )
   );
@@ -51,8 +82,15 @@ export async function loadAllSkillGraphData(): Promise<SkillGraphBundle> {
   const stats = aggregateStats(roadmapIndex.roadmaps, engineers);
 
   return {
-    role: buildTree(roadmapIndex.roadmaps, stats, "role", "Roles"),
-    skill: buildTree(roadmapIndex.roadmaps, stats, "skill", "Skills"),
+    chart: {
+      role: buildTree(roadmapIndex.roadmaps, stats, "role", "Roles"),
+      skill: buildTree(roadmapIndex.roadmaps, stats, "skill", "Skills"),
+    },
+    raw: {
+      roadmaps: roadmapIndex.roadmaps,
+      engineerIndex: engineerIdx.engineers,
+      engineers,
+    },
   };
 }
 

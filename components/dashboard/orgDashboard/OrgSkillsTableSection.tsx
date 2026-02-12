@@ -1,12 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import {
-  type OrgSkillTableTab,
-  type OrgSkillSortMode,
-  buildSkillBasedData,
-  buildRoleBasedData,
-} from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
+import type { SkillsRoadmapProgressData, RoleRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
+import type { OrgSkillTableTab, OrgSkillSortMode } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
+import { getTotalPeople } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
 import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
 import { Badge } from "@/components/shared/Badge";
 import { SkillBasedTable } from "./SkillBasedTable";
@@ -41,10 +38,31 @@ function parseFilter(filter: OrgSkillCombinedFilter): {
 }
 
 // =============================================================================
+// Sort helper (works on both data types)
+// =============================================================================
+
+function sortByMode<
+  T extends {
+    progressPercent: number;
+    developerCounts: { basic: number; intermediate: number; advanced: number };
+  },
+>(data: T[], sortMode: OrgSkillSortMode): T[] {
+  return [...data].sort((a, b) => {
+    if (sortMode === "mostProficient") return b.progressPercent - a.progressPercent;
+    return getTotalPeople(b.developerCounts) - getTotalPeople(a.developerCounts);
+  });
+}
+
+// =============================================================================
 // OrgSkillsTableSection
 // =============================================================================
 
-export function OrgSkillsTableSection() {
+type OrgSkillsTableSectionProps = {
+  skillData: SkillsRoadmapProgressData[];
+  roleData: RoleRoadmapProgressData[];
+};
+
+export function OrgSkillsTableSection({ skillData, roleData }: OrgSkillsTableSectionProps) {
   const [activeFilter, setActiveFilter] =
     useState<OrgSkillCombinedFilter>("skill:mostProficient");
   const [showAll, setShowAll] = useState(true);
@@ -55,8 +73,15 @@ export function OrgSkillsTableSection() {
     setActiveFilter(`${newTab}:${sort}`);
   };
 
-  const skillData = useMemo(() => buildSkillBasedData(sort), [sort]);
-  const roleData = useMemo(() => buildRoleBasedData(sort), [sort]);
+  const sortedSkillData = useMemo(() => {
+    const filtered = showAll ? skillData : skillData.filter((s) => getTotalPeople(s.developerCounts) > 0);
+    return sortByMode(filtered, sort);
+  }, [skillData, sort, showAll]);
+
+  const sortedRoleData = useMemo(() => {
+    const filtered = showAll ? roleData : roleData.filter((r) => getTotalPeople(r.developerCounts) > 0);
+    return sortByMode(filtered, sort);
+  }, [roleData, sort, showAll]);
 
   const filterTabs = tab === "skill" ? SKILL_FILTER_TABS : ROLE_FILTER_TABS;
 
@@ -121,9 +146,9 @@ export function OrgSkillsTableSection() {
 
       {/* Table */}
       {tab === "skill" ? (
-        <SkillBasedTable data={skillData} showAll={showAll} />
+        <SkillBasedTable data={sortedSkillData} showAll={showAll} />
       ) : (
-        <RoleBasedTable data={roleData} showAll={showAll} />
+        <RoleBasedTable data={sortedRoleData} showAll={showAll} />
       )}
     </div>
   );

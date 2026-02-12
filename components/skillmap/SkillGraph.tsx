@@ -24,6 +24,8 @@ type ViewMode = "role" | "skill";
 type SkillGraphProps = {
   width?: number;
   height?: number;
+  /** Pre-loaded bundle from parent. When provided, skips internal fetch. */
+  bundle?: SkillGraphBundle | null;
 };
 
 /** Flatten group→children for the root "world" view */
@@ -43,20 +45,27 @@ const buildRootViewData = (data: SkillData): SkillData => ({
   })),
 });
 
-export function SkillGraph({ width = 800, height = 800 }: SkillGraphProps) {
+export function SkillGraph({ width = 800, height = 800, bundle: externalBundle }: SkillGraphProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
   /* ── Data loading ────────────────────────────────────── */
-  const [bundle, setBundle] = useState<SkillGraphBundle | null>(null);
+  const [internalBundle, setInternalBundle] = useState<SkillGraphBundle | null>(null);
   const [dataLoading, setDataLoading] = useState(true);
   const [viewMode, setViewMode] = useState<ViewMode>("role");
 
+  // Use external bundle when provided; fall back to self-fetch
+  const bundle = externalBundle !== undefined ? externalBundle : internalBundle;
+
   useEffect(() => {
+    if (externalBundle !== undefined) {
+      setDataLoading(false);
+      return;
+    }
     loadAllSkillGraphData()
-      .then(setBundle)
+      .then(setInternalBundle)
       .catch(console.error)
       .finally(() => setDataLoading(false));
-  }, []);
+  }, [externalBundle]);
 
   const fullData = bundle?.[viewMode] ?? null;
   const rootSkillData = useMemo(

@@ -71,6 +71,7 @@ export function CheckpointRows({
         {sorted.map((cp) => {
           const isExpanded = expandedIds.has(cp.checkpoint.id);
           const phaseStyle = PHASE_STYLES[cp.checkpoint.phase] ?? "";
+          const hasSubCheckpoints = cp.checkpoint.subCheckpoints.length > 0;
 
           return (
             <Fragment key={cp.checkpoint.id}>
@@ -78,24 +79,26 @@ export function CheckpointRows({
                 className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80 ${isExpanded ? "bg-muted" : ""}`}
               >
                 <TableCell className={EXPANDER_CELL}>
-                  <Button
-                    className="size-7 text-muted-foreground"
-                    onClick={() => toggleExpand(cp.checkpoint.id)}
-                    aria-expanded={isExpanded}
-                    aria-label={
-                      isExpanded
-                        ? `Collapse ${cp.checkpoint.name}`
-                        : `Expand ${cp.checkpoint.name}`
-                    }
-                    size="icon"
-                    variant="ghost"
-                  >
-                    {isExpanded ? (
-                      <ChevronUpIcon className="opacity-60" aria-hidden />
-                    ) : (
-                      <ChevronDownIcon className="opacity-60" aria-hidden />
-                    )}
-                  </Button>
+                  {hasSubCheckpoints ? (
+                    <Button
+                      className="size-7 text-muted-foreground"
+                      onClick={() => toggleExpand(cp.checkpoint.id)}
+                      aria-expanded={isExpanded}
+                      aria-label={
+                        isExpanded
+                          ? `Collapse ${cp.checkpoint.name}`
+                          : `Expand ${cp.checkpoint.name}`
+                      }
+                      size="icon"
+                      variant="ghost"
+                    >
+                      {isExpanded ? (
+                        <ChevronUpIcon className="opacity-60" aria-hidden />
+                      ) : (
+                        <ChevronDownIcon className="opacity-60" aria-hidden />
+                      )}
+                    </Button>
+                  ) : null}
                 </TableCell>
                 <TableCell>
                   <div className="flex items-center gap-2">
@@ -116,7 +119,7 @@ export function CheckpointRows({
                   <PeopleStackedBar counts={cp.developerCounts} />
                 </TableCell>
               </TableRow>
-              {isExpanded ? (
+              {isExpanded && hasSubCheckpoints ? (
                 <TableRow className="hover:bg-transparent">
                   <TableCell colSpan={4} className="p-0">
                     <SubCheckpointRows
