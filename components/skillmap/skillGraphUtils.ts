@@ -1,46 +1,52 @@
-import { roadmapData } from "./data/data";
-import type { SkillData } from "./skillGraphTypes";
+/**
+ * Utility functions for the SkillGraph Voronoi Treemap visualization.
+ *
+ * Colors are keyed by group name so both Role-Based and Skill-Based views
+ * get a consistent, distinguishable palette.
+ */
 
-export const COLORS = [
+const GROUP_COLORS: Record<string, string> = {
+  /* Role-Based groups */
+  "Web Development": "#4F8FF7",
+  "Mobile Development": "#8E7BD8",
+  "DevOps & Security": "#F1A66A",
+  "AI & Machine Learning": "#E06C9F",
+  "Data & Analytics": "#5EC4B6",
+  "Game Development": "#C75C5C",
+  "Design & Architecture": "#8FB8D8",
+  "Management & Leadership": "#9CB673",
+  "Specialized Support Roles": "#B8976F",
+
+  /* Skill-Based groups */
+  "Programming Languages": "#4F8FF7",
+  "Frontend Technologies": "#7FAED9",
+  "Backend Frameworks & Platforms": "#86C48B",
+  "Mobile & Cross-Platform": "#8E7BD8",
+  "Databases & Data Storage": "#5EC4B6",
+  "DevOps & Cloud Infrastructure": "#F1A66A",
+  "CS Fundamentals & System Design": "#E06C9F",
+  "Emerging Technology": "#FFD166",
+};
+
+const FALLBACK_COLORS = [
   "#91CC75", "#FAC858", "#1975ff", "#EE6666", "#FF994D",
   "#785DB0", "#0CA8DF", "#3FBE95", "#FB628B", "#33dbf5",
 ];
 
-const DOMAIN_COLORS: Record<string, string> = {
-  Frontend: "#7FAED9",
-  Backend: "#86C48B",
-  DevOps: "#F1A66A",
-  Mobile: "#8E7BD8",
-};
+export const getColorForDomain = (name: string): string =>
+  GROUP_COLORS[name] ?? FALLBACK_COLORS[Math.abs(hashCode(name)) % FALLBACK_COLORS.length];
 
-export const buildSkillData = (): SkillData => {
-  const mapTechnology = (tech: typeof roadmapData[number]["technologies"][number]): SkillData => ({
-    name: tech.name,
-    value: tech.value,
-    frequency: tech.frequency,
-    children: tech.children ? tech.children.map(mapTechnology) : undefined,
-  });
+/* simple string hash for deterministic fallback color */
+function hashCode(str: string): number {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return hash;
+}
 
-  const roadmaps = roadmapData.map((roadmap) => ({
-    name: roadmap.name,
-    value: roadmap.value,
-    frequency: roadmap.frequency,
-    children: roadmap.technologies.map(mapTechnology),
-  }));
-  const rootValue = roadmaps.reduce((sum, r) => sum + (r.value || 0), 0);
-  return { name: "Skills", value: rootValue, children: roadmaps };
-};
-
-export const getRoadmapColor = (roadmapName: string): string => {
-  if (DOMAIN_COLORS[roadmapName]) return DOMAIN_COLORS[roadmapName];
-  const index = roadmapData.findIndex(r => r.name === roadmapName);
-  return COLORS[index >= 0 ? index % COLORS.length : 0];
-};
-
-export const getColorForDomain = (domainName: string): string => {
-  const roadmap = roadmapData.find(r => r.name === domainName);
-  return roadmap ? getRoadmapColor(domainName) : COLORS[0];
-};
+/* ── D3 script loading ────────────────────────────────── */
 
 export const loadD3Scripts = async (): Promise<boolean> => {
   const scripts = [
@@ -65,9 +71,11 @@ export const loadD3Scripts = async (): Promise<boolean> => {
 };
 
 export const checkD3Libs = (): boolean => {
-  return typeof window !== "undefined" &&
+  return (
+    typeof window !== "undefined" &&
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     typeof (window as any).d3 !== "undefined" &&
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    typeof (window as any).d3.voronoiTreemap !== "undefined";
+    typeof (window as any).d3.voronoiTreemap !== "undefined"
+  );
 };

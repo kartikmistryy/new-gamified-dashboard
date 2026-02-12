@@ -19,7 +19,7 @@ export function UserSkillGraphPageClient() {
     return buildUserSkillRowsFromRoadmap(userId);
   }, [userId]);
 
-  const { table, visibleSkills, domainWeights } = useUserSkillTable(skillRows);
+  const { table } = useUserSkillTable(skillRows);
 
   if (!userId) {
     return null;
@@ -30,13 +30,8 @@ export function UserSkillGraphPageClient() {
       {/* Skills Graph Visualization */}
       <DashboardSection title="Skills Distribution" className="py-6">
         <div className="flex justify-center">
-          <div className="h-[700px] w-[850px] flex items-center justify-center">
-            <SkillGraph
-              width={700}
-              height={700}
-              domainWeights={domainWeights}
-              skillVisibility={visibleSkills}
-            />
+          <div className="h-[780px] w-[850px] flex items-center justify-center">
+            <SkillGraph width={700} height={700} />
           </div>
         </div>
       </DashboardSection>

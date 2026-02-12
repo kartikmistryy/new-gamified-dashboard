@@ -10,7 +10,6 @@ import { SkillgraphBySkillTable } from "@/components/dashboard/userDashboard/Ski
 import {
   getMemberSkillsData,
   getMemberSkillRows,
-  computeDomainWeights,
   type MemberSkillsRow,
 } from "@/lib/dashboard/entities/member/mocks/skillsMockData";
 import {
@@ -65,11 +64,6 @@ export function TeamSkillGraphPageClient() {
     setVisibleDomains(domains);
   }, [skillRows]);
 
-  const domainWeights = useMemo(
-    () => computeDomainWeights(memberSkills, visibleMembers),
-    [memberSkills, visibleMembers]
-  );
-
   return (
     <TooltipProvider>
       <div className="flex flex-col gap-12 px-6 pb-12 bg-white text-gray-900 min-h-screen">
@@ -79,13 +73,8 @@ export function TeamSkillGraphPageClient() {
 
         <DashboardSection title="" className="py-6">
           <div className="flex justify-center">
-            <div className="h-[700px] w-[850px] flex items-center justify-center">
-              <SkillGraph
-                width={700}
-                height={700}
-                domainWeights={domainWeights}
-                skillVisibility={visibleDomains}
-              />
+            <div className="h-[780px] w-[850px] flex items-center justify-center">
+              <SkillGraph width={700} height={700} />
             </div>
           </div>
         </DashboardSection>
