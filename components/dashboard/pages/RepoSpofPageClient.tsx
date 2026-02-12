@@ -126,7 +126,7 @@ export function RepoSpofPageClient() {
         {/* 3-column layout: Risk Indicator → Motivation → Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* SPOF Risk Indicator Card */}
-          <div className="rounded-[10px] bg-[#F6F5FA] p-6 flex flex-col justify-center">
+          <div className="rounded-[10px] p-6 flex flex-col justify-center">
             <p className="text-sm text-gray-500 mb-3">SPOF Risk is:</p>
 
             {/* Large risk level display */}
@@ -160,26 +160,8 @@ export function RepoSpofPageClient() {
             </div>
           </div>
 
-          {/* Motivation Card */}
-          <div className="rounded-[10px] p-6 flex flex-col justify-center">
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
-              Why It Matters
-            </p>
-            <p className="text-sm text-gray-700 mb-4">
-              Identifies irreplaceable developers whose departure would put critical code at risk.
-            </p>
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
-              How It&apos;s Calculated
-            </p>
-            <p className="text-sm text-gray-700">
-              Analyzes file creation (First Authorship), commit history (Deliveries), and knowledge
-              distribution (Acceptances). Modules where 1-2 developers hold dominant ownership are
-              flagged as at-risk.
-            </p>
-          </div>
-
           {/* Stats Card */}
-          <div className="rounded-[10px] bg-[#F6F5FA] p-6 flex flex-col justify-center">
+          <div className="rounded-[10px] p-6 flex flex-col justify-center">
             {/* Stat cards — left aligned */}
             <div className="flex items-center gap-6 mb-4">
               {/* SPOF by Module */}
@@ -210,6 +192,24 @@ export function RepoSpofPageClient() {
 
             {/* Repo health bar */}
             <RepoHealthBar segments={repoHealthSegments} />
+          </div>
+
+          {/* Motivation Card */}
+          <div className="rounded-[10px] p-6 flex flex-col justify-center">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+              Why It Matters
+            </p>
+            <p className="text-sm text-gray-700 mb-4">
+              Identifies irreplaceable developers whose departure would put critical code at risk.
+            </p>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+              How It&apos;s Calculated
+            </p>
+            <p className="text-sm text-gray-700">
+              Analyzes file creation (First Authorship), commit history (Deliveries), and knowledge
+              distribution (Acceptances). Modules where 1-2 developers hold dominant ownership are
+              flagged as at-risk.
+            </p>
           </div>
         </div>
 
