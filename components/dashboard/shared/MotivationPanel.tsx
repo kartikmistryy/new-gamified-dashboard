@@ -22,18 +22,18 @@ export function MotivationPanel({ title, motivation, className = "" }: Motivatio
       </h3>
 
       <div>
-        <h4 className="text-[10px] font-medium text-gray-400 uppercase tracking-wider mb-1">
+        <h4 className="text-xs font-semibold text-foreground uppercase tracking-wide mb-1">
           Why it matters
         </h4>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-sm text-muted-foreground">
           {motivation.why}
         </p>
       </div>
       <div>
-        <h4 className="text-[10px] font-medium text-gray-400 uppercase tracking-wider mb-1">
+        <h4 className="text-xs font-semibold text-foreground uppercase tracking-wide mb-1">
           How it's calculated
         </h4>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-sm text-muted-foreground">
           {motivation.how}
         </p>
       </div>
