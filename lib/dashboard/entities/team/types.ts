@@ -323,3 +323,61 @@ export type OperationBreakdownCard = {
   };
   insight: string;
 };
+
+// =============================================================================
+// Org Design Page - Outliers Types
+// =============================================================================
+
+/** Ownership category from the Ownership Misallocation Detector chart. */
+export type OwnershipCategory = "higher" | "lower" | "expected";
+
+/** Chaos category from the Engineering Chaos Matrix chart. */
+export type ChaosCategory =
+  | "Skilled AI User"
+  | "Unskilled AI User"
+  | "Traditional Developer"
+  | "Low-Skill Developer";
+
+/** SPOF assessment level for individual developers. */
+export type SpofAssessment = "low" | "medium" | "high";
+
+/** Priority level for outlier developers based on combined ranking. */
+export type OutlierPriority = "critical" | "attention" | "normal";
+
+/**
+ * Combined developer data for the outliers table.
+ * Merges ownership classification, chaos quadrant, and SPOF assessment.
+ */
+export type OutlierDeveloper = {
+  id: string;
+  name: string;
+  team: string;
+  /** Ownership classification: higher/lower/expected relative to trend line. */
+  ownershipCategory: OwnershipCategory;
+  /** Chaos quadrant based on KP and churn rate. */
+  chaosCategory: ChaosCategory;
+  /** SPOF risk assessment level. */
+  spofAssessment: SpofAssessment;
+  /**
+   * Combined rank (1-12, lower is worse).
+   * Ranking: Ownership (primary) → Chaos (secondary)
+   * 1 = lower + Low-Skill Developer (worst)
+   * 12 = expected + Skilled AI User (best)
+   */
+  combinedRank: number;
+  /** Priority derived from ownership category. */
+  priority: OutlierPriority;
+};
+
+/** Filter options for the outliers table. */
+export type OutliersTableFilter =
+  | "all"
+  | "critical"
+  | "attention"
+  | "normal";
+
+/** Motivation content for chart explanation panels. */
+export type ChartMotivation = {
+  why: string;
+  how: string;
+};

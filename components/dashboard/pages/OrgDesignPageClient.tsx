@@ -1,19 +1,33 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { ChaosMatrixChart } from "@/components/dashboard/orgDashboard/ChaosMatrixChart";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { DesignTeamsTable } from "@/components/dashboard/orgDashboard/DesignTeamsTable";
 import { OwnershipScatter } from "@/components/dashboard/orgDashboard/OwnershipScatter";
-import { useTimeRange } from "@/lib/dashboard/shared/contexts/TimeRangeContext";
-import { getChartInsightsMock } from "@/lib/dashboard/entities/team/mocks/overviewMockData";
+import { MotivationPanel } from "@/components/dashboard/shared/MotivationPanel";
+import {
+  OwnershipTogglePanel,
+  ChaosTogglePanel,
+} from "@/components/dashboard/shared/CategoryTogglePanel";
+import { OutliersTable } from "@/components/dashboard/orgDashboard/OutliersTable";
 import { DESIGN_TEAM_ROWS, getDesignTeamRowsForRange } from "@/lib/dashboard/entities/team/mocks/designMockData";
-import type { DesignTableFilter } from "@/lib/dashboard/entities/team/types";
+import {
+  MOCK_OUTLIER_DEVELOPERS,
+  OWNERSHIP_MOTIVATION,
+  CHAOS_MATRIX_MOTIVATION,
+} from "@/lib/dashboard/entities/team/mocks/outliersMockData";
+import type {
+  DesignTableFilter,
+  OwnershipCategory,
+  ChaosCategory,
+} from "@/lib/dashboard/entities/team/types";
+
+// Using fixed time range since time filter is temporarily disabled
+const FIXED_TIME_RANGE = "max" as const;
 
 export function OrgDesignPageClient() {
-  const { timeRange } = useTimeRange();
-  const chartInsights = useMemo(() => getChartInsightsMock(), []);
+  // State for design teams table
   const [designFilter, setDesignFilter] = useState<DesignTableFilter>("mostOutliers");
   const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
@@ -23,42 +37,91 @@ export function OrgDesignPageClient() {
     return init;
   });
 
+  // State for category toggle panels
+  const [selectedOwnershipCategory, setSelectedOwnershipCategory] =
+    useState<OwnershipCategory>("lower");
+  const [selectedChaosCategory, setSelectedChaosCategory] =
+    useState<ChaosCategory>("Low-Skill Developer");
+
   const handleToggleTeamVisibility = useCallback((teamName: string) => {
     setVisibleTeams((prev) => ({ ...prev, [teamName]: !prev[teamName] }));
   }, []);
 
   const designTeamRows = useMemo(
-    () => getDesignTeamRowsForRange(timeRange),
-    [timeRange],
+    () => getDesignTeamRowsForRange(FIXED_TIME_RANGE),
+    []
   );
 
   const designTeamNames = useMemo(
     () => designTeamRows.map((row) => row.teamName),
-    [designTeamRows],
+    [designTeamRows]
   );
 
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
+      {/* Row 1: Ownership Misallocation Detector */}
       <DashboardSection title="Ownership Misallocation Detector">
-        <div className="flex flex-row flex-wrap items-stretch gap-8">
-          <div className="flex-[1.5] min-w-[400px]">
-            <OwnershipScatter range={timeRange} />
+        <div className="flex flex-row flex-wrap items-stretch gap-4">
+          {/* Column 1: Chart */}
+          <div className="flex-[2] min-w-[400px]">
+            <OwnershipScatter range={FIXED_TIME_RANGE} />
           </div>
-          <div className="flex-1 min-w-[280px]">
-            <ChartInsights insights={chartInsights} />
+          {/* Column 2: Motivation Panel */}
+          <div className="flex-1 min-w-[240px]">
+            <MotivationPanel
+              motivation={OWNERSHIP_MOTIVATION}
+              className="h-full"
+            />
+          </div>
+          {/* Column 3: Toggle + Contributor List */}
+          <div className="flex-1 min-w-[200px]">
+            <OwnershipTogglePanel
+              selectedCategory={selectedOwnershipCategory}
+              onCategoryChange={setSelectedOwnershipCategory}
+              developers={MOCK_OUTLIER_DEVELOPERS}
+              className="h-full"
+            />
           </div>
         </div>
       </DashboardSection>
 
-      <DashboardSection title="Engineering Chaos Matrix" className="w-full">
-        <ChaosMatrixChart
-          range={timeRange}
-          visibleTeams={visibleTeams}
-          teamNames={designTeamNames}
-          renderMode="circles"
-        />
+      {/* Row 2: Engineering Chaos Matrix */}
+      <DashboardSection title="Engineering Chaos Matrix">
+        <div className="flex flex-row flex-wrap items-stretch gap-4">
+          {/* Column 1: Chart */}
+          <div className="flex-[2] min-w-[300px] max-w-[700px] overflow-hidden">
+            <ChaosMatrixChart
+              range={FIXED_TIME_RANGE}
+              visibleTeams={visibleTeams}
+              teamNames={designTeamNames}
+              renderMode="circles"
+            />
+          </div>
+          {/* Column 2: Motivation Panel */}
+          <div className="flex-1 min-w-[240px]">
+            <MotivationPanel
+              motivation={CHAOS_MATRIX_MOTIVATION}
+              className="h-full"
+            />
+          </div>
+          {/* Column 3: Toggle + Contributor List */}
+          <div className="flex-1 min-w-[200px]">
+            <ChaosTogglePanel
+              selectedCategory={selectedChaosCategory}
+              onCategoryChange={setSelectedChaosCategory}
+              developers={MOCK_OUTLIER_DEVELOPERS}
+              className="h-full"
+            />
+          </div>
+        </div>
       </DashboardSection>
 
+      {/* Row 3: Outliers Table */}
+      <DashboardSection title="Developer Outliers">
+        <OutliersTable developers={MOCK_OUTLIER_DEVELOPERS} />
+      </DashboardSection>
+
+      {/* Row 4: Teams Table (existing, moved to bottom) */}
       <DashboardSection title="Teams" className="w-full">
         <DesignTeamsTable
           rows={designTeamRows}
