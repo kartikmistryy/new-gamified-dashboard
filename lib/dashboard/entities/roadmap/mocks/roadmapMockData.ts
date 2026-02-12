@@ -18,6 +18,59 @@ export const AI_ENGINEER_ROLE: RoleRoadmap = {
   skillsRoadmapIds: ["ai-ml", "backend", "data-engineering"],
 };
 
+export const FULL_STACK_ROLE: RoleRoadmap = {
+  id: "full-stack",
+  name: "Full Stack Developer",
+  skillsRoadmapIds: ["frontend", "backend", "devops"],
+};
+
+export const MOBILE_DEV_ROLE: RoleRoadmap = {
+  id: "mobile-dev",
+  name: "Mobile Developer",
+  skillsRoadmapIds: ["mobile", "frontend", "backend"],
+};
+
+export const PLATFORM_ENGINEER_ROLE: RoleRoadmap = {
+  id: "platform-engineer",
+  name: "Platform Engineer",
+  skillsRoadmapIds: ["devops", "cloud", "security"],
+};
+
+export const QA_ENGINEER_ROLE: RoleRoadmap = {
+  id: "qa-engineer",
+  name: "QA Engineer",
+  skillsRoadmapIds: ["testing", "security"],
+};
+
+export const DATA_ENGINEER_ROLE: RoleRoadmap = {
+  id: "data-engineer",
+  name: "Data Engineer",
+  skillsRoadmapIds: ["data-engineering", "backend", "cloud"],
+};
+
+export const TECH_LEAD_ROLE: RoleRoadmap = {
+  id: "tech-lead",
+  name: "Tech Lead",
+  skillsRoadmapIds: ["leadership", "backend", "testing"],
+};
+
+export const PRODUCT_DESIGNER_ROLE: RoleRoadmap = {
+  id: "product-designer",
+  name: "Product Designer",
+  skillsRoadmapIds: ["product-design", "frontend"],
+};
+
+export const ROLE_ROADMAPS: RoleRoadmap[] = [
+  AI_ENGINEER_ROLE,
+  FULL_STACK_ROLE,
+  MOBILE_DEV_ROLE,
+  PLATFORM_ENGINEER_ROLE,
+  QA_ENGINEER_ROLE,
+  DATA_ENGINEER_ROLE,
+  TECH_LEAD_ROLE,
+  PRODUCT_DESIGNER_ROLE,
+];
+
 // =============================================================================
 // Skills Roadmaps (derived from existing data.ts structure)
 // =============================================================================
@@ -191,10 +244,396 @@ export const DATA_ENGINEERING_ROADMAP: SkillsRoadmap = {
   ],
 };
 
+export const FRONTEND_ROADMAP: SkillsRoadmap = {
+  id: "frontend",
+  name: "Frontend",
+  checkpoints: [
+    // Basic phase
+    createCheckpoint("react-basics", "React", "Basic", [
+      "Components",
+      "Hooks",
+      "State Mgmt",
+      "Routing",
+      "Forms",
+    ]),
+    createCheckpoint("css-styling", "CSS & Styling", "Basic", [
+      "Flexbox",
+      "Grid",
+      "Tailwind",
+      "Animations",
+      "Responsive",
+    ]),
+    // Intermediate phase
+    createCheckpoint("nextjs", "Next.js", "Intermediate", [
+      "App Router",
+      "SSR/SSG",
+      "API Routes",
+      "Middleware",
+      "Caching",
+    ]),
+    createCheckpoint("typescript-fe", "TypeScript", "Intermediate", [
+      "Types",
+      "Generics",
+      "Utilities",
+      "Strict Mode",
+    ]),
+    // Advanced phase
+    createCheckpoint("performance-fe", "Performance", "Advanced", [
+      "Code Splitting",
+      "Bundle Analysis",
+      "Lazy Loading",
+      "Web Vitals",
+    ]),
+    createCheckpoint("testing-fe", "Testing", "Advanced", [
+      "Unit Tests",
+      "Integration",
+      "E2E",
+      "Visual Regression",
+    ]),
+  ],
+};
+
+export const MOBILE_ROADMAP: SkillsRoadmap = {
+  id: "mobile",
+  name: "Mobile",
+  checkpoints: [
+    // Basic phase
+    createCheckpoint("react-native", "React Native", "Basic", [
+      "Components",
+      "Navigation",
+      "Styling",
+      "Native Modules",
+      "Expo",
+    ]),
+    createCheckpoint("mobile-ui", "Mobile UI", "Basic", [
+      "Gestures",
+      "Animations",
+      "Lists",
+      "Forms",
+    ]),
+    // Intermediate phase
+    createCheckpoint("swift", "Swift/iOS", "Intermediate", [
+      "SwiftUI",
+      "UIKit",
+      "Core Data",
+      "Networking",
+      "App Store",
+    ]),
+    createCheckpoint("kotlin", "Kotlin/Android", "Intermediate", [
+      "Compose",
+      "Lifecycle",
+      "Room DB",
+      "Play Store",
+    ]),
+    // Advanced phase
+    createCheckpoint("mobile-perf", "Mobile Performance", "Advanced", [
+      "Profiling",
+      "Memory Mgmt",
+      "Battery",
+      "Offline First",
+    ]),
+    createCheckpoint("flutter", "Flutter", "Advanced", [
+      "Widgets",
+      "State Mgmt",
+      "Platform Channels",
+      "Dart",
+    ]),
+  ],
+};
+
+export const DEVOPS_ROADMAP: SkillsRoadmap = {
+  id: "devops",
+  name: "DevOps",
+  checkpoints: [
+    // Basic phase
+    createCheckpoint("docker", "Docker", "Basic", [
+      "Containers",
+      "Images",
+      "Compose",
+      "Networking",
+      "Volumes",
+    ]),
+    createCheckpoint("cicd", "CI/CD", "Basic", [
+      "GitHub Actions",
+      "Pipelines",
+      "Artifacts",
+      "Deployments",
+    ]),
+    // Intermediate phase
+    createCheckpoint("kubernetes", "Kubernetes", "Intermediate", [
+      "Pods",
+      "Services",
+      "Deployments",
+      "ConfigMaps",
+      "Helm",
+    ]),
+    createCheckpoint("iac", "Infrastructure as Code", "Intermediate", [
+      "Terraform",
+      "State Mgmt",
+      "Modules",
+      "Drift Detection",
+    ]),
+    // Advanced phase
+    createCheckpoint("platform-eng", "Platform Engineering", "Advanced", [
+      "Internal Dev Portal",
+      "Golden Paths",
+      "Self-Service",
+      "Cost Optimization",
+    ]),
+    createCheckpoint("observability", "Observability", "Advanced", [
+      "Metrics",
+      "Tracing",
+      "Logging",
+      "Alerting",
+    ]),
+  ],
+};
+
+export const CLOUD_ROADMAP: SkillsRoadmap = {
+  id: "cloud",
+  name: "Cloud",
+  checkpoints: [
+    // Basic phase
+    createCheckpoint("aws-basics", "AWS Basics", "Basic", [
+      "EC2",
+      "S3",
+      "IAM",
+      "VPC",
+      "Lambda",
+    ]),
+    createCheckpoint("cloud-networking", "Cloud Networking", "Basic", [
+      "Load Balancers",
+      "DNS",
+      "CDN",
+      "Firewalls",
+    ]),
+    // Intermediate phase
+    createCheckpoint("gcp", "Google Cloud", "Intermediate", [
+      "Compute Engine",
+      "Cloud Run",
+      "BigQuery",
+      "Cloud Functions",
+    ]),
+    createCheckpoint("serverless", "Serverless", "Intermediate", [
+      "Functions",
+      "Event Triggers",
+      "Cold Starts",
+      "Cost Mgmt",
+    ]),
+    // Advanced phase
+    createCheckpoint("multi-cloud", "Multi-Cloud", "Advanced", [
+      "Architecture",
+      "Portability",
+      "Vendor Lock-in",
+      "Governance",
+    ]),
+    createCheckpoint("finops", "FinOps", "Advanced", [
+      "Cost Allocation",
+      "Reserved Instances",
+      "Spot Instances",
+      "Budgeting",
+    ]),
+  ],
+};
+
+export const TESTING_ROADMAP: SkillsRoadmap = {
+  id: "testing",
+  name: "Testing",
+  checkpoints: [
+    // Basic phase
+    createCheckpoint("unit-testing", "Unit Testing", "Basic", [
+      "Jest",
+      "Mocking",
+      "Coverage",
+      "TDD",
+      "Assertions",
+    ]),
+    createCheckpoint("integration-testing", "Integration Testing", "Basic", [
+      "API Testing",
+      "DB Testing",
+      "Test Fixtures",
+      "Cleanup",
+    ]),
+    // Intermediate phase
+    createCheckpoint("e2e-testing", "E2E Testing", "Intermediate", [
+      "Playwright",
+      "Cypress",
+      "Page Objects",
+      "Visual Testing",
+    ]),
+    createCheckpoint("perf-testing", "Performance Testing", "Intermediate", [
+      "Load Testing",
+      "Stress Testing",
+      "Benchmarks",
+      "Profiling",
+    ]),
+    // Advanced phase
+    createCheckpoint("test-architecture", "Test Architecture", "Advanced", [
+      "Test Pyramid",
+      "Test Strategy",
+      "Flaky Tests",
+      "Test Infra",
+    ]),
+    createCheckpoint("chaos-eng", "Chaos Engineering", "Advanced", [
+      "Fault Injection",
+      "Game Days",
+      "Resilience",
+      "Recovery",
+    ]),
+  ],
+};
+
+export const SECURITY_ROADMAP: SkillsRoadmap = {
+  id: "security",
+  name: "Security",
+  checkpoints: [
+    // Basic phase
+    createCheckpoint("app-security", "App Security", "Basic", [
+      "OWASP Top 10",
+      "Input Validation",
+      "XSS Prevention",
+      "CSRF Protection",
+    ]),
+    createCheckpoint("auth-security", "Auth & Identity", "Basic", [
+      "OAuth/OIDC",
+      "JWT",
+      "MFA",
+      "Sessions",
+      "RBAC",
+    ]),
+    // Intermediate phase
+    createCheckpoint("infra-security", "Infra Security", "Intermediate", [
+      "Secrets Mgmt",
+      "Network Security",
+      "Encryption",
+      "Compliance",
+    ]),
+    createCheckpoint("security-testing", "Security Testing", "Intermediate", [
+      "SAST",
+      "DAST",
+      "Pen Testing",
+      "Bug Bounty",
+    ]),
+    // Advanced phase
+    createCheckpoint("devsecops", "DevSecOps", "Advanced", [
+      "Shift Left",
+      "Security Gates",
+      "SBOM",
+      "Supply Chain",
+    ]),
+    createCheckpoint("incident-response", "Incident Response", "Advanced", [
+      "Detection",
+      "Containment",
+      "Forensics",
+      "Postmortem",
+    ]),
+  ],
+};
+
+export const LEADERSHIP_ROADMAP: SkillsRoadmap = {
+  id: "leadership",
+  name: "Leadership",
+  checkpoints: [
+    // Basic phase
+    createCheckpoint("mentoring", "Mentoring", "Basic", [
+      "1:1s",
+      "Feedback",
+      "Growth Plans",
+      "Coaching",
+    ]),
+    createCheckpoint("communication", "Communication", "Basic", [
+      "Tech Writing",
+      "Presentations",
+      "Stakeholders",
+      "Documentation",
+    ]),
+    // Intermediate phase
+    createCheckpoint("team-lead", "Team Leadership", "Intermediate", [
+      "Sprint Planning",
+      "Estimation",
+      "Delegation",
+      "Conflict Resolution",
+    ]),
+    createCheckpoint("technical-strategy", "Technical Strategy", "Intermediate", [
+      "Roadmapping",
+      "Tech Debt",
+      "Architecture Reviews",
+      "RFCs",
+    ]),
+    // Advanced phase
+    createCheckpoint("org-design", "Org Design", "Advanced", [
+      "Team Topologies",
+      "Hiring",
+      "Culture",
+      "Scaling",
+    ]),
+    createCheckpoint("exec-presence", "Executive Presence", "Advanced", [
+      "Board Presentations",
+      "Budget Planning",
+      "Vendor Mgmt",
+      "Strategy",
+    ]),
+  ],
+};
+
+export const PRODUCT_DESIGN_ROADMAP: SkillsRoadmap = {
+  id: "product-design",
+  name: "Product & Design",
+  checkpoints: [
+    // Basic phase
+    createCheckpoint("ui-design", "UI Design", "Basic", [
+      "Figma",
+      "Design Systems",
+      "Typography",
+      "Color Theory",
+    ]),
+    createCheckpoint("ux-basics", "UX Basics", "Basic", [
+      "User Research",
+      "Wireframes",
+      "Prototypes",
+      "Usability Testing",
+    ]),
+    // Intermediate phase
+    createCheckpoint("product-thinking", "Product Thinking", "Intermediate", [
+      "User Stories",
+      "Metrics",
+      "Prioritization",
+      "MVPs",
+    ]),
+    createCheckpoint("accessibility", "Accessibility", "Intermediate", [
+      "WCAG",
+      "Screen Readers",
+      "Keyboard Nav",
+      "Color Contrast",
+    ]),
+    // Advanced phase
+    createCheckpoint("design-ops", "Design Ops", "Advanced", [
+      "Design Tokens",
+      "Component Libraries",
+      "Design QA",
+      "Handoff",
+    ]),
+    createCheckpoint("product-strategy", "Product Strategy", "Advanced", [
+      "Market Research",
+      "Competitive Analysis",
+      "Roadmapping",
+      "OKRs",
+    ]),
+  ],
+};
+
 export const SKILLS_ROADMAPS: Record<string, SkillsRoadmap> = {
   "ai-ml": AI_ML_ROADMAP,
   backend: BACKEND_ROADMAP,
   "data-engineering": DATA_ENGINEERING_ROADMAP,
+  frontend: FRONTEND_ROADMAP,
+  mobile: MOBILE_ROADMAP,
+  devops: DEVOPS_ROADMAP,
+  cloud: CLOUD_ROADMAP,
+  testing: TESTING_ROADMAP,
+  security: SECURITY_ROADMAP,
+  leadership: LEADERSHIP_ROADMAP,
+  "product-design": PRODUCT_DESIGN_ROADMAP,
 };
 
 // =============================================================================
@@ -255,15 +694,155 @@ const seededRandom = (seed: number): (() => number) => {
   };
 };
 
-/** Checkpoints that are "advanced" and no one has unlocked yet */
-const ADVANCED_CHECKPOINT_IDS = new Set([
-  "mlops",
-  "computer-vision",
-  "rust-backend",
-  "grpc",
-  "data-mesh",
-  "realtime-ml",
-]);
+// =============================================================================
+// Developer Archetypes & Company Profile
+// =============================================================================
+
+type DeveloperArchetype = {
+  id: string;
+  baseLevel: number;
+  canUnlockAdvanced: boolean;
+  skillMultipliers: Record<string, number>;
+};
+
+const ARCHETYPES: DeveloperArchetype[] = [
+  {
+    id: "data-ai-specialist",
+    baseLevel: 0.75,
+    canUnlockAdvanced: true,
+    skillMultipliers: {
+      "data-engineering": 1.4,
+      "ai-ml": 1.3,
+      backend: 1.2,
+      cloud: 1.1,
+      devops: 0.8,
+      frontend: 0.5,
+      mobile: 0.2,
+      "product-design": 0.3,
+      testing: 0.6,
+      security: 0.5,
+      leadership: 0.4,
+    },
+  },
+  {
+    id: "fullstack-senior",
+    baseLevel: 0.7,
+    canUnlockAdvanced: true,
+    skillMultipliers: {
+      frontend: 1.3,
+      backend: 1.3,
+      devops: 1.2,
+      testing: 1.0,
+      cloud: 0.9,
+      "ai-ml": 0.4,
+      "data-engineering": 0.5,
+      mobile: 0.4,
+      "product-design": 0.6,
+      security: 0.7,
+      leadership: 0.6,
+    },
+  },
+  {
+    id: "backend-dev",
+    baseLevel: 0.55,
+    canUnlockAdvanced: false,
+    skillMultipliers: {
+      backend: 1.4,
+      cloud: 1.1,
+      devops: 0.9,
+      "data-engineering": 0.8,
+      testing: 0.7,
+      frontend: 0.5,
+      "ai-ml": 0.4,
+      mobile: 0.2,
+      "product-design": 0.2,
+      security: 0.6,
+      leadership: 0.3,
+    },
+  },
+  {
+    id: "junior-generalist",
+    baseLevel: 0.28,
+    canUnlockAdvanced: false,
+    skillMultipliers: {
+      frontend: 0.9,
+      backend: 1.0,
+      devops: 0.6,
+      "ai-ml": 0.5,
+      "data-engineering": 0.5,
+      cloud: 0.5,
+      testing: 0.7,
+      mobile: 0.4,
+      "product-design": 0.4,
+      security: 0.4,
+      leadership: 0.2,
+    },
+  },
+  {
+    id: "other-specialist",
+    baseLevel: 0.45,
+    canUnlockAdvanced: false,
+    skillMultipliers: {
+      mobile: 1.3,
+      "product-design": 1.2,
+      testing: 1.1,
+      security: 1.0,
+      frontend: 0.8,
+      backend: 0.6,
+      devops: 0.5,
+      cloud: 0.4,
+      "ai-ml": 0.2,
+      "data-engineering": 0.3,
+      leadership: 0.5,
+    },
+  },
+];
+
+/** Company skill strengths - this company excels in Data/AI/FullStack */
+const COMPANY_SKILL_STRENGTH: Record<string, number> = {
+  // Strong areas (company focus)
+  backend: 1.3,
+  "data-engineering": 1.25,
+  "ai-ml": 1.2,
+  frontend: 1.1,
+  devops: 1.05,
+  cloud: 1.0,
+  // Weak areas (not company focus)
+  testing: 0.85,
+  security: 0.8,
+  leadership: 0.7,
+  "product-design": 0.65,
+  mobile: 0.55,
+};
+
+/** Map checkpoint ID to its parent skill ID */
+const getSkillIdForCheckpoint = (checkpointId: string): string | null => {
+  for (const [skillId, roadmap] of Object.entries(SKILLS_ROADMAPS)) {
+    if (roadmap.checkpoints.some((c) => c.id === checkpointId)) {
+      return skillId;
+    }
+  }
+  return null;
+};
+
+/** Get checkpoint phase by ID */
+const getCheckpointPhase = (checkpointId: string): CheckpointPhase | null => {
+  for (const roadmap of Object.values(SKILLS_ROADMAPS)) {
+    const checkpoint = roadmap.checkpoints.find((c) => c.id === checkpointId);
+    if (checkpoint) return checkpoint.phase;
+  }
+  return null;
+};
+
+/** Get archetype for a developer based on index */
+const getArchetypeForDeveloper = (devIndex: number): DeveloperArchetype => {
+  // Distribution: 8 data/ai, 6 fullstack, 6 backend, 6 junior, 4 other
+  if (devIndex < 8) return ARCHETYPES[0]; // data-ai-specialist
+  if (devIndex < 14) return ARCHETYPES[1]; // fullstack-senior
+  if (devIndex < 20) return ARCHETYPES[2]; // backend-dev
+  if (devIndex < 26) return ARCHETYPES[3]; // junior-generalist
+  return ARCHETYPES[4]; // other-specialist
+};
 
 /** Generate mock progress for all developers */
 const generateMockProgress = (): DeveloperProgress[] => {
@@ -271,27 +850,47 @@ const generateMockProgress = (): DeveloperProgress[] => {
   const random = seededRandom(42); // Fixed seed for reproducibility
 
   return MOCK_DEVELOPERS.map((dev, devIndex) => {
-    // Each developer has a "skill level" that affects their overall progress
-    // Distribute developers across skill levels for variety
-    const skillLevel = random() * 0.6 + (devIndex % 5) * 0.1; // 0.0 to 1.0
-
+    const archetype = getArchetypeForDeveloper(devIndex);
     const checkpointProgress: Record<string, number> = {};
 
     checkpointIds.forEach((checkpointId) => {
-      // Advanced checkpoints have 0 progress for everyone
-      if (ADVANCED_CHECKPOINT_IDS.has(checkpointId)) {
+      const skillId = getSkillIdForCheckpoint(checkpointId);
+      const phase = getCheckpointPhase(checkpointId);
+      if (!skillId || !phase) {
         checkpointProgress[checkpointId] = 0;
         return;
       }
 
+      // Start with archetype base level
+      let progress = archetype.baseLevel;
+
+      // Apply archetype skill multiplier
+      const archetypeMultiplier = archetype.skillMultipliers[skillId] ?? 1.0;
+      progress *= archetypeMultiplier;
+
+      // Apply company-wide skill strength
+      const companyMultiplier = COMPANY_SKILL_STRENGTH[skillId] ?? 1.0;
+      progress *= companyMultiplier;
+
+      // Phase difficulty - Advanced requires canUnlockAdvanced
+      const phaseMultiplier =
+        phase === "Basic"
+          ? 1.0
+          : phase === "Intermediate"
+            ? 0.8
+            : archetype.canUnlockAdvanced
+              ? 0.45
+              : 0.0;
+      progress *= phaseMultiplier;
+
+      // Add variance (±25%)
+      progress *= 0.75 + random() * 0.5;
+
+      // Clamp to 0-1
+      progress = Math.max(0, Math.min(1, progress));
+
       const totalSubs = getCheckpointSize(checkpointId);
-      // Higher skill level = more likely to have more unlocked
-      // Add some randomness for variety
-      const progressFactor = skillLevel * (0.7 + random() * 0.6);
-      const unlockedCount = Math.min(
-        totalSubs,
-        Math.floor(totalSubs * progressFactor)
-      );
+      const unlockedCount = Math.floor(totalSubs * progress);
       checkpointProgress[checkpointId] = unlockedCount;
     });
 

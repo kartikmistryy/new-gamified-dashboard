@@ -17,7 +17,7 @@ export function MotivationPanel({ title, motivation, className = "" }: Motivatio
   return (
     <div className={`rounded-[10px] border border-border p-4 space-y-4 bg-white ${className}`}>
       {/* Chart Title */}
-      <h3 className="text-sm font-semibold text-foreground">
+      <h3 className="text-base font-semibold text-foreground">
         {title}
       </h3>
 
