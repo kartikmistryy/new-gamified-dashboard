@@ -96,11 +96,6 @@ function RoleRow({ role, rank, isExpanded, onToggle, showAll }: RoleRowProps) {
     [role.skillsRoadmaps]
   );
 
-  const skillLabels = useMemo(
-    () => role.skillsRoadmaps.map((sr) => sr.roadmap.name),
-    [role.skillsRoadmaps]
-  );
-
   return (
     <Fragment>
       <TableRow
@@ -160,7 +155,7 @@ function RoleRow({ role, rank, isExpanded, onToggle, showAll }: RoleRowProps) {
                     <CheckpointRows
               checkpoints={allCheckpoints}
               showAll={showAll}
-              skillRoadmapLabels={skillLabels}
+              skillRoadmaps={role.skillsRoadmaps}
             />
           </TableCell>
         </TableRow>

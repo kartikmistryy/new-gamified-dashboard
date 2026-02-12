@@ -2,7 +2,7 @@
 
 import { Fragment, useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
-import type { CheckpointProgressData } from "@/lib/dashboard/entities/roadmap/types";
+import type { CheckpointProgressData, SkillsRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
 import {
   sortCheckpointsByPhase,
   filterUnlockedCheckpoints,
@@ -26,14 +26,14 @@ import {
 type CheckpointRowsProps = {
   checkpoints: CheckpointProgressData[];
   showAll: boolean;
-  /** Role-based: skill roadmap names shown after all checkpoints */
-  skillRoadmapLabels?: string[];
+  /** Role-based: skill roadmaps shown after all checkpoints */
+  skillRoadmaps?: SkillsRoadmapProgressData[];
 };
 
 export function CheckpointRows({
   checkpoints,
   showAll,
-  skillRoadmapLabels,
+  skillRoadmaps,
 }: CheckpointRowsProps) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
@@ -129,17 +129,28 @@ export function CheckpointRows({
           );
         })}
 
-        {/* Role-based: Skill Roadmap labels displayed after all checkpoints */}
-        {skillRoadmapLabels?.map((label) => (
+        {/* Role-based: Skill Roadmaps with status & people */}
+        {skillRoadmaps?.map((sr) => (
           <TableRow
-            key={`skill-label-${label}`}
-            className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-blue-50/60`}
+            key={`skill-roadmap-${sr.roadmap.id}`}
+            className={`${DASHBOARD_BG_CLASSES.borderLight} bg-muted hover:bg-muted/80`}
           >
             <TableCell />
-            <TableCell colSpan={3} className="py-2">
-              <span className="text-sm text-blue-700 font-medium">
-                Skill Roadmap: {label}
-              </span>
+            <TableCell>
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-medium bg-gray-200 text-gray-700">
+                  Skill
+                </span>
+                <span className="text-sm text-gray-900 font-medium">
+                  {sr.roadmap.name}
+                </span>
+              </div>
+            </TableCell>
+            <TableCell>
+              <ProficiencyProgressBar percent={sr.progressPercent} />
+            </TableCell>
+            <TableCell>
+              <PeopleStackedBar counts={sr.developerCounts} />
             </TableCell>
           </TableRow>
         ))}
