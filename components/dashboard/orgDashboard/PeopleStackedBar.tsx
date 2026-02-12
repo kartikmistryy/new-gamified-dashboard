@@ -4,18 +4,39 @@ import { getProficiencyLevel } from "@/lib/dashboard/entities/roadmap/utils/prog
 import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
 
 // =============================================================================
-// PeopleStackedBar — Stacked bar showing Basic/Proficient/Advanced + counts
+// Shared badge config — single source of truth for colors, labels, and styles
+// =============================================================================
+
+export const BADGE_BG_OPACITY = 0.15;
+export const BADGE_CLASS = "inline-flex items-center justify-center px-2 py-0.5 rounded-md text-[11px] font-medium whitespace-nowrap";
+
+export const LEVELS = [
+  { key: "basic", short: "Bas", full: "Basic", color: "#F59E0B" },
+  { key: "intermediate", short: "Int", full: "Intermediate", color: "#3B82F6" },
+  { key: "advanced", short: "Adv", full: "Advanced", color: "#8B5CF6" },
+] as const;
+
+const LEVEL_MAP = Object.fromEntries(LEVELS.map((l) => [l.key, l])) as Record<
+  (typeof LEVELS)[number]["key"],
+  (typeof LEVELS)[number]
+>;
+
+/** Map phase name ("Basic"/"Intermediate"/"Advanced") to color hex */
+export const PHASE_COLOR_MAP = Object.fromEntries(
+  LEVELS.map((l) => [l.full, l.color])
+) as Record<string, string>;
+
+export function badgeStyle(color: string) {
+  return { backgroundColor: hexToRgba(color, BADGE_BG_OPACITY), color };
+}
+
+// =============================================================================
+// PeopleStackedBar — Labeled count badges (Bas · Int · Adv)
 // =============================================================================
 
 type PeopleStackedBarProps = {
   counts: { basic: number; intermediate: number; advanced: number };
 };
-
-const COUNT_PILLS = [
-  { key: "basic", label: "Bas", style: "bg-amber-50 text-amber-700" },
-  { key: "intermediate", label: "Int", style: "bg-blue-50 text-blue-700" },
-  { key: "advanced", label: "Adv", style: "bg-purple-50 text-purple-700" },
-] as const;
 
 export function PeopleStackedBar({ counts }: PeopleStackedBarProps) {
   const total = counts.basic + counts.intermediate + counts.advanced;
@@ -23,12 +44,13 @@ export function PeopleStackedBar({ counts }: PeopleStackedBarProps) {
 
   return (
     <div className="flex items-center gap-1">
-      {COUNT_PILLS.map(({ key, label, style }) => (
+      {LEVELS.map(({ key, short, color }) => (
         <span
           key={key}
-          className={`inline-flex justify-center min-w-[52px] px-1.5 py-0.5 rounded text-[11px] font-medium tabular-nums ${style}`}
+          className={`${BADGE_CLASS} min-w-[52px] tabular-nums`}
+          style={badgeStyle(color)}
         >
-          {label}&nbsp;{counts[key]}
+          {short}&nbsp;{counts[key]}
         </span>
       ))}
     </div>
@@ -39,18 +61,6 @@ export function PeopleStackedBar({ counts }: PeopleStackedBarProps) {
 // ProficiencyProgressBar — Three-stage progress (Basic → Intermediate → Advanced)
 // =============================================================================
 
-const STAGES = [
-  { max: 33, fill: "#F59E0B", bg: "bg-amber-100" },
-  { max: 66, fill: "#3B82F6", bg: "bg-blue-100" },
-  { max: 100, fill: "#8B5CF6", bg: "bg-purple-100" },
-] as const;
-
-const LEVEL_BADGE = {
-  basic: { label: "Basic", color: "#F59E0B" },
-  intermediate: { label: "Intermediate", color: "#3B82F6" },
-  advanced: { label: "Advanced", color: "#8B5CF6" },
-} as const;
-
 type ProficiencyProgressBarProps = {
   percent: number;
 };
@@ -60,37 +70,39 @@ export function ProficiencyProgressBar({ percent }: ProficiencyProgressBarProps)
 
   const clamped = Math.max(0, Math.min(100, percent));
   const level = getProficiencyLevel(clamped);
-  const badge = level ? LEVEL_BADGE[level] : null;
+  const badge = level ? LEVEL_MAP[level] : null;
 
   return (
     <div className="flex items-center gap-2">
       <div className="flex h-2 w-[100px] gap-0.5 shrink-0">
-        {STAGES.map((stage, i) => {
-          const stageMin = i === 0 ? 0 : STAGES[i - 1].max;
-          const stageRange = stage.max - stageMin;
+        {LEVELS.map(({ key, color }, i) => {
+          const stageMax = i === 0 ? 33 : i === 1 ? 66 : 100;
+          const stageMin = i === 0 ? 0 : i === 1 ? 33 : 66;
+          const stageRange = stageMax - stageMin;
           const fillPct =
             clamped <= stageMin
               ? 0
-              : clamped >= stage.max
+              : clamped >= stageMax
                 ? 100
                 : ((clamped - stageMin) / stageRange) * 100;
 
           return (
-            <div key={i} className={`flex-1 rounded-sm ${stage.bg} overflow-hidden`}>
+            <div
+              key={key}
+              className="flex-1 rounded-sm overflow-hidden"
+              style={{ backgroundColor: hexToRgba(color, 0.2) }}
+            >
               <div
                 className="h-full rounded-sm transition-all"
-                style={{ width: `${fillPct}%`, backgroundColor: stage.fill }}
+                style={{ width: `${fillPct}%`, backgroundColor: color }}
               />
             </div>
           );
         })}
       </div>
       {badge ? (
-        <span
-          className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-medium whitespace-nowrap"
-          style={{ backgroundColor: hexToRgba(badge.color, 0.15), color: badge.color }}
-        >
-          {badge.label}
+        <span className={BADGE_CLASS} style={badgeStyle(badge.color)}>
+          {badge.full}
         </span>
       ) : null}
     </div>

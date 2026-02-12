@@ -8,25 +8,16 @@ import {
   filterUnlockedCheckpoints,
 } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
 import { DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
-import { PeopleStackedBar, ProficiencyProgressBar } from "./PeopleStackedBar";
+import { PeopleStackedBar, ProficiencyProgressBar, BADGE_CLASS, BADGE_BG_OPACITY, PHASE_COLOR_MAP, badgeStyle } from "./PeopleStackedBar";
+import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
 import { SubCheckpointRows } from "./SubCheckpointRows";
 import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
   TableCell,
-  TableHead,
-  TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-const EXPANDER_CELL = "align-middle [&:has([aria-expanded])]:w-px [&:has([aria-expanded])]:py-0";
-
-const PHASE_STYLES: Record<string, string> = {
-  Basic: "text-amber-700 bg-amber-50",
-  Intermediate: "text-blue-700 bg-blue-50",
-  Advanced: "text-purple-700 bg-purple-50",
-};
 
 // =============================================================================
 // CheckpointRows — Nested table rendered inside an expanded L1 row
@@ -59,26 +50,37 @@ export function CheckpointRows({
 
   return (
     <Table>
-      <TableHeader>
-        <TableRow className="hover:bg-muted/30!">
-          <TableHead />
-          <TableHead>Checkpoint</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>People</TableHead>
-        </TableRow>
-      </TableHeader>
       <TableBody>
-        {sorted.map((cp) => {
+        {sorted.map((cp, idx) => {
           const isExpanded = expandedIds.has(cp.checkpoint.id);
-          const phaseStyle = PHASE_STYLES[cp.checkpoint.phase] ?? "";
+          const phaseColor = PHASE_COLOR_MAP[cp.checkpoint.phase];
           const hasSubCheckpoints = cp.checkpoint.subCheckpoints.length > 0;
+          const isNewGroup =
+            idx === 0 ||
+            sorted[idx - 1].checkpoint.phase !== cp.checkpoint.phase;
+
+          /* tint applied to every cell so it spans the full row */
+          const tint = phaseColor
+            ? { backgroundColor: hexToRgba(phaseColor, BADGE_BG_OPACITY / 2) }
+            : undefined;
 
           return (
             <Fragment key={cp.checkpoint.id}>
-              <TableRow
-                className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80 ${isExpanded ? "bg-muted" : ""}`}
-              >
-                <TableCell className={EXPANDER_CELL}>
+              {/* ── Phase group header ── */}
+              {isNewGroup && phaseColor ? (
+                <TableRow className="border-0 hover:bg-transparent">
+                  <TableCell className="w-32" style={tint} />
+                  <TableCell colSpan={3} className="py-1.5" style={tint}>
+                    <span className={BADGE_CLASS} style={badgeStyle(phaseColor)}>
+                      {cp.checkpoint.phase}
+                    </span>
+                  </TableCell>
+                </TableRow>
+              ) : null}
+
+              {/* ── Checkpoint data row ── */}
+              <TableRow className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80`}>
+                <TableCell className="w-32 text-right pr-0 align-middle" style={tint}>
                   {hasSubCheckpoints ? (
                     <Button
                       className="size-7 text-muted-foreground"
@@ -100,28 +102,23 @@ export function CheckpointRows({
                     </Button>
                   ) : null}
                 </TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-2">
-                    <span className="font-medium text-gray-900">
-                      {cp.checkpoint.name}
-                    </span>
-                    <span
-                      className={`text-xs px-1.5 py-0.5 rounded font-medium ${phaseStyle}`}
-                    >
-                      {cp.checkpoint.phase}
-                    </span>
-                  </div>
+                <TableCell style={tint}>
+                  <span className="font-medium text-gray-900">
+                    {cp.checkpoint.name}
+                  </span>
                 </TableCell>
-                <TableCell>
+                <TableCell style={tint}>
                   <ProficiencyProgressBar percent={cp.progressPercent} />
                 </TableCell>
-                <TableCell>
+                <TableCell style={tint}>
                   <PeopleStackedBar counts={cp.developerCounts} />
                 </TableCell>
               </TableRow>
+
+              {/* ── Expanded sub-checkpoints ── */}
               {isExpanded && hasSubCheckpoints ? (
                 <TableRow className="hover:bg-transparent">
-                  <TableCell colSpan={4} className="p-0 pl-8">
+                  <TableCell colSpan={4} className="p-0" style={tint}>
                     <SubCheckpointRows
                       checkpoint={cp.checkpoint}
                       showAll={showAll}

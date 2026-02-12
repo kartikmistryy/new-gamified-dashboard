@@ -46,6 +46,7 @@ export function SubCheckpointRows({ checkpoint, showAll, unlockCounts }: SubChec
     <Table>
       <TableHeader>
         <TableRow className="hover:bg-muted/30!">
+          <TableHead className="w-32" />
           <TableHead>Sub-Checkpoint</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>People</TableHead>
@@ -59,6 +60,7 @@ export function SubCheckpointRows({ checkpoint, showAll, unlockCounts }: SubChec
               key={item.subCheckpoint.id}
               className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/50`}
             >
+              <TableCell className="w-32" />
               <TableCell className="text-sm text-gray-700">
                 {item.subCheckpoint.name}
               </TableCell>

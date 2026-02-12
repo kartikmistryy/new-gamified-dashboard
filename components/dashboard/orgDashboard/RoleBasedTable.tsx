@@ -156,7 +156,7 @@ function RoleRow({ role, rank, isExpanded, onToggle, showAll }: RoleRowProps) {
       </TableRow>
       {isExpanded ? (
         <TableRow className="hover:bg-transparent">
-<TableCell colSpan={5} className="p-0 pl-8">
+<TableCell colSpan={5} className="p-0">
                     <CheckpointRows
               checkpoints={allCheckpoints}
               showAll={showAll}

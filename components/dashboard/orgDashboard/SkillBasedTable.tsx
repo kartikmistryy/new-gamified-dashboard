@@ -120,7 +120,7 @@ export function SkillBasedTable({ data, showAll }: SkillBasedTableProps) {
                   </TableRow>
                   {isExpanded ? (
                     <TableRow className="hover:bg-transparent">
-                      <TableCell colSpan={5} className="p-0 pl-8">
+                      <TableCell colSpan={5} className="p-0">
                         <CheckpointRows
                           checkpoints={skill.checkpoints}
                           showAll={showAll}
