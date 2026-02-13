@@ -6,6 +6,7 @@ import type { CheckpointProgressData, SkillsRoadmapProgressData } from "@/lib/da
 import {
   sortCheckpointsByPhase,
   filterUnlockedCheckpoints,
+  getTotalPeople,
 } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
 import { DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import { PeopleStackedBar, ProficiencyProgressBar, BADGE_CLASS, BADGE_BG_OPACITY, PHASE_COLOR_MAP, badgeStyle } from "./PeopleStackedBar";
@@ -50,6 +51,10 @@ export function CheckpointRows({
       return next;
     });
   };
+
+  const filteredSkillRoadmaps = skillRoadmaps?.filter(
+    (sr) => showAll || getTotalPeople(sr.developerCounts) > 0,
+  );
 
   return (
     <Table>
@@ -133,7 +138,7 @@ export function CheckpointRows({
         })}
 
         {/* Role-based: Skill Roadmaps with status & people */}
-        {skillRoadmaps?.map((sr) => (
+        {filteredSkillRoadmaps?.map((sr) => (
           <TableRow
             key={`skill-roadmap-${sr.roadmap.id}`}
             className={`${DASHBOARD_BG_CLASSES.borderLight} bg-muted ${onSkillClick ? "cursor-pointer hover:bg-gray-200/80" : "hover:bg-muted/80"}`}
@@ -143,7 +148,7 @@ export function CheckpointRows({
             <TableCell>
               <div className="flex items-center gap-2">
                 <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-medium bg-gray-200 text-gray-700">
-                  Skill
+                  Skill-Based
                 </span>
                 <span className="text-sm text-gray-900 font-medium underline-offset-2 hover:underline">
                   {sr.roadmap.name}
