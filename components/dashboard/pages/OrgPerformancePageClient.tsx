@@ -162,7 +162,7 @@ export function OrgPerformancePageClient() {
           </DashboardSection>
 
           {/* Detailed Breakdowns: nLoC by operation type */}
-          <DashboardSection title="Detailed Breakdowns" subtitle={`Normalized Lines of Code (nLoC) by operation type · Trends compared ${comparisonLabel}`}>
+          <DashboardSection title="Detailed Breakdowns" subtitle={`Normalized Lines of Code (nLoC) by operation types · Trends compared ${comparisonLabel}`}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {OPERATION_BREAKDOWN_DATA.map((op) => (
                 <OperationBreakdownCard key={op.operation} {...op} />
@@ -170,6 +170,7 @@ export function OrgPerformancePageClient() {
             </div>
           </DashboardSection>
 
+{/* Temporarily removed - no team data available
           <DashboardSection title="Teams" className="w-full">
             <PerformanceTeamsTable
               rows={TEAM_PERFORMANCE_ROWS}
@@ -177,6 +178,7 @@ export function OrgPerformancePageClient() {
               onVisibilityChange={handleVisibilityChange}
             />
           </DashboardSection>
+*/}
         </CardContent>
       </Card>
     </div>

@@ -94,10 +94,7 @@ export function CategoryTogglePanel<T extends string>({
                       .toUpperCase()
                       .slice(0, 2)}
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm text-gray-700 truncate">{dev.name}</p>
-                    <p className="text-xs text-gray-400 truncate">{dev.team}</p>
-                  </div>
+                  <p className="text-sm text-gray-700 truncate">{dev.name}</p>
                 </li>
               ))}
             </ul>
@@ -286,10 +283,7 @@ export function ChaosTogglePanel({
                       .toUpperCase()
                       .slice(0, 2)}
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm text-gray-700 truncate">{dev.name}</p>
-                    <p className="text-xs text-gray-400 truncate">{dev.team}</p>
-                  </div>
+                  <p className="text-sm text-gray-700 truncate">{dev.name}</p>
                 </li>
               ))}
             </ul>
