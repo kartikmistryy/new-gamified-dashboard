@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import type { RoleRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
@@ -22,6 +22,7 @@ const EXPANDER_CELL = "align-middle [&:has([aria-expanded])]:w-px [&:has([aria-e
 type RoleBasedTableProps = {
   data: RoleRoadmapProgressData[];
   showAll: boolean;
+  onSkillClick?: (skillRoadmapId: string) => void;
 };
 
 /**
@@ -30,7 +31,7 @@ type RoleBasedTableProps = {
  * 1. All Checkpoints across all skill roadmaps (sorted by phase)
  * 2. Skill Roadmap labels (pure display) after all checkpoints
  */
-export function RoleBasedTable({ data, showAll }: RoleBasedTableProps) {
+export function RoleBasedTable({ data, showAll, onSkillClick }: RoleBasedTableProps) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
   const toggleExpand = (id: string) => {
@@ -69,6 +70,7 @@ export function RoleBasedTable({ data, showAll }: RoleBasedTableProps) {
                 isExpanded={expandedIds.has(role.roleRoadmap.id)}
                 onToggle={() => toggleExpand(role.roleRoadmap.id)}
                 showAll={showAll}
+                onSkillClick={onSkillClick}
               />
             ))
           )}
@@ -88,14 +90,10 @@ type RoleRowProps = {
   isExpanded: boolean;
   onToggle: () => void;
   showAll: boolean;
+  onSkillClick?: (skillRoadmapId: string) => void;
 };
 
-function RoleRow({ role, rank, isExpanded, onToggle, showAll }: RoleRowProps) {
-  const allCheckpoints = useMemo(
-    () => role.skillsRoadmaps.flatMap((sr) => sr.checkpoints),
-    [role.skillsRoadmaps]
-  );
-
+function RoleRow({ role, rank, isExpanded, onToggle, showAll, onSkillClick }: RoleRowProps) {
   return (
     <Fragment>
       <TableRow
@@ -153,9 +151,10 @@ function RoleRow({ role, rank, isExpanded, onToggle, showAll }: RoleRowProps) {
         <TableRow className="hover:bg-transparent">
 <TableCell colSpan={5} className="p-0">
                     <CheckpointRows
-              checkpoints={allCheckpoints}
+              checkpoints={role.checkpoints}
               showAll={showAll}
               skillRoadmaps={role.skillsRoadmaps}
+              onSkillClick={onSkillClick}
             />
           </TableCell>
         </TableRow>

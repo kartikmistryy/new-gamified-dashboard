@@ -110,6 +110,9 @@ export type RoleRoadmapProgressData = {
     intermediate: RoadmapDeveloper[];
     advanced: RoadmapDeveloper[];
   };
+  /** Role's own checkpoints (from role roadmap detail) */
+  checkpoints: CheckpointProgressData[];
+  /** Mapped skill-based roadmaps (from skill-role-mapping) */
   skillsRoadmaps: SkillsRoadmapProgressData[];
 };
 

@@ -234,6 +234,7 @@ export const calculateRoleRoadmapProgress = (
       advanced: developersByLevel.advanced.length,
     },
     developersByLevel,
+    checkpoints: skillsRoadmaps.flatMap((sr) => sr.checkpoints),
     skillsRoadmaps,
   };
 };

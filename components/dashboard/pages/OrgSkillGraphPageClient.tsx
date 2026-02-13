@@ -15,6 +15,12 @@ import type { OrgSkillTableTab } from "@/lib/dashboard/entities/roadmap/orgSkill
 export function OrgSkillGraphPageClient() {
   const [fullData, setFullData] = useState<SkillGraphFullData | null>(null);
   const [tab, setTab] = useState<OrgSkillTableTab>("role");
+  const [autoExpandSkillId, setAutoExpandSkillId] = useState<string | null>(null);
+
+  const handleSwitchToSkill = (skillRoadmapId: string) => {
+    setAutoExpandSkillId(skillRoadmapId);
+    setTab("skill");
+  };
 
   useEffect(() => {
     loadSkillGraphFullData().then(setFullData).catch(console.error);
@@ -67,6 +73,9 @@ export function OrgSkillGraphPageClient() {
             tab={tab}
             skillData={tableData.skillBased}
             roleData={tableData.roleBased}
+            autoExpandSkillId={autoExpandSkillId}
+            onAutoExpandConsumed={() => setAutoExpandSkillId(null)}
+            onSwitchToSkill={handleSwitchToSkill}
           />
         ) : (
           <div className="py-8 text-center text-sm text-gray-400">Loading skills data…</div>

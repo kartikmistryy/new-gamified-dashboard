@@ -234,7 +234,7 @@ export interface SkillGraphTableData {
 
 /** Transform raw graph JSON into table-compatible data */
 export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableData {
-  const { roadmaps, engineerIndex, engineers, detailMap } = raw;
+  const { roadmaps, engineerIndex, engineers, detailMap, roleSkillMapping } = raw;
 
   // Skill-based
   const skillRoadmaps = roadmaps.filter((r) => r.type === "skill");
@@ -242,15 +242,27 @@ export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableDat
     buildOneRoadmapProgress(r, detailMap, engineerIndex, engineers),
   );
 
+  // Build name → SkillsRoadmapProgressData lookup for role mapping
+  const skillByName = new Map<string, SkillsRoadmapProgressData>();
+  for (const sp of skillBased) {
+    skillByName.set(sp.roadmap.name, sp);
+  }
+
   // Role-based
   const roleRoadmaps = roadmaps.filter((r) => r.type === "role");
   const roleBased = roleRoadmaps.map((r) => {
     const inner = buildOneRoadmapProgress(r, detailMap, engineerIndex, engineers);
 
+    // Find mapped skill-based roadmaps from the mapping JSON
+    const mappedSkillNames = roleSkillMapping.get(r.name) ?? [];
+    const mappedSkills = mappedSkillNames
+      .map((name) => skillByName.get(name))
+      .filter((s): s is SkillsRoadmapProgressData => s != null);
+
     const roleRoadmap: RoleRoadmap = {
       id: r.key,
       name: r.name,
-      skillsRoadmapIds: [r.key],
+      skillsRoadmapIds: mappedSkills.map((s) => s.roadmap.id),
     };
 
     const result: RoleRoadmapProgressData = {
@@ -259,7 +271,8 @@ export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableDat
       proficiencyLevel: inner.proficiencyLevel,
       developerCounts: inner.developerCounts,
       developersByLevel: inner.developersByLevel,
-      skillsRoadmaps: [inner],
+      checkpoints: inner.checkpoints,
+      skillsRoadmaps: mappedSkills,
     };
     return result;
   });

@@ -64,6 +64,9 @@ export interface EngineerData {
   roadmaps: Record<string, EngineerRoadmapRecord>;
 }
 
+/** Skill-role mapping: role name → set of skill roadmap names */
+export type RoleSkillMapping = Map<string, string[]>;
+
 /** Raw data from JSON files — shared between chart and table */
 export interface SkillGraphRawData {
   roadmaps: RoadmapIndexEntry[];
@@ -71,6 +74,8 @@ export interface SkillGraphRawData {
   engineers: EngineerData[];
   /** Roadmap name → full checkpoint definitions */
   detailMap: RoadmapDetailMap;
+  /** Role name → skill roadmap names from mapping JSON */
+  roleSkillMapping: RoleSkillMapping;
 }
 
 /* ── Fetch helpers ─────────────────────────────────────── */
@@ -98,11 +103,31 @@ export async function loadAllSkillGraphData(): Promise<SkillGraphBundle> {
   return full.chart;
 }
 
+/** Parse skill-role-mapping.json into Map<roleName, skillNames[]> */
+function buildRoleSkillMapping(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  json: any,
+): RoleSkillMapping {
+  const map: RoleSkillMapping = new Map();
+  const byRole = json?.byRole ?? {};
+  for (const group of Object.values(byRole) as { roles: Record<string, { skills: Record<string, string[]> }> }[]) {
+    for (const [roleName, roleData] of Object.entries(group.roles ?? {})) {
+      const skills: string[] = [];
+      for (const skillNames of Object.values(roleData.skills ?? {})) {
+        skills.push(...skillNames);
+      }
+      map.set(roleName, [...new Set(skills)]);
+    }
+  }
+  return map;
+}
+
 /** Load everything: chart bundle + raw data for table consumption */
 export async function loadSkillGraphFullData(): Promise<SkillGraphFullData> {
-  const [roadmapIndex, engineerIdx] = await Promise.all([
+  const [roadmapIndex, engineerIdx, mappingJson] = await Promise.all([
     fetchJson<{ roadmaps: RoadmapIndexEntry[] }>("roadmaps/index.json"),
     fetchJson<{ engineers: EngineerIndexEntry[] }>("engineers/index.json"),
+    fetchJson<unknown>("skill-role-mapping.json"),
   ]);
 
   // Collect unique detail files and load them in parallel with engineers
@@ -128,6 +153,7 @@ export async function loadSkillGraphFullData(): Promise<SkillGraphFullData> {
   }
 
   const stats = aggregateStats(roadmapIndex.roadmaps, engineers);
+  const roleSkillMapping = buildRoleSkillMapping(mappingJson);
 
   return {
     chart: {
@@ -139,6 +165,7 @@ export async function loadSkillGraphFullData(): Promise<SkillGraphFullData> {
       engineerIndex: engineerIdx.engineers,
       engineers,
       detailMap,
+      roleSkillMapping,
     },
   };
 }

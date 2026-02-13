@@ -28,12 +28,15 @@ type CheckpointRowsProps = {
   showAll: boolean;
   /** Role-based: skill roadmaps shown after all checkpoints */
   skillRoadmaps?: SkillsRoadmapProgressData[];
+  /** Called when a skill roadmap row is clicked (switch to skill tab) */
+  onSkillClick?: (skillRoadmapId: string) => void;
 };
 
 export function CheckpointRows({
   checkpoints,
   showAll,
   skillRoadmaps,
+  onSkillClick,
 }: CheckpointRowsProps) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
@@ -133,7 +136,8 @@ export function CheckpointRows({
         {skillRoadmaps?.map((sr) => (
           <TableRow
             key={`skill-roadmap-${sr.roadmap.id}`}
-            className={`${DASHBOARD_BG_CLASSES.borderLight} bg-muted hover:bg-muted/80`}
+            className={`${DASHBOARD_BG_CLASSES.borderLight} bg-muted ${onSkillClick ? "cursor-pointer hover:bg-gray-200/80" : "hover:bg-muted/80"}`}
+            onClick={onSkillClick ? () => onSkillClick(sr.roadmap.id) : undefined}
           >
             <TableCell />
             <TableCell>
@@ -141,7 +145,7 @@ export function CheckpointRows({
                 <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-medium bg-gray-200 text-gray-700">
                   Skill
                 </span>
-                <span className="text-sm text-gray-900 font-medium">
+                <span className="text-sm text-gray-900 font-medium underline-offset-2 hover:underline">
                   {sr.roadmap.name}
                 </span>
               </div>

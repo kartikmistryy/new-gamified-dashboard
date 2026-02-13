@@ -37,9 +37,19 @@ type OrgSkillsTableSectionProps = {
   tab: OrgSkillTableTab;
   skillData: SkillsRoadmapProgressData[];
   roleData: RoleRoadmapProgressData[];
+  autoExpandSkillId?: string | null;
+  onAutoExpandConsumed?: () => void;
+  onSwitchToSkill?: (skillRoadmapId: string) => void;
 };
 
-export function OrgSkillsTableSection({ tab, skillData, roleData }: OrgSkillsTableSectionProps) {
+export function OrgSkillsTableSection({
+  tab,
+  skillData,
+  roleData,
+  autoExpandSkillId,
+  onAutoExpandConsumed,
+  onSwitchToSkill,
+}: OrgSkillsTableSectionProps) {
   const [sort, setSort] = useState<OrgSkillSortMode>("mostUnlocked");
   const [showAll, setShowAll] = useState(true);
 
@@ -85,9 +95,18 @@ export function OrgSkillsTableSection({ tab, skillData, roleData }: OrgSkillsTab
 
       {/* Table */}
       {tab === "skill" ? (
-        <SkillBasedTable data={sortedSkillData} showAll={showAll} />
+        <SkillBasedTable
+          data={sortedSkillData}
+          showAll={showAll}
+          autoExpandSkillId={autoExpandSkillId}
+          onAutoExpandConsumed={onAutoExpandConsumed}
+        />
       ) : (
-        <RoleBasedTable data={sortedRoleData} showAll={showAll} />
+        <RoleBasedTable
+          data={sortedRoleData}
+          showAll={showAll}
+          onSkillClick={onSwitchToSkill}
+        />
       )}
     </div>
   );

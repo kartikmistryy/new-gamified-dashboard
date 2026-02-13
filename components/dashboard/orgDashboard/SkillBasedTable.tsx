@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import type { SkillsRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
@@ -22,14 +22,28 @@ const EXPANDER_CELL = "align-middle [&:has([aria-expanded])]:w-px [&:has([aria-e
 type SkillBasedTableProps = {
   data: SkillsRoadmapProgressData[];
   showAll: boolean;
+  autoExpandSkillId?: string | null;
+  onAutoExpandConsumed?: () => void;
 };
 
 /**
  * Skill-Based Skills Table — L1 level.
  * Each row is a Skills Roadmap. Expanding shows a nested Checkpoint table (L2).
  */
-export function SkillBasedTable({ data, showAll }: SkillBasedTableProps) {
+export function SkillBasedTable({
+  data,
+  showAll,
+  autoExpandSkillId,
+  onAutoExpandConsumed,
+}: SkillBasedTableProps) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    if (autoExpandSkillId) {
+      setExpandedIds((prev) => new Set(prev).add(autoExpandSkillId));
+      onAutoExpandConsumed?.();
+    }
+  }, [autoExpandSkillId, onAutoExpandConsumed]);
 
   const toggleExpand = (id: string) => {
     setExpandedIds((prev) => {
