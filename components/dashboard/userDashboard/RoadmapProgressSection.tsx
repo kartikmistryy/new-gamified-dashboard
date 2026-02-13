@@ -84,19 +84,19 @@ export function RoadmapProgressSection() {
     <div className="space-y-4">
       {/* Header with toggles */}
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-gray-900">Roadmap Progress</h2>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
+          <h2 className="text-lg font-semibold text-gray-900">Roadmap Progress</h2>
           <ToggleGroup
             options={VIEW_MODE_OPTIONS}
             value={viewMode}
             onChange={setViewMode}
           />
-          <ToggleGroup
-            options={FILTER_MODE_OPTIONS}
-            value={filterMode}
-            onChange={setFilterMode}
-          />
         </div>
+        <ToggleGroup
+          options={FILTER_MODE_OPTIONS}
+          value={filterMode}
+          onChange={setFilterMode}
+        />
       </div>
 
       {/* Table */}

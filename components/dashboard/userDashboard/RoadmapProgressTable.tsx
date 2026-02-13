@@ -16,7 +16,7 @@ import {
   SKILLS_ROADMAPS,
   calculateRoleRoadmapProgress,
   calculateSkillsRoadmapProgress,
-  getProficiencyColor,
+  getProficiencyLevel,
 } from "@/lib/dashboard/entities/roadmap";
 import type { RoleRoadmap } from "@/lib/dashboard/entities/roadmap";
 import type {
@@ -52,8 +52,25 @@ function PhaseBadge({ phase }: PhaseBadgeProps) {
 }
 
 // =============================================================================
-// Progress Bar Component
+// Progress Bar Component (3-stage segmented style)
 // =============================================================================
+
+const PROFICIENCY_LEVELS = [
+  { key: "basic", label: "Basic", color: "#F59E0B" },
+  { key: "proficient", label: "Proficient", color: "#3B82F6" },
+  { key: "advanced", label: "Advanced", color: "#8B5CF6" },
+] as const;
+
+const LEVEL_MAP = Object.fromEntries(
+  PROFICIENCY_LEVELS.map((l) => [l.key, l])
+) as Record<string, (typeof PROFICIENCY_LEVELS)[number]>;
+
+function hexToRgba(hex: string, alpha: number): string {
+  const r = Number.parseInt(hex.slice(1, 3), 16);
+  const g = Number.parseInt(hex.slice(3, 5), 16);
+  const b = Number.parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
 
 type ProgressBarProps = {
   percent: number;
@@ -61,13 +78,40 @@ type ProgressBarProps = {
 };
 
 function ProgressBar({ percent, className = "" }: ProgressBarProps) {
-  const clampedPercent = Math.max(0, Math.min(100, percent));
+  if (percent <= 0) {
+    return <span className="text-sm text-gray-400">—</span>;
+  }
+
+  const clamped = Math.max(0, Math.min(100, percent));
+
   return (
-    <div className={`h-2 w-32 rounded-full bg-gray-200 ${className}`}>
-      <div
-        className="h-full rounded-full bg-indigo-500 transition-all duration-300"
-        style={{ width: `${clampedPercent}%` }}
-      />
+    <div className={`flex items-center gap-2 ${className}`}>
+      <div className="flex h-2 w-[100px] gap-0.5 shrink-0">
+        {PROFICIENCY_LEVELS.map(({ key, color }, i) => {
+          const stageMax = i === 0 ? 33 : i === 1 ? 66 : 100;
+          const stageMin = i === 0 ? 0 : i === 1 ? 33 : 66;
+          const stageRange = stageMax - stageMin;
+          const fillPct =
+            clamped <= stageMin
+              ? 0
+              : clamped >= stageMax
+                ? 100
+                : ((clamped - stageMin) / stageRange) * 100;
+
+          return (
+            <div
+              key={key}
+              className="flex-1 rounded-sm overflow-hidden"
+              style={{ backgroundColor: hexToRgba(color, 0.2) }}
+            >
+              <div
+                className="h-full rounded-sm transition-all"
+                style={{ width: `${fillPct}%`, backgroundColor: color }}
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -143,9 +187,10 @@ type CheckpointRowProps = {
   data: CheckpointProgressData;
   onCountClick: (context: SidePanelContext) => void;
   indentLevel: number; // 1 for under skills roadmap at top level, 2 for under skills roadmap nested in role
+  showPhaseBadge?: boolean; // Show phase badge (first item in phase section)
 };
 
-function CheckpointRow({ data, onCountClick, indentLevel }: CheckpointRowProps) {
+function CheckpointRow({ data, onCountClick, indentLevel, showPhaseBadge = false }: CheckpointRowProps) {
   const [expanded, setExpanded] = useState(false);
   const avgUnlocked = Math.round(
     (data.progressPercent / 100) * data.checkpoint.subCheckpoints.length
@@ -160,33 +205,35 @@ function CheckpointRow({ data, onCountClick, indentLevel }: CheckpointRowProps) 
     });
   };
 
-  // Indentation: pl-12 for level 1, pl-20 for level 2
-  const paddingLeft = indentLevel === 1 ? "pl-12" : "pl-20";
+  // Base indentation for checkpoints
+  const baseIndent = indentLevel === 1 ? "pl-12" : "pl-20";
 
   return (
     <>
       <TableRow className="bg-gray-50/50 hover:bg-gray-100/50">
-        <TableCell className={paddingLeft}>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-6 w-6 mr-2"
-            onClick={() => setExpanded(!expanded)}
-          >
-            {expanded ? (
-              <ChevronDownIcon className="h-4 w-4" />
-            ) : (
-              <ChevronRightIcon className="h-4 w-4" />
-            )}
-          </Button>
-          <span className="text-sm text-gray-700 mr-2">{data.checkpoint.name}</span>
-          <PhaseBadge phase={data.checkpoint.phase} />
+        <TableCell className={baseIndent}>
+          <div className="flex items-center">
+            {/* Fixed-width badge area (always takes space for alignment) */}
+            <div className="w-20 shrink-0 flex items-center">
+              {showPhaseBadge && <PhaseBadge phase={data.checkpoint.phase} />}
+            </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-6 w-6 mr-2"
+              onClick={() => setExpanded(!expanded)}
+            >
+              {expanded ? (
+                <ChevronDownIcon className="h-4 w-4" />
+              ) : (
+                <ChevronRightIcon className="h-4 w-4" />
+              )}
+            </Button>
+            <span className="text-sm text-gray-700">{data.checkpoint.name}</span>
+          </div>
         </TableCell>
         <TableCell>
-          <div className="flex items-center gap-2">
-            <ProgressBar percent={data.progressPercent} />
-            <span className="text-sm text-gray-600">{data.progressPercent}%</span>
-          </div>
+          <ProgressBar percent={data.progressPercent} />
         </TableCell>
         <TableCell className="text-center">
           <CountBadge
@@ -253,9 +300,37 @@ function SkillsRoadmapRow({
     });
   };
 
-  const filteredCheckpoints = useMemo(() => {
-    if (filterMode === "all") return data.checkpoints;
-    return data.checkpoints.filter((cp) => cp.progressPercent > 0);
+  // Group checkpoints by phase, sort by progress within each phase
+  const groupedCheckpoints = useMemo(() => {
+    let checkpoints = data.checkpoints;
+    if (filterMode !== "all") {
+      checkpoints = checkpoints.filter((cp) => cp.progressPercent > 0);
+    }
+
+    // Group by phase
+    const byPhase: Record<CheckpointPhase, CheckpointProgressData[]> = {
+      Basic: [],
+      Intermediate: [],
+      Advanced: [],
+    };
+    checkpoints.forEach((cp) => {
+      byPhase[cp.checkpoint.phase].push(cp);
+    });
+
+    // Sort each phase by progress (descending)
+    (Object.keys(byPhase) as CheckpointPhase[]).forEach((phase) => {
+      byPhase[phase].sort((a, b) => b.progressPercent - a.progressPercent);
+    });
+
+    // Flatten with showPhaseBadge flag
+    const result: { data: CheckpointProgressData; showPhaseBadge: boolean }[] = [];
+    (["Basic", "Intermediate", "Advanced"] as CheckpointPhase[]).forEach((phase) => {
+      byPhase[phase].forEach((cp, idx) => {
+        result.push({ data: cp, showPhaseBadge: idx === 0 });
+      });
+    });
+
+    return result;
   }, [data.checkpoints, filterMode]);
 
   return (
@@ -279,10 +354,7 @@ function SkillsRoadmapRow({
           </span>
         </TableCell>
         <TableCell>
-          <div className="flex items-center gap-2">
-            <ProgressBar percent={data.progressPercent} />
-            <span className="text-sm text-gray-600">{data.progressPercent}%</span>
-          </div>
+          <ProgressBar percent={data.progressPercent} />
         </TableCell>
         <TableCell className="text-center">
           <CountBadge
@@ -307,12 +379,13 @@ function SkillsRoadmapRow({
         </TableCell>
       </TableRow>
       {expanded &&
-        filteredCheckpoints.map((checkpoint) => (
+        groupedCheckpoints.map(({ data: checkpoint, showPhaseBadge }) => (
           <CheckpointRow
             key={checkpoint.checkpoint.id}
             data={checkpoint}
             onCountClick={onCountClick}
             indentLevel={indentLevel + 1}
+            showPhaseBadge={showPhaseBadge}
           />
         ))}
     </>
@@ -366,10 +439,7 @@ function RoleRoadmapRow({ roleRoadmap, onCountClick, filterMode }: RoleRoadmapRo
           <span className="font-medium text-gray-900">{data.roleRoadmap.name}</span>
         </TableCell>
         <TableCell>
-          <div className="flex items-center gap-2">
-            <ProgressBar percent={data.progressPercent} />
-            <span className="text-sm text-gray-600">{data.progressPercent}%</span>
-          </div>
+          <ProgressBar percent={data.progressPercent} />
         </TableCell>
         <TableCell className="text-center">
           <CountBadge
@@ -423,13 +493,22 @@ export function RoadmapProgressTable({
   filterMode,
 }: RoadmapProgressTableProps) {
   const skillsRoadmapsData = useMemo(() => {
-    return Object.values(SKILLS_ROADMAPS).map(calculateSkillsRoadmapProgress);
+    const data = Object.values(SKILLS_ROADMAPS).map(calculateSkillsRoadmapProgress);
+    return [...data].sort((a, b) => b.progressPercent - a.progressPercent);
   }, []);
 
   const filteredSkillsRoadmaps = useMemo(() => {
     if (filterMode === "all") return skillsRoadmapsData;
     return skillsRoadmapsData.filter((sr) => sr.progressPercent > 0);
   }, [skillsRoadmapsData, filterMode]);
+
+  const roleRoadmapsData = useMemo(() => {
+    const data = ROLE_ROADMAPS.map((role) => ({
+      role,
+      progress: calculateRoleRoadmapProgress(role),
+    }));
+    return [...data].sort((a, b) => b.progress.progressPercent - a.progress.progressPercent);
+  }, []);
 
   return (
     <div className="rounded-lg border bg-white">
@@ -456,10 +535,10 @@ export function RoadmapProgressTable({
         </TableHeader>
         <TableBody>
           {viewMode === "role" ? (
-            ROLE_ROADMAPS.map((roleRoadmap) => (
+            roleRoadmapsData.map(({ role }) => (
               <RoleRoadmapRow
-                key={roleRoadmap.id}
-                roleRoadmap={roleRoadmap}
+                key={role.id}
+                roleRoadmap={role}
                 onCountClick={onSidePanelOpen}
                 filterMode={filterMode}
               />
