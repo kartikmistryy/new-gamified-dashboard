@@ -180,6 +180,26 @@ function SubCheckpointLabels({ checkpoint, unlockedCount }: SubCheckpointLabelsP
 }
 
 // =============================================================================
+// Phase Section Header Row
+// =============================================================================
+
+type PhaseSectionHeaderProps = {
+  phase: CheckpointPhase;
+  indentLevel: number;
+};
+
+function PhaseSectionHeader({ phase, indentLevel }: PhaseSectionHeaderProps) {
+  const baseIndent = indentLevel === 1 ? "pl-12" : "pl-20";
+  return (
+    <TableRow className="hover:bg-transparent">
+      <TableCell className={baseIndent} colSpan={5}>
+        <PhaseBadge phase={phase} />
+      </TableCell>
+    </TableRow>
+  );
+}
+
+// =============================================================================
 // Checkpoint Row (Level 2)
 // =============================================================================
 
@@ -187,10 +207,9 @@ type CheckpointRowProps = {
   data: CheckpointProgressData;
   onCountClick: (context: SidePanelContext) => void;
   indentLevel: number; // 1 for under skills roadmap at top level, 2 for under skills roadmap nested in role
-  showPhaseBadge?: boolean; // Show phase badge (first item in phase section)
 };
 
-function CheckpointRow({ data, onCountClick, indentLevel, showPhaseBadge = false }: CheckpointRowProps) {
+function CheckpointRow({ data, onCountClick, indentLevel }: CheckpointRowProps) {
   const [expanded, setExpanded] = useState(false);
   const avgUnlocked = Math.round(
     (data.progressPercent / 100) * data.checkpoint.subCheckpoints.length
@@ -206,31 +225,25 @@ function CheckpointRow({ data, onCountClick, indentLevel, showPhaseBadge = false
   };
 
   // Base indentation for checkpoints
-  const baseIndent = indentLevel === 1 ? "pl-12" : "pl-20";
+  const baseIndent = indentLevel === 1 ? "pl-20" : "pl-28";
 
   return (
     <>
       <TableRow className="bg-gray-50/50 hover:bg-gray-100/50">
         <TableCell className={baseIndent}>
-          <div className="flex items-center">
-            {/* Fixed-width badge area (always takes space for alignment) */}
-            <div className="w-20 shrink-0 flex items-center">
-              {showPhaseBadge && <PhaseBadge phase={data.checkpoint.phase} />}
-            </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-6 w-6 mr-2"
-              onClick={() => setExpanded(!expanded)}
-            >
-              {expanded ? (
-                <ChevronDownIcon className="h-4 w-4" />
-              ) : (
-                <ChevronRightIcon className="h-4 w-4" />
-              )}
-            </Button>
-            <span className="text-sm text-gray-700">{data.checkpoint.name}</span>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-6 w-6 mr-2"
+            onClick={() => setExpanded(!expanded)}
+          >
+            {expanded ? (
+              <ChevronDownIcon className="h-4 w-4" />
+            ) : (
+              <ChevronRightIcon className="h-4 w-4" />
+            )}
+          </Button>
+          <span className="text-sm text-gray-700">{data.checkpoint.name}</span>
         </TableCell>
         <TableCell>
           <ProgressBar percent={data.progressPercent} />
@@ -259,7 +272,7 @@ function CheckpointRow({ data, onCountClick, indentLevel, showPhaseBadge = false
       </TableRow>
       {expanded && (
         <TableRow className="hover:bg-transparent">
-          <TableCell colSpan={5} className={`${indentLevel === 1 ? "pl-20" : "pl-28"} py-1`}>
+          <TableCell colSpan={5} className={`${indentLevel === 1 ? "pl-28" : "pl-36"} py-1`}>
             <SubCheckpointLabels
               checkpoint={data.checkpoint}
               unlockedCount={avgUnlocked}
@@ -301,7 +314,7 @@ function SkillsRoadmapRow({
   };
 
   // Group checkpoints by phase, sort by progress within each phase
-  const groupedCheckpoints = useMemo(() => {
+  const phaseGroups = useMemo(() => {
     let checkpoints = data.checkpoints;
     if (filterMode !== "all") {
       checkpoints = checkpoints.filter((cp) => cp.progressPercent > 0);
@@ -322,15 +335,7 @@ function SkillsRoadmapRow({
       byPhase[phase].sort((a, b) => b.progressPercent - a.progressPercent);
     });
 
-    // Flatten with showPhaseBadge flag
-    const result: { data: CheckpointProgressData; showPhaseBadge: boolean }[] = [];
-    (["Basic", "Intermediate", "Advanced"] as CheckpointPhase[]).forEach((phase) => {
-      byPhase[phase].forEach((cp, idx) => {
-        result.push({ data: cp, showPhaseBadge: idx === 0 });
-      });
-    });
-
-    return result;
+    return byPhase;
   }, [data.checkpoints, filterMode]);
 
   return (
@@ -379,15 +384,23 @@ function SkillsRoadmapRow({
         </TableCell>
       </TableRow>
       {expanded &&
-        groupedCheckpoints.map(({ data: checkpoint, showPhaseBadge }) => (
-          <CheckpointRow
-            key={checkpoint.checkpoint.id}
-            data={checkpoint}
-            onCountClick={onCountClick}
-            indentLevel={indentLevel + 1}
-            showPhaseBadge={showPhaseBadge}
-          />
-        ))}
+        (["Basic", "Intermediate", "Advanced"] as CheckpointPhase[]).map((phase) => {
+          const checkpoints = phaseGroups[phase];
+          if (checkpoints.length === 0) return null;
+          return (
+            <Fragment key={phase}>
+              <PhaseSectionHeader phase={phase} indentLevel={indentLevel + 1} />
+              {checkpoints.map((checkpoint) => (
+                <CheckpointRow
+                  key={checkpoint.checkpoint.id}
+                  data={checkpoint}
+                  onCountClick={onCountClick}
+                  indentLevel={indentLevel + 1}
+                />
+              ))}
+            </Fragment>
+          );
+        })}
     </>
   );
 }
