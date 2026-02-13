@@ -1,10 +1,9 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Info } from "lucide-react";
 import { ChaosMatrixChart } from "@/components/dashboard/orgDashboard/ChaosMatrixChart";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
-import { DesignTeamsTable } from "@/components/dashboard/orgDashboard/DesignTeamsTable";
 import { OwnershipScatter } from "@/components/dashboard/orgDashboard/OwnershipScatter";
 import { MotivationPanel } from "@/components/dashboard/shared/MotivationPanel";
 import {
@@ -24,7 +23,6 @@ import {
   CHAOS_MATRIX_MOTIVATION,
 } from "@/lib/dashboard/entities/team/mocks/outliersMockData";
 import type {
-  DesignTableFilter,
   OwnershipCategory,
   ChaosCategory,
 } from "@/lib/dashboard/entities/team/types";
@@ -33,8 +31,7 @@ import type {
 const FIXED_TIME_RANGE = "max" as const;
 
 export function OrgDesignPageClient() {
-  // State for design teams table
-  const [designFilter, setDesignFilter] = useState<DesignTableFilter>("mostOutliers");
+  // State for teams visibility (used by ChaosMatrixChart)
   const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
     DESIGN_TEAM_ROWS.forEach((row, index) => {
@@ -48,10 +45,6 @@ export function OrgDesignPageClient() {
     useState<OwnershipCategory>("lower");
   const [selectedChaosCategory, setSelectedChaosCategory] =
     useState<ChaosCategory>("Low-Skill Developer");
-
-  const handleToggleTeamVisibility = useCallback((teamName: string) => {
-    setVisibleTeams((prev) => ({ ...prev, [teamName]: !prev[teamName] }));
-  }, []);
 
   const designTeamRows = useMemo(
     () => getDesignTeamRowsForRange(FIXED_TIME_RANGE),
