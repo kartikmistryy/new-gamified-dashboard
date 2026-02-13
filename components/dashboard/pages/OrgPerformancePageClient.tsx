@@ -153,7 +153,7 @@ export function OrgPerformancePageClient() {
           </div>
 
           {/* Core Metrics */}
-          <DashboardSection title="Core Metrics" subtitle={`Trends compared ${comparisonLabel}`}>
+          <DashboardSection title="Core Metrics" subtitle={<>Trends compared <span className="font-semibold">{comparisonLabel}</span></>}>
             <div className="flex flex-col gap-8">
               {PERFORMANCE_METRICS.map((metric) => (
                 <MetricSectionRow key={metric.id} metric={metric} />
@@ -162,7 +162,7 @@ export function OrgPerformancePageClient() {
           </DashboardSection>
 
           {/* Detailed Breakdowns: nLoC by operation type */}
-          <DashboardSection title="Detailed Breakdowns" subtitle={`Normalized Lines of Code (nLoC) by operation types · Trends compared ${comparisonLabel}`}>
+          <DashboardSection title="Detailed Breakdowns" subtitle={<>Normalized Lines of Code (nLoC) by operation types · Trends compared <span className="font-semibold">{comparisonLabel}</span></>}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {OPERATION_BREAKDOWN_DATA.map((op) => (
                 <OperationBreakdownCard key={op.operation} {...op} />

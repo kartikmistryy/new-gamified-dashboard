@@ -143,17 +143,6 @@ export function OrgDesignPageClient() {
         </div>
       </DashboardSection>
 
-      {/* Row 4: Teams Table */}
-      <DashboardSection title="Teams" className="w-full">
-        <DesignTeamsTable
-          rows={designTeamRows}
-          activeFilter={designFilter}
-          onFilterChange={setDesignFilter}
-          showFilters={false}
-          visibleTeams={visibleTeams}
-          onToggleTeamVisibility={handleToggleTeamVisibility}
-        />
-      </DashboardSection>
     </div>
   );
 }
