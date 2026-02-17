@@ -6,6 +6,7 @@ import type { RoleRoadmapProgressData, SidePanelContext, ProficiencyLevel } from
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
 import { PeopleCountBadges, ProficiencyProgressBar } from "./PeopleStackedBar";
+import { CategoryRows } from "./CategoryRows";
 import { CheckpointRows } from "./CheckpointRows";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,10 +28,10 @@ type RoleBasedTableProps = {
 };
 
 /**
- * Role-Based Skills Table — L1 level.
- * Each row is a Role Roadmap. Expanding shows a nested table with:
- * 1. All Checkpoints across all skill roadmaps (sorted by phase)
- * 2. Skill Roadmap labels (pure display) after all checkpoints
+ * Role-Based Skills Table — L1 level (R3).
+ * Each row is a Role Roadmap. Expanding shows category-grouped content:
+ * - Categories with skills grouped inside
+ * - "Others" category contains role checkpoints
  */
 export function RoleBasedTable({ data, showAll, onSkillClick, onSidePanelOpen }: RoleBasedTableProps) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
@@ -166,14 +167,25 @@ function RoleRow({ role, rank, isExpanded, onToggle, showAll, onSkillClick, onSi
       </TableRow>
       {isExpanded ? (
         <TableRow className="hover:bg-transparent">
-<TableCell colSpan={5} className="p-0">
-                    <CheckpointRows
-              checkpoints={role.checkpoints}
-              showAll={showAll}
-              skillRoadmaps={role.skillsRoadmaps}
-              onSkillClick={onSkillClick}
-              onSidePanelOpen={onSidePanelOpen}
-            />
+          <TableCell colSpan={5} className="p-0">
+            {role.categories && role.categories.length > 0 ? (
+              // R3: Category-based hierarchy
+              <CategoryRows
+                categories={role.categories}
+                showAll={showAll}
+                onSkillClick={onSkillClick}
+                onSidePanelOpen={onSidePanelOpen}
+              />
+            ) : (
+              // Fallback to old checkpoint-based display
+              <CheckpointRows
+                checkpoints={role.checkpoints}
+                showAll={showAll}
+                skillRoadmaps={role.skillsRoadmaps}
+                onSkillClick={onSkillClick}
+                onSidePanelOpen={onSidePanelOpen}
+              />
+            )}
           </TableCell>
         </TableRow>
       ) : null}

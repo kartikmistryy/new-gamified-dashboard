@@ -67,6 +67,12 @@ export interface EngineerData {
 /** Skill-role mapping: role name → set of skill roadmap names */
 export type RoleSkillMapping = Map<string, string[]>;
 
+/** Skill to category mapping: skill name → category name (R3) */
+export type SkillCategoryMapping = Map<string, string>;
+
+/** Role to categorized skills: role name → { category → skill names } (R3) */
+export type RoleCategorizedSkills = Map<string, Map<string, string[]>>;
+
 /** Raw data from JSON files — shared between chart and table */
 export interface SkillGraphRawData {
   roadmaps: RoadmapIndexEntry[];
@@ -76,6 +82,10 @@ export interface SkillGraphRawData {
   detailMap: RoadmapDetailMap;
   /** Role name → skill roadmap names from mapping JSON */
   roleSkillMapping: RoleSkillMapping;
+  /** Skill name → category name (R3) */
+  skillCategoryMapping: SkillCategoryMapping;
+  /** Role name → { category → skill names } (R3) */
+  roleCategorizedSkills: RoleCategorizedSkills;
 }
 
 /* ── Fetch helpers ─────────────────────────────────────── */
@@ -103,23 +113,45 @@ export async function loadAllSkillGraphData(): Promise<SkillGraphBundle> {
   return full.chart;
 }
 
-/** Parse skill-role-mapping.json into Map<roleName, skillNames[]> */
-function buildRoleSkillMapping(
+/** Parse skill-role-mapping.json into multiple mappings (R3) */
+function buildSkillRoleMappings(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   json: any,
-): RoleSkillMapping {
-  const map: RoleSkillMapping = new Map();
+): {
+  roleSkillMapping: RoleSkillMapping;
+  skillCategoryMapping: SkillCategoryMapping;
+  roleCategorizedSkills: RoleCategorizedSkills;
+} {
+  const roleSkillMapping: RoleSkillMapping = new Map();
+  const skillCategoryMapping: SkillCategoryMapping = new Map();
+  const roleCategorizedSkills: RoleCategorizedSkills = new Map();
+
+  // Extract from bySkill section for skill → category
+  const bySkill = json?.bySkill ?? {};
+  for (const [categoryName, categoryData] of Object.entries(bySkill) as [string, { skills: Record<string, string[]> }][]) {
+    for (const skillName of Object.keys(categoryData.skills ?? {})) {
+      skillCategoryMapping.set(skillName, categoryName);
+    }
+  }
+
+  // Extract from byRole section for role → categorized skills
   const byRole = json?.byRole ?? {};
   for (const group of Object.values(byRole) as { roles: Record<string, { skills: Record<string, string[]> }> }[]) {
     for (const [roleName, roleData] of Object.entries(group.roles ?? {})) {
       const skills: string[] = [];
-      for (const skillNames of Object.values(roleData.skills ?? {})) {
+      const categorizedSkills = new Map<string, string[]>();
+
+      for (const [categoryName, skillNames] of Object.entries(roleData.skills ?? {})) {
         skills.push(...skillNames);
+        categorizedSkills.set(categoryName, skillNames);
       }
-      map.set(roleName, [...new Set(skills)]);
+
+      roleSkillMapping.set(roleName, [...new Set(skills)]);
+      roleCategorizedSkills.set(roleName, categorizedSkills);
     }
   }
-  return map;
+
+  return { roleSkillMapping, skillCategoryMapping, roleCategorizedSkills };
 }
 
 /** Load everything: chart bundle + raw data for table consumption */
@@ -153,7 +185,7 @@ export async function loadSkillGraphFullData(): Promise<SkillGraphFullData> {
   }
 
   const stats = aggregateStats(roadmapIndex.roadmaps, engineers);
-  const roleSkillMapping = buildRoleSkillMapping(mappingJson);
+  const { roleSkillMapping, skillCategoryMapping, roleCategorizedSkills } = buildSkillRoleMappings(mappingJson);
 
   return {
     chart: {
@@ -166,6 +198,8 @@ export async function loadSkillGraphFullData(): Promise<SkillGraphFullData> {
       engineers,
       detailMap,
       roleSkillMapping,
+      skillCategoryMapping,
+      roleCategorizedSkills,
     },
   };
 }

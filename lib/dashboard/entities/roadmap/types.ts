@@ -95,6 +95,41 @@ export type SkillsRoadmapProgressData = {
   checkpoints: CheckpointProgressData[];
 };
 
+/** Category grouping of skills (R3) */
+export type SkillCategoryName =
+  | "Programming Languages"
+  | "Frontend Technologies"
+  | "Backend Frameworks & Platforms"
+  | "Mobile & Cross-Platform"
+  | "Databases & Data Storage"
+  | "DevOps & Cloud Infrastructure"
+  | "CS Fundamentals & System Design"
+  | "Emerging Technology"
+  | "Others"; // For role checkpoints
+
+/** Computed progress for a category (R3, R5) */
+export type CategoryProgressData = {
+  category: SkillCategoryName;
+  /** Max progress of all skills in this category (R5) */
+  progressPercent: number;
+  proficiencyLevel: ProficiencyLevel | null;
+  /** Aggregate counts: union of all developers in this category */
+  developerCounts: {
+    basic: number;
+    intermediate: number;
+    advanced: number;
+  };
+  developersByLevel: {
+    basic: RoadmapDeveloper[];
+    intermediate: RoadmapDeveloper[];
+    advanced: RoadmapDeveloper[];
+  };
+  /** Skills in this category */
+  skills: SkillsRoadmapProgressData[];
+  /** Checkpoints in this category (for "Others" category only) */
+  checkpoints?: CheckpointProgressData[];
+};
+
 /** Computed progress for a role roadmap (for display) */
 export type RoleRoadmapProgressData = {
   roleRoadmap: RoleRoadmap;
@@ -114,6 +149,8 @@ export type RoleRoadmapProgressData = {
   checkpoints: CheckpointProgressData[];
   /** Mapped skill-based roadmaps (from skill-role-mapping) */
   skillsRoadmaps: SkillsRoadmapProgressData[];
+  /** Skills grouped by category (R3) - optional for backwards compatibility */
+  categories?: CategoryProgressData[];
 };
 
 /** View mode for the roadmap table */

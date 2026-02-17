@@ -24,8 +24,26 @@ import type {
   SkillsRoadmapProgressData,
   RoleRoadmapProgressData,
   RoleRoadmap,
+  CategoryProgressData,
+  SkillCategoryName,
 } from "@/lib/dashboard/entities/roadmap/types";
 import { getProficiencyLevel } from "@/lib/dashboard/entities/roadmap/utils/progressUtils";
+
+// =============================================================================
+// Category ordering (R3)
+// =============================================================================
+
+const CATEGORY_ORDER: SkillCategoryName[] = [
+  "Programming Languages",
+  "Frontend Technologies",
+  "Backend Frameworks & Platforms",
+  "Mobile & Cross-Platform",
+  "Databases & Data Storage",
+  "DevOps & Cloud Infrastructure",
+  "CS Fundamentals & System Design",
+  "Emerging Technology",
+  "Others",
+];
 
 // =============================================================================
 // Engineer helpers
@@ -224,6 +242,113 @@ function buildOneRoadmapProgress(
 }
 
 // =============================================================================
+// Category grouping (R3)
+// =============================================================================
+
+/** Build category progress from skills and checkpoints (R3, R5) */
+function buildCategoryProgress(
+  roleName: string,
+  mappedSkills: SkillsRoadmapProgressData[],
+  checkpoints: CheckpointProgressData[],
+  roleCategorizedSkills: Map<string, Map<string, string[]>>,
+): CategoryProgressData[] {
+  const categoryMap = new Map<SkillCategoryName, { skills: SkillsRoadmapProgressData[]; checkpoints: CheckpointProgressData[] }>();
+
+  // Initialize with empty arrays
+  for (const cat of CATEGORY_ORDER) {
+    categoryMap.set(cat, { skills: [], checkpoints: [] });
+  }
+
+  // Get categorized skills for this role
+  const roleCategories = roleCategorizedSkills.get(roleName);
+
+  if (roleCategories) {
+    // Group skills by category according to role mapping
+    for (const [categoryName, skillNames] of roleCategories.entries()) {
+      const catName = categoryName as SkillCategoryName;
+      const catData = categoryMap.get(catName) ?? { skills: [], checkpoints: [] };
+
+      for (const skillName of skillNames) {
+        const skill = mappedSkills.find((s) => s.roadmap.name === skillName);
+        if (skill) {
+          catData.skills.push(skill);
+        }
+      }
+
+      categoryMap.set(catName, catData);
+    }
+  }
+
+  // Put checkpoints in "Others" category
+  const othersData = categoryMap.get("Others")!;
+  othersData.checkpoints = checkpoints;
+
+  // Build CategoryProgressData for each category
+  const result: CategoryProgressData[] = [];
+
+  for (const category of CATEGORY_ORDER) {
+    const data = categoryMap.get(category)!;
+
+    // Skip categories with no skills and no checkpoints
+    if (data.skills.length === 0 && (data.checkpoints?.length ?? 0) === 0) {
+      continue;
+    }
+
+    // R5: Max progress from skills
+    const maxProgress = data.skills.length > 0
+      ? Math.max(...data.skills.map((s) => s.progressPercent))
+      : (data.checkpoints?.length ?? 0) > 0
+        ? Math.max(...(data.checkpoints?.map((c) => c.progressPercent) ?? [0]))
+        : 0;
+
+    // Aggregate developers by level (union of all skills)
+    const developersByLevel = emptyByLevel();
+    const seenIds = { basic: new Set<string>(), intermediate: new Set<string>(), advanced: new Set<string>() };
+
+    for (const skill of data.skills) {
+      for (const level of ["basic", "intermediate", "advanced"] as const) {
+        for (const dev of skill.developersByLevel[level]) {
+          if (!seenIds[level].has(dev.id)) {
+            seenIds[level].add(dev.id);
+            developersByLevel[level].push(dev);
+          }
+        }
+      }
+    }
+
+    // Also include checkpoint developers for Others category
+    if (category === "Others" && data.checkpoints) {
+      for (const cp of data.checkpoints) {
+        for (const level of ["basic", "intermediate", "advanced"] as const) {
+          for (const dev of cp.developersByLevel[level]) {
+            if (!seenIds[level].has(dev.id)) {
+              seenIds[level].add(dev.id);
+              developersByLevel[level].push(dev);
+            }
+          }
+        }
+      }
+    }
+
+    result.push({
+      category,
+      progressPercent: Math.round(maxProgress),
+      proficiencyLevel: getProficiencyLevel(maxProgress),
+      developerCounts: {
+        basic: developersByLevel.basic.length,
+        intermediate: developersByLevel.intermediate.length,
+        advanced: developersByLevel.advanced.length,
+      },
+      developersByLevel,
+      skills: data.skills,
+      checkpoints: category === "Others" ? data.checkpoints : undefined,
+    });
+  }
+
+  return result;
+}
+
+// =============================================================================
 // Public API
 // =============================================================================
 
@@ -234,7 +359,7 @@ export interface SkillGraphTableData {
 
 /** Transform raw graph JSON into table-compatible data */
 export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableData {
-  const { roadmaps, engineerIndex, engineers, detailMap, roleSkillMapping } = raw;
+  const { roadmaps, engineerIndex, engineers, detailMap, roleSkillMapping, roleCategorizedSkills } = raw;
 
   // Skill-based
   const skillRoadmaps = roadmaps.filter((r) => r.type === "skill");
@@ -259,6 +384,14 @@ export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableDat
       .map((name) => skillByName.get(name))
       .filter((s): s is SkillsRoadmapProgressData => s != null);
 
+    // Build category groupings (R3)
+    const categories = buildCategoryProgress(
+      r.name,
+      mappedSkills,
+      inner.checkpoints,
+      roleCategorizedSkills,
+    );
+
     const roleRoadmap: RoleRoadmap = {
       id: r.key,
       name: r.name,
@@ -273,6 +406,7 @@ export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableDat
       developersByLevel: inner.developersByLevel,
       checkpoints: inner.checkpoints,
       skillsRoadmaps: mappedSkills,
+      categories,
     };
     return result;
   });
