@@ -1,0 +1,1498 @@
+[
+  {
+    "roadmap": "Node.js",
+    "group": "Backend Frameworks & Platforms",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "fundamentals",
+            "title": "Node.js Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "what-is-node",
+                "title": "What is Node.js & Event Loop"
+              },
+              {
+                "id": "non-blocking-io",
+                "title": "Non-Blocking I/O Model"
+              },
+              {
+                "id": "running-scripts",
+                "title": "Running Scripts & REPL"
+              }
+            ]
+          },
+          {
+            "id": "modules",
+            "title": "Modules & Packages",
+            "subCheckpoints": [
+              {
+                "id": "commonjs-esm",
+                "title": "CommonJS vs ES Modules"
+              },
+              {
+                "id": "npm",
+                "title": "npm & package.json"
+              },
+              {
+                "id": "publishing",
+                "title": "Creating & Publishing Packages"
+              }
+            ]
+          },
+          {
+            "id": "core-modules",
+            "title": "Core Modules",
+            "subCheckpoints": [
+              {
+                "id": "fs-path",
+                "title": "fs (File System) & path"
+              },
+              {
+                "id": "http-events",
+                "title": "http, events & streams"
+              }
+            ]
+          },
+          {
+            "id": "async",
+            "title": "Async Patterns",
+            "subCheckpoints": [
+              {
+                "id": "callbacks-promises",
+                "title": "Callbacks & Promises"
+              },
+              {
+                "id": "async-await",
+                "title": "Async/Await & Error Handling"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "express",
+            "title": "Express.js",
+            "subCheckpoints": [
+              {
+                "id": "routing-middleware",
+                "title": "Routing & Middleware"
+              },
+              {
+                "id": "error-handling",
+                "title": "Error Handling & Validation"
+              },
+              {
+                "id": "static-templates",
+                "title": "Static Files & Template Engines"
+              }
+            ]
+          },
+          {
+            "id": "database",
+            "title": "Database Integration",
+            "subCheckpoints": [
+              {
+                "id": "postgres-mongo",
+                "title": "PostgreSQL & MongoDB"
+              },
+              {
+                "id": "orm",
+                "title": "Prisma / Sequelize / Mongoose"
+              },
+              {
+                "id": "migrations",
+                "title": "Migrations & Connection Pooling"
+              }
+            ]
+          },
+          {
+            "id": "auth",
+            "title": "Authentication",
+            "subCheckpoints": [
+              {
+                "id": "jwt",
+                "title": "JWT & Session-based Auth"
+              },
+              {
+                "id": "passport",
+                "title": "Passport.js & OAuth 2.0"
+              },
+              {
+                "id": "rbac",
+                "title": "Role-Based Access Control"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "jest-vitest",
+                "title": "Jest / Vitest"
+              },
+              {
+                "id": "supertest",
+                "title": "Supertest (API Testing)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "advanced-frameworks",
+            "title": "Advanced Frameworks",
+            "subCheckpoints": [
+              {
+                "id": "nestjs",
+                "title": "NestJS (Enterprise, TypeScript)"
+              },
+              {
+                "id": "fastify",
+                "title": "Fastify (High Performance)"
+              }
+            ]
+          },
+          {
+            "id": "realtime",
+            "title": "Real-Time Communication",
+            "subCheckpoints": [
+              {
+                "id": "websockets",
+                "title": "WebSockets & Socket.io"
+              },
+              {
+                "id": "sse",
+                "title": "Server-Sent Events"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "title": "Performance & Scaling",
+            "subCheckpoints": [
+              {
+                "id": "cluster-pm2",
+                "title": "Cluster Module & PM2"
+              },
+              {
+                "id": "caching",
+                "title": "Redis Caching & Rate Limiting"
+              },
+              {
+                "id": "profiling",
+                "title": "Memory Leak Detection & Profiling"
+              }
+            ]
+          },
+          {
+            "id": "security",
+            "title": "Security",
+            "subCheckpoints": [
+              {
+                "id": "helmet",
+                "title": "Helmet.js & CORS"
+              },
+              {
+                "id": "injection-prevention",
+                "title": "Input Sanitization & Injection Prevention"
+              }
+            ]
+          },
+          {
+            "id": "deployment",
+            "title": "Deployment",
+            "subCheckpoints": [
+              {
+                "id": "docker",
+                "title": "Docker & CI/CD"
+              },
+              {
+                "id": "serverless",
+                "title": "Serverless (AWS Lambda, Vercel)"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Spring Boot",
+    "group": "Backend Frameworks & Platforms",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "java-prereqs",
+            "title": "Java Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "oop",
+                "title": "OOP, Collections & Generics"
+              },
+              {
+                "id": "streams-lambda",
+                "title": "Streams API & Lambda Expressions"
+              }
+            ]
+          },
+          {
+            "id": "spring-basics",
+            "title": "Spring Boot Basics",
+            "subCheckpoints": [
+              {
+                "id": "initializr",
+                "title": "Spring Initializr & Project Structure"
+              },
+              {
+                "id": "config",
+                "title": "application.yml & Starters"
+              },
+              {
+                "id": "embedded-server",
+                "title": "Embedded Server (Tomcat)"
+              }
+            ]
+          },
+          {
+            "id": "di-ioc",
+            "title": "Dependency Injection & IoC",
+            "subCheckpoints": [
+              {
+                "id": "annotations",
+                "title": "@Component, @Service, @Repository"
+              },
+              {
+                "id": "autowired",
+                "title": "Constructor Injection & Bean Lifecycle"
+              }
+            ]
+          },
+          {
+            "id": "rest-basics",
+            "title": "REST API Basics",
+            "subCheckpoints": [
+              {
+                "id": "controllers",
+                "title": "@RestController & Request Mapping"
+              },
+              {
+                "id": "request-response",
+                "title": "Path Variables, Request Body & ResponseEntity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "jpa",
+            "title": "Spring Data JPA",
+            "subCheckpoints": [
+              {
+                "id": "entities",
+                "title": "Entity Mapping & Relationships"
+              },
+              {
+                "id": "repositories",
+                "title": "JpaRepository & Custom Queries"
+              },
+              {
+                "id": "migrations",
+                "title": "Flyway / Liquibase Migrations"
+              }
+            ]
+          },
+          {
+            "id": "security",
+            "title": "Spring Security",
+            "subCheckpoints": [
+              {
+                "id": "authn-authz",
+                "title": "Authentication & Authorization"
+              },
+              {
+                "id": "jwt-oauth",
+                "title": "JWT & OAuth 2.0"
+              },
+              {
+                "id": "rbac",
+                "title": "Role-Based Access Control"
+              }
+            ]
+          },
+          {
+            "id": "validation",
+            "title": "Validation & Error Handling",
+            "subCheckpoints": [
+              {
+                "id": "bean-validation",
+                "title": "Bean Validation & @Valid"
+              },
+              {
+                "id": "exception-handler",
+                "title": "@ControllerAdvice & Global Error Handling"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "junit-mockito",
+                "title": "JUnit 5 & Mockito"
+              },
+              {
+                "id": "spring-test",
+                "title": "@SpringBootTest & MockMvc"
+              },
+              {
+                "id": "testcontainers",
+                "title": "Testcontainers (Integration)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "microservices",
+            "title": "Microservices",
+            "subCheckpoints": [
+              {
+                "id": "gateway-discovery",
+                "title": "API Gateway & Service Discovery"
+              },
+              {
+                "id": "resilience",
+                "title": "Circuit Breaker (Resilience4j)"
+              },
+              {
+                "id": "grpc",
+                "title": "gRPC & Inter-Service Communication"
+              }
+            ]
+          },
+          {
+            "id": "messaging",
+            "title": "Messaging & Events",
+            "subCheckpoints": [
+              {
+                "id": "kafka",
+                "title": "Spring Kafka"
+              },
+              {
+                "id": "rabbitmq",
+                "title": "RabbitMQ & Async Processing"
+              }
+            ]
+          },
+          {
+            "id": "caching-perf",
+            "title": "Caching & Performance",
+            "subCheckpoints": [
+              {
+                "id": "redis-cache",
+                "title": "Redis & Spring Cache"
+              },
+              {
+                "id": "n-plus-one",
+                "title": "N+1 Problem & Query Optimization"
+              }
+            ]
+          },
+          {
+            "id": "deployment",
+            "title": "Deployment & DevOps",
+            "subCheckpoints": [
+              {
+                "id": "docker-k8s",
+                "title": "Docker & Kubernetes"
+              },
+              {
+                "id": "cicd",
+                "title": "CI/CD & Cloud Deployment"
+              },
+              {
+                "id": "graalvm",
+                "title": "GraalVM Native Images"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Django",
+    "group": "Backend Frameworks & Platforms",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "python-prereqs",
+            "title": "Python Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "syntax-oop",
+                "title": "Syntax, OOP & Data Structures"
+              },
+              {
+                "id": "venv",
+                "title": "Virtual Environments & pip"
+              }
+            ]
+          },
+          {
+            "id": "django-basics",
+            "title": "Django Basics",
+            "subCheckpoints": [
+              {
+                "id": "mvt",
+                "title": "MVT Architecture & Project Setup"
+              },
+              {
+                "id": "apps",
+                "title": "Django Apps & Admin Interface"
+              },
+              {
+                "id": "settings",
+                "title": "Settings Configuration"
+              }
+            ]
+          },
+          {
+            "id": "urls-views",
+            "title": "URL Routing & Views",
+            "subCheckpoints": [
+              {
+                "id": "url-patterns",
+                "title": "URL Patterns & Path Converters"
+              },
+              {
+                "id": "fbv-cbv",
+                "title": "Function-Based & Class-Based Views"
+              }
+            ]
+          },
+          {
+            "id": "models",
+            "title": "Models & ORM",
+            "subCheckpoints": [
+              {
+                "id": "fields-migrations",
+                "title": "Model Fields & Migrations"
+              },
+              {
+                "id": "queryset",
+                "title": "QuerySet API & Relationships"
+              },
+              {
+                "id": "admin",
+                "title": "Django Admin Customization"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "drf",
+            "title": "Django REST Framework",
+            "subCheckpoints": [
+              {
+                "id": "serializers",
+                "title": "Serializers & ViewSets"
+              },
+              {
+                "id": "routers",
+                "title": "Routers, Pagination & Filtering"
+              },
+              {
+                "id": "permissions",
+                "title": "Permissions & Throttling"
+              }
+            ]
+          },
+          {
+            "id": "auth",
+            "title": "Authentication",
+            "subCheckpoints": [
+              {
+                "id": "builtin-auth",
+                "title": "Django Auth System & Custom User Model"
+              },
+              {
+                "id": "jwt-oauth",
+                "title": "JWT & OAuth 2.0 (django-allauth)"
+              }
+            ]
+          },
+          {
+            "id": "db-advanced",
+            "title": "Database Advanced",
+            "subCheckpoints": [
+              {
+                "id": "advanced-queryset",
+                "title": "annotate, aggregate, F & Q Objects"
+              },
+              {
+                "id": "transactions",
+                "title": "Transactions & Indexing"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "pytest-django",
+                "title": "pytest-django & Factory Boy"
+              },
+              {
+                "id": "api-testing",
+                "title": "DRF APIClient & Coverage"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "caching",
+            "title": "Caching",
+            "subCheckpoints": [
+              {
+                "id": "cache-framework",
+                "title": "Django Cache Framework & Redis"
+              },
+              {
+                "id": "strategies",
+                "title": "Per-View & Fragment Caching"
+              }
+            ]
+          },
+          {
+            "id": "async",
+            "title": "Async & Background Tasks",
+            "subCheckpoints": [
+              {
+                "id": "async-views",
+                "title": "Async Views & ASGI"
+              },
+              {
+                "id": "celery",
+                "title": "Celery + Redis (Background Tasks)"
+              },
+              {
+                "id": "channels",
+                "title": "Django Channels (WebSockets)"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "title": "Performance",
+            "subCheckpoints": [
+              {
+                "id": "select-prefetch",
+                "title": "select_related & prefetch_related"
+              },
+              {
+                "id": "debug-toolbar",
+                "title": "Django Debug Toolbar & N+1 Detection"
+              }
+            ]
+          },
+          {
+            "id": "deployment",
+            "title": "Deployment",
+            "subCheckpoints": [
+              {
+                "id": "gunicorn-nginx",
+                "title": "Gunicorn / uWSGI & Nginx"
+              },
+              {
+                "id": "docker-cicd",
+                "title": "Docker & CI/CD Pipelines"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Laravel",
+    "group": "Backend Frameworks & Platforms",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "php-prereqs",
+            "title": "PHP Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "syntax-oop",
+                "title": "Syntax, OOP & Traits"
+              },
+              {
+                "id": "composer",
+                "title": "Composer & Autoloading"
+              }
+            ]
+          },
+          {
+            "id": "laravel-basics",
+            "title": "Laravel Basics",
+            "subCheckpoints": [
+              {
+                "id": "mvc",
+                "title": "MVC Architecture & Project Structure"
+              },
+              {
+                "id": "artisan",
+                "title": "Artisan CLI & Environment Config"
+              }
+            ]
+          },
+          {
+            "id": "routing-controllers",
+            "title": "Routing & Controllers",
+            "subCheckpoints": [
+              {
+                "id": "routes",
+                "title": "Route Definitions & Parameters"
+              },
+              {
+                "id": "controllers",
+                "title": "Resource Controllers & Middleware"
+              }
+            ]
+          },
+          {
+            "id": "eloquent",
+            "title": "Eloquent ORM",
+            "subCheckpoints": [
+              {
+                "id": "models-migrations",
+                "title": "Models, Migrations & CRUD"
+              },
+              {
+                "id": "relationships",
+                "title": "Relationships & Collections"
+              }
+            ]
+          },
+          {
+            "id": "blade",
+            "title": "Blade Templates",
+            "subCheckpoints": [
+              {
+                "id": "directives",
+                "title": "Blade Directives & Layouts"
+              },
+              {
+                "id": "components",
+                "title": "Components & Slots"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "api",
+            "title": "API Development",
+            "subCheckpoints": [
+              {
+                "id": "resources",
+                "title": "API Resources & Validation"
+              },
+              {
+                "id": "sanctum",
+                "title": "Sanctum & Passport (Auth)"
+              },
+              {
+                "id": "rate-limiting",
+                "title": "Rate Limiting & Versioning"
+              }
+            ]
+          },
+          {
+            "id": "auth",
+            "title": "Authentication & Authorization",
+            "subCheckpoints": [
+              {
+                "id": "breeze-jetstream",
+                "title": "Breeze / Jetstream Scaffolding"
+              },
+              {
+                "id": "policies-gates",
+                "title": "Policies & Gates"
+              }
+            ]
+          },
+          {
+            "id": "queues",
+            "title": "Queues & Jobs",
+            "subCheckpoints": [
+              {
+                "id": "jobs",
+                "title": "Creating & Dispatching Jobs"
+              },
+              {
+                "id": "horizon",
+                "title": "Queue Workers & Horizon"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "pest-phpunit",
+                "title": "Pest / PHPUnit"
+              },
+              {
+                "id": "feature-tests",
+                "title": "Feature & Database Testing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "advanced-features",
+            "title": "Advanced Features",
+            "subCheckpoints": [
+              {
+                "id": "events-broadcasting",
+                "title": "Events, Broadcasting & WebSockets"
+              },
+              {
+                "id": "notifications",
+                "title": "Notifications & Task Scheduling"
+              },
+              {
+                "id": "scout",
+                "title": "Laravel Scout (Full-Text Search)"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "title": "Caching & Performance",
+            "subCheckpoints": [
+              {
+                "id": "cache-drivers",
+                "title": "Redis & Route/Config Caching"
+              },
+              {
+                "id": "octane",
+                "title": "Laravel Octane (High Performance)"
+              }
+            ]
+          },
+          {
+            "id": "architecture",
+            "title": "Architecture Patterns",
+            "subCheckpoints": [
+              {
+                "id": "service-repo",
+                "title": "Service & Repository Patterns"
+              },
+              {
+                "id": "ddd",
+                "title": "Domain-Driven Design"
+              }
+            ]
+          },
+          {
+            "id": "deployment",
+            "title": "Deployment",
+            "subCheckpoints": [
+              {
+                "id": "forge-vapor",
+                "title": "Laravel Forge / Vapor"
+              },
+              {
+                "id": "docker-cicd",
+                "title": "Docker & CI/CD"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Ruby on Rails",
+    "group": "Backend Frameworks & Platforms",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "ruby-prereqs",
+            "title": "Ruby Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "syntax-oop",
+                "title": "Syntax, Classes & Modules"
+              },
+              {
+                "id": "blocks-gems",
+                "title": "Blocks, Procs & RubyGems"
+              }
+            ]
+          },
+          {
+            "id": "rails-basics",
+            "title": "Rails Basics",
+            "subCheckpoints": [
+              {
+                "id": "mvc",
+                "title": "MVC Architecture & Generators"
+              },
+              {
+                "id": "project-structure",
+                "title": "Project Structure & Rails Console"
+              }
+            ]
+          },
+          {
+            "id": "routing-controllers",
+            "title": "Routing & Controllers",
+            "subCheckpoints": [
+              {
+                "id": "restful-routes",
+                "title": "RESTful Routes & Resources"
+              },
+              {
+                "id": "controllers-views",
+                "title": "Controllers, ERB & Partials"
+              }
+            ]
+          },
+          {
+            "id": "active-record",
+            "title": "Active Record",
+            "subCheckpoints": [
+              {
+                "id": "models-migrations",
+                "title": "Models, Migrations & CRUD"
+              },
+              {
+                "id": "associations",
+                "title": "Associations & Validations"
+              },
+              {
+                "id": "callbacks",
+                "title": "Callbacks"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "api",
+            "title": "API Development",
+            "subCheckpoints": [
+              {
+                "id": "api-mode",
+                "title": "Rails API Mode & Serializers"
+              },
+              {
+                "id": "pagination",
+                "title": "Pagination & Rate Limiting"
+              }
+            ]
+          },
+          {
+            "id": "auth",
+            "title": "Authentication & Authorization",
+            "subCheckpoints": [
+              {
+                "id": "devise",
+                "title": "Devise & OmniAuth"
+              },
+              {
+                "id": "pundit",
+                "title": "Pundit / CanCanCan (Authorization)"
+              }
+            ]
+          },
+          {
+            "id": "background-jobs",
+            "title": "Background Jobs",
+            "subCheckpoints": [
+              {
+                "id": "sidekiq",
+                "title": "Sidekiq & Active Job"
+              },
+              {
+                "id": "mailers",
+                "title": "Action Mailer & Scheduling"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "rspec",
+                "title": "RSpec & FactoryBot"
+              },
+              {
+                "id": "capybara",
+                "title": "Capybara (System Tests)"
+              }
+            ]
+          },
+          {
+            "id": "hotwire",
+            "title": "Frontend & Hotwire",
+            "subCheckpoints": [
+              {
+                "id": "turbo",
+                "title": "Turbo (Hotwire)"
+              },
+              {
+                "id": "stimulus",
+                "title": "Stimulus.js & Action Cable"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "caching",
+            "title": "Caching",
+            "subCheckpoints": [
+              {
+                "id": "fragment-cache",
+                "title": "Fragment & Russian Doll Caching"
+              },
+              {
+                "id": "redis-cache",
+                "title": "Redis Cache Store"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "title": "Performance",
+            "subCheckpoints": [
+              {
+                "id": "eager-loading",
+                "title": "Eager Loading & N+1 Detection"
+              },
+              {
+                "id": "profiling",
+                "title": "rack-mini-profiler & Optimization"
+              }
+            ]
+          },
+          {
+            "id": "architecture",
+            "title": "Architecture Patterns",
+            "subCheckpoints": [
+              {
+                "id": "service-objects",
+                "title": "Service Objects & Interactors"
+              },
+              {
+                "id": "engines",
+                "title": "Rails Engines (Modular Architecture)"
+              }
+            ]
+          },
+          {
+            "id": "deployment",
+            "title": "Deployment",
+            "subCheckpoints": [
+              {
+                "id": "docker",
+                "title": "Docker & CI/CD"
+              },
+              {
+                "id": "puma-nginx",
+                "title": "Puma, Nginx & Cloud Deployment"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "ASP.NET Core",
+    "group": "Backend Frameworks & Platforms",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "csharp-prereqs",
+            "title": "C# Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "oop-linq",
+                "title": "OOP, LINQ & Collections"
+              },
+              {
+                "id": "async-generics",
+                "title": "Async/Await & Generics"
+              }
+            ]
+          },
+          {
+            "id": "aspnet-basics",
+            "title": "ASP.NET Core Basics",
+            "subCheckpoints": [
+              {
+                "id": "project-setup",
+                "title": "Project Setup & Structure"
+              },
+              {
+                "id": "middleware",
+                "title": "Middleware Pipeline & DI Container"
+              },
+              {
+                "id": "config",
+                "title": "appsettings.json & Configuration"
+              }
+            ]
+          },
+          {
+            "id": "mvc",
+            "title": "MVC & Minimal APIs",
+            "subCheckpoints": [
+              {
+                "id": "controllers",
+                "title": "Controllers, Routing & Model Binding"
+              },
+              {
+                "id": "minimal-api",
+                "title": "Minimal API Syntax & Endpoints"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "web-api",
+            "title": "Web API Development",
+            "subCheckpoints": [
+              {
+                "id": "rest-validation",
+                "title": "RESTful Design & FluentValidation"
+              },
+              {
+                "id": "swagger",
+                "title": "Swagger / OpenAPI & Versioning"
+              }
+            ]
+          },
+          {
+            "id": "ef-core",
+            "title": "Entity Framework Core",
+            "subCheckpoints": [
+              {
+                "id": "dbcontext",
+                "title": "DbContext, Entities & Migrations"
+              },
+              {
+                "id": "relationships",
+                "title": "Relationships & LINQ Queries"
+              },
+              {
+                "id": "seeding",
+                "title": "Database Seeding & Change Tracking"
+              }
+            ]
+          },
+          {
+            "id": "auth",
+            "title": "Authentication & Authorization",
+            "subCheckpoints": [
+              {
+                "id": "identity",
+                "title": "ASP.NET Core Identity"
+              },
+              {
+                "id": "jwt-oauth",
+                "title": "JWT & OAuth 2.0"
+              },
+              {
+                "id": "policy-based",
+                "title": "Policy-Based & Claims-Based Auth"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "xunit",
+                "title": "xUnit & Moq"
+              },
+              {
+                "id": "integration",
+                "title": "WebApplicationFactory (Integration)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "microservices",
+            "title": "Microservices",
+            "subCheckpoints": [
+              {
+                "id": "grpc",
+                "title": "gRPC & API Gateway (YARP)"
+              },
+              {
+                "id": "messaging",
+                "title": "MassTransit & RabbitMQ"
+              }
+            ]
+          },
+          {
+            "id": "realtime",
+            "title": "Real-Time & Background",
+            "subCheckpoints": [
+              {
+                "id": "signalr",
+                "title": "SignalR (WebSockets)"
+              },
+              {
+                "id": "hosted-services",
+                "title": "IHostedService (Background Tasks)"
+              }
+            ]
+          },
+          {
+            "id": "architecture",
+            "title": "Architecture Patterns",
+            "subCheckpoints": [
+              {
+                "id": "clean-arch",
+                "title": "Clean Architecture & CQRS"
+              },
+              {
+                "id": "ddd",
+                "title": "Domain-Driven Design"
+              }
+            ]
+          },
+          {
+            "id": "deployment",
+            "title": "Deployment",
+            "subCheckpoints": [
+              {
+                "id": "docker-k8s",
+                "title": "Docker & Kubernetes"
+              },
+              {
+                "id": "azure",
+                "title": "Azure App Service & CI/CD"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "WordPress",
+    "group": "Backend Frameworks & Platforms",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "web-prereqs",
+            "title": "Web Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "html-css-js",
+                "title": "HTML, CSS & JavaScript Basics"
+              },
+              {
+                "id": "hosting",
+                "title": "Domain & Hosting Basics"
+              }
+            ]
+          },
+          {
+            "id": "wp-basics",
+            "title": "WordPress Basics",
+            "subCheckpoints": [
+              {
+                "id": "install",
+                "title": "Installation & Dashboard"
+              },
+              {
+                "id": "settings-users",
+                "title": "Settings & User Roles"
+              }
+            ]
+          },
+          {
+            "id": "content",
+            "title": "Content Management",
+            "subCheckpoints": [
+              {
+                "id": "posts-pages",
+                "title": "Posts, Pages & Media"
+              },
+              {
+                "id": "gutenberg",
+                "title": "Gutenberg Block Editor"
+              },
+              {
+                "id": "menus-widgets",
+                "title": "Menus, Navigation & Widgets"
+              }
+            ]
+          },
+          {
+            "id": "themes",
+            "title": "Themes",
+            "subCheckpoints": [
+              {
+                "id": "choosing-themes",
+                "title": "Choosing & Installing Themes"
+              },
+              {
+                "id": "child-themes",
+                "title": "Child Themes & Template Hierarchy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "php-wp",
+            "title": "PHP for WordPress",
+            "subCheckpoints": [
+              {
+                "id": "template-tags",
+                "title": "Template Tags & The Loop"
+              },
+              {
+                "id": "conditional-tags",
+                "title": "Conditional Tags & Custom Templates"
+              }
+            ]
+          },
+          {
+            "id": "theme-dev",
+            "title": "Theme Development",
+            "subCheckpoints": [
+              {
+                "id": "custom-types",
+                "title": "Custom Post Types & Taxonomies"
+              },
+              {
+                "id": "acf",
+                "title": "Advanced Custom Fields (ACF)"
+              },
+              {
+                "id": "enqueue",
+                "title": "Enqueuing Scripts & Styles"
+              }
+            ]
+          },
+          {
+            "id": "plugin-dev",
+            "title": "Plugin Development",
+            "subCheckpoints": [
+              {
+                "id": "hooks",
+                "title": "Actions & Filters (Hooks)"
+              },
+              {
+                "id": "shortcodes",
+                "title": "Shortcodes & Settings API"
+              }
+            ]
+          },
+          {
+            "id": "rest-api",
+            "title": "WordPress REST API",
+            "subCheckpoints": [
+              {
+                "id": "endpoints",
+                "title": "REST Endpoints & Custom Routes"
+              },
+              {
+                "id": "auth",
+                "title": "API Authentication (Nonce, JWT)"
+              }
+            ]
+          },
+          {
+            "id": "security",
+            "title": "Security",
+            "subCheckpoints": [
+              {
+                "id": "hardening",
+                "title": "WordPress Hardening"
+              },
+              {
+                "id": "sanitization",
+                "title": "Input Sanitization & Escaping"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "advanced-theme",
+            "title": "Advanced Theme Development",
+            "subCheckpoints": [
+              {
+                "id": "fse",
+                "title": "Full Site Editing & Block Themes"
+              },
+              {
+                "id": "headless",
+                "title": "Headless WordPress (Next.js / Gatsby)"
+              }
+            ]
+          },
+          {
+            "id": "woocommerce",
+            "title": "WooCommerce",
+            "subCheckpoints": [
+              {
+                "id": "setup",
+                "title": "Setup, Products & Payments"
+              },
+              {
+                "id": "customization",
+                "title": "Hooks & Custom Plugins"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "title": "Performance",
+            "subCheckpoints": [
+              {
+                "id": "object-cache",
+                "title": "Object Caching (Redis)"
+              },
+              {
+                "id": "cdn-optimization",
+                "title": "CDN & Core Web Vitals"
+              }
+            ]
+          },
+          {
+            "id": "deployment",
+            "title": "Deployment & DevOps",
+            "subCheckpoints": [
+              {
+                "id": "wp-cli",
+                "title": "WP-CLI & Version Control"
+              },
+              {
+                "id": "cicd",
+                "title": "Automated Deployments & Staging"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

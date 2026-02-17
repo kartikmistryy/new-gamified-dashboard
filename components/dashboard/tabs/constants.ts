@@ -4,7 +4,7 @@ export const REPO_DASHBOARD_TABS: Readonly<ProfileTab[]> = [
   { key: "overview", label: "Overview" },
   { key: "performance", label: "Performance" },
   { key: "skillgraph", label: "Skills Graph" },
-  { key: "design", label: "Design" },
+  { key: "design", label: "Outliers" },
   { key: "spof", label: "SPOF" },
 ] as const
 
@@ -17,7 +17,7 @@ export const USER_DASHBOARD_TABS: Readonly<ProfileTab[]> = [
 export const TEAM_DASHBOARD_TABS: Readonly<ProfileTab[]> = [
   { key: "overview", label: "Overview" },
   { key: "performance", label: "Performance" },
-  { key: "design", label: "Design" },
+  { key: "design", label: "Outliers" },
   { key: "skillgraph", label: "Skills Graph" },
   { key: "spof", label: "SPOF" },
 ] as const
@@ -25,7 +25,7 @@ export const TEAM_DASHBOARD_TABS: Readonly<ProfileTab[]> = [
 export const ORGANIZATION_DASHBOARD_TABS: Readonly<ProfileTab[]> = [
   { key: "overview", label: "Overview" },
   { key: "performance", label: "Performance" },
-  { key: "design", label: "Design" },
+  { key: "design", label: "Outliers" },
   { key: "skillgraph", label: "Skills Graph" },
   { key: "spof", label: "SPOF" },
 ] as const

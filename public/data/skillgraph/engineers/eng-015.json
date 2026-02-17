@@ -1,0 +1,452 @@
+{
+  "userId": "eng-015",
+  "name": "Oscar Rivera",
+  "createdAt": "2026-01-05T00:00:00Z",
+  "lastScannedAt": "2026-02-13T08:00:00Z",
+  "roadmaps": {
+    "role:Data Analyst": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "sheets-formulas": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-01-17T08:00:00Z",
+          "detectionCount": 35
+        },
+        "sheets-pivot-tables": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 33
+        },
+        "sheets-charts": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 28
+        },
+        "sheets-data-validation": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 38
+        },
+        "sql-select": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 34
+        },
+        "sql-joins": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 29
+        },
+        "sql-aggregation": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 36
+        },
+        "sql-subqueries": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-20T08:00:00Z",
+          "detectionCount": 21
+        },
+        "stats-descriptive": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 26
+        },
+        "stats-distributions": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 34
+        },
+        "stats-correlation": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 22
+        },
+        "clean-missing": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 32
+        },
+        "viz-design": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-19T08:00:00Z",
+          "detectionCount": 29
+        },
+        "viz-tableau": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 36
+        },
+        "viz-powerbi": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 32
+        },
+        "py-pandas": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-19T08:00:00Z",
+          "detectionCount": 26
+        },
+        "py-visualization": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 26
+        },
+        "r-tidyverse": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 21
+        },
+        "eda-summary": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 25
+        },
+        "ab-design": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 22
+        },
+        "ab-analysis": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 30
+        }
+      }
+    },
+    "role:BI Analyst": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "sql-queries": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 12
+        },
+        "sql-views": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 17
+        },
+        "sql-connections": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 16
+        },
+        "sheets-advanced-functions": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 9
+        },
+        "sheets-macros": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 16
+        },
+        "sheets-power-query": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 12
+        },
+        "model-relationships": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-19T08:00:00Z",
+          "detectionCount": 8
+        },
+        "model-dax": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 8
+        },
+        "model-lookml": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-01-17T08:00:00Z",
+          "detectionCount": 14
+        },
+        "kpi-definition": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-01-14T08:00:00Z",
+          "detectionCount": 12
+        }
+      }
+    },
+    "skill:Python": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-08T08:00:00Z",
+      "lastActivityAt": "2026-02-10T08:00:00Z",
+      "completions": {
+        "variables-types": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 16
+        },
+        "control-flow": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 16
+        },
+        "functions": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-01-17T08:00:00Z",
+          "detectionCount": 13
+        },
+        "input-output": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 12
+        },
+        "lists-tuples": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-14T08:00:00Z",
+          "detectionCount": 14
+        },
+        "dicts-sets": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 12
+        },
+        "comprehensions": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-13T08:00:00Z",
+          "detectionCount": 15
+        },
+        "read-write-files": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-01-24T08:00:00Z",
+          "detectionCount": 8
+        },
+        "context-managers": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 8
+        },
+        "json-csv": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 17
+        },
+        "try-except": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 9
+        },
+        "custom-exceptions": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 8
+        },
+        "flask-django": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 10
+        }
+      }
+    },
+    "skill:SQL": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-08T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "select-columns": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 33
+        },
+        "distinct-values": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 21
+        },
+        "arithmetic-expressions": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-01-20T08:00:00Z",
+          "detectionCount": 22
+        },
+        "where-clause": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-19T08:00:00Z",
+          "detectionCount": 37
+        },
+        "logical-operators": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 28
+        },
+        "in-between-like": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 38
+        },
+        "order-by": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 28
+        },
+        "limit-offset": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 38
+        },
+        "inner-join": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 36
+        },
+        "outer-joins": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 22
+        },
+        "self-cross-join": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 31
+        },
+        "scalar-subquery": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 36
+        },
+        "in-exists": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 37
+        },
+        "subquery-in-from": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-21T08:00:00Z",
+          "detectionCount": 24
+        },
+        "over-partition": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-01-24T08:00:00Z",
+          "detectionCount": 23
+        },
+        "rank-ntile": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 38
+        }
+      }
+    },
+    "skill:PostgreSQL": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-09T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "install-postgres": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 14
+        },
+        "psql-connection": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-01-27T08:00:00Z",
+          "detectionCount": 14
+        },
+        "create-database": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 17
+        },
+        "numeric-text": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 13
+        },
+        "datetime-uuid": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-01-21T08:00:00Z",
+          "detectionCount": 15
+        },
+        "arrays-enums": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-10T08:00:00Z",
+          "detectionCount": 12
+        },
+        "btree-index": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-01-11T08:00:00Z",
+          "detectionCount": 11
+        },
+        "partial-gin": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 10
+        },
+        "json-operators": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 14
+        }
+      }
+    },
+    "skill:Elasticsearch": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-09T08:00:00Z",
+      "lastActivityAt": "2026-02-05T08:00:00Z",
+      "completions": {
+        "index-shard-concept": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 15
+        },
+        "json-documents": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-27T08:00:00Z",
+          "detectionCount": 14
+        },
+        "index-get": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-01-24T08:00:00Z",
+          "detectionCount": 9
+        }
+      }
+    },
+    "skill:Git and GitHub": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-14T08:00:00Z",
+      "lastActivityAt": "2026-02-10T08:00:00Z",
+      "completions": {
+        "git-init": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 13
+        },
+        "add-commit": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 15
+        },
+        "status-log": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 18
+        },
+        "diff": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-22T08:00:00Z",
+          "detectionCount": 10
+        },
+        "create-branch": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 12
+        },
+        "create-pr": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 14
+        },
+        "review-pr": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 12
+        }
+      }
+    }
+  }
+}

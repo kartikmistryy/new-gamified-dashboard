@@ -1,0 +1,380 @@
+{
+  "userId": "eng-009",
+  "name": "Iris Tanaka",
+  "createdAt": "2026-01-05T00:00:00Z",
+  "lastScannedAt": "2026-02-13T08:00:00Z",
+  "roadmaps": {
+    "role:iOS": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-11T08:00:00Z",
+      "completions": {
+        "swift-vars-types": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 24
+        },
+        "swift-optionals": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 25
+        },
+        "swift-functions-structs": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 28
+        },
+        "xcode-setup": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 27
+        },
+        "xcode-interface-builder": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-17T08:00:00Z",
+          "detectionCount": 24
+        },
+        "xcode-debugging": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 33
+        },
+        "swiftui-views": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-01-17T08:00:00Z",
+          "detectionCount": 29
+        },
+        "swiftui-layouts": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 28
+        },
+        "swiftui-lists": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 14
+        },
+        "uikit-views": {
+          "firstDetectedAt": "2026-01-30T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 12
+        },
+        "nav-swiftui": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 10
+        },
+        "nav-uikit": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 15
+        },
+        "nav-passing-data": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 13
+        },
+        "urlsession-basics": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 15
+        },
+        "codable-json": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 13
+        },
+        "async-await-network": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 5
+        },
+        "core-data-model": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-01-13T08:00:00Z",
+          "detectionCount": 2
+        },
+        "xctest-unit": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-21T08:00:00Z",
+          "detectionCount": 2
+        },
+        "xctest-ui": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 3
+        },
+        "xctest-mocking": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 2
+        }
+      }
+    },
+    "skill:Swift & SwiftUI": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-10T08:00:00Z",
+      "lastActivityAt": "2026-02-11T08:00:00Z",
+      "completions": {
+        "variables-types": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 27
+        },
+        "control-flow": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 23
+        },
+        "functions": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-01-27T08:00:00Z",
+          "detectionCount": 30
+        },
+        "collections": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-01-24T08:00:00Z",
+          "detectionCount": 35
+        },
+        "optional-binding": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-01-13T08:00:00Z",
+          "detectionCount": 33
+        },
+        "guard-optional": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 25
+        },
+        "nil-coalescing": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-01-15T08:00:00Z",
+          "detectionCount": 31
+        },
+        "protocol-definition": {
+          "firstDetectedAt": "2026-01-30T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 9
+        },
+        "view-builder": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 8
+        },
+        "layout-stacks": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 12
+        },
+        "lists-forms": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-01-12T08:00:00Z",
+          "detectionCount": 17
+        },
+        "state-binding": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 15
+        },
+        "observed-object": {
+          "firstDetectedAt": "2026-01-29T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 1
+        },
+        "environment": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 4
+        },
+        "publishers": {
+          "firstDetectedAt": "2026-01-29T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 3
+        },
+        "xctest": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-22T08:00:00Z",
+          "detectionCount": 2
+        }
+      }
+    },
+    "skill:React Native": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "es6-syntax": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 36
+        },
+        "async-await": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 24
+        },
+        "typescript-basics": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-01-17T08:00:00Z",
+          "detectionCount": 33
+        },
+        "react-hooks-prereq": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-09T08:00:00Z",
+          "detectionCount": 29
+        },
+        "install-tools": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-01-19T08:00:00Z",
+          "detectionCount": 36
+        },
+        "create-project": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 13
+        },
+        "run-android-ios": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 15
+        },
+        "metro-bundler": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 13
+        },
+        "use-state-context": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-20T08:00:00Z",
+          "detectionCount": 12
+        },
+        "redux-toolkit": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 2
+        },
+        "async-state": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 2
+        }
+      }
+    },
+    "skill:JavaScript": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-14T08:00:00Z",
+      "lastActivityAt": "2026-02-10T08:00:00Z",
+      "completions": {
+        "variables-types": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-16T08:00:00Z",
+          "detectionCount": 29
+        },
+        "control-flow": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 23
+        },
+        "functions": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-27T08:00:00Z",
+          "detectionCount": 34
+        },
+        "arrays-objects": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 13
+        },
+        "selecting-elements": {
+          "firstDetectedAt": "2026-01-30T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 14
+        },
+        "callbacks-promises": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 8
+        },
+        "async-await": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 4
+        }
+      }
+    },
+    "skill:TypeScript": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-11T08:00:00Z",
+      "completions": {
+        "primitive-types": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 34
+        },
+        "type-inference": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-24T08:00:00Z",
+          "detectionCount": 31
+        },
+        "strict-mode": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-07T08:00:00Z",
+          "detectionCount": 18
+        }
+      }
+    },
+    "skill:Git and GitHub": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-07T08:00:00Z",
+      "completions": {
+        "git-init": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 28
+        },
+        "add-commit": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-14T08:00:00Z",
+          "detectionCount": 34
+        },
+        "status-log": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 24
+        },
+        "diff": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-13T08:00:00Z",
+          "detectionCount": 29
+        },
+        "create-branch": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 15
+        },
+        "merge-branch": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 18
+        },
+        "create-pr": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-10T08:00:00Z",
+          "detectionCount": 15
+        },
+        "review-pr": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 5
+        },
+        "merge-strategies": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 3
+        }
+      }
+    }
+  }
+}

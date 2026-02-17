@@ -1,0 +1,626 @@
+[
+  {
+    "roadmap": "Flutter",
+    "group": "Mobile & Cross-Platform",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "dart-fundamentals",
+            "title": "Dart Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "variables-types",
+                "title": "Variables, types, and type inference"
+              },
+              {
+                "id": "functions-classes",
+                "title": "Functions, classes, and constructors"
+              },
+              {
+                "id": "null-safety",
+                "title": "Null safety and null-aware operators"
+              },
+              {
+                "id": "collections-async",
+                "title": "Collections (List, Map, Set) and async/await"
+              }
+            ]
+          },
+          {
+            "id": "flutter-setup",
+            "title": "Flutter Setup",
+            "subCheckpoints": [
+              {
+                "id": "install-sdk",
+                "title": "Install Flutter SDK and configure path"
+              },
+              {
+                "id": "create-project",
+                "title": "Create project with flutter create"
+              },
+              {
+                "id": "run-emulator",
+                "title": "Run on emulator or physical device"
+              },
+              {
+                "id": "flutter-doctor",
+                "title": "Use flutter doctor to verify setup"
+              }
+            ]
+          },
+          {
+            "id": "widgets-intro",
+            "title": "Widgets",
+            "subCheckpoints": [
+              {
+                "id": "stateless-stateful",
+                "title": "StatelessWidget vs StatefulWidget"
+              },
+              {
+                "id": "common-widgets",
+                "title": "Text, Image, Icon, Button widgets"
+              },
+              {
+                "id": "widget-composition",
+                "title": "Widget composition and build method"
+              },
+              {
+                "id": "lifecycle",
+                "title": "Widget lifecycle and initState"
+              }
+            ]
+          },
+          {
+            "id": "layouts",
+            "title": "Layouts",
+            "subCheckpoints": [
+              {
+                "id": "row-column",
+                "title": "Row, Column, and main/cross axis"
+              },
+              {
+                "id": "container-expanded",
+                "title": "Container, Expanded, Flexible"
+              },
+              {
+                "id": "stack-positioned",
+                "title": "Stack and Positioned"
+              },
+              {
+                "id": "listview-gridview",
+                "title": "ListView and GridView"
+              }
+            ]
+          },
+          {
+            "id": "basic-navigation",
+            "title": "Navigation",
+            "subCheckpoints": [
+              {
+                "id": "navigator-routes",
+                "title": "Navigator.push and Navigator.pop"
+              },
+              {
+                "id": "named-routes",
+                "title": "Named routes and route configuration"
+              },
+              {
+                "id": "pass-arguments",
+                "title": "Pass arguments between routes"
+              },
+              {
+                "id": "go-router-basics",
+                "title": "Declarative routing with go_router"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "state-management-provider",
+            "title": "State Management (Provider)",
+            "subCheckpoints": [
+              {
+                "id": "change-notifier",
+                "title": "ChangeNotifier and notifyListeners"
+              },
+              {
+                "id": "provider-consumer",
+                "title": "Provider, Consumer, and context.watch"
+              },
+              {
+                "id": "multi-provider",
+                "title": "MultiProvider and Provider.of"
+              },
+              {
+                "id": "provider-patterns",
+                "title": "Provider patterns for app state"
+              }
+            ]
+          },
+          {
+            "id": "state-management-advanced",
+            "title": "State Management (Riverpod, Bloc)",
+            "subCheckpoints": [
+              {
+                "id": "riverpod-providers",
+                "title": "Riverpod providers and ref"
+              },
+              {
+                "id": "bloc-cubit",
+                "title": "Bloc and Cubit patterns"
+              },
+              {
+                "id": "bloc-events-states",
+                "title": "Bloc events, states, and transitions"
+              },
+              {
+                "id": "choose-state-solution",
+                "title": "Choosing the right state solution"
+              }
+            ]
+          },
+          {
+            "id": "networking",
+            "title": "Networking",
+            "subCheckpoints": [
+              {
+                "id": "http-package",
+                "title": "http package for API calls"
+              },
+              {
+                "id": "dio-alternative",
+                "title": "Dio for advanced HTTP features"
+              },
+              {
+                "id": "json-serialization",
+                "title": "JSON serialization with json_serializable"
+              },
+              {
+                "id": "error-handling",
+                "title": "Error handling and loading states"
+              }
+            ]
+          },
+          {
+            "id": "local-storage",
+            "title": "Local Storage",
+            "subCheckpoints": [
+              {
+                "id": "shared-preferences",
+                "title": "SharedPreferences for key-value storage"
+              },
+              {
+                "id": "sqflite",
+                "title": "SQLite with sqflite package"
+              },
+              {
+                "id": "hive-isar",
+                "title": "Hive or Isar for NoSQL local DB"
+              },
+              {
+                "id": "file-storage",
+                "title": "File system storage with path_provider"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "unit-tests",
+                "title": "Unit tests for business logic"
+              },
+              {
+                "id": "widget-tests",
+                "title": "Widget tests with testWidgets"
+              },
+              {
+                "id": "integration-tests",
+                "title": "Integration tests with integration_test"
+              },
+              {
+                "id": "mocking",
+                "title": "Mocking dependencies with Mockito"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "platform-channels",
+            "title": "Platform Channels",
+            "subCheckpoints": [
+              {
+                "id": "method-channels",
+                "title": "MethodChannel for native code"
+              },
+              {
+                "id": "event-channels",
+                "title": "EventChannel for streams"
+              },
+              {
+                "id": "platform-specific-code",
+                "title": "Platform-specific iOS and Android code"
+              },
+              {
+                "id": "pigeon-ffigen",
+                "title": "Pigeon and ffigen for type-safe bindings"
+              }
+            ]
+          },
+          {
+            "id": "animations",
+            "title": "Animations",
+            "subCheckpoints": [
+              {
+                "id": "animation-controller",
+                "title": "AnimationController and TickerProvider"
+              },
+              {
+                "id": "tween-animations",
+                "title": "Tween and curved animations"
+              },
+              {
+                "id": "hero-transitions",
+                "title": "Hero and page route transitions"
+              },
+              {
+                "id": "implicit-animations",
+                "title": "Implicit animations with AnimatedContainer"
+              }
+            ]
+          },
+          {
+            "id": "deployment",
+            "title": "Deployment (iOS & Android)",
+            "subCheckpoints": [
+              {
+                "id": "android-build",
+                "title": "Build Android APK and App Bundle"
+              },
+              {
+                "id": "ios-build",
+                "title": "Build iOS IPA and archive"
+              },
+              {
+                "id": "app-signing",
+                "title": "App signing and keystore configuration"
+              },
+              {
+                "id": "store-submission",
+                "title": "Play Store and App Store submission"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "React Native",
+    "group": "Mobile & Cross-Platform",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "js-ts-prerequisites",
+            "title": "JavaScript/TypeScript Prerequisites",
+            "subCheckpoints": [
+              {
+                "id": "es6-syntax",
+                "title": "ES6+ syntax (arrow functions, destructuring, spread)"
+              },
+              {
+                "id": "async-await",
+                "title": "Async/await and Promises"
+              },
+              {
+                "id": "typescript-basics",
+                "title": "TypeScript basics and type annotations"
+              },
+              {
+                "id": "react-hooks-prereq",
+                "title": "React hooks (useState, useEffect) fundamentals"
+              }
+            ]
+          },
+          {
+            "id": "react-native-setup",
+            "title": "React Native Setup",
+            "subCheckpoints": [
+              {
+                "id": "install-tools",
+                "title": "Install Node, React Native CLI, and dev tools"
+              },
+              {
+                "id": "create-project",
+                "title": "Create project with npx react-native init"
+              },
+              {
+                "id": "run-android-ios",
+                "title": "Run on Android emulator and iOS simulator"
+              },
+              {
+                "id": "metro-bundler",
+                "title": "Metro bundler and hot reload"
+              }
+            ]
+          },
+          {
+            "id": "core-components",
+            "title": "Core Components",
+            "subCheckpoints": [
+              {
+                "id": "view-text-image",
+                "title": "View, Text, Image components"
+              },
+              {
+                "id": "scrollview-flatlist",
+                "title": "ScrollView, FlatList, SectionList"
+              },
+              {
+                "id": "touchable-pressable",
+                "title": "TouchableOpacity, Pressable, Button"
+              },
+              {
+                "id": "textinput-switch",
+                "title": "TextInput, Switch, and form elements"
+              }
+            ]
+          },
+          {
+            "id": "basic-navigation",
+            "title": "Navigation (React Navigation)",
+            "subCheckpoints": [
+              {
+                "id": "stack-navigator",
+                "title": "Stack Navigator setup and screens"
+              },
+              {
+                "id": "tab-navigator",
+                "title": "Tab Navigator and bottom tabs"
+              },
+              {
+                "id": "navigate-params",
+                "title": "Navigate and pass params between screens"
+              },
+              {
+                "id": "drawer-navigator",
+                "title": "Drawer Navigator for side menu"
+              }
+            ]
+          },
+          {
+            "id": "layouts-styling",
+            "title": "Layouts & Styling",
+            "subCheckpoints": [
+              {
+                "id": "flexbox-stylesheet",
+                "title": "Flexbox layout with StyleSheet"
+              },
+              {
+                "id": "responsive-design",
+                "title": "Responsive design and dimensions"
+              },
+              {
+                "id": "safe-area",
+                "title": "SafeAreaView and platform differences"
+              },
+              {
+                "id": "platform-specific-styles",
+                "title": "Platform.select for platform-specific styles"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "state-management",
+            "title": "State Management",
+            "subCheckpoints": [
+              {
+                "id": "use-state-context",
+                "title": "useState, useContext for local state"
+              },
+              {
+                "id": "redux-toolkit",
+                "title": "Redux Toolkit or Zustand for global state"
+              },
+              {
+                "id": "async-state",
+                "title": "Async state with React Query or SWR"
+              },
+              {
+                "id": "state-patterns",
+                "title": "State management patterns and best practices"
+              }
+            ]
+          },
+          {
+            "id": "networking",
+            "title": "Networking (Fetch/Axios)",
+            "subCheckpoints": [
+              {
+                "id": "fetch-api",
+                "title": "Fetch API for GET and POST requests"
+              },
+              {
+                "id": "axios-integration",
+                "title": "Axios for advanced HTTP features"
+              },
+              {
+                "id": "api-hooks",
+                "title": "Custom hooks for API calls"
+              },
+              {
+                "id": "error-loading-states",
+                "title": "Error handling and loading states"
+              }
+            ]
+          },
+          {
+            "id": "local-storage",
+            "title": "Local Storage (AsyncStorage)",
+            "subCheckpoints": [
+              {
+                "id": "async-storage-basics",
+                "title": "AsyncStorage getItem and setItem"
+              },
+              {
+                "id": "persist-data",
+                "title": "Persist user preferences and auth tokens"
+              },
+              {
+                "id": "react-native-mmkv",
+                "title": "MMKV or other storage alternatives"
+              },
+              {
+                "id": "storage-patterns",
+                "title": "Storage patterns and encryption"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "jest-setup",
+                "title": "Jest configuration for React Native"
+              },
+              {
+                "id": "react-native-testing-library",
+                "title": "React Native Testing Library"
+              },
+              {
+                "id": "component-tests",
+                "title": "Component and hook unit tests"
+              },
+              {
+                "id": "detox-e2e",
+                "title": "Detox or Maestro for E2E testing"
+              }
+            ]
+          },
+          {
+            "id": "expo",
+            "title": "Expo",
+            "subCheckpoints": [
+              {
+                "id": "expo-cli-setup",
+                "title": "Expo CLI and create-expo-app"
+              },
+              {
+                "id": "managed-workflow",
+                "title": "Managed workflow vs bare workflow"
+              },
+              {
+                "id": "expo-apis",
+                "title": "Expo APIs (Camera, Location, Notifications)"
+              },
+              {
+                "id": "eas-build",
+                "title": "EAS Build for cloud builds"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "native-modules",
+            "title": "Native Modules",
+            "subCheckpoints": [
+              {
+                "id": "native-modules-bridge",
+                "title": "Native module bridge and communication"
+              },
+              {
+                "id": "android-native-module",
+                "title": "Create Android native module"
+              },
+              {
+                "id": "ios-native-module",
+                "title": "Create iOS native module"
+              },
+              {
+                "id": "turbo-modules",
+                "title": "New Architecture and Turbo Modules"
+              }
+            ]
+          },
+          {
+            "id": "animations",
+            "title": "Animations",
+            "subCheckpoints": [
+              {
+                "id": "animated-api",
+                "title": "Animated API and useRef"
+              },
+              {
+                "id": "react-native-reanimated",
+                "title": "react-native-reanimated basics"
+              },
+              {
+                "id": "gesture-handler",
+                "title": "react-native-gesture-handler"
+              },
+              {
+                "id": "layout-animations",
+                "title": "Layout animations and shared transitions"
+              }
+            ]
+          },
+          {
+            "id": "deployment",
+            "title": "Deployment (iOS & Android)",
+            "subCheckpoints": [
+              {
+                "id": "android-build",
+                "title": "Build Android APK and AAB"
+              },
+              {
+                "id": "ios-build",
+                "title": "Build iOS IPA and archive"
+              },
+              {
+                "id": "code-signing",
+                "title": "Code signing and provisioning profiles"
+              },
+              {
+                "id": "store-submission",
+                "title": "Play Store and App Store submission"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

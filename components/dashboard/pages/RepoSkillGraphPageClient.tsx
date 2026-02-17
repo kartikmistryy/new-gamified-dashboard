@@ -10,7 +10,6 @@ import { SkillgraphBySkillTable } from "@/components/dashboard/userDashboard/Ski
 import {
   getContributorSkillsData,
   getContributorSkillRows,
-  computeDomainWeights,
   type ContributorSkillsRow,
 } from "@/lib/dashboard/entities/contributor/mocks/skillsMockData";
 import {
@@ -65,11 +64,6 @@ export function RepoSkillGraphPageClient() {
     setVisibleDomains(domains);
   }, [skillRows]);
 
-  const domainWeights = useMemo(
-    () => computeDomainWeights(contributorSkills, visibleContributors),
-    [contributorSkills, visibleContributors]
-  );
-
   return (
     <TooltipProvider>
       <div className="flex flex-col gap-12 px-6 pb-12 bg-white text-gray-900 min-h-screen">
@@ -80,12 +74,7 @@ export function RepoSkillGraphPageClient() {
         <DashboardSection title="" className="py-6">
           <div className="flex justify-center">
             <div className="h-[700px] w-[850px] flex items-center justify-center">
-              <SkillGraph
-                width={700}
-                height={700}
-                domainWeights={domainWeights}
-                skillVisibility={visibleDomains}
-              />
+              <SkillGraph width={700} height={700} />
             </div>
           </div>
         </DashboardSection>

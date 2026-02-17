@@ -18,6 +18,7 @@ import {
   sortModulesByRisk,
   type ModuleFilter,
   MODULE_FILTER_TABS,
+  MODULE_FILTER_TABS_BASE,
 } from "@/lib/dashboard/entities/user/utils/userSpofHelpers";
 import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
 import { createModuleColumns } from "@/lib/dashboard/entities/user/tables/moduleTableColumns";
@@ -59,7 +60,7 @@ export function ModulesTable({ modules, currentUserId }: ModulesTableProps) {
     <>
       <div className="w-full">
         <FilterBadges
-          filterTabs={MODULE_FILTER_TABS}
+          filterTabs={currentUserId ? MODULE_FILTER_TABS : MODULE_FILTER_TABS_BASE}
           currentFilter={currentFilter}
           onFilterChange={setCurrentFilter}
         />

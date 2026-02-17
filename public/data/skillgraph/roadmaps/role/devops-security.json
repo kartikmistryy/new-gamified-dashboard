@@ -1,0 +1,624 @@
+[
+  {
+    "roadmap": "DevOps",
+    "group": "DevOps & Security",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "linux-administration",
+            "title": "Linux Administration",
+            "subCheckpoints": [
+              {
+                "id": "linux-systemd",
+                "title": "Systemd services and service management"
+              },
+              {
+                "id": "linux-user-management",
+                "title": "User, group, and permissions management"
+              },
+              {
+                "id": "linux-kernel",
+                "title": "Kernel basics and module management"
+              },
+              {
+                "id": "linux-tuning",
+                "title": "System tuning and resource limits"
+              }
+            ]
+          },
+          {
+            "id": "networking-deep-dive",
+            "title": "Networking Deep Dive",
+            "subCheckpoints": [
+              {
+                "id": "net-routing",
+                "title": "Routing, subnets, and CIDR"
+              },
+              {
+                "id": "net-firewall",
+                "title": "iptables/nftables and firewall configuration"
+              },
+              {
+                "id": "net-load-balancing",
+                "title": "Load balancing concepts and implementations"
+              }
+            ]
+          },
+          {
+            "id": "configuration-management",
+            "title": "Configuration Management",
+            "subCheckpoints": [
+              {
+                "id": "ansible-basics",
+                "title": "Ansible or similar tool basics"
+              },
+              {
+                "id": "config-automation",
+                "title": "Automate system configuration"
+              },
+              {
+                "id": "config-idempotency",
+                "title": "Idempotent configuration management"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "infrastructure-as-code",
+            "title": "Infrastructure as Code (Terraform)",
+            "subCheckpoints": [
+              {
+                "id": "terraform-basics",
+                "title": "Terraform syntax, providers, and state"
+              },
+              {
+                "id": "terraform-modules",
+                "title": "Reusable modules and best practices"
+              },
+              {
+                "id": "terraform-cloud",
+                "title": "Provision cloud resources with Terraform"
+              }
+            ]
+          },
+          {
+            "id": "containers-orchestration",
+            "title": "Containers & Orchestration (Docker, Kubernetes)",
+            "subCheckpoints": [
+              {
+                "id": "docker-advanced",
+                "title": "Multi-stage builds, compose, and optimization"
+              },
+              {
+                "id": "kubernetes-basics",
+                "title": "Pods, Deployments, Services, ConfigMaps"
+              },
+              {
+                "id": "kubernetes-operations",
+                "title": "Helm, kubectl, and cluster operations"
+              }
+            ]
+          },
+          {
+            "id": "cicd-pipelines",
+            "title": "CI/CD Pipelines",
+            "subCheckpoints": [
+              {
+                "id": "pipeline-design",
+                "title": "Design robust build and deployment pipelines"
+              },
+              {
+                "id": "pipeline-secrets",
+                "title": "Secure handling of secrets and credentials"
+              },
+              {
+                "id": "pipeline-environments",
+                "title": "Multi-environment deployments"
+              }
+            ]
+          },
+          {
+            "id": "cloud-platforms",
+            "title": "Cloud Platforms (AWS/GCP/Azure)",
+            "subCheckpoints": [
+              {
+                "id": "cloud-compute",
+                "title": "Compute services (EC2, EKS, Lambda, etc.)"
+              },
+              {
+                "id": "cloud-storage",
+                "title": "Storage and networking services"
+              },
+              {
+                "id": "cloud-iam",
+                "title": "IAM, policies, and security best practices"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "monitoring-logging",
+            "title": "Monitoring & Logging (Prometheus, Grafana, ELK)",
+            "subCheckpoints": [
+              {
+                "id": "prometheus-metrics",
+                "title": "Prometheus metrics collection and alerting"
+              },
+              {
+                "id": "grafana-dashboards",
+                "title": "Grafana dashboards and visualization"
+              },
+              {
+                "id": "elk-stack",
+                "title": "ELK/OpenSearch for log aggregation and analysis"
+              }
+            ]
+          },
+          {
+            "id": "gitops",
+            "title": "GitOps",
+            "subCheckpoints": [
+              {
+                "id": "gitops-concepts",
+                "title": "GitOps principles and workflow"
+              },
+              {
+                "id": "argocd-flux",
+                "title": "ArgoCD or Flux for declarative deployments"
+              },
+              {
+                "id": "gitops-practices",
+                "title": "State management and rollback strategies"
+              }
+            ]
+          },
+          {
+            "id": "service-mesh",
+            "title": "Service Mesh",
+            "subCheckpoints": [
+              {
+                "id": "service-mesh-concepts",
+                "title": "Traffic management, observability, security"
+              },
+              {
+                "id": "istio-linkerd",
+                "title": "Istio or Linkerd implementation"
+              },
+              {
+                "id": "mesh-patterns",
+                "title": "mTLS, canary, and circuit breaking"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "DevSecOps",
+    "group": "DevOps & Security",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "security-fundamentals",
+            "title": "Security Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "sec-cia-triad",
+                "title": "CIA triad, threat models, and risk assessment"
+              },
+              {
+                "id": "sec-authentication",
+                "title": "Authentication vs authorization concepts"
+              },
+              {
+                "id": "sec-defense-in-depth",
+                "title": "Defense in depth and least privilege"
+              }
+            ]
+          },
+          {
+            "id": "secure-sdlc",
+            "title": "Secure SDLC",
+            "subCheckpoints": [
+              {
+                "id": "sdlc-shift-left",
+                "title": "Shift-left security and security by design"
+              },
+              {
+                "id": "sdlc-gates",
+                "title": "Security gates in the development pipeline"
+              },
+              {
+                "id": "sdlc-sbom",
+                "title": "Security requirements and SBOM awareness"
+              }
+            ]
+          },
+          {
+            "id": "security-pipeline-integration",
+            "title": "Security Pipeline Integration",
+            "subCheckpoints": [
+              {
+                "id": "pipeline-sast",
+                "title": "Integrate SAST into CI/CD"
+              },
+              {
+                "id": "pipeline-dast",
+                "title": "Integrate DAST and dependency scanning"
+              },
+              {
+                "id": "pipeline-gates",
+                "title": "Security gates and fail-fast on critical issues"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "sast-dast-tools",
+            "title": "SAST/DAST Tools",
+            "subCheckpoints": [
+              {
+                "id": "sast-tools",
+                "title": "Static analysis with SonarQube, Semgrep, or Snyk"
+              },
+              {
+                "id": "dast-tools",
+                "title": "Dynamic analysis with OWASP ZAP or Burp"
+              },
+              {
+                "id": "sca-tools",
+                "title": "Software composition analysis for dependencies"
+              }
+            ]
+          },
+          {
+            "id": "container-security",
+            "title": "Container Security",
+            "subCheckpoints": [
+              {
+                "id": "container-image-scanning",
+                "title": "Image scanning and vulnerability detection"
+              },
+              {
+                "id": "container-hardening",
+                "title": "Container hardening and best practices"
+              },
+              {
+                "id": "container-runtime",
+                "title": "Runtime security and policy enforcement"
+              }
+            ]
+          },
+          {
+            "id": "infrastructure-security",
+            "title": "Infrastructure Security",
+            "subCheckpoints": [
+              {
+                "id": "infra-misconfiguration",
+                "title": "Misconfiguration detection (Checkov, tfsec)"
+              },
+              {
+                "id": "infra-compliance",
+                "title": "Cloud security posture management"
+              },
+              {
+                "id": "infra-network",
+                "title": "Network segmentation and zero trust"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "compliance-as-code",
+            "title": "Compliance as Code",
+            "subCheckpoints": [
+              {
+                "id": "compliance-frameworks",
+                "title": "SOC 2, PCI-DSS, HIPAA requirements"
+              },
+              {
+                "id": "compliance-automation",
+                "title": "Automate compliance checks in pipelines"
+              },
+              {
+                "id": "compliance-reporting",
+                "title": "Continuous compliance reporting"
+              }
+            ]
+          },
+          {
+            "id": "secrets-management",
+            "title": "Secrets Management",
+            "subCheckpoints": [
+              {
+                "id": "secrets-vault",
+                "title": "HashiCorp Vault or cloud-native secrets"
+              },
+              {
+                "id": "secrets-rotation",
+                "title": "Secret rotation and injection practices"
+              },
+              {
+                "id": "secrets-avoid",
+                "title": "Avoid secrets in code and CI/CD"
+              }
+            ]
+          },
+          {
+            "id": "incident-response",
+            "title": "Incident Response",
+            "subCheckpoints": [
+              {
+                "id": "incident-playbooks",
+                "title": "Incident response playbooks and runbooks"
+              },
+              {
+                "id": "incident-automation",
+                "title": "Automate detection and response"
+              },
+              {
+                "id": "incident-postmortem",
+                "title": "Post-incident analysis and blameless culture"
+              }
+            ]
+          },
+          {
+            "id": "supply-chain-security",
+            "title": "Supply Chain Security",
+            "subCheckpoints": [
+              {
+                "id": "supply-sbom",
+                "title": "SBOM generation and signing (SLSA, in-toto)"
+              },
+              {
+                "id": "supply-sigstore",
+                "title": "Sigstore and artifact signing"
+              },
+              {
+                "id": "supply-dependency",
+                "title": "Dependency and vulnerability management"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Cyber Security",
+    "group": "DevOps & Security",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "networking-protocols",
+            "title": "Networking & Protocols",
+            "subCheckpoints": [
+              {
+                "id": "net-osi-tcpip",
+                "title": "OSI model and TCP/IP stack"
+              },
+              {
+                "id": "net-http-protocols",
+                "title": "HTTP/HTTPS, DNS, DHCP, and common protocols"
+              },
+              {
+                "id": "net-troubleshooting",
+                "title": "Network analysis with Wireshark"
+              }
+            ]
+          },
+          {
+            "id": "operating-systems-security",
+            "title": "Operating Systems Security",
+            "subCheckpoints": [
+              {
+                "id": "os-hardening",
+                "title": "OS hardening (Windows, Linux)"
+              },
+              {
+                "id": "os-authentication",
+                "title": "Authentication mechanisms and access control"
+              },
+              {
+                "id": "os-patching",
+                "title": "Patch management and vulnerability mitigation"
+              }
+            ]
+          },
+          {
+            "id": "cryptography-basics",
+            "title": "Cryptography",
+            "subCheckpoints": [
+              {
+                "id": "crypto-symmetric",
+                "title": "Symmetric vs asymmetric encryption"
+              },
+              {
+                "id": "crypto-hashing",
+                "title": "Hashing, digital signatures, and certificates"
+              },
+              {
+                "id": "crypto-tls",
+                "title": "TLS/SSL and PKI fundamentals"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "web-security-owasp",
+            "title": "Web Security (OWASP)",
+            "subCheckpoints": [
+              {
+                "id": "owasp-top10",
+                "title": "OWASP Top 10 vulnerabilities"
+              },
+              {
+                "id": "owasp-prevention",
+                "title": "Injection, XSS, CSRF prevention"
+              },
+              {
+                "id": "owasp-authentication",
+                "title": "Secure authentication and session management"
+              }
+            ]
+          },
+          {
+            "id": "penetration-testing",
+            "title": "Penetration Testing",
+            "subCheckpoints": [
+              {
+                "id": "pentest-methodology",
+                "title": "Reconnaissance, scanning, exploitation phases"
+              },
+              {
+                "id": "pentest-tools",
+                "title": "Metasploit, Nmap, Burp Suite usage"
+              },
+              {
+                "id": "pentest-reporting",
+                "title": "Documentation and remediation recommendations"
+              }
+            ]
+          },
+          {
+            "id": "vulnerability-assessment",
+            "title": "Vulnerability Assessment",
+            "subCheckpoints": [
+              {
+                "id": "vuln-scanning",
+                "title": "Vulnerability scanners (Nessus, OpenVAS)"
+              },
+              {
+                "id": "vuln-prioritization",
+                "title": "CVSS scoring and prioritization"
+              },
+              {
+                "id": "vuln-remediation",
+                "title": "Remediation workflows and tracking"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "security-operations-soc",
+            "title": "Security Operations (SOC)",
+            "subCheckpoints": [
+              {
+                "id": "soc-monitoring",
+                "title": "SIEM deployment and log correlation"
+              },
+              {
+                "id": "soc-detection",
+                "title": "Threat detection and alert triage"
+              },
+              {
+                "id": "soc-hunting",
+                "title": "Threat hunting methodologies"
+              }
+            ]
+          },
+          {
+            "id": "incident-response",
+            "title": "Incident Response",
+            "subCheckpoints": [
+              {
+                "id": "ir-prepare",
+                "title": "Incident response planning and teams"
+              },
+              {
+                "id": "ir-contain",
+                "title": "Containment, eradication, and recovery"
+              },
+              {
+                "id": "ir-lessons",
+                "title": "Lessons learned and post-incident review"
+              }
+            ]
+          },
+          {
+            "id": "digital-forensics",
+            "title": "Digital Forensics",
+            "subCheckpoints": [
+              {
+                "id": "forensics-acquisition",
+                "title": "Evidence acquisition and chain of custody"
+              },
+              {
+                "id": "forensics-analysis",
+                "title": "Disk, memory, and network forensics"
+              },
+              {
+                "id": "forensics-reporting",
+                "title": "Forensic reporting and expert testimony"
+              }
+            ]
+          },
+          {
+            "id": "compliance-governance",
+            "title": "Compliance & Governance",
+            "subCheckpoints": [
+              {
+                "id": "compliance-frameworks",
+                "title": "NIST, ISO 27001, GDPR compliance"
+              },
+              {
+                "id": "governance-policies",
+                "title": "Security policies and governance framework"
+              },
+              {
+                "id": "governance-audit",
+                "title": "Audit and compliance assurance"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

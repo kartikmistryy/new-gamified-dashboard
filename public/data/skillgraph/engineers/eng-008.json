@@ -1,0 +1,606 @@
+{
+  "userId": "eng-008",
+  "name": "Henry Wu",
+  "createdAt": "2026-01-05T00:00:00Z",
+  "lastScannedAt": "2026-02-13T08:00:00Z",
+  "roadmaps": {
+    "role:Backend": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-12T08:00:00Z",
+      "lastActivityAt": "2026-02-10T08:00:00Z",
+      "completions": {
+        "how-internet-works": {
+          "firstDetectedAt": "2026-01-30T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 29
+        },
+        "http-https": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-01-17T08:00:00Z",
+          "detectionCount": 30
+        },
+        "dns-hosting": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 37
+        },
+        "terminal": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 31
+        },
+        "processes-threads": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 31
+        },
+        "memory-io": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 29
+        },
+        "nodejs": {
+          "firstDetectedAt": "2026-01-29T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 23
+        },
+        "sql-advanced": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 18
+        },
+        "indexes-optimization": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 8
+        },
+        "orm": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 13
+        },
+        "rest": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 10
+        },
+        "graphql": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 9
+        },
+        "documentation": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 12
+        },
+        "jwt-oauth": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 3
+        },
+        "microservices": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 3
+        },
+        "event-driven": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 2
+        },
+        "ddd": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 2
+        }
+      }
+    },
+    "skill:Go": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-10T08:00:00Z",
+      "completions": {
+        "variables-types": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-01-18T08:00:00Z",
+          "detectionCount": 34
+        },
+        "control-flow": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 37
+        },
+        "functions": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 25
+        },
+        "structs": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-24T08:00:00Z",
+          "detectionCount": 32
+        },
+        "goroutines": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 34
+        },
+        "channels": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 32
+        },
+        "buffered-channels": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 22
+        },
+        "interface-definition": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 11
+        },
+        "error-type": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 11
+        },
+        "custom-errors": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 9
+        },
+        "errors-package": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 9
+        },
+        "testing-package": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 8
+        },
+        "table-driven": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-01-18T08:00:00Z",
+          "detectionCount": 12
+        },
+        "benchmarks": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 3
+        },
+        "fmt-io": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 2
+        },
+        "go-mod": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 2
+        },
+        "modules-versioning": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 5
+        }
+      }
+    },
+    "skill:SQL": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "select-columns": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 37
+        },
+        "distinct-values": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-27T08:00:00Z",
+          "detectionCount": 22
+        },
+        "arithmetic-expressions": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-01-20T08:00:00Z",
+          "detectionCount": 23
+        },
+        "where-clause": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 27
+        },
+        "logical-operators": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-20T08:00:00Z",
+          "detectionCount": 32
+        },
+        "in-between-like": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 8
+        },
+        "order-by": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 17
+        },
+        "inner-join": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 17
+        },
+        "outer-joins": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 13
+        },
+        "self-cross-join": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 3
+        },
+        "scalar-subquery": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 5
+        }
+      }
+    },
+    "skill:PostgreSQL": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-09T08:00:00Z",
+      "lastActivityAt": "2026-02-10T08:00:00Z",
+      "completions": {
+        "install-postgres": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 29
+        },
+        "psql-connection": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-16T08:00:00Z",
+          "detectionCount": 34
+        },
+        "create-database": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 31
+        },
+        "numeric-text": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 22
+        },
+        "datetime-uuid": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-01-22T08:00:00Z",
+          "detectionCount": 18
+        },
+        "arrays-enums": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 18
+        },
+        "btree-index": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-01-20T08:00:00Z",
+          "detectionCount": 2
+        },
+        "partial-gin": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 3
+        }
+      }
+    },
+    "skill:Redis": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-06T08:00:00Z",
+      "completions": {
+        "strings-hashes": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 23
+        },
+        "lists-sets": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-01-18T08:00:00Z",
+          "detectionCount": 38
+        },
+        "sorted-sets": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 36
+        },
+        "key-commands": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 17
+        },
+        "type-commands": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 18
+        },
+        "rdb-snapshots": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 15
+        },
+        "aof": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-27T08:00:00Z",
+          "detectionCount": 5
+        }
+      }
+    },
+    "skill:Docker": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-10T08:00:00Z",
+      "completions": {
+        "understand-container-concept": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-01-27T08:00:00Z",
+          "detectionCount": 37
+        },
+        "resource-isolation": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 27
+        },
+        "when-to-use-containers": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 29
+        },
+        "create-dockerfile": {
+          "firstDetectedAt": "2026-01-29T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 25
+        },
+        "build-images": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-20T08:00:00Z",
+          "detectionCount": 36
+        },
+        "image-layers": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-01-19T08:00:00Z",
+          "detectionCount": 22
+        },
+        "best-practices-dockerfile": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-01-13T08:00:00Z",
+          "detectionCount": 8
+        },
+        "run-port-mapping": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 9
+        },
+        "volume-types": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 15
+        },
+        "persist-data": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 8
+        },
+        "volume-inspect": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-01-21T08:00:00Z",
+          "detectionCount": 9
+        },
+        "network-drivers": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 10
+        },
+        "create-networks": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-20T08:00:00Z",
+          "detectionCount": 4
+        },
+        "multi-stage-concept": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 1
+        },
+        "reduce-image-size": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 3
+        }
+      }
+    },
+    "skill:Linux": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "fhs": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 29
+        },
+        "navigate-directories": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 26
+        },
+        "paths-absolute-relative": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 32
+        },
+        "inodes-links": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-09T08:00:00Z",
+          "detectionCount": 20
+        },
+        "file-ops": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 33
+        },
+        "view-files": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 11
+        },
+        "search-find": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 13
+        },
+        "ps-top": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-21T08:00:00Z",
+          "detectionCount": 9
+        },
+        "kill-signals": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 11
+        },
+        "background-jobs": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 5
+        },
+        "nice-renice": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-01-24T08:00:00Z",
+          "detectionCount": 2
+        },
+        "ip-ss": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-17T08:00:00Z",
+          "detectionCount": 3
+        }
+      }
+    },
+    "skill:Git and GitHub": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "git-init": {
+          "firstDetectedAt": "2026-01-30T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 21
+        },
+        "add-commit": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 31
+        },
+        "status-log": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 22
+        },
+        "diff": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 38
+        },
+        "create-branch": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 29
+        },
+        "merge-branch": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-20T08:00:00Z",
+          "detectionCount": 8
+        },
+        "track-branches": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-01-19T08:00:00Z",
+          "detectionCount": 16
+        },
+        "create-pr": {
+          "firstDetectedAt": "2026-01-29T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 10
+        },
+        "review-pr": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 17
+        },
+        "merge-strategies": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 2
+        },
+        "identify-conflicts": {
+          "firstDetectedAt": "2026-01-30T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 5
+        },
+        "workflow-yml": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 2
+        }
+      }
+    },
+    "skill:Shell / Bash": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "shebang-execution": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-17T08:00:00Z",
+          "detectionCount": 34
+        },
+        "variables-assignment": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 26
+        },
+        "env-vars": {
+          "firstDetectedAt": "2026-01-30T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 37
+        },
+        "quoting": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 38
+        },
+        "if-else": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 10
+        },
+        "test-brackets": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 9
+        },
+        "grep-regex": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 5
+        },
+        "sed-substitute": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 2
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "userId": "eng-002",
+  "name": "Bob Zhang",
+  "createdAt": "2026-01-05T00:00:00Z",
+  "lastScannedAt": "2026-02-13T08:00:00Z",
+  "roadmaps": {
+    "role:Frontend": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-08T08:00:00Z",
+      "lastActivityAt": "2026-02-13T08:00:00Z",
+      "completions": {
+        "how-internet-works": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 12},
+        "http-https": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 24},
+        "dns-hosting": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-01-28T08:00:00Z", "detectionCount": 4},
+        "semantic-html": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 32},
+        "forms-validation": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 20},
+        "seo-basics": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 8},
+        "layout": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 35},
+        "animations": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 16},
+        "css-variables": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 22},
+        "core-js": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 36},
+        "es6-plus": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 34},
+        "async": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 28},
+        "types-interfaces": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 18},
+        "generics": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 10},
+        "vue": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 38},
+        "tailwind": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 30},
+        "css-modules": {"firstDetectedAt": "2026-01-22T08:00:00Z", "lastDetectedAt": "2026-02-06T08:00:00Z", "detectionCount": 6},
+        "vite": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 28},
+        "unit-testing": {"firstDetectedAt": "2026-01-20T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 12},
+        "nextjs": {"firstDetectedAt": "2026-02-05T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 3},
+        "client-state": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 5}
+      }
+    },
+    "skill:JavaScript": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-13T08:00:00Z",
+      "completions": {
+        "variables-types": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 35},
+        "control-flow": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 32},
+        "functions": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 34},
+        "arrays-objects": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 30},
+        "selecting-elements": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 26},
+        "modifying-dom": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 28},
+        "event-listeners": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 29},
+        "let-const-arrow": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 33},
+        "destructuring-spread": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 25},
+        "template-literals": {"firstDetectedAt": "2026-01-11T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 22},
+        "callbacks-promises": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 20},
+        "async-await": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 22},
+        "fetch-api": {"firstDetectedAt": "2026-01-13T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 16},
+        "closures": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 10},
+        "es-modules": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 28},
+        "types-basics": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 4}
+      }
+    },
+    "skill:TypeScript": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-12T08:00:00Z",
+      "lastActivityAt": "2026-02-11T08:00:00Z",
+      "completions": {
+        "primitive-types": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 24},
+        "type-inference": {"firstDetectedAt": "2026-01-13T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 20},
+        "strict-mode": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 8},
+        "interface-definition": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 22},
+        "optional-properties": {"firstDetectedAt": "2026-01-16T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 12},
+        "extending-interfaces": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-06T08:00:00Z", "detectionCount": 10},
+        "generic-functions": {"firstDetectedAt": "2026-01-20T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 14},
+        "numeric-string-enums": {"firstDetectedAt": "2026-01-22T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 6},
+        "partial-required": {"firstDetectedAt": "2026-01-25T08:00:00Z", "lastDetectedAt": "2026-02-01T08:00:00Z", "detectionCount": 4},
+        "type-guards": {"firstDetectedAt": "2026-01-28T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 5}
+      }
+    },
+    "skill:Vue": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-10T08:00:00Z",
+      "lastActivityAt": "2026-02-13T08:00:00Z",
+      "completions": {
+        "mustache-interpolation": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 32},
+        "v-bind-v-on": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 30},
+        "v-model": {"firstDetectedAt": "2026-01-11T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 35},
+        "template-conditionals": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 26},
+        "reactive-ref": {"firstDetectedAt": "2026-01-11T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 34},
+        "computed-properties": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 28},
+        "watchers": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 18},
+        "component-registration": {"firstDetectedAt": "2026-01-13T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 31},
+        "emits-events": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 24},
+        "slots": {"firstDetectedAt": "2026-01-16T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 14},
+        "setup-script": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 22},
+        "composable-pattern": {"firstDetectedAt": "2026-01-20T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 12},
+        "router-setup": {"firstDetectedAt": "2026-01-22T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 10},
+        "pinia-setup": {"firstDetectedAt": "2026-01-25T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 6},
+        "vitest-setup": {"firstDetectedAt": "2026-02-05T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 3}
+      }
+    },
+    "skill:CSS": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "basic-selectors": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 34},
+        "combinators": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 28},
+        "pseudo-classes": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 30},
+        "specificity-cascade": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 22},
+        "content-padding-border": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 32},
+        "box-sizing": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 24},
+        "margin-collapse": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 10},
+        "display-types": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 26},
+        "flex-container": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 35},
+        "flex-wrap-align": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 30},
+        "flex-grow-shrink": {"firstDetectedAt": "2026-01-11T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 20},
+        "flex-order": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 12},
+        "grid-template": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 22},
+        "grid-gap": {"firstDetectedAt": "2026-01-13T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 14},
+        "media-queries": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 18},
+        "transitions": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-06T08:00:00Z", "detectionCount": 10},
+        "custom-properties": {"firstDetectedAt": "2026-01-16T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 16}
+      }
+    },
+    "skill:HTML": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-13T08:00:00Z",
+      "completions": {
+        "doctype-and-html": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 30},
+        "head-meta-charset": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 32},
+        "body-structure": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 28},
+        "document-outline": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 20},
+        "header-nav-footer": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 33},
+        "article-section": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 24},
+        "semantic-tables": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 8},
+        "figure-figcaption": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 10},
+        "form-input-types": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 26},
+        "labels-placeholders": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 20},
+        "html5-validation": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 12},
+        "img-attributes": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 14},
+        "aria-roles": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 8},
+        "heading-hierarchy": {"firstDetectedAt": "2026-01-16T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 12}
+      }
+    },
+    "skill:Git and GitHub": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-13T08:00:00Z",
+      "completions": {
+        "git-init": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 28},
+        "add-commit": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 35},
+        "status-log": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 32},
+        "diff": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 26},
+        "create-branch": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 24},
+        "merge-branch": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 18},
+        "track-branches": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 14},
+        "add-remote": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 30},
+        "push-pull": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 32},
+        "fetch": {"firstDetectedAt": "2026-01-11T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 16},
+        "create-pr": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 20},
+        "review-pr": {"firstDetectedAt": "2026-01-16T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 12},
+        "identify-conflicts": {"firstDetectedAt": "2026-01-20T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 6},
+        "workflow-yml": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 4}
+      }
+    },
+    "skill:Node.js": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-15T08:00:00Z",
+      "lastActivityAt": "2026-02-10T08:00:00Z",
+      "completions": {
+        "what-is-node": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 14},
+        "non-blocking-io": {"firstDetectedAt": "2026-01-16T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 8},
+        "running-scripts": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 18},
+        "commonjs-esm": {"firstDetectedAt": "2026-01-17T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 12},
+        "npm": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 22},
+        "fs-path": {"firstDetectedAt": "2026-01-20T08:00:00Z", "lastDetectedAt": "2026-02-01T08:00:00Z", "detectionCount": 5},
+        "callbacks-promises": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 10},
+        "async-await": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 14},
+        "routing-middleware": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 3}
+      }
+    }
+  }
+}

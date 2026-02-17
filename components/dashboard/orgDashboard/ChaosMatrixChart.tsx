@@ -71,17 +71,21 @@ export function ChaosMatrixChart({
   useChaosMatrixAvatars(renderMode, stackedFiltered, clipId, plotRef, svgOverlayRef);
 
   return (
-    <div className="w-full overflow-visible flex flex-col items-center">
-      <div className="relative overflow-visible bg-white" style={{ width: 800, height: 480 }}>
-        <div ref={plotRef}>
-          <Plot data={plotData} layout={layout} config={CHAOS_MATRIX_CONFIG} />
+    <div className="w-full overflow-hidden">
+      <div className="relative bg-white w-full" style={{ minHeight: 420 }}>
+        <div ref={plotRef} className="w-full">
+          <Plot
+            data={plotData}
+            layout={layout}
+            config={CHAOS_MATRIX_CONFIG}
+            style={{ width: "100%", height: "100%" }}
+            useResizeHandler={true}
+          />
         </div>
         {renderMode === "avatars" && (
           <svg
             ref={svgOverlayRef}
-            className="absolute top-0 left-0 pointer-events-none"
-            width={800}
-            height={480}
+            className="absolute top-0 left-0 pointer-events-none w-full h-full"
             style={{ zIndex: 10 }}
           />
         )}

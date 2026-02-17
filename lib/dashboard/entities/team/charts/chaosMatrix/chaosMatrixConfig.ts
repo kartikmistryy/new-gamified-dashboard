@@ -132,7 +132,7 @@ export function buildChaosMatrixLayout(
   return {
     xaxis: {
       title: {
-        text: "Median Weekly KP (Knowledge Points)",
+        text: "Median Weekly KP (KarmaPoints)",
         font: { size: 14, color: "#334155" },
       },
       range: [xMin, xMax],
@@ -173,9 +173,9 @@ export function buildChaosMatrixLayout(
     annotations: buildQuadrantAnnotations(xMin, xMax, yMin, yMax, kpThresh),
     plot_bgcolor: "#f9fafb",
     paper_bgcolor: "#ffffff",
-    margin: { t: 30, r: 30, b: 60, l: 100 },
-    width: 800,
-    height: 480,
+    margin: { t: 30, r: 30, b: 60, l: 70 },
+    autosize: true,
+    height: 420,
     legend: {
       orientation: "h",
       y: -0.2,
@@ -190,5 +190,5 @@ export function buildChaosMatrixLayout(
 /** Standard Plotly configuration */
 export const CHAOS_MATRIX_CONFIG: Partial<Config> = {
   displayModeBar: false,
-  responsive: false,
+  responsive: true,
 };

@@ -123,3 +123,16 @@ export function isTimeRangeKey(value: unknown): value is TimeRangeKey {
     ["1m", "3m", "1y", "max"].includes(value)
   );
 }
+
+/**
+ * Get comparison suffix for trend indicators (e.g., "vs last month")
+ */
+export function getTimeRangeComparisonLabel(key: TimeRangeKey): string {
+  const labels: Record<TimeRangeKey, string> = {
+    "1m": "vs last month",
+    "3m": "vs last 3 months",
+    "1y": "vs last year",
+    "max": "vs all time",
+  };
+  return labels[key];
+}

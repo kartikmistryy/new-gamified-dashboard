@@ -131,12 +131,10 @@ export const TEAM_PERFORMANCE_ROWS: TeamPerformanceRow[] = getTeamPerformanceRow
 export const OVERVIEW_SUMMARY_CARDS: OverviewSummaryCardConfig[] = getOverviewSummaryCardsForGauge(DEFAULT_GAUGE);
 
 const CHART_INSIGHTS_MOCK: ChartInsight[] = [
-  { id: "baseline", text: "Performance stayed mostly above baseline, with the median clustering in the P40-P60 band throughout the year." },
-  { id: "milestones", text: "Leadership and delivery milestones drive outsized gains, pushing results into the P70+ \"Excellent\" range." },
-  { id: "disruption", text: "Team disruption has immediate impact, as seen in the sharp mid-year dip during the Architect's leave." },
-  { id: "holiday", text: "Holiday effects are real but temporary, causing short dips without long-term degradation." },
-  { id: "recovery", text: "Recovery speed is strong, with performance rebounding within weeks after each downturn." },
-  { id: "volatility", text: "End-of-year volatility reflects seasonality, not a structural decline in performance." },
+  { id: "baseline", text: "Median clusters in P40-P60 band year-round." },
+  { id: "milestones", text: "Delivery milestones push results to P70+." },
+  { id: "disruption", text: "Team changes cause sharp but recoverable dips." },
+  { id: "recovery", text: "Strong rebound within weeks after downturns." },
 ];
 
 /** Mock chart insights for the overview dashboard. Replace with API/real data when available. */

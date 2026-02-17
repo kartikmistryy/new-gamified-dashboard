@@ -5,16 +5,12 @@ import { ChaosMatrixChart } from "@/components/dashboard/orgDashboard/ChaosMatri
 import { BaseTeamsTable } from "@/components/dashboard/shared/BaseTeamsTable";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { useTimeRange } from "@/lib/dashboard/shared/contexts/TimeRangeContext";
-import { CollaborationNetworkGraph } from "@/components/dashboard/teamDashboard/CollaborationNetworkGraph";
-import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import {
   getContributorDesignData,
   transformToChaosMatrixData,
   type ContributorDesignRow,
 } from "@/lib/dashboard/entities/contributor/mocks/designMockData";
-import { getRepoCollaborationData } from "@/lib/dashboard/entities/contributor/charts/collaborationNetwork/collaborationNetworkData";
-import type { ChartInsight } from "@/lib/dashboard/entities/team/types";
 import {
   DESIGN_CONTRIBUTOR_FILTER_TABS,
   designContributorSortFunction,
@@ -29,7 +25,6 @@ export function RepoDesignPageClient() {
 
   // State
   const [designFilter, setDesignFilter] = useState<DesignContributorFilter>("mostImportant");
-  const [collaborationInsights, setCollaborationInsights] = useState<ChartInsight[]>([]);
 
   // Data pipeline
   const contributors = useMemo(() => getContributorDesignData(repoId!, 6), [repoId]);
@@ -40,28 +35,10 @@ export function RepoDesignPageClient() {
   );
 
   const contributorNames = useMemo(() => contributors.map((c) => c.contributorName), [contributors]);
-  const collaborationData = useMemo(
-    () => getRepoCollaborationData(repoId!, contributorNames, timeRange),
-    [repoId, contributorNames, timeRange]
-  );
 
   return (
     <TooltipProvider>
       <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
-        <DashboardSection title="Collaboration Network" className="w-full">
-          <div className="flex flex-row flex-wrap items-stretch gap-8">
-            <div className="flex-[1.5] min-w-[400px]">
-              <CollaborationNetworkGraph
-                data={collaborationData}
-                onInsightsChange={setCollaborationInsights}
-              />
-            </div>
-            <div className="flex-1 min-w-[280px]">
-              <ChartInsights insights={collaborationInsights} />
-            </div>
-          </div>
-        </DashboardSection>
-
         <DashboardSection title="Engineering Chaos Index" className="w-full">
           <ChaosMatrixChart
             data={chaosMatrixData}

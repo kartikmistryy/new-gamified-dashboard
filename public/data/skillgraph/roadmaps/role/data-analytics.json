@@ -1,0 +1,632 @@
+[
+  {
+    "roadmap": "Data Analyst",
+    "group": "Data & Analytics",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "spreadsheets-excel-sheets",
+            "title": "Spreadsheets (Excel/Google Sheets)",
+            "subCheckpoints": [
+              {
+                "id": "sheets-formulas",
+                "title": "Formulas, functions, and cell references"
+              },
+              {
+                "id": "sheets-pivot-tables",
+                "title": "Pivot tables and data summarization"
+              },
+              {
+                "id": "sheets-charts",
+                "title": "Basic charts and conditional formatting"
+              },
+              {
+                "id": "sheets-data-validation",
+                "title": "Data validation and lookup functions (VLOOKUP, INDEX-MATCH)"
+              }
+            ]
+          },
+          {
+            "id": "sql-fundamentals",
+            "title": "SQL Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "sql-select",
+                "title": "SELECT, WHERE, ORDER BY, and LIMIT"
+              },
+              {
+                "id": "sql-joins",
+                "title": "JOINs (INNER, LEFT, RIGHT)"
+              },
+              {
+                "id": "sql-aggregation",
+                "title": "GROUP BY, aggregate functions (COUNT, SUM, AVG)"
+              },
+              {
+                "id": "sql-subqueries",
+                "title": "Subqueries and CTEs basics"
+              }
+            ]
+          },
+          {
+            "id": "statistics-basics",
+            "title": "Statistics Basics",
+            "subCheckpoints": [
+              {
+                "id": "stats-descriptive",
+                "title": "Descriptive statistics (mean, median, mode, SD)"
+              },
+              {
+                "id": "stats-distributions",
+                "title": "Distributions and normal curve"
+              },
+              {
+                "id": "stats-correlation",
+                "title": "Correlation and basic hypothesis testing"
+              }
+            ]
+          },
+          {
+            "id": "data-cleaning",
+            "title": "Data Cleaning",
+            "subCheckpoints": [
+              {
+                "id": "clean-missing",
+                "title": "Handling missing values and duplicates"
+              },
+              {
+                "id": "clean-standardization",
+                "title": "Data type conversion and standardization"
+              },
+              {
+                "id": "clean-validation",
+                "title": "Data validation and outlier detection"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "data-visualization",
+            "title": "Data Visualization (Tableau, Power BI)",
+            "subCheckpoints": [
+              {
+                "id": "viz-design",
+                "title": "Visual design principles and chart selection"
+              },
+              {
+                "id": "viz-tableau",
+                "title": "Tableau: dashboards, filters, and calculations"
+              },
+              {
+                "id": "viz-powerbi",
+                "title": "Power BI: DAX, measures, and report building"
+              }
+            ]
+          },
+          {
+            "id": "python-r-data-analysis",
+            "title": "Python/R for Data Analysis",
+            "subCheckpoints": [
+              {
+                "id": "py-pandas",
+                "title": "Pandas: DataFrames, filtering, merging"
+              },
+              {
+                "id": "py-visualization",
+                "title": "Matplotlib or Seaborn for visualizations"
+              },
+              {
+                "id": "r-tidyverse",
+                "title": "R with tidyverse (dplyr, ggplot2) or equivalent"
+              }
+            ]
+          },
+          {
+            "id": "exploratory-data-analysis",
+            "title": "Exploratory Data Analysis (EDA)",
+            "subCheckpoints": [
+              {
+                "id": "eda-summary",
+                "title": "Summary statistics and data profiling"
+              },
+              {
+                "id": "eda-visualization",
+                "title": "Visual exploration and pattern discovery"
+              },
+              {
+                "id": "eda-hypothesis",
+                "title": "Formulating hypotheses from data"
+              }
+            ]
+          },
+          {
+            "id": "reporting-dashboards",
+            "title": "Reporting & Dashboards",
+            "subCheckpoints": [
+              {
+                "id": "report-design",
+                "title": "Dashboard design and layout best practices"
+              },
+              {
+                "id": "report-interactivity",
+                "title": "Drill-downs, filters, and dynamic reporting"
+              },
+              {
+                "id": "report-delivery",
+                "title": "Scheduled reports and distribution"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "ab-testing",
+            "title": "A/B Testing",
+            "subCheckpoints": [
+              {
+                "id": "ab-design",
+                "title": "Experiment design and sample size calculation"
+              },
+              {
+                "id": "ab-analysis",
+                "title": "Statistical significance and confidence intervals"
+              },
+              {
+                "id": "ab-interpretation",
+                "title": "Interpreting results and making recommendations"
+              }
+            ]
+          },
+          {
+            "id": "communication-storytelling",
+            "title": "Communication & Storytelling",
+            "subCheckpoints": [
+              {
+                "id": "story-narrative",
+                "title": "Data-driven narrative and storytelling"
+              },
+              {
+                "id": "story-audience",
+                "title": "Tailoring insights for different audiences"
+              },
+              {
+                "id": "story-presentation",
+                "title": "Presenting findings and recommendations"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Data Engineer",
+    "group": "Data & Analytics",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "python-sql-fundamentals",
+            "title": "Python & SQL Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "py-basics",
+                "title": "Python syntax, data structures, and file I/O"
+              },
+              {
+                "id": "sql-advanced",
+                "title": "Advanced SQL: window functions, CTEs, optimization"
+              },
+              {
+                "id": "py-db-connect",
+                "title": "Database connections and query execution in Python"
+              }
+            ]
+          },
+          {
+            "id": "database-design",
+            "title": "Database Design",
+            "subCheckpoints": [
+              {
+                "id": "db-normalization",
+                "title": "Normalization and schema design"
+              },
+              {
+                "id": "db-indexing",
+                "title": "Indexing strategies and query performance"
+              },
+              {
+                "id": "db-constraints",
+                "title": "Constraints, keys, and referential integrity"
+              }
+            ]
+          },
+          {
+            "id": "etl-elt-pipelines",
+            "title": "ETL/ELT Pipeline Basics",
+            "subCheckpoints": [
+              {
+                "id": "etl-concepts",
+                "title": "Extract, Transform, Load concepts"
+              },
+              {
+                "id": "etl-tools",
+                "title": "Building ETL pipelines with Python or SQL"
+              },
+              {
+                "id": "etl-scheduling",
+                "title": "Batch processing and scheduling basics"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "data-warehousing",
+            "title": "Data Warehousing (Snowflake, BigQuery, Redshift)",
+            "subCheckpoints": [
+              {
+                "id": "dw-concepts",
+                "title": "Warehouse architecture and data modeling"
+              },
+              {
+                "id": "dw-snowflake",
+                "title": "Snowflake: virtual warehouses, stages, snowpipe"
+              },
+              {
+                "id": "dw-bigquery",
+                "title": "BigQuery: datasets, partitioning, clustering"
+              },
+              {
+                "id": "dw-redshift",
+                "title": "Redshift: distribution keys, sort keys, spectrum"
+              }
+            ]
+          },
+          {
+            "id": "batch-processing-spark",
+            "title": "Batch Processing (Spark)",
+            "subCheckpoints": [
+              {
+                "id": "spark-rdd-df",
+                "title": "Spark RDDs and DataFrames"
+              },
+              {
+                "id": "spark-optimization",
+                "title": "Partitioning, caching, and performance tuning"
+              },
+              {
+                "id": "spark-pyspark",
+                "title": "PySpark for data pipelines"
+              }
+            ]
+          },
+          {
+            "id": "data-modeling",
+            "title": "Data Modeling",
+            "subCheckpoints": [
+              {
+                "id": "model-star-schema",
+                "title": "Star and snowflake schemas"
+              },
+              {
+                "id": "model-dims-facts",
+                "title": "Dimension and fact tables"
+              },
+              {
+                "id": "model-dbt",
+                "title": "dbt or similar for data modeling"
+              }
+            ]
+          },
+          {
+            "id": "orchestration-airflow",
+            "title": "Orchestration (Airflow)",
+            "subCheckpoints": [
+              {
+                "id": "airflow-dags",
+                "title": "DAGs, tasks, and operators"
+              },
+              {
+                "id": "airflow-dependencies",
+                "title": "Task dependencies and scheduling"
+              },
+              {
+                "id": "airflow-monitoring",
+                "title": "Monitoring, retries, and alerting"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "stream-processing-kafka",
+            "title": "Stream Processing (Kafka)",
+            "subCheckpoints": [
+              {
+                "id": "kafka-topics",
+                "title": "Topics, partitions, and consumer groups"
+              },
+              {
+                "id": "kafka-producers",
+                "title": "Producers and consumers in Python/Java"
+              },
+              {
+                "id": "kafka-streams",
+                "title": "Kafka Streams or Spark Streaming"
+              }
+            ]
+          },
+          {
+            "id": "data-quality-governance",
+            "title": "Data Quality & Governance",
+            "subCheckpoints": [
+              {
+                "id": "quality-validation",
+                "title": "Data validation and quality checks"
+              },
+              {
+                "id": "quality-lineage",
+                "title": "Data lineage and lineage tools"
+              },
+              {
+                "id": "governance-policies",
+                "title": "Governance policies and metadata management"
+              }
+            ]
+          },
+          {
+            "id": "cloud-platforms-iaas",
+            "title": "Cloud Platforms & Infrastructure",
+            "subCheckpoints": [
+              {
+                "id": "cloud-aws",
+                "title": "AWS: S3, Glue, Lambda, EMR"
+              },
+              {
+                "id": "cloud-gcp",
+                "title": "GCP: Cloud Storage, Dataflow, Dataproc"
+              },
+              {
+                "id": "cloud-iac",
+                "title": "Infrastructure as Code (Terraform, CloudFormation)"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "BI Analyst",
+    "group": "Data & Analytics",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "sql-databases",
+            "title": "SQL & Databases",
+            "subCheckpoints": [
+              {
+                "id": "sql-queries",
+                "title": "Writing SELECT, JOIN, and aggregate queries"
+              },
+              {
+                "id": "sql-views",
+                "title": "Views, stored procedures, and query optimization"
+              },
+              {
+                "id": "sql-connections",
+                "title": "Connecting BI tools to databases"
+              }
+            ]
+          },
+          {
+            "id": "spreadsheets-advanced",
+            "title": "Spreadsheets Advanced",
+            "subCheckpoints": [
+              {
+                "id": "sheets-advanced-functions",
+                "title": "Advanced functions (INDEX, MATCH, XLOOKUP, SUMPRODUCT)"
+              },
+              {
+                "id": "sheets-macros",
+                "title": "Macros and automation basics"
+              },
+              {
+                "id": "sheets-power-query",
+                "title": "Power Query or Google Apps Script for data prep"
+              }
+            ]
+          },
+          {
+            "id": "bi-tools",
+            "title": "BI Tools (Tableau, Power BI, Looker)",
+            "subCheckpoints": [
+              {
+                "id": "bi-connections",
+                "title": "Data source connections and data modeling"
+              },
+              {
+                "id": "bi-visuals",
+                "title": "Creating charts, tables, and KPIs"
+              },
+              {
+                "id": "bi-interactivity",
+                "title": "Filters, parameters, and drill-downs"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "data-modeling-bi",
+            "title": "Data Modeling for BI",
+            "subCheckpoints": [
+              {
+                "id": "model-relationships",
+                "title": "Star schema and relationship design"
+              },
+              {
+                "id": "model-dax",
+                "title": "DAX (Power BI) or equivalent for measures"
+              },
+              {
+                "id": "model-lookml",
+                "title": "LookML for Looker or semantic layers"
+              }
+            ]
+          },
+          {
+            "id": "kpi-design-metrics",
+            "title": "KPI Design & Metrics",
+            "subCheckpoints": [
+              {
+                "id": "kpi-definition",
+                "title": "Defining KPIs and business metrics"
+              },
+              {
+                "id": "kpi-calculations",
+                "title": "Calculated metrics and time-based analysis"
+              },
+              {
+                "id": "kpi-benchmarks",
+                "title": "Benchmarks, targets, and variance analysis"
+              }
+            ]
+          },
+          {
+            "id": "dashboard-design",
+            "title": "Dashboard Design",
+            "subCheckpoints": [
+              {
+                "id": "dash-layout",
+                "title": "Layout, hierarchy, and visual best practices"
+              },
+              {
+                "id": "dash-user-experience",
+                "title": "User experience and accessibility"
+              },
+              {
+                "id": "dash-performance",
+                "title": "Dashboard performance optimization"
+              }
+            ]
+          },
+          {
+            "id": "reporting-automation",
+            "title": "Reporting Automation",
+            "subCheckpoints": [
+              {
+                "id": "report-schedules",
+                "title": "Scheduled reports and subscriptions"
+              },
+              {
+                "id": "report-api",
+                "title": "API integrations and embedding"
+              },
+              {
+                "id": "report-refresh",
+                "title": "Data refresh and incremental updates"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "stakeholder-management",
+            "title": "Stakeholder Management",
+            "subCheckpoints": [
+              {
+                "id": "stakeholder-discovery",
+                "title": "Requirements gathering and stakeholder discovery"
+              },
+              {
+                "id": "stakeholder-prioritization",
+                "title": "Prioritizing requests and managing expectations"
+              },
+              {
+                "id": "stakeholder-training",
+                "title": "Self-service enablement and training"
+              }
+            ]
+          },
+          {
+            "id": "data-storytelling",
+            "title": "Data Storytelling",
+            "subCheckpoints": [
+              {
+                "id": "story-narrative",
+                "title": "Building data-driven narratives"
+              },
+              {
+                "id": "story-presentation",
+                "title": "Presenting insights to executives"
+              },
+              {
+                "id": "story-action",
+                "title": "Driving action from insights"
+              }
+            ]
+          },
+          {
+            "id": "statistical-analysis",
+            "title": "Statistical Analysis",
+            "subCheckpoints": [
+              {
+                "id": "stats-forecasting",
+                "title": "Trend analysis and forecasting"
+              },
+              {
+                "id": "stats-correlation",
+                "title": "Correlation and regression analysis"
+              },
+              {
+                "id": "stats-ab",
+                "title": "A/B test interpretation"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

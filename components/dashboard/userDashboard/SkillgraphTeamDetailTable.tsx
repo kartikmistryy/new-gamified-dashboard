@@ -54,11 +54,12 @@ export function SkillgraphTeamDetailTable({
     <Table className="table-fixed">
       <TableHeader>
         <TableRow className="hover:bg-transparent">
+          <TableHead className="w-20" />
           {(["domain", "skill", "usage", "progress"] as const).map((key) => {
             const isSorted = sortState?.key === key;
             const label = columnLabels[key];
             return (
-              <TableHead key={key} className="w-1/4">
+              <TableHead key={key}>
                 <button
                   type="button"
                   className="inline-flex items-center gap-1 text-left"
@@ -84,8 +85,9 @@ export function SkillgraphTeamDetailTable({
         {sortedDetails.length > 0 ? (
           sortedDetails.map((detail, index) => (
             <TableRow key={`${detail.skill}-${index}`} className="border-0 hover:bg-gray-50/70">
-              <TableCell className="text-gray-700 w-1/4">{detail.domain}</TableCell>
-              <TableCell className="font-medium text-gray-900 w-1/4">
+              <TableCell />
+              <TableCell className="text-gray-700">{detail.domain}</TableCell>
+              <TableCell className="font-medium text-gray-900">
                 <div className="flex items-center gap-2">
                   <div
                     className="size-3.5 rounded-sm shrink-0"
@@ -95,15 +97,15 @@ export function SkillgraphTeamDetailTable({
                   <span>{detail.skill}</span>
                 </div>
               </TableCell>
-              <TableCell className="text-gray-700 w-1/4">{detail.usage}</TableCell>
-              <TableCell className="w-1/4">
+              <TableCell className="text-gray-700">{detail.usage}</TableCell>
+              <TableCell>
                 <SkillgraphProgressBar value={detail.progress} />
               </TableCell>
             </TableRow>
           ))
         ) : (
           <TableRow className="border-0 hover:bg-transparent">
-            <TableCell colSpan={4} className="h-14 text-center text-sm text-gray-500">
+            <TableCell colSpan={5} className="h-14 text-center text-sm text-gray-500">
               No details available.
             </TableCell>
           </TableRow>

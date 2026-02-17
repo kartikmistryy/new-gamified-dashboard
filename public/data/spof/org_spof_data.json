@@ -1,0 +1,864 @@
+{
+  "repos": [
+    {
+      "id": "novu",
+      "name": "novu",
+      "totalModules": 11,
+      "repositoryBusFactor": 4,
+      "modules": [
+        {
+          "name": "Translation Management",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Adam Chmara"
+          ]
+        },
+        {
+          "name": "Activity Feed & Analytics",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "George Djabarov",
+            "Dima Grossman"
+          ]
+        },
+        {
+          "name": "User, Team & Tenant Management",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Richard Fontein",
+            "Himanshu Garg"
+          ]
+        },
+        {
+          "name": "Provider & Channel Integrations",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Richard Fontein",
+            "Dima Grossman",
+            "Sokratis Vidros"
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Dima Grossman",
+            "Paweł Tymczuk",
+            "Richard Fontein"
+          ]
+        },
+        {
+          "name": "Billing & Subscription Management",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "George Desipris",
+            "GalTidhar",
+            "Adam Chmara"
+          ]
+        },
+        {
+          "name": "In-App Notification Center",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Adam Chmara",
+            "Dima Grossman",
+            "George Djabarov",
+            "Paweł Tymczuk"
+          ]
+        },
+        {
+          "name": "Workflow Studio & Orchestration",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Adam Chmara",
+            "Richard Fontein",
+            "Dima Grossman",
+            "p-fernandez"
+          ]
+        },
+        {
+          "name": "Developer Experience & SDKs",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Dima Grossman",
+            "Paweł Tymczuk",
+            "Adam Chmara",
+            "Sokratis Vidros"
+          ]
+        },
+        {
+          "name": "Subscriber & Audience Management",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Gosha",
+            "Adam Chmara",
+            "Dima Grossman",
+            "Paweł Tymczuk"
+          ]
+        },
+        {
+          "name": "Infrastructure",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Adam Chmara",
+            "Dima Grossman",
+            "Sokratis Vidros",
+            "Paweł Tymczuk",
+            "Denis Kralj"
+          ]
+        }
+      ],
+      "spofOwnerCount": 5,
+      "uniqueSpofOwnerCount": 5
+    },
+    {
+      "id": "transformers",
+      "name": "transformers",
+      "totalModules": 9,
+      "repositoryBusFactor": 18,
+      "modules": [
+        {
+          "name": "Infrastructure",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Yih-Dar",
+            "Sylvain Gugger"
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Yuanyuan Chen",
+            "Cyril Vallez",
+            "Sylvain Gugger",
+            "Yih-Dar",
+            "Pablo Montalvo"
+          ]
+        },
+        {
+          "name": "Computer Vision Model Library",
+          "busFactor": 10,
+          "status": "Healthy",
+          "owners": [
+            "NielsRogge",
+            "Sylvain Gugger",
+            "Yuanyuan Chen",
+            "Cyril Vallez",
+            "Raushan Turganbay",
+            "Yoni Gozlan",
+            "amyeroberts",
+            "Yih-Dar",
+            "Arthur",
+            "Younes Belkada"
+          ]
+        },
+        {
+          "name": "Natural Language Processing (NLP) Model Library",
+          "busFactor": 11,
+          "status": "Healthy",
+          "owners": [
+            "Yih-Dar",
+            "Younes Belkada",
+            "Anton Vlasjuk",
+            "Cyril Vallez",
+            "Harry Mellor",
+            "Raghav Ravishankar",
+            "EduardDurech",
+            "Raushan Turganbay",
+            "Crystalcareai",
+            "Mohamed Mekkouri",
+            "Ita Zaporozhets"
+          ]
+        },
+        {
+          "name": "Audio & Speech Model Library",
+          "busFactor": 12,
+          "status": "Healthy",
+          "owners": [
+            "Eric Bezzam",
+            "eustlb",
+            "Sylvain Gugger",
+            "Nicolas Patry",
+            "Yih-Dar",
+            "Matt",
+            "Cyril Vallez",
+            "Yoach Lacombe",
+            "Matthijs Hollemans",
+            "Arthur",
+            "Connor Henderson",
+            "Raushan Turganbay"
+          ]
+        },
+        {
+          "name": "Developer Enablement Resources",
+          "busFactor": 12,
+          "status": "Healthy",
+          "owners": [
+            "Steven Liu",
+            "Merve Noyan",
+            "Cyril Vallez",
+            "Yoni Gozlan",
+            "Yuanyuan Chen",
+            "Alex McKinney",
+            "NielsRogge",
+            "Arthur",
+            "Lysandre Debut",
+            "Matt",
+            "StevenBucaille",
+            "omahs"
+          ]
+        },
+        {
+          "name": "Training & Inference Framework",
+          "busFactor": 13,
+          "status": "Healthy",
+          "owners": [
+            "NielsRogge",
+            "Arthur",
+            "Sylvain Gugger",
+            "Marc Sun",
+            "Zach Mueller",
+            "Sourab Mangrulkar",
+            "Steven Liu",
+            "Cyril Vallez",
+            "Joao Gante",
+            "Wonhyeong Seo",
+            "Yuanyuan Chen",
+            "Yih-Dar",
+            "Patrick von Platen"
+          ]
+        },
+        {
+          "name": "Performance Optimization Toolkit",
+          "busFactor": 14,
+          "status": "Healthy",
+          "owners": [
+            "Joao Gante",
+            "Marc Sun",
+            "Arthur",
+            "Younes Belkada",
+            "Steven Liu",
+            "Ke Wen",
+            "김민서",
+            "Mohamed Mekkouri",
+            "Ilyas Moutawwakil",
+            "Cyril Vallez",
+            "Raushan Turganbay",
+            "Yih-Dar",
+            "Guang Yang",
+            "Yuanyuan Chen"
+          ]
+        },
+        {
+          "name": "Multimodal Model Library",
+          "busFactor": 16,
+          "status": "Healthy",
+          "owners": [
+            "Raushan Turganbay",
+            "Cyril Vallez",
+            "Arthur",
+            "Susnato Dhar",
+            "Yaswanth Gali",
+            "Joao Gante",
+            "eustlb",
+            "Anton Vlasjuk",
+            "Jaeyong Sung",
+            "Xibin Bayes Zhou",
+            "Yoni Gozlan",
+            "NielsRogge",
+            "Sylvain Gugger",
+            "Pablo Montalvo",
+            "Vladislav Bronzov",
+            "Pavel Iakubovskii"
+          ]
+        }
+      ],
+      "spofOwnerCount": 2,
+      "uniqueSpofOwnerCount": 2
+    },
+    {
+      "id": "langchain",
+      "name": "langchain",
+      "totalModules": 11,
+      "repositoryBusFactor": 0,
+      "modules": [
+        {
+          "name": "Pre-built Application Chains",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Mason Daugherty"
+          ]
+        },
+        {
+          "name": "Composable Workflow Engine (LCEL)",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Christophe Bornet",
+            "Mason Daugherty",
+            "Nuno Campos"
+          ]
+        },
+        {
+          "name": "Prompt Engineering & Management",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Mason Daugherty",
+            "Chuyuan Qu",
+            "Sourab Singh Bora"
+          ]
+        },
+        {
+          "name": "Conversational Memory Management",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Mason Daugherty",
+            "Christophe Bornet",
+            "James Braza"
+          ]
+        },
+        {
+          "name": "Model Abstraction Layer",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Mason Daugherty",
+            "ccurme",
+            "Bagatur",
+            "Eugene Yurtsev"
+          ]
+        },
+        {
+          "name": "Observability & Evaluation (LangSmith)",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Erick Friis",
+            "Christophe Bornet",
+            "Eugene Yurtsev",
+            "Mason Daugherty"
+          ]
+        },
+        {
+          "name": "Agent & Tool Framework",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Eugene Yurtsev",
+            "Mason Daugherty",
+            "Christophe Bornet",
+            "Bagatur"
+          ]
+        },
+        {
+          "name": "Data Indexing & Retrieval (RAG)",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Mason Daugherty",
+            "Christophe Bornet",
+            "Bagatur",
+            "Guangdong Liu"
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Mason Daugherty",
+            "Erick Friis",
+            "Harrison Chase",
+            "Sydney Runkle"
+          ]
+        },
+        {
+          "name": "Third-Party Integrations & Connectors",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "ccurme",
+            "Mason Daugherty",
+            "Bagatur",
+            "Eugene Yurtsev",
+            "Graden Rea"
+          ]
+        },
+        {
+          "name": "Infrastructure",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "ccurme",
+            "Sydney Runkle",
+            "Eugene Yurtsev",
+            "Mason Daugherty",
+            "Christophe Bornet"
+          ]
+        }
+      ],
+      "spofOwnerCount": 1,
+      "uniqueSpofOwnerCount": 1
+    },
+    {
+      "id": "langfuse",
+      "name": "langfuse",
+      "totalModules": 14,
+      "repositoryBusFactor": 4,
+      "modules": [
+        {
+          "name": "Dataset & Experiment Management",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "marliessophie"
+          ]
+        },
+        {
+          "name": "Enterprise SSO",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Marc Klingen"
+          ]
+        },
+        {
+          "name": "Data Annotation & Labeling",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "marliessophie"
+          ]
+        },
+        {
+          "name": "Automations & Integrations",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Marc Klingen",
+            "marliessophie"
+          ]
+        },
+        {
+          "name": "User & Access Management",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Marc Klingen",
+            "Max Deichmann"
+          ]
+        },
+        {
+          "name": "Model Evaluation & Scoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "marliessophie",
+            "Steffen Schmitz"
+          ]
+        },
+        {
+          "name": "Infrastructure",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Valery Meleshkin",
+            "Steffen Schmitz"
+          ]
+        },
+        {
+          "name": "Billing & Subscription Management",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "marliessophie",
+            "Hassieb Pakzad"
+          ]
+        },
+        {
+          "name": "LLM Playground",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Hassieb Pakzad",
+            "Thorsten Spieker"
+          ]
+        },
+        {
+          "name": "Observability & Analytics",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Valery Meleshkin",
+            "Michael Fröhlich",
+            "Max Deichmann"
+          ]
+        },
+        {
+          "name": "Prompt Management",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Michael Fröhlich",
+            "Max Deichmann",
+            "Marc Klingen"
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Steffen Schmitz",
+            "Hassieb Pakzad",
+            "Nimar"
+          ]
+        },
+        {
+          "name": "Dashboards & Reporting",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Nimar",
+            "Steffen Schmitz",
+            "marliessophie"
+          ]
+        },
+        {
+          "name": "Security & Compliance",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Valery Meleshkin",
+            "marliessophie",
+            "Marc Klingen"
+          ]
+        }
+      ],
+      "spofOwnerCount": 15,
+      "uniqueSpofOwnerCount": 7
+    },
+    {
+      "id": "rustdesk",
+      "name": "rustdesk",
+      "totalModules": 13,
+      "repositoryBusFactor": 2,
+      "modules": [
+        {
+          "name": "File Transfer & Clipboard Sync",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "fufesou"
+          ]
+        },
+        {
+          "name": "Remote Printing",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "fufesou"
+          ]
+        },
+        {
+          "name": "Collaborative Whiteboard",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "fufesou"
+          ]
+        },
+        {
+          "name": "Plugin & Extension Framework",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "fufesou"
+          ]
+        },
+        {
+          "name": "Remote Session Control",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "fufesou",
+            "Asura"
+          ]
+        },
+        {
+          "name": "Infrastructure",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "rustdesk",
+            "21pages"
+          ]
+        },
+        {
+          "name": "Connection Management & Relay",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "rustdesk",
+            "fufesou"
+          ]
+        },
+        {
+          "name": "Remote Terminal Access",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "fufesou",
+            "RustDesk"
+          ]
+        },
+        {
+          "name": "Self-Hosted Infrastructure & Administration",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "21pages",
+            "rustdesk"
+          ]
+        },
+        {
+          "name": "TCP Tunneling & Port Forwarding",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "21pages",
+            "rustdesk"
+          ]
+        },
+        {
+          "name": "Client Application Shell",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "fufesou",
+            "21pages",
+            "Mr-Update"
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "fufesou",
+            "yuluo",
+            "21pages"
+          ]
+        },
+        {
+          "name": "Security & Privacy",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "rustdesk",
+            "fufesou",
+            "Bin Li",
+            "Luca-rickrolled-himself",
+            "Daniel"
+          ]
+        }
+      ],
+      "spofOwnerCount": 16,
+      "uniqueSpofOwnerCount": 5
+    },
+    {
+      "id": "twenty",
+      "name": "twenty",
+      "totalModules": 14,
+      "repositoryBusFactor": 7,
+      "modules": [
+        {
+          "name": "AI Assistant",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Charles Bochet"
+          ]
+        },
+        {
+          "name": "Billing & Subscription Management",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Félix Malfait",
+            "Ana Sofia Marin Alexandre"
+          ]
+        },
+        {
+          "name": "Data Import & Export",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Charles Bochet",
+            "Raphaël Bosi",
+            "Etienne"
+          ]
+        },
+        {
+          "name": "Security & Compliance Auditing",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Félix Malfait",
+            "Paul Rastoin",
+            "martmull"
+          ]
+        },
+        {
+          "name": "Dashboards & Reporting",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Marie",
+            "Etienne",
+            "Paul Rastoin"
+          ]
+        },
+        {
+          "name": "Workflow Automation",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Charles Bochet",
+            "martmull",
+            "Thomas Trompette",
+            "Paul Rastoin"
+          ]
+        },
+        {
+          "name": "App Marketplace & Integrations",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Paul Rastoin",
+            "neo773",
+            "Félix Malfait",
+            "Guillim",
+            "Charles Bochet"
+          ]
+        },
+        {
+          "name": "Flexible Data Modeling",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Charles Bochet",
+            "Paul Rastoin",
+            "martmull",
+            "Félix Malfait",
+            "Etienne"
+          ]
+        },
+        {
+          "name": "Infrastructure",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Charles Bochet",
+            "martmull",
+            "Weiko",
+            "Marie",
+            "nitin"
+          ]
+        },
+        {
+          "name": "Developer Platform & API",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Charles Bochet",
+            "Paul Rastoin",
+            "Weiko",
+            "Marie",
+            "Jérémy M"
+          ]
+        },
+        {
+          "name": "Workspace & Tenant Management",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Charles Bochet",
+            "Paul Rastoin",
+            "Weiko",
+            "Marie",
+            "Abdul Rahman"
+          ]
+        },
+        {
+          "name": "User & Access Management",
+          "busFactor": 6,
+          "status": "Healthy",
+          "owners": [
+            "Weiko",
+            "Paul Rastoin",
+            "Antoine Moreaux",
+            "Félix Malfait",
+            "Marie",
+            "martmull"
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 6,
+          "status": "Healthy",
+          "owners": [
+            "Charles Bochet",
+            "Félix Malfait",
+            "Paul Rastoin",
+            "martmull",
+            "Marie",
+            "Etienne"
+          ]
+        },
+        {
+          "name": "Sales Pipeline & Contact Management",
+          "busFactor": 7,
+          "status": "Healthy",
+          "owners": [
+            "Félix Malfait",
+            "Charles Bochet",
+            "Lucas Bordeau",
+            "Abdullah.",
+            "Marie",
+            "Paul Rastoin",
+            "Weiko"
+          ]
+        }
+      ],
+      "spofOwnerCount": 3,
+      "uniqueSpofOwnerCount": 3
+    }
+  ],
+  "totals": {
+    "spofModuleCount": 26,
+    "uniqueSpofOwnerCount": 23,
+    "healthDistribution": {
+      "healthy": 46,
+      "needsAttention": 16,
+      "critical": 10
+    }
+  }
+}

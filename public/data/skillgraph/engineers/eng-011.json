@@ -1,0 +1,642 @@
+{
+  "userId": "eng-011",
+  "name": "Kevin Patel",
+  "createdAt": "2026-01-05T00:00:00Z",
+  "lastScannedAt": "2026-02-13T08:00:00Z",
+  "roadmaps": {
+    "role:Android": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "kotlin-vars-types": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 28
+        },
+        "kotlin-functions-classes": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 36
+        },
+        "kotlin-null-safety": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-20T08:00:00Z",
+          "detectionCount": 32
+        },
+        "studio-setup": {
+          "firstDetectedAt": "2026-01-29T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 20
+        },
+        "studio-project-structure": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 26
+        },
+        "studio-debugging": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-01-18T08:00:00Z",
+          "detectionCount": 15
+        },
+        "compose-state": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 17
+        },
+        "compose-navigation": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-01-16T08:00:00Z",
+          "detectionCount": 14
+        },
+        "compose-lists": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 16
+        },
+        "nav-graph": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 2
+        },
+        "unit-tests": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 1
+        }
+      }
+    },
+    "role:iOS": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "swift-vars-types": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 36
+        },
+        "swift-optionals": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 22
+        },
+        "swift-functions-structs": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 37
+        },
+        "xcode-setup": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 35
+        },
+        "xcode-interface-builder": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 12
+        },
+        "xcode-debugging": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 10
+        },
+        "nav-swiftui": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-17T08:00:00Z",
+          "detectionCount": 12
+        },
+        "nav-uikit": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 18
+        },
+        "nav-passing-data": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-14T08:00:00Z",
+          "detectionCount": 5
+        },
+        "xctest-unit": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 5
+        }
+      }
+    },
+    "skill:React Native": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "es6-syntax": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-17T08:00:00Z",
+          "detectionCount": 27
+        },
+        "async-await": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 27
+        },
+        "typescript-basics": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 22
+        },
+        "react-hooks-prereq": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 22
+        },
+        "install-tools": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 29
+        },
+        "create-project": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-01-27T08:00:00Z",
+          "detectionCount": 26
+        },
+        "run-android-ios": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-01-21T08:00:00Z",
+          "detectionCount": 35
+        },
+        "metro-bundler": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 32
+        },
+        "view-text-image": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 25
+        },
+        "scrollview-flatlist": {
+          "firstDetectedAt": "2026-01-30T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 25
+        },
+        "touchable-pressable": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-20T08:00:00Z",
+          "detectionCount": 30
+        },
+        "textinput-switch": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 23
+        },
+        "stack-navigator": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 25
+        },
+        "tab-navigator": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 34
+        },
+        "navigate-params": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-01-21T08:00:00Z",
+          "detectionCount": 31
+        },
+        "drawer-navigator": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 14
+        },
+        "flexbox-stylesheet": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 14
+        },
+        "responsive-design": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-15T08:00:00Z",
+          "detectionCount": 8
+        },
+        "use-state-context": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-14T08:00:00Z",
+          "detectionCount": 13
+        },
+        "redux-toolkit": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-11T08:00:00Z",
+          "detectionCount": 9
+        },
+        "async-state": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 14
+        },
+        "state-patterns": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 14
+        },
+        "fetch-api": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 16
+        },
+        "axios-integration": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 13
+        },
+        "api-hooks": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-01-18T08:00:00Z",
+          "detectionCount": 17
+        },
+        "error-loading-states": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 17
+        },
+        "async-storage-basics": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-01-27T08:00:00Z",
+          "detectionCount": 11
+        },
+        "persist-data": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 5
+        },
+        "react-native-mmkv": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 1
+        },
+        "storage-patterns": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 2
+        },
+        "jest-setup": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 5
+        },
+        "react-native-testing-library": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-01-19T08:00:00Z",
+          "detectionCount": 1
+        },
+        "native-modules-bridge": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 1
+        },
+        "android-native-module": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 1
+        },
+        "ios-native-module": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 3
+        },
+        "turbo-modules": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 3
+        }
+      }
+    },
+    "skill:JavaScript": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-08T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "variables-types": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-19T08:00:00Z",
+          "detectionCount": 25
+        },
+        "control-flow": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 31
+        },
+        "functions": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-01-27T08:00:00Z",
+          "detectionCount": 30
+        },
+        "arrays-objects": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-01-27T08:00:00Z",
+          "detectionCount": 23
+        },
+        "selecting-elements": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 38
+        },
+        "modifying-dom": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 34
+        },
+        "event-listeners": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 34
+        },
+        "let-const-arrow": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 8
+        },
+        "callbacks-promises": {
+          "firstDetectedAt": "2026-01-29T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 12
+        },
+        "async-await": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 10
+        },
+        "fetch-api": {
+          "firstDetectedAt": "2026-01-29T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 16
+        },
+        "closures": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-01-14T08:00:00Z",
+          "detectionCount": 12
+        },
+        "prototype-chain": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 5
+        },
+        "this-keyword": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 1
+        },
+        "es-modules": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 2
+        },
+        "types-basics": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 2
+        }
+      }
+    },
+    "skill:TypeScript": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-11T08:00:00Z",
+      "completions": {
+        "primitive-types": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-01-24T08:00:00Z",
+          "detectionCount": 37
+        },
+        "type-inference": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 24
+        },
+        "strict-mode": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-13T08:00:00Z",
+          "detectionCount": 37
+        },
+        "interface-definition": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 38
+        },
+        "optional-properties": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 33
+        },
+        "extending-interfaces": {
+          "firstDetectedAt": "2026-01-31T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 17
+        },
+        "numeric-string-enums": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 11
+        },
+        "partial-required": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 8
+        },
+        "omit-record": {
+          "firstDetectedAt": "2026-01-29T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 13
+        },
+        "union-intersection": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-11T08:00:00Z",
+          "detectionCount": 1
+        },
+        "literal-types": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 2
+        },
+        "class-decorators": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-01-18T08:00:00Z",
+          "detectionCount": 5
+        }
+      }
+    },
+    "skill:React": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "jsx-syntax": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 25
+        },
+        "jsx-attributes": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 36
+        },
+        "jsx-children": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 38
+        },
+        "jsx-conditional": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 31
+        },
+        "function-components": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 27
+        },
+        "component-composition": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 24
+        },
+        "component-reuse": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 34
+        },
+        "component-structure": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-01-12T08:00:00Z",
+          "detectionCount": 32
+        },
+        "useeffect-deps": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-01-12T08:00:00Z",
+          "detectionCount": 10
+        },
+        "useeffect-cleanup": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 15
+        },
+        "custom-hooks": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 10
+        },
+        "hooks-rules": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 9
+        },
+        "create-context": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 18
+        },
+        "use-context": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 10
+        },
+        "context-composition": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 18
+        },
+        "context-performance": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 4
+        },
+        "react-router-setup": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 3
+        },
+        "routes-params": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-01-22T08:00:00Z",
+          "detectionCount": 1
+        },
+        "jest-setup": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 5
+        },
+        "component-tests": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 4
+        }
+      }
+    },
+    "skill:Git and GitHub": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-11T08:00:00Z",
+      "completions": {
+        "git-init": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 20
+        },
+        "add-commit": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 37
+        },
+        "status-log": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 33
+        },
+        "diff": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-08T08:00:00Z",
+          "detectionCount": 38
+        },
+        "create-branch": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-08T08:00:00Z",
+          "detectionCount": 24
+        },
+        "merge-branch": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 15
+        },
+        "track-branches": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 16
+        },
+        "create-pr": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-22T08:00:00Z",
+          "detectionCount": 15
+        },
+        "review-pr": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 16
+        },
+        "merge-strategies": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-01-22T08:00:00Z",
+          "detectionCount": 5
+        },
+        "identify-conflicts": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 1
+        },
+        "workflow-yml": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 4
+        }
+      }
+    }
+  }
+}

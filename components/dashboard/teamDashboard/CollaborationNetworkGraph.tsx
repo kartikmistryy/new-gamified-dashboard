@@ -8,7 +8,6 @@ import {
   type CollaborationModule,
 } from "@/lib/dashboard/entities/member/charts/collaborationNetwork/collaborationNetworkData";
 import { layoutGraph, type LayoutType } from "@/lib/dashboard/entities/member/charts/collaborationNetwork/collaborationNetworkLayout";
-import { getUserAvatarUrl } from "@/components/shared/UserAvatar";
 import {
   createColorScale,
   createEdgeWidthScale,
@@ -18,15 +17,24 @@ import { formatNodeTooltip, formatEdgeTooltip } from "@/lib/dashboard/shared/uti
 import { CollaborationNetworkLegend } from "./CollaborationNetworkLegend";
 import { DASHBOARD_BG_CLASSES, DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 const CHART_HEIGHT = 540;
-const DEFAULT_THRESHOLD = 0.7;
-const DEFAULT_LAYOUT: LayoutType = "shell";
+const DEFAULT_THRESHOLD = 0.75;
+const DEFAULT_LAYOUT: LayoutType = "spring";
 
 type CollaborationNetworkGraphProps = {
   data: CollaborationModule | undefined;
   onInsightsChange?: (insights: ChartInsight[]) => void;
+  /** Minimum SPOF score to show an edge (0-1). Defaults to 0.7 */
+  threshold?: number;
+  /** Layout algorithm. Defaults to "spring" */
+  layout?: LayoutType;
 };
 
-export function CollaborationNetworkGraph({ data, onInsightsChange }: CollaborationNetworkGraphProps) {
+export function CollaborationNetworkGraph({
+  data,
+  onInsightsChange,
+  threshold = DEFAULT_THRESHOLD,
+  layout = DEFAULT_LAYOUT,
+}: CollaborationNetworkGraphProps) {
   const [width, setWidth] = useState(820);
   const [hoveredNodeId, setHoveredNodeId] = useState<string | null>(null);
   const [hoveredEdgeKey, setHoveredEdgeKey] = useState<string | null>(null);
@@ -54,13 +62,13 @@ export function CollaborationNetworkGraph({ data, onInsightsChange }: Collaborat
   }, [tooltipId]);
 
   const graph = useMemo(
-    () => buildCollaborationGraph(data, DEFAULT_THRESHOLD, true),
-    [data]
+    () => buildCollaborationGraph(data, threshold, true),
+    [data, threshold]
   );
 
   const insights = useMemo(
-    () => getCollaborationInsights(data, graph, DEFAULT_THRESHOLD),
-    [data, graph]
+    () => getCollaborationInsights(data, graph, threshold),
+    [data, graph, threshold]
   );
 
   useEffect(() => {
@@ -69,8 +77,8 @@ export function CollaborationNetworkGraph({ data, onInsightsChange }: Collaborat
   }, [insights, onInsightsChange]);
 
   const laidOutGraph = useMemo(
-    () => layoutGraph(graph, width - 72, CHART_HEIGHT - 64, DEFAULT_LAYOUT),
-    [graph, width]
+    () => layoutGraph(graph, width - 72, CHART_HEIGHT - 64, layout),
+    [graph, width, layout]
   );
 
   const colorScale = useMemo(() => createColorScale(), []);
@@ -126,9 +134,7 @@ export function CollaborationNetworkGraph({ data, onInsightsChange }: Collaborat
               {laidOutGraph.nodes.map((node) => {
                 const radius = calculateNodeRadius(node.degree);
                 const isHovered = hoveredNodeId === node.id;
-                const avatarSize = radius * 2;
-                const avatarUrl = getUserAvatarUrl(node.label, 64);
-                const borderColor = colorScale(node.doaNormalized);
+                const fillColor = colorScale(node.doaNormalized);
 
                 return (
                   <g
@@ -147,35 +153,16 @@ export function CollaborationNetworkGraph({ data, onInsightsChange }: Collaborat
                       setHoveredNodeId(null);
                       tooltipRef.current?.hide();
                     }}
+                    style={{ cursor: "pointer" }}
                   >
-                    {/* Avatar using foreignObject */}
-                    <foreignObject
-                      x={-radius}
-                      y={-radius}
-                      width={avatarSize}
-                      height={avatarSize}
-                    >
-                      <div
-                        style={{
-                          width: avatarSize,
-                          height: avatarSize,
-                          borderRadius: '50%',
-                          overflow: 'hidden',
-                          border: isHovered ? `2.6px solid ${borderColor}` : `2px solid ${borderColor}`,
-                          boxSizing: 'border-box',
-                        }}
-                      >
-                        <img
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'cover',
-                          }}
-                          src={avatarUrl}
-                          alt={node.label}
-                        />
-                      </div>
-                    </foreignObject>
+                    {/* Solid colored circle based on normalized DOA */}
+                    <circle
+                      r={radius}
+                      fill={fillColor}
+                      stroke="white"
+                      strokeWidth={isHovered ? 2.5 : 1.5}
+                      opacity={isHovered ? 1 : 0.9}
+                    />
 
                     {/* Name label */}
                     <text

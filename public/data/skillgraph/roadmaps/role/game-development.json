@@ -1,0 +1,562 @@
+[
+  {
+    "roadmap": "Game Developer",
+    "group": "Game Development",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "programming-basics",
+            "title": "Programming Basics (C#/C++)",
+            "subCheckpoints": [
+              {
+                "id": "variables-data-types",
+                "title": "Variables, data types & control flow"
+              },
+              {
+                "id": "functions-classes",
+                "title": "Functions, classes & OOP fundamentals"
+              },
+              {
+                "id": "memory-management",
+                "title": "Memory management & pointers (C++)"
+              },
+              {
+                "id": "debugging-basics",
+                "title": "Debugging & problem-solving"
+              }
+            ]
+          },
+          {
+            "id": "game-engine-intro",
+            "title": "Game Engine Introduction (Unity/Unreal)",
+            "subCheckpoints": [
+              {
+                "id": "editor-basics",
+                "title": "Editor interface & workspace"
+              },
+              {
+                "id": "scene-hierarchy",
+                "title": "Scene hierarchy & object management"
+              },
+              {
+                "id": "assets-workflow",
+                "title": "Asset import & pipeline workflow"
+              },
+              {
+                "id": "first-project",
+                "title": "Create your first playable project"
+              }
+            ]
+          },
+          {
+            "id": "game-project-setup",
+            "title": "Game Project Setup & Structure",
+            "subCheckpoints": [
+              {
+                "id": "version-control",
+                "title": "Version control (Git) for game projects"
+              },
+              {
+                "id": "folder-structure",
+                "title": "Organized folder structure & naming"
+              },
+              {
+                "id": "build-settings",
+                "title": "Build settings & platform targets"
+              }
+            ]
+          },
+          {
+            "id": "2d-fundamentals",
+            "title": "2D Game Development Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "2d-rendering",
+                "title": "2D rendering & sprites"
+              },
+              {
+                "id": "2d-physics",
+                "title": "2D physics & collision detection"
+              },
+              {
+                "id": "tilemaps",
+                "title": "Tilemaps & level design"
+              },
+              {
+                "id": "2d-animation",
+                "title": "2D sprite animation"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "3d-fundamentals",
+            "title": "3D Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "3d-coordinates",
+                "title": "3D coordinates, vectors & transforms"
+              },
+              {
+                "id": "meshes-materials",
+                "title": "Meshes, materials & shaders basics"
+              },
+              {
+                "id": "cameras-lighting",
+                "title": "Cameras, lighting & rendering pipeline"
+              },
+              {
+                "id": "3d-assets",
+                "title": "3D asset workflow & optimization"
+              }
+            ]
+          },
+          {
+            "id": "physics-collision",
+            "title": "Physics & Collision",
+            "subCheckpoints": [
+              {
+                "id": "physics-rigidbody",
+                "title": "Rigidbody, forces & gravity"
+              },
+              {
+                "id": "collision-detection",
+                "title": "Collision detection & response"
+              },
+              {
+                "id": "raycasting",
+                "title": "Raycasting & physics queries"
+              },
+              {
+                "id": "joints-constraints",
+                "title": "Joints, constraints & triggers"
+              }
+            ]
+          },
+          {
+            "id": "game-design-patterns",
+            "title": "Game Design Patterns",
+            "subCheckpoints": [
+              {
+                "id": "singleton-manager",
+                "title": "Singleton & Game Manager patterns"
+              },
+              {
+                "id": "observer-events",
+                "title": "Observer pattern & event systems"
+              },
+              {
+                "id": "state-machines",
+                "title": "State machines & FSM"
+              },
+              {
+                "id": "object-pooling",
+                "title": "Object pooling & performance patterns"
+              }
+            ]
+          },
+          {
+            "id": "ui-systems",
+            "title": "UI Systems",
+            "subCheckpoints": [
+              {
+                "id": "canvas-layout",
+                "title": "Canvas, layout & anchors"
+              },
+              {
+                "id": "menus-hud",
+                "title": "Menus, HUD & health bars"
+              },
+              {
+                "id": "input-binding",
+                "title": "Input binding & rebinding systems"
+              },
+              {
+                "id": "ui-animation",
+                "title": "UI animation & feedback"
+              }
+            ]
+          },
+          {
+            "id": "audio-systems",
+            "title": "Audio Implementation",
+            "subCheckpoints": [
+              {
+                "id": "audio-sources",
+                "title": "Audio sources & listeners"
+              },
+              {
+                "id": "music-sfx",
+                "title": "Music loops & sound effects"
+              },
+              {
+                "id": "audio-mixing",
+                "title": "Audio mixing & attenuation"
+              },
+              {
+                "id": "spatial-audio",
+                "title": "Spatial 3D audio"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "animation-systems",
+            "title": "Animation Systems",
+            "subCheckpoints": [
+              {
+                "id": "animation-controller",
+                "title": "Animation Controller & state machines"
+              },
+              {
+                "id": "blend-trees",
+                "title": "Blend trees & layered animation"
+              },
+              {
+                "id": "ik-procedural",
+                "title": "Inverse kinematics & procedural animation"
+              },
+              {
+                "id": "cutscenes",
+                "title": "Cutscenes & cinematics"
+              }
+            ]
+          },
+          {
+            "id": "optimization-profiling",
+            "title": "Optimization & Profiling",
+            "subCheckpoints": [
+              {
+                "id": "profiler-tools",
+                "title": "Profiler & performance tools"
+              },
+              {
+                "id": "draw-calls-batching",
+                "title": "Draw calls & batching"
+              },
+              {
+                "id": "lods-occlusion",
+                "title": "LODs, occlusion culling & culling"
+              },
+              {
+                "id": "memory-optimization",
+                "title": "Memory management & optimization"
+              }
+            ]
+          },
+          {
+            "id": "platform-publishing",
+            "title": "Platform Publishing",
+            "subCheckpoints": [
+              {
+                "id": "console-requirements",
+                "title": "Console certification requirements"
+              },
+              {
+                "id": "store-submission",
+                "title": "Store submission & review process"
+              },
+              {
+                "id": "post-launch",
+                "title": "Post-launch support & updates"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Server Side Game Developer",
+    "group": "Game Development",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "programming-fundamentals",
+            "title": "Programming (C++/Go/Java)",
+            "subCheckpoints": [
+              {
+                "id": "language-basics",
+                "title": "Core syntax, data structures & algorithms"
+              },
+              {
+                "id": "concurrency-basics",
+                "title": "Concurrency & multi-threading"
+              },
+              {
+                "id": "async-io",
+                "title": "Async I/O & non-blocking operations"
+              },
+              {
+                "id": "error-handling",
+                "title": "Error handling & logging"
+              }
+            ]
+          },
+          {
+            "id": "networking-fundamentals",
+            "title": "Networking Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "tcp-ip-stack",
+                "title": "TCP/IP stack & OSI model"
+              },
+              {
+                "id": "sockets-basics",
+                "title": "Socket programming basics"
+              },
+              {
+                "id": "packets-protocols",
+                "title": "Packets, headers & protocol design"
+              },
+              {
+                "id": "latency-bandwidth",
+                "title": "Latency, bandwidth & jitter"
+              }
+            ]
+          },
+          {
+            "id": "client-server-model",
+            "title": "Client-Server Model",
+            "subCheckpoints": [
+              {
+                "id": "authoritative-server",
+                "title": "Authoritative vs client-authoritative"
+              },
+              {
+                "id": "request-response",
+                "title": "Request-response lifecycle"
+              },
+              {
+                "id": "connection-lifecycle",
+                "title": "Connection lifecycle & handshakes"
+              }
+            ]
+          },
+          {
+            "id": "game-server-architecture-intro",
+            "title": "Game Server Architecture Basics",
+            "subCheckpoints": [
+              {
+                "id": "dedicated-servers",
+                "title": "Dedicated vs listen server models"
+              },
+              {
+                "id": "server-components",
+                "title": "Core server components & responsibilities"
+              },
+              {
+                "id": "state-management",
+                "title": "Game state & session management"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "real-time-networking",
+            "title": "Real-Time Networking (UDP, TCP)",
+            "subCheckpoints": [
+              {
+                "id": "udp-vs-tcp",
+                "title": "UDP vs TCP for game networking"
+              },
+              {
+                "id": "reliable-unreliable",
+                "title": "Reliable vs unreliable delivery"
+              },
+              {
+                "id": "packet-serialization",
+                "title": "Packet serialization & compression"
+              },
+              {
+                "id": "tick-rates",
+                "title": "Tick rates & network update frequency"
+              }
+            ]
+          },
+          {
+            "id": "matchmaking-systems",
+            "title": "Matchmaking Systems",
+            "subCheckpoints": [
+              {
+                "id": "queuing-systems",
+                "title": "Player queuing & skill-based matchmaking"
+              },
+              {
+                "id": "lobby-management",
+                "title": "Lobby creation & management"
+              },
+              {
+                "id": "region-routing",
+                "title": "Region selection & server routing"
+              },
+              {
+                "id": "party-systems",
+                "title": "Party & group formation"
+              }
+            ]
+          },
+          {
+            "id": "game-state-sync",
+            "title": "Game State Synchronization",
+            "subCheckpoints": [
+              {
+                "id": "state-replication",
+                "title": "State replication & delta compression"
+              },
+              {
+                "id": "prediction-correction",
+                "title": "Client prediction & server reconciliation"
+              },
+              {
+                "id": "interpolation",
+                "title": "Interpolation & extrapolation"
+              },
+              {
+                "id": "lag-compensation",
+                "title": "Lag compensation techniques"
+              }
+            ]
+          },
+          {
+            "id": "databases-for-games",
+            "title": "Databases for Games",
+            "subCheckpoints": [
+              {
+                "id": "player-data",
+                "title": "Player profiles, inventory & progression"
+              },
+              {
+                "id": "sql-nosql",
+                "title": "SQL vs NoSQL for game data"
+              },
+              {
+                "id": "leaderboards",
+                "title": "Leaderboards & analytics data"
+              },
+              {
+                "id": "caching-strategies",
+                "title": "Caching strategies (Redis, Memcached)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "anti-cheat-systems",
+            "title": "Anti-Cheat Systems",
+            "subCheckpoints": [
+              {
+                "id": "server-validation",
+                "title": "Server-side validation & sanity checks"
+              },
+              {
+                "id": "detection-methods",
+                "title": "Cheat detection patterns & signatures"
+              },
+              {
+                "id": "replay-analysis",
+                "title": "Replay analysis & anomaly detection"
+              },
+              {
+                "id": "ban-systems",
+                "title": "Ban systems & reporting pipelines"
+              }
+            ]
+          },
+          {
+            "id": "scaling-load-balancing",
+            "title": "Scaling & Load Balancing",
+            "subCheckpoints": [
+              {
+                "id": "horizontal-scaling",
+                "title": "Horizontal scaling & fleet management"
+              },
+              {
+                "id": "load-balancers",
+                "title": "Load balancers & health checks"
+              },
+              {
+                "id": "capacity-planning",
+                "title": "Capacity planning & auto-scaling"
+              },
+              {
+                "id": "multi-region",
+                "title": "Multi-region deployment"
+              }
+            ]
+          },
+          {
+            "id": "devops-game-servers",
+            "title": "DevOps for Game Servers",
+            "subCheckpoints": [
+              {
+                "id": "containerization",
+                "title": "Containerization (Docker, Kubernetes)"
+              },
+              {
+                "id": "cicd-pipelines",
+                "title": "CI/CD pipelines for game builds"
+              },
+              {
+                "id": "blue-green",
+                "title": "Blue-green & zero-downtime deployments"
+              },
+              {
+                "id": "rollback-strategies",
+                "title": "Rollback strategies & versioning"
+              }
+            ]
+          },
+          {
+            "id": "monitoring-observability",
+            "title": "Monitoring & Observability",
+            "subCheckpoints": [
+              {
+                "id": "metrics-logging",
+                "title": "Metrics, logging & tracing"
+              },
+              {
+                "id": "alerting",
+                "title": "Alerting & incident response"
+              },
+              {
+                "id": "performance-monitoring",
+                "title": "Performance monitoring & profiling"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

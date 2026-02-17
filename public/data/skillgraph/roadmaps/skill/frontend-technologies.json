@@ -1,0 +1,1724 @@
+[
+  {
+    "roadmap": "HTML",
+    "group": "Frontend Technologies",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "document-structure",
+            "title": "Document Structure",
+            "subCheckpoints": [
+              {
+                "id": "doctype-and-html",
+                "title": "DOCTYPE declaration and html element"
+              },
+              {
+                "id": "head-meta-charset",
+                "title": "Head section with meta charset and title"
+              },
+              {
+                "id": "body-structure",
+                "title": "Body structure and content hierarchy"
+              },
+              {
+                "id": "document-outline",
+                "title": "Understanding document outline and nesting"
+              }
+            ]
+          },
+          {
+            "id": "semantic-elements",
+            "title": "Semantic Elements",
+            "subCheckpoints": [
+              {
+                "id": "header-nav-footer",
+                "title": "header, nav, footer, main, aside"
+              },
+              {
+                "id": "article-section",
+                "title": "article and section for content grouping"
+              },
+              {
+                "id": "semantic-tables",
+                "title": "Semantic table structure (thead, tbody, tfoot)"
+              },
+              {
+                "id": "figure-figcaption",
+                "title": "figure and figcaption for media"
+              }
+            ]
+          },
+          {
+            "id": "forms-validation",
+            "title": "Forms & Validation",
+            "subCheckpoints": [
+              {
+                "id": "form-input-types",
+                "title": "Form element and input types (text, email, number)"
+              },
+              {
+                "id": "labels-placeholders",
+                "title": "Labels, placeholders, and autocomplete"
+              },
+              {
+                "id": "html5-validation",
+                "title": "HTML5 built-in validation attributes"
+              },
+              {
+                "id": "select-textarea",
+                "title": "Select, textarea, and fieldset"
+              }
+            ]
+          },
+          {
+            "id": "tables-lists",
+            "title": "Tables & Lists",
+            "subCheckpoints": [
+              {
+                "id": "table-structure",
+                "title": "Creating accessible table structure"
+              },
+              {
+                "id": "ordered-unordered",
+                "title": "Ordered and unordered lists"
+              },
+              {
+                "id": "definition-lists",
+                "title": "Definition lists (dl, dt, dd)"
+              },
+              {
+                "id": "nested-lists",
+                "title": "Nested lists and list styling"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "media-elements",
+            "title": "Media Elements",
+            "subCheckpoints": [
+              {
+                "id": "img-attributes",
+                "title": "img element with srcset and sizes"
+              },
+              {
+                "id": "picture-element",
+                "title": "Picture element for responsive images"
+              },
+              {
+                "id": "audio-video",
+                "title": "Audio and video elements with controls"
+              },
+              {
+                "id": "track-subtitles",
+                "title": "Track element for subtitles and captions"
+              }
+            ]
+          },
+          {
+            "id": "accessibility-aria",
+            "title": "Accessibility (ARIA)",
+            "subCheckpoints": [
+              {
+                "id": "aria-roles",
+                "title": "ARIA roles and attributes"
+              },
+              {
+                "id": "aria-labels",
+                "title": "aria-label, aria-labelledby, aria-describedby"
+              },
+              {
+                "id": "aria-live",
+                "title": "aria-live regions for dynamic content"
+              },
+              {
+                "id": "keyboard-navigation",
+                "title": "Keyboard navigation and focus management"
+              }
+            ]
+          },
+          {
+            "id": "seo",
+            "title": "SEO",
+            "subCheckpoints": [
+              {
+                "id": "heading-hierarchy",
+                "title": "Proper heading hierarchy (h1-h6)"
+              },
+              {
+                "id": "alt-text",
+                "title": "Alt text for images"
+              },
+              {
+                "id": "structured-data",
+                "title": "Schema.org structured data basics"
+              },
+              {
+                "id": "canonical-urls",
+                "title": "Canonical URLs and clean URLs"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "meta-tags",
+            "title": "Meta Tags",
+            "subCheckpoints": [
+              {
+                "id": "meta-viewport",
+                "title": "Viewport and responsive meta tags"
+              },
+              {
+                "id": "open-graph",
+                "title": "Open Graph and social meta tags"
+              },
+              {
+                "id": "meta-robots",
+                "title": "Robots and indexing meta tags"
+              },
+              {
+                "id": "meta-security",
+                "title": "Security meta tags (CSP, X-Frame-Options)"
+              }
+            ]
+          },
+          {
+            "id": "web-components",
+            "title": "Web Components",
+            "subCheckpoints": [
+              {
+                "id": "custom-elements",
+                "title": "Custom Elements API"
+              },
+              {
+                "id": "shadow-dom",
+                "title": "Shadow DOM encapsulation"
+              },
+              {
+                "id": "html-templates",
+                "title": "HTML template and slot elements"
+              },
+              {
+                "id": "custom-elements-registry",
+                "title": "Custom element lifecycle and registry"
+              }
+            ]
+          },
+          {
+            "id": "html-apis",
+            "title": "HTML APIs",
+            "subCheckpoints": [
+              {
+                "id": "geolocation-api",
+                "title": "Geolocation API integration"
+              },
+              {
+                "id": "local-storage",
+                "title": "localStorage and sessionStorage"
+              },
+              {
+                "id": "drag-drop",
+                "title": "Drag and Drop API"
+              },
+              {
+                "id": "history-api",
+                "title": "History API for SPA navigation"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "CSS",
+    "group": "Frontend Technologies",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "selectors-specificity",
+            "title": "Selectors & Specificity",
+            "subCheckpoints": [
+              {
+                "id": "basic-selectors",
+                "title": "Element, class, and ID selectors"
+              },
+              {
+                "id": "combinators",
+                "title": "Combinators (descendant, child, sibling)"
+              },
+              {
+                "id": "pseudo-classes",
+                "title": "Pseudo-classes (:hover, :focus, :nth-child)"
+              },
+              {
+                "id": "specificity-cascade",
+                "title": "Specificity and cascade order"
+              }
+            ]
+          },
+          {
+            "id": "box-model",
+            "title": "Box Model",
+            "subCheckpoints": [
+              {
+                "id": "content-padding-border",
+                "title": "Content, padding, border, margin"
+              },
+              {
+                "id": "box-sizing",
+                "title": "box-sizing: content-box vs border-box"
+              },
+              {
+                "id": "margin-collapse",
+                "title": "Margin collapsing behavior"
+              },
+              {
+                "id": "display-types",
+                "title": "Display types (block, inline, inline-block)"
+              }
+            ]
+          },
+          {
+            "id": "flexbox",
+            "title": "Flexbox",
+            "subCheckpoints": [
+              {
+                "id": "flex-container",
+                "title": "Flex container and flex-direction"
+              },
+              {
+                "id": "flex-wrap-align",
+                "title": "flex-wrap, justify-content, align-items"
+              },
+              {
+                "id": "flex-grow-shrink",
+                "title": "flex-grow, flex-shrink, flex-basis"
+              },
+              {
+                "id": "flex-order",
+                "title": "Order and alignment of flex items"
+              }
+            ]
+          },
+          {
+            "id": "grid",
+            "title": "Grid",
+            "subCheckpoints": [
+              {
+                "id": "grid-template",
+                "title": "grid-template-columns and grid-template-rows"
+              },
+              {
+                "id": "grid-gap",
+                "title": "grid-gap and grid areas"
+              },
+              {
+                "id": "grid-placement",
+                "title": "Grid placement (grid-column, grid-row)"
+              },
+              {
+                "id": "fr-units",
+                "title": "fr units and repeat() function"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "responsive-design",
+            "title": "Responsive Design",
+            "subCheckpoints": [
+              {
+                "id": "media-queries",
+                "title": "Media queries and breakpoints"
+              },
+              {
+                "id": "mobile-first",
+                "title": "Mobile-first approach"
+              },
+              {
+                "id": "fluid-typography",
+                "title": "Fluid typography and clamp()"
+              },
+              {
+                "id": "responsive-images",
+                "title": "Responsive images with CSS"
+              }
+            ]
+          },
+          {
+            "id": "animations",
+            "title": "Animations",
+            "subCheckpoints": [
+              {
+                "id": "transitions",
+                "title": "CSS transitions and timing functions"
+              },
+              {
+                "id": "keyframes",
+                "title": "@keyframes animation"
+              },
+              {
+                "id": "animation-fill-mode",
+                "title": "animation-fill-mode and iteration"
+              },
+              {
+                "id": "animation-performance",
+                "title": "Animation performance (transform, opacity)"
+              }
+            ]
+          },
+          {
+            "id": "variables",
+            "title": "Variables",
+            "subCheckpoints": [
+              {
+                "id": "custom-properties",
+                "title": "CSS custom properties (variables)"
+              },
+              {
+                "id": "var-inheritance",
+                "title": "Variable inheritance and fallbacks"
+              },
+              {
+                "id": "theming-variables",
+                "title": "Theming with CSS variables"
+              },
+              {
+                "id": "variable-scope",
+                "title": "Variable scope (root vs local)"
+              }
+            ]
+          },
+          {
+            "id": "preprocessors-sass",
+            "title": "Preprocessors (Sass)",
+            "subCheckpoints": [
+              {
+                "id": "sass-variables",
+                "title": "Sass variables and nesting"
+              },
+              {
+                "id": "sass-mixins",
+                "title": "Mixins and includes"
+              },
+              {
+                "id": "sass-functions",
+                "title": "Sass functions and operators"
+              },
+              {
+                "id": "sass-partials",
+                "title": "Partials and @use/@import"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "methodologies-bem",
+            "title": "Methodologies (BEM)",
+            "subCheckpoints": [
+              {
+                "id": "bem-naming",
+                "title": "BEM naming convention"
+              },
+              {
+                "id": "bem-block-element",
+                "title": "Block and element structure"
+              },
+              {
+                "id": "bem-modifier",
+                "title": "Modifier usage patterns"
+              },
+              {
+                "id": "bem-composition",
+                "title": "BEM composition and nesting"
+              }
+            ]
+          },
+          {
+            "id": "modern-css-features",
+            "title": "Modern CSS Features",
+            "subCheckpoints": [
+              {
+                "id": "container-queries",
+                "title": "Container queries"
+              },
+              {
+                "id": "has-selector",
+                "title": ":has() selector"
+              },
+              {
+                "id": "nested-css",
+                "title": "Native CSS nesting"
+              },
+              {
+                "id": "layer-cascade",
+                "title": "@layer and cascade layers"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "React",
+    "group": "Frontend Technologies",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "jsx",
+            "title": "JSX",
+            "subCheckpoints": [
+              {
+                "id": "jsx-syntax",
+                "title": "JSX syntax and expressions"
+              },
+              {
+                "id": "jsx-attributes",
+                "title": "Attributes and className"
+              },
+              {
+                "id": "jsx-children",
+                "title": "Rendering children and fragments"
+              },
+              {
+                "id": "jsx-conditional",
+                "title": "Conditional rendering patterns"
+              }
+            ]
+          },
+          {
+            "id": "components",
+            "title": "Components",
+            "subCheckpoints": [
+              {
+                "id": "function-components",
+                "title": "Function components"
+              },
+              {
+                "id": "component-composition",
+                "title": "Component composition"
+              },
+              {
+                "id": "component-reuse",
+                "title": "Reusable component patterns"
+              },
+              {
+                "id": "component-structure",
+                "title": "Component file structure"
+              }
+            ]
+          },
+          {
+            "id": "props-state",
+            "title": "Props & State",
+            "subCheckpoints": [
+              {
+                "id": "props-passing",
+                "title": "Passing and destructuring props"
+              },
+              {
+                "id": "state-basics",
+                "title": "State with useState"
+              },
+              {
+                "id": "lifting-state",
+                "title": "Lifting state up"
+              },
+              {
+                "id": "immutable-updates",
+                "title": "Immutable state updates"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "hooks-usestate-useeffect",
+            "title": "Hooks (useState, useEffect)",
+            "subCheckpoints": [
+              {
+                "id": "useeffect-deps",
+                "title": "useEffect and dependency arrays"
+              },
+              {
+                "id": "useeffect-cleanup",
+                "title": "useEffect cleanup functions"
+              },
+              {
+                "id": "custom-hooks",
+                "title": "Creating custom hooks"
+              },
+              {
+                "id": "hooks-rules",
+                "title": "Rules of hooks"
+              }
+            ]
+          },
+          {
+            "id": "context",
+            "title": "Context",
+            "subCheckpoints": [
+              {
+                "id": "create-context",
+                "title": "createContext and Provider"
+              },
+              {
+                "id": "use-context",
+                "title": "useContext hook"
+              },
+              {
+                "id": "context-composition",
+                "title": "Context composition patterns"
+              },
+              {
+                "id": "context-performance",
+                "title": "Context performance considerations"
+              }
+            ]
+          },
+          {
+            "id": "routing",
+            "title": "Routing",
+            "subCheckpoints": [
+              {
+                "id": "react-router-setup",
+                "title": "React Router setup"
+              },
+              {
+                "id": "routes-params",
+                "title": "Routes, params, and nested routes"
+              },
+              {
+                "id": "navigation-links",
+                "title": "Link, NavLink, and useNavigate"
+              },
+              {
+                "id": "protected-routes",
+                "title": "Protected routes and redirects"
+              }
+            ]
+          },
+          {
+            "id": "state-management",
+            "title": "State Management",
+            "subCheckpoints": [
+              {
+                "id": "zustand-redux",
+                "title": "Zustand or Redux Toolkit basics"
+              },
+              {
+                "id": "slices-actions",
+                "title": "Slices, actions, and selectors"
+              },
+              {
+                "id": "async-thunks",
+                "title": "Async thunks and API calls"
+              },
+              {
+                "id": "state-patterns",
+                "title": "State management patterns"
+              }
+            ]
+          },
+          {
+            "id": "forms",
+            "title": "Forms",
+            "subCheckpoints": [
+              {
+                "id": "controlled-inputs",
+                "title": "Controlled vs uncontrolled inputs"
+              },
+              {
+                "id": "form-validation",
+                "title": "Form validation"
+              },
+              {
+                "id": "react-hook-form",
+                "title": "React Hook Form or Formik"
+              },
+              {
+                "id": "form-handling",
+                "title": "Form submission and error handling"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "jest-setup",
+                "title": "Jest and React Testing Library"
+              },
+              {
+                "id": "component-tests",
+                "title": "Component unit tests"
+              },
+              {
+                "id": "mock-hooks",
+                "title": "Mocking hooks and modules"
+              },
+              {
+                "id": "e2e-tests",
+                "title": "E2E testing with Playwright or Cypress"
+              }
+            ]
+          },
+          {
+            "id": "performance-optimization",
+            "title": "Performance Optimization",
+            "subCheckpoints": [
+              {
+                "id": "react-memo",
+                "title": "React.memo and useMemo"
+              },
+              {
+                "id": "use-callback",
+                "title": "useCallback for stable references"
+              },
+              {
+                "id": "code-splitting",
+                "title": "Code splitting and lazy loading"
+              },
+              {
+                "id": "profiler",
+                "title": "React DevTools Profiler"
+              }
+            ]
+          },
+          {
+            "id": "server-components",
+            "title": "Server Components",
+            "subCheckpoints": [
+              {
+                "id": "rsc-concept",
+                "title": "React Server Components concept"
+              },
+              {
+                "id": "server-client-boundary",
+                "title": "Server-client component boundary"
+              },
+              {
+                "id": "streaming-suspense",
+                "title": "Streaming and Suspense"
+              },
+              {
+                "id": "data-fetching-rsc",
+                "title": "Data fetching in Server Components"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Vue",
+    "group": "Frontend Technologies",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "template-syntax",
+            "title": "Template Syntax",
+            "subCheckpoints": [
+              {
+                "id": "mustache-interpolation",
+                "title": "Mustache interpolation and directives"
+              },
+              {
+                "id": "v-bind-v-on",
+                "title": "v-bind, v-on, and shorthand"
+              },
+              {
+                "id": "v-model",
+                "title": "v-model two-way binding"
+              },
+              {
+                "id": "template-conditionals",
+                "title": "v-if, v-else-if, v-show"
+              }
+            ]
+          },
+          {
+            "id": "reactivity",
+            "title": "Reactivity",
+            "subCheckpoints": [
+              {
+                "id": "reactive-ref",
+                "title": "reactive() and ref()"
+              },
+              {
+                "id": "computed-properties",
+                "title": "Computed properties"
+              },
+              {
+                "id": "watchers",
+                "title": "Watchers (watch, watchEffect)"
+              },
+              {
+                "id": "reactivity-caveats",
+                "title": "Reactivity caveats and proxy"
+              }
+            ]
+          },
+          {
+            "id": "components",
+            "title": "Components",
+            "subCheckpoints": [
+              {
+                "id": "component-registration",
+                "title": "Component registration and props"
+              },
+              {
+                "id": "emits-events",
+                "title": "Emits and event handling"
+              },
+              {
+                "id": "slots",
+                "title": "Slots and slot props"
+              },
+              {
+                "id": "provide-inject",
+                "title": "provide/inject"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "composition-api",
+            "title": "Composition API",
+            "subCheckpoints": [
+              {
+                "id": "setup-script",
+                "title": "setup() and script setup"
+              },
+              {
+                "id": "composable-pattern",
+                "title": "Composables pattern"
+              },
+              {
+                "id": "composition-lifecycle",
+                "title": "Lifecycle in Composition API"
+              },
+              {
+                "id": "define-expose",
+                "title": "defineExpose and template refs"
+              }
+            ]
+          },
+          {
+            "id": "routing-vue-router",
+            "title": "Routing (Vue Router)",
+            "subCheckpoints": [
+              {
+                "id": "router-setup",
+                "title": "Vue Router setup and routes"
+              },
+              {
+                "id": "router-link",
+                "title": "RouterLink and programmatic navigation"
+              },
+              {
+                "id": "route-params",
+                "title": "Route params and query"
+              },
+              {
+                "id": "route-guards",
+                "title": "Navigation guards"
+              }
+            ]
+          },
+          {
+            "id": "state-pinia",
+            "title": "State (Pinia)",
+            "subCheckpoints": [
+              {
+                "id": "pinia-setup",
+                "title": "Pinia store setup"
+              },
+              {
+                "id": "pinia-actions",
+                "title": "State, getters, and actions"
+              },
+              {
+                "id": "pinia-composition",
+                "title": "Pinia with Composition API"
+              },
+              {
+                "id": "pinia-persistence",
+                "title": "Store persistence and plugins"
+              }
+            ]
+          },
+          {
+            "id": "directives-lifecycle",
+            "title": "Directives & Lifecycle",
+            "subCheckpoints": [
+              {
+                "id": "v-for-key",
+                "title": "v-for and key attribute"
+              },
+              {
+                "id": "custom-directives",
+                "title": "Custom directives"
+              },
+              {
+                "id": "lifecycle-hooks",
+                "title": "Lifecycle hooks (onMounted, etc.)"
+              },
+              {
+                "id": "directive-modifiers",
+                "title": "Built-in directive modifiers"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "vitest-setup",
+                "title": "Vitest and Vue Test Utils"
+              },
+              {
+                "id": "component-tests",
+                "title": "Component testing"
+              },
+              {
+                "id": "pinia-mocking",
+                "title": "Mocking Pinia and router"
+              },
+              {
+                "id": "e2e-vitest",
+                "title": "E2E testing"
+              }
+            ]
+          },
+          {
+            "id": "nuxt-intro",
+            "title": "Nuxt.js Intro",
+            "subCheckpoints": [
+              {
+                "id": "nuxt-structure",
+                "title": "Nuxt project structure"
+              },
+              {
+                "id": "nuxt-routing",
+                "title": "File-based routing"
+              },
+              {
+                "id": "nuxt-ssr",
+                "title": "SSR and data fetching"
+              },
+              {
+                "id": "nuxt-modules",
+                "title": "Nuxt modules and ecosystem"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Angular",
+    "group": "Frontend Technologies",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "modules-components",
+            "title": "Modules & Components",
+            "subCheckpoints": [
+              {
+                "id": "ng-module",
+                "title": "NgModule and module structure"
+              },
+              {
+                "id": "component-decorator",
+                "title": "Component decorator and metadata"
+              },
+              {
+                "id": "component-communication",
+                "title": "Component communication (Input/Output)"
+              },
+              {
+                "id": "standalone-components",
+                "title": "Standalone components"
+              }
+            ]
+          },
+          {
+            "id": "templates",
+            "title": "Templates",
+            "subCheckpoints": [
+              {
+                "id": "template-syntax",
+                "title": "Template syntax and interpolation"
+              },
+              {
+                "id": "structural-directives",
+                "title": "Structural directives (*ngIf, *ngFor)"
+              },
+              {
+                "id": "attribute-directives",
+                "title": "Attribute directives (ngClass, ngStyle)"
+              },
+              {
+                "id": "event-binding",
+                "title": "Event and two-way binding"
+              }
+            ]
+          },
+          {
+            "id": "services-di",
+            "title": "Services & DI",
+            "subCheckpoints": [
+              {
+                "id": "service-creation",
+                "title": "Service creation and injection"
+              },
+              {
+                "id": "dependency-injection",
+                "title": "Dependency injection hierarchy"
+              },
+              {
+                "id": "provided-in",
+                "title": "providedIn and inject tokens"
+              },
+              {
+                "id": "singleton-services",
+                "title": "Singleton vs scoped services"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "routing",
+            "title": "Routing",
+            "subCheckpoints": [
+              {
+                "id": "router-module",
+                "title": "Router module and routes config"
+              },
+              {
+                "id": "router-outlet",
+                "title": "RouterOutlet and routerLink"
+              },
+              {
+                "id": "route-params",
+                "title": "Route params and query params"
+              },
+              {
+                "id": "route-guards",
+                "title": "Route guards (canActivate, canDeactivate)"
+              }
+            ]
+          },
+          {
+            "id": "forms",
+            "title": "Forms",
+            "subCheckpoints": [
+              {
+                "id": "template-driven",
+                "title": "Template-driven forms"
+              },
+              {
+                "id": "reactive-forms",
+                "title": "Reactive forms (FormGroup, FormControl)"
+              },
+              {
+                "id": "form-validation",
+                "title": "Form validation and validators"
+              },
+              {
+                "id": "form-array",
+                "title": "FormArray for dynamic forms"
+              }
+            ]
+          },
+          {
+            "id": "http-client",
+            "title": "HTTP Client",
+            "subCheckpoints": [
+              {
+                "id": "httpclient-inject",
+                "title": "HttpClient and inject"
+              },
+              {
+                "id": "get-post-requests",
+                "title": "GET, POST, PUT, DELETE requests"
+              },
+              {
+                "id": "interceptors",
+                "title": "HTTP interceptors"
+              },
+              {
+                "id": "error-handling",
+                "title": "Error handling and retry logic"
+              }
+            ]
+          },
+          {
+            "id": "pipes",
+            "title": "Pipes",
+            "subCheckpoints": [
+              {
+                "id": "built-in-pipes",
+                "title": "Built-in pipes (date, currency, async)"
+              },
+              {
+                "id": "custom-pipes",
+                "title": "Custom pipe creation"
+              },
+              {
+                "id": "pure-impure",
+                "title": "Pure vs impure pipes"
+              },
+              {
+                "id": "pipe-chaining",
+                "title": "Pipe chaining"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "rxjs",
+            "title": "RxJS",
+            "subCheckpoints": [
+              {
+                "id": "observables",
+                "title": "Observables and subscriptions"
+              },
+              {
+                "id": "operators",
+                "title": "Operators (map, filter, switchMap)"
+              },
+              {
+                "id": "async-pipe",
+                "title": "async pipe in templates"
+              },
+              {
+                "id": "subscription-management",
+                "title": "Subscription management and takeUntil"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "jasmine-karma",
+                "title": "Jasmine and Karma setup"
+              },
+              {
+                "id": "component-tests",
+                "title": "Component testing with TestBed"
+              },
+              {
+                "id": "service-mocking",
+                "title": "Mocking services and HTTP"
+              },
+              {
+                "id": "e2e-protractor",
+                "title": "E2E with Protractor or Cypress"
+              }
+            ]
+          },
+          {
+            "id": "cli-state-management-ngrx",
+            "title": "CLI & State Management (NgRx)",
+            "subCheckpoints": [
+              {
+                "id": "angular-cli",
+                "title": "Angular CLI commands and schematics"
+              },
+              {
+                "id": "ngrx-store",
+                "title": "NgRx store, actions, reducers"
+              },
+              {
+                "id": "ngrx-effects",
+                "title": "NgRx effects for side effects"
+              },
+              {
+                "id": "ngrx-selectors",
+                "title": "Selectors and facade pattern"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Next.js",
+    "group": "Frontend Technologies",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "pages-app-router",
+            "title": "Pages/App Router",
+            "subCheckpoints": [
+              {
+                "id": "pages-router",
+                "title": "Pages Router and file-based routing"
+              },
+              {
+                "id": "app-router-structure",
+                "title": "App Router structure (app directory)"
+              },
+              {
+                "id": "layout-template",
+                "title": "Layout and template files"
+              },
+              {
+                "id": "loading-error",
+                "title": "loading.js and error.js"
+              }
+            ]
+          },
+          {
+            "id": "ssr-ssg-isr",
+            "title": "SSR/SSG/ISR",
+            "subCheckpoints": [
+              {
+                "id": "server-components-default",
+                "title": "Server Components by default"
+              },
+              {
+                "id": "static-generation",
+                "title": "Static generation (build time)"
+              },
+              {
+                "id": "dynamic-rendering",
+                "title": "Dynamic rendering (request time)"
+              },
+              {
+                "id": "isr-revalidate",
+                "title": "ISR with revalidate"
+              }
+            ]
+          },
+          {
+            "id": "data-fetching",
+            "title": "Data Fetching",
+            "subCheckpoints": [
+              {
+                "id": "fetch-server",
+                "title": "fetch in Server Components"
+              },
+              {
+                "id": "async-components",
+                "title": "Async Server Components"
+              },
+              {
+                "id": "cache-no-store",
+                "title": "cache and no-store options"
+              },
+              {
+                "id": "client-data-fetch",
+                "title": "Client-side data fetching"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "api-routes",
+            "title": "API Routes",
+            "subCheckpoints": [
+              {
+                "id": "route-handlers",
+                "title": "Route handlers (GET, POST, etc.)"
+              },
+              {
+                "id": "dynamic-routes",
+                "title": "Dynamic API routes"
+              },
+              {
+                "id": "request-response",
+                "title": "Request and Response handling"
+              },
+              {
+                "id": "api-middleware",
+                "title": "API route middleware"
+              }
+            ]
+          },
+          {
+            "id": "middleware",
+            "title": "Middleware",
+            "subCheckpoints": [
+              {
+                "id": "middleware-file",
+                "title": "middleware.ts and matcher config"
+              },
+              {
+                "id": "middleware-redirect",
+                "title": "Redirects and rewrites"
+              },
+              {
+                "id": "middleware-auth",
+                "title": "Authentication checks in middleware"
+              },
+              {
+                "id": "middleware-headers",
+                "title": "Request/response headers"
+              }
+            ]
+          },
+          {
+            "id": "image-optimization",
+            "title": "Image Optimization",
+            "subCheckpoints": [
+              {
+                "id": "next-image",
+                "title": "next/image component"
+              },
+              {
+                "id": "sizes-priority",
+                "title": "sizes and priority props"
+              },
+              {
+                "id": "remote-patterns",
+                "title": "Remote image patterns"
+              },
+              {
+                "id": "image-placeholder",
+                "title": "Blur placeholder"
+              }
+            ]
+          },
+          {
+            "id": "deployment",
+            "title": "Deployment",
+            "subCheckpoints": [
+              {
+                "id": "vercel-deploy",
+                "title": "Vercel deployment"
+              },
+              {
+                "id": "env-variables",
+                "title": "Environment variables"
+              },
+              {
+                "id": "build-output",
+                "title": "Build output and static export"
+              },
+              {
+                "id": "edge-runtime",
+                "title": "Edge runtime options"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "authentication",
+            "title": "Authentication",
+            "subCheckpoints": [
+              {
+                "id": "next-auth",
+                "title": "NextAuth.js or Auth.js"
+              },
+              {
+                "id": "auth-providers",
+                "title": "OAuth and credential providers"
+              },
+              {
+                "id": "middleware-auth",
+                "title": "Middleware auth protection"
+              },
+              {
+                "id": "session-management",
+                "title": "Session and JWT handling"
+              }
+            ]
+          },
+          {
+            "id": "caching",
+            "title": "Caching",
+            "subCheckpoints": [
+              {
+                "id": "fetch-cache",
+                "title": "Fetch caching and deduplication"
+              },
+              {
+                "id": "router-cache",
+                "title": "Router cache behavior"
+              },
+              {
+                "id": "cache-tags",
+                "title": "revalidateTag and revalidatePath"
+              },
+              {
+                "id": "dynamic-functions",
+                "title": "dynamic and unstable_cache"
+              }
+            ]
+          },
+          {
+            "id": "server-actions",
+            "title": "Server Actions",
+            "subCheckpoints": [
+              {
+                "id": "server-action-basics",
+                "title": "Server Actions with use server"
+              },
+              {
+                "id": "form-actions",
+                "title": "Form actions and progressive enhancement"
+              },
+              {
+                "id": "action-revalidation",
+                "title": "Revalidation from Server Actions"
+              },
+              {
+                "id": "action-error-handling",
+                "title": "Error handling and useFormState"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Design System",
+    "group": "Frontend Technologies",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "design-tokens",
+            "title": "Design Tokens",
+            "subCheckpoints": [
+              {
+                "id": "color-tokens",
+                "title": "Color tokens (palette, semantic)"
+              },
+              {
+                "id": "typography-tokens",
+                "title": "Typography tokens (font, size, weight)"
+              },
+              {
+                "id": "spacing-tokens",
+                "title": "Spacing and layout tokens"
+              },
+              {
+                "id": "token-format",
+                "title": "Token format (JSON, CSS variables)"
+              }
+            ]
+          },
+          {
+            "id": "component-library",
+            "title": "Component Library",
+            "subCheckpoints": [
+              {
+                "id": "button-input",
+                "title": "Core components (Button, Input)"
+              },
+              {
+                "id": "component-api",
+                "title": "Component API design"
+              },
+              {
+                "id": "component-variants",
+                "title": "Variants and composition"
+              },
+              {
+                "id": "component-docs",
+                "title": "Component documentation"
+              }
+            ]
+          },
+          {
+            "id": "storybook",
+            "title": "Storybook",
+            "subCheckpoints": [
+              {
+                "id": "storybook-setup",
+                "title": "Storybook setup and config"
+              },
+              {
+                "id": "writing-stories",
+                "title": "Writing stories and controls"
+              },
+              {
+                "id": "story-docs",
+                "title": "Docs addon and MDX"
+              },
+              {
+                "id": "story-interactions",
+                "title": "Interaction testing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "accessibility",
+            "title": "Accessibility",
+            "subCheckpoints": [
+              {
+                "id": "a11y-audit",
+                "title": "Accessibility audit (a11y addon)"
+              },
+              {
+                "id": "keyboard-focus",
+                "title": "Keyboard navigation and focus"
+              },
+              {
+                "id": "aria-components",
+                "title": "ARIA in component design"
+              },
+              {
+                "id": "color-contrast",
+                "title": "Color contrast and WCAG"
+              }
+            ]
+          },
+          {
+            "id": "theming",
+            "title": "Theming",
+            "subCheckpoints": [
+              {
+                "id": "theme-structure",
+                "title": "Theme structure and layers"
+              },
+              {
+                "id": "dark-mode",
+                "title": "Dark mode implementation"
+              },
+              {
+                "id": "theme-switching",
+                "title": "Runtime theme switching"
+              },
+              {
+                "id": "theme-extension",
+                "title": "Theme extension and overrides"
+              }
+            ]
+          },
+          {
+            "id": "documentation",
+            "title": "Documentation",
+            "subCheckpoints": [
+              {
+                "id": "getting-started",
+                "title": "Getting started guide"
+              },
+              {
+                "id": "design-principles",
+                "title": "Design principles and usage"
+              },
+              {
+                "id": "contribution-guide",
+                "title": "Contribution guidelines"
+              },
+              {
+                "id": "changelog",
+                "title": "Changelog and release notes"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "versioning",
+            "title": "Versioning",
+            "subCheckpoints": [
+              {
+                "id": "semantic-versioning",
+                "title": "Semantic versioning strategy"
+              },
+              {
+                "id": "breaking-changes",
+                "title": "Breaking change handling"
+              },
+              {
+                "id": "migration-guides",
+                "title": "Migration guides"
+              },
+              {
+                "id": "deprecation",
+                "title": "Deprecation workflow"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "visual-regression",
+                "title": "Visual regression testing"
+              },
+              {
+                "id": "component-tests",
+                "title": "Component unit tests"
+              },
+              {
+                "id": "e2e-design-system",
+                "title": "E2E in consuming apps"
+              },
+              {
+                "id": "a11y-testing",
+                "title": "Automated a11y testing"
+              }
+            ]
+          },
+          {
+            "id": "governance",
+            "title": "Governance",
+            "subCheckpoints": [
+              {
+                "id": "review-process",
+                "title": "Component review process"
+              },
+              {
+                "id": "design-reviews",
+                "title": "Design-dev handoff"
+              },
+              {
+                "id": "adoption-metrics",
+                "title": "Adoption metrics and feedback"
+              },
+              {
+                "id": "steering-committee",
+                "title": "Design system governance model"
+              }
+            ]
+          },
+          {
+            "id": "figma-integration",
+            "title": "Figma Integration",
+            "subCheckpoints": [
+              {
+                "id": "figma-tokens",
+                "title": "Design tokens in Figma"
+              },
+              {
+                "id": "figma-components",
+                "title": "Figma component library sync"
+              },
+              {
+                "id": "dev-mode",
+                "title": "Dev Mode and inspect"
+              },
+              {
+                "id": "figma-api",
+                "title": "Figma API and automation"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

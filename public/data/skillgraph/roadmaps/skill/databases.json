@@ -1,0 +1,1006 @@
+[
+  {
+    "roadmap": "SQL",
+    "group": "Databases & Data Storage",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "select-basics",
+            "title": "SELECT Basics",
+            "subCheckpoints": [
+              {
+                "id": "select-columns",
+                "title": "Selecting columns and aliases"
+              },
+              {
+                "id": "distinct-values",
+                "title": "DISTINCT and limiting results"
+              },
+              {
+                "id": "arithmetic-expressions",
+                "title": "Arithmetic expressions and NULL handling"
+              }
+            ]
+          },
+          {
+            "id": "filtering",
+            "title": "Filtering Data",
+            "subCheckpoints": [
+              {
+                "id": "where-clause",
+                "title": "WHERE clause and comparison operators"
+              },
+              {
+                "id": "logical-operators",
+                "title": "AND, OR, NOT, and parentheses"
+              },
+              {
+                "id": "in-between-like",
+                "title": "IN, BETWEEN, LIKE, and pattern matching"
+              }
+            ]
+          },
+          {
+            "id": "sorting-limiting",
+            "title": "Sorting and Limiting",
+            "subCheckpoints": [
+              {
+                "id": "order-by",
+                "title": "ORDER BY single and multiple columns"
+              },
+              {
+                "id": "limit-offset",
+                "title": "LIMIT and OFFSET for pagination"
+              }
+            ]
+          },
+          {
+            "id": "aggregation",
+            "title": "Aggregation Basics",
+            "subCheckpoints": [
+              {
+                "id": "aggregate-functions",
+                "title": "COUNT, SUM, AVG, MIN, MAX"
+              },
+              {
+                "id": "group-by",
+                "title": "GROUP BY and HAVING clause"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "joins",
+            "title": "Joins",
+            "subCheckpoints": [
+              {
+                "id": "inner-join",
+                "title": "INNER JOIN and equi-joins"
+              },
+              {
+                "id": "outer-joins",
+                "title": "LEFT, RIGHT, FULL OUTER JOIN"
+              },
+              {
+                "id": "self-cross-join",
+                "title": "Self-joins and CROSS JOIN"
+              }
+            ]
+          },
+          {
+            "id": "subqueries",
+            "title": "Subqueries",
+            "subCheckpoints": [
+              {
+                "id": "scalar-subquery",
+                "title": "Scalar and single-row subqueries"
+              },
+              {
+                "id": "in-exists",
+                "title": "IN, EXISTS, and correlated subqueries"
+              },
+              {
+                "id": "subquery-in-from",
+                "title": "Subqueries in FROM clause"
+              }
+            ]
+          },
+          {
+            "id": "ctes",
+            "title": "Common Table Expressions (CTEs)",
+            "subCheckpoints": [
+              {
+                "id": "with-clause",
+                "title": "WITH clause and named CTEs"
+              },
+              {
+                "id": "recursive-cte",
+                "title": "Recursive CTEs for hierarchical data"
+              }
+            ]
+          },
+          {
+            "id": "ddl-dml",
+            "title": "DDL and DML",
+            "subCheckpoints": [
+              {
+                "id": "create-alter-drop",
+                "title": "CREATE, ALTER, DROP tables"
+              },
+              {
+                "id": "insert-update-delete",
+                "title": "INSERT, UPDATE, DELETE operations"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "window-functions",
+            "title": "Window Functions",
+            "subCheckpoints": [
+              {
+                "id": "over-partition",
+                "title": "OVER, PARTITION BY, ORDER BY"
+              },
+              {
+                "id": "rank-ntile",
+                "title": "RANK, ROW_NUMBER, NTILE, LAG, LEAD"
+              }
+            ]
+          },
+          {
+            "id": "transactions",
+            "title": "Transactions",
+            "subCheckpoints": [
+              {
+                "id": "acid-basics",
+                "title": "ACID properties and transaction isolation"
+              },
+              {
+                "id": "commit-rollback",
+                "title": "COMMIT, ROLLBACK, SAVEPOINT"
+              }
+            ]
+          },
+          {
+            "id": "indexes",
+            "title": "Indexes",
+            "subCheckpoints": [
+              {
+                "id": "index-types",
+                "title": "B-tree, hash, and composite indexes"
+              },
+              {
+                "id": "index-usage",
+                "title": "When and how to use indexes"
+              }
+            ]
+          },
+          {
+            "id": "views-stored-procedures",
+            "title": "Views and Stored Procedures",
+            "subCheckpoints": [
+              {
+                "id": "views",
+                "title": "Creating and managing views"
+              },
+              {
+                "id": "stored-procedures",
+                "title": "Stored procedures and functions"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "PostgreSQL",
+    "group": "Databases & Data Storage",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "installation-setup",
+            "title": "Installation & Setup",
+            "subCheckpoints": [
+              {
+                "id": "install-postgres",
+                "title": "Installing PostgreSQL on your OS"
+              },
+              {
+                "id": "psql-connection",
+                "title": "Using psql and connecting to databases"
+              },
+              {
+                "id": "create-database",
+                "title": "Creating databases and users"
+              }
+            ]
+          },
+          {
+            "id": "data-types",
+            "title": "Data Types",
+            "subCheckpoints": [
+              {
+                "id": "numeric-text",
+                "title": "Numeric, text, and boolean types"
+              },
+              {
+                "id": "datetime-uuid",
+                "title": "Date/time types and UUID"
+              },
+              {
+                "id": "arrays-enums",
+                "title": "Arrays and enumerated types"
+              }
+            ]
+          },
+          {
+            "id": "crud-operations",
+            "title": "CRUD Operations",
+            "subCheckpoints": [
+              {
+                "id": "create-tables",
+                "title": "Creating tables with CREATE TABLE"
+              },
+              {
+                "id": "insert-select",
+                "title": "INSERT, SELECT, UPDATE, DELETE"
+              }
+            ]
+          },
+          {
+            "id": "constraints",
+            "title": "Constraints",
+            "subCheckpoints": [
+              {
+                "id": "primary-foreign",
+                "title": "PRIMARY KEY and FOREIGN KEY"
+              },
+              {
+                "id": "unique-check-not-null",
+                "title": "UNIQUE, CHECK, NOT NULL constraints"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "indexes",
+            "title": "Indexes",
+            "subCheckpoints": [
+              {
+                "id": "btree-index",
+                "title": "B-tree indexes and CREATE INDEX"
+              },
+              {
+                "id": "partial-gin",
+                "title": "Partial indexes and GIN indexes"
+              }
+            ]
+          },
+          {
+            "id": "json-jsonb",
+            "title": "JSON/JSONB",
+            "subCheckpoints": [
+              {
+                "id": "json-operators",
+                "title": "JSON operators and path queries"
+              },
+              {
+                "id": "jsonb-indexing",
+                "title": "JSONB indexing and containment"
+              }
+            ]
+          },
+          {
+            "id": "full-text-search",
+            "title": "Full-Text Search",
+            "subCheckpoints": [
+              {
+                "id": "tsvector-tsquery",
+                "title": "tsvector and tsquery types"
+              },
+              {
+                "id": "gist-gin-search",
+                "title": "GIN indexes for full-text search"
+              }
+            ]
+          },
+          {
+            "id": "extensions",
+            "title": "Extensions",
+            "subCheckpoints": [
+              {
+                "id": "enable-extensions",
+                "title": "Enabling and using extensions"
+              },
+              {
+                "id": "common-extensions",
+                "title": "uuid-ossp, pg_trgm, and PostGIS"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "partitioning",
+            "title": "Partitioning",
+            "subCheckpoints": [
+              {
+                "id": "table-partitioning",
+                "title": "Range, list, and hash partitioning"
+              },
+              {
+                "id": "partition-strategy",
+                "title": "Partition pruning and maintenance"
+              }
+            ]
+          },
+          {
+            "id": "replication",
+            "title": "Replication",
+            "subCheckpoints": [
+              {
+                "id": "streaming-replication",
+                "title": "Streaming replication setup"
+              },
+              {
+                "id": "logical-replication",
+                "title": "Logical replication and slots"
+              }
+            ]
+          },
+          {
+            "id": "backup-recovery",
+            "title": "Backup & Recovery",
+            "subCheckpoints": [
+              {
+                "id": "pg-dump-restore",
+                "title": "pg_dump and pg_restore"
+              },
+              {
+                "id": "wal-archiving",
+                "title": "WAL archiving and point-in-time recovery"
+              }
+            ]
+          },
+          {
+            "id": "performance-tuning",
+            "title": "Performance Tuning",
+            "subCheckpoints": [
+              {
+                "id": "explain-analyze",
+                "title": "EXPLAIN ANALYZE and query plans"
+              },
+              {
+                "id": "config-tuning",
+                "title": "Configuration tuning and connection pooling"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "MongoDB",
+    "group": "Databases & Data Storage",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "document-model",
+            "title": "Document Model",
+            "subCheckpoints": [
+              {
+                "id": "bson-structure",
+                "title": "BSON structure and document format"
+              },
+              {
+                "id": "embedded-vs-references",
+                "title": "Embedded documents vs references"
+              },
+              {
+                "id": "collections-databases",
+                "title": "Collections and databases"
+              }
+            ]
+          },
+          {
+            "id": "crud-operations",
+            "title": "CRUD Operations",
+            "subCheckpoints": [
+              {
+                "id": "insert-documents",
+                "title": "insertOne, insertMany"
+              },
+              {
+                "id": "find-replace",
+                "title": "find, findOne, replaceOne"
+              },
+              {
+                "id": "update-delete",
+                "title": "updateOne, updateMany, deleteOne, deleteMany"
+              }
+            ]
+          },
+          {
+            "id": "queries-operators",
+            "title": "Queries & Operators",
+            "subCheckpoints": [
+              {
+                "id": "query-operators",
+                "title": "$eq, $gt, $in, $regex, $and, $or"
+              },
+              {
+                "id": "projection-sort",
+                "title": "Projection, sort, skip, limit"
+              }
+            ]
+          },
+          {
+            "id": "indexes-basics",
+            "title": "Indexes Basics",
+            "subCheckpoints": [
+              {
+                "id": "create-index",
+                "title": "Creating single and compound indexes"
+              },
+              {
+                "id": "index-types",
+                "title": "Unique indexes and _id index"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "aggregation-pipeline",
+            "title": "Aggregation Pipeline",
+            "subCheckpoints": [
+              {
+                "id": "match-group",
+                "title": "$match, $group, $project stages"
+              },
+              {
+                "id": "lookup-unwind",
+                "title": "$lookup, $unwind, $sort stages"
+              }
+            ]
+          },
+          {
+            "id": "schema-design",
+            "title": "Schema Design",
+            "subCheckpoints": [
+              {
+                "id": "one-to-many",
+                "title": "One-to-many and one-to-few patterns"
+              },
+              {
+                "id": "many-to-many",
+                "title": "Many-to-many and bucket patterns"
+              }
+            ]
+          },
+          {
+            "id": "replication",
+            "title": "Replication",
+            "subCheckpoints": [
+              {
+                "id": "replica-set",
+                "title": "Replica set concepts and setup"
+              },
+              {
+                "id": "read-preference",
+                "title": "Read preference and write concern"
+              }
+            ]
+          },
+          {
+            "id": "sharding",
+            "title": "Sharding",
+            "subCheckpoints": [
+              {
+                "id": "shard-cluster",
+                "title": "Shard cluster architecture"
+              },
+              {
+                "id": "shard-key",
+                "title": "Shard key selection and strategy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "transactions",
+            "title": "Transactions",
+            "subCheckpoints": [
+              {
+                "id": "multi-doc-transactions",
+                "title": "Multi-document ACID transactions"
+              },
+              {
+                "id": "transaction-options",
+                "title": "Transaction options and retry logic"
+              }
+            ]
+          },
+          {
+            "id": "atlas-cloud",
+            "title": "Atlas Cloud",
+            "subCheckpoints": [
+              {
+                "id": "atlas-setup",
+                "title": "MongoDB Atlas setup and deployment"
+              },
+              {
+                "id": "atlas-features",
+                "title": "Atlas Search, triggers, and serverless"
+              }
+            ]
+          },
+          {
+            "id": "security",
+            "title": "Security",
+            "subCheckpoints": [
+              {
+                "id": "auth-rbac",
+                "title": "Authentication and role-based access"
+              },
+              {
+                "id": "encryption-tls",
+                "title": "Encryption at rest and TLS"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Redis",
+    "group": "Databases & Data Storage",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "data-types",
+            "title": "Data Types",
+            "subCheckpoints": [
+              {
+                "id": "strings-hashes",
+                "title": "Strings and hashes"
+              },
+              {
+                "id": "lists-sets",
+                "title": "Lists and sets"
+              },
+              {
+                "id": "sorted-sets",
+                "title": "Sorted sets"
+              }
+            ]
+          },
+          {
+            "id": "commands",
+            "title": "Commands",
+            "subCheckpoints": [
+              {
+                "id": "key-commands",
+                "title": "GET, SET, DEL, EXISTS, EXPIRE"
+              },
+              {
+                "id": "type-commands",
+                "title": "HGET, LPUSH, SADD, ZADD and variants"
+              }
+            ]
+          },
+          {
+            "id": "redis-cli",
+            "title": "Redis CLI & Basics",
+            "subCheckpoints": [
+              {
+                "id": "cli-install",
+                "title": "Installing Redis and using redis-cli"
+              },
+              {
+                "id": "info-config",
+                "title": "INFO and CONFIG commands"
+              }
+            ]
+          },
+          {
+            "id": "pub-sub",
+            "title": "Pub/Sub",
+            "subCheckpoints": [
+              {
+                "id": "subscribe-publish",
+                "title": "SUBSCRIBE, PUBLISH, UNSUBSCRIBE"
+              },
+              {
+                "id": "pattern-subscription",
+                "title": "Pattern-based subscriptions"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "persistence",
+            "title": "Persistence",
+            "subCheckpoints": [
+              {
+                "id": "rdb-snapshots",
+                "title": "RDB snapshots and SAVE/BGSAVE"
+              },
+              {
+                "id": "aof",
+                "title": "AOF (Append Only File) and rewrite"
+              }
+            ]
+          },
+          {
+            "id": "caching-patterns",
+            "title": "Caching Patterns",
+            "subCheckpoints": [
+              {
+                "id": "cache-aside",
+                "title": "Cache-aside and write-through"
+              },
+              {
+                "id": "ttl-eviction",
+                "title": "TTL, eviction policies, and cache invalidation"
+              }
+            ]
+          },
+          {
+            "id": "transactions",
+            "title": "Transactions",
+            "subCheckpoints": [
+              {
+                "id": "multi-exec",
+                "title": "MULTI, EXEC, DISCARD"
+              },
+              {
+                "id": "watch-optimistic",
+                "title": "WATCH for optimistic locking"
+              }
+            ]
+          },
+          {
+            "id": "streams",
+            "title": "Streams",
+            "subCheckpoints": [
+              {
+                "id": "xadd-xread",
+                "title": "XADD, XREAD, consumer groups"
+              },
+              {
+                "id": "stream-patterns",
+                "title": "Stream patterns for event sourcing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "lua-scripting",
+            "title": "Lua Scripting",
+            "subCheckpoints": [
+              {
+                "id": "eval-script",
+                "title": "EVAL and EVALSHA"
+              },
+              {
+                "id": "atomic-operations",
+                "title": "Atomic operations with Lua"
+              }
+            ]
+          },
+          {
+            "id": "clustering",
+            "title": "Clustering",
+            "subCheckpoints": [
+              {
+                "id": "redis-cluster",
+                "title": "Redis Cluster setup and hash slots"
+              },
+              {
+                "id": "cluster-commands",
+                "title": "Cluster commands and resharding"
+              }
+            ]
+          },
+          {
+            "id": "sentinel",
+            "title": "Sentinel",
+            "subCheckpoints": [
+              {
+                "id": "sentinel-setup",
+                "title": "Redis Sentinel for high availability"
+              },
+              {
+                "id": "failover",
+                "title": "Automatic failover and quorum"
+              }
+            ]
+          },
+          {
+            "id": "performance-tuning",
+            "title": "Performance Tuning",
+            "subCheckpoints": [
+              {
+                "id": "pipeline-batch",
+                "title": "Pipelining and batching"
+              },
+              {
+                "id": "memory-optimization",
+                "title": "Memory optimization and slow log"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Elasticsearch",
+    "group": "Databases & Data Storage",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "index-document-model",
+            "title": "Index & Document Model",
+            "subCheckpoints": [
+              {
+                "id": "index-shard-concept",
+                "title": "Index, shard, and document concepts"
+              },
+              {
+                "id": "json-documents",
+                "title": "JSON document structure"
+              }
+            ]
+          },
+          {
+            "id": "crud-operations",
+            "title": "CRUD Operations",
+            "subCheckpoints": [
+              {
+                "id": "index-get",
+                "title": "Index API and GET by ID"
+              },
+              {
+                "id": "update-delete",
+                "title": "Update and Delete APIs"
+              },
+              {
+                "id": "bulk-api",
+                "title": "Bulk API for batch operations"
+              }
+            ]
+          },
+          {
+            "id": "search-basics",
+            "title": "Search Basics",
+            "subCheckpoints": [
+              {
+                "id": "match-query",
+                "title": "match and match_all queries"
+              },
+              {
+                "id": "term-query",
+                "title": "term and terms queries"
+              }
+            ]
+          },
+          {
+            "id": "kibana-intro",
+            "title": "Kibana Introduction",
+            "subCheckpoints": [
+              {
+                "id": "dev-tools",
+                "title": "Dev Tools and Console"
+              },
+              {
+                "id": "index-patterns",
+                "title": "Index patterns and Discover"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "queries-full-text",
+            "title": "Full-Text Queries",
+            "subCheckpoints": [
+              {
+                "id": "match-phrase",
+                "title": "match_phrase and match_phrase_prefix"
+              },
+              {
+                "id": "multi-match",
+                "title": "multi_match and best_fields"
+              },
+              {
+                "id": "bool-query",
+                "title": "bool query with must, should, filter"
+              }
+            ]
+          },
+          {
+            "id": "analyzers",
+            "title": "Analyzers",
+            "subCheckpoints": [
+              {
+                "id": "analyzer-components",
+                "title": "Character filters, tokenizers, token filters"
+              },
+              {
+                "id": "custom-analyzer",
+                "title": "Built-in and custom analyzers"
+              }
+            ]
+          },
+          {
+            "id": "aggregations",
+            "title": "Aggregations",
+            "subCheckpoints": [
+              {
+                "id": "metric-aggregations",
+                "title": "Metric aggregations: sum, avg, stats"
+              },
+              {
+                "id": "bucket-aggregations",
+                "title": "Bucket aggregations: terms, date_histogram"
+              },
+              {
+                "id": "nested-aggregations",
+                "title": "Nested and composite aggregations"
+              }
+            ]
+          },
+          {
+            "id": "mapping",
+            "title": "Mapping",
+            "subCheckpoints": [
+              {
+                "id": "field-types",
+                "title": "Field types: text, keyword, date, numeric"
+              },
+              {
+                "id": "dynamic-mapping",
+                "title": "Dynamic vs explicit mapping"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "cluster-architecture",
+            "title": "Cluster Architecture",
+            "subCheckpoints": [
+              {
+                "id": "node-roles",
+                "title": "Node roles: master, data, ingest"
+              },
+              {
+                "id": "shard-allocation",
+                "title": "Shard allocation and routing"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "title": "Performance",
+            "subCheckpoints": [
+              {
+                "id": "index-settings",
+                "title": "Index settings and refresh interval"
+              },
+              {
+                "id": "query-optimization",
+                "title": "Query optimization and profiling"
+              }
+            ]
+          },
+          {
+            "id": "kibana-advanced",
+            "title": "Kibana Advanced",
+            "subCheckpoints": [
+              {
+                "id": "visualizations",
+                "title": "Visualizations and dashboards"
+              },
+              {
+                "id": "alerts",
+                "title": "Alerts and monitoring"
+              }
+            ]
+          },
+          {
+            "id": "security",
+            "title": "Security",
+            "subCheckpoints": [
+              {
+                "id": "x-pack-security",
+                "title": "X-Pack security and authentication"
+              },
+              {
+                "id": "rbac-indices",
+                "title": "Role-based access and index-level security"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

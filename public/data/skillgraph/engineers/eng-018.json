@@ -1,0 +1,458 @@
+{
+  "userId": "eng-018",
+  "name": "Rachel Yamamoto",
+  "createdAt": "2026-01-05T00:00:00Z",
+  "lastScannedAt": "2026-02-13T08:00:00Z",
+  "roadmaps": {
+    "role:UX Design": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-09T08:00:00Z",
+      "completions": {
+        "empathize-phase": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-01-20T08:00:00Z",
+          "detectionCount": 24
+        },
+        "define-problem": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 35
+        },
+        "ideate-solutions": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 29
+        },
+        "iterate-prototype": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 21
+        },
+        "research-methods": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 23
+        },
+        "user-personas": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 20
+        },
+        "research-synthesis": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-22T08:00:00Z",
+          "detectionCount": 37
+        },
+        "low-fidelity-wireframes": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 24
+        },
+        "layout-hierarchy": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 34
+        },
+        "wireframe-tools": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 27
+        },
+        "color-typography": {
+          "firstDetectedAt": "2026-01-13T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 24
+        },
+        "content-structure": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 32
+        },
+        "card-sorting": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-13T08:00:00Z",
+          "detectionCount": 31
+        },
+        "sitemaps": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 27
+        },
+        "figma-interface": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 29
+        },
+        "interactive-prototypes": {
+          "firstDetectedAt": "2026-01-19T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 24
+        },
+        "prototype-feedback": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 24
+        },
+        "test-planning": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-01-24T08:00:00Z",
+          "detectionCount": 25
+        },
+        "moderate-sessions": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 26
+        },
+        "analyze-findings": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-28T08:00:00Z",
+          "detectionCount": 22
+        },
+        "component-library": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 36
+        },
+        "design-tokens": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 29
+        }
+      }
+    },
+    "skill:HTML": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-11T08:00:00Z",
+      "completions": {
+        "doctype-and-html": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 38
+        },
+        "head-meta-charset": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 32
+        },
+        "body-structure": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-13T08:00:00Z",
+          "detectionCount": 30
+        },
+        "document-outline": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 24
+        },
+        "header-nav-footer": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-17T08:00:00Z",
+          "detectionCount": 29
+        },
+        "article-section": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-01-21T08:00:00Z",
+          "detectionCount": 37
+        },
+        "semantic-tables": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-22T08:00:00Z",
+          "detectionCount": 25
+        },
+        "figure-figcaption": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 20
+        },
+        "form-input-types": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 35
+        },
+        "labels-placeholders": {
+          "firstDetectedAt": "2026-01-12T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 37
+        },
+        "html5-validation": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 21
+        },
+        "select-textarea": {
+          "firstDetectedAt": "2026-01-22T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 22
+        },
+        "img-attributes": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-02-04T08:00:00Z",
+          "detectionCount": 20
+        },
+        "picture-element": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 21
+        },
+        "audio-video": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 33
+        },
+        "track-subtitles": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 30
+        },
+        "aria-roles": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 29
+        }
+      }
+    },
+    "skill:CSS": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-11T08:00:00Z",
+      "completions": {
+        "basic-selectors": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 33
+        },
+        "combinators": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 30
+        },
+        "pseudo-classes": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 33
+        },
+        "specificity-cascade": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-26T08:00:00Z",
+          "detectionCount": 32
+        },
+        "content-padding-border": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 34
+        },
+        "box-sizing": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-01-21T08:00:00Z",
+          "detectionCount": 24
+        },
+        "margin-collapse": {
+          "firstDetectedAt": "2026-01-11T08:00:00Z",
+          "lastDetectedAt": "2026-01-14T08:00:00Z",
+          "detectionCount": 24
+        },
+        "display-types": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-02-11T08:00:00Z",
+          "detectionCount": 25
+        },
+        "flex-container": {
+          "firstDetectedAt": "2026-01-10T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 36
+        },
+        "flex-wrap-align": {
+          "firstDetectedAt": "2026-01-21T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 29
+        },
+        "flex-grow-shrink": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 25
+        },
+        "flex-order": {
+          "firstDetectedAt": "2026-01-25T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 29
+        },
+        "grid-template": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-01-22T08:00:00Z",
+          "detectionCount": 32
+        },
+        "media-queries": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 31
+        },
+        "mobile-first": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 31
+        },
+        "fluid-typography": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 35
+        },
+        "responsive-images": {
+          "firstDetectedAt": "2026-01-27T08:00:00Z",
+          "lastDetectedAt": "2026-02-07T08:00:00Z",
+          "detectionCount": 30
+        },
+        "transitions": {
+          "firstDetectedAt": "2026-01-07T08:00:00Z",
+          "lastDetectedAt": "2026-01-16T08:00:00Z",
+          "detectionCount": 26
+        },
+        "keyframes": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 22
+        },
+        "animation-fill-mode": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-01-19T08:00:00Z",
+          "detectionCount": 34
+        },
+        "animation-performance": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-02-05T08:00:00Z",
+          "detectionCount": 29
+        },
+        "bem-naming": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 23
+        }
+      }
+    },
+    "skill:Design System": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-06T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "color-tokens": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-01-31T08:00:00Z",
+          "detectionCount": 35
+        },
+        "typography-tokens": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-11T08:00:00Z",
+          "detectionCount": 24
+        },
+        "spacing-tokens": {
+          "firstDetectedAt": "2026-01-18T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 21
+        },
+        "token-format": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-25T08:00:00Z",
+          "detectionCount": 29
+        },
+        "button-input": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-03T08:00:00Z",
+          "detectionCount": 36
+        },
+        "component-api": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-01-22T08:00:00Z",
+          "detectionCount": 32
+        },
+        "component-variants": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 27
+        },
+        "component-docs": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 23
+        },
+        "storybook-setup": {
+          "firstDetectedAt": "2026-01-24T08:00:00Z",
+          "lastDetectedAt": "2026-02-09T08:00:00Z",
+          "detectionCount": 22
+        },
+        "a11y-audit": {
+          "firstDetectedAt": "2026-01-23T08:00:00Z",
+          "lastDetectedAt": "2026-02-02T08:00:00Z",
+          "detectionCount": 28
+        },
+        "keyboard-focus": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 36
+        },
+        "aria-components": {
+          "firstDetectedAt": "2026-01-08T08:00:00Z",
+          "lastDetectedAt": "2026-01-23T08:00:00Z",
+          "detectionCount": 31
+        },
+        "color-contrast": {
+          "firstDetectedAt": "2026-01-17T08:00:00Z",
+          "lastDetectedAt": "2026-02-01T08:00:00Z",
+          "detectionCount": 21
+        },
+        "theme-structure": {
+          "firstDetectedAt": "2026-01-06T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 26
+        },
+        "semantic-versioning": {
+          "firstDetectedAt": "2026-01-15T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 27
+        },
+        "breaking-changes": {
+          "firstDetectedAt": "2026-01-26T08:00:00Z",
+          "lastDetectedAt": "2026-02-12T08:00:00Z",
+          "detectionCount": 30
+        },
+        "migration-guides": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-02-10T08:00:00Z",
+          "detectionCount": 21
+        }
+      }
+    },
+    "skill:Git and GitHub": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-09T08:00:00Z",
+      "lastActivityAt": "2026-02-06T08:00:00Z",
+      "completions": {
+        "git-init": {
+          "firstDetectedAt": "2026-01-09T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 34
+        },
+        "add-commit": {
+          "firstDetectedAt": "2026-01-28T08:00:00Z",
+          "lastDetectedAt": "2026-01-29T08:00:00Z",
+          "detectionCount": 38
+        },
+        "status-log": {
+          "firstDetectedAt": "2026-01-16T08:00:00Z",
+          "lastDetectedAt": "2026-01-19T08:00:00Z",
+          "detectionCount": 18
+        },
+        "diff": {
+          "firstDetectedAt": "2026-01-20T08:00:00Z",
+          "lastDetectedAt": "2026-01-30T08:00:00Z",
+          "detectionCount": 13
+        },
+        "create-pr": {
+          "firstDetectedAt": "2026-01-14T08:00:00Z",
+          "lastDetectedAt": "2026-02-06T08:00:00Z",
+          "detectionCount": 2
+        }
+      }
+    }
+  }
+}

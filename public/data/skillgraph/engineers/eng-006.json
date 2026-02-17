@@ -1,0 +1,150 @@
+{
+  "userId": "eng-006",
+  "name": "Frank Lee",
+  "createdAt": "2026-01-05T00:00:00Z",
+  "lastScannedAt": "2026-02-13T08:00:00Z",
+  "roadmaps": {
+    "role:Backend": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-08T08:00:00Z",
+      "lastActivityAt": "2026-02-13T08:00:00Z",
+      "completions": {
+        "how-internet-works": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 14},
+        "http-https": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 26},
+        "terminal": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 22},
+        "python-java": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 30},
+        "git": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 26},
+        "github": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 24},
+        "sql-advanced": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 18},
+        "indexes-optimization": {"firstDetectedAt": "2026-01-22T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 8},
+        "orm": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 22},
+        "rest": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 26},
+        "jwt-oauth": {"firstDetectedAt": "2026-01-20T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 14},
+        "rbac": {"firstDetectedAt": "2026-01-25T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 8},
+        "redis": {"firstDetectedAt": "2026-01-22T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 10},
+        "unit-integration": {"firstDetectedAt": "2026-01-24T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 14},
+        "docker": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 5}
+      }
+    },
+    "skill:Java": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-13T08:00:00Z",
+      "completions": {
+        "variables-types": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 32},
+        "control-flow": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 30},
+        "methods": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 31},
+        "arrays": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 26},
+        "classes-objects": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 30},
+        "inheritance": {"firstDetectedAt": "2026-01-10T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 26},
+        "encapsulation": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 20},
+        "abstraction": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 16},
+        "list-set-map": {"firstDetectedAt": "2026-01-13T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 28},
+        "generic-classes": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 20},
+        "stream-operations": {"firstDetectedAt": "2026-01-20T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 18},
+        "filter-map-reduce": {"firstDetectedAt": "2026-01-22T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 14},
+        "junit": {"firstDetectedAt": "2026-01-25T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 16},
+        "dependency-injection": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 8},
+        "creational-patterns": {"firstDetectedAt": "2026-02-05T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 5}
+      }
+    },
+    "skill:Spring Boot": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-12T08:00:00Z",
+      "lastActivityAt": "2026-02-13T08:00:00Z",
+      "completions": {
+        "oop": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 24},
+        "streams-lambda": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 18},
+        "initializr": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 28},
+        "config": {"firstDetectedAt": "2026-01-13T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 26},
+        "embedded-server": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 22},
+        "annotations": {"firstDetectedAt": "2026-01-13T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 30},
+        "autowired": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 26},
+        "controllers": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 30},
+        "request-response": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 26},
+        "entities": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 24},
+        "repositories": {"firstDetectedAt": "2026-01-19T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 22},
+        "migrations": {"firstDetectedAt": "2026-01-22T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 14},
+        "authn-authz": {"firstDetectedAt": "2026-01-25T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 16},
+        "jwt-oauth": {"firstDetectedAt": "2026-01-28T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 10},
+        "bean-validation": {"firstDetectedAt": "2026-01-30T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 14},
+        "exception-handler": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 8},
+        "junit-mockito": {"firstDetectedAt": "2026-01-28T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 16},
+        "redis-cache": {"firstDetectedAt": "2026-02-08T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 4}
+      }
+    },
+    "skill:SQL": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-11T08:00:00Z",
+      "lastActivityAt": "2026-02-13T08:00:00Z",
+      "completions": {
+        "select-columns": {"firstDetectedAt": "2026-01-11T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 28},
+        "where-clause": {"firstDetectedAt": "2026-01-11T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 26},
+        "order-by": {"firstDetectedAt": "2026-01-12T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 24},
+        "aggregate-functions": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 22},
+        "group-by": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 18},
+        "inner-join": {"firstDetectedAt": "2026-01-16T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 22},
+        "outer-joins": {"firstDetectedAt": "2026-01-20T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 12},
+        "with-clause": {"firstDetectedAt": "2026-01-25T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 8},
+        "create-alter-drop": {"firstDetectedAt": "2026-01-28T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 6}
+      }
+    },
+    "skill:PostgreSQL": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-14T08:00:00Z",
+      "lastActivityAt": "2026-02-12T08:00:00Z",
+      "completions": {
+        "install-postgres": {"firstDetectedAt": "2026-01-14T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 12},
+        "psql-connection": {"firstDetectedAt": "2026-01-15T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 20},
+        "create-database": {"firstDetectedAt": "2026-01-16T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 14},
+        "numeric-text": {"firstDetectedAt": "2026-01-17T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 16},
+        "create-tables": {"firstDetectedAt": "2026-01-16T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 22},
+        "insert-select": {"firstDetectedAt": "2026-01-17T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 24},
+        "primary-foreign": {"firstDetectedAt": "2026-01-19T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 16},
+        "btree-index": {"firstDetectedAt": "2026-01-25T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 8},
+        "json-operators": {"firstDetectedAt": "2026-01-28T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 5}
+      }
+    },
+    "skill:Docker": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-28T08:00:00Z",
+      "lastActivityAt": "2026-02-10T08:00:00Z",
+      "completions": {
+        "understand-container-concept": {"firstDetectedAt": "2026-01-28T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 10},
+        "create-dockerfile": {"firstDetectedAt": "2026-01-29T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 12},
+        "build-images": {"firstDetectedAt": "2026-01-30T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 8},
+        "run-port-mapping": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 6},
+        "compose-yml": {"firstDetectedAt": "2026-02-05T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 3}
+      }
+    },
+    "skill:Git and GitHub": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-01-07T08:00:00Z",
+      "lastActivityAt": "2026-02-13T08:00:00Z",
+      "completions": {
+        "git-init": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 24},
+        "add-commit": {"firstDetectedAt": "2026-01-07T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 28},
+        "status-log": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 26},
+        "diff": {"firstDetectedAt": "2026-01-08T08:00:00Z", "lastDetectedAt": "2026-02-11T08:00:00Z", "detectionCount": 20},
+        "create-branch": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-12T08:00:00Z", "detectionCount": 22},
+        "merge-branch": {"firstDetectedAt": "2026-01-11T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 14},
+        "add-remote": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 24},
+        "push-pull": {"firstDetectedAt": "2026-01-09T08:00:00Z", "lastDetectedAt": "2026-02-13T08:00:00Z", "detectionCount": 26},
+        "create-pr": {"firstDetectedAt": "2026-01-16T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 14},
+        "review-pr": {"firstDetectedAt": "2026-01-18T08:00:00Z", "lastDetectedAt": "2026-02-05T08:00:00Z", "detectionCount": 10},
+        "identify-conflicts": {"firstDetectedAt": "2026-01-22T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 6}
+      }
+    },
+    "skill:Redis": {
+      "roadmapVersion": "1.0",
+      "firstUnlockedAt": "2026-02-01T08:00:00Z",
+      "lastActivityAt": "2026-02-10T08:00:00Z",
+      "completions": {
+        "strings-hashes": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 8},
+        "lists-sets": {"firstDetectedAt": "2026-02-02T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 5},
+        "key-commands": {"firstDetectedAt": "2026-02-01T08:00:00Z", "lastDetectedAt": "2026-02-10T08:00:00Z", "detectionCount": 10},
+        "cli-install": {"firstDetectedAt": "2026-02-05T08:00:00Z", "lastDetectedAt": "2026-02-08T08:00:00Z", "detectionCount": 3}
+      }
+    }
+  }
+}

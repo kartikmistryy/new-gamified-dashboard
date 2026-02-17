@@ -2,12 +2,12 @@ import type { Repository } from "@/types/sidebar"
 
 export const repositoriesByOrg: Record<string, Repository[]> = {
   gitroll: [
-    { id: "web-app", name: "web-app", orgId: "gitroll", teamId: "frontend" },
-    { id: "api", name: "api", orgId: "gitroll", teamId: "backend" },
-    { id: "mobile-sdk", name: "mobile-sdk", orgId: "gitroll", teamId: "mobile" },
-    { id: "design-system", name: "design-system", orgId: "gitroll", teamId: "design" },
-    { id: "terraform-modules", name: "terraform-modules", orgId: "gitroll", teamId: "infra" },
-    { id: "docs", name: "docs", orgId: "gitroll", teamId: "platform" },
+    { id: "novu", name: "novu", orgId: "gitroll" },
+    { id: "transformers", name: "transformers", orgId: "gitroll" },
+    { id: "langchain", name: "langchain", orgId: "gitroll" },
+    { id: "langfuse", name: "langfuse", orgId: "gitroll" },
+    { id: "rustdesk", name: "rustdesk", orgId: "gitroll" },
+    { id: "twenty", name: "twenty", orgId: "gitroll" },
   ],
   acme: [
     { id: "monorepo", name: "monorepo", orgId: "acme" },

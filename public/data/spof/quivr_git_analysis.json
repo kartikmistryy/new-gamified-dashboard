@@ -1,0 +1,2766 @@
+{
+  "summary": {
+    "projectName": "quivr",
+    "analyzedAt": "2026-02-05T06:18:25.558Z",
+    "totalModules": 4,
+    "totalFunctions": 10,
+    "totalContributors": 7,
+    "totalFiles": 109,
+    "spofFileCount": 58,
+    "spofFilePercentage": 53.2,
+    "repositoryBusFactor": 1,
+    "algorithmUsed": "avelino_doa",
+    "algorithmReason": "GITHUB_TOKEN not set"
+  },
+  "busFactorResults": {
+    "repository": {
+      "busFactor": 1,
+      "authorCount": 6,
+      "totalFiles": 109,
+      "filesByAuthor": {
+        "Jacopo Chevallard": 28,
+        "AmineDiro": 17,
+        "Stan Girard": 10,
+        "Chloé Daems": 8,
+        "Aditya Nandan": 7,
+        "Yunfei": 1
+      },
+      "algorithmUsed": "avelino_doa",
+      "algorithmReason": "GITHUB_TOKEN not set"
+    },
+    "modules": {
+      "AI-Powered Q&A and Chat": {
+        "moduleName": "AI-Powered Q&A and Chat",
+        "busFactor": 2,
+        "authorCount": 6,
+        "fileCount": 38,
+        "fileScores": [
+          {
+            "filePath": "core/quivr_core/rag/entities/config.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.045870185148911,
+            "normalizedDOA": 0.670379812434711,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 9
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/entities/config.py",
+            "developer": "AmineDiro",
+            "rawDOA": 2.851275617431723,
+            "normalizedDOA": 0.6275505840443735,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 2,
+              "AC": 10
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/entities/config.py",
+            "developer": "Stan Girard",
+            "rawDOA": 2.659344965418052,
+            "normalizedDOA": 0.5853076693184769,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 11
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/entities/config.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.543499265120773,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 5,
+              "AC": 7
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/entities/config.py",
+            "developer": "Yunfei",
+            "rawDOA": 2.659344965418052,
+            "normalizedDOA": 0.5853076693184769,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 11
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/entities/models.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.5624997550402577,
+            "normalizedDOA": 0.8667883648897243,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/entities/models.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.109999510080515,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/quivr_rag_langgraph.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.757835087687573,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 8,
+              "AC": 18
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/quivr_rag_langgraph.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.659835087687573,
+            "normalizedDOA": 0.7692227704904216,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 8,
+              "AC": 18
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/quivr_rag_langgraph.py",
+            "developer": "AmineDiro",
+            "rawDOA": 3.299708297490781,
+            "normalizedDOA": 0.6935314563612843,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 6,
+              "AC": 20
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/quivr_rag_langgraph.py",
+            "developer": "Stan Girard",
+            "rawDOA": 2.942506356686743,
+            "normalizedDOA": 0.6184548859840526,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 4,
+              "AC": 22
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/prompts.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.453651256254847,
+            "normalizedDOA": 0.8649266475691666,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 6,
+              "AC": 12
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/prompts.py",
+            "developer": "m-thenot",
+            "rawDOA": 2.5291906657153316,
+            "normalizedDOA": 0.633406282582392,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 17
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/prompts.py",
+            "developer": "Stan Girard",
+            "rawDOA": 3.2658625971935025,
+            "normalizedDOA": 0.8178971696972258,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 5,
+              "AC": 13
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/prompts.py",
+            "developer": "AmineDiro",
+            "rawDOA": 2.8949990201610305,
+            "normalizedDOA": 0.7250187153925924,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 15
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/prompts.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.9929990201610304,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 15
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm/llm_endpoint.py",
+            "developer": "AmineDiro",
+            "rawDOA": 2.687275617431723,
+            "normalizedDOA": 0.535061213589852,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 10
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm/llm_endpoint.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 2.8818701851489115,
+            "normalizedDOA": 0.57380677615342,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 2,
+              "AC": 9
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm/llm_endpoint.py",
+            "developer": "Stan Girard",
+            "rawDOA": 2.687275617431723,
+            "normalizedDOA": 0.535061213589852,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 10
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm/llm_endpoint.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 5.022370430108653,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 7,
+              "AC": 4
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/quivr_rag.py",
+            "developer": "AmineDiro",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/quivr_rag.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/utils.py",
+            "developer": "AmineDiro",
+            "rawDOA": 3.0119995100805155,
+            "normalizedDOA": 0.6898216233437432,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/utils.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.0119995100805155,
+            "normalizedDOA": 0.6898216233437432,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/utils.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.366345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "core/CHANGELOG.md",
+            "developer": "Stan Girard",
+            "rawDOA": 6.851,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 15,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm_tools/web_search_tools.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/test_llm_endpoint.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/brain/chat.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/config/config.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/examples/chatbot.md",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/examples/chatbot_voice.md",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/examples/chatbot_voice_flask.md",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/chatbot/README.md",
+            "developer": "Yunfei",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/quivr-whisper/app.py",
+            "developer": "Aditya Nandan",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/quivr-whisper/app.py",
+            "developer": "Stan Girard",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/simple_question_megaparse.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/workflows/examples/rag_with_web_search.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/quivr-whisper/README.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/quivr-whisper/README.md",
+            "developer": "Stan Girard",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/chatbot_voice/README.md",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/chatbot_voice/chainlit.md",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/chatbot_voice/main.py",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/chatbot/main.py",
+            "developer": "Stan Girard",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/chatbot/main.py",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm_tools/entity.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm_tools/llm_tools.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm_tools/other_tools.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/fixture_chunks.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/test_chat_history.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/test_config.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "core/tests/test_config.py",
+            "developer": "Stan Girard",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "core/tests/test_config.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.202345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "core/tests/test_quivr_rag.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/test_utils.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/simple_question/simple_question.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/simple_question/simple_question.py",
+            "developer": "Stan Girard",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "docs/docs/config/index.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/quickstart.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "docs/docs/quickstart.md",
+            "developer": "Stan Girard",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "docs/docs/quickstart.md",
+            "developer": "Chloé Daems",
+            "rawDOA": 4.202345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "docs/docs/workflows/examples/basic_rag.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/workflows/index.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/README.md",
+            "developer": "Stan Girard",
+            "rawDOA": 5.375,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 6,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Knowledge Base Management": {
+        "moduleName": "Knowledge Base Management",
+        "busFactor": 1,
+        "authorCount": 3,
+        "fileCount": 5,
+        "fileScores": [
+          {
+            "filePath": "core/quivr_core/brain/brain.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.045870185148911,
+            "normalizedDOA": 0.7350303096040295,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 9
+            }
+          },
+          {
+            "filePath": "core/quivr_core/brain/brain.py",
+            "developer": "AmineDiro",
+            "rawDOA": 3.243690910675074,
+            "normalizedDOA": 0.7827684666136594,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 4,
+              "AC": 8
+            }
+          },
+          {
+            "filePath": "core/quivr_core/brain/brain.py",
+            "developer": "Stan Girard",
+            "rawDOA": 4.143870185148911,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 9
+            }
+          },
+          {
+            "filePath": "core/quivr_core/brain/brain.py",
+            "developer": "m-thenot",
+            "rawDOA": 2.659344965418052,
+            "normalizedDOA": 0.6417539272704046,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 11
+            }
+          },
+          {
+            "filePath": "core/quivr_core/brain/brain.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 2.659344965418052,
+            "normalizedDOA": 0.6417539272704046,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 11
+            }
+          },
+          {
+            "filePath": "core/quivr_core/files/file.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/brain/brain_defaults.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/brain/serialization.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/test_brain.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Data Ingestion & Processing": {
+        "moduleName": "Data Ingestion & Processing",
+        "busFactor": 1,
+        "authorCount": 4,
+        "fileCount": 19,
+        "fileScores": [
+          {
+            "filePath": "core/quivr_core/processor/implementations/default.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/implementations/megaparse_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.601999510080515,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 4,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/implementations/megaparse_processor.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.268370430108654,
+            "normalizedDOA": 0.7102066010544776,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 4
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/implementations/simple_txt_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/implementations/tika_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/processor_base.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.496499755040258,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/processor_base.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.6903915544213665,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "core/quivr_core/language/models.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/language/utils.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/registry.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.366345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/registry.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.2683454553375366,
+            "normalizedDOA": 0.7485311203084547,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 2,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "examples/quivr-whisper/static/app.js",
+            "developer": "Aditya Nandan",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/quivr-whisper/static/app.js",
+            "developer": "Stan Girard",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "core/quivr_core/config.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.175999510080515,
+            "normalizedDOA": 0.7864557164943049,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 2,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "core/quivr_core/config.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 2.940370430108654,
+            "normalizedDOA": 0.7281081517897166,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 4
+            }
+          },
+          {
+            "filePath": "core/quivr_core/config.py",
+            "developer": "Stan Girard",
+            "rawDOA": 2.940370430108654,
+            "normalizedDOA": 0.7281081517897166,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 4
+            }
+          },
+          {
+            "filePath": "core/quivr_core/config.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.038370430108653,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 4
+            }
+          },
+          {
+            "filePath": "examples/pdf_document_from_yaml.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/pdf_parsing_tika.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/workflows/examples/basic_ingestion.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/processor/community/test_markdown_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/processor/docx/test_docx.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/processor/epub/test_epub_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/processor/odt/test_odt.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/processor/pdf/test_unstructured_pdf_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/processor/test_txt_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Infrastructure": {
+        "moduleName": "Infrastructure",
+        "busFactor": 1,
+        "authorCount": 2,
+        "fileCount": 3,
+        "fileScores": [
+          {
+            "filePath": "core/tests/conftest.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/index.md",
+            "developer": "Stan Girard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/README.md",
+            "developer": "Stan Girard",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      }
+    },
+    "functions": {
+      "AI-Powered Q&A and Chat:::LLM and External Tool Integration": {
+        "functionName": "LLM and External Tool Integration",
+        "moduleName": "AI-Powered Q&A and Chat",
+        "busFactor": 1,
+        "authorCount": 2,
+        "fileCount": 8,
+        "fileScores": [
+          {
+            "filePath": "core/quivr_core/rag/entities/config.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.045870185148911,
+            "normalizedDOA": 0.670379812434711,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 9
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/entities/config.py",
+            "developer": "AmineDiro",
+            "rawDOA": 2.851275617431723,
+            "normalizedDOA": 0.6275505840443735,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 2,
+              "AC": 10
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/entities/config.py",
+            "developer": "Stan Girard",
+            "rawDOA": 2.659344965418052,
+            "normalizedDOA": 0.5853076693184769,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 11
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/entities/config.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.543499265120773,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 5,
+              "AC": 7
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/entities/config.py",
+            "developer": "Yunfei",
+            "rawDOA": 2.659344965418052,
+            "normalizedDOA": 0.5853076693184769,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 11
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm/llm_endpoint.py",
+            "developer": "AmineDiro",
+            "rawDOA": 2.687275617431723,
+            "normalizedDOA": 0.535061213589852,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 10
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm/llm_endpoint.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 2.8818701851489115,
+            "normalizedDOA": 0.57380677615342,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 2,
+              "AC": 9
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm/llm_endpoint.py",
+            "developer": "Stan Girard",
+            "rawDOA": 2.687275617431723,
+            "normalizedDOA": 0.535061213589852,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 10
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm/llm_endpoint.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 5.022370430108653,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 7,
+              "AC": 4
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm_tools/web_search_tools.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/test_llm_endpoint.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm_tools/entity.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm_tools/llm_tools.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/llm_tools/other_tools.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/test_config.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "core/tests/test_config.py",
+            "developer": "Stan Girard",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "core/tests/test_config.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.202345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 2
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Knowledge Base Management:::Brain Lifecycle and RAG Orchestration": {
+        "functionName": "Brain Lifecycle and RAG Orchestration",
+        "moduleName": "Knowledge Base Management",
+        "busFactor": 1,
+        "authorCount": 3,
+        "fileCount": 4,
+        "fileScores": [
+          {
+            "filePath": "core/quivr_core/brain/brain.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.045870185148911,
+            "normalizedDOA": 0.7350303096040295,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 9
+            }
+          },
+          {
+            "filePath": "core/quivr_core/brain/brain.py",
+            "developer": "AmineDiro",
+            "rawDOA": 3.243690910675074,
+            "normalizedDOA": 0.7827684666136594,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 4,
+              "AC": 8
+            }
+          },
+          {
+            "filePath": "core/quivr_core/brain/brain.py",
+            "developer": "Stan Girard",
+            "rawDOA": 4.143870185148911,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 9
+            }
+          },
+          {
+            "filePath": "core/quivr_core/brain/brain.py",
+            "developer": "m-thenot",
+            "rawDOA": 2.659344965418052,
+            "normalizedDOA": 0.6417539272704046,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 11
+            }
+          },
+          {
+            "filePath": "core/quivr_core/brain/brain.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 2.659344965418052,
+            "normalizedDOA": 0.6417539272704046,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 11
+            }
+          },
+          {
+            "filePath": "core/quivr_core/brain/brain_defaults.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/brain/serialization.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/test_brain.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "AI-Powered Q&A and Chat:::Retrieval-Augmented Generation (RAG) Core": {
+        "functionName": "Retrieval-Augmented Generation (RAG) Core",
+        "moduleName": "AI-Powered Q&A and Chat",
+        "busFactor": 2,
+        "authorCount": 4,
+        "fileCount": 10,
+        "fileScores": [
+          {
+            "filePath": "core/quivr_core/rag/entities/models.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.5624997550402577,
+            "normalizedDOA": 0.8667883648897243,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/entities/models.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.109999510080515,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/quivr_rag_langgraph.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.757835087687573,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 8,
+              "AC": 18
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/quivr_rag_langgraph.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.659835087687573,
+            "normalizedDOA": 0.7692227704904216,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 8,
+              "AC": 18
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/quivr_rag_langgraph.py",
+            "developer": "AmineDiro",
+            "rawDOA": 3.299708297490781,
+            "normalizedDOA": 0.6935314563612843,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 6,
+              "AC": 20
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/quivr_rag_langgraph.py",
+            "developer": "Stan Girard",
+            "rawDOA": 2.942506356686743,
+            "normalizedDOA": 0.6184548859840526,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 4,
+              "AC": 22
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/prompts.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.453651256254847,
+            "normalizedDOA": 0.8649266475691666,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 6,
+              "AC": 12
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/prompts.py",
+            "developer": "m-thenot",
+            "rawDOA": 2.5291906657153316,
+            "normalizedDOA": 0.633406282582392,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 17
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/prompts.py",
+            "developer": "Stan Girard",
+            "rawDOA": 3.2658625971935025,
+            "normalizedDOA": 0.8178971696972258,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 5,
+              "AC": 13
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/prompts.py",
+            "developer": "AmineDiro",
+            "rawDOA": 2.8949990201610305,
+            "normalizedDOA": 0.7250187153925924,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 15
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/prompts.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.9929990201610304,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 15
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/quivr_rag.py",
+            "developer": "AmineDiro",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/quivr_rag.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/utils.py",
+            "developer": "AmineDiro",
+            "rawDOA": 3.0119995100805155,
+            "normalizedDOA": 0.6898216233437432,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/utils.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.0119995100805155,
+            "normalizedDOA": 0.6898216233437432,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "core/quivr_core/rag/utils.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.366345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "docs/docs/config/config.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/fixture_chunks.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/test_quivr_rag.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/test_utils.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/README.md",
+            "developer": "Stan Girard",
+            "rawDOA": 5.375,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 6,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Data Ingestion & Processing:::File Format Parsing Engine": {
+        "functionName": "File Format Parsing Engine",
+        "moduleName": "Data Ingestion & Processing",
+        "busFactor": 1,
+        "authorCount": 2,
+        "fileCount": 10,
+        "fileScores": [
+          {
+            "filePath": "core/quivr_core/processor/implementations/default.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/implementations/megaparse_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.601999510080515,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 4,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/implementations/megaparse_processor.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.268370430108654,
+            "normalizedDOA": 0.7102066010544776,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 4
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/implementations/simple_txt_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/implementations/tika_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/pdf_parsing_tika.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/processor/community/test_markdown_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/processor/docx/test_docx.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/processor/epub/test_epub_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/processor/odt/test_odt.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/processor/pdf/test_unstructured_pdf_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Data Ingestion & Processing:::Pluggable Processor Framework": {
+        "functionName": "Pluggable Processor Framework",
+        "moduleName": "Data Ingestion & Processing",
+        "busFactor": 2,
+        "authorCount": 2,
+        "fileCount": 6,
+        "fileScores": [
+          {
+            "filePath": "core/quivr_core/processor/processor_base.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.496499755040258,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/processor_base.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.6903915544213665,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "core/quivr_core/language/models.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/language/utils.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/registry.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.366345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "core/quivr_core/processor/registry.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.2683454553375366,
+            "normalizedDOA": 0.7485311203084547,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 2,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "core/quivr_core/config.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 3.175999510080515,
+            "normalizedDOA": 0.7864557164943049,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 2,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "core/quivr_core/config.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 2.940370430108654,
+            "normalizedDOA": 0.7281081517897166,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 4
+            }
+          },
+          {
+            "filePath": "core/quivr_core/config.py",
+            "developer": "Stan Girard",
+            "rawDOA": 2.940370430108654,
+            "normalizedDOA": 0.7281081517897166,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 4
+            }
+          },
+          {
+            "filePath": "core/quivr_core/config.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.038370430108653,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 4
+            }
+          },
+          {
+            "filePath": "core/tests/processor/test_txt_processor.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "AI-Powered Q&A and Chat:::Example Applications and Documentation": {
+        "functionName": "Example Applications and Documentation",
+        "moduleName": "AI-Powered Q&A and Chat",
+        "busFactor": 2,
+        "authorCount": 5,
+        "fileCount": 18,
+        "fileScores": [
+          {
+            "filePath": "core/CHANGELOG.md",
+            "developer": "Stan Girard",
+            "rawDOA": 6.851,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 15,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/examples/chatbot.md",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/examples/chatbot_voice.md",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/examples/chatbot_voice_flask.md",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/chatbot/README.md",
+            "developer": "Yunfei",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/quivr-whisper/app.py",
+            "developer": "Aditya Nandan",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/quivr-whisper/app.py",
+            "developer": "Stan Girard",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/simple_question_megaparse.py",
+            "developer": "Chloé Daems",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/workflows/examples/rag_with_web_search.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/quivr-whisper/README.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/quivr-whisper/README.md",
+            "developer": "Stan Girard",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/chatbot_voice/README.md",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/chatbot_voice/chainlit.md",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/chatbot_voice/main.py",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "examples/chatbot/main.py",
+            "developer": "Stan Girard",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/chatbot/main.py",
+            "developer": "Aditya Nandan",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/simple_question/simple_question.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/simple_question/simple_question.py",
+            "developer": "Stan Girard",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "docs/docs/config/index.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/quickstart.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "docs/docs/quickstart.md",
+            "developer": "Stan Girard",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "docs/docs/quickstart.md",
+            "developer": "Chloé Daems",
+            "rawDOA": 4.202345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "docs/docs/workflows/examples/basic_rag.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/workflows/index.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "AI-Powered Q&A and Chat:::Conversation State Management": {
+        "functionName": "Conversation State Management",
+        "moduleName": "AI-Powered Q&A and Chat",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 2,
+        "fileScores": [
+          {
+            "filePath": "docs/docs/brain/chat.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "core/tests/test_chat_history.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Data Ingestion & Processing:::Ingestion Clients & SDK": {
+        "functionName": "Ingestion Clients & SDK",
+        "moduleName": "Data Ingestion & Processing",
+        "busFactor": 1,
+        "authorCount": 2,
+        "fileCount": 3,
+        "fileScores": [
+          {
+            "filePath": "examples/quivr-whisper/static/app.js",
+            "developer": "Aditya Nandan",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/quivr-whisper/static/app.js",
+            "developer": "Stan Girard",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "examples/pdf_document_from_yaml.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/workflows/examples/basic_ingestion.md",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Knowledge Base Management:::Pluggable File Storage and Abstraction": {
+        "functionName": "Pluggable File Storage and Abstraction",
+        "moduleName": "Knowledge Base Management",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "core/quivr_core/files/file.py",
+            "developer": "AmineDiro",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Infrastructure:::Build & Configuration": {
+        "functionName": "Build & Configuration",
+        "moduleName": "Infrastructure",
+        "busFactor": 1,
+        "authorCount": 2,
+        "fileCount": 3,
+        "fileScores": [
+          {
+            "filePath": "core/tests/conftest.py",
+            "developer": "Jacopo Chevallard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/docs/index.md",
+            "developer": "Stan Girard",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/README.md",
+            "developer": "Stan Girard",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      }
+    }
+  },
+  "spofFiles": [
+    "core/quivr_core/rag/entities/config.py",
+    "core/quivr_core/rag/entities/models.py",
+    "core/quivr_core/rag/quivr_rag_langgraph.py",
+    "core/quivr_core/llm/llm_endpoint.py",
+    "core/quivr_core/rag/utils.py",
+    "core/quivr_core/processor/implementations/default.py",
+    "core/quivr_core/processor/implementations/simple_txt_processor.py",
+    "core/quivr_core/processor/implementations/tika_processor.py",
+    "core/quivr_core/processor/processor_base.py",
+    "core/CHANGELOG.md",
+    "core/quivr_core/language/models.py",
+    "core/quivr_core/language/utils.py",
+    "core/quivr_core/llm_tools/web_search_tools.py",
+    "core/tests/test_llm_endpoint.py",
+    "docs/docs/brain/chat.md",
+    "docs/docs/config/config.md",
+    "core/quivr_core/processor/registry.py",
+    "docs/docs/examples/chatbot.md",
+    "docs/docs/examples/chatbot_voice.md",
+    "docs/docs/examples/chatbot_voice_flask.md",
+    "examples/chatbot/README.md",
+    "examples/quivr-whisper/static/app.js",
+    "examples/simple_question_megaparse.py",
+    "docs/docs/workflows/examples/rag_with_web_search.md",
+    "examples/quivr-whisper/README.md",
+    "examples/chatbot_voice/README.md",
+    "examples/chatbot_voice/chainlit.md",
+    "examples/chatbot_voice/main.py",
+    "examples/chatbot/main.py",
+    "core/quivr_core/config.py",
+    "core/quivr_core/files/file.py",
+    "core/quivr_core/brain/brain_defaults.py",
+    "core/quivr_core/brain/serialization.py",
+    "core/quivr_core/llm_tools/entity.py",
+    "core/quivr_core/llm_tools/llm_tools.py",
+    "core/quivr_core/llm_tools/other_tools.py",
+    "core/tests/conftest.py",
+    "core/tests/fixture_chunks.py",
+    "core/tests/test_brain.py",
+    "core/tests/test_chat_history.py",
+    "core/tests/test_quivr_rag.py",
+    "core/tests/test_utils.py",
+    "examples/pdf_document_from_yaml.py",
+    "examples/pdf_parsing_tika.py",
+    "examples/simple_question/simple_question.py",
+    "docs/docs/config/index.md",
+    "docs/docs/workflows/examples/basic_ingestion.md",
+    "docs/docs/workflows/examples/basic_rag.md",
+    "docs/docs/workflows/index.md",
+    "docs/docs/index.md",
+    "core/tests/processor/community/test_markdown_processor.py",
+    "core/tests/processor/docx/test_docx.py",
+    "core/tests/processor/epub/test_epub_processor.py",
+    "core/tests/processor/odt/test_odt.py",
+    "core/tests/processor/pdf/test_unstructured_pdf_processor.py",
+    "core/tests/processor/test_txt_processor.py",
+    "core/README.md",
+    "docs/README.md"
+  ],
+  "moduleStats": {
+    "AI-Powered Q&A and Chat": {
+      "Chloé Daems": 121.31994194758538,
+      "AmineDiro": 71.7622662412734,
+      "Stan Girard": 121.93762568130425,
+      "Jacopo Chevallard": 649.9483955621514,
+      "Yunfei": 3.7630201750401664,
+      "m-thenot": 1.9344244758025615,
+      "Aditya Nandan": 134.35727677774128
+    },
+    "Knowledge Base Management": {
+      "Jacopo Chevallard": 38.25959608561207,
+      "AmineDiro": 6.257937411145177,
+      "Stan Girard": 11.34986556193189,
+      "m-thenot": 0.9709740094474508,
+      "Chloé Daems": 2.236840296922175
+    },
+    "Data Ingestion & Processing": {
+      "AmineDiro": 41.36199863636408,
+      "Chloé Daems": 85.40883178269652,
+      "Aditya Nandan": 94.1291267695669,
+      "Stan Girard": 38.77447378501963,
+      "Jacopo Chevallard": 96.64276238314088
+    },
+    "Infrastructure": {
+      "Jacopo Chevallard": 0.3381652785300302,
+      "Stan Girard": 19.35056849148652
+    }
+  },
+  "functionStats": {
+    "AI-Powered Q&A and Chat:::LLM and External Tool Integration": {
+      "Chloé Daems": 34.750030265548574,
+      "AmineDiro": 18.809156832136328,
+      "Stan Girard": 10.934313198311397,
+      "Jacopo Chevallard": 217.5584400286604,
+      "Yunfei": 0.18815100875200833
+    },
+    "Knowledge Base Management:::Brain Lifecycle and RAG Orchestration": {
+      "Jacopo Chevallard": 38.25959608561207,
+      "AmineDiro": 5.918559342188564,
+      "Stan Girard": 11.34986556193189,
+      "m-thenot": 0.9709740094474508,
+      "Chloé Daems": 2.236840296922175
+    },
+    "AI-Powered Q&A and Chat:::Retrieval-Augmented Generation (RAG) Core": {
+      "Jacopo Chevallard": 360.4451310831598,
+      "AmineDiro": 52.95310940913706,
+      "Chloé Daems": 65.68047949598562,
+      "Stan Girard": 60.26266921320896,
+      "m-thenot": 1.9344244758025615
+    },
+    "Data Ingestion & Processing:::File Format Parsing Engine": {
+      "AmineDiro": 25.15561695310135,
+      "Chloé Daems": 24.529364077923287,
+      "Jacopo Chevallard": 0.3381652785300302
+    },
+    "Data Ingestion & Processing:::Pluggable Processor Framework": {
+      "AmineDiro": 16.206381683262745,
+      "Chloé Daems": 60.879467704773226,
+      "Jacopo Chevallard": 83.35774115765244,
+      "Stan Girard": 0.6506294146570191
+    },
+    "AI-Powered Q&A and Chat:::Example Applications and Documentation": {
+      "Stan Girard": 50.740643269783895,
+      "Aditya Nandan": 134.35727677774128,
+      "Yunfei": 3.574869166288158,
+      "Chloé Daems": 20.88943218605118,
+      "Jacopo Chevallard": 71.20151945875855
+    },
+    "AI-Powered Q&A and Chat:::Conversation State Management": {
+      "Jacopo Chevallard": 0.7433049915726786
+    },
+    "Data Ingestion & Processing:::Ingestion Clients & SDK": {
+      "Aditya Nandan": 94.1291267695669,
+      "Stan Girard": 38.12384437036261,
+      "Jacopo Chevallard": 12.946855946958404
+    },
+    "Knowledge Base Management:::Pluggable File Storage and Abstraction": {
+      "AmineDiro": 0.3393780689566124
+    },
+    "Infrastructure:::Build & Configuration": {
+      "Jacopo Chevallard": 0.3381652785300302,
+      "Stan Girard": 19.35056849148652
+    }
+  },
+  "totalLines": 1540.1040913527627
+}

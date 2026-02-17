@@ -1,0 +1,948 @@
+[
+  {
+    "roadmap": "QA",
+    "group": "Specialized Support Roles",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "testing-fundamentals",
+            "title": "Testing Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "types-of-testing",
+                "title": "Understand types of testing (unit, integration, E2E)"
+              },
+              {
+                "id": "test-lifecycle",
+                "title": "Software test lifecycle and SDLC integration"
+              },
+              {
+                "id": "quality-assurance-vs-control",
+                "title": "Quality assurance vs quality control concepts"
+              }
+            ]
+          },
+          {
+            "id": "test-case-design",
+            "title": "Test Case Design",
+            "subCheckpoints": [
+              {
+                "id": "writing-test-cases",
+                "title": "Writing clear, reusable test cases"
+              },
+              {
+                "id": "equivalence-partitioning",
+                "title": "Equivalence partitioning and boundary value analysis"
+              },
+              {
+                "id": "traceability-matrix",
+                "title": "Requirements traceability matrix"
+              }
+            ]
+          },
+          {
+            "id": "manual-testing",
+            "title": "Manual Testing",
+            "subCheckpoints": [
+              {
+                "id": "functional-testing",
+                "title": "Functional and exploratory testing techniques"
+              },
+              {
+                "id": "regression-testing",
+                "title": "Regression and smoke testing"
+              },
+              {
+                "id": "test-documentation",
+                "title": "Test documentation and reporting"
+              }
+            ]
+          },
+          {
+            "id": "bug-reporting",
+            "title": "Bug Reporting",
+            "subCheckpoints": [
+              {
+                "id": "bug-report-structure",
+                "title": "Effective bug report structure (steps, expected, actual)"
+              },
+              {
+                "id": "bug-tracking-tools",
+                "title": "Bug tracking tools (Jira, Bugzilla, etc.)"
+              },
+              {
+                "id": "reproducibility-severity",
+                "title": "Reproducibility, severity, and priority classification"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "agile-testing",
+            "title": "Agile Testing",
+            "subCheckpoints": [
+              {
+                "id": "agile-testing-principles",
+                "title": "Agile testing principles and quadrants"
+              },
+              {
+                "id": "sprint-testing",
+                "title": "Testing within sprints and continuous feedback"
+              },
+              {
+                "id": "shift-left-testing",
+                "title": "Shift-left testing mindset"
+              }
+            ]
+          },
+          {
+            "id": "test-automation-basics",
+            "title": "Test Automation Basics",
+            "subCheckpoints": [
+              {
+                "id": "automation-strategy",
+                "title": "When and what to automate"
+              },
+              {
+                "id": "automation-pyramid",
+                "title": "Test automation pyramid"
+              },
+              {
+                "id": "intro-programming",
+                "title": "Intro to programming for test automation (JavaScript or Python)"
+              }
+            ]
+          },
+          {
+            "id": "selenium-playwright",
+            "title": "Selenium / Playwright",
+            "subCheckpoints": [
+              {
+                "id": "selenium-basics",
+                "title": "Selenium WebDriver basics and locators"
+              },
+              {
+                "id": "playwright-setup",
+                "title": "Playwright setup and first test"
+              },
+              {
+                "id": "page-object-model",
+                "title": "Page Object Model pattern"
+              }
+            ]
+          },
+          {
+            "id": "api-testing",
+            "title": "API Testing",
+            "subCheckpoints": [
+              {
+                "id": "rest-api-concepts",
+                "title": "REST API concepts and HTTP methods"
+              },
+              {
+                "id": "postman-collections",
+                "title": "Postman or Insomnia for manual API testing"
+              },
+              {
+                "id": "api-automation",
+                "title": "API test automation (REST Assured, SuperTest)"
+              }
+            ]
+          },
+          {
+            "id": "performance-testing",
+            "title": "Performance Testing",
+            "subCheckpoints": [
+              {
+                "id": "load-stress-testing",
+                "title": "Load and stress testing concepts"
+              },
+              {
+                "id": "jmeter-k6",
+                "title": "Tools like JMeter or k6 for performance tests"
+              },
+              {
+                "id": "performance-metrics",
+                "title": "Key performance metrics (response time, throughput)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "cicd-integration",
+            "title": "CI/CD Integration",
+            "subCheckpoints": [
+              {
+                "id": "pipeline-creation",
+                "title": "Integrating tests into CI/CD pipelines"
+              },
+              {
+                "id": "jenkins-github-actions",
+                "title": "Jenkins, GitHub Actions, or GitLab CI"
+              },
+              {
+                "id": "test-reporting",
+                "title": "Automated test reporting and dashboards"
+              }
+            ]
+          },
+          {
+            "id": "mobile-testing",
+            "title": "Mobile Testing",
+            "subCheckpoints": [
+              {
+                "id": "appium-fundamentals",
+                "title": "Appium or Espresso/XCTest for mobile automation"
+              },
+              {
+                "id": "device-fragmentation",
+                "title": "Device fragmentation and matrix testing"
+              },
+              {
+                "id": "mobile-specific-scenarios",
+                "title": "Mobile-specific scenarios (gestures, permissions)"
+              }
+            ]
+          },
+          {
+            "id": "security-testing-basics",
+            "title": "Security Testing Basics",
+            "subCheckpoints": [
+              {
+                "id": "owasp-top-10",
+                "title": "OWASP Top 10 overview"
+              },
+              {
+                "id": "basic-security-scans",
+                "title": "Basic security scanning tools (SAST, DAST)"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Technical Writer",
+    "group": "Specialized Support Roles",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "writing-fundamentals",
+            "title": "Writing Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "clarity-conciseness",
+                "title": "Clarity, conciseness, and active voice"
+              },
+              {
+                "id": "audience-analysis",
+                "title": "Audience analysis and tone adaptation"
+              },
+              {
+                "id": "grammar-style",
+                "title": "Grammar, punctuation, and style consistency"
+              }
+            ]
+          },
+          {
+            "id": "documentation-types",
+            "title": "Documentation Types",
+            "subCheckpoints": [
+              {
+                "id": "user-guides-tutorials",
+                "title": "User guides, tutorials, and how-tos"
+              },
+              {
+                "id": "reference-docs",
+                "title": "Reference documentation and specifications"
+              },
+              {
+                "id": "conceptual-docs",
+                "title": "Conceptual and procedural documentation"
+              }
+            ]
+          },
+          {
+            "id": "markdown-markup",
+            "title": "Markdown & Markup",
+            "subCheckpoints": [
+              {
+                "id": "markdown-syntax",
+                "title": "Markdown syntax and extensions"
+              },
+              {
+                "id": "asciidoc-rst",
+                "title": "AsciiDoc or reStructuredText basics"
+              },
+              {
+                "id": "html-basics",
+                "title": "HTML basics for documentation"
+              }
+            ]
+          },
+          {
+            "id": "docs-as-code",
+            "title": "Docs-as-Code",
+            "subCheckpoints": [
+              {
+                "id": "version-control-git",
+                "title": "Version control with Git"
+              },
+              {
+                "id": "content-workflows",
+                "title": "Content workflows and branching"
+              },
+              {
+                "id": "collaboration-workflows",
+                "title": "Collaboration and review workflows"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "api-documentation",
+            "title": "API Documentation",
+            "subCheckpoints": [
+              {
+                "id": "openapi-swagger",
+                "title": "OpenAPI/Swagger specification"
+              },
+              {
+                "id": "api-reference-writing",
+                "title": "Writing effective API reference docs"
+              },
+              {
+                "id": "code-samples",
+                "title": "Code samples and SDK documentation"
+              }
+            ]
+          },
+          {
+            "id": "style-guides",
+            "title": "Style Guides",
+            "subCheckpoints": [
+              {
+                "id": "creating-style-guides",
+                "title": "Creating and maintaining style guides"
+              },
+              {
+                "id": "terminology-glossaries",
+                "title": "Terminology and glossary management"
+              },
+              {
+                "id": "voice-tone",
+                "title": "Voice and tone guidelines"
+              }
+            ]
+          },
+          {
+            "id": "content-strategy",
+            "title": "Content Strategy",
+            "subCheckpoints": [
+              {
+                "id": "content-audits",
+                "title": "Content audits and gap analysis"
+              },
+              {
+                "id": "content-delivery",
+                "title": "Content delivery and update cycles"
+              },
+              {
+                "id": "content-metrics",
+                "title": "Content success metrics"
+              }
+            ]
+          },
+          {
+            "id": "information-architecture",
+            "title": "Information Architecture",
+            "subCheckpoints": [
+              {
+                "id": "ia-principles",
+                "title": "IA principles and content organization"
+              },
+              {
+                "id": "navigation-structure",
+                "title": "Navigation and site structure"
+              },
+              {
+                "id": "findability",
+                "title": "Findability and search optimization"
+              }
+            ]
+          },
+          {
+            "id": "diagrams-visuals",
+            "title": "Diagrams & Visuals",
+            "subCheckpoints": [
+              {
+                "id": "diagram-tools",
+                "title": "Diagrams.net, Mermaid, or draw.io"
+              },
+              {
+                "id": "screenshots-annotations",
+                "title": "Screenshots, annotations, and visual aids"
+              },
+              {
+                "id": "accessibility-visuals",
+                "title": "Accessibility for visuals"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "localization",
+            "title": "Localization",
+            "subCheckpoints": [
+              {
+                "id": "i18n-principles",
+                "title": "Internationalization (i18n) principles"
+              },
+              {
+                "id": "translation-workflows",
+                "title": "Translation workflows and TMS"
+              },
+              {
+                "id": "locale-specific-content",
+                "title": "Locale-specific content considerations"
+              }
+            ]
+          },
+          {
+            "id": "docs-tooling",
+            "title": "Docs Tooling (Docusaurus, GitBook)",
+            "subCheckpoints": [
+              {
+                "id": "docusaurus-setup",
+                "title": "Docusaurus setup and customization"
+              },
+              {
+                "id": "gitbook-structure",
+                "title": "GitBook structure and configuration"
+              },
+              {
+                "id": "static-site-generation",
+                "title": "Static site generation and deployment"
+              }
+            ]
+          },
+          {
+            "id": "user-feedback",
+            "title": "User Feedback",
+            "subCheckpoints": [
+              {
+                "id": "feedback-loops",
+                "title": "Feedback loops and user research"
+              },
+              {
+                "id": "docs-analytics",
+                "title": "Docs analytics and usage tracking"
+              },
+              {
+                "id": "iterative-improvement",
+                "title": "Iterative documentation improvement"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Developer Relations",
+    "group": "Specialized Support Roles",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "technical-communication",
+            "title": "Technical Communication",
+            "subCheckpoints": [
+              {
+                "id": "explaining-complex-topics",
+                "title": "Explaining complex topics to diverse audiences"
+              },
+              {
+                "id": "technical-writing",
+                "title": "Technical writing and documentation"
+              },
+              {
+                "id": "empathy-tone",
+                "title": "Empathy and developer-centric tone"
+              }
+            ]
+          },
+          {
+            "id": "content-creation",
+            "title": "Content Creation (Blogs, Tutorials)",
+            "subCheckpoints": [
+              {
+                "id": "blog-writing",
+                "title": "Blog post structure and SEO basics"
+              },
+              {
+                "id": "tutorial-design",
+                "title": "Tutorial design and step-by-step guides"
+              },
+              {
+                "id": "video-content",
+                "title": "Video tutorials and demos"
+              }
+            ]
+          },
+          {
+            "id": "public-speaking",
+            "title": "Public Speaking",
+            "subCheckpoints": [
+              {
+                "id": "presentation-skills",
+                "title": "Presentation structure and delivery"
+              },
+              {
+                "id": "lightning-talks",
+                "title": "Lightning talks and meetup talks"
+              },
+              {
+                "id": "handling-qa",
+                "title": "Handling Q&A and audience interaction"
+              }
+            ]
+          },
+          {
+            "id": "community-building",
+            "title": "Community Building",
+            "subCheckpoints": [
+              {
+                "id": "community-principles",
+                "title": "Community principles and moderation"
+              },
+              {
+                "id": "discord-slack",
+                "title": "Discord, Slack, or forum management"
+              },
+              {
+                "id": "community-events",
+                "title": "Running community events and AMAs"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "developer-experience",
+            "title": "Developer Experience",
+            "subCheckpoints": [
+              {
+                "id": "dx-metrics",
+                "title": "DX metrics and developer journeys"
+              },
+              {
+                "id": "onboarding-flows",
+                "title": "Onboarding flows and quickstarts"
+              },
+              {
+                "id": "pain-point-analysis",
+                "title": "Identifying and addressing developer pain points"
+              }
+            ]
+          },
+          {
+            "id": "sdk-api-advocacy",
+            "title": "SDK/API Advocacy",
+            "subCheckpoints": [
+              {
+                "id": "product-deep-dive",
+                "title": "Deep product and API knowledge"
+              },
+              {
+                "id": "advocacy-content",
+                "title": "Creating advocacy content and comparisons"
+              },
+              {
+                "id": "internal-feedback",
+                "title": "Providing internal product feedback"
+              }
+            ]
+          },
+          {
+            "id": "social-media-strategy",
+            "title": "Social Media Strategy",
+            "subCheckpoints": [
+              {
+                "id": "twitter-x-linkedin",
+                "title": "Twitter/X and LinkedIn for developers"
+              },
+              {
+                "id": "content-calendar",
+                "title": "Content calendar and consistency"
+              },
+              {
+                "id": "engagement-tactics",
+                "title": "Engagement tactics and community growth"
+              }
+            ]
+          },
+          {
+            "id": "events-conferences",
+            "title": "Events & Conferences",
+            "subCheckpoints": [
+              {
+                "id": "speaking-submissions",
+                "title": "CFP submissions and speaking opportunities"
+              },
+              {
+                "id": "booth-operations",
+                "title": "Booth operations and conference presence"
+              },
+              {
+                "id": "workshop-delivery",
+                "title": "Workshop delivery and hands-on sessions"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "metrics-impact",
+            "title": "Metrics & Impact",
+            "subCheckpoints": [
+              {
+                "id": "devrel-kpis",
+                "title": "DevRel KPIs and measurement frameworks"
+              },
+              {
+                "id": "adoption-metrics",
+                "title": "Adoption and engagement metrics"
+              },
+              {
+                "id": "roi-reporting",
+                "title": "ROI and stakeholder reporting"
+              }
+            ]
+          },
+          {
+            "id": "open-source-engagement",
+            "title": "Open Source Engagement",
+            "subCheckpoints": [
+              {
+                "id": "oss-contribution",
+                "title": "Open source contribution and maintenance"
+              },
+              {
+                "id": "oss-community",
+                "title": "Building OSS community around products"
+              },
+              {
+                "id": "oss-events",
+                "title": "Hackathons and OSS events"
+              }
+            ]
+          },
+          {
+            "id": "partnership-building",
+            "title": "Partnership Building",
+            "subCheckpoints": [
+              {
+                "id": "technical-partnerships",
+                "title": "Technical partnerships and integrations"
+              },
+              {
+                "id": "evangelism-program",
+                "title": "Developer evangelism and ambassador programs"
+              },
+              {
+                "id": "strategic-alliances",
+                "title": "Strategic alliances and co-marketing"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Blockchain",
+    "group": "Specialized Support Roles",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "blockchain-fundamentals",
+            "title": "Blockchain Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "distributed-ledger",
+                "title": "Distributed ledger and immutability"
+              },
+              {
+                "id": "blocks-transactions",
+                "title": "Blocks, transactions, and chain structure"
+              },
+              {
+                "id": "public-vs-private",
+                "title": "Public vs private blockchain"
+              }
+            ]
+          },
+          {
+            "id": "cryptography",
+            "title": "Cryptography",
+            "subCheckpoints": [
+              {
+                "id": "hash-functions",
+                "title": "Hash functions (SHA-256) and Merkle trees"
+              },
+              {
+                "id": "digital-signatures",
+                "title": "Digital signatures and public-key crypto"
+              },
+              {
+                "id": "elliptic-curves",
+                "title": "Elliptic curve cryptography basics"
+              }
+            ]
+          },
+          {
+            "id": "consensus-mechanisms",
+            "title": "Consensus Mechanisms",
+            "subCheckpoints": [
+              {
+                "id": "proof-of-work",
+                "title": "Proof of Work (PoW)"
+              },
+              {
+                "id": "proof-of-stake",
+                "title": "Proof of Stake (PoS)"
+              },
+              {
+                "id": "other-consensus",
+                "title": "Other consensus (PBFT, DPoS)"
+              }
+            ]
+          },
+          {
+            "id": "smart-contracts-solidity",
+            "title": "Smart Contracts (Solidity)",
+            "subCheckpoints": [
+              {
+                "id": "solidity-basics",
+                "title": "Solidity syntax and data types"
+              },
+              {
+                "id": "contract-structure",
+                "title": "Contract structure, functions, modifiers"
+              },
+              {
+                "id": "evm-basics",
+                "title": "EVM basics and gas"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "ethereum-ecosystem",
+            "title": "Ethereum Ecosystem",
+            "subCheckpoints": [
+              {
+                "id": "ethereum-architecture",
+                "title": "Ethereum architecture and accounts"
+              },
+              {
+                "id": "wallets-metamask",
+                "title": "Wallets and MetaMask"
+              },
+              {
+                "id": "ethers-js",
+                "title": "ethers.js or web3.js basics"
+              }
+            ]
+          },
+          {
+            "id": "defi-concepts",
+            "title": "DeFi Concepts",
+            "subCheckpoints": [
+              {
+                "id": "defi-primitives",
+                "title": "DeFi primitives (lending, DEX, stablecoins)"
+              },
+              {
+                "id": "amm-liquidity",
+                "title": "AMMs and liquidity pools"
+              },
+              {
+                "id": "yield-strategies",
+                "title": "Yield farming and staking"
+              }
+            ]
+          },
+          {
+            "id": "nfts-tokens",
+            "title": "NFTs & Tokens",
+            "subCheckpoints": [
+              {
+                "id": "erc-20-erc-721",
+                "title": "ERC-20 and ERC-721 token standards"
+              },
+              {
+                "id": "token-economics",
+                "title": "Token economics and distribution"
+              },
+              {
+                "id": "nft-marketplaces",
+                "title": "NFT marketplaces and metadata"
+              }
+            ]
+          },
+          {
+            "id": "web3-development",
+            "title": "Web3 Development",
+            "subCheckpoints": [
+              {
+                "id": "web3-providers",
+                "title": "Web3 providers and wallet connections"
+              },
+              {
+                "id": "frontend-integration",
+                "title": "Frontend integration (React, Next.js)"
+              },
+              {
+                "id": "transaction-signing",
+                "title": "Transaction signing and handling"
+              }
+            ]
+          },
+          {
+            "id": "security-auditing",
+            "title": "Security & Auditing",
+            "subCheckpoints": [
+              {
+                "id": "common-vulnerabilities",
+                "title": "Common smart contract vulnerabilities"
+              },
+              {
+                "id": "audit-tools",
+                "title": "Slither, Mythril, or audit tools"
+              },
+              {
+                "id": "secure-development",
+                "title": "Secure development practices"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "layer-2-solutions",
+            "title": "Layer 2 Solutions",
+            "subCheckpoints": [
+              {
+                "id": "l2-overview",
+                "title": "L2 overview (rollups, sidechains)"
+              },
+              {
+                "id": "optimism-arbitrum",
+                "title": "Optimism, Arbitrum, or Polygon"
+              },
+              {
+                "id": "l2-development",
+                "title": "L2 development and bridging"
+              }
+            ]
+          },
+          {
+            "id": "daos-governance",
+            "title": "DAOs & Governance",
+            "subCheckpoints": [
+              {
+                "id": "dao-structure",
+                "title": "DAO structure and governance models"
+              },
+              {
+                "id": "governance-tokens",
+                "title": "Governance tokens and voting"
+              },
+              {
+                "id": "dao-tooling",
+                "title": "DAO tooling (Snapshot, Gnosis)"
+              }
+            ]
+          },
+          {
+            "id": "dapps-development",
+            "title": "dApps Development",
+            "subCheckpoints": [
+              {
+                "id": "full-stack-dapp",
+                "title": "Full-stack dApp architecture"
+              },
+              {
+                "id": "ipfs-storage",
+                "title": "IPFS and decentralized storage"
+              },
+              {
+                "id": "production-deployment",
+                "title": "Production deployment and mainnet"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

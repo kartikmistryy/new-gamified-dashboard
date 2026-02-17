@@ -1,3 +1,5 @@
+import type React from "react";
+
 export type FilterTab<T extends string = string> = {
   key: T;
   label: string;
@@ -241,4 +243,141 @@ export type StackedBinData = {
   x0: number;
   x1: number;
   stacks: { team: string; y0: number; y1: number }[];
+};
+
+/** Severity level for performance metric cards. */
+export type MetricSeverity = "Heavy" | "Medium" | "Low";
+
+/** A segment in a donut chart breakdown. */
+export type DonutSegment = {
+  label: string;
+  value: number;
+  color: string;
+};
+
+/** A threshold zone for horizontal bar visualization. */
+export type ThresholdZone = {
+  min: number;
+  max: number;
+  label: string;
+  color: string;
+};
+
+/** Configuration for a performance metric card (e.g. Churn Rate, Legacy Code Refactoring). */
+export type PerformanceMetricConfig = {
+  id: string;
+  /** Plain language section title (e.g., "Code Design Quality"). */
+  sectionTitle: string;
+  /** Technical description shown as subtitle (e.g., "Average Age of Code Deleted"). */
+  title: string;
+  severity: MetricSeverity;
+  severityColor: string;
+  bgColor: string;
+  iconColor: string;
+  /** Lucide icon component rendered in the card header. */
+  icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>;
+  /** Status indicator for the metric (e.g., "On track", "Needs attention"). */
+  status?: {
+    label: string;
+    color: string;
+  };
+  insights: ChartInsight[];
+  /** Explains why this metric matters and how it's calculated. */
+  motivation?: {
+    why: string;
+    how: string;
+  };
+  /** Primary display value (e.g., "42 days", "8,450", "23%", "12.4%"). */
+  primaryValue: string;
+  /** Unit or label shown below the primary value. */
+  primaryLabel?: string;
+  /** Type of visualization: 'donut' for categorical breakdown, 'barWithZones' for threshold-based. */
+  visualizationType: "donut" | "barWithZones";
+  /** Breakdown segments for donut chart visualization. */
+  breakdown?: DonutSegment[];
+  /** Threshold zones for bar visualization (only used when visualizationType is 'barWithZones'). */
+  thresholds?: ThresholdZone[];
+  /** Current numeric value for positioning on threshold bar (0-100 scale or actual value). */
+  currentValue?: number;
+  /** Trend compared to previous period. */
+  trend?: {
+    direction: "up" | "down" | "flat";
+    value: string;
+    /** If true, up = green (good), down = red (bad). If false, up = red (bad), down = green (good). */
+    upIsGood: boolean;
+  };
+};
+
+/** Operation type for nLoC breakdown. */
+export type OperationType = "add" | "update" | "delete" | "selfDelete";
+
+/** Configuration for an operation breakdown card in the Detailed Breakdowns section. */
+export type OperationBreakdownCard = {
+  operation: OperationType;
+  label: string;
+  nLoC: number;
+  trend: {
+    direction: "up" | "down" | "flat";
+    value: string;
+    upIsGood: boolean;
+  };
+  insight: string;
+};
+
+// =============================================================================
+// Org Design Page - Outliers Types
+// =============================================================================
+
+/** Ownership category from the Ownership Misallocation Detector chart. */
+export type OwnershipCategory = "higher" | "lower" | "expected";
+
+/** Chaos category from the Engineering Chaos Matrix chart. */
+export type ChaosCategory =
+  | "Skilled AI User"
+  | "Unskilled AI User"
+  | "Traditional Developer"
+  | "Low-Skill Developer";
+
+/** SPOF assessment level for individual developers. */
+export type SpofAssessment = "low" | "medium" | "high";
+
+/** Priority level for outlier developers based on combined ranking. */
+export type OutlierPriority = "critical" | "attention" | "normal";
+
+/**
+ * Combined developer data for the outliers table.
+ * Merges ownership classification, chaos quadrant, and SPOF assessment.
+ */
+export type OutlierDeveloper = {
+  id: string;
+  name: string;
+  team: string;
+  /** Ownership classification: higher/lower/expected relative to trend line. */
+  ownershipCategory: OwnershipCategory;
+  /** Chaos quadrant based on KP and churn rate. */
+  chaosCategory: ChaosCategory;
+  /** SPOF risk assessment level. */
+  spofAssessment: SpofAssessment;
+  /**
+   * Combined rank (1-12, lower is worse).
+   * Ranking: Ownership (primary) → Chaos (secondary)
+   * 1 = lower + Low-Skill Developer (worst)
+   * 12 = expected + Skilled AI User (best)
+   */
+  combinedRank: number;
+  /** Priority derived from ownership category. */
+  priority: OutlierPriority;
+};
+
+/** Filter options for the outliers table. */
+export type OutliersTableFilter =
+  | "all"
+  | "critical"
+  | "attention"
+  | "normal";
+
+/** Motivation content for chart explanation panels. */
+export type ChartMotivation = {
+  why: string;
+  how: string;
 };

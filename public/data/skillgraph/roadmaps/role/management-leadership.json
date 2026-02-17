@@ -1,0 +1,566 @@
+[
+  {
+    "roadmap": "Product Manager",
+    "group": "Management & Leadership",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "product-thinking-foundations",
+            "title": "Product Thinking Foundations",
+            "subCheckpoints": [
+              {
+                "id": "problem-vs-solution",
+                "title": "Understanding problem vs. solution space"
+              },
+              {
+                "id": "user-centricity",
+                "title": "User-centric mindset and empathy"
+              },
+              {
+                "id": "value-proposition",
+                "title": "Defining value proposition and outcome"
+              },
+              {
+                "id": "mvp-concepts",
+                "title": "MVP and iterative delivery concepts"
+              }
+            ]
+          },
+          {
+            "id": "user-research-basics",
+            "title": "User Research Basics",
+            "subCheckpoints": [
+              {
+                "id": "research-methods",
+                "title": "User interviews, surveys, and observation"
+              },
+              {
+                "id": "persona-development",
+                "title": "Creating user personas and journey maps"
+              },
+              {
+                "id": "pain-points",
+                "title": "Identifying pain points and needs"
+              },
+              {
+                "id": "feedback-synthesis",
+                "title": "Synthesizing qualitative feedback"
+              }
+            ]
+          },
+          {
+            "id": "market-analysis-basics",
+            "title": "Market Analysis Basics",
+            "subCheckpoints": [
+              {
+                "id": "competitor-landscape",
+                "title": "Competitor landscape and differentiation"
+              },
+              {
+                "id": "market-sizing",
+                "title": "TAM, SAM, SOM and market sizing"
+              },
+              {
+                "id": "trends-awareness",
+                "title": "Industry trends and market dynamics"
+              }
+            ]
+          },
+          {
+            "id": "agile-scrum-basics",
+            "title": "Agile & Scrum Basics",
+            "subCheckpoints": [
+              {
+                "id": "agile-principles",
+                "title": "Agile principles and values"
+              },
+              {
+                "id": "scrum-ceremonies",
+                "title": "Scrum ceremonies and roles"
+              },
+              {
+                "id": "backlog-management",
+                "title": "Backlog grooming and sprint planning"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "product-roadmapping",
+            "title": "Product Roadmapping",
+            "subCheckpoints": [
+              {
+                "id": "roadmap-types",
+                "title": "Now-Next-Later and theme-based roadmaps"
+              },
+              {
+                "id": "roadmap-alignment",
+                "title": "Aligning roadmap with business strategy"
+              },
+              {
+                "id": "roadmap-communication",
+                "title": "Communicating roadmap to stakeholders"
+              },
+              {
+                "id": "roadmap-flexibility",
+                "title": "Managing roadmap changes and pivots"
+              }
+            ]
+          },
+          {
+            "id": "prioritization-frameworks",
+            "title": "Prioritization Frameworks (RICE, MoSCoW)",
+            "subCheckpoints": [
+              {
+                "id": "rice-framework",
+                "title": "RICE: Reach, Impact, Confidence, Effort"
+              },
+              {
+                "id": "moscow-framework",
+                "title": "MoSCoW: Must, Should, Could, Won't"
+              },
+              {
+                "id": "framework-application",
+                "title": "Applying frameworks to real decisions"
+              },
+              {
+                "id": "trade-off-analysis",
+                "title": "Trade-off analysis and stakeholder input"
+              }
+            ]
+          },
+          {
+            "id": "prd-writing",
+            "title": "PRD Writing",
+            "subCheckpoints": [
+              {
+                "id": "prd-structure",
+                "title": "PRD structure and sections"
+              },
+              {
+                "id": "requirements-spec",
+                "title": "Writing clear requirements and acceptance criteria"
+              },
+              {
+                "id": "success-metrics",
+                "title": "Defining success metrics in PRDs"
+              }
+            ]
+          },
+          {
+            "id": "metrics-kpis",
+            "title": "Metrics & KPIs",
+            "subCheckpoints": [
+              {
+                "id": "north-star-metric",
+                "title": "North star metric and key drivers"
+              },
+              {
+                "id": "vanity-vs-actionable",
+                "title": "Vanity vs. actionable metrics"
+              },
+              {
+                "id": "dashboard-design",
+                "title": "Product analytics and dashboard design"
+              },
+              {
+                "id": "kpi-tracking",
+                "title": "Tracking and reporting on KPIs"
+              }
+            ]
+          },
+          {
+            "id": "stakeholder-management",
+            "title": "Stakeholder Management",
+            "subCheckpoints": [
+              {
+                "id": "stakeholder-mapping",
+                "title": "Stakeholder mapping and RACI"
+              },
+              {
+                "id": "expectation-alignment",
+                "title": "Expectation alignment and communication"
+              },
+              {
+                "id": "influence-without-authority",
+                "title": "Influencing without authority"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "ab-testing",
+            "title": "A/B Testing",
+            "subCheckpoints": [
+              {
+                "id": "experiment-design",
+                "title": "Experiment design and hypothesis framing"
+              },
+              {
+                "id": "sample-size-significance",
+                "title": "Sample size and statistical significance"
+              },
+              {
+                "id": "ab-interpretation",
+                "title": "Interpreting results and shipping decisions"
+              }
+            ]
+          },
+          {
+            "id": "go-to-market-strategy",
+            "title": "Go-to-Market Strategy",
+            "subCheckpoints": [
+              {
+                "id": "gtm-planning",
+                "title": "GTM planning and launch phases"
+              },
+              {
+                "id": "channel-strategy",
+                "title": "Channel strategy and positioning"
+              },
+              {
+                "id": "launch-metrics",
+                "title": "Launch metrics and post-launch iteration"
+              }
+            ]
+          },
+          {
+            "id": "product-led-growth",
+            "title": "Product-Led Growth",
+            "subCheckpoints": [
+              {
+                "id": "plg-flywheel",
+                "title": "PLG flywheel and activation loops"
+              },
+              {
+                "id": "self-serve-onboarding",
+                "title": "Self-serve onboarding and trial optimization"
+              },
+              {
+                "id": "expansion-metrics",
+                "title": "Expansion and retention metrics"
+              },
+              {
+                "id": "plg-experimentation",
+                "title": "PLG experimentation and iteration"
+              }
+            ]
+          },
+          {
+            "id": "product-strategy",
+            "title": "Product Strategy",
+            "subCheckpoints": [
+              {
+                "id": "vision-okrs",
+                "title": "Product vision and OKR alignment"
+              },
+              {
+                "id": "competitive-strategy",
+                "title": "Competitive strategy and moats"
+              },
+              {
+                "id": "portfolio-thinking",
+                "title": "Portfolio thinking and resource allocation"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Engineering Manager",
+    "group": "Management & Leadership",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "technical-leadership-basics",
+            "title": "Technical Leadership Basics",
+            "subCheckpoints": [
+              {
+                "id": "tech-credibility",
+                "title": "Building technical credibility and trust"
+              },
+              {
+                "id": "mentorship-basics",
+                "title": "Mentoring and guiding engineers"
+              },
+              {
+                "id": "tech-trade-offs",
+                "title": "Evaluating technical trade-offs"
+              }
+            ]
+          },
+          {
+            "id": "team-building-hiring",
+            "title": "Team Building & Hiring",
+            "subCheckpoints": [
+              {
+                "id": "hiring-pipeline",
+                "title": "Designing hiring pipeline and roles"
+              },
+              {
+                "id": "technical-interviews",
+                "title": "Conducting technical and behavioral interviews"
+              },
+              {
+                "id": "team-composition",
+                "title": "Team composition and skills mix"
+              },
+              {
+                "id": "onboarding-process",
+                "title": "Onboarding and ramp-up process"
+              }
+            ]
+          },
+          {
+            "id": "one-on-ones-feedback",
+            "title": "1:1s & Feedback",
+            "subCheckpoints": [
+              {
+                "id": "one-on-one-structure",
+                "title": "1:1 structure and cadence"
+              },
+              {
+                "id": "active-listening",
+                "title": "Active listening and psychological safety"
+              },
+              {
+                "id": "feedback-delivery",
+                "title": "Delivering and receiving feedback"
+              },
+              {
+                "id": "career-conversations",
+                "title": "Career growth conversations"
+              }
+            ]
+          },
+          {
+            "id": "agile-scrum-management",
+            "title": "Agile & Scrum Management",
+            "subCheckpoints": [
+              {
+                "id": "ceremony-facilitation",
+                "title": "Facilitating sprints and ceremonies"
+              },
+              {
+                "id": "velocity-capacity",
+                "title": "Velocity and capacity planning"
+              },
+              {
+                "id": "blocker-removal",
+                "title": "Removing blockers and impediments"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "project-planning-estimation",
+            "title": "Project Planning & Estimation",
+            "subCheckpoints": [
+              {
+                "id": "estimation-techniques",
+                "title": "Story points, t-shirt sizing, and estimation"
+              },
+              {
+                "id": "project-tracking",
+                "title": "Project tracking and status reporting"
+              },
+              {
+                "id": "risk-management",
+                "title": "Risk identification and mitigation"
+              },
+              {
+                "id": "milestone-planning",
+                "title": "Milestone planning and delivery"
+              }
+            ]
+          },
+          {
+            "id": "code-review-culture",
+            "title": "Code Review Culture",
+            "subCheckpoints": [
+              {
+                "id": "review-standards",
+                "title": "Code review standards and guidelines"
+              },
+              {
+                "id": "review-feedback",
+                "title": "Constructive feedback and learning"
+              },
+              {
+                "id": "review-velocity",
+                "title": "Balancing quality and review velocity"
+              }
+            ]
+          },
+          {
+            "id": "architecture-decisions",
+            "title": "Architecture Decisions",
+            "subCheckpoints": [
+              {
+                "id": "adr-process",
+                "title": "ADR (Architecture Decision Records) process"
+              },
+              {
+                "id": "tech-stack-evaluation",
+                "title": "Tech stack evaluation and selection"
+              },
+              {
+                "id": "technical-debt",
+                "title": "Technical debt management and prioritization"
+              }
+            ]
+          },
+          {
+            "id": "performance-management",
+            "title": "Performance Management",
+            "subCheckpoints": [
+              {
+                "id": "goal-setting",
+                "title": "Goal setting and OKRs"
+              },
+              {
+                "id": "performance-reviews",
+                "title": "Performance reviews and calibration"
+              },
+              {
+                "id": "pip-handling",
+                "title": "PIPs and improvement plans"
+              },
+              {
+                "id": "recognition-rewards",
+                "title": "Recognition and rewards"
+              }
+            ]
+          },
+          {
+            "id": "conflict-resolution",
+            "title": "Conflict Resolution",
+            "subCheckpoints": [
+              {
+                "id": "conflict-identification",
+                "title": "Identifying and acknowledging conflict"
+              },
+              {
+                "id": "mediation-skills",
+                "title": "Mediation and facilitation skills"
+              },
+              {
+                "id": "difficult-conversations",
+                "title": "Difficult conversations and follow-through"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "cross-team-collaboration",
+            "title": "Cross-Team Collaboration",
+            "subCheckpoints": [
+              {
+                "id": "dependency-management",
+                "title": "Managing cross-team dependencies"
+              },
+              {
+                "id": "alignment-mechanisms",
+                "title": "Alignment meetings and sync mechanisms"
+              },
+              {
+                "id": "shared-goals",
+                "title": "Shared goals and accountability"
+              }
+            ]
+          },
+          {
+            "id": "engineering-culture",
+            "title": "Engineering Culture",
+            "subCheckpoints": [
+              {
+                "id": "culture-shaping",
+                "title": "Shaping and evolving team culture"
+              },
+              {
+                "id": "innovation-time",
+                "title": "Innovation time and learning"
+              },
+              {
+                "id": "inclusivity-belonging",
+                "title": "Inclusivity and belonging"
+              },
+              {
+                "id": "retention-strategies",
+                "title": "Retention and engagement strategies"
+              }
+            ]
+          },
+          {
+            "id": "incident-management",
+            "title": "Incident Management",
+            "subCheckpoints": [
+              {
+                "id": "incident-response",
+                "title": "Incident response and on-call"
+              },
+              {
+                "id": "postmortems",
+                "title": "Postmortems and blameless culture"
+              },
+              {
+                "id": "reliability-practices",
+                "title": "Reliability practices and SLOs"
+              }
+            ]
+          },
+          {
+            "id": "team-scalability",
+            "title": "Team Scalability & Org Design",
+            "subCheckpoints": [
+              {
+                "id": "team-structure",
+                "title": "Team structure and span of control"
+              },
+              {
+                "id": "delegation-empowerment",
+                "title": "Delegation and empowerment"
+              },
+              {
+                "id": "manager-development",
+                "title": "Developing future managers"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

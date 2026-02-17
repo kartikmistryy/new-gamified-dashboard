@@ -1,0 +1,2590 @@
+{
+  "Application Lifecycle & Tooling": {
+    "description": "A complete set of command-line tools and runtime services for managing the entire application lifecycle. This includes project initialization, a live-reloading development server, production build processes, and deployment utilities.",
+    "functions": {
+      "Project Documentation & Guides": {
+        "files": [
+          {
+            "path": "docs/images",
+            "description": "This directory is intended to store image assets specifically used within the Reflex framework's documentation. Its purpose is to provide visual aids and illustrations for the documentation, enhancing clarity and user understanding.",
+            "spof": false
+          },
+          {
+            "path": "docs/pe/README.md",
+            "description": "This is the Persian (Farsi) localized README file for the Reflex framework. It provides an introduction, installation instructions, examples, and details on building full-stack web applications entirely in Python using Reflex.",
+            "spof": false
+          },
+          {
+            "path": "docs/in/README.md",
+            "description": "This is the Hindi-language README file for the Reflex project, providing an overview of the library, installation steps, and examples for building web applications with pure Python.",
+            "spof": false
+          },
+          {
+            "path": "docs/de/README.md",
+            "description": "This file is the German-language README for the Reflex framework, introducing its features for building full-stack web applications with pure Python, and providing installation and quick-start instructions.",
+            "spof": false
+          },
+          {
+            "path": "docs/DEBUGGING.md",
+            "description": "This document provides instructions and a VSCode launch configuration for debugging Reflex applications. It explains how to run Reflex in development mode under a debugger.",
+            "spof": true
+          },
+          {
+            "path": "docs/es/README.md",
+            "description": "This is the Spanish README file for the Reflex library, providing an introduction, installation instructions, a 'getting started' guide, and an example application to help users build web apps in pure Python.",
+            "spof": false
+          },
+          {
+            "path": "docs/it/README.md",
+            "description": "This file is the Italian-language README for the Reflex framework, introducing its capabilities for building full-stack web applications purely in Python. It covers installation, basic usage, core concepts, and contribution guidelines.",
+            "spof": true
+          },
+          {
+            "path": "docs/ja/README.md",
+            "description": "This file is the Japanese README for the Reflex project, introducing the Python-only full-stack web application framework, its features, installation, and usage examples.",
+            "spof": false
+          },
+          {
+            "path": "docs/tr/README.md",
+            "description": "This is the Turkish README file for the Reflex project, introducing the Reflex framework for building web applications in Python. It covers installation, basic usage, core concepts like UI and state, and contribution guidelines.",
+            "spof": false
+          },
+          {
+            "path": "docs/kr/README.md",
+            "description": "This is the Korean-language README for the Reflex library, providing an introduction, installation instructions, usage examples, and contribution guidelines for building web applications purely with Python.",
+            "spof": false
+          },
+          {
+            "path": "docs/vi/README.md",
+            "description": "This is the Vietnamese README file for the Reflex framework. It introduces Reflex, explains its features, provides installation instructions, and guides users on creating their first web application using pure Python.",
+            "spof": false
+          },
+          {
+            "path": "docs/zh/zh_tw/README.md",
+            "description": "This file is the Traditional Chinese README for the Reflex framework. It introduces the Reflex library for building full-stack web applications with Python, provides installation instructions, a quick-start guide, and an example application.",
+            "spof": false
+          },
+          {
+            "path": "docs/zh/zh_cn/README.md",
+            "description": "This file is the Simplified Chinese README for the Reflex project, providing an introduction to the Reflex library for building web applications with Python, including installation instructions, a quick start guide, and an example.",
+            "spof": false
+          },
+          {
+            "path": "docs/pt/pt_br/README.md",
+            "description": "This file is the main `README.md` for the Reflex web framework, translated into Brazilian Portuguese. It provides an introduction to Reflex, its features, installation instructions, a 'getting started' guide, and an example application.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 51
+          },
+          {
+            "name": "Nguyễn Minh Phú",
+            "percent": 7
+          },
+          {
+            "name": "Benyamin Zojaji",
+            "percent": 5
+          }
+        ]
+      },
+      "Development Server & Process Execution": {
+        "files": [
+          {
+            "path": "reflex/utils/exec.py",
+            "description": "This file contains utilities for executing the Reflex application, including managing frontend and backend processes, detecting changes in `package.json`, and launching the web application.",
+            "spof": false
+          },
+          {
+            "path": "reflex/utils/monitoring.py",
+            "description": "Integrates the PyLeak library to monitor Reflex applications for event loop blocking and resource leaks, providing context managers and decorators for enabling this monitoring.",
+            "spof": true
+          },
+          {
+            "path": "reflex/utils/codespaces.py",
+            "description": "Utilities for handling GitHub Codespaces, including automatic redirection for port forwarding and authentication after successful login.",
+            "spof": true
+          },
+          {
+            "path": "reflex/utils/processes.py",
+            "description": "This file provides utility functions for managing processes, checking port availability, handling concurrency, and streaming logs within the Reflex framework.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 60
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 28
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 4
+          }
+        ]
+      },
+      "Application Build and Deployment": {
+        "files": [
+          {
+            "path": "reflex/utils/export.py",
+            "description": "This file provides utilities for exporting a Reflex application for deployment. It handles compiling the app, building frontend and backend components, and optionally zipping them into an archive.",
+            "spof": false
+          },
+          {
+            "path": "reflex/utils/build.py",
+            "description": "This file contains utilities for building, zipping, and preparing Reflex applications for deployment, including frontend build processes, backend zipping, and environment setup.",
+            "spof": true
+          },
+          {
+            "path": "reflex/assets.py",
+            "description": "This file provides helper functions for managing and referencing static assets within a Reflex application, distinguishing between local assets and shared external assets. It handles the creation of symlinks for shared assets and returns the appropriate URL paths.",
+            "spof": true
+          },
+          {
+            "path": "docker-example/simple-two-port/README.md",
+            "description": "This README describes a Docker deployment for a Reflex application, detailing how to run it in production mode with separate frontend and backend ports. It includes build and run instructions, and explains usage with a reverse proxy like Caddy.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 70
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 11
+          },
+          {
+            "name": "benedikt-bartscher",
+            "percent": 7
+          }
+        ]
+      },
+      "Developer Tooling & Environment Setup": {
+        "files": [
+          {
+            "path": "reflex/utils/js_runtimes.py",
+            "description": "This module provides utility functions for managing JavaScript runtimes like Node.js and Bun, including version checks, installation, and determining preferred package managers.",
+            "spof": true
+          },
+          {
+            "path": "reflex/utils/__init__.py",
+            "description": "Initializes the utilities module for the Reflex project, providing a collection of general utility functions and tools.",
+            "spof": true
+          },
+          {
+            "path": "reflex/utils/redir.py",
+            "description": "This file provides utility functions for programmatically opening a web browser to specific URLs, particularly those related to Reflex's build and templates services. It includes functions to open a given URL and specialized functions for Reflex build and templates pages.",
+            "spof": true
+          },
+          {
+            "path": "reflex/utils/telemetry.py",
+            "description": "This file handles anonymous telemetry for the Reflex framework. It collects system information (like OS, CPU, Python/Node versions) and application details, then sends this data to a PostHog API endpoint.",
+            "spof": true
+          },
+          {
+            "path": "reflex/utils/registry.py",
+            "description": "This file provides utilities for managing and selecting the most performant npm registry, primarily by measuring and comparing registry latencies and caching the best-performing option.",
+            "spof": true
+          },
+          {
+            "path": "reflex/constants/installer.py",
+            "description": "This file defines constants related to the installation and configuration of development tools like Bun and Node/NPM, and specifies dependencies and scripts for the `package.json` file in a Reflex project.",
+            "spof": true
+          },
+          {
+            "path": "reflex/__init__.py",
+            "description": "This file initializes the Reflex library's public API by dynamically importing core components and utilities into the `rx.*` namespace using lazy loading, aiming to reduce startup times. It defines how modules and their attributes are exposed and helps generate type stubs.",
+            "spof": false
+          },
+          {
+            "path": "scripts/make_pyi.py",
+            "description": "This script generates and updates Python stub files (.pyi) for the Reflex project. It intelligently determines which stub files need regeneration by tracking source code changes and changes to the generator script itself using Git.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 77
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 8
+          },
+          {
+            "name": "Elijah Ahianyo",
+            "percent": 6
+          }
+        ]
+      },
+      "Core Application Model & Lifecycle": {
+        "files": [
+          {
+            "path": "reflex/utils/exceptions.py",
+            "description": "This file defines a collection of custom exception classes, all inheriting from `ReflexError`, to handle various specific error conditions within the Reflex framework, such as configuration issues, state management errors, and component-related problems.",
+            "spof": false
+          },
+          {
+            "path": "reflex/app_mixins/mixin.py",
+            "description": "This file defines the base `AppMixin` class, serving as the foundational structure and default interface for all other application mixins within the Reflex framework.",
+            "spof": false
+          },
+          {
+            "path": "reflex/app_mixins/lifespan.py",
+            "description": "This file defines a mixin for managing tasks that run throughout the application's lifespan, handling their registration, execution, and cleanup.",
+            "spof": false
+          },
+          {
+            "path": "reflex/app_mixins/__init__.py",
+            "description": "This file serves as the `__init__.py` for the `app_mixins` package, exposing core mixin classes such as `LifespanMixin`, `MiddlewareMixin`, and `AppMixin` for extending Reflex application functionality.",
+            "spof": true
+          },
+          {
+            "path": "reflex/app.py",
+            "description": "This file defines the core `App` class for Reflex applications, encapsulating the main backend and frontend configurations, including routing, state management, and event handling. It serves as the central entry point for building and configuring a Reflex web application.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 55
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 17
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 17
+          }
+        ]
+      },
+      "CLI & Project Management": {
+        "files": [
+          {
+            "path": "reflex/utils/rename.py",
+            "description": "This module provides utilities for renaming directories, files, imports, and configuration within a Reflex application. It supports renaming app-related paths and updating code references to the app's name.",
+            "spof": true
+          },
+          {
+            "path": "reflex/utils/frontend_skeleton.py",
+            "description": "This module provides utility functions to initialize the frontend skeleton and various configuration files for a Reflex project. It sets up essential files like .gitignore, requirements.txt, package.json, vite.config.js, and reflex.json during project initialization.",
+            "spof": true
+          },
+          {
+            "path": "reflex/reflex.py",
+            "description": "This file implements the command-line interface (CLI) for the Reflex framework, providing functionalities to create, run, and manage Reflex applications. It handles commands like `init` for app initialization and `run` for starting the development or production server.",
+            "spof": false
+          },
+          {
+            "path": "reflex/__main__.py",
+            "description": "This file serves as the main entry point for the `reflex` package, allowing its command-line interface (CLI) to be invoked directly.",
+            "spof": true
+          },
+          {
+            "path": "scripts/__init__.py",
+            "description": "This `__init__.py` file signifies that the `scripts` directory is a Python package, intended to contain utility scripts for the project.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 68
+          },
+          {
+            "name": "Simon Young",
+            "percent": 8
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 6
+          }
+        ]
+      },
+      "Framework Testing Harness": {
+        "files": [
+          {
+            "path": "reflex/testing.py",
+            "description": "This file provides tools and utilities, including the `AppHarness` class, for programmatically testing Reflex applications by managing their lifecycle (initialization, frontend, and backend processes).",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/__init__.py",
+            "description": "This file marks the 'integration' directory as a Python package. Its purpose is to contain and organize integration tests for the 'reflex' project.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_deploy_url.py",
+            "description": "This file contains integration tests for verifying the correct functionality and configuration of the 'deploy_url' feature within a Reflex application, using Selenium to simulate user interaction and assert URL correctness.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_exception_handlers.py",
+            "description": "This file contains integration tests for Reflex's default exception handlers, verifying their behavior when frontend, backend, and React errors are intentionally triggered.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_urls.py",
+            "description": "This file contains integration tests designed to scan the Reflex repository for reflex.dev URLs, ensuring they are secure (HTTPS) and accessible.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_lifespan.py",
+            "description": "This file contains integration tests for the Starlette lifespan integration in Reflex, verifying the execution and state management of lifespan tasks and context during application lifecycle events.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/init-test",
+            "description": "This directory serves as a temporary workspace for integration tests focused on the initialization process of the 'reflex' application. It is expected to be dynamically created and used during test execution to simulate project initialization scenarios, rather than containing static code itself. Its current empty state reinforces its role as a transient test environment.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/test_testing.py",
+            "description": "This file contains unit tests for the `AppHarness` utility, which is designed to compile and start Reflex applications for testing purposes. It ensures the `AppHarness` can correctly manage an application's lifecycle and processes.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/test_health_endpoint.py",
+            "description": "This file contains unit tests for the Reflex application's health endpoint, verifying the proper functioning of database and Redis connection status checks under various scenarios.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 54
+          },
+          {
+            "name": "devin-ai-integration[bot]",
+            "percent": 25
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 10
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 49,
+      "spofCount": 23
+    },
+    "busFactor": 3,
+    "authorCount": 19
+  },
+  "Utility": {
+    "description": "",
+    "functions": {
+      "General Utility": {
+        "files": [
+          {
+            "path": "reflex/utils/compat.py",
+            "description": "This file provides compatibility hacks and helper functions to address differences across Python versions, operating systems, and external libraries like Pydantic and SQLModel.",
+            "spof": false
+          },
+          {
+            "path": "reflex/utils/decorator.py",
+            "description": "This file provides various utility decorators for Python functions, including in-memory caching ('once', 'once_unless_none'), debugging ('debug'), and persistent on-disk caching ('cached_procedure', 'cache_result_in_disk').",
+            "spof": true
+          },
+          {
+            "path": "reflex/utils/lazy_loader.py",
+            "description": "This module implements lazy loading for Python packages within the Reflex project. It provides a mechanism to defer the import of submodules and their attributes until they are actually accessed, improving startup performance.",
+            "spof": true
+          },
+          {
+            "path": "reflex/utils/imports.py",
+            "description": "This file provides utility functions and data structures for managing and manipulating Python import statements, including parsing, merging, and collapsing imports into a standardized format.",
+            "spof": true
+          },
+          {
+            "path": "reflex/utils/misc.py",
+            "description": "This file provides miscellaneous utility functions for the Reflex framework, including module path resolution, thread management for asynchronous operations, sys.path manipulation, and frontend color theme preloading to prevent Flash of Unstyled Content (FOUC).",
+            "spof": false
+          },
+          {
+            "path": "reflex/utils/net.py",
+            "description": "This file provides helper functions for making network requests using the httpx library, including SSL verification, logging, IPv4/IPv6 handling, and proxy configuration. It centralizes utilities for network communication within the Reflex framework.",
+            "spof": true
+          },
+          {
+            "path": "reflex/utils/console.py",
+            "description": "This file provides utility functions for console output and logging within the Reflex framework. It includes functions for different log levels (debug, info, warning, success, error), handling deprecation warnings, and supporting both console and file-based logging.",
+            "spof": false
+          },
+          {
+            "path": "reflex/utils/format.py",
+            "description": "This file contains utility functions for various formatting operations, including string manipulation, case conversions, and formatting data for JavaScript, Reflex variables, and UI component properties.",
+            "spof": false
+          },
+          {
+            "path": "reflex/utils/tasks.py",
+            "description": "Provides utilities for creating and managing asyncio tasks, including a mechanism to run coroutines continuously with robust exception handling and automatic restarts.",
+            "spof": true
+          },
+          {
+            "path": "reflex/utils/path_ops.py",
+            "description": "This file provides a collection of utility functions for common file and directory operations, including creation, deletion, copying, moving, and linking. It also includes helpers for finding system executables and manipulating JSON files.",
+            "spof": false
+          },
+          {
+            "path": "reflex/utils/types.py",
+            "description": "This file defines custom types and provides utility methods for checking and manipulating types within the Reflex framework, including handling generic aliases, unions, and optional types.",
+            "spof": true
+          },
+          {
+            "path": "reflex/constants/utils.py",
+            "description": "This file defines a `classproperty` decorator, which allows methods to be accessed as properties at the class level. It provides a utility for creating computed class-level attributes, particularly useful for constants.",
+            "spof": true
+          },
+          {
+            "path": "scripts/wait_for_listening_port.py",
+            "description": "This script waits for one or more specified network ports to start listening, optionally checking if a given server process is still running, and exits with an error if any port does not become active within a timeout. It replaces shell script logic for Windows compatibility.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/mock_redis.py",
+            "description": "This file provides a mock implementation of an async Redis client for unit testing, including pubsub support and keyspace event logging. It also offers a context manager to configure a real Redis client for testing, capturing keyspace events.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/test_telemetry.py",
+            "description": "This file contains unit tests for the `reflex.utils.telemetry` module, ensuring that telemetry data collection and sending mechanisms work correctly, including disabling functionality and proper event dispatch.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/test_attribute_access_type.py",
+            "description": "This file contains unit tests for the `get_attribute_access_type` utility function in Reflex. It verifies that the function correctly infers the type of various attributes and properties across different Python class types, including SQLAlchemy models, Reflex models, bare classes, and attrs classes.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/utils/test_processes.py",
+            "description": "This file contains unit tests for the `is_process_on_port` utility function, ensuring it correctly identifies whether a given port is in use under various conditions, including IPv4/IPv6, error handling, and concurrent access.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/utils/test_format.py",
+            "description": "This file contains unit tests for the string formatting and utility functions in `reflex.utils.format`. It covers tests for casing conversions, string wrapping, escaping, indentation, and variable formatting.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/utils/test_imports.py",
+            "description": "This file contains unit tests for the Reflex framework's import utility functions. It verifies the correct parsing, merging, and representation of import statements using `ImportVar`, `merge_imports`, and `parse_imports`.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/utils/test_tasks.py",
+            "description": "This file contains unit tests for the `ensure_task` utility function from `reflex.utils.tasks`. It verifies its behavior regarding exception suppression, retry limits, and exception window management for asynchronous tasks.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/utils/test_utils.py",
+            "description": "This file contains unit tests for various utility functions within the Reflex framework, primarily focusing on type-checking helpers and JavaScript runtime (Bun) management.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/utils/test_serializers.py",
+            "description": "This file contains unit tests for the serialization utilities within the Reflex framework, ensuring correct serialization of various data types including standard types, enums, custom objects, and date/time objects.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/utils/test_types.py",
+            "description": "This file contains unit tests for the type utility functions in `reflex.utils.types`, covering literal validation, type compatibility checking (`issubclass`), generic argument detection (`has_args`), and instance checking (`isinstance`).",
+            "spof": true
+          },
+          {
+            "path": "tests/units/utils/test_token_manager.py",
+            "description": "This file contains unit tests for the `TokenManager` factory and its implementations, `LocalTokenManager` and `RedisTokenManager`. It verifies the correct linking, unlinking, and management of tokens and session IDs.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 53
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 27
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 14
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 24,
+      "spofCount": 16
+    },
+    "busFactor": 3,
+    "authorCount": 7
+  },
+  "Backend Event Handling": {
+    "description": "Manages the communication channel between the user interface and the Python backend. It processes user interactions like button clicks and form submissions, allowing developers to trigger backend logic and state updates in response to frontend events.",
+    "functions": {
+      "Event Processing and State Management": {
+        "files": [
+          {
+            "path": "reflex/utils/token_manager.py",
+            "description": "Manages the mapping between client tokens and Socket.IO session IDs, supporting both in-memory (single worker) and Redis-based (distributed) implementations.",
+            "spof": true
+          },
+          {
+            "path": "reflex/constants/event.py",
+            "description": "This file defines various constants related to events within the Reflex framework, including backend API endpoints, WebSocket event names, and UI event triggers.",
+            "spof": true
+          },
+          {
+            "path": "reflex/event.py",
+            "description": "This file defines core classes for managing events in the Reflex framework, facilitating communication and state changes between the frontend and backend. It includes definitions for `Event`, `EventHandler`, and `EventSpec` to represent, handle, and specify events, respectively.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_call_script.py",
+            "description": "This file contains integration tests for the `rx.call_script` functionality in Reflex, demonstrating how to execute JavaScript code from the Python backend and handle its results and callbacks.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_event_actions.py",
+            "description": "This file contains integration tests for Reflex event actions, ensuring that `stopPropagation`, `preventDefault`, `throttle`, and `debounce` work correctly within Reflex applications.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_form_submit.py",
+            "description": "This file contains integration tests for Reflex forms, verifying the correct submission and handling of various input types (e.g., text, checkboxes, radio, select) from both `rx.form.root` and `rx.el.form` components, using both ID and name attributes for input identification.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_background_task.py",
+            "description": "This file contains integration tests for the background task functionality in a Reflex application, verifying how `@rx.event(background=True)` handlers operate, update state, and interact with the UI.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_upload.py",
+            "description": "This file contains integration tests for the file upload functionality within the Reflex framework, covering various scenarios like basic uploads, progress tracking, event chaining, and download features.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_event_chain.py",
+            "description": "This file contains integration tests for the Reflex framework, specifically verifying that event chains are properly queued and handled between the frontend and backend under various conditions, including nested, sequential, and yield-based event processing.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/test_component_future_annotations.py",
+            "description": "This unit test verifies the correct declaration of event handlers in component fields when `from __future__ import annotations` is enabled. It ensures that event triggers are properly recognized and handled by `Component` classes.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/test_event.py",
+            "description": "This file contains unit tests for the Reflex framework's event handling system. It verifies the functionality of creating, calling, formatting, and dispatching different types of events, including UI-related and utility events like redirect, console logging, and cookie manipulation.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 47
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 28
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 21
+          }
+        ]
+      },
+      "Event Middleware Pipeline": {
+        "files": [
+          {
+            "path": "reflex/middleware/middleware.py",
+            "description": "This file defines the abstract base class for Reflex middleware, providing methods to preprocess and postprocess events within a Reflex application.",
+            "spof": true
+          },
+          {
+            "path": "reflex/app_mixins/middleware.py",
+            "description": "This file defines a `MiddlewareMixin` class that enables adding and managing middleware within an application. It provides functionality to preprocess and postprocess events using registered middleware.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/middleware/conftest.py",
+            "description": "This file provides pytest fixtures for creating `Event` objects, specifically designed for use in unit tests related to middleware components within the Reflex framework. It helps simulate various event types for testing purposes.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Thomas Brandého",
+            "percent": 52
+          },
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 43
+          },
+          {
+            "name": "benedikt-bartscher",
+            "percent": 4
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 14,
+      "spofCount": 7
+    },
+    "busFactor": 2,
+    "authorCount": 5
+  },
+  "Reactive State Management": {
+    "description": "Manages application data and automatically synchronizes it between the backend and frontend. The UI \"reacts\" to data changes in real-time without requiring manual UI manipulation, simplifying the development of complex, interactive applications.",
+    "functions": {
+      "Core State Engine": {
+        "files": [
+          {
+            "path": "reflex/utils/serializers.py",
+            "description": "This file provides a serialization framework for converting various Python objects, including `Var` types, into JSON-compatible formats. It defines decorators to register custom serializers and functions to apply these serializers for different data types.",
+            "spof": false
+          },
+          {
+            "path": "reflex/istate/wrappers.py",
+            "description": "This file provides wrapper functions for interacting with the state manager, primarily offering a 'get_state' function to retrieve a read-only proxy of a state instance.",
+            "spof": true
+          },
+          {
+            "path": "reflex/istate/dynamic.py",
+            "description": "This file serves as a container for dynamically generated states within the Reflex framework.",
+            "spof": true
+          },
+          {
+            "path": "reflex/istate/__init__.py",
+            "description": "This module provides utilities for checking and debugging the picklability of Python objects. It recursively verifies if an object and its contents can be serialized using `pickle`, adding context to errors encountered during the process.",
+            "spof": true
+          },
+          {
+            "path": "reflex/istate/proxy.py",
+            "description": "Provides the `StateProxy` class, which manages mutability and access control for application state instances used within asynchronous background tasks, ensuring safe state modifications.",
+            "spof": true
+          },
+          {
+            "path": "reflex/istate/data.py",
+            "description": "This module defines dataclasses and a custom URL type for representing router-related data, including HTTP headers, session information, and page details, used within the Reflex framework.",
+            "spof": true
+          },
+          {
+            "path": "reflex/istate/shared.py",
+            "description": "This file provides base classes and utilities for managing shared and linked states in Reflex, including mechanisms for linking, unlinking, and synchronizing updates across multiple client sessions.",
+            "spof": true
+          },
+          {
+            "path": "reflex/state.py",
+            "description": "This file defines the core state management system for the Reflex framework, including the `BaseState` class, handling of state variables, computed variables, events, and their serialization.",
+            "spof": false
+          },
+          {
+            "path": "reflex/base.py",
+            "description": "This file defines the foundational `Base` class for the Reflex framework, which leverages Pydantic for data modeling and serialization between the frontend and backend. It includes a fallback for when Pydantic is not installed and a deprecation notice for the `rx.Base` class itself.",
+            "spof": true
+          },
+          {
+            "path": "reflex/vars/dep_tracking.py",
+            "description": "This file provides a `DependencyTracker` class that analyzes Python function bytecode to identify and track dependencies on `BaseState` attributes and variables. It uses bytecode disassembler (`dis`) to determine which state attributes a function accesses for purposes like reactive updates.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_shared_state.py",
+            "description": "This file contains an integration test for Reflex applications, verifying that shared state between different AppHarness instances functions as expected using pytest fixtures and a WebDriver.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_large_state.py",
+            "description": "This file contains an integration test for Reflex applications, designed to measure and benchmark the performance of state updates when dealing with a large number of state variables. It simulates a Reflex app with configurable state size and tests the round-trip time for a button click to update the UI.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_dynamic_components.py",
+            "description": "This file contains integration tests for dynamic components and variable operations within a Reflex application, using Selenium to verify their behavior and state changes.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_state_inheritance.py",
+            "description": "This file contains integration tests for Reflex's state inheritance system, including the proper functioning of inherited state variables, mixins, computed properties, and event handlers across different levels of inheritance.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_server_side_event.py",
+            "description": "This file contains integration tests for Reflex server-side events, specifically focusing on how `rx.set_value` behaves when events are returned from state methods using `yield`, `return`, or a combination of both.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_computed_vars.py",
+            "description": "This file contains integration tests for Reflex's computed variables feature, verifying their caching, dependencies, backend integration, and proper handling of special float values. It simulates user interaction to ensure computed variables update correctly in the UI and backend.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/shared/state.py",
+            "description": "This module defines a simple, reusable Reflex state class named `SharedState`, intended for use in integration tests or as a common state for applications built with Reflex libraries.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/test_state.py",
+            "description": "Unit tests for the `reflex.state` module, covering functionalities like state definition, inheritance, computed variables, event handlers, and default values.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/test_state_tree.py",
+            "description": "This file contains a specialized unit test for Reflex's state management, verifying how a `StateManagerRedis` handles retrieval, delta calculation, and dictionary representation of a complex, deeply nested state tree with various substates and computed variables.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/vars/test_dep_tracking.py",
+            "description": "This file contains unit tests for the `DependencyTracker` functionality within Reflex, which is responsible for identifying and tracking dependencies of state variables and functions. It covers various scenarios like attribute access, method calls, nested functions, comprehensions, and interactions with `get_state`.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/vars/test_dep_tracking_integration.py",
+            "description": "This file contains integration tests for the dependency tracking mechanism of computed variables (`rx.var`) in Reflex `State` classes. It verifies that these computed variables correctly identify and record their dependencies on various state attributes and other computed variables, including complex scenarios like cross-state dependencies and method calls.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/middleware/test_hydrate_middleware.py",
+            "description": "This file contains unit tests for the `HydrateMiddleware` component in the Reflex framework. It specifically tests the `preprocess` method's behavior when no events are involved in state hydration.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/istate/test_proxy.py",
+            "description": "This file contains unit tests for the `MutableProxy` class within the `reflex` framework, specifically verifying its behavior with Python's `pickle` module to ensure object identity is preserved after serialization and deserialization.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/states/__init__.py",
+            "description": "Defines common `rx.BaseState` subclasses for use in unit tests, including `GenState` which demonstrates generating multiple updates.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/states/upload.py",
+            "description": "This file defines various test states to verify different file upload functionalities and handlers within the Reflex framework, including base states, substates, and inherited states.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 52
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 35
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 5
+          }
+        ]
+      },
+      "State Persistence Layer": {
+        "files": [
+          {
+            "path": "reflex/constants/state.py",
+            "description": "This file defines constants and enumerations related to state management within the Reflex framework. It includes modes for state storage (e.g., disk, memory, redis) and internal markers used for state fields and memoization.",
+            "spof": false
+          },
+          {
+            "path": "reflex/istate/manager/disk.py",
+            "description": "Manages application states by storing and retrieving them from disk. It handles state serialization, deserialization, and purging of expired states.",
+            "spof": false
+          },
+          {
+            "path": "reflex/istate/manager/__init__.py",
+            "description": "This file defines the abstract base class for managing client states in Reflex applications and provides a factory method to create concrete state manager implementations (memory, disk, or Redis) based on configuration. It specifies the core interface for interacting with client states.",
+            "spof": true
+          },
+          {
+            "path": "reflex/istate/manager/memory.py",
+            "description": "This file defines `StateManagerMemory`, an in-memory implementation of a state manager. It stores and manages application states in a dictionary, providing methods for retrieving, setting, and exclusively modifying states using asynchronous locks.",
+            "spof": true
+          },
+          {
+            "path": "reflex/istate/manager/redis.py",
+            "description": "This file implements a state manager that stores application states in Redis. It handles state persistence, retrieval, locking mechanisms, and caching for a Reflex application.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/istate/manager/test_redis.py",
+            "description": "This file contains unit tests for the `StateManagerRedis` class, verifying its functionality for managing state, including basic get/set operations, state modification, and optimistic locking with contention.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Masen Furer",
+            "percent": 75
+          },
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 25
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 0
+          }
+        ]
+      },
+      "Client-Side State Synchronization": {
+        "files": [
+          {
+            "path": "reflex/istate/storage.py",
+            "description": "This file defines client-side storage classes (Cookie, LocalStorage, SessionStorage) for Reflex state variables, enabling persistence of state in the browser's various storage mechanisms.",
+            "spof": true
+          },
+          {
+            "path": "reflex/experimental/client_state.py",
+            "description": "This file defines `ClientStateVar`, a Python abstraction for managing client-side state in web applications using React's `useState` hook, enabling seamless interaction between frontend components and backend logic.",
+            "spof": true
+          },
+          {
+            "path": "reflex/experimental/hooks.py",
+            "description": "This file provides Python wrappers for common React hooks (e.g., useState, useCallback, useRef) and a helper for declaring JavaScript constants within the Reflex framework. It aims to integrate standard React hook functionality into Reflex applications.",
+            "spof": false
+          },
+          {
+            "path": "reflex/middleware/hydrate_middleware.py",
+            "description": "This file defines the `HydrateMiddleware`, which is responsible for handling the initial hydration of the application's state, including clearing client storage and resolving the initial state delta.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_component_state.py",
+            "description": "This file contains integration tests for Reflex applications, specifically verifying that per-component state mechanisms operate correctly and independently for multiple component instances. It tests both `rx.ComponentState` and locally-defined `rx.State` within components.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_linked_state.py",
+            "description": "This file contains integration tests for Reflex's linked state feature, verifying that multiple browser tabs can connect to and synchronize shared state. It tests state changes, linking, unlinking, and background state updates across different tabs.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_login_flow.py",
+            "description": "This file contains integration tests for a Reflex application's login and logout functionality, focusing on how an authentication token is managed using client-side local storage. It simulates user interaction to verify the token is set, displayed, and cleared correctly.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_connection_banner.py",
+            "description": "This file contains integration tests for verifying the display and behavior of a connection banner when the websocket connection to the backend drops and reconnects, and also tests a 'cloud banner' based on compile context and cookies.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Masen Furer",
+            "percent": 62
+          },
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 26
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 9
+          }
+        ]
+      },
+      "Reactive Variable Abstractions": {
+        "files": [
+          {
+            "path": "reflex/vars/__init__.py",
+            "description": "This file serves as the public interface for the `reflex.vars` package, consolidating and exposing various immutable variable types and related utility functions, such as `Var`, `ArrayVar`, `BooleanVar`, and `ColorVar`.",
+            "spof": true
+          },
+          {
+            "path": "reflex/vars/datetime.py",
+            "description": "This file defines custom variable types (`DateTimeVar` and `LiteralDatetimeVar`) for `datetime` and `date` objects within the Reflex framework. It implements comparison operations for these variables, ensuring type safety and integration with Reflex's reactive system.",
+            "spof": false
+          },
+          {
+            "path": "reflex/vars/function.py",
+            "description": "This file defines classes for representing immutable function variables within the Reflex framework, enabling operations like partial application and function calls. It supports generating JavaScript representations of these function operations.",
+            "spof": true
+          },
+          {
+            "path": "reflex/vars/number.py",
+            "description": "This file defines the `NumberVar` class, a custom variable type for numbers (int, float, decimal) in the Reflex framework. It overloads standard arithmetic and comparison operators to allow these operations on `NumberVar` instances within Reflex's reactive programming model.",
+            "spof": true
+          },
+          {
+            "path": "reflex/vars/base.py",
+            "description": "This file defines base classes and data structures, primarily `VarData`, for managing and representing variables within the Reflex framework. It handles metadata such as variable state, imports, dependencies, and component associations.",
+            "spof": true
+          },
+          {
+            "path": "reflex/vars/sequence.py",
+            "description": "This file defines `ArrayVar`, a core class for representing and manipulating array-like variables (sequences and sets) within the Reflex framework. It provides methods for common array operations like joining, reversing, concatenating, slicing, length retrieval, range generation, containment checks, plucking, and multiplication.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/tests_playwright/test_datetime_operations.py",
+            "description": "This file contains an integration test using Playwright for a Reflex application. It verifies that datetime objects in the application's state are correctly rendered and that various comparison operations between them are accurately displayed in the UI.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_var_operations.py",
+            "description": "This file contains integration tests for a Reflex application, specifically designed to verify the correct behavior of various operations (arithmetic, comparison, bitwise) between different variable types (integers, floats, strings, lists, dictionaries, custom objects) within the Reflex framework.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/vars/test_base.py",
+            "description": "This file contains unit tests for the `figure_out_type` function and the `computed_var` decorator from `reflex.vars.base`. It verifies type inference for various Python data structures and tests the `_replace` method for computed variables.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/states/mutation.py",
+            "description": "This file defines test states and models for evaluating the behavior of mutable variables (lists, dictionaries, and sets) within the Reflex state management system. It includes methods to reassign these mutable fields for testing purposes.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/test_var.py",
+            "description": "This file contains unit tests for the `reflex.vars` module, covering the creation, representation, type conversion, and various operations (arithmetic, comparison, indexing, attribute access, array methods) of Reflex `Var` objects. It also includes tests for `computed_var` functionality within Reflex `BaseState` classes.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 83
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 7
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 7
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 50,
+      "spofCount": 34
+    },
+    "busFactor": 2,
+    "authorCount": 6
+  },
+  "Python-to-Web Compiler": {
+    "description": "The core engine that transforms Python application code into a high-performance, single-page web application. It automatically generates the necessary HTML, JavaScript, and CSS, allowing developers to build for the web without writing web-specific languages.",
+    "functions": {
+      "Python-to-Web Asset Compilation": {
+        "files": [
+          {
+            "path": "reflex/compiler/__init__.py",
+            "description": "This file serves as the initialization file for the Reflex compiler module. It provides the top-level documentation string indicating its purpose as the Reflex compiler.",
+            "spof": true
+          },
+          {
+            "path": "reflex/compiler/utils.py",
+            "description": "This file provides common utility functions specifically used within the Reflex compiler. It handles tasks such as compiling import statements, validating imports, compiling application state, and managing client-side storage configurations (cookies, local storage, session storage).",
+            "spof": false
+          },
+          {
+            "path": "reflex/compiler/compiler.py",
+            "description": "This file implements the core compilation logic for Reflex applications, converting Python components, states, themes, and stylesheets into web-ready code. It handles generating various parts of the frontend, including pages, the app root, document root, context, and processing stylesheets.",
+            "spof": true
+          },
+          {
+            "path": "reflex/constants/compiler.py",
+            "description": "This file defines various constants, enums, and utility classes related to the compilation process and frontend generation in the Reflex framework. It specifies file extensions, variable names, page names, import structures, and special attributes used by the Reflex compiler.",
+            "spof": false
+          },
+          {
+            "path": "tests/benchmarks/test_compilation.py",
+            "description": "This file contains performance benchmarks for the Reflex framework's compilation processes, measuring the speed of compiling pages, stateful components, and gathering imports.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/compiler/test_compiler_utils.py",
+            "description": "This file contains unit tests for compiler utility functions within the Reflex framework, specifically focusing on the `compile_state` function and related state handling.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/compiler/__init__.py",
+            "description": "This is the package initialization file for the unit tests specifically designed for the compiler component of the 'reflex' project. Its primary purpose is to group related compiler test modules.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/compiler/test_compiler.py",
+            "description": "This file contains unit tests for the Reflex compiler's utility functions, specifically verifying the correct compilation of import statements and various stylesheet formats (CSS, SCSS, SASS).",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 68
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 11
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 10
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 8,
+      "spofCount": 2
+    },
+    "busFactor": 2,
+    "authorCount": 4
+  },
+  "Plugin & Component Extensibility": {
+    "description": "Provides an architecture for extending the framework's core capabilities. Developers can create and share their own reusable UI components or integrate with third-party libraries and services through a dedicated plugin system.",
+    "functions": {
+      "Component Scaffolding and Packaging": {
+        "files": [
+          {
+            "path": "reflex/constants/custom_components.py",
+            "description": "This file defines constants related to custom components, including directory names, file names like `pyproject.toml` and `README.md`, distribution directory names, and repository URLs for publishing Python packages.",
+            "spof": false
+          },
+          {
+            "path": "reflex/custom_components/__init__.py",
+            "description": "This `__init__.py` file serves as the package initializer for Reflex's custom components directory. Its purpose is to organize and facilitate the import of custom components within the Reflex framework.",
+            "spof": true
+          },
+          {
+            "path": "reflex/custom_components/custom_components.py",
+            "description": "This file provides a Command Line Interface (CLI) for creating and managing custom components within the Reflex framework. It includes templates and functions to scaffold necessary project files like `pyproject.toml`, `README.md`, component source, and a demo application for custom components.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 73
+          },
+          {
+            "name": "Martin Xu",
+            "percent": 17
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 7
+          }
+        ]
+      },
+      "Plugin Lifecycle and Core Integrations": {
+        "files": [
+          {
+            "path": "reflex/plugins/__init__.py",
+            "description": "Initializes the Reflex plugin system, making various plugin base classes and specific plugin implementations available for import within the `plugins` package.",
+            "spof": true
+          },
+          {
+            "path": "reflex/plugins/base.py",
+            "description": "This file defines the base class, `Plugin`, and associated context types and protocols for creating extensible components within the Reflex framework.",
+            "spof": true
+          },
+          {
+            "path": "reflex/plugins/_screenshot.py",
+            "description": "This file defines a Reflex plugin that enables screenshot functionality. It provides endpoints to retrieve active connections and to deep-copy the application state, which is crucial for isolating and preparing a state for rendering or capturing a screenshot.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/lucide/__init__.py",
+            "description": "This file initializes the Lucide icon component for the Reflex framework. It provides a convenient factory method, `icon`, for creating Lucide icons.",
+            "spof": true
+          },
+          {
+            "path": "reflex/experimental/__init__.py",
+            "description": "This file defines a namespace (`_x`) for experimental features within the `reflex` library. It consolidates new components and utilities, issuing warnings upon access to remind users of their unstable status.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_extra_overlay_function.py",
+            "description": "This file contains an integration test for Reflex's `extra_overlay_function` configuration. It verifies that a component defined by `extra_overlay_function` is correctly rendered in a Reflex application.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/plugins",
+            "description": "This directory is designated to contain unit tests specifically for the 'plugins' component of the Reflex project. It serves as the location for verifying the functionality and correctness of individual plugin modules.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 88
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 9
+          },
+          {
+            "name": "Elijah Ahianyo",
+            "percent": 2
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 10,
+      "spofCount": 7
+    },
+    "busFactor": 2,
+    "authorCount": 3
+  },
+  "Styling & Theming Engine": {
+    "description": "A powerful system for customizing the visual appearance of applications. Developers can apply styles directly in Python, create responsive designs for any screen size, and integrate popular CSS frameworks like Tailwind.",
+    "functions": {
+      "Core Styling Engine": {
+        "files": [
+          {
+            "path": "reflex/constants/colors.py",
+            "description": "This file defines the color palette and utility functions for formatting colors used in Reflex applications, based on Radix UI colors. It includes color names, shades, and a `Color` class for structured color representation.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/core/responsive.py",
+            "description": "This file provides utility functions for creating responsive UI components in Reflex, allowing elements to be conditionally displayed based on the user's device type (mobile, tablet, or desktop).",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/core/colors.py",
+            "description": "This file defines a utility function for creating and validating color objects, primarily wrapping Radix UI colors. It handles different color, shade, and alpha inputs, including support for Reflex variables.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/core/breakpoints.py",
+            "description": "This file provides utilities for defining, managing, and applying responsive design breakpoints in a CSS context, allowing for both predefined named breakpoints and custom CSS value breakpoints.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/radix/themes/color_mode.py",
+            "description": "This file provides UI components like icons, buttons, and switches for toggling and displaying the application's color mode (light, dark, or system). It also includes utility functions for conditional styling based on the current color mode.",
+            "spof": false
+          },
+          {
+            "path": "reflex/style.py",
+            "description": "This file defines utilities for handling styling within the Reflex framework, including managing color modes, converting style properties, and processing responsive style dictionaries.",
+            "spof": false
+          },
+          {
+            "path": "reflex/vars/color.py",
+            "description": "This file defines classes and utilities for handling color variables within the Reflex framework, specifically for managing literal color values and generating their corresponding CSS variable representations.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/tests_playwright/test_link_hover.py",
+            "description": "This file contains an integration test for a Reflex `rx.link` component, verifying that its hover styling correctly changes the link's color when the mouse hovers over it using Playwright.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/tests_playwright/test_appearance.py",
+            "description": "This file contains Playwright integration tests for Reflex applications, verifying their appearance and color mode functionality. It tests default light, dark, and system modes, as well as dynamic color mode toggling and conditional rendering.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/test_style.py",
+            "description": "This file contains unit tests for the Reflex styling system, verifying the correct conversion and application of CSS properties, including responsive styles, pseudo-selectors, and camel case transformations.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/core/test_colors.py",
+            "description": "This file contains unit tests for the `rx.color` function in Reflex, verifying its behavior with various inputs, state variables, f-strings, and its integration with conditional components and Radix UI colors.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 82
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 11
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 5
+          }
+        ]
+      },
+      "Tailwind CSS Integration": {
+        "files": [
+          {
+            "path": "reflex/plugins/tailwind_v3.py",
+            "description": "This file defines the Tailwind CSS v3 integration plugin for the Reflex framework. It includes constants, functions to generate Tailwind configuration and root styles, and methods to modify project files (postcss.config.js, main CSS) to enable Tailwind CSS.",
+            "spof": true
+          },
+          {
+            "path": "reflex/plugins/shared_tailwind.py",
+            "description": "This file defines data structures and utilities for managing Tailwind CSS configuration within Reflex plugins, allowing Python-defined configurations to be translated into JavaScript format for Tailwind's `tailwind.config.js`.",
+            "spof": true
+          },
+          {
+            "path": "reflex/plugins/tailwind_v4.py",
+            "description": "This file defines the Tailwind CSS v4 plugin for the Reflex framework, including constants, compilation logic for configurations and styles, and methods to integrate Tailwind v4 into project files like PostCSS and the main stylesheet.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_tailwind.py",
+            "description": "This file contains integration tests for enabling or disabling Tailwind CSS (v3 and v4) within a Reflex application, verifying that styling is applied correctly or not, based on the configuration.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 100
+          },
+          {
+            "name": "devin-ai-integration[bot]",
+            "percent": 0
+          },
+          {
+            "name": "benedikt-bartscher",
+            "percent": 0
+          }
+        ]
+      },
+      "Radix UI Theme Integration": {
+        "files": [
+          {
+            "path": "reflex/components/radix/themes/base.py",
+            "description": "This file defines base classes and components for integrating Radix UI Themes into a Reflex application, including common style properties, a theme provider, and a visual theme editor.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/typography/__init__.py",
+            "description": "This `__init__.py` file serves as the package entry point for Radix Themes typographic components, dynamically loading them using a lazy loader based on the `RADIX_THEMES_TYPOGRAPHY_MAPPING`.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/typography/base.py",
+            "description": "Defines fundamental literal types for text properties such as weight, alignment, size, and trim, primarily for use within Radix-themed typography components in Reflex.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/radix/themes/__init__.py",
+            "description": "This file initializes the Python package for Radix UI themes within the Reflex framework, organizing and exposing its components and utilities via lazy loading.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Masen Furer",
+            "percent": 35
+          },
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 24
+          },
+          {
+            "name": "Elijah Ahianyo",
+            "percent": 16
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 19,
+      "spofCount": 13
+    },
+    "busFactor": 2,
+    "authorCount": 6
+  },
+  "Infrastructure": {
+    "description": "",
+    "functions": {
+      "Build & Configuration": {
+        "files": [
+          {
+            "path": "reflex/constants/base.py",
+            "description": "This file defines core constants for the Reflex framework, including operating system checks, directory paths, project-specific settings, template information, frontend configurations, environment variables, log levels, and other miscellaneous values.",
+            "spof": true
+          },
+          {
+            "path": "reflex/constants/config.py",
+            "description": "This file defines various configuration constants used across the project, including file paths, expiration times, gitignore rules, and default network ports.",
+            "spof": false
+          },
+          {
+            "path": "reflex/constants/__init__.py",
+            "description": "This file serves as the main entry point for the `reflex.constants` package, aggregating and exposing all constants, enumerations, and utility classes defined within its submodules for easy access.",
+            "spof": true
+          },
+          {
+            "path": "reflex/config.py",
+            "description": "This file defines the configuration classes for Reflex applications, including database settings and core application runtime settings. It manages server ports, database connections, frontend packages, deployment, and environment variable overrides for the Reflex framework.",
+            "spof": false
+          },
+          {
+            "path": "docker-example/README.md",
+            "description": "This file provides various examples and instructions for deploying Reflex applications using Docker. It outlines different deployment scenarios, including simple configurations, production setups with Compose, and cloud platform-specific deployments.",
+            "spof": true
+          },
+          {
+            "path": "docker-example/simple-one-port/README.md",
+            "description": "This README.md file describes a Docker deployment for a Reflex application, utilizing a single HTTP port and a local Redis server, suitable for memory-constrained environments or single-port TLS termination platforms. It includes build and run instructions for this specific Docker setup.",
+            "spof": false
+          },
+          {
+            "path": "docker-example/production-compose/README.md",
+            "description": "This README provides instructions and details for deploying a Reflex application in a production environment using Docker Compose. It outlines a setup with Caddy for web serving, automatic TLS, and options for more robust configurations including database and cache services.",
+            "spof": true
+          },
+          {
+            "path": "docker-example/production-app-platform/README.md",
+            "description": "This README provides guidance and architectural details for deploying a production Reflex application to cloud hosting platforms (e.g., Azure, AWS, Google Cloud Run) using Docker, including steps for backend, frontend, Redis, and networking configurations.",
+            "spof": false
+          },
+          {
+            "path": "docker-example/production-one-port/README.md",
+            "description": "This `README.md` describes a Docker deployment for a Reflex application in production mode, optimized for memory-constrained environments using a single HTTP port, layer caching, and multi-stage builds. It provides instructions for building and running the Docker image, along with usage considerations.",
+            "spof": false
+          },
+          {
+            "path": "tests/test_node_version.py",
+            "description": "This file contains a test suite for ensuring that a Reflex application can successfully run and display the latest Node.js version. It creates a test app that reports its Node.js version and then asserts that this reported version matches the latest one officially released by Node.js.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/conftest.py",
+            "description": "This file provides shared pytest fixtures and utilities for integration tests, including parametrization of dev/prod environments for app testing and a spy to detect unexpected console errors.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/utils.py",
+            "description": "This file provides helper utilities for integration tests, including a context manager to poll for URL navigation and classes to interact with browser local and session storage via Selenium WebDriver.",
+            "spof": true
+          },
+          {
+            "path": "tests/__init__.py",
+            "description": "This file designates the 'tests' directory as a Python package, serving as the root for all test modules within the 'reflex' project.",
+            "spof": false
+          },
+          {
+            "path": "tests/benchmarks/fixtures.py",
+            "description": "This file defines data models and Reflex components for a complex sidebar navigation structure, along with a `BenchmarkState` to facilitate performance testing and benchmarking of Reflex applications with dynamic UI and state changes.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/__init__.py",
+            "description": "This `__init__.py` file marks the `units` directory as a Python package, serving as the root for unit tests within the Reflex project.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/conftest.py",
+            "description": "This file defines various pytest fixtures used across unit tests for the Reflex framework. It provides mock objects, test data, and configurations necessary for testing different components of the application.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/test_config.py",
+            "description": "This file contains unit tests for the Reflex configuration module, verifying how configuration settings are initialized, overridden by environment variables, and correctly interpreted for various application parameters. It covers tests for app name, ports, URLs, CORS, and environment variable parsing.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 58
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 15
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 14
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 17,
+      "spofCount": 9
+    },
+    "busFactor": 2,
+    "authorCount": 7
+  },
+  "Core UI Framework": {
+    "description": "Provides the foundational building blocks for creating web user interfaces entirely in Python. This includes a component-based architecture and wrappers for all standard HTML elements, enabling developers to structure an application's layout and content.",
+    "functions": {
+      "Component Core and Lifecycle": {
+        "files": [
+          {
+            "path": "reflex/components/literals.py",
+            "description": "This file defines custom Literal types, such as `LiteralInputType` and `LiteralRowMarker`, which are used throughout the Reflex framework for type hinting specific string values.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/field.py",
+            "description": "This file defines the base field class and a metaclass for managing field inheritance and processing in classes like components and props within a framework.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/__init__.py",
+            "description": "Initializes the `reflex.components` package by lazily loading various component submodules and making core component base classes accessible. This optimizes import times by only loading components when they are explicitly used.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/props.py",
+            "description": "This file defines a system for managing and serializing component properties (props) in the Reflex framework, including the `PropsBase` class for component attributes and a custom field type `PropsField`.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/component.py",
+            "description": "This file defines the foundational `BaseComponent` class and its metaclass, `BaseComponentMeta`, which are essential for creating all components in the Reflex framework. It handles the definition, processing, and management of component fields, including distinguishing between Python and JavaScript properties.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/base/app_wrap.py",
+            "description": "This file defines the `AppWrap` component, which serves as a top-level container to wrap the entire Reflex application's children. It extends `Fragment` and is designed to encompass all other components.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/base/strict_mode.py",
+            "description": "This file defines the `StrictMode` component for the Reflex framework, which enables React's strict mode for its child components.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/base/__init__.py",
+            "description": "This `__init__.py` file serves as the entry point for the `reflex.components.base` package, utilizing a lazy loader to expose various base components and utilities from its submodules directly under the package's namespace.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/core/__init__.py",
+            "description": "This file serves as the entry point for the core Reflex components, utilizing lazy loading to dynamically expose components and utilities from various submodules. It defines which components are available directly under the 'reflex.components.core' namespace.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/tags/tag.py",
+            "description": "This file defines the `Tag` dataclass, which represents a React-like component tag with its name, properties, and children. It provides methods for managing tag properties and rendering their values within the Reflex framework.",
+            "spof": true
+          },
+          {
+            "path": "reflex/page.py",
+            "description": "This file defines the `@page` decorator used to register functions as web pages within a Reflex application, allowing configuration of page-specific properties like routes, titles, and descriptions. It also sets up the module to allow direct access to the `page` decorator (e.g., `rx.page`).",
+            "spof": false
+          },
+          {
+            "path": "reflex/middleware/__init__.py",
+            "description": "This file serves as the package initializer for `reflex.middleware`, importing and exposing core middleware components like `HydrateMiddleware` and `Middleware`.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_memo.py",
+            "description": "This file contains integration tests for `rx.memo` components within a Reflex application, verifying their rendering, custom code injection, and event handling capabilities.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/tests_playwright/test_stateless_app.py",
+            "description": "This file contains integration tests for a stateless Reflex application. It verifies that a stateless app renders its content correctly and that the backend event endpoint is not accessible.",
+            "spof": false
+          },
+          {
+            "path": "tests/benchmarks/conftest.py",
+            "description": "This conftest.py file defines and exposes pytest fixtures, specifically `evaluated_page` and `unevaluated_page`, for use in benchmark tests within the 'reflex' project. It makes these fixtures readily available to other test modules in the directory.",
+            "spof": true
+          },
+          {
+            "path": "tests/benchmarks/test_evaluate.py",
+            "description": "This file contains a benchmark test to measure the performance of evaluating or rendering a Reflex page component using pytest-codspeed.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/test_page.py",
+            "description": "This file contains unit tests for the `page` decorator in the Reflex framework, verifying its functionality in registering page components and their metadata.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/test_base.py",
+            "description": "This file contains unit tests for the `Base` class in the `reflex` library, verifying its field introspection (`__fields__`) and JSON serialization capabilities using `pytest`.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/assets/custom_script.js",
+            "description": "This file contains a simple JavaScript snippet intended for use as a custom script asset within unit tests for the Reflex project.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/assets/test_assets.py",
+            "description": "This file contains unit tests for the `rx.asset` function in the Reflex framework, verifying its behavior for shared and local assets, including subfolder handling and error conditions for non-existent files.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/test_app.py",
+            "description": "This file contains unit tests for the `App` class within the Reflex framework, covering its initialization, page management, and integration with admin dashboards and state handling.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/__init__.py",
+            "description": "This `__init__.py` file marks the `components` directory as a Python package, serving as a container for unit tests related to components within the Reflex framework.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/test_component_state.py",
+            "description": "This file contains unit tests for `ComponentState` in Reflex, ensuring that components created from it have independent state classes and that `ComponentState` subclasses cannot be instantiated directly.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/test_props.py",
+            "description": "This file contains unit tests for Reflex property classes (`NoExtrasAllowedProps`, `PropsBase`) and event handlers, verifying their initialization, dictionary conversion (including camelCase naming), and validation rules.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/base/test_bare.py",
+            "description": "This file contains unit tests for the `Bare` component in the Reflex framework. It verifies that the `Bare` component correctly renders various types of content, including f-strings and Reflex variables.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/test_component.py",
+            "description": "This file contains unit tests for the `reflex.Component` class, covering aspects such as prop validation, style and custom attributes, component creation, event handling, and children/parent relationship validation.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/core/test_banner.py",
+            "description": "This file contains unit tests for the `ConnectionBanner`, `ConnectionModal`, `ConnectionPulser`, and `WebsocketTargetURL` components within the Reflex framework, verifying their creation, imports, and rendering capabilities.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/typography/test_markdown.py",
+            "description": "This file contains unit tests for the `Markdown` component in the Reflex framework, specifically testing its ability to map and retrieve UI components based on Markdown tags and to customize its component map.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 63
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 21
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 11
+          }
+        ]
+      },
+      "Dynamic Rendering and Control Flow": {
+        "files": [
+          {
+            "path": "reflex/components/dynamic.py",
+            "description": "This file provides utilities and serialization logic for dynamically generating and loading Reflex components from the backend, handling JavaScript imports and library bundling for client-side evaluation.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/base/fragment.py",
+            "description": "This file defines the `Fragment` component, which enables returning multiple Reflex components from a function without an enclosing container, analogous to React Fragments.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/base/bare.py",
+            "description": "This file defines the `Bare` component, a special Reflex component designed to render content directly without an enclosing HTML tag. It handles various content types, including variables, and propagates component-related properties from its contents through the rendering pipeline.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/core/foreach.py",
+            "description": "This file defines the `Foreach` component, which enables dynamic rendering of a list of UI components by iterating over an iterable and applying a render function.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/core/cond.py",
+            "description": "This file provides utilities for conditional rendering in Reflex, allowing different components or property values to be displayed based on a specified condition or the current color mode.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/core/match.py",
+            "description": "This file defines the `Match` component in Reflex, which provides conditional logic similar to a 'switch' or 'match' statement, allowing for different components or variables to be rendered/returned based on a given condition.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/tags/cond_tag.py",
+            "description": "This file defines the `CondTag` class, which represents a tag for conditionally rendering components based on a given state or condition. It specifies what to render when the condition is true and optionally when it is false.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/tags/match_tag.py",
+            "description": "This file defines the `MatchTag` component, which enables conditional rendering or logic by matching a condition against a sequence of cases, including a default fallback.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/tags/iter_tag.py",
+            "description": "This file defines the `IterTag` class, which represents a UI component designed to iterate over a list or iterable of data and render a sub-component for each item, managing the item and index variables within the loop.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/test_tag.py",
+            "description": "This file contains unit tests for the `Tag`, `CondTag`, and `Tagless` components within the Reflex framework, specifically validating their property handling, formatting, and representation.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/core/test_match.py",
+            "description": "This file contains unit tests for the `rx.match` component/utility in the Reflex framework, verifying its behavior with different case types, return values (components and variables), and error handling for invalid configurations.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/core/test_cond.py",
+            "description": "This file contains unit tests for the `Cond` component and `cond` utility function in Reflex, verifying its behavior with different data types, component rendering, prop handling, and edge cases like missing 'else' branches and computed variables.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/core/test_foreach.py",
+            "description": "This file contains unit tests for the `Foreach` component in the Reflex framework, verifying its correct rendering behavior across various data structures and handling of different input types and error conditions.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 85
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 7
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 5
+          }
+        ]
+      },
+      "HTML Element Abstraction Layer": {
+        "files": [
+          {
+            "path": "reflex/components/base/body.py",
+            "description": "This file defines the `Body` component for the Reflex framework, intended for displaying the main content area of a web page.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/base/script.py",
+            "description": "This file defines a `Script` component that acts as a wrapper for the HTML `<script>` element, allowing it to be managed within the document's head using the `Helmet` component. It supports various script attributes and handles their creation.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/base/meta.py",
+            "description": "This file defines components for managing HTML metadata, including page titles, descriptions, and Open Graph images, within the Reflex framework.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/base/document.py",
+            "description": "This file defines Reflex components that wrap elements from the 'react-router' library to represent the main structural parts of a web document, such as meta tags, links, scroll restoration, content outlets, and scripts.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/base/link.py",
+            "description": "This file defines Reflex components for rendering HTML <link> and <script> tags, enabling the programmatic addition of external resources and scripts to web applications.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/core/html.py",
+            "description": "This file defines a Reflex component named `Html` that allows rendering raw HTML content within an application using `dangerouslySetInnerHTML`.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/core/helmet.py",
+            "description": "This file defines the `Helmet` component for the Reflex framework, which integrates the `react-helmet` library to manage document head elements like titles and meta tags.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/el/element.py",
+            "description": "This file defines the base `Element` class for all raw HTML elements within the Reflex framework. It serves as a foundational component for creating web UI elements.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/el/__init__.py",
+            "description": "Initializes the `el` package, providing raw HTML elements for the Reflex framework. It uses a lazy loader to export elements, specifically replacing the standard `<a>` tag with React Router's Link component.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/el/elements/base.py",
+            "description": "This file defines base classes and common HTML attributes for UI elements within the Reflex framework, including type aliases for various HTML and ARIA attribute values. It serves as a foundation for building web components by providing standardized attribute definitions.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/el/elements/scripts.py",
+            "description": "This file defines Reflex components for HTML script-related elements like Canvas, Noscript, and Script, including properties specific to the Script tag.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/el/elements/tables.py",
+            "description": "This file defines Python classes for various HTML table elements (e.g., Table, Tbody, Td, Th) within the Reflex framework, including their specific attributes and properties. It also provides convenience functions for creating these elements.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/el/elements/forms.py",
+            "description": "This file defines Reflex components for various HTML form elements such as Button, Datalist, Fieldset, Form, and BaseInput. It includes logic for handling form submissions and managing form data.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/el/elements/sectioning.py",
+            "description": "This file defines classes and convenience functions for common HTML sectioning and heading elements (e.g., body, article, h1, nav) to be used within the Reflex framework.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/el/elements/metadata.py",
+            "description": "This file defines Python classes for HTML metadata elements such as <base>, <head>, <link>, <meta>, <title>, and <style>. It provides a programmatic way to manage and render these elements within the Reflex web framework.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/el/elements/other.py",
+            "description": "This file defines Python classes for various HTML elements (e.g., Details, Dialog, Summary, Template) and provides factory functions for their creation within the Reflex framework. It serves as a collection of less common or specialized HTML components.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/el/elements/media.py",
+            "description": "This file defines Reflex components for various HTML media elements like audio, video, images, iframes, and related elements such as track, source, and map, along with SVG graphic elements.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/el/elements/__init__.py",
+            "description": "This file dynamically organizes and exposes a wide range of HTML-like element classes for the Reflex UI framework. It uses lazy loading to make these elements available as attributes of the module, categorized by their function (e.g., forms, media, typography).",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/el/elements/typography.py",
+            "description": "This file defines Python components for common HTML typography and block-level elements (e.g., `div`, `p`, `ul`, `ol`, `blockquote`), allowing them to be used within the Reflex framework. Each component maps to an HTML tag and exposes relevant HTML attributes as `Var` types.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/el/elements/inline.py",
+            "description": "This file defines Python classes for various HTML inline elements (e.g., A, Span, B, I) within the Reflex framework, including their specific attributes and a factory function for easy creation. It serves as a comprehensive collection for generating these elements dynamically.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/tags/__init__.py",
+            "description": "This file serves as the package initializer for Reflex's tag components, making various representations for React tags accessible from this module.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/tags/tagless.py",
+            "description": "This file defines the `Tagless` class, which represents a component containing raw string content without an associated HTML tag. It formats and provides access to this content for direct embedding.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_media.py",
+            "description": "This file contains integration tests for the Reflex `rx.image` component, verifying its ability to render images in various formats (PNG, BMP, JPEG, GIF, WEBP) and from external URLs. It checks that image sources are correctly encoded as data URIs and that the images load properly in the browser.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_navigation.py",
+            "description": "This file contains integration tests for Reflex navigation components, specifically `rx.link` instances. It defines a sample Reflex application with different types of links and then uses `pytest` and `selenium` to verify their functionality, including internal navigation and opening external links in new tabs.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/base/test_link.py",
+            "description": "This file contains unit tests for the `RawLink` and `ScriptTag` components within the Reflex framework, ensuring they render correctly.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/base/test_script.py",
+            "description": "This file contains unit tests for the `Script` component of the Reflex framework. It verifies the component's rendering behavior for inline scripts, external script sources, and error handling when neither is specified.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/core/test_responsive.py",
+            "description": "This file contains unit tests for Reflex's responsive design components, such as `mobile_only`, `tablet_only`, and `desktop_only`. It verifies that these components correctly create `Box` instances for displaying content based on different device breakpoints.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/core/test_html.py",
+            "description": "This file contains unit tests for the `Html` component within the Reflex framework, verifying its creation, handling of children, and correct rendering of raw HTML content, including dynamic content from the application state.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/el/test_svg.py",
+            "description": "This file contains unit tests for various SVG element components (e.g., Circle, Rect, Path, Svg) within the Reflex framework. It verifies that each component correctly renders with its corresponding SVG tag name.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/media/__init__.py",
+            "description": "This `__init__.py` file serves as a marker for the `media` directory, indicating it contains unit tests for media components within the Reflex framework.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/media/test_image.py",
+            "description": "This file contains unit tests for the image component and image serialization utilities within the Reflex framework, ensuring proper handling and display of images.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 71
+          },
+          {
+            "name": "Alek Petuskey",
+            "percent": 7
+          },
+          {
+            "name": "Elijah Ahianyo",
+            "percent": 6
+          }
+        ]
+      },
+      "Advanced Interactive UI Widgets": {
+        "files": [
+          {
+            "path": "reflex/components/base/error_boundary.py",
+            "description": "Defines a React Error Boundary component for Reflex applications that catches unhandled frontend exceptions and displays a customizable fallback UI with error details.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/core/clipboard.py",
+            "description": "This file defines the `Clipboard` component in Reflex, which provides global handling for paste events within a Reflex application, allowing developers to define actions when content is pasted.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/core/auto_scroll.py",
+            "description": "This file defines the `AutoScroll` component for Reflex, which automatically scrolls to the bottom when new content is added or the container resizes, mimicking behavior seen in chat applications or log outputs.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/core/debounce.py",
+            "description": "This file defines a `DebounceInput` component that wraps other form controls to add client-side input debouncing functionality, buffering events to prevent rapid backend calls.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/core/window_events.py",
+            "description": "This file defines the `WindowEventListener` component for Reflex, enabling developers to attach event handlers to various browser window events such as resize, scroll, focus, blur, and keyboard input.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/core/sticky.py",
+            "description": "This file defines components for a 'sticky' badge, including the Reflex logo and a 'Built with Reflex' label, designed to be displayed as a fixed-position element on web pages.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/core/upload.py",
+            "description": "This file defines the `Upload` component and associated utilities for handling file uploads within a Reflex application. It provides functionality for selecting, managing, and interacting with uploaded files, including events for drag-and-drop operations.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/core/banner.py",
+            "description": "This file defines Reflex components and utilities for handling and displaying WebSocket connection errors within a Reflex application. It provides UI elements such as toasts, banners, modals, and pulsing icons to inform users about connection issues.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/moment/moment.py",
+            "description": "This file defines the `Moment` component for a web framework, which enables humanized and flexible rendering of dates and times using the `react-moment` and `moment.js` libraries. It provides properties for formatting, relative time display, time zone handling, and date calculations.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/lucide/icon.py",
+            "description": "This file defines Reflex components for integrating Lucide icons, including a static Icon component with validation and a DynamicIcon component for variable icon names. It lists all available Lucide icons and provides logic for their proper rendering and usage within a Reflex application.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_client_storage.py",
+            "description": "This file contains integration tests for Reflex's client-side storage features, specifically `rx.Cookie`, `rx.LocalStorage`, and `rx.SessionStorage`. It uses Selenium WebDriver to simulate user interactions and verify the functionality of these storage mechanisms within a Reflex application.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/test_input.py",
+            "description": "This file contains integration tests for Reflex text input components, verifying their behavior with fully controlled states, default values, and user interactions like typing and clearing. It uses Selenium to simulate user input and assert application state changes.",
+            "spof": true
+          },
+          {
+            "path": "tests/integration/test_icon.py",
+            "description": "This file contains integration tests for the Reflex Icon component. It sets up an application that displays a variety of icons and then verifies that these icons are correctly rendered in the DOM.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/core/test_upload.py",
+            "description": "This file contains unit tests for the Reflex `Upload` and `StyledUpload` components, verifying their creation, event handling, and associated utility functions.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/core/test_debounce.py",
+            "description": "This file contains unit tests for the `DebounceInput` component in Reflex, verifying its creation, prop handling, event triggers, and implicit debounce functionality for input components like `rx.input` and `rx.text_area`.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/lucide/test_icon.py",
+            "description": "This file contains unit tests for the `Icon` component, ensuring correct creation, alias mapping, and error handling for valid and invalid Lucide icon tags.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 63
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 15
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 9
+          }
+        ]
+      },
+      "Radix UI Themed Components": {
+        "files": [
+          {
+            "path": "reflex/components/radix/primitives/slider.py",
+            "description": "This file defines Reflex components for the Radix UI Slider, including its root, track, range, and thumb elements. It provides both low-level primitive components and a high-level API for creating sliders in Reflex applications.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/primitives/accordion.py",
+            "description": "This file defines the Reflex components for the Radix UI Accordion, including its root, items, headers, and content, along with their properties and styling.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/primitives/progress.py",
+            "description": "This file defines the Reflex components for a Radix UI progress bar, including its root container, indicator, and a high-level composite component for easy usage.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/primitives/base.py",
+            "description": "This file defines base classes for integrating Radix primitive components into the Reflex framework, handling common properties like `as_child` and `class_name`, and special considerations for trigger-like components' event handling.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/radix/primitives/__init__.py",
+            "description": "This `__init__.py` file serves as the entry point for Radix UI primitive components in Reflex, using lazy loading to efficiently aggregate and expose them from their respective submodules.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/aspect_ratio.py",
+            "description": "This file defines the `AspectRatio` component for Reflex, integrated with Radix UI themes, allowing content to be displayed with a specified width-to-height ratio.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/radix/themes/components/separator.py",
+            "description": "This file defines the `Separator` component for Reflex, a Python wrapper for the Radix UI Themes Separator component, used to visually or semantically separate content.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/typography/code.py",
+            "description": "This file defines the `Code` component for Reflex, integrating Radix UI theme styling options for displaying code blocks. It allows customization of variant, size, weight, color scheme, and contrast for code rendering.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/typography/text.py",
+            "description": "This file defines Reflex components for rendering and styling text, including a generic Text component and specialized elements like Span, Em, Kbd, Quote, and Strong, all integrated with Radix UI themes.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/typography/blockquote.py",
+            "description": "This file defines the `Blockquote` component for Reflex applications, providing a block-level extended quotation styled according to Radix UI Themes. It allows customization of the blockquote's size, weight, color scheme, and contrast.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Thomas Brandého",
+            "percent": 33
+          },
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 31
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 10
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 98,
+      "spofCount": 51
+    },
+    "busFactor": 3,
+    "authorCount": 8
+  },
+  "Rich Component Library": {
+    "description": "A comprehensive suite of pre-built, high-level UI components that accelerate development. It includes everything from interactive data visualizations and tables to enterprise-grade form elements, dialogs, and notification pop-ups.",
+    "functions": {
+      "Data Grid and Table Management": {
+        "files": [
+          {
+            "path": "reflex/components/moment/__init__.py",
+            "description": "This file initializes the 'moment' component package, providing Python bindings for Moment.js functionalities. It exports the Moment and MomentDelta classes, as well as a 'moment' factory function for convenience.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/gridjs/datatable.py",
+            "description": "This file defines a `DataTable` component for the Reflex framework, which uses the gridjs library to render interactive data tables. It handles data from various sources, including pandas DataFrames, and provides features like search, sorting, and pagination.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/gridjs/__init__.py",
+            "description": "This file initializes the Grid.js component package for Reflex, exposing `DataTable.create` as `data_table` for easy access to data table functionality.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/datadisplay/dataeditor.py",
+            "description": "This file defines the `DataEditor` component, which integrates the `glide-data-grid` JavaScript library into a Reflex application for displaying and interacting with tabular data.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/data_list.py",
+            "description": "This file defines the Python components for the Radix Themes DataList, including classes for its root, items, labels, and values. It provides a structured way to interact with and render these UI elements within a Reflex application.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/table.py",
+            "description": "This file defines Reflex components for creating tables using the Radix UI themes, including root, header, body, row, and various cell types. It provides a structured API for building interactive and styled tables within the Reflex framework.",
+            "spof": false
+          },
+          {
+            "path": "tests/integration/tests_playwright/test_table.py",
+            "description": "This file contains integration tests using Playwright for the Reflex UI framework's table component. It defines a sample Reflex app with a table and then verifies its rendering, including column headers, row headers, and cell content.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/datadisplay/test_dataeditor.py",
+            "description": "This file contains unit tests for the `DataEditor` component within the `reflex` library, specifically verifying its creation and initial rendering properties.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/datadisplay/__init__.py",
+            "description": "This file serves as the `__init__.py` for the unit tests of the datadisplay component within the Reflex framework, indicating the directory contains tests for this specific component.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/datadisplay/test_datatable.py",
+            "description": "This file contains unit tests for the Reflex DataTable component, verifying its data handling, validation of props and computed variables, and the serialization of Pandas DataFrames.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/datadisplay/conftest.py",
+            "description": "This file provides pytest fixtures for various `DataTableState` configurations, used in unit tests for Reflex's data display components. These fixtures help set up different data structures and column definitions for testing purposes.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 49
+          },
+          {
+            "name": "MatthewCollinsNZ",
+            "percent": 22
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 21
+          }
+        ]
+      },
+      "Media Playback": {
+        "files": [
+          {
+            "path": "reflex/components/react_player/audio.py",
+            "description": "This file defines the `Audio` component for the Reflex framework. It extends the `ReactPlayer` component to provide audio playback capabilities.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/react_player/react_player.py",
+            "description": "This file defines the `ReactPlayer` component for the Reflex framework, providing an interface to embed and control media playback using the react-player library. It includes properties for media source, playback controls, and numerous event handlers for various player states.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/react_player/__init__.py",
+            "description": "This file serves as the initialization module for the `react_player` component in Reflex, providing an interface for audio and video components. It exposes `Audio` and `Video` components for direct use.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/react_player/video.py",
+            "description": "This file defines the `Video` component for the Reflex framework. It extends the `ReactPlayer` base component to provide video playback functionality.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Masen Furer",
+            "percent": 75
+          },
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 20
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 4
+          }
+        ]
+      },
+      "Formatted Text and Code Rendering": {
+        "files": [
+          {
+            "path": "reflex/components/markdown/__init__.py",
+            "description": "This file initializes the `markdown` subpackage within Reflex's components. It primarily serves to import and expose the main markdown component from its sibling module, making it accessible at the package level.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/markdown/markdown.py",
+            "description": "This file defines the `Markdown` component for the Reflex framework, which renders markdown content by mapping its elements to UI components and supporting remark/rehype plugins.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/datadisplay/code.py",
+            "description": "This file defines the `CodeBlock` component for Reflex applications, enabling the display of syntax-highlighted code. It includes support for various programming languages and customizable themes for the code blocks.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/datadisplay/shiki_code_block.py",
+            "description": "This file defines a Reflex component for displaying syntax-highlighted code using Shiki.js, including features like copy-to-clipboard, theming, language support, line numbers, and code block decorations.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/datadisplay/test_code.py",
+            "description": "This file contains unit tests for the `CodeBlock` component, specifically verifying that `Theme` enum values (like one_light and one_dark) are correctly mapped to their corresponding string representations for JavaScript output.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/datadisplay/test_shiki_code.py",
+            "description": "This file contains unit tests for the `ShikiCodeBlock` and `ShikiHighLevelCodeBlock` components, verifying their functionality for creating, configuring, and rendering code blocks with syntax highlighting and related features.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/markdown/test_markdown.py",
+            "description": "This file contains unit tests for the Reflex Markdown component and its `MarkdownComponentMap`, focusing on how custom components, syntax highlighting, and component mapping functions are generated and formatted.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 37
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 36
+          },
+          {
+            "name": "Elijah Ahianyo",
+            "percent": 23
+          }
+        ]
+      },
+      "Data Visualization and Charting": {
+        "files": [
+          {
+            "path": "reflex/components/plotly/plotly.py",
+            "description": "This file defines Reflex components for displaying interactive Plotly graphs, including handling graph data, layout, configuration, and user interaction events. It also provides basic and dynamically loaded versions of the Plotly component.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/plotly/__init__.py",
+            "description": "This file defines and organizes various Plotly components for the Reflex framework, creating a unified namespace for their easy access and usage. It serves as the primary API for integrating different Plotly visualization types into Reflex applications.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/recharts/__init__.py",
+            "description": "This file serves as the `__init__.py` for the `recharts` package within Reflex, providing a lazy-loading mechanism to expose various Recharts components and related literal types. It organizes components into categories like cartesian, charts, general, and polar, along with specific Recharts type literals.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/recharts/polar.py",
+            "description": "This file defines Python components for various Recharts polar chart types, including Pie, Radar, RadialBar, and PolarAngleAxis. It provides wrappers for integrating these chart elements into applications using Reflex.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/recharts/cartesian.py",
+            "description": "This file defines the Reflex components for various Recharts elements used in Cartesian charts, such as axes (XAxis, YAxis, ZAxis), brushes, and other cartesian chart properties.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/recharts/recharts.py",
+            "description": "This file defines base components and various literal type hints for integrating the 'recharts' JavaScript charting library within the Reflex framework, enabling the creation of interactive charts.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/recharts/charts.py",
+            "description": "This module defines various Recharts chart components, including base classes for categorical and general charts, and specific implementations like AreaChart, BarChart, LineChart, ComposedChart, and PieChart, for use within the Reflex framework.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/graphing/test_plotly.py",
+            "description": "This file contains unit tests for the Reflex Plotly component, verifying the serialization of Plotly figures and the ability to configure the component.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/components/graphing/test_recharts.py",
+            "description": "This file contains unit tests for various Recharts components within the Reflex framework, ensuring they are correctly instantiated and wrapped by a ResponsiveContainer.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/graphing/__init__.py",
+            "description": "This `__init__.py` file serves to mark the `graphing` directory as a Python package within the unit tests for Reflex components. Its primary purpose is to contain or enable the testing of graphing-related components.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/recharts/test_cartesian.py",
+            "description": "This file contains unit tests for various Reflex Recharts Cartesian components like XAxis, YAxis, ZAxis, Brush, Area, Bar, Line, and Scatter, ensuring their basic rendering and naming are correct.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/recharts/test_polar.py",
+            "description": "This file contains unit tests for Recharts polar components (e.g., Pie, Radar, RadialBar, PolarAxis components) within the Reflex framework. It verifies that these components correctly render with their expected Recharts names.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 63
+          },
+          {
+            "name": "Carlos",
+            "percent": 12
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 7
+          }
+        ]
+      },
+      "Core UI Primitives and Layout": {
+        "files": [
+          {
+            "path": "reflex/components/datadisplay/logo.py",
+            "description": "This file provides Python components for displaying the Reflex logo, including an SVG version and a 'Built with Reflex' component that links to the Reflex website.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/datadisplay/__init__.py",
+            "description": "This `__init__.py` file aggregates and provides lazy loading for various data display components within the `reflex.components.datadisplay` package, including code blocks, data editors, and logos.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/__init__.py",
+            "description": "This file establishes the Python namespace for Radix UI components within the Reflex framework. It uses lazy loading to dynamically import submodules and attributes from Radix UI packages.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/radix/themes/components/avatar.py",
+            "description": "This file defines the `Avatar` component for Reflex applications, integrating the @radix-ui/themes Avatar component. It specifies various properties such as variant, size, color, and image source for customizing user avatars.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/progress.py",
+            "description": "This file defines the `Progress` component, which is a Radix Themes progress bar, including its properties, styling, and creation method.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/inset.py",
+            "description": "This file defines the `Inset` component for Reflex, based on `@radix-ui/themes`, which is used to apply negative margins and control padding, allowing content to bleed into surrounding containers.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/radix/themes/components/skeleton.py",
+            "description": "This file defines the `Skeleton` component for Radix themes in Reflex, providing a placeholder UI element with configurable dimensions. It allows developers to create loading state indicators with customizable width and height properties.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/badge.py",
+            "description": "This file defines the `Badge` component for the Reflex framework, integrating the Radix UI Themes' badge element. It specifies properties like variant, size, color scheme, and radius for customization.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/card.py",
+            "description": "This file defines the `Card` component for Reflex applications, integrating the Radix UI Themes' card element. It provides properties for customizing the card's size and visual variant.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/tabs.py",
+            "description": "This file defines the `Tabs` component and its sub-components (Root, List, Trigger, Content) for the Radix UI theme, enabling the creation of interactive tabbed interfaces within applications.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/scroll_area.py",
+            "description": "This file defines the `ScrollArea` component for Reflex applications, providing a customizable and cross-browser scrollable area based on Radix UI themes. It allows for control over scrollbar visibility, type, and hide delay.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/radix/themes/components/spinner.py",
+            "description": "This file defines the `Spinner` component for the Reflex framework, integrating with Radix Themes to provide a customizable loading spinner.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/__init__.py",
+            "description": "This file serves as the `__init__.py` for the Radix Themes components within the Reflex framework. It uses a lazy loading mechanism to dynamically expose all available Radix components, optimizing import performance.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/icon_button.py",
+            "description": "This file defines the `IconButton` component for the Reflex framework, providing a specialized button designed to display a single icon with Radix UI styling and functionality.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/typography/link.py",
+            "description": "This file defines the `Link` component for Radix Themes within the Reflex framework, providing a semantic element for navigation with styling options and support for both internal (React Router) and external links.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/typography/heading.py",
+            "description": "This file defines the `Heading` component for Radix Themes within the Reflex framework, providing customizable heading elements with various styling, size, weight, and alignment options.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/radix/test_icon_button.py",
+            "description": "This file contains unit tests for the `IconButton` component within the Reflex framework's Radix theme. It tests the component's creation, property handling (like `size`), and error conditions (e.g., missing children).",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 40
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 19
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 16
+          }
+        ]
+      },
+      "Overlays, Modals, and Notifications": {
+        "files": [
+          {
+            "path": "reflex/components/radix/primitives/dialog.py",
+            "description": "This file defines Python components that wrap the `@radix-ui/react-dialog` library, providing interactive dialog elements for the Reflex framework.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/radix/primitives/drawer.py",
+            "description": "This file defines a collection of UI components for creating a Drawer (a slide-out panel), based on Radix UI primitives and inspired by the Vaul library and shadcn/ui styling.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/alert_dialog.py",
+            "description": "This file defines the Reflex components for the Radix UI AlertDialog, including its root, trigger, content, title, description, action, and cancel parts. It provides a structured way to integrate Radix UI alert dialogs into Reflex applications.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/context_menu.py",
+            "description": "This file defines Reflex components for the Radix UI Context Menu, including its various parts like the root, trigger, content, submenus, items, separators, and groups. It provides interactive context menu functionality for Reflex applications.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/dropdown_menu.py",
+            "description": "This file defines Reflex components for a Radix UI dropdown menu, including its root, trigger, content, sub-menus, and individual items, along with their properties and event handlers.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/radix/themes/components/dialog.py",
+            "description": "This file defines the Python wrappers for the Radix UI Dialog components, including `Root`, `Trigger`, `Title`, `Content`, `Description`, and `Close` elements. It organizes these components within a `Dialog` namespace for use in Reflex applications.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/tooltip.py",
+            "description": "This file defines the `Tooltip` component for Radix UI themes in the Reflex framework, including its properties, supported literal types for positioning and alignment, and event handlers.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/popover.py",
+            "description": "This file defines the Radix UI Themes Popover component and its sub-components (Root, Trigger, Content, Close) for use in Reflex applications. It provides a floating element for displaying rich content, triggered by a button.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/hover_card.py",
+            "description": "This file defines the Reflex components for a Radix UI Themes Hover Card, enabling the display of interactive content previews when a user hovers over an element.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/sonner/__init__.py",
+            "description": "This is the initialization file for the 'sonner' component within the Reflex framework. It imports and exposes the 'toast' functionality, making it accessible directly from the 'sonner' package.",
+            "spof": true
+          },
+          {
+            "path": "reflex/components/sonner/toast.py",
+            "description": "This file implements components and utility functions for displaying Sonner-based toast notifications within the Reflex framework, including methods for sending various types of toast messages.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 56
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 17
+          },
+          {
+            "name": "Tom Gotsman",
+            "percent": 7
+          }
+        ]
+      },
+      "Form Input and Control Components": {
+        "files": [
+          {
+            "path": "reflex/components/radix/primitives/form.py",
+            "description": "This file defines various components for constructing forms using the Radix UI library within the Reflex framework, including root, field, label, control, message, and submit elements. It provides Python wrappers for `@radix-ui/react-form` components.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/radio_cards.py",
+            "description": "Defines the Reflex components for Radix Themes RadioCards, including the root container and individual radio card items, with various customizable properties for styling and behavior.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/radio.py",
+            "description": "This file defines the `Radio` component for Radix Themes, specifying its properties such as size, variant, color scheme, and high contrast. It provides a Python class and a convenience function to create Radix Themes radio buttons.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/checkbox_group.py",
+            "description": "This file defines the Python classes for the CheckboxGroup component, including its root and item elements, within the Radix Themes library for Reflex applications. It provides properties for customizing the checkbox group's size, variant, color scheme, default values, and individual item properties.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/slider.py",
+            "description": "This file defines the `Slider` component for Radix UI Themes within the Reflex framework, enabling interactive user selection from a range of values. It includes properties for customization such as size, color, value, and event handlers for user interaction.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/radio_group.py",
+            "description": "This file defines the Reflex components for the Radix UI RadioGroup, including low-level `RadioGroupRoot` and `RadioGroupItem` components, as well as a high-level `HighLevelRadioGroup` wrapper for simplified usage.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/checkbox.py",
+            "description": "This file defines Reflex components for Radix UI theme checkboxes, including a basic `Checkbox` and a `HighLevelCheckbox` that combines a checkbox with a label for easier use.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/segmented_control.py",
+            "description": "This file defines the `SegmentedControl` component for Radix Themes in Reflex, including its root container and individual items, along with their properties and event handlers.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/checkbox_cards.py",
+            "description": "This file defines Python components for the Radix UI CheckboxCards, including its root container and individual items, for use within the Reflex framework.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/switch.py",
+            "description": "This file defines the `Switch` component for Reflex, providing a customizable toggle switch alternative to a checkbox based on Radix UI's themes. It includes properties for size, color, state, and event handling.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/text_area.py",
+            "description": "This file defines the `TextArea` component for Reflex, wrapping the Radix UI `TextArea` with properties for size, variant, color, and form integration. It also includes debouncing logic for controlled inputs to prevent typing jank.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/button.py",
+            "description": "This file defines the `Button` component for the Reflex framework, integrating Radix UI theme properties like size, variant, and color scheme.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/text_field.py",
+            "description": "This file defines the Reflex components for the Radix UI `TextField` component, including its root input element and slots for adding icons or buttons. It allows developers to integrate Radix UI text input fields into Reflex applications.",
+            "spof": false
+          },
+          {
+            "path": "reflex/components/radix/themes/components/select.py",
+            "description": "This file defines the Python components for the Radix UI 'Select' component, offering both low-level building blocks and a high-level wrapper for creating interactive dropdown selection elements in a Reflex application.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/components/forms/test_form.py",
+            "description": "This file contains unit tests for the `Form` component in the Reflex framework, specifically verifying its behavior regarding `on_submit` event handling and default prevention.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 43
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 25
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 9
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 77,
+      "spofCount": 19
+    },
+    "busFactor": 4,
+    "authorCount": 11
+  },
+  "Database Integration & Admin Dashboard": {
+    "description": "Simplifies data persistence by integrating directly with databases. It enables developers to define data models in Python and provides an optional, auto-generated admin interface for viewing and managing application data out-of-the-box.",
+    "functions": {
+      "ORM and Admin Dashboard": {
+        "files": [
+          {
+            "path": "reflex/admin.py",
+            "description": "This file defines the core components and configuration for the Reflex Admin Dashboard, primarily using the `AdminDash` dataclass to manage application models and views.",
+            "spof": true
+          },
+          {
+            "path": "reflex/model.py",
+            "description": "This file provides the core database integration for the Reflex framework. It manages database connections (SQLAlchemy engines and sessions), registers database models, and handles their metadata for persistence.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/test_model.py",
+            "description": "This file contains unit tests for the `reflex.model.Model` class, focusing on its primary key handling, database migration (Alembic automigration for table and column changes), and upcasting of model instances within event handlers.",
+            "spof": true
+          },
+          {
+            "path": "tests/units/test_db_config.py",
+            "description": "This file contains unit tests for the `DBConfig` class, verifying its ability to correctly generate database connection URLs for various engines and handling parameter encoding.",
+            "spof": false
+          },
+          {
+            "path": "tests/units/test_sqlalchemy.py",
+            "description": "This file contains unit tests for Reflex's integration with SQLAlchemy, specifically verifying the handling of mutable data types within SQLAlchemy models in a Reflex state and testing automatic database migration features using Alembic.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Khaleel Al-Adhami",
+            "percent": 89
+          },
+          {
+            "name": "Thomas Brandého",
+            "percent": 5
+          },
+          {
+            "name": "Masen Furer",
+            "percent": 4
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 5,
+      "spofCount": 4
+    },
+    "busFactor": 3,
+    "authorCount": 5
+  }
+}

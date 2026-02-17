@@ -1,0 +1,2204 @@
+[
+  {
+    "roadmap": "JavaScript",
+    "group": "Programming Languages",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "syntax-fundamentals",
+            "title": "Syntax & Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "variables-types",
+                "title": "Variables, Data Types & Operators"
+              },
+              {
+                "id": "control-flow",
+                "title": "Conditionals & Loops"
+              },
+              {
+                "id": "functions",
+                "title": "Functions & Scope"
+              },
+              {
+                "id": "arrays-objects",
+                "title": "Arrays & Objects"
+              }
+            ]
+          },
+          {
+            "id": "dom-manipulation",
+            "title": "DOM Manipulation",
+            "subCheckpoints": [
+              {
+                "id": "selecting-elements",
+                "title": "Selecting & Traversing Elements"
+              },
+              {
+                "id": "modifying-dom",
+                "title": "Modifying Content & Attributes"
+              },
+              {
+                "id": "event-listeners",
+                "title": "Events & Event Listeners"
+              }
+            ]
+          },
+          {
+            "id": "es6-basics",
+            "title": "ES6+ Basics",
+            "subCheckpoints": [
+              {
+                "id": "let-const-arrow",
+                "title": "let, const & Arrow Functions"
+              },
+              {
+                "id": "destructuring-spread",
+                "title": "Destructuring & Spread"
+              },
+              {
+                "id": "template-literals",
+                "title": "Template Literals & Classes"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "async-programming",
+            "title": "Async Programming",
+            "subCheckpoints": [
+              {
+                "id": "callbacks-promises",
+                "title": "Callbacks & Promises"
+              },
+              {
+                "id": "async-await",
+                "title": "Async/Await & Error Handling"
+              },
+              {
+                "id": "fetch-api",
+                "title": "Fetch API & HTTP Requests"
+              }
+            ]
+          },
+          {
+            "id": "closures-prototypes",
+            "title": "Closures & Prototypes",
+            "subCheckpoints": [
+              {
+                "id": "closures",
+                "title": "Closures & Lexical Scope"
+              },
+              {
+                "id": "prototype-chain",
+                "title": "Prototype Chain & Inheritance"
+              },
+              {
+                "id": "this-keyword",
+                "title": "this Keyword & Binding"
+              }
+            ]
+          },
+          {
+            "id": "modules-error-handling",
+            "title": "Modules & Error Handling",
+            "subCheckpoints": [
+              {
+                "id": "es-modules",
+                "title": "ES Modules (import/export)"
+              },
+              {
+                "id": "try-catch",
+                "title": "try/catch & Error Objects"
+              },
+              {
+                "id": "error-strategies",
+                "title": "Error Handling Strategies"
+              }
+            ]
+          },
+          {
+            "id": "testing-node-basics",
+            "title": "Testing & Node.js Basics",
+            "subCheckpoints": [
+              {
+                "id": "jest-basics",
+                "title": "Jest & Unit Testing"
+              },
+              {
+                "id": "node-modules",
+                "title": "Node.js Core Modules"
+              },
+              {
+                "id": "build-tools",
+                "title": "Build Tools (Vite, Webpack)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "typescript-intro",
+            "title": "TypeScript Introduction",
+            "subCheckpoints": [
+              {
+                "id": "types-basics",
+                "title": "Basic Types & Interfaces"
+              },
+              {
+                "id": "type-annotations",
+                "title": "Type Annotations & Inference"
+              },
+              {
+                "id": "tsconfig",
+                "title": "tsconfig & TypeScript in Projects"
+              }
+            ]
+          },
+          {
+            "id": "advanced-patterns",
+            "title": "Advanced Patterns",
+            "subCheckpoints": [
+              {
+                "id": "design-patterns",
+                "title": "Module & Factory Patterns"
+              },
+              {
+                "id": "memory-management",
+                "title": "Memory & Performance"
+              },
+              {
+                "id": "modern-apis",
+                "title": "Web APIs & Modern JavaScript"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "TypeScript",
+    "group": "Programming Languages",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "type-system-basics",
+            "title": "Type System Basics",
+            "subCheckpoints": [
+              {
+                "id": "primitive-types",
+                "title": "Primitive Types & Annotations"
+              },
+              {
+                "id": "type-inference",
+                "title": "Type Inference & Inference"
+              },
+              {
+                "id": "strict-mode",
+                "title": "Strict Mode & Type Checking"
+              }
+            ]
+          },
+          {
+            "id": "interfaces",
+            "title": "Interfaces",
+            "subCheckpoints": [
+              {
+                "id": "interface-definition",
+                "title": "Defining & Implementing Interfaces"
+              },
+              {
+                "id": "optional-properties",
+                "title": "Optional & Readonly Properties"
+              },
+              {
+                "id": "extending-interfaces",
+                "title": "Extending Interfaces"
+              }
+            ]
+          },
+          {
+            "id": "generics-basics",
+            "title": "Generics Basics",
+            "subCheckpoints": [
+              {
+                "id": "generic-functions",
+                "title": "Generic Functions & Constraints"
+              },
+              {
+                "id": "generic-interfaces",
+                "title": "Generic Interfaces & Classes"
+              },
+              {
+                "id": "type-parameters",
+                "title": "Type Parameters & Constraints"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "enums-utility-types",
+            "title": "Enums & Utility Types",
+            "subCheckpoints": [
+              {
+                "id": "numeric-string-enums",
+                "title": "Numeric & String Enums"
+              },
+              {
+                "id": "partial-required",
+                "title": "Partial, Required & Pick"
+              },
+              {
+                "id": "omit-record",
+                "title": "Omit, Record & Utility Types"
+              }
+            ]
+          },
+          {
+            "id": "advanced-types",
+            "title": "Advanced Types",
+            "subCheckpoints": [
+              {
+                "id": "union-intersection",
+                "title": "Union & Intersection Types"
+              },
+              {
+                "id": "literal-types",
+                "title": "Literal Types & Discriminated Unions"
+              },
+              {
+                "id": "mapped-types",
+                "title": "Mapped & Conditional Types"
+              }
+            ]
+          },
+          {
+            "id": "type-guards-config",
+            "title": "Type Guards & Config",
+            "subCheckpoints": [
+              {
+                "id": "type-guards",
+                "title": "Type Guards & Narrowing"
+              },
+              {
+                "id": "tsconfig",
+                "title": "tsconfig.json Deep Dive"
+              },
+              {
+                "id": "compiler-options",
+                "title": "Compiler Options & Paths"
+              }
+            ]
+          },
+          {
+            "id": "framework-integration",
+            "title": "Framework Integration",
+            "subCheckpoints": [
+              {
+                "id": "react-types",
+                "title": "TypeScript with React"
+              },
+              {
+                "id": "vue-angular",
+                "title": "TypeScript with Vue/Angular"
+              },
+              {
+                "id": "node-backend",
+                "title": "TypeScript in Node.js Backend"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "decorators",
+            "title": "Decorators",
+            "subCheckpoints": [
+              {
+                "id": "class-decorators",
+                "title": "Class & Method Decorators"
+              },
+              {
+                "id": "property-decorators",
+                "title": "Property & Parameter Decorators"
+              },
+              {
+                "id": "decorator-factories",
+                "title": "Decorator Factories"
+              }
+            ]
+          },
+          {
+            "id": "module-augmentation",
+            "title": "Module Augmentation",
+            "subCheckpoints": [
+              {
+                "id": "declaration-merging",
+                "title": "Declaration Merging"
+              },
+              {
+                "id": "augmenting-modules",
+                "title": "Augmenting Third-Party Modules"
+              },
+              {
+                "id": "global-extension",
+                "title": "Extending Global Types"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Python",
+    "group": "Programming Languages",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "syntax-fundamentals",
+            "title": "Syntax & Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "variables-types",
+                "title": "Variables, Data Types & Operators"
+              },
+              {
+                "id": "control-flow",
+                "title": "Conditionals & Loops"
+              },
+              {
+                "id": "functions",
+                "title": "Functions & Arguments"
+              },
+              {
+                "id": "input-output",
+                "title": "Input & Output"
+              }
+            ]
+          },
+          {
+            "id": "data-structures",
+            "title": "Data Structures",
+            "subCheckpoints": [
+              {
+                "id": "lists-tuples",
+                "title": "Lists & Tuples"
+              },
+              {
+                "id": "dicts-sets",
+                "title": "Dictionaries & Sets"
+              },
+              {
+                "id": "comprehensions",
+                "title": "List & Dict Comprehensions"
+              }
+            ]
+          },
+          {
+            "id": "oop-basics",
+            "title": "OOP Basics",
+            "subCheckpoints": [
+              {
+                "id": "classes-objects",
+                "title": "Classes & Objects"
+              },
+              {
+                "id": "inheritance",
+                "title": "Inheritance & Polymorphism"
+              },
+              {
+                "id": "encapsulation",
+                "title": "Encapsulation & Properties"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "file-io",
+            "title": "File I/O",
+            "subCheckpoints": [
+              {
+                "id": "read-write-files",
+                "title": "Reading & Writing Files"
+              },
+              {
+                "id": "context-managers",
+                "title": "Context Managers (with)"
+              },
+              {
+                "id": "json-csv",
+                "title": "JSON & CSV Handling"
+              }
+            ]
+          },
+          {
+            "id": "error-handling",
+            "title": "Error Handling",
+            "subCheckpoints": [
+              {
+                "id": "try-except",
+                "title": "try/except & Raising Exceptions"
+              },
+              {
+                "id": "custom-exceptions",
+                "title": "Custom Exceptions"
+              },
+              {
+                "id": "exception-hierarchy",
+                "title": "Exception Hierarchy"
+              }
+            ]
+          },
+          {
+            "id": "modules-packages",
+            "title": "Modules & Packages",
+            "subCheckpoints": [
+              {
+                "id": "imports",
+                "title": "Imports & Modules"
+              },
+              {
+                "id": "packages",
+                "title": "Packages & __init__.py"
+              },
+              {
+                "id": "virtual-env",
+                "title": "Virtual Environments & pip"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "pytest",
+                "title": "pytest Basics"
+              },
+              {
+                "id": "fixtures-mocking",
+                "title": "Fixtures & Mocking"
+              },
+              {
+                "id": "coverage",
+                "title": "Test Coverage"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "web-frameworks",
+            "title": "Web Frameworks Intro",
+            "subCheckpoints": [
+              {
+                "id": "flask-django",
+                "title": "Flask vs Django Overview"
+              },
+              {
+                "id": "routing-views",
+                "title": "Routing & Views"
+              },
+              {
+                "id": "orm-basics",
+                "title": "ORM Basics"
+              }
+            ]
+          },
+          {
+            "id": "data-science-libs",
+            "title": "Data Science Libraries",
+            "subCheckpoints": [
+              {
+                "id": "numpy-pandas",
+                "title": "NumPy & Pandas Basics"
+              },
+              {
+                "id": "matplotlib",
+                "title": "Matplotlib & Visualization"
+              },
+              {
+                "id": "scikit-learn",
+                "title": "scikit-learn Intro"
+              }
+            ]
+          },
+          {
+            "id": "async-packaging",
+            "title": "Async & Packaging",
+            "subCheckpoints": [
+              {
+                "id": "async-await",
+                "title": "async/await & asyncio"
+              },
+              {
+                "id": "pyproject-toml",
+                "title": "pyproject.toml & Packaging"
+              },
+              {
+                "id": "distribution",
+                "title": "Building & Distributing Packages"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Java",
+    "group": "Programming Languages",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "syntax-fundamentals",
+            "title": "Syntax & Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "variables-types",
+                "title": "Variables, Data Types & Operators"
+              },
+              {
+                "id": "control-flow",
+                "title": "Conditionals & Loops"
+              },
+              {
+                "id": "methods",
+                "title": "Methods & Parameters"
+              },
+              {
+                "id": "arrays",
+                "title": "Arrays"
+              }
+            ]
+          },
+          {
+            "id": "oop-basics",
+            "title": "OOP Basics",
+            "subCheckpoints": [
+              {
+                "id": "classes-objects",
+                "title": "Classes & Objects"
+              },
+              {
+                "id": "inheritance",
+                "title": "Inheritance & Polymorphism"
+              },
+              {
+                "id": "encapsulation",
+                "title": "Encapsulation & Access Modifiers"
+              },
+              {
+                "id": "abstraction",
+                "title": "Abstract Classes & Interfaces"
+              }
+            ]
+          },
+          {
+            "id": "collections",
+            "title": "Collections",
+            "subCheckpoints": [
+              {
+                "id": "list-set-map",
+                "title": "List, Set & Map"
+              },
+              {
+                "id": "iterators",
+                "title": "Iterators & Loops"
+              },
+              {
+                "id": "collections-framework",
+                "title": "Collections Framework Overview"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "generics",
+            "title": "Generics",
+            "subCheckpoints": [
+              {
+                "id": "generic-classes",
+                "title": "Generic Classes & Methods"
+              },
+              {
+                "id": "bounds",
+                "title": "Bounded Type Parameters"
+              },
+              {
+                "id": "wildcards",
+                "title": "Wildcards & Type Erasure"
+              }
+            ]
+          },
+          {
+            "id": "streams",
+            "title": "Streams API",
+            "subCheckpoints": [
+              {
+                "id": "stream-operations",
+                "title": "Stream Operations & Pipeline"
+              },
+              {
+                "id": "filter-map-reduce",
+                "title": "filter, map, reduce"
+              },
+              {
+                "id": "collectors",
+                "title": "Collectors & Terminal Operations"
+              }
+            ]
+          },
+          {
+            "id": "concurrency",
+            "title": "Concurrency",
+            "subCheckpoints": [
+              {
+                "id": "threads",
+                "title": "Threads & Runnable"
+              },
+              {
+                "id": "executor-service",
+                "title": "ExecutorService & CompletableFuture"
+              },
+              {
+                "id": "synchronization",
+                "title": "Synchronization & Locks"
+              }
+            ]
+          },
+          {
+            "id": "jdbc-testing",
+            "title": "JDBC & Testing",
+            "subCheckpoints": [
+              {
+                "id": "jdbc-basics",
+                "title": "JDBC Connectivity"
+              },
+              {
+                "id": "junit",
+                "title": "JUnit & Mockito"
+              },
+              {
+                "id": "integration-tests",
+                "title": "Integration Testing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "spring-basics",
+            "title": "Spring Basics",
+            "subCheckpoints": [
+              {
+                "id": "dependency-injection",
+                "title": "Dependency Injection"
+              },
+              {
+                "id": "spring-boot",
+                "title": "Spring Boot Setup"
+              },
+              {
+                "id": "rest-controllers",
+                "title": "REST Controllers"
+              }
+            ]
+          },
+          {
+            "id": "build-tools",
+            "title": "Build Tools",
+            "subCheckpoints": [
+              {
+                "id": "maven",
+                "title": "Maven & Dependency Management"
+              },
+              {
+                "id": "gradle",
+                "title": "Gradle Basics"
+              },
+              {
+                "id": "multi-module",
+                "title": "Multi-Module Projects"
+              }
+            ]
+          },
+          {
+            "id": "design-patterns-jvm",
+            "title": "Design Patterns & JVM",
+            "subCheckpoints": [
+              {
+                "id": "creational-patterns",
+                "title": "Creational & Structural Patterns"
+              },
+              {
+                "id": "behavioral-patterns",
+                "title": "Behavioral Patterns"
+              },
+              {
+                "id": "jvm-tuning",
+                "title": "JVM Tuning & Memory"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "C++",
+    "group": "Programming Languages",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "syntax-fundamentals",
+            "title": "Syntax & Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "variables-types",
+                "title": "Variables, Data Types & Operators"
+              },
+              {
+                "id": "control-flow",
+                "title": "Conditionals & Loops"
+              },
+              {
+                "id": "functions",
+                "title": "Functions & Scope"
+              },
+              {
+                "id": "arrays-strings",
+                "title": "Arrays & Strings"
+              }
+            ]
+          },
+          {
+            "id": "pointers-memory",
+            "title": "Pointers & Memory",
+            "subCheckpoints": [
+              {
+                "id": "pointers-basics",
+                "title": "Pointer Basics & Dereferencing"
+              },
+              {
+                "id": "dynamic-memory",
+                "title": "Dynamic Memory (new/delete)"
+              },
+              {
+                "id": "references",
+                "title": "References"
+              }
+            ]
+          },
+          {
+            "id": "oop-basics",
+            "title": "OOP Basics",
+            "subCheckpoints": [
+              {
+                "id": "classes-objects",
+                "title": "Classes & Objects"
+              },
+              {
+                "id": "constructors-destructors",
+                "title": "Constructors & Destructors"
+              },
+              {
+                "id": "inheritance",
+                "title": "Inheritance & Polymorphism"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "stl",
+            "title": "STL (Standard Template Library)",
+            "subCheckpoints": [
+              {
+                "id": "containers",
+                "title": "Containers (vector, map, set)"
+              },
+              {
+                "id": "iterators",
+                "title": "Iterators & Ranges"
+              },
+              {
+                "id": "algorithms",
+                "title": "STL Algorithms"
+              }
+            ]
+          },
+          {
+            "id": "smart-pointers",
+            "title": "Smart Pointers",
+            "subCheckpoints": [
+              {
+                "id": "unique-ptr",
+                "title": "unique_ptr"
+              },
+              {
+                "id": "shared-ptr",
+                "title": "shared_ptr & weak_ptr"
+              },
+              {
+                "id": "ownership",
+                "title": "Ownership & RAII"
+              }
+            ]
+          },
+          {
+            "id": "templates",
+            "title": "Templates",
+            "subCheckpoints": [
+              {
+                "id": "function-templates",
+                "title": "Function Templates"
+              },
+              {
+                "id": "class-templates",
+                "title": "Class Templates"
+              },
+              {
+                "id": "template-metaprogramming",
+                "title": "Template Basics"
+              }
+            ]
+          },
+          {
+            "id": "concurrency",
+            "title": "Concurrency",
+            "subCheckpoints": [
+              {
+                "id": "threads",
+                "title": "std::thread"
+              },
+              {
+                "id": "mutex",
+                "title": "Mutex & Locks"
+              },
+              {
+                "id": "async-future",
+                "title": "std::async & std::future"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "build-systems",
+            "title": "Build Systems",
+            "subCheckpoints": [
+              {
+                "id": "cmake",
+                "title": "CMake Basics"
+              },
+              {
+                "id": "cmake-modules",
+                "title": "CMake Modules & Targets"
+              },
+              {
+                "id": "cross-platform",
+                "title": "Cross-Platform Builds"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "googletest",
+                "title": "Google Test"
+              },
+              {
+                "id": "mocking",
+                "title": "Mocking & Fixtures"
+              },
+              {
+                "id": "ctest",
+                "title": "CTest Integration"
+              }
+            ]
+          },
+          {
+            "id": "modern-cpp",
+            "title": "Modern C++ Features",
+            "subCheckpoints": [
+              {
+                "id": "cpp11-14",
+                "title": "C++11/14: auto, lambda, move"
+              },
+              {
+                "id": "cpp17-20",
+                "title": "C++17/20: Concepts, Ranges"
+              },
+              {
+                "id": "best-practices",
+                "title": "Modern C++ Best Practices"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Rust",
+    "group": "Programming Languages",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "ownership-borrowing",
+            "title": "Ownership & Borrowing",
+            "subCheckpoints": [
+              {
+                "id": "ownership-rules",
+                "title": "Ownership Rules"
+              },
+              {
+                "id": "borrowing",
+                "title": "References & Borrowing"
+              },
+              {
+                "id": "slices",
+                "title": "Slices"
+              }
+            ]
+          },
+          {
+            "id": "types-basics",
+            "title": "Types & Basics",
+            "subCheckpoints": [
+              {
+                "id": "primitives",
+                "title": "Primitive Types & Variables"
+              },
+              {
+                "id": "structs-enums",
+                "title": "Structs & Enums"
+              },
+              {
+                "id": "control-flow",
+                "title": "Control Flow & Match"
+              }
+            ]
+          },
+          {
+            "id": "pattern-matching",
+            "title": "Pattern Matching",
+            "subCheckpoints": [
+              {
+                "id": "match-expression",
+                "title": "match Expression"
+              },
+              {
+                "id": "if-let",
+                "title": "if let & while let"
+              },
+              {
+                "id": "destructuring",
+                "title": "Pattern Destructuring"
+              }
+            ]
+          },
+          {
+            "id": "error-handling",
+            "title": "Error Handling",
+            "subCheckpoints": [
+              {
+                "id": "result-option",
+                "title": "Result & Option"
+              },
+              {
+                "id": "unwrap-expect",
+                "title": "unwrap, expect & ?"
+              },
+              {
+                "id": "custom-errors",
+                "title": "Custom Error Types"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "traits",
+            "title": "Traits",
+            "subCheckpoints": [
+              {
+                "id": "defining-traits",
+                "title": "Defining & Implementing Traits"
+              },
+              {
+                "id": "trait-bounds",
+                "title": "Trait Bounds"
+              },
+              {
+                "id": "common-traits",
+                "title": "Derive & Common Traits"
+              }
+            ]
+          },
+          {
+            "id": "lifetimes",
+            "title": "Lifetimes",
+            "subCheckpoints": [
+              {
+                "id": "lifetime-syntax",
+                "title": "Lifetime Syntax"
+              },
+              {
+                "id": "elision",
+                "title": "Lifetime Elision"
+              },
+              {
+                "id": "lifetime-bounds",
+                "title": "Lifetime Bounds"
+              }
+            ]
+          },
+          {
+            "id": "concurrency",
+            "title": "Concurrency",
+            "subCheckpoints": [
+              {
+                "id": "threads",
+                "title": "Threads & move"
+              },
+              {
+                "id": "channels",
+                "title": "Channels (mpsc)"
+              },
+              {
+                "id": "sync-types",
+                "title": "Mutex, Arc & Sync"
+              }
+            ]
+          },
+          {
+            "id": "async",
+            "title": "Async Rust",
+            "subCheckpoints": [
+              {
+                "id": "async-await",
+                "title": "async/await"
+              },
+              {
+                "id": "future-trait",
+                "title": "Future Trait"
+              },
+              {
+                "id": "tokio-async-std",
+                "title": "tokio / async-std"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "macros",
+            "title": "Macros",
+            "subCheckpoints": [
+              {
+                "id": "declarative-macros",
+                "title": "Declarative Macros (macro_rules!)"
+              },
+              {
+                "id": "procedural-macros",
+                "title": "Procedural Macros"
+              },
+              {
+                "id": "macro-hygiene",
+                "title": "Macro Hygiene"
+              }
+            ]
+          },
+          {
+            "id": "unsafe",
+            "title": "Unsafe Rust",
+            "subCheckpoints": [
+              {
+                "id": "unsafe-blocks",
+                "title": "unsafe Blocks"
+              },
+              {
+                "id": "raw-pointers",
+                "title": "Raw Pointers"
+              },
+              {
+                "id": "ffi",
+                "title": "FFI & C Interop"
+              }
+            ]
+          },
+          {
+            "id": "crate-ecosystem",
+            "title": "Crate Ecosystem",
+            "subCheckpoints": [
+              {
+                "id": "cargo",
+                "title": "Cargo & Workspaces"
+              },
+              {
+                "id": "publishing",
+                "title": "Publishing Crates"
+              },
+              {
+                "id": "popular-crates",
+                "title": "serde, tokio, async-trait"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Go",
+    "group": "Programming Languages",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "syntax-fundamentals",
+            "title": "Syntax & Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "variables-types",
+                "title": "Variables, Types & Zero Values"
+              },
+              {
+                "id": "control-flow",
+                "title": "Conditionals & Loops"
+              },
+              {
+                "id": "functions",
+                "title": "Functions & Multiple Returns"
+              },
+              {
+                "id": "structs",
+                "title": "Structs & Methods"
+              }
+            ]
+          },
+          {
+            "id": "goroutines-channels",
+            "title": "Goroutines & Channels",
+            "subCheckpoints": [
+              {
+                "id": "goroutines",
+                "title": "Goroutines & go Keyword"
+              },
+              {
+                "id": "channels",
+                "title": "Channels (make, send, receive)"
+              },
+              {
+                "id": "buffered-channels",
+                "title": "Buffered & Unbuffered Channels"
+              }
+            ]
+          },
+          {
+            "id": "interfaces",
+            "title": "Interfaces",
+            "subCheckpoints": [
+              {
+                "id": "interface-definition",
+                "title": "Defining & Implementing Interfaces"
+              },
+              {
+                "id": "empty-interface",
+                "title": "Empty Interface"
+              },
+              {
+                "id": "type-assertions",
+                "title": "Type Assertions"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "error-handling",
+            "title": "Error Handling",
+            "subCheckpoints": [
+              {
+                "id": "error-type",
+                "title": "error Type & Checking"
+              },
+              {
+                "id": "custom-errors",
+                "title": "Custom Errors & Wrapping"
+              },
+              {
+                "id": "errors-package",
+                "title": "errors Package"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "testing-package",
+                "title": "testing Package"
+              },
+              {
+                "id": "table-driven",
+                "title": "Table-Driven Tests"
+              },
+              {
+                "id": "benchmarks",
+                "title": "Benchmarks"
+              }
+            ]
+          },
+          {
+            "id": "standard-library",
+            "title": "Standard Library",
+            "subCheckpoints": [
+              {
+                "id": "fmt-io",
+                "title": "fmt, io & os"
+              },
+              {
+                "id": "net-http",
+                "title": "net & net/http"
+              },
+              {
+                "id": "encoding-json",
+                "title": "encoding/json"
+              }
+            ]
+          },
+          {
+            "id": "concurrency-patterns",
+            "title": "Concurrency Patterns",
+            "subCheckpoints": [
+              {
+                "id": "select",
+                "title": "select Statement"
+              },
+              {
+                "id": "worker-pools",
+                "title": "Worker Pools & Fan-Out"
+              },
+              {
+                "id": "context",
+                "title": "context Package"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "modules",
+            "title": "Modules",
+            "subCheckpoints": [
+              {
+                "id": "go-mod",
+                "title": "go.mod & go.sum"
+              },
+              {
+                "id": "modules-versioning",
+                "title": "Module Versioning"
+              },
+              {
+                "id": "vendoring",
+                "title": "Vendoring"
+              }
+            ]
+          },
+          {
+            "id": "web-servers",
+            "title": "Web Servers",
+            "subCheckpoints": [
+              {
+                "id": "http-handlers",
+                "title": "http.Handler & Mux"
+              },
+              {
+                "id": "middleware",
+                "title": "Middleware"
+              },
+              {
+                "id": "routing",
+                "title": "Routing & chi/gin"
+              }
+            ]
+          },
+          {
+            "id": "profiling",
+            "title": "Profiling",
+            "subCheckpoints": [
+              {
+                "id": "pprof",
+                "title": "pprof"
+              },
+              {
+                "id": "tracing",
+                "title": "Tracing & Debugging"
+              },
+              {
+                "id": "race-detector",
+                "title": "Race Detector"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "PHP",
+    "group": "Programming Languages",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "syntax-fundamentals",
+            "title": "Syntax & Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "variables-types",
+                "title": "Variables, Types & Operators"
+              },
+              {
+                "id": "control-flow",
+                "title": "Conditionals & Loops"
+              },
+              {
+                "id": "functions",
+                "title": "Functions & Scope"
+              },
+              {
+                "id": "arrays",
+                "title": "Arrays & Array Functions"
+              }
+            ]
+          },
+          {
+            "id": "oop-basics",
+            "title": "OOP Basics",
+            "subCheckpoints": [
+              {
+                "id": "classes-objects",
+                "title": "Classes & Objects"
+              },
+              {
+                "id": "inheritance",
+                "title": "Inheritance & Visibility"
+              },
+              {
+                "id": "interfaces",
+                "title": "Interfaces & Abstract Classes"
+              }
+            ]
+          },
+          {
+            "id": "composer",
+            "title": "Composer",
+            "subCheckpoints": [
+              {
+                "id": "composer-install",
+                "title": "Composer Install & Autoload"
+              },
+              {
+                "id": "require-packages",
+                "title": "Requiring Packages"
+              },
+              {
+                "id": "composer-json",
+                "title": "composer.json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "pdo-databases",
+            "title": "PDO & Databases",
+            "subCheckpoints": [
+              {
+                "id": "pdo-connection",
+                "title": "PDO Connection & Prepared Statements"
+              },
+              {
+                "id": "queries",
+                "title": "Executing Queries"
+              },
+              {
+                "id": "transactions",
+                "title": "Transactions"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "phpunit",
+                "title": "PHPUnit Basics"
+              },
+              {
+                "id": "assertions",
+                "title": "Assertions & Test Cases"
+              },
+              {
+                "id": "mocking",
+                "title": "Mocking"
+              }
+            ]
+          },
+          {
+            "id": "mvc-patterns",
+            "title": "MVC Patterns",
+            "subCheckpoints": [
+              {
+                "id": "mvc-concept",
+                "title": "MVC Concept"
+              },
+              {
+                "id": "routing",
+                "title": "Routing & Controllers"
+              },
+              {
+                "id": "views",
+                "title": "Views & Templates"
+              }
+            ]
+          },
+          {
+            "id": "security",
+            "title": "Security",
+            "subCheckpoints": [
+              {
+                "id": "sql-injection",
+                "title": "SQL Injection Prevention"
+              },
+              {
+                "id": "xss-csrf",
+                "title": "XSS & CSRF Protection"
+              },
+              {
+                "id": "password-hashing",
+                "title": "Password Hashing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "modern-php",
+            "title": "Modern PHP Features",
+            "subCheckpoints": [
+              {
+                "id": "typed-properties",
+                "title": "Typed Properties & Return Types"
+              },
+              {
+                "id": "attributes",
+                "title": "Attributes (PHP 8)"
+              },
+              {
+                "id": "enums",
+                "title": "Enums & Match"
+              }
+            ]
+          },
+          {
+            "id": "frameworks-intro",
+            "title": "Frameworks Intro",
+            "subCheckpoints": [
+              {
+                "id": "laravel-symfony",
+                "title": "Laravel vs Symfony"
+              },
+              {
+                "id": "dependency-injection",
+                "title": "Dependency Injection"
+              },
+              {
+                "id": "orm-doctrine",
+                "title": "ORM & Doctrine"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Ruby",
+    "group": "Programming Languages",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "syntax-fundamentals",
+            "title": "Syntax & Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "variables-types",
+                "title": "Variables, Types & Operators"
+              },
+              {
+                "id": "control-flow",
+                "title": "Conditionals & Loops"
+              },
+              {
+                "id": "methods",
+                "title": "Methods & Parameters"
+              },
+              {
+                "id": "arrays-hashes",
+                "title": "Arrays & Hashes"
+              }
+            ]
+          },
+          {
+            "id": "oop-basics",
+            "title": "OOP Basics",
+            "subCheckpoints": [
+              {
+                "id": "classes-objects",
+                "title": "Classes & Objects"
+              },
+              {
+                "id": "inheritance",
+                "title": "Inheritance"
+              },
+              {
+                "id": "modules-mixins",
+                "title": "Modules & Mixins"
+              }
+            ]
+          },
+          {
+            "id": "blocks-procs",
+            "title": "Blocks & Procs",
+            "subCheckpoints": [
+              {
+                "id": "blocks",
+                "title": "Blocks & yield"
+              },
+              {
+                "id": "procs-lambdas",
+                "title": "Procs & Lambdas"
+              },
+              {
+                "id": "closures",
+                "title": "Closures"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "gems",
+            "title": "Gems",
+            "subCheckpoints": [
+              {
+                "id": "bundler",
+                "title": "Bundler & Gemfile"
+              },
+              {
+                "id": "require-bundler",
+                "title": "require & Bundler"
+              },
+              {
+                "id": "creating-gems",
+                "title": "Creating Gems"
+              }
+            ]
+          },
+          {
+            "id": "testing-rspec",
+            "title": "Testing (RSpec)",
+            "subCheckpoints": [
+              {
+                "id": "rspec-basics",
+                "title": "RSpec Basics"
+              },
+              {
+                "id": "expectations",
+                "title": "Expectations & Matchers"
+              },
+              {
+                "id": "mocks-stubs",
+                "title": "Mocks & Stubs"
+              }
+            ]
+          },
+          {
+            "id": "metaprogramming",
+            "title": "Metaprogramming",
+            "subCheckpoints": [
+              {
+                "id": "define-method",
+                "title": "define_method & send"
+              },
+              {
+                "id": "eigenclass",
+                "title": "Eigenclass & Singleton"
+              },
+              {
+                "id": "attr-accessors",
+                "title": "attr_* & method_missing"
+              }
+            ]
+          },
+          {
+            "id": "concurrency",
+            "title": "Concurrency",
+            "subCheckpoints": [
+              {
+                "id": "threads",
+                "title": "Threads"
+              },
+              {
+                "id": "fiber",
+                "title": "Fiber"
+              },
+              {
+                "id": "concurrent-ruby",
+                "title": "concurrent-ruby"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "rails-intro",
+            "title": "Rails Intro",
+            "subCheckpoints": [
+              {
+                "id": "mvc-rails",
+                "title": "MVC in Rails"
+              },
+              {
+                "id": "active-record",
+                "title": "Active Record"
+              },
+              {
+                "id": "routing-controllers",
+                "title": "Routing & Controllers"
+              },
+              {
+                "id": "views-assets",
+                "title": "Views & Assets"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Kotlin",
+    "group": "Programming Languages",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "syntax-fundamentals",
+            "title": "Syntax & Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "variables-types",
+                "title": "Variables, Types & Operators"
+              },
+              {
+                "id": "control-flow",
+                "title": "Conditionals & Loops"
+              },
+              {
+                "id": "functions",
+                "title": "Functions & Default Args"
+              },
+              {
+                "id": "classes-objects",
+                "title": "Classes & Objects"
+              }
+            ]
+          },
+          {
+            "id": "null-safety",
+            "title": "Null Safety",
+            "subCheckpoints": [
+              {
+                "id": "nullable-types",
+                "title": "Nullable Types (?)"
+              },
+              {
+                "id": "safe-calls",
+                "title": "Safe Calls & Elvis"
+              },
+              {
+                "id": "smart-casts",
+                "title": "Smart Casts"
+              }
+            ]
+          },
+          {
+            "id": "collections",
+            "title": "Collections",
+            "subCheckpoints": [
+              {
+                "id": "list-set-map",
+                "title": "List, Set & Map"
+              },
+              {
+                "id": "collection-operations",
+                "title": "Collection Operations"
+              },
+              {
+                "id": "sequences",
+                "title": "Sequences"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "oop-advanced",
+            "title": "OOP Advanced",
+            "subCheckpoints": [
+              {
+                "id": "inheritance",
+                "title": "Inheritance & Overriding"
+              },
+              {
+                "id": "interfaces",
+                "title": "Interfaces"
+              },
+              {
+                "id": "data-classes",
+                "title": "Data Classes & Sealed"
+              }
+            ]
+          },
+          {
+            "id": "functional-features",
+            "title": "Functional Features",
+            "subCheckpoints": [
+              {
+                "id": "higher-order",
+                "title": "Higher-Order Functions"
+              },
+              {
+                "id": "lambdas",
+                "title": "Lambda & Inline"
+              },
+              {
+                "id": "scopes",
+                "title": "Scope Functions (let, apply, etc)"
+              }
+            ]
+          },
+          {
+            "id": "coroutines",
+            "title": "Coroutines",
+            "subCheckpoints": [
+              {
+                "id": "suspend",
+                "title": "suspend & launch"
+              },
+              {
+                "id": "scopes",
+                "title": "Coroutine Scopes"
+              },
+              {
+                "id": "flow",
+                "title": "Flow"
+              }
+            ]
+          },
+          {
+            "id": "android-basics",
+            "title": "Android Basics",
+            "subCheckpoints": [
+              {
+                "id": "android-setup",
+                "title": "Android Studio & Kotlin"
+              },
+              {
+                "id": "activities",
+                "title": "Activities & Views"
+              },
+              {
+                "id": "viewmodel",
+                "title": "ViewModel & LiveData"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "multiplatform",
+            "title": "Multiplatform",
+            "subCheckpoints": [
+              {
+                "id": "kmp-setup",
+                "title": "KMP Setup"
+              },
+              {
+                "id": "expect-actual",
+                "title": "expect/actual"
+              },
+              {
+                "id": "shared-code",
+                "title": "Shared Code"
+              }
+            ]
+          },
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "junit",
+                "title": "JUnit & Kotlin Test"
+              },
+              {
+                "id": "mockk",
+                "title": "MockK"
+              },
+              {
+                "id": "coroutine-testing",
+                "title": "Coroutine Testing"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Swift & SwiftUI",
+    "group": "Programming Languages",
+    "type": "skill",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "syntax-fundamentals",
+            "title": "Syntax & Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "variables-types",
+                "title": "Variables, Types & Optionals"
+              },
+              {
+                "id": "control-flow",
+                "title": "Conditionals & Loops"
+              },
+              {
+                "id": "functions",
+                "title": "Functions & Closures"
+              },
+              {
+                "id": "collections",
+                "title": "Arrays & Dictionaries"
+              }
+            ]
+          },
+          {
+            "id": "optionals",
+            "title": "Optionals",
+            "subCheckpoints": [
+              {
+                "id": "optional-binding",
+                "title": "Optional Binding (if let)"
+              },
+              {
+                "id": "guard-optional",
+                "title": "guard & Optional Chaining"
+              },
+              {
+                "id": "nil-coalescing",
+                "title": "Nil Coalescing"
+              }
+            ]
+          },
+          {
+            "id": "protocols",
+            "title": "Protocols",
+            "subCheckpoints": [
+              {
+                "id": "protocol-definition",
+                "title": "Defining Protocols"
+              },
+              {
+                "id": "conformance",
+                "title": "Protocol Conformance"
+              },
+              {
+                "id": "protocol-extensions",
+                "title": "Protocol Extensions"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "swiftui-views",
+            "title": "SwiftUI Views",
+            "subCheckpoints": [
+              {
+                "id": "view-builder",
+                "title": "ViewBuilder & Modifiers"
+              },
+              {
+                "id": "layout-stacks",
+                "title": "Layout & Stacks"
+              },
+              {
+                "id": "lists-forms",
+                "title": "List, Form & Navigation"
+              }
+            ]
+          },
+          {
+            "id": "state-management",
+            "title": "State Management",
+            "subCheckpoints": [
+              {
+                "id": "state-binding",
+                "title": "@State & @Binding"
+              },
+              {
+                "id": "observed-object",
+                "title": "@ObservedObject & @StateObject"
+              },
+              {
+                "id": "environment",
+                "title": "@EnvironmentObject"
+              }
+            ]
+          },
+          {
+            "id": "combine",
+            "title": "Combine",
+            "subCheckpoints": [
+              {
+                "id": "publishers",
+                "title": "Publishers & Subscribers"
+              },
+              {
+                "id": "operators",
+                "title": "Operators"
+              },
+              {
+                "id": "combine-swiftui",
+                "title": "Combine in SwiftUI"
+              }
+            ]
+          },
+          {
+            "id": "concurrency",
+            "title": "Concurrency",
+            "subCheckpoints": [
+              {
+                "id": "async-await",
+                "title": "async/await"
+              },
+              {
+                "id": "actors",
+                "title": "Actors"
+              },
+              {
+                "id": "task-group",
+                "title": "TaskGroup & Structured Concurrency"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "xctest",
+                "title": "XCTest"
+              },
+              {
+                "id": "ui-testing",
+                "title": "UI Testing"
+              },
+              {
+                "id": "preview-testing",
+                "title": "Preview Testing"
+              }
+            ]
+          },
+          {
+            "id": "app-architecture",
+            "title": "App Architecture",
+            "subCheckpoints": [
+              {
+                "id": "mvvm",
+                "title": "MVVM in SwiftUI"
+              },
+              {
+                "id": "navigation-patterns",
+                "title": "Navigation Patterns"
+              },
+              {
+                "id": "dependency-injection",
+                "title": "Dependency Injection"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

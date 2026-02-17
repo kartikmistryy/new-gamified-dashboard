@@ -107,6 +107,7 @@ export type CapabilityContributor = {
 export type ModuleCapability = {
   id: string;
   name: string;
+  description: string;
   importance: number;
   busFactor: number;
   backupCount: number;
@@ -116,6 +117,9 @@ export type ModuleCapability = {
   spofScore?: number;
 };
 
+/** Module status based on bus factor */
+export type ModuleStatus = "At Risk" | "Needs Attention" | "Healthy";
+
 export type ModuleSPOFData = {
   id: string;
   name: string;
@@ -123,8 +127,10 @@ export type ModuleSPOFData = {
   spofScore: number;
   size: number;
   scoreRange: SPOFScoreRange;
+  /** Status derived from bus factor (not spofScore) */
+  status: ModuleStatus;
   primaryOwner: ModuleOwner;
-  backupOwner: ModuleOwner;
+  backupOwners: ModuleOwner[];
   description?: string;
   activeContributors?: number;
   teamLoad?: "Low Pressure" | "Medium Pressure" | "High Pressure";

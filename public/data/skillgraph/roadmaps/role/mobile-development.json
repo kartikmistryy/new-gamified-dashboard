@@ -1,0 +1,504 @@
+[
+  {
+    "roadmap": "Android",
+    "group": "Mobile Development",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "kotlin-fundamentals",
+            "title": "Kotlin Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "kotlin-vars-types",
+                "title": "Variables, Data Types & Control Flow"
+              },
+              {
+                "id": "kotlin-functions-classes",
+                "title": "Functions, Classes & Objects"
+              },
+              {
+                "id": "kotlin-null-safety",
+                "title": "Null Safety & Collections"
+              }
+            ]
+          },
+          {
+            "id": "android-studio",
+            "title": "Android Studio",
+            "subCheckpoints": [
+              {
+                "id": "studio-setup",
+                "title": "Installation & Project Setup"
+              },
+              {
+                "id": "studio-project-structure",
+                "title": "Project Structure & Gradle"
+              },
+              {
+                "id": "studio-debugging",
+                "title": "Debugging & Logcat"
+              }
+            ]
+          },
+          {
+            "id": "activities-fragments",
+            "title": "Activities & Fragments",
+            "subCheckpoints": [
+              {
+                "id": "activity-lifecycle",
+                "title": "Activity Lifecycle"
+              },
+              {
+                "id": "fragments-basics",
+                "title": "Fragments & Lifecycle-aware Components"
+              },
+              {
+                "id": "intents",
+                "title": "Intents & Passing Data"
+              }
+            ]
+          },
+          {
+            "id": "jetpack-compose-basics",
+            "title": "Jetpack Compose UI Basics",
+            "subCheckpoints": [
+              {
+                "id": "compose-setup",
+                "title": "Compose Setup & First Screen"
+              },
+              {
+                "id": "compose-layouts",
+                "title": "Layouts (Column, Row, Box)"
+              },
+              {
+                "id": "compose-themes",
+                "title": "Themes, Colors & Typography"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "jetpack-compose-advanced",
+            "title": "Jetpack Compose Advanced",
+            "subCheckpoints": [
+              {
+                "id": "compose-state",
+                "title": "State & Recomposition"
+              },
+              {
+                "id": "compose-navigation",
+                "title": "Compose Navigation"
+              },
+              {
+                "id": "compose-lists",
+                "title": "Lazy Lists & Modifiers"
+              }
+            ]
+          },
+          {
+            "id": "navigation",
+            "title": "Navigation Component",
+            "subCheckpoints": [
+              {
+                "id": "nav-graph",
+                "title": "Navigation Graph & Actions"
+              },
+              {
+                "id": "nav-safe-args",
+                "title": "Safe Args & Type-safe Navigation"
+              },
+              {
+                "id": "nav-deep-links",
+                "title": "Deep Links & Back Stack"
+              }
+            ]
+          },
+          {
+            "id": "networking-retrofit",
+            "title": "Networking with Retrofit",
+            "subCheckpoints": [
+              {
+                "id": "retrofit-setup",
+                "title": "Retrofit Setup & API Interface"
+              },
+              {
+                "id": "retrofit-calls",
+                "title": "REST API Calls & Coroutines"
+              },
+              {
+                "id": "json-parsing",
+                "title": "JSON Parsing (Gson/Moshi)"
+              }
+            ]
+          },
+          {
+            "id": "local-storage-room",
+            "title": "Local Storage with Room",
+            "subCheckpoints": [
+              {
+                "id": "room-entities",
+                "title": "Entities & DAOs"
+              },
+              {
+                "id": "room-database",
+                "title": "Database Class & Migrations"
+              },
+              {
+                "id": "room-queries",
+                "title": "Queries & Flow Integration"
+              }
+            ]
+          },
+          {
+            "id": "architecture-mvvm",
+            "title": "Architecture (MVVM)",
+            "subCheckpoints": [
+              {
+                "id": "mvvm-viewmodel",
+                "title": "ViewModel & State Management"
+              },
+              {
+                "id": "mvvm-livedata-flow",
+                "title": "LiveData & StateFlow"
+              },
+              {
+                "id": "mvvm-repository",
+                "title": "Repository Pattern"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "testing",
+            "title": "Testing",
+            "subCheckpoints": [
+              {
+                "id": "unit-tests",
+                "title": "Unit Tests (JUnit, Mockito)"
+              },
+              {
+                "id": "instrumented-tests",
+                "title": "Instrumented & UI Tests"
+              },
+              {
+                "id": "test-mocking",
+                "title": "Mocking & Test Fixtures"
+              }
+            ]
+          },
+          {
+            "id": "dependency-injection-hilt",
+            "title": "Dependency Injection (Hilt)",
+            "subCheckpoints": [
+              {
+                "id": "hilt-setup",
+                "title": "Hilt Setup & Application"
+              },
+              {
+                "id": "hilt-modules",
+                "title": "Modules & Scopes"
+              },
+              {
+                "id": "hilt-injection",
+                "title": "Injecting ViewModels & Repositories"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "title": "Performance Optimization",
+            "subCheckpoints": [
+              {
+                "id": "perf-startup",
+                "title": "App Startup & Baseline Profiles"
+              },
+              {
+                "id": "perf-memory",
+                "title": "Memory & Leak Detection"
+              },
+              {
+                "id": "perf-profiling",
+                "title": "Profiling with Android Profiler"
+              }
+            ]
+          },
+          {
+            "id": "publishing-play-store",
+            "title": "Publishing to Play Store",
+            "subCheckpoints": [
+              {
+                "id": "play-signing",
+                "title": "App Signing & Release Builds"
+              },
+              {
+                "id": "play-store-listing",
+                "title": "Store Listing & Metadata"
+              },
+              {
+                "id": "play-release",
+                "title": "Release Tracks & Rollouts"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "iOS",
+    "group": "Mobile Development",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "swift-fundamentals",
+            "title": "Swift Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "swift-vars-types",
+                "title": "Variables, Types & Control Flow"
+              },
+              {
+                "id": "swift-optionals",
+                "title": "Optionals & Optional Binding"
+              },
+              {
+                "id": "swift-functions-structs",
+                "title": "Functions, Structs & Classes"
+              }
+            ]
+          },
+          {
+            "id": "xcode",
+            "title": "Xcode",
+            "subCheckpoints": [
+              {
+                "id": "xcode-setup",
+                "title": "Installation & Project Setup"
+              },
+              {
+                "id": "xcode-interface-builder",
+                "title": "Interface Builder & Storyboards"
+              },
+              {
+                "id": "xcode-debugging",
+                "title": "Debugging & Console"
+              }
+            ]
+          },
+          {
+            "id": "swiftui-basics",
+            "title": "SwiftUI Basics",
+            "subCheckpoints": [
+              {
+                "id": "swiftui-views",
+                "title": "Views & Modifiers"
+              },
+              {
+                "id": "swiftui-layouts",
+                "title": "Stacks, Frames & Layouts"
+              },
+              {
+                "id": "swiftui-lists",
+                "title": "Lists & Basic Navigation"
+              }
+            ]
+          },
+          {
+            "id": "uikit-basics",
+            "title": "UIKit Basics",
+            "subCheckpoints": [
+              {
+                "id": "uikit-views",
+                "title": "Views & View Controllers"
+              },
+              {
+                "id": "uikit-autolayout",
+                "title": "Auto Layout & Constraints"
+              },
+              {
+                "id": "uikit-lifecycle",
+                "title": "View Controller Lifecycle"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "navigation",
+            "title": "Navigation",
+            "subCheckpoints": [
+              {
+                "id": "nav-swiftui",
+                "title": "SwiftUI NavigationStack & NavigationLink"
+              },
+              {
+                "id": "nav-uikit",
+                "title": "UINavigationController & Segues"
+              },
+              {
+                "id": "nav-passing-data",
+                "title": "Passing Data Between Screens"
+              }
+            ]
+          },
+          {
+            "id": "networking-urlsession",
+            "title": "Networking with URLSession",
+            "subCheckpoints": [
+              {
+                "id": "urlsession-basics",
+                "title": "URLSession & Data Tasks"
+              },
+              {
+                "id": "codable-json",
+                "title": "Codable & JSON Decoding"
+              },
+              {
+                "id": "async-await-network",
+                "title": "Async/Await for Network Calls"
+              }
+            ]
+          },
+          {
+            "id": "core-data",
+            "title": "Core Data",
+            "subCheckpoints": [
+              {
+                "id": "core-data-model",
+                "title": "Data Model & Entities"
+              },
+              {
+                "id": "core-data-context",
+                "title": "NSManagedObjectContext & CRUD"
+              },
+              {
+                "id": "core-data-persistence",
+                "title": "Persistence & Fetch Requests"
+              }
+            ]
+          },
+          {
+            "id": "architecture-mvvm",
+            "title": "Architecture (MVVM)",
+            "subCheckpoints": [
+              {
+                "id": "mvvm-viewmodel",
+                "title": "ViewModel & @ObservableObject"
+              },
+              {
+                "id": "mvvm-state",
+                "title": "@Published & State Binding"
+              },
+              {
+                "id": "mvvm-structure",
+                "title": "Project Structure & Separation of Concerns"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "testing-xctest",
+            "title": "Testing (XCTest)",
+            "subCheckpoints": [
+              {
+                "id": "xctest-unit",
+                "title": "Unit Tests & Assertions"
+              },
+              {
+                "id": "xctest-ui",
+                "title": "UI Tests & XCUITest"
+              },
+              {
+                "id": "xctest-mocking",
+                "title": "Mocking & Test Targets"
+              }
+            ]
+          },
+          {
+            "id": "combine-async-await",
+            "title": "Combine & Async/Await",
+            "subCheckpoints": [
+              {
+                "id": "combine-basics",
+                "title": "Publishers, Subscribers & Operators"
+              },
+              {
+                "id": "async-await",
+                "title": "Async/Await & Structured Concurrency"
+              },
+              {
+                "id": "async-combine",
+                "title": "Bridging Combine with Async/Await"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "title": "Performance Optimization",
+            "subCheckpoints": [
+              {
+                "id": "perf-instruments",
+                "title": "Instruments & Profiling"
+              },
+              {
+                "id": "perf-memory",
+                "title": "Memory Management & ARC"
+              },
+              {
+                "id": "perf-ui",
+                "title": "UI Performance & Smooth Animations"
+              }
+            ]
+          },
+          {
+            "id": "publishing-app-store",
+            "title": "Publishing to App Store",
+            "subCheckpoints": [
+              {
+                "id": "appstore-connect",
+                "title": "App Store Connect & Certificates"
+              },
+              {
+                "id": "appstore-metadata",
+                "title": "App Metadata & Screenshots"
+              },
+              {
+                "id": "appstore-release",
+                "title": "Submission & Review Process"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]

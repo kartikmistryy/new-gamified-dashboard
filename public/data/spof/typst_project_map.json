@@ -1,0 +1,2637 @@
+{
+  "Infrastructure": {
+    "description": "",
+    "functions": {
+      "Build & Configuration": {
+        "files": [
+          {
+            "path": "docs/changelog/0.3.0.md",
+            "description": "This file is a changelog entry for Typst version 0.3.0, documenting all new features, breaking changes, improvements, and bug fixes introduced in this release.",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/0.4.0.md",
+            "description": "This file documents the changes and new features introduced in Typst version 0.4.0, categorized by functionality such as footnotes, math, scripting, text layout, and web app improvements.",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/0.11.1.md",
+            "description": "This file is a changelog for Typst version 0.11.1, detailing various bug fixes and improvements across multiple categories such as security, bibliography, text, layout, math, export, and scripting.",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/0.14.1.md",
+            "description": "This file is a changelog documenting the new features, bug fixes, and other changes introduced in Typst version 0.14.1.",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/0.5.0.md",
+            "description": "This file is a changelog entry for Typst version 0.5.0, detailing new features, improvements, and bug fixes across various components like text, math, scripting, and the command-line interface.",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/0.1.0.md",
+            "description": "Changes in Typst 0.1.0",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/0.10.0.md",
+            "description": "This file is the changelog for Typst version 0.10.0, outlining new features, bug fixes, and improvements across various components like bibliography management, visualization, text layout, math, scripting, tooling, export, and command-line interface.",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/0.8.0.md",
+            "description": "This file is a changelog entry detailing the new features, improvements, and bug fixes introduced in Typst version 0.8.0.",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/0.6.0.md",
+            "description": "This file is a changelog documenting the new features, improvements, and bug fixes introduced in Typst version 0.6.0. It covers updates in package management, math, text and layout, CLI, and development.",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/0.13.0.md",
+            "description": "This file serves as a changelog, documenting the new features, improvements, and bug fixes introduced in Typst version 0.13.0.",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/0.14.2.md",
+            "description": "This file is a changelog entry for Typst version 0.14.2, detailing security updates, diagnostic improvements, and contributors for that release.",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/0.13.1.md",
+            "description": "This file documents the changes, bug fixes, and improvements introduced in Typst version 0.13.1, serving as a changelog entry.",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/earlier.md",
+            "description": "This file is a changelog documenting early, unversioned changes and updates made to the Typst project, detailing improvements and bug fixes grouped by date.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-utils/build.rs",
+            "description": "This build script determines and sets environment variables for the Typst version and Git commit SHA during compilation, falling back to CARGO_PKG_VERSION or git command output if not explicitly provided.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-utils/src/version.rs",
+            "description": "This file manages and provides access to the Typst application's version number and build commit hash, reading them from environment variables or build-time sources.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/sys.rs",
+            "description": "This file defines a `sys` module for Typst, providing access to system-related information like the Typst version and input parameters within the Typst environment.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-macros/src/time.rs",
+            "description": "This file defines a procedural macro (`#[time(..)]`) that instruments functions to measure their execution time. It inserts a `typst_timing::TimingScope` at the beginning of the decorated function's body.",
+            "spof": false
+          },
+          {
+            "path": "tests/README.md",
+            "description": "This file documents the testing framework for the Typst project, detailing how to run, write, and update tests, along with the test directory structure and available test stages.",
+            "spof": false
+          },
+          {
+            "path": "tests/src/run.rs",
+            "description": "This file defines the `Runner` struct and associated logic for executing individual tests within the Typst test suite. It handles test evaluation, compilation to various document formats (paged, HTML), output verification, and diagnostic checking.",
+            "spof": true
+          },
+          {
+            "path": "tests/src/tests.rs",
+            "description": "This file implements Typst's test runner, responsible for collecting, executing, and logging results for various tests, as well as providing utilities for cleaning test artifacts and managing reference outputs.",
+            "spof": false
+          },
+          {
+            "path": "tests/fuzz/src/lib.rs",
+            "description": "This file defines a `FuzzWorld` struct that implements the `typst::World` trait, providing a simplified and minimal environment for fuzz testing the Typst typesetting engine with a given text input and a single font.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Tobias Schmitz",
+            "percent": 60
+          },
+          {
+            "name": "Laurenz",
+            "percent": 26
+          },
+          {
+            "name": "har7an",
+            "percent": 5
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 21,
+      "spofCount": 18
+    },
+    "busFactor": 1,
+    "authorCount": 4
+  },
+  "Document Structuring & Content Model": {
+    "description": "Manages the high-level structure of publications, providing semantic elements for headings, paragraphs, lists, figures, tables, bibliographies, and cross-references.",
+    "functions": {
+      "Documentation Generation & Content": {
+        "files": [
+          {
+            "path": "docs/changelog/0.11.0.md",
+            "description": "This file is a changelog for Typst version 0.11.0, detailing new features, improvements, and bug fixes across various functionalities like tables, templates, context, layout, text, math, and scripting.",
+            "spof": true
+          },
+          {
+            "path": "docs/changelog/welcome.md",
+            "description": "This file serves as the welcome page and index for the Typst changelog, summarizing recent changes and providing links to detailed updates for each version.",
+            "spof": true
+          },
+          {
+            "path": "docs/guides/accessibility.md",
+            "description": "This guide teaches users how to create accessible documents using Typst, covering topics like semantic markup, reading order, alt text, and PDF/UA compliance to ensure universal access for all readers and assistive technologies.",
+            "spof": true
+          },
+          {
+            "path": "docs/guides/guide-for-latex-users.md",
+            "description": "This guide provides a comparison between Typst and LaTeX for users transitioning from LaTeX to Typst. It explains the differences and similarities in syntax, document structure, and command usage to help users get started quickly.",
+            "spof": false
+          },
+          {
+            "path": "docs/guides/welcome.md",
+            "description": "This file serves as an introduction and table of contents for the Typst documentation guides, outlining available topics and welcoming users to the section.",
+            "spof": false
+          },
+          {
+            "path": "docs/guides/page-setup.md",
+            "description": "An in-depth guide to setting page dimensions, margins, and page numbers in Typst, including customization for headers, footers, and alternating page layouts.",
+            "spof": false
+          },
+          {
+            "path": "docs/tutorial/3-advanced.md",
+            "description": "This file is part of the Typst tutorial, focusing on advanced styling techniques to customize document formatting for conference papers, including setting layout rules, titles, authors, abstracts, and using show-set rules.",
+            "spof": true
+          },
+          {
+            "path": "docs/tutorial/1-writing.md",
+            "description": "This file is part of the Typst tutorial, providing an introduction to writing documents, including basic formatting, adding figures, managing bibliographies, and typesetting mathematical equations.",
+            "spof": false
+          },
+          {
+            "path": "docs/src/lib.rs",
+            "description": "This file serves as the main documentation provider for Typst, orchestrating the generation and structuring of documentation pages from various sources like markdown, YAML, and internal library definitions.",
+            "spof": false
+          },
+          {
+            "path": "docs/src/model.rs",
+            "description": "This file defines the data models for a documentation website, including structures for pages, outlines, categories, functions, types, and symbols, primarily intended for serialization to be consumed by a frontend.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Martin Haug",
+            "percent": 57
+          },
+          {
+            "name": "Laurenz",
+            "percent": 26
+          },
+          {
+            "name": "Clemens Koza",
+            "percent": 4
+          }
+        ]
+      },
+      "Standard Document Elements": {
+        "files": [
+          {
+            "path": "docs/guides/tables.md",
+            "description": "This guide explains all you need to know about creating and styling tables in Typst, including changing strokes, rotating tables, adjusting column sizes, adding captions, and creating striped tables.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/model/enum.rs",
+            "description": "Defines the `EnumElem` and `EnumItem` structures, which represent a numbered list and its individual items, respectively, within the Typst typesetting system. It handles properties like numbering style, spacing, indentation, and content for creating and rendering ordered lists.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/model/emph.rs",
+            "description": "Defines the `EmphElem` for emphasizing content by toggling italics in Typst, including its behavior, syntax, and examples.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/model/title.rs",
+            "description": "This file defines the `TitleElem` element, which represents the main title of a Typst document, handling its content resolution and styling.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/model/document.rs",
+            "description": "This file defines the `DocumentElem` struct for handling document-level metadata in Typst, such as title, author, description, keywords, and creation date. It also provides `DocumentInfo` and related methods to extract and manage this metadata from styling information.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/model/strong.rs",
+            "description": "This file defines the `StrongElem` for strongly emphasizing content in Typst, increasing font weight by a specified delta. It supports both direct function calls and dedicated asterisk syntax for text emphasis.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/model/footnote.rs",
+            "description": "This file defines the `FootnoteElem` and `FootnoteEntry` types, handling the creation, numbering, and rendering of footnotes, including their appearance in the document's listing.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/model/list.rs",
+            "description": "This file defines the data structures and logic for bullet lists (`ListElem`) and their individual items (`ListItem`) within the Typst typesetting system, including properties like markers, spacing, and tightness.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/model/quote.rs",
+            "description": "This file defines the `QuoteElem` type, which represents a quote element within Typst documents. It handles rendering quotes, including inline and block formatting, attribution, and smart quotation marks based on context and language settings.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/model/heading.rs",
+            "description": "This file defines the `HeadingElem` structure, which represents a section heading in Typst, managing its properties like level, numbering, and outline behavior. It handles the logic for structuring documents with hierarchical headings and their rendering.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/model/par.rs",
+            "description": "This file defines the `ParElem` element, which represents and controls the properties and behavior of paragraphs within the Typst typesetting system, including line spacing, paragraph spacing, and justification settings.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/model/table.rs",
+            "description": "This file defines the `TableElem` struct and its properties, enabling the creation and styling of tables within the Typst typesetting system. It manages layout, content arrangement, and visual presentation of tabular data.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/model/terms.rs",
+            "description": "Defines the `TermsElem` and `TermItem` structures for creating and managing term lists, which display terms with their descriptions, including options for layout and styling.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/model/figure.rs",
+            "description": "This file defines the `FigureElem` struct, which represents a figure with an optional caption in the Typst typesetting system. It handles figure content, numbering, placement, accessibility, and automatic classification for different figure types like images and tables.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 45
+          },
+          {
+            "name": "diquah",
+            "percent": 11
+          },
+          {
+            "name": "Y.D.X.",
+            "percent": 10
+          }
+        ]
+      },
+      "Content Model & Element Representation": {
+        "files": [
+          {
+            "path": "docs/reference/library/model.md",
+            "description": "This file provides reference documentation for functions related to document structuring, including headings, figures, bibliography management, and cross-referencing within the Typst library model.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/lib.rs",
+            "description": "This file constitutes the core of Typst's standard library, containing central type definitions and the implementation for building and configuring the library's various modules and features.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/fields.rs",
+            "description": "This file provides functionality to access and list predefined fields on various Typst `Value` types, such as Version, Length, Relative, Stroke, and Alignment.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/int.rs",
+            "description": "This file defines the integer type (`i64`) for the Typst language, including its constructor for type conversion and various bitwise and arithmetic operations.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/none.rs",
+            "description": "This file defines the `NoneValue` type for Typst, representing the absence of a value, and implements core traits for it. It also provides implementations for `Option<T>` to integrate optional values with Typst's `none` concept and value system.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/auto.rs",
+            "description": "This file defines `AutoValue` for a special 'auto' default, and the generic `Smart<T>` enum to represent values that can either be explicitly set or automatically determined, along with utility methods and trait implementations for handling such values.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/content/mod.rs",
+            "description": "Defines the core `Content` struct, which represents a piece of document content in Typst, managing elements, their fields, and providing methods for content manipulation and property access.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/content/element.rs",
+            "description": "This file defines the `Element` struct, representing a document element in Typst, and associated traits like `NativeElement`, `Construct`, and `Set` to enable dynamic behavior and capabilities for these elements.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/content/vtable.rs",
+            "description": "This file implements a custom virtual method table (vtable) system for `Content` types, offering more flexibility and performance benefits than standard Rust trait objects for dynamic dispatch and type-erased operations.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/content/packed.rs",
+            "description": "This file defines the `Packed<T>` struct, which is a type-safe wrapper around a type-erased `Content` enum, allowing static access and manipulation of `NativeElement` types while retaining `Content`'s dynamic capabilities.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/content/field.rs",
+            "description": "This file defines the core infrastructure for managing different types of fields (required, settable, synthesized, external) on elements within the Typst rendering engine. It provides mechanisms for accessing these fields programmatically and generating their type-erased metadata and routines.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/content/raw.rs",
+            "description": "This file defines the `RawContent` struct, a low-level, type-erased, reference-counted container for various `NativeElement` types, implementing custom dynamic dispatch via vtables and a copy-on-write mechanism.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/model/mod.rs",
+            "description": "This file serves as the main module for Typst's document model, aggregating and defining various structural elements like paragraphs, headings, lists, and figures. It also registers these elements and functions within a global scope for use in document processing.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-macros/src/elem.rs",
+            "description": "This file implements a procedural macro (`#[elem]`) for the Typst typesetting system. It processes Rust struct definitions to generate boilerplate code for Typst elements, including their struct definition and various trait implementations.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-realize/src/spaces.rs",
+            "description": "This file implements the infrastructure for space collapsing during the realization phase of Typst documents. It defines states for how different elements interact with spaces and provides a function to efficiently collapse or discard spaces in a buffer of content elements.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-realize/src/lib.rs",
+            "description": "This file implements Typst's realization subsystem, which recursively applies styling and show rules to transform arbitrary content into a flat list of well-known, styled elements for further processing based on the realization kind (e.g., layout, HTML, math).",
+            "spof": false
+          },
+          {
+            "path": "tests/src/custom.rs",
+            "description": "This file contains custom test-specific assertions and special validation logic for `typst` documents, primarily checking document metadata and ensuring layout tags are balanced.",
+            "spof": true
+          },
+          {
+            "path": "tests/suite/model",
+            "description": "This directory is part of the `typst` project's test suite, specifically for 'model' related tests. It is likely intended to house test cases, configurations, or data models used to validate the behavior or output of certain components. Currently, it serves as an empty placeholder within the test structure.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 77
+          },
+          {
+            "name": "Ian",
+            "percent": 10
+          },
+          {
+            "name": "CrumblyLiquid",
+            "percent": 4
+          }
+        ]
+      },
+      "Citation & Cross-Reference Management": {
+        "files": [
+          {
+            "path": "crates/typst-library/src/model/cite.rs",
+            "description": "This file defines the data structures and logic for handling citations in Typst documents. It includes the `CiteElem` struct for individual citations and `CiteGroup` for collections of citations, specifying their properties, forms, and synthesis process.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/model/link.rs",
+            "description": "This file defines the `LinkElem` struct and related types (`LinkTarget`, `Destination`) for handling links within a Typst document, supporting URLs, internal document labels, and specific locations.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/model/bibliography.rs",
+            "description": "This file defines the `BibliographyElem` struct and its associated logic for handling bibliographies and citations within Typst documents. It manages loading bibliography data from various formats (e.g., BibLaTeX, Hayagriva YAML), applying citation styles, and rendering reference lists.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/model/reference.rs",
+            "description": "This file defines the `RefElem` responsible for creating and resolving cross-references within a document, including textual references to labels, page number references, and bibliography citations.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 58
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 18
+          },
+          {
+            "name": "Lachlan Kermode",
+            "percent": 7
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 46,
+      "spofCount": 28
+    },
+    "busFactor": 1,
+    "authorCount": 12
+  },
+  "Markup Language & Syntax Engine": {
+    "description": "Defines the core markup syntax and parsing engine, enabling users to write and structure documents with text, code, and formatting commands.",
+    "functions": {
+      "Language Specification and Documentation": {
+        "files": [
+          {
+            "path": "docs/changelog/0.12.0.md",
+            "description": "This file documents the changes introduced in Typst version 0.12.0, including new features, improvements, and bug fixes across various components like layout, text, and math.",
+            "spof": false
+          },
+          {
+            "path": "docs/changelog/0.7.0.md",
+            "description": "This file is the changelog for Typst version 0.7.0, detailing new features, improvements, and breaking changes across various categories like text, layout, export, math, scripting, and tooling.",
+            "spof": true
+          },
+          {
+            "path": "docs/tutorial/welcome.md",
+            "description": "This file provides an introductory tutorial to Typst, a markup language for typesetting documents. It covers basic writing and formatting, and outlines more advanced topics like styling and template creation.",
+            "spof": true
+          },
+          {
+            "path": "docs/overview.md",
+            "description": "This file provides an overview of Typst, a new markup-based typesetting system, and introduces the structure of its documentation, which includes a tutorial and a comprehensive reference.",
+            "spof": true
+          },
+          {
+            "path": "docs/dev/architecture.md",
+            "description": "This document describes the general structure and architecture of the Typst compiler, detailing its directories, the four-phase compilation process (parsing, evaluation, layout, export), and IDE functionality.",
+            "spof": false
+          },
+          {
+            "path": "docs/reference/welcome.md",
+            "description": "This file serves as the welcome and overview page for the Typst reference documentation, introducing its comprehensive guide to the language's syntax, concepts, types, and functions.",
+            "spof": true
+          },
+          {
+            "path": "docs/reference/language/syntax.md",
+            "description": "This file provides a comprehensive reference for Typst's syntax, detailing elements and structures across its markup, math, and code modes.",
+            "spof": true
+          },
+          {
+            "path": "tests/suite/foundations",
+            "description": "This directory is part of the test suite for the Typst project, specifically designated for foundational tests. It is intended to house tests that validate the core components or fundamental functionalities of the Typst system. As it is currently empty, it may serve as a placeholder for future tests or indicate that foundational tests are organized in a different manner.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 70
+          },
+          {
+            "name": "Y.D.X.",
+            "percent": 13
+          },
+          {
+            "name": "Jens Wilbert",
+            "percent": 5
+          }
+        ]
+      },
+      "Syntax Parsing and Tree Representation": {
+        "files": [
+          {
+            "path": "crates/typst-syntax/README.md",
+            "description": "This README provides an overview of the `typst-syntax` crate, explaining its role in managing Typst's syntactical structure through parsing, AST creation, and syntax highlighting. It also details the purpose of individual source files within the crate.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-syntax/src/ast.rs",
+            "description": "This file defines the Abstract Syntax Tree (AST) for Typst, providing a typed and lazy interface to interpret the semantic meaning of nodes from the Concrete Syntax Tree (CST).",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-syntax/src/set.rs",
+            "description": "This file defines `SyntaxSet`, a bitset-based structure for efficiently storing and querying sets of syntax kinds, along with pre-defined constant sets for common grammatical constructs used in parsing.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-syntax/src/span.rs",
+            "description": "This file defines the `Span` struct, which represents a compact and efficient way to store a location or range within a source file, supporting both numbered spans for Typst files and raw byte ranges for others. It also provides `Spanned<T>` to associate a value with such a span.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-syntax/src/kind.rs",
+            "description": "This file defines the `SyntaxKind` enum, enumerating all possible syntactical building blocks (tokens and nodes) for the Typst programming language. It serves as the fundamental vocabulary for the lexer and parser.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-syntax/src/reparser.rs",
+            "description": "This file implements an incremental re-parser for a syntax tree, optimizing updates by re-parsing only the necessary parts of the tree after an edit.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-syntax/src/highlight.rs",
+            "description": "This file defines the syntax highlighting tags for the Typst language and provides the core logic to map syntax tree nodes to these tags, facilitating semantic highlighting.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-syntax/src/node.rs",
+            "description": "This file defines the `SyntaxNode` structure, which represents a node in an untyped syntax tree, along with its variants (leaf, inner, and error nodes) and core methods for creation, access, and manipulation of these nodes.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-syntax/src/source.rs",
+            "description": "This file defines the `Source` struct, which manages the text content of a source file, its syntax tree, and provides methods for creating, accessing, and incrementally updating the file's content and parsed representation.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-syntax/src/lib.rs",
+            "description": "This file is the main library entry point for the `typst-syntax` crate, defining the parser and syntax tree structures for the Typst language. It exports core components like AST nodes, lexer, parser, and related utilities.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-syntax/src/parser.rs",
+            "description": "This file implements the parser for the Typst language, responsible for transforming source text into a syntax tree across various modes like markup, code, and mathematics.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-syntax/src/lexer.rs",
+            "description": "This file defines the `Lexer` struct, which is responsible for tokenizing a source code string into a stream of syntax nodes based on different syntax modes (markup, math, code).",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-syntax/src/lines.rs",
+            "description": "This file defines a `Lines` data structure that stores a text buffer and efficiently manages metadata about line start positions (byte and UTF-16 offsets). It provides methods for converting between different text indices (byte, UTF-16, line, column) and supports incremental text edits.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/text/raw.rs",
+            "description": "This file defines the `RawElem` element for Typst, which displays raw, verbatim text (typically code) with optional syntax highlighting. It handles parsing, formatting, and styling options for both inline and block-level raw text.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-macros/src/util.rs",
+            "description": "This file contains utility functions and macros for parsing and manipulating attributes, token streams, and specific syntax patterns within Rust procedural macros. It provides helpers for error reporting, documentation extraction, attribute management, and parsing various key-value or flag attributes from macro input.",
+            "spof": true
+          },
+          {
+            "path": "tests/fuzz/src/bin/parse.rs",
+            "description": "This file implements a fuzzing target for the Typst syntax parser. It uses `libfuzzer_sys` to test the `typst_syntax::parse` function with arbitrary string inputs to uncover bugs or vulnerabilities.",
+            "spof": false
+          },
+          {
+            "path": "tests/suite/syntax",
+            "description": "This directory is designated to hold test cases related to the syntax of the Typst language. While currently empty, it serves as a dedicated location for verifying various syntactic constructs and parsing rules within the test suite.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Ian Wrzesinski",
+            "percent": 37
+          },
+          {
+            "name": "Laurenz",
+            "percent": 30
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 15
+          }
+        ]
+      },
+      "Document Compilation and Evaluation Engine": {
+        "files": [
+          {
+            "path": "crates/typst-syntax/src/path.rs",
+            "description": "This file defines structures for virtual, cross-platform reproducible path handling in Typst, including `RootedPath`, `VirtualRoot`, `VirtualPath`, and an interning mechanism for `FileId`.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst/src/lib.rs",
+            "description": "This file contains the core compiler logic for the Typst markup language, orchestrating the parsing, evaluation, layout, and export steps to produce various document formats.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-eval/src/markup.rs",
+            "description": "This file is responsible for evaluating various Typst markup Abstract Syntax Tree (AST) nodes into their corresponding document content elements or values within the Typst rendering engine. It defines how different syntactic constructs are translated into the internal document model.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/engine.rs",
+            "description": "This file defines the `Engine` struct, which serves as the central compilation context for Typst, managing routines, world state, introspection, and diagnostics. It also includes supporting structures like `Sink` for error/warning handling and `Route` for tracking compilation depth and preventing cycles.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/bytes.rs",
+            "description": "This file defines the `Bytes` type in Typst, providing an efficient and flexible representation for sequences of bytes. It supports conversions from/to strings and arrays of integers, and offers methods for common byte-sequence operations like slicing and indexing.",
+            "spof": true
+          },
+          {
+            "path": "tests/suite/loading",
+            "description": "This directory is part of the test suite for the `typst` project, specifically designed to house or manage tests related to the loading of documents or resources. It serves as a designated location for scenarios that validate the system's ability to correctly load various inputs.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 92
+          },
+          {
+            "name": "Ana Gelez",
+            "percent": 3
+          },
+          {
+            "name": "Ian",
+            "percent": 3
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 31,
+      "spofCount": 15
+    },
+    "busFactor": 1,
+    "authorCount": 9
+  },
+  "Command-Line Interface (CLI) & Workflows": {
+    "description": "Offers a comprehensive command-line tool for compiling documents, watching for file changes, and managing project dependencies, enabling integration into automated build workflows.",
+    "functions": {
+      "Core Compilation Workflows": {
+        "files": [
+          {
+            "path": "docs/changelog/0.2.0.md",
+            "description": "This file is a changelog entry for Typst version 0.2.0, detailing breaking changes, new features, CLI updates, and miscellaneous improvements introduced in this version.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-cli/src/watch.rs",
+            "description": "This file implements the continuous compilation (watch mode) functionality for Typst documents. It monitors file system changes for document dependencies and recompiles the document, providing real-time status updates to the terminal.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-cli/src/world.rs",
+            "description": "This file defines the `SystemWorld` struct, which implements Typst's `World` trait to provide the compiler with access to the operating system's files, fonts, and current time. It manages file loading from the project, packages, and special inputs like stdin.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-cli/src/query.rs",
+            "description": "This file implements the `typst query` subcommand, which allows users to retrieve and format specific elements from a compiled Typst document based on a selector. It handles document compilation, element retrieval, result formatting, and diagnostic output.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-cli/src/eval.rs",
+            "description": "This file handles the evaluation of Typst expressions. It compiles a Typst document and then evaluates a given expression within that document's context, printing the result or any diagnostics.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-cli/src/args.rs",
+            "description": "This module defines the command-line interface (CLI) arguments and subcommands for the Typst compiler application using the `clap` crate. It structures the various commands like compile, watch, eval, and update, along with their respective options.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-cli/src/main.rs",
+            "description": "This file serves as the main entry point for the Typst CLI application, responsible for parsing command-line arguments, dispatching various subcommands (like compile, watch, query, etc.) to their respective modules, and managing the overall program flow and error reporting.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-cli/src/compile.rs",
+            "description": "This file defines the core compilation logic for the Typst CLI. It handles parsing command-line arguments into a compilation configuration, executing the compilation process, and managing various output and dependency settings.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-kit/src/lib.rs",
+            "description": "This file defines the `typst-kit` library, providing core building blocks for Typst integrations and the `typst-cli`, with modular features for font handling, package loading, diagnostics, and more.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-kit/src/watcher.rs",
+            "description": "This file implements a file system watcher that monitors a set of paths for changes, designed for functionality like `typst watch`. It batches events, handles missing files, and filters out irrelevant file system activity to trigger recompilations.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 67
+          },
+          {
+            "name": "Tim Peko",
+            "percent": 8
+          },
+          {
+            "name": "Tau",
+            "percent": 7
+          }
+        ]
+      },
+      "CLI Tooling & Diagnostics": {
+        "files": [
+          {
+            "path": "docs/changelog/0.9.0.md",
+            "description": "This file is a changelog detailing new features, improvements, and breaking changes introduced in Typst version 0.9.0, covering bibliography management, visualization, text/layout, math, performance, tooling, export, web app, CLI, and other miscellaneous updates.",
+            "spof": true
+          },
+          {
+            "path": "docs/src/main.rs",
+            "description": "This file implements a command-line tool that generates a JSON representation of Typst documentation, resolving and outputting associated assets like images based on provided arguments. It acts as a backend for generating documentation in a machine-readable format.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-cli/src/timings.rs",
+            "description": "This file manages the recording and export of performance timings for the Typst compiler's execution steps. It allows tracking of compilation times and writes them to a JSON file, optionally handling multiple recordings for different iterations (e.g., in watch mode).",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-cli/src/terminal.rs",
+            "description": "This file provides a utility for writing colored output to the terminal, including features for clearing the screen or last line. It wraps the `termcolor` crate to manage terminal output and color support based on command-line arguments and terminal capabilities.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-cli/src/completions.rs",
+            "description": "This file is responsible for generating shell auto-completion scripts for the `typst-cli` application. It uses the `clap_complete` crate to output the completions to standard output based on the specified shell.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-cli/src/info.rs",
+            "description": "This file defines data structures and logic for collecting and serializing comprehensive information about the Typst CLI application's version, build environment, runtime features, font configuration, package paths, and relevant environment variables. It serves to provide detailed system and application diagnostics.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-cli/src/greet.rs",
+            "description": "This file contains the logic for displaying a welcome message to new users or when a new Typst version is run for the first time, preventing it from being shown repeatedly. It manages the greeting's display and records when it has been shown.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-cli/build.rs",
+            "description": "This build script generates CLI documentation (man pages) and shell completion scripts for the `typst` application when the `GEN_ARTIFACTS` environment variable is set during the build process.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-kit/src/server.rs",
+            "description": "Implements a minimal hot-reloading HTTP server that serves HTML content and uses Server-Sent Events (SSE) to trigger live browser reloads when the content is updated.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Erik",
+            "percent": 45
+          },
+          {
+            "name": "Laurenz",
+            "percent": 38
+          },
+          {
+            "name": "har7an",
+            "percent": 5
+          }
+        ]
+      },
+      "Project & Dependency Management": {
+        "files": [
+          {
+            "path": "crates/typst-cli/src/update.rs",
+            "description": "This file implements the self-update mechanism for the Typst CLI, allowing it to fetch the latest or a specified version from GitHub. It handles downloading, extracting, and replacing the running executable, including backup and revert functionality.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-cli/src/init.rs",
+            "description": "This file handles the initialization of a new Typst project from a specified template, including parsing package specifications, downloading templates, creating project directories, and providing a summary.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-cli/src/download.rs",
+            "description": "This file provides functionality for downloading packages and other resources, including displaying progress updates to the user's terminal. It defines a downloader that reports progress through a custom `PrintProgress` struct.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-cli/src/packages.rs",
+            "description": "This file defines the `system` function responsible for initializing and configuring the Typst CLI's package storage, integrating file system-based and universe packages using provided arguments.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 71
+          },
+          {
+            "name": "tingerrr",
+            "percent": 12
+          },
+          {
+            "name": "jimvdl",
+            "percent": 5
+          }
+        ]
+      },
+      "Internal Test Framework": {
+        "files": [
+          {
+            "path": "crates/typst-cli/tests/smoke.rs",
+            "description": "This file contains integration tests for the Typst command-line interface (CLI). It verifies various CLI functionalities like compilation, font handling, dependency resolution, and error reporting.",
+            "spof": true
+          },
+          {
+            "path": "tests/src/args.rs",
+            "description": "This file defines the command-line interface (CLI) arguments and subcommands for a Typst test runner, including options for test selection, execution, and output configuration.",
+            "spof": true
+          },
+          {
+            "path": "tests/src/logger.rs",
+            "description": "This file implements a test logger responsible for tracking and reporting the progress and results of individual test runs within a test suite. It manages test statuses (passed, failed, skipped, active), outputs real-time updates to stderr, and provides a final summary of the test execution.",
+            "spof": false
+          },
+          {
+            "path": "tests/src/world.rs",
+            "description": "This file defines a custom `World` implementation (`TestWorld`) for running Typst tests, providing specialized file loading, font management, and test-specific functions for a controlled testing environment.",
+            "spof": true
+          },
+          {
+            "path": "tests/src/collect.rs",
+            "description": "This file is responsible for collecting, parsing, and defining test cases within the Typst project's test suite, including their attributes and execution stages (e.g., evaluation, rendering, PDF output).",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Tobias Schmitz",
+            "percent": 61
+          },
+          {
+            "name": "Laurenz",
+            "percent": 36
+          },
+          {
+            "name": "Michael Färber",
+            "percent": 1
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 28,
+      "spofCount": 20
+    },
+    "busFactor": 1,
+    "authorCount": 10
+  },
+  "Multi-Format Export Engine": {
+    "description": "Converts documents into various industry-standard formats, including print-ready PDFs with accessibility features (PDF/UA), web-friendly HTML, and scalable SVG images.",
+    "functions": {
+      "PDF Document Generation": {
+        "files": [
+          {
+            "path": "docs/changelog/0.14.0.md",
+            "description": "This file is a changelog document detailing new features, improvements, and bug fixes introduced in version 0.14.0 of Typst, categorized by functional areas like PDF export, HTML export, layout, and math.",
+            "spof": true
+          },
+          {
+            "path": "docs/reference/export/pdf.md",
+            "description": "This document describes how to export files as PDF in Typst, covering command-line and web app options, supported PDF versions, and conformance with various PDF/UA and PDF/A standards for accessibility and archival.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/pdf/attach.rs",
+            "description": "This file defines the `AttachElem` structure for attaching external files to a generated PDF document, along with its properties like path, data, and description. It also includes the `AttachedFileRelationship` enum to specify how the attached file relates to the PDF.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/pdf/mod.rs",
+            "description": "This file defines the `pdf` module for the Typst library, aggregating and exposing PDF-specific elements and functionalities. It includes definitions for attachments, artifacts, and conditional accessibility features.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-pdf/src/link.rs",
+            "description": "This file is responsible for handling Typst link destinations, converting them into PDF link annotations, and managing their properties and placement within the PDF document, including support for PDF/UA standards.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/util.rs",
+            "description": "This file provides utility traits and functions for converting Typst-specific geometric and visual types to their corresponding `krilla` library types, facilitating the rendering process.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-pdf/src/text.rs",
+            "description": "This file is responsible for converting Typst text items and fonts into a format compatible with the `krilla` rendering engine and drawing them onto a surface to generate PDF content.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-pdf/src/attach.rs",
+            "description": "This file handles the embedding of external files into a PDF document, processing 'AttachElem' elements from the document's structure. It determines file properties like MIME type and compression status before embedding them.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/metadata.rs",
+            "description": "This file is responsible for building PDF metadata, extracting document information such as title, author, and creation date from the Typst document context, and handling timezone conversions for the `krilla` PDF metadata library.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-pdf/src/paint.rs",
+            "description": "This file is responsible for converting Typst's visual 'paint' types, such as colors, gradients, and patterns, into corresponding types used by the `krilla` PDF rendering library. It handles the transformation of visual properties for generating PDF output.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/lib.rs",
+            "description": "This file is the main library crate for exporting Typst documents to PDF. It defines the core `pdf` conversion function, configurable options, and supports various PDF standards like PDF/A and PDF/UA.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-pdf/src/page.rs",
+            "description": "This file extends the `krilla::page::PageLabel` functionality, providing methods to convert `typst` numbering schemes into PDF page labels. It aims to optimize for standard PDF numbering styles while handling more complex patterns by embedding them as prefixes.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-pdf/src/convert.rs",
+            "description": "This file is responsible for converting a Typst `PagedDocument` into a PDF document using the `krilla` library. It orchestrates the conversion of pages, frames, text, images, and other elements, while also handling metadata, outlines, and accessibility tags.",
+            "spof": false
+          },
+          {
+            "path": "tests/fuzz/src/bin/paged.rs",
+            "description": "This file defines a fuzzing target for the Typst typesetting system, specifically testing its ability to compile arbitrary input text into a paged document and then render it to bitmap, SVG, and PDF formats to detect crashes or vulnerabilities.",
+            "spof": true
+          },
+          {
+            "path": "tests/suite/visualize",
+            "description": "This directory within the test suite is dedicated to visual tests for the Typst typesetting system. It ensures the correct rendering and visual integrity of documents generated by Typst. These tests verify that output appears as expected.",
+            "spof": false
+          },
+          {
+            "path": "tests/suite/pdf",
+            "description": "This directory is designated for housing tests that validate the PDF output capabilities of the Typst typesetting system. Its primary role is to ensure the correctness and fidelity of PDF documents generated by Typst, serving as a critical part of the project's benchmark test suite.",
+            "spof": false
+          },
+          {
+            "path": "tests/ref/render",
+            "description": "This directory is intended to store reference rendering outputs for automated tests within the 'typst' project. It would typically contain expected images or other visual artifacts to compare against actual rendering results during testing. Currently, it is empty, suggesting either dynamic generation of reference files or that no specific rendering references are stored here directly.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz Stampfl",
+            "percent": 33
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 27
+          },
+          {
+            "name": "Laurenz",
+            "percent": 19
+          }
+        ]
+      },
+      "HTML Document Export": {
+        "files": [
+          {
+            "path": "docs/src/link.rs",
+            "description": "This file provides functionality to resolve different types of documentation links (internal, external, and syntax-based) into their corresponding URL paths for the Typst project. It handles specific keywords, GitHub issue references, and traverses the Typst library structure to construct correct links for definitions, functions, types, and their parameters.",
+            "spof": true
+          },
+          {
+            "path": "docs/src/html.rs",
+            "description": "This file defines structures and logic for converting Markdown content into HTML, specifically for Typst documentation. It handles parsing, rewriting links and images, highlighting code, and extracting metadata like titles and descriptions.",
+            "spof": false
+          },
+          {
+            "path": "docs/reference/export/html.md",
+            "description": "This document serves as a reference for Typst's experimental HTML export feature, detailing its current state, usage, and future plans. It explains how to export Typst documents to HTML via the command line and outlines the differences from other visual export formats.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-html/src/tag.rs",
+            "description": "This file defines constants for various HTML tags and provides utility functions to categorize these tags based on HTML content models (e.g., void, raw, flow, metadata, sectioning, heading content).",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-html/src/charsets.rs",
+            "description": "This file defines functions to check the validity of characters for different parts of an HTML document, such as tag names, attribute names, attribute values, and normal text, based on WHATWG and W3C specifications.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-html/src/attr.rs",
+            "description": "This file defines constants for various HTML attributes, including standard HTML attributes and WAI-ARIA attributes. It serves as a comprehensive list of HTML attribute names, likely for use in an HTML generation or parsing library.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-html/src/convert.rs",
+            "description": "This file contains the core logic for converting Typst content into a sequence of HTML nodes. It manages the conversion process for various elements, including text, spacing, and smart quotes, while handling different whitespace behaviors and HTML element structures.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-html/src/lib.rs",
+            "description": "This file is the main entry point for Typst's HTML exporter, defining core elements and logic for converting Typst content into HTML, including custom HTML elements and SVG embedding.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-html/src/link.rs",
+            "description": "This file is responsible for identifying link targets within a document's HTML representation and assigning unique, valid IDs to make them linkable, handling ID generation and collision resolution.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-html/src/dom.rs",
+            "description": "This file defines the core data structures for representing an HTML document and its constituent elements, such as `HtmlDocument`, `HtmlNode`, `HtmlElement`, `HtmlTag`, and `HtmlAttrs`.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-html/src/css.rs",
+            "description": "This file provides functionality to convert Typst data types (like lengths, relative units, and colors) into their corresponding CSS string representations. It includes utilities for building CSS property lists and formatting various color models for CSS output.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-html/src/fragment.rs",
+            "description": "This file defines functions to convert Typst content fragments (both block-level and inline-level) into HTML nodes. It orchestrates the realization of content and its subsequent conversion using the Typst engine and associated utilities.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-html/src/document.rs",
+            "description": "This file is responsible for converting Typst content into a complete HTML document. It handles the realization of Typst elements, their conversion into HTML nodes, introspection of the generated HTML, and the final assembly of the document structure including head elements and metadata.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-html/src/typed.rs",
+            "description": "This file implements the typed HTML element API for Typst, allowing users to construct HTML elements (e.g., `html.div`) with type-safe attributes and content. It leverages generated data from the HTML specification to define these elements and their parameters dynamically.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-html/src/encode.rs",
+            "description": "This file is responsible for encoding an internal HTML document representation (`HtmlDocument`) into a formatted HTML string, handling element and text encoding, character escaping, and optional pretty-printing with indentation.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-html/src/rules.rs",
+            "description": "This file defines and registers the rules for transforming Typst content elements into corresponding HTML structures and attributes for HTML export. It provides specific `ShowFn` implementations for various Typst elements like paragraphs, lists, headings, and links.",
+            "spof": true
+          },
+          {
+            "path": "tests/fuzz/src/bin/html.rs",
+            "description": "This file defines a fuzzing target for the Typst project, specifically testing the generation of HTML documents. It takes arbitrary string input, attempts to compile it into a Typst document, and then renders that document to HTML to uncover bugs.",
+            "spof": true
+          },
+          {
+            "path": "tests/suite/html",
+            "description": "This directory is designated for a test suite focused on HTML-related functionalities within the Typst project. It is intended to contain test cases to ensure the correct generation and rendering of Typst content as HTML. Although currently empty, its presence indicates a planned or future testing scope for HTML output.",
+            "spof": false
+          },
+          {
+            "path": "tests/ref/html",
+            "description": "This directory is intended to store reference HTML output files for automated testing of the `typst` project. These files would serve as a baseline for comparison against generated HTML during test runs, ensuring correct rendering and functionality. Its current emptiness suggests either a future use case or that reference files are generated dynamically during tests.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 80
+          },
+          {
+            "name": "Ana Gelez",
+            "percent": 6
+          },
+          {
+            "name": "Y.D.X.",
+            "percent": 2
+          }
+        ]
+      },
+      "SVG Image Generation": {
+        "files": [
+          {
+            "path": "docs/reference/export/svg.md",
+            "description": "This document provides a reference on how to export Typst documents as Scalable Vector Graphics (SVGs). It details the characteristics of Typst-generated SVGs, various export options via command line and web app, and configuration for page selection.",
+            "spof": true
+          },
+          {
+            "path": "docs/reference/export/png.md",
+            "description": "This document provides a comprehensive guide on exporting Typst documents as PNG raster graphics. It details the process, configuration options like resolution and page selection, and considerations for using PNGs versus other export formats.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-svg/src/lib.rs",
+            "description": "This file provides the core logic for rendering Typst documents, pages, and frames into SVG images. It includes functionalities for generating various SVG outputs, including merged documents and HTML-embeddable frames.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-svg/src/text.rs",
+            "description": "This file is responsible for rendering text items and individual glyphs into SVG format, handling different glyph types (outlined paths, image glyphs) and their styling within an SVG context.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-svg/src/path.rs",
+            "description": "This file defines a builder for generating SVG path data using relative coordinates and various path commands (e.g., move, line, curve, arc). It also provides an implementation to convert font outlines from `ttf-parser` into SVG paths.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-svg/src/paint.rs",
+            "description": "This file handles the rendering of various `Paint` types (solid colors, gradients, and tilings) into SVG attributes and definitions, including the generation of SVG gradient and pattern elements.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-svg/src/write.rs",
+            "description": "This file defines structures and traits for writing SVG elements and attributes in a structured way, leveraging the `xmlwriter` crate. It includes utilities for formatting various data types into SVG-compatible strings and handling SVG-specific constructs like transforms and ID references.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Tobias Schmitz",
+            "percent": 78
+          },
+          {
+            "name": "Martin Šlachta",
+            "percent": 7
+          },
+          {
+            "name": "Tulio Martins",
+            "percent": 7
+          }
+        ]
+      },
+      "PDF Accessibility & Structure Tagging": {
+        "files": [
+          {
+            "path": "crates/typst-library/src/pdf/accessibility.rs",
+            "description": "This file provides functions and types for enhancing PDF accessibility, including marking content as artifacts, adding table summaries, and defining header and data cells for improved navigation by Assistive Technology.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/context/list.rs",
+            "description": "This file defines `ListCtx`, a context struct for managing the creation of PDF list tags (like `LI`, `Lbl`, `LBody`) during document processing. It ensures correct structural tagging for ordered and unordered lists, including handling nested lists and bibliography entries.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/context/grid.rs",
+            "description": "This file defines structures and logic for managing grid cells within a document layout context, including handling cell spanning and mapping between different grid coordinate systems. It facilitates the representation and processing of grid structures, likely for PDF tagging.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/context/mod.rs",
+            "description": "This module provides a central context for managing and building PDF structural tags and annotations for Typst documents, including figures, tables, grids, lists, outlines, and their associated bounding boxes.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/context/figure.rs",
+            "description": "This file defines the context and logic for converting Typst figures into appropriate PDF tags, specifically handling alternative descriptions and caption placement. It determines whether a figure should be represented as a PDF 'Figure', 'Div', or have no tag, based on its content and properties.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/context/table.rs",
+            "description": "This file defines the `TableCtx` for managing table-specific data and logic during PDF generation. It handles the layout, cell properties, header resolution, and stroke prioritization for tables to prepare them for rendering and accessibility tagging.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/tree/build.rs",
+            "description": "This file is responsible for building the logical structure tree of a Typst document from its frames and introspection tags during a pre-pass, ensuring the complete logical tree is available for PDF conversion.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/tree/mod.rs",
+            "description": "This file defines the `Tree` structure and associated logic for traversing and managing a hierarchical document structure, including groups, artifacts, bounding boxes, and text attributes, primarily for PDF tagging or rendering.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/tree/text.rs",
+            "description": "This file defines data structures and logic for managing and resolving text attributes and decorations (e.g., strong, emphasis, subscripts, highlights, underlines) for text items during PDF generation. It aggregates and resolves these styles, including handling PDF/UA-1 compatibility constraints.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/util/prop.rs",
+            "description": "This file provides utility traits (`PropertyValCopied`, `PropertyValCloned`, `PropertyOptRef`) for conveniently accessing property values from `Settable` elements using the default style chain, optimized for the Typst PDF exporter where element properties are materialized.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/util/mod.rs",
+            "description": "This module provides utility functions and extension traits for converting Typst's PDF-related data structures into the `krilla` tagging system, and includes a utility for propagating language locale information.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/mod.rs",
+            "description": "This module provides functions for managing and applying PDF document tags during PDF generation, handling structural tagging, content tagging for elements like text and images, and managing tag-related options and state.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/resolve.rs",
+            "description": "This file is responsible for resolving and converting Typst's internal tag tree representation into a PDF accessibility tag tree using the 'krilla' library. It processes document structure, elements, and attributes to generate semantic tags for PDF output.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/groups.rs",
+            "description": "This file defines and manages a hierarchical structure of 'groups' representing elements within a document, crucial for PDF export and accessibility tagging. It handles their creation, storage, and properties such as language propagation and break opportunities.",
+            "spof": true
+          },
+          {
+            "path": "tests/src/pdftags.rs",
+            "description": "This file parses a PDF document and formats its internal tag tree, including structural elements, marked content, and annotations, into a human-readable, YAML-like string representation.",
+            "spof": true
+          },
+          {
+            "path": "tests/suite/pdftags",
+            "description": "This directory is part of the Typst project's test suite, specifically designated for tests related to PDF tagging functionalities. Although currently empty, it serves as a placeholder for organizing and categorizing such tests.",
+            "spof": false
+          },
+          {
+            "path": "tests/ref/pdftags",
+            "description": "This directory is intended to store reference data or expected outputs for tests related to PDF tagging functionality within the Typst project. It ensures that generated PDF tags adhere to specifications during automated testing.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Tobias Schmitz",
+            "percent": 98
+          },
+          {
+            "name": "Martin Haug",
+            "percent": 2
+          },
+          {
+            "name": "Ian",
+            "percent": 0
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 60,
+      "spofCount": 39
+    },
+    "busFactor": 2,
+    "authorCount": 6
+  },
+  "Dynamic Document Introspection": {
+    "description": "Provides advanced capabilities for a document to query its own content and state, enabling dynamic layouts, automatic counters, and context-aware styling.",
+    "functions": {
+      "Contextual State and Dynamic Content": {
+        "files": [
+          {
+            "path": "docs/tutorial/2-formatting.md",
+            "description": "This file is a tutorial chapter explaining formatting in Typst, focusing on set rules for styling elements like text and pages, and show rules for redefining how elements are displayed.",
+            "spof": true
+          },
+          {
+            "path": "docs/reference/language/styling.md",
+            "description": "This document explains the styling system in Typst, covering both set rules for basic property configuration and show rules for deep customization and transformation of document elements.",
+            "spof": true
+          },
+          {
+            "path": "docs/reference/language/context.md",
+            "description": "This document explains Typst's `context` keyword, which enables content to react dynamically to its surrounding environment, including style properties and its location within the document. It covers style context, location context, nested contexts, and how the compiler handles iterative resolution of contextual information.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/introspection/here.rs",
+            "description": "This file defines the `here()` function, which provides the current document location by extracting it from the active context. It serves as a low-level building block for other introspection features in Typst.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/introspection/counter.rs",
+            "description": "This file implements the `Counter` type in Typst, enabling the creation, management, display, and modification of various counters (e.g., pages, headings, figures, custom) throughout a document. It provides functionality for accessing counter values, formatting them, updating them, and even querying their state at different points in the document.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/introspection/state.rs",
+            "description": "This file defines Typst's state management system, allowing users to declare and interact with mutable, document-scoped state through `get`, `update`, `at`, and `final` methods. It addresses challenges with side effects in a declarative layout engine by ensuring state updates are processed in layout order.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/context.rs",
+            "description": "This file defines the `Context` struct, which encapsulates contextual data like document location and styling, and provides methods to access it. It also includes the `ContextElem` for executing blocks that require this context.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/model/numbering.rs",
+            "description": "This file defines the `numbering` function and related types for applying various numbering patterns or custom functions to sequences of numbers. It supports diverse numbering styles, including Arabic, Roman, Latin, Greek, and several East Asian systems.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 53
+          },
+          {
+            "name": "Sam Ireson",
+            "percent": 22
+          },
+          {
+            "name": "Y.D.X.",
+            "percent": 8
+          }
+        ]
+      },
+      "Element Introspection and Querying": {
+        "files": [
+          {
+            "path": "docs/reference/library/introspection.md",
+            "description": "This file describes Typst's introspection capabilities, focusing on functions like `counter` for managing document counters and `query` for searching and listing document elements.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/introspection/location.rs",
+            "description": "This file defines the `Location` type, which uniquely identifies elements in a document and provides methods for introspecting their properties like page number, position, and numbering. It also implements the introspection logic for these location-based queries.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/introspection/metadata.rs",
+            "description": "This file defines the `MetadataElem` in Typst, which allows embedding arbitrary values into a document for introspection through the query system without producing visible content. It's particularly useful for exposing data to command-line queries.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/introspection/locate.rs",
+            "description": "This file defines the `locate` function, which determines the document location (page and position) of a specific element identified by a unique selector. It's a core part of the Typst library's introspection capabilities.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/introspection/tag.rs",
+            "description": "This file defines data structures (`Tag`, `TagFlags`, `TagElem`) used to mark the start and end of locatable elements within the Typst layout engine, enabling introspection and tracking of elements' positions and properties.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/introspection/locator.rs",
+            "description": "This file defines the `Locator` type, which is responsible for assigning unique and stable `Location` IDs to document elements during the layout process. It outlines the strategies for generating these hierarchical IDs to support introspection, parallelization, and consistent measurement across document iterations.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/introspection/mod.rs",
+            "description": "This module acts as the main entry point for document introspection, defining and re-exporting various sub-modules that enable interaction with and inspection of different document parts. It registers core introspection types, elements, and functions within the document's scope.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/introspection/query.rs",
+            "description": "This file implements the `query` function and related introspection mechanisms in Typst, allowing users to search for and retrieve elements within a document based on selectors or labels. It defines the core logic for document introspection, including handling convergence issues for dynamic queries.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/introspection/introspector.rs",
+            "description": "Defines the `Introspector` struct, which stores information about a document's elements and their positions. It provides methods to query and retrieve elements based on various criteria like selectors, locations, and labels, with built-in caching for performance.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/label.rs",
+            "description": "This file defines the `Label` struct, which represents a unique identifier for an element in a Typst document, enabling referencing, querying, and styling of elements. It includes methods for creating, resolving, and representing labels.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/repr.rs",
+            "description": "This module provides functionality for generating string representations of Typst values, primarily for debugging purposes. It includes a `repr` function, a `Repr` trait, and utility functions for formatting integers, floats, and lists into human-readable strings.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/selector.rs",
+            "description": "Defines the `Selector` enum, which represents a versatile filter system for identifying and selecting document elements in Typst based on various criteria like type, location, label, or content. It includes methods for constructing, combining, and matching these selectors.",
+            "spof": true
+          },
+          {
+            "path": "tests/suite/introspection",
+            "description": "This directory is part of the test suite for the `typst` project. Its purpose is to house tests specifically designed for introspection capabilities. These tests likely verify the ability to inspect and query the internal state, types, or structure of Typst documents or its runtime environment.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 69
+          },
+          {
+            "name": "Ana Gelez",
+            "percent": 18
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 6
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 21,
+      "spofCount": 16
+    },
+    "busFactor": 1,
+    "authorCount": 5
+  },
+  "Data Integration": {
+    "description": "Allows documents to load and process data from external files, supporting formats like JSON, CSV, YAML, and XML to create data-driven reports and visualizations.",
+    "functions": {
+      "External Data Loading and Processing": {
+        "files": [
+          {
+            "path": "docs/src/contribs.rs",
+            "description": "This file contains Rust code to fetch commit data, identify non-staff and non-bot contributors between specified tags, and generate an HTML list displaying their avatars, logins, and contribution counts.",
+            "spof": true
+          },
+          {
+            "path": "docs/reference/library/data-loading.md",
+            "description": "This document explains how to load and embed external data in Typst, and discusses the encoding capabilities for structured data, along with considerations for data type conversions.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/loading/cbor.rs",
+            "description": "This file provides functions to read structured data from CBOR files or bytes into Typst values, and to encode Typst values into CBOR bytes.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/loading/read.rs",
+            "description": "This file implements the `read` function for Typst, allowing users to load file contents either as UTF-8 strings or raw bytes from a specified path. It also defines the `Encoding` enum for supported file encodings.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/loading/csv.rs",
+            "description": "This file implements the `csv` function for Typst, allowing users to load and parse data from CSV files or raw CSV bytes into structured arrays or dictionaries. It handles delimiter specification, row type representation, and provides detailed error reporting.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/loading/json.rs",
+            "description": "This file implements functions for loading and encoding JSON data within Typst, converting between JSON and Typst values. It provides functionality to read structured data from JSON files or bytes and to encode Typst values into JSON strings.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/loading/toml.rs",
+            "description": "This file provides functions for reading and writing TOML (Tom's Obvious, Minimal Language) data, converting between TOML structures and Typst's internal data types. It includes functions to load TOML from files or strings and to encode Typst dictionaries into TOML strings.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/loading/yaml.rs",
+            "description": "This file provides functions to load (parse) and encode (serialize) YAML data within the Typst ecosystem, handling the conversion between YAML and Typst data types. It allows reading YAML from files or raw bytes and writing Typst values as YAML strings.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/loading/xml.rs",
+            "description": "This file provides functionality to parse XML data from a file or bytes and convert it into a structured Typst value representation. It defines how XML elements, attributes, and text content are mapped to Typst arrays, dictionaries, and strings.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/loading/mod.rs",
+            "description": "This module acts as the central hub for data loading in the `typst-library`, defining the interfaces and types for specifying data sources, loading data in various formats (such as JSON, CSV, XML, TOML, YAML, CBOR), and representing the loaded output.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 41
+          },
+          {
+            "name": "Y.D.X.",
+            "percent": 28
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 18
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 10,
+      "spofCount": 2
+    },
+    "busFactor": 1,
+    "authorCount": 1
+  },
+  "Utility": {
+    "description": "",
+    "functions": {
+      "General Utility": {
+        "files": [
+          {
+            "path": "docs/reference/library/foundations.md",
+            "description": "This file provides documentation for foundational data types like integers and strings, along with core computational functions within the library reference.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-kit/src/downloader.rs",
+            "description": "This file defines traits and implementations for performing web requests to download resources, including a system-level HTTP client with TLS and proxy support, and functionality for reporting download progress.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-utils/src/hash.rs",
+            "description": "This file provides utilities for hashing, including a 128-bit SipHash implementation, a `LazyHash` wrapper for lazily computed hashes with equality based on hash, and a `ManuallyHash` wrapper for values with pre-computed hashes.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-utils/src/fat.rs",
+            "description": "This file provides unsafe utilities for manipulating Rust fat pointers (trait objects) by directly accessing and constructing their data and vtable components, relying on the assumed memory layout of such pointers.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-utils/src/macros.rs",
+            "description": "This file provides utility macros for common Rust programming patterns, including lazy static initialization, implementing the `Sub` trait from `Add` and `Neg`, and automatically generating assignment operator trait implementations.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-utils/src/listset.rs",
+            "description": "This file defines a `ListSet` data structure in Rust, which is a set backed by a mutable slice. It dynamically switches between linear and binary search strategies for containment checks based on the slice's size, sorting larger lists for efficiency.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-utils/src/deferred.rs",
+            "description": "Provides a `Deferred` utility that allows for lazy, concurrent initialization of a value on a separate thread using `rayon`, with a mechanism to wait for its completion.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-utils/src/round.rs",
+            "description": "This file provides utility functions for rounding floating-point (f64) and integer (i64) numbers to a specified precision. It supports rounding to a certain number of decimal places or to a certain number of less significant integer digits, with standard rounding rules applied.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-utils/src/duration.rs",
+            "description": "This file provides a utility for formatting `std::time::Duration` instances into human-readable strings, displaying them in appropriate units (days, hours, minutes, seconds, milliseconds, microseconds, or nanoseconds) with suitable precision.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-utils/src/bitset.rs",
+            "description": "This file provides two data structures, `BitSet` and `SmallBitSet`, for efficiently storing sets of non-negative integers, with `SmallBitSet` optimized for very small numbers to avoid allocations.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-utils/src/protected.rs",
+            "description": "This file defines a `Protected<T>` wrapper that encourages developers to provide explicit justification (as a string) when accessing the wrapped value, promoting code review and documentation practices.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-utils/src/pico.rs",
+            "description": "This file implements a highly optimized string interning mechanism, `PicoStr`, which stores strings efficiently, either by encoding short, common strings directly into a 64-bit integer or by interning longer strings at runtime or via a compile-time exception list.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-utils/src/lib.rs",
+            "description": "This file is the main library entry point for the `typst-utils` crate, providing various helper functions, traits, and data structures for common utility operations within the Typst project.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-utils/src/scalar.rs",
+            "description": "This file defines a `Scalar` struct, a wrapper around `f64` that provides a deterministic, NaN-safe floating-point type implementing `Eq`, `Ord`, and `Hash` by converting NaN to 0.0 or panicking on NaN during operations. It also implements various arithmetic and conversion traits.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/datetime.rs",
+            "description": "Defines the `Datetime` enum and associated methods for representing, creating, formatting, and manipulating dates and times within the Typst library, including parsing from TOML and supporting arithmetic operations with durations.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/duration.rs",
+            "description": "This file defines a `Duration` type for representing and manipulating time spans within the Typst library, providing methods for construction, decomposition, unit conversion, and arithmetic operations.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/version.rs",
+            "description": "This file defines the `Version` struct, which represents software versions with an arbitrary number of components, supporting construction, comparison (including semantic rules like `0.8` == `0.8.0`), and access to individual components.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-pdf/src/tags/util/idvec.rs",
+            "description": "This file defines `IdVec<T>`, a vector-like collection that provides strongly typed `Id<T>`s for accessing its elements, preventing accidental use of IDs from different collections. The `Id<T>` struct wraps a `u32` index and uses `PhantomData<T>` to enforce type safety.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-timing/src/lib.rs",
+            "description": "This file provides a performance timing and tracing utility for the Typst project, allowing the creation of timed scopes, collection of events, and export of tracing data in Chrome's trace event format, with cross-platform support including WebAssembly.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 68
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 21
+          },
+          {
+            "name": "PgBiel",
+            "percent": 4
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 19,
+      "spofCount": 13
+    },
+    "busFactor": 1,
+    "authorCount": 4
+  },
+  "Advanced Typography & Font Management": {
+    "description": "Offers precise control over text styling, including advanced font selection, international language support, text decorations, and typographic features like smart quotes and small caps.",
+    "functions": {
+      "Core Text and Language Representation": {
+        "files": [
+          {
+            "path": "docs/reference/library/symbols.md",
+            "description": "This document describes how to use and define symbols and emoji within the Typst library, including pre-defined options and custom symbol creation.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/str.rs",
+            "description": "Implements Typst's custom string type (`Str`), providing various methods for string creation, manipulation, indexing, and conversion, with a focus on Unicode correctness (grapheme clusters and codepoints).",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/symbol.rs",
+            "description": "This file defines the `Symbol` type, which represents a Unicode symbol that can have multiple variants and be modified by appending dot-separated names. It provides functionality for creating, modifying, and managing these symbols, including custom user-defined ones.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/text/item.rs",
+            "description": "This file defines the `TextItem` struct, representing a run of shaped text with its properties and glyphs, along with `Glyph` for individual glyph details and `TextItemView` for slicing text items.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/text/mod.rs",
+            "description": "This file serves as the main module for text handling in the Typst library, defining core elements, styles, and utilities for text formatting, fonts, and layout.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/text/lang.rs",
+            "description": "This file defines data structures for natural languages (`Lang`) and locales (`Locale`), providing constants for various languages and managing a list of supported translations within the Typst library. It is central to handling internationalization and localization concerns.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/translations",
+            "description": "This directory is intended to house localization files and translated strings for the `typst-library` crate. Its primary role is to enable the Typst library to support multiple languages by providing language-specific resources.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Malo",
+            "percent": 18
+          },
+          {
+            "name": "Eltos",
+            "percent": 18
+          },
+          {
+            "name": "Laurenz",
+            "percent": 15
+          }
+        ]
+      },
+      "Typographic Styling and Elements": {
+        "files": [
+          {
+            "path": "docs/reference/library/text.md",
+            "description": "This document describes text styling within the Typst library, with a focus on the `text` function.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/styles.rs",
+            "description": "This file defines the `Styles` struct and `Style` enum, which are core data structures for managing and applying style properties and show rule recipes within the Typst typesetting system, including mechanisms for inheritance and filtering of root-level styles.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/text/lorem.rs",
+            "description": "This file defines a function `lorem` that generates Lorem Ipsum blind text. It is used as a placeholder to test layouts in Typst documents.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/text/case.rs",
+            "description": "This file provides functions and types for converting text to lowercase or uppercase within the Typst rendering engine. It defines `lower` and `upper` functions and an internal mechanism to apply these case transformations to strings or content.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/text/deco.rs",
+            "description": "This file defines various text decoration elements such as underline, overline, strikethrough, and highlight, along with their properties and internal data structures for a typesetting system.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/text/linebreak.rs",
+            "description": "Defines the `LinebreakElem` element, which allows inserting explicit line breaks within text, with an option to justify the line before the break. It also provides a shared instance for common use.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/text/shift.rs",
+            "description": "This file defines structures and logic for rendering subscript and superscript text, supporting both typographic font features and synthesized script generation with configurable size and baseline shifts.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/text/smallcaps.rs",
+            "description": "This file defines the `SmallcapsElem` element, which provides functionality to display text in small capitals, utilizing OpenType font features. It also includes an enum to specify how small capitals should be applied (e.g., only for minuscules or all letters).",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/text/space.rs",
+            "description": "This file defines the `SpaceElem` element, which represents a space character within the Typst layout system. It includes methods for its textual representation and conversion to plain text.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/text/smartquote.rs",
+            "description": "This file implements language-aware and context-sensitive \"smart\" quotation marks for Typst, automatically selecting the correct opening, closing, or alternative quote characters based on language, region, and surrounding text.",
+            "spof": true
+          },
+          {
+            "path": "tests/suite/text",
+            "description": "This directory is designated for tests specifically related to text functionalities within the Typst project's test suite. It is intended to contain various test cases for validating text rendering, formatting, and other text-processing capabilities. Currently, it is empty, suggesting tests may be added in the future or generated dynamically.",
+            "spof": false
+          },
+          {
+            "path": "tests/suite/styling",
+            "description": "This directory is designated within the Typst project's test suite to house tests related to styling functionality. Its purpose is to validate the correct behavior and rendering of various styling options in Typst documents. Although currently empty, its structure indicates it is reserved for these specific test cases.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 72
+          },
+          {
+            "name": "Malo",
+            "percent": 19
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 4
+          }
+        ]
+      },
+      "Font Management and Selection": {
+        "files": [
+          {
+            "path": "crates/typst-cli/src/fonts.rs",
+            "description": "This file manages font discovery and listing for the Typst command-line interface. It provides functions to find fonts from system directories, embedded resources, or specified paths, and to display their families and variants.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-kit/src/fonts.rs",
+            "description": "This file manages font loading and discovery, providing a `FontStore` to handle fonts from various sources like embedded assets, system directories, and specific file paths, with support for lazy loading.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/text/font/variant.rs",
+            "description": "This file defines data structures for describing font variants, including style (normal, italic, oblique), weight (100-900), and stretch (condensed, normal, expanded). It provides utilities for conversion, serialization, and calculating distances between font properties.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/text/font/mod.rs",
+            "description": "This file is responsible for font handling in the Typst library, defining structures and methods for parsing, accessing, and querying font data and metrics using `ttf-parser` and `rustybuzz`.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/text/font/exceptions.rs",
+            "description": "This file defines a map of exceptions for specific fonts, correcting or overriding their metadata (like family name, weight, or style) based on their PostScript name. It provides a lookup function to retrieve these corrections.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/text/font/color.rs",
+            "description": "This file provides utilities for handling and rendering different types of color glyphs (raster, COLR, and SVG) from fonts, converting them into renderable frames for display.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/text/font/book.rs",
+            "description": "This file defines the `FontBook` structure, which manages a collection of font metadata (`FontInfo`), and provides methods for adding, querying, and selecting fonts based on family, style, and text coverage within the Typst library.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 44
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 26
+          },
+          {
+            "name": "Max",
+            "percent": 14
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 26,
+      "spofCount": 14
+    },
+    "busFactor": 2,
+    "authorCount": 11
+  },
+  "Graphics & Visualization Engine": {
+    "description": "Enables the creation and embedding of vector and raster graphics, including geometric shapes, lines, gradients, and images in various formats.",
+    "functions": {
+      "Shape Rendering & Export": {
+        "files": [
+          {
+            "path": "docs/reference/library/visualize.md",
+            "description": "This document provides an overview of drawing and data visualization features in Typst, along with guidelines for ensuring accessibility of generated graphics for PDF export.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-pdf/src/shape.rs",
+            "description": "This file converts Typst `Shape` and `Geometry` objects into `krilla` rendering commands. It handles the application of fills, strokes, and geometric transformations to render shapes on a `Surface`.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-svg/src/shape.rs",
+            "description": "This file is responsible for converting and rendering Typst's geometric shapes, including their fills and strokes, into SVG path elements and attributes. It provides the logic for translating Typst shape definitions into their SVG representation.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-render/src/shape.rs",
+            "description": "This file contains functions for rendering Typst geometrical shapes (lines, rectangles, curves) onto a `tiny-skia` canvas. It converts Typst's shape definitions and styling properties into `tiny-skia`'s rendering primitives for display.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Tobias Schmitz",
+            "percent": 52
+          },
+          {
+            "name": "Laurenz Stampfl",
+            "percent": 13
+          },
+          {
+            "name": "Martin Šlachta",
+            "percent": 8
+          }
+        ]
+      },
+      "Vector Graphics Model": {
+        "files": [
+          {
+            "path": "crates/typst-library/src/visualize/paint.rs",
+            "description": "This file defines the `Paint` enum, which represents how graphical elements (fills or strokes) are rendered, supporting solid colors, gradients, and tilings. It provides methods for querying properties and converting between paint types.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/visualize/line.rs",
+            "description": "Defines the `LineElem` structure, representing a visual line element with customizable start, end, length, angle, and stroke properties for rendering in Typst documents.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/visualize/tiling.rs",
+            "description": "This file defines the `Tiling` struct in Typst, which represents a repeating tiling fill or stroke. It includes functionality for constructing, laying out, and managing properties like tile size, spacing, and relative placement of these patterns.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/visualize/polygon.rs",
+            "description": "This file defines the `PolygonElem` structure and its associated functionality for representing and drawing polygons within the Typst rendering engine, including a method for creating regular polygons.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/visualize/gradient.rs",
+            "description": "This file implements and defines various types of color gradients (linear, radial, conic) used in Typst. It includes functionality for gradient stops, color space interpolation, relative positioning, and direction, along with extensive documentation and examples.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/visualize/stroke.rs",
+            "description": "This file defines the `Stroke` struct, which represents properties for drawing lines such as paint, thickness, and various line styling options (cap, join, dash pattern, miter limit). It provides constructors and methods for manipulating stroke definitions within the Typst layout engine.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/visualize/color.rs",
+            "description": "This file defines the `Color` enum, which represents various color spaces (sRGB, CMYK, Oklab, HSL, etc.) used within Typst. It includes color management utilities, predefined color constants, and color map presets for gradients.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/visualize/curve.rs",
+            "description": "This file defines the data structures and elements for representing and visualizing vector graphics curves, including their movements, lines, and various Bézier segments, within the Typst library.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/visualize/mod.rs",
+            "description": "This file serves as the main module for drawing and visualization within the `typst-library`. It re-exports various visualization-related sub-modules and defines their types and elements within a global scope.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/visualize/shape.rs",
+            "description": "This file defines data structures and properties for basic geometric shapes such as rectangles, squares, ellipses, and circles, used within the Typst typesetting system's visualization module. It specifies how these shapes can be rendered with various attributes like size, fill, stroke, and content.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 45
+          },
+          {
+            "name": "Emmanuel Lesueur",
+            "percent": 16
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 13
+          }
+        ]
+      },
+      "Image Asset Management": {
+        "files": [
+          {
+            "path": "crates/typst-library/src/visualize/image/pdf.rs",
+            "description": "This file defines data structures and functionality for loading, representing, and interacting with PDF documents and individual PDF pages as images within the Typst library.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/visualize/image/svg.rs",
+            "description": "This file is responsible for decoding and managing SVG images within the Typst rendering engine, including resolving fonts and linked images using the `usvg` library.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/visualize/image/mod.rs",
+            "description": "This file is the main module for image handling in Typst, defining the `ImageElem` struct and associated functionality for loading, decoding, and managing properties of raster and vector graphics.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/visualize/image/raster.rs",
+            "description": "This file defines the `RasterImage` struct and associated types for representing and decoding various raster image formats within Typst. It handles loading, parsing metadata, and providing access to image properties for both standard exchange formats and raw pixel data.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 37
+          },
+          {
+            "name": "Toon Verstraelen",
+            "percent": 18
+          },
+          {
+            "name": "frozolotl",
+            "percent": 18
+          }
+        ]
+      },
+      "Image Rendering & Export": {
+        "files": [
+          {
+            "path": "crates/typst-pdf/src/image.rs",
+            "description": "This file handles the processing, conversion, and rendering of different image formats (raster, SVG, PDF) within the Typst PDF backend, including EXIF-based transformations and optimizations like caching.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-svg/src/image.rs",
+            "description": "This file handles the rendering and conversion of various image types (raster, SVG, PDF) from Typst's internal representation into base64-encoded data URLs suitable for embedding within an SVG output, including PDF to SVG conversion.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-render/src/image.rs",
+            "description": "This file provides functions to render various image types (raster, SVG, PDF) into `tiny-skia` pixmaps, handling scaling and transformations for display on a canvas.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz Stampfl",
+            "percent": 45
+          },
+          {
+            "name": "Laurenz",
+            "percent": 19
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 13
+          }
+        ]
+      },
+      "Rasterization & Text Rendering Engine": {
+        "files": [
+          {
+            "path": "crates/typst-render/src/lib.rs",
+            "description": "This file is the main rendering engine for Typst documents, responsible for converting Typst pages and their contents (text, shapes, images) into raster images using the `tiny-skia` library.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-render/src/text.rs",
+            "description": "This file is responsible for rendering text and individual glyphs onto a `tiny-skia` canvas, handling different rendering strategies like outlining, rasterization, and various fill types (solid, gradient, tiling).",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-render/src/paint.rs",
+            "description": "This file defines traits and implementations for sampling colors from various paint types (solid, gradient, tiling) and provides functions to convert Typst's `Paint` definitions into `tiny-skia` compatible paint objects for rendering.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "LuizAugustoPapa",
+            "percent": 44
+          },
+          {
+            "name": "Laurenz",
+            "percent": 34
+          },
+          {
+            "name": "Ana Gelez",
+            "percent": 5
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 24,
+      "spofCount": 8
+    },
+    "busFactor": 3,
+    "authorCount": 14
+  },
+  "Mathematical Typesetting": {
+    "description": "Delivers a comprehensive system for typesetting complex mathematical equations, symbols, and formulas with high-quality layout and rendering for scientific and academic documents.",
+    "functions": {
+      "Mathematical Element Library": {
+        "files": [
+          {
+            "path": "docs/reference/library/math.md",
+            "description": "This document provides a comprehensive reference for typesetting mathematical formulas in Typst, covering syntax, variables, symbols, line breaks, function calls, alignment, fonts, and accessibility features for equations.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/symbols.rs",
+            "description": "This file defines and registers symbols and modules within the Typst library's scope, integrating definitions from an internal `codex` module for both general and mathematical contexts.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/math/root.rs",
+            "description": "This file defines mathematical root functions and elements, specifically square roots and general N-th roots, for the Typst typesetting system.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/math/frac.rs",
+            "description": "This file defines data structures and styles for mathematical fractions (`FracElem`, `FracStyle`) and binomial expressions (`BinomElem`) within the Typst mathematical typesetting system. It allows for the representation and styling of these common mathematical constructs.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/math/matrix.rs",
+            "description": "This file defines the data structures and logic for representing and typesetting mathematical elements such as vectors, matrices, and case distinctions in Typst, including their delimiters and layout properties.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/math/cancel.rs",
+            "description": "This file defines the `CancelElem` type, which is used to display a diagonal cancellation line over parts of an equation in mathematical typesetting, often to denote elimination of terms.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/math/equation.rs",
+            "description": "Defines the `EquationElem` struct, representing a mathematical equation within the Typst typesetting system. It manages the equation's display (inline or block), numbering, accessibility features, and integration with the document layout and referencing.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/math/attach.rs",
+            "description": "This file defines elements and logic for handling attachments, scripts, and limits in mathematical expressions within Typst, including elements for attaching content, forcing script/limit display, and stretching glyphs.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/math/underover.rs",
+            "description": "Defines Rust structs for mathematical elements that place lines, braces, brackets, parentheses, or shells either under or over other content, often with optional annotations. These are used for rendering mathematical expressions.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/math/lr.rs",
+            "description": "This file defines elements and functions for scaling and applying various left/right delimiters (like parentheses, brackets, floor, ceil, absolute value) to mathematical expressions. It includes logic for both explicit scaling and dynamically generating wrapper functions for different delimiter pairs.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/math/accent.rs",
+            "description": "This file defines the `AccentElem` for applying mathematical accents to a base, including a comprehensive list of supported accents, their normalization, and related utility functions.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/math/mod.rs",
+            "description": "This file serves as the main module for mathematical typesetting in the Typst library, aggregating various math-related components, defining common constants, and registering mathematical elements and functions.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/math/op.rs",
+            "description": "This file defines mathematical operators for Typst's math mode, including the generic `OpElem` and a macro to generate a comprehensive list of predefined operators like `sin`, `cos`, `lim`, and `det`, some of which support limits.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/math/ir/item.rs",
+            "description": "This file defines the `MathItem` enum, which represents the top-level intermediate representation (IR) for mathematical expressions in Typst. It encapsulates various math components and provides methods for accessing and modifying their properties like spacing, class, and stretch behavior.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/math/style.rs",
+            "description": "This file defines functions and types for styling mathematical expressions within Typst, including font variants (e.g., bold, italic, sans-serif, fraktur) and sizing (display, inline, script, script-script).",
+            "spof": false
+          },
+          {
+            "path": "tests/suite/symbols",
+            "description": "This directory is designated for test cases related to symbols within the `typst` project's test suite. Its purpose is to house tests that verify the correct rendering and functionality of various symbols.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "mkorje",
+            "percent": 49
+          },
+          {
+            "name": "Laurenz",
+            "percent": 25
+          },
+          {
+            "name": "Malo",
+            "percent": 14
+          }
+        ]
+      },
+      "Math Expression Processing and Computation": {
+        "files": [
+          {
+            "path": "crates/typst-eval/src/math.rs",
+            "description": "This file implements the evaluation logic for various mathematical Abstract Syntax Tree (AST) nodes, converting them into renderable content elements used by the Typst layout engine.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/decimal.rs",
+            "description": "This file defines a fixed-point decimal number type for precise arithmetic operations on base-10 numbers, suitable for applications like currency calculations, within the Typst library.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/calc.rs",
+            "description": "This file defines a module containing a comprehensive suite of mathematical and numeric calculation functions, including trigonometric, hyperbolic, logarithmic, and basic arithmetic operations, for use within the Typst system.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/math/ir/mod.rs",
+            "description": "This file defines the intermediate representation (IR) for mathematical expressions within Typst. It provides the main function to resolve an equation's body into a structured `MathItem`.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/math/ir/preprocess.rs",
+            "description": "This file implements the `preprocess` function, which processes a sequence of mathematical items to determine and apply appropriate spacing according to mathematical typesetting rules, handling various item types and contexts.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/math/ir/resolve.rs",
+            "description": "This file defines the `MathResolver`, which converts Typst content elements into a sequence of mathematical intermediate representation (IR) items. It processes various math-related elements and applies styles to prepare them for mathematical typesetting.",
+            "spof": true
+          },
+          {
+            "path": "tests/suite/math",
+            "description": "This directory is intended to contain test cases and suites focused on verifying the mathematical rendering and functionality of the Typst project. Although presently empty, its role is to organize math-specific tests within the project's test suite.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "mkorje",
+            "percent": 87
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 4
+          },
+          {
+            "name": "Andy Li",
+            "percent": 3
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 23,
+      "spofCount": 6
+    },
+    "busFactor": 6,
+    "authorCount": 13
+  },
+  "Scripting & Automation Engine": {
+    "description": "Provides a powerful scripting environment that allows for variables, functions, conditional logic, and loops to automate content generation and create complex, dynamic documents.",
+    "functions": {
+      "Script Evaluation & Virtual Machine": {
+        "files": [
+          {
+            "path": "docs/reference/language/scripting.md",
+            "description": "This document provides a comprehensive overview of Typst's scripting language, detailing concepts such as expressions, blocks, bindings, conditionals, loops, fields, methods, and modules to automate and enhance document creation.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-eval/src/lib.rs",
+            "description": "This file implements Typst's core code interpreter, providing functionalities to evaluate source files and strings into modules or values. It orchestrates the evaluation process using a virtual machine (VM) and handles various aspects like context, scopes, and error reporting.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-eval/src/import.rs",
+            "description": "This file implements the evaluation logic for Typst's `import` and `include` statements. It handles resolving modules and content from file paths or packages, managing their scope, and preventing cyclic imports.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-eval/src/vm.rs",
+            "description": "This file defines the `Vm` (Virtual Machine) struct, which manages the state and provides methods for evaluating Typst source code, handling scopes, variable binding, and tracing values.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-eval/src/binding.rs",
+            "description": "This file implements the evaluation logic for `let` bindings and destructuring assignments in Typst. It handles destructuring of values like arrays and dictionaries into patterns, including support for spreads and named fields.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-eval/src/flow.rs",
+            "description": "This file defines the evaluation logic for control flow statements in the Typst language, such as if/else, loops (while, for), break, continue, and return, within the Typst virtual machine (VM). It manages control flow events and detects potential infinite loops.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-eval/src/rules.rs",
+            "description": "This file implements the evaluation logic for Typst's `set` and `show` rules, defining how these AST nodes are processed within the virtual machine. It also includes functions to warn users about deprecated or ineffective usages of `show` rules, specifically concerning `page` and `par` elements.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-eval/src/code.rs",
+            "description": "This file implements the `Eval` trait for various Abstract Syntax Tree (AST) nodes, defining how different code expressions and language constructs are evaluated within the Typst virtual machine (`Vm`) to produce `Value`s or `Content`.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-eval/src/access.rs",
+            "description": "This file defines a trait `Access` and its implementations for various AST nodes, enabling mutable access to evaluated values within the virtual machine's scope or object structures. It handles scenarios like modifying variables, dictionary fields, or values via accessor methods.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-eval/src/ops.rs",
+            "description": "This file implements the evaluation logic for unary and binary operations defined in the Abstract Syntax Tree (AST) of the Typst language, dispatching to corresponding operations in the Typst library. It handles various arithmetic, logical, comparison, and assignment operations, including special handling for dictionary assignments.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-eval/src/call.rs",
+            "description": "This file implements the evaluation logic for function calls, arguments, and closures within the Typst typesetting system's evaluation engine. It defines how AST nodes related to these constructs are processed and executed at runtime.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/module.rs",
+            "description": "This file defines the `Module` struct, which represents a collection of variables, functions, and content within the Typst system, organizing them into logical units that can be imported and accessed.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/scope.rs",
+            "description": "This file implements the scoping mechanism for Typst, including `Scopes` (a stack of scopes) and `Scope` (a map of bindings), which manage variable definitions, lookup, and mutation, along with `Binding` to hold values and metadata.",
+            "spof": true
+          },
+          {
+            "path": "tests/suite/scripting/modules",
+            "description": "This directory is designated to contain tests that validate Typst's module system within the scripting test suite. Its purpose is to house test cases or supporting module files that verify the correct behavior and integration of modules in Typst scripts.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 68
+          },
+          {
+            "name": "Reina",
+            "percent": 8
+          },
+          {
+            "name": "Ian Wrzesinski",
+            "percent": 6
+          }
+        ]
+      },
+      "Core Data Model & Built-in Types": {
+        "files": [
+          {
+            "path": "crates/typst-eval/src/methods.rs",
+            "description": "This file implements the logic for handling built-in methods on Typst's Value types, specifically providing functions to call mutating and accessor methods on arrays and dictionaries.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/bool.rs",
+            "description": "Defines the boolean type (`bool`) for the Typst library, including its string representation and documentation.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/dict.rs",
+            "description": "This file implements the `Dict` (dictionary) data structure for Typst, providing functionalities for creating, manipulating, and querying key-value pairs in the scripting environment.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/args.rs",
+            "description": "This file defines the `Args` struct and associated methods for handling function arguments in Typst. It provides functionality for parsing, accessing, consuming, and validating both positional and named arguments, including support for argument sinks and spreading.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/ops.rs",
+            "description": "This file defines fundamental operations like addition, subtraction, multiplication, negation, and joining for various Typst value types, ensuring type-safe and consistent behavior across different data combinations.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/array.rs",
+            "description": "This file defines the `Array` data structure for Typst, providing functionalities for creating, manipulating, and querying arrays of values within the Typst ecosystem.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/func.rs",
+            "description": "This file defines the core `Func` type in Typst, encapsulating various kinds of callable functions. It provides the foundational structure and methods for handling, inspecting, and executing functions within the Typst ecosystem.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/mod.rs",
+            "description": "This file is the main module for Typst's foundational types and functions. It aggregates, exports, and registers core language elements like basic data types, utilities, and built-in functions into the global scope.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/float.rs",
+            "description": "Defines the `float` type for the Typst language, including its constructor, utility methods (e.g., `is_nan`, `signum`, byte conversions), and casting logic from various other data types. It also provides a `PositiveF64` wrapper for floats that must be strictly positive.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/value.rs",
+            "description": "This file defines the `Value` enum, a central type that represents all possible computational values within the Typst system. It acts as a polymorphic container for various data types, providing common operations, type introspection, and serialization capabilities.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 58
+          },
+          {
+            "name": "Malo",
+            "percent": 25
+          },
+          {
+            "name": "Y.D.X.",
+            "percent": 4
+          }
+        ]
+      },
+      "Rust/Typst Interoperability & Type System": {
+        "files": [
+          {
+            "path": "crates/typst-library/src/foundations/cast.rs",
+            "description": "This file defines traits and mechanisms for type casting and reflection between Rust types and Typst's `Value` type. It provides interfaces for converting values, checking type compatibility, and generating error messages for failed casts.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-library/src/foundations/ty.rs",
+            "description": "This file defines the core `Type` struct, which represents the kind of a value in Typst (e.g., `int`, `str`, `content`). It includes mechanisms to associate native Rust types with Typst's type system, along with their names, documentation, and constructors.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-macros/src/func.rs",
+            "description": "This file contains the implementation for the `#[func]` procedural macro in Typst. It parses Rust function definitions and their attributes, extracting metadata and parameter information, to generate code that exposes these functions to the Typst language runtime.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-macros/src/scope.rs",
+            "description": "This file defines the `#[scope]` procedural macro, which transforms an `impl` block into a `NativeScope` implementation, registering constants, functions, types, and elements for the Typst system, including deprecation handling and optional trait-based extensions.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-macros/src/cast.rs",
+            "description": "This file defines procedural macros for the Typst project, specifically `#[derive(Cast)]` for enums and `cast!`. These macros generate implementations for reflection, value conversion (`IntoValue`, `FromValue`), and type casting traits, enabling flexible type conversions within the Typst ecosystem.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-macros/src/ty.rs",
+            "description": "This file implements a procedural macro (`#[ty]`) for the Typst project. It generates boilerplate code for integrating Rust types (structs, enums, aliases) as native types within the Typst system, handling metadata like names, documentation, and keywords.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 69
+          },
+          {
+            "name": "Erik",
+            "percent": 10
+          },
+          {
+            "name": "Malo",
+            "percent": 5
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 30,
+      "spofCount": 15
+    },
+    "busFactor": 1,
+    "authorCount": 10
+  },
+  "Package Management & Extensibility": {
+    "description": "Provides a package management system for users to create, share, and reuse templates, themes, and functional components, fostering a collaborative ecosystem.",
+    "functions": {
+      "Package Management and Extensibility": {
+        "files": [
+          {
+            "path": "crates/typst-syntax/src/package.rs",
+            "description": "This file defines data structures for parsing and representing Typst package manifests, including package information, template details, and tool configurations. It also provides utilities for parsing and validating package specifications.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-kit/src/files.rs",
+            "description": "This file implements a system for loading, caching, and managing Typst source files and their raw byte content, supporting incremental compilation through a pluggable `FileLoader` interface.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-kit/src/packages.rs",
+            "description": "This file manages the loading, retrieval, and storage of Typst packages from various sources, including local file system directories (data and cache) and the Typst Universe registry, handling versioning and network downloads.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/plugin.rs",
+            "description": "This file implements the functionality for Typst to load and interact with WebAssembly modules as plugins. It defines the `plugin` function, `PluginFunc` structure, and the protocol for WebAssembly plugins to be used within Typst documents.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/foundations/path.rs",
+            "description": "This file defines the `RootedPath` type and related functionality for handling file system paths within Typst. It manages path resolution (relative/absolute), enforces project and package root boundaries, and defines how paths are represented and validated.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-macros/src/lib.rs",
+            "description": "This file defines procedural macros for the Typst typesetting system. It provides macros like `func`, `ty`, `elem`, and `scope` to enable Rust functions, types, and structs to be exposed and used within the Typst language, managing their properties, arguments, and associated scopes.",
+            "spof": false
+          },
+          {
+            "path": "tests/packages/future-0.1.0",
+            "description": "This directory represents a test package named 'future' at version '0.1.0' within the Typst test suite. Its purpose is to validate aspects of the Typst package system, potentially including package discovery, resolution, or the handling of empty packages.",
+            "spof": false
+          },
+          {
+            "path": "tests/packages/adder-0.1.0",
+            "description": "This directory represents version 0.1.0 of the 'adder' package, situated within the Typst testing suite. Its purpose is likely to serve as a test fixture or placeholder, possibly to evaluate how the Typst package system handles minimal or empty packages during benchmark testing.",
+            "spof": false
+          },
+          {
+            "path": "tests/packages/reader-0.1.0/src",
+            "description": "This directory is designated to contain the source code for version 0.1.0 of the 'reader' package, as used within the `typst` testing suite. Its current empty state suggests that the actual package source might be external to this test setup, or this specific test doesn't require direct source files here.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 93
+          },
+          {
+            "name": "Niklas Eicker",
+            "percent": 2
+          },
+          {
+            "name": "tingerrr",
+            "percent": 2
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 9,
+      "spofCount": 4
+    },
+    "busFactor": 1,
+    "authorCount": 2
+  },
+  "IDE & Language Services": {
+    "description": "Enhances the authoring experience in code editors by providing language services like autocompletion, syntax highlighting, error diagnostics, and contextual help.",
+    "functions": {
+      "Code Intelligence Services": {
+        "files": [
+          {
+            "path": "crates/typst-ide/src/complete.rs",
+            "description": "This file provides the core logic for autocompletion within the Typst IDE. It analyzes the cursor position and surrounding syntax to suggest relevant completions, including markup snippets, math symbols, and code elements.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-ide/src/docs.rs",
+            "description": "This file provides utilities for finding, collecting, and processing documentation within the Typst IDE, supporting both native Typst documentation and custom doc comments. It includes functions to extract documentation for values and parameters, and to summarize documentation into plain text.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-ide/src/tooltip.rs",
+            "description": "This file provides functions to generate contextual tooltips for different elements (e.g., expressions, imports, labels, parameters, fonts) in a Typst source file, primarily for IDE integration.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-ide/src/jump.rs",
+            "description": "This file implements functionality to determine a jump destination (e.g., source code, URL, or document position) based on a click within a rendered document, supporting both PagedDocument and HtmlDocument types. It enables 'click-to-jump' features for the IDE.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-ide/src/definition.rs",
+            "description": "This file implements the core logic for finding the definition of an item (like a variable, function, import, or reference) in Typst source code, supporting both user-defined and standard library elements. It is a key component of the Typst IDE's 'go to definition' functionality.",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-ide/src/lib.rs",
+            "description": "This file defines the core functionalities and interfaces for providing IDE support for the Typst language, including features like analysis, autocompletion, definition lookup, and jump-to-definition.",
+            "spof": true
+          },
+          {
+            "path": "tools/support/README.md",
+            "description": "This file describes an unmaintained, development-only VS Code extension for Typst language support, highlighting its limitations and recommending an alternative extension.",
+            "spof": true
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 65
+          },
+          {
+            "name": "Ana Gelez",
+            "percent": 21
+          },
+          {
+            "name": "Igor Khanin",
+            "percent": 5
+          }
+        ]
+      },
+      "Core Analysis and Diagnostics": {
+        "files": [
+          {
+            "path": "crates/typst-ide/src/analyze.rs",
+            "description": "This file provides static analysis functionalities for Typst code within an IDE context, including evaluating expressions, resolving imports, and extracting document labels and bibliography keys.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-ide/src/matchers.rs",
+            "description": "This file provides utility functions for a Typst IDE to analyze source code, including finding named items (variables, functions, modules, imports) and categorizing expressions within the Abstract Syntax Tree (AST).",
+            "spof": false
+          },
+          {
+            "path": "crates/typst-ide/src/utils.rs",
+            "description": "This file provides various utility functions for the Typst IDE, including creating temporary engine instances, summarizing font families, determining global scopes based on AST nodes, and recursively searching through Typst values.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-kit/src/diagnostics.rs",
+            "description": "This file provides functionality for pretty-printing diagnostic messages (errors, warnings, hints, and traces) from the Typst library using `codespan-reporting`, adapting the Typst world interface to `codespan`'s file system requirements.",
+            "spof": true
+          },
+          {
+            "path": "crates/typst-library/src/diag.rs",
+            "description": "This file defines structures and macros for handling and reporting diagnostics, including errors and warnings, within the Typst system. It provides mechanisms for creating, customizing with hints, and propagating these diagnostic messages.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 60
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 19
+          },
+          {
+            "name": "Ian",
+            "percent": 12
+          }
+        ]
+      },
+      "Test Support Infrastructure": {
+        "files": [
+          {
+            "path": "crates/typst-ide/src/tests.rs",
+            "description": "This file defines a `TestWorld` struct and related utilities, providing a mock implementation of the Typst `World` and `IdeWorld` traits specifically for testing purposes within the `typst-ide` crate. It allows tests to easily set up custom files, assets, and configurations.",
+            "spof": true
+          },
+          {
+            "path": "tools/test-helper/README.md",
+            "description": "This README provides an overview and installation instructions for a VS Code extension designed to help manage the Typst test suite, offering features like viewing, running, and saving test outputs.",
+            "spof": false
+          },
+          {
+            "path": "tools/test-helper/src/extension.ts",
+            "description": "This file implements a VS Code extension that provides testing utilities for Typst projects. It includes code lenses for running and viewing tests, and a WebView panel to display test results and interact with testing commands.",
+            "spof": false
+          }
+        ],
+        "contributors": [
+          {
+            "name": "Laurenz",
+            "percent": 74
+          },
+          {
+            "name": "Leedehai",
+            "percent": 23
+          },
+          {
+            "name": "Tobias Schmitz",
+            "percent": 2
+          }
+        ]
+      }
+    },
+    "stats": {
+      "totalFiles": 15,
+      "spofCount": 10
+    },
+    "busFactor": 1,
+    "authorCount": 2
+  }
+}

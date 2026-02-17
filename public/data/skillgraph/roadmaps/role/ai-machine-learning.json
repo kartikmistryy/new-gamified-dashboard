@@ -1,0 +1,1296 @@
+[
+  {
+    "roadmap": "AI Engineer",
+    "group": "AI & Machine Learning",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "python-fundamentals",
+            "title": "Python Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "python-syntax",
+                "title": "Python syntax, data structures, and control flow"
+              },
+              {
+                "id": "python-functions",
+                "title": "Functions, modules, and object-oriented programming"
+              },
+              {
+                "id": "numpy-pandas",
+                "title": "NumPy and Pandas for data manipulation"
+              }
+            ]
+          },
+          {
+            "id": "math-foundations",
+            "title": "Mathematical Foundations",
+            "subCheckpoints": [
+              {
+                "id": "linear-algebra",
+                "title": "Linear algebra (vectors, matrices, operations)"
+              },
+              {
+                "id": "calculus-basics",
+                "title": "Calculus (derivatives, gradients)"
+              },
+              {
+                "id": "probability-basics",
+                "title": "Probability and statistics basics"
+              }
+            ]
+          },
+          {
+            "id": "ml-basics",
+            "title": "Machine Learning Basics",
+            "subCheckpoints": [
+              {
+                "id": "supervised-unsupervised",
+                "title": "Supervised vs unsupervised learning concepts"
+              },
+              {
+                "id": "sklearn-intro",
+                "title": "Scikit-learn for classification and regression"
+              },
+              {
+                "id": "train-test-split",
+                "title": "Train/test split and cross-validation"
+              }
+            ]
+          },
+          {
+            "id": "deep-learning-intro",
+            "title": "Deep Learning Introduction",
+            "subCheckpoints": [
+              {
+                "id": "neural-networks",
+                "title": "Neural network architecture and backpropagation"
+              },
+              {
+                "id": "cnn-rnn",
+                "title": "CNN and RNN fundamentals"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "nlp-fundamentals",
+            "title": "NLP Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "text-preprocessing",
+                "title": "Text preprocessing and tokenization"
+              },
+              {
+                "id": "embeddings",
+                "title": "Word embeddings and transfer learning"
+              },
+              {
+                "id": "transformer-intro",
+                "title": "Introduction to transformer architecture"
+              }
+            ]
+          },
+          {
+            "id": "computer-vision",
+            "title": "Computer Vision",
+            "subCheckpoints": [
+              {
+                "id": "image-classification",
+                "title": "Image classification with CNNs"
+              },
+              {
+                "id": "object-detection",
+                "title": "Object detection and segmentation basics"
+              },
+              {
+                "id": "vision-transformers",
+                "title": "Vision transformers (ViT)"
+              }
+            ]
+          },
+          {
+            "id": "llms-foundation-models",
+            "title": "LLMs & Foundation Models",
+            "subCheckpoints": [
+              {
+                "id": "llm-architecture",
+                "title": "LLM architecture and scaling laws"
+              },
+              {
+                "id": "openai-api",
+                "title": "Using OpenAI, Anthropic, and open-source APIs"
+              },
+              {
+                "id": "model-selection",
+                "title": "Model selection and cost trade-offs"
+              }
+            ]
+          },
+          {
+            "id": "prompt-engineering",
+            "title": "Prompt Engineering",
+            "subCheckpoints": [
+              {
+                "id": "prompt-patterns",
+                "title": "Prompt patterns (zero-shot, few-shot, chain-of-thought)"
+              },
+              {
+                "id": "prompt-optimization",
+                "title": "Prompt optimization and evaluation"
+              },
+              {
+                "id": "structured-output",
+                "title": "Structured output and function calling"
+              }
+            ]
+          },
+          {
+            "id": "rag-systems",
+            "title": "RAG Systems",
+            "subCheckpoints": [
+              {
+                "id": "retrieval-embeddings",
+                "title": "Retrieval with embeddings and vector stores"
+              },
+              {
+                "id": "rag-pipeline",
+                "title": "Building RAG pipelines (chunking, reranking)"
+              },
+              {
+                "id": "rag-evaluation",
+                "title": "RAG evaluation and quality metrics"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "fine-tuning",
+            "title": "Model Fine-Tuning",
+            "subCheckpoints": [
+              {
+                "id": "lora-qlora",
+                "title": "LoRA and QLoRA for efficient fine-tuning"
+              },
+              {
+                "id": "rlhf-dpo",
+                "title": "RLHF and DPO for alignment"
+              },
+              {
+                "id": "instruction-tuning",
+                "title": "Instruction tuning and domain adaptation"
+              }
+            ]
+          },
+          {
+            "id": "ai-deployment",
+            "title": "AI Deployment",
+            "subCheckpoints": [
+              {
+                "id": "model-serving",
+                "title": "Model serving (vLLM, TGI, inference APIs)"
+              },
+              {
+                "id": "latency-optimization",
+                "title": "Latency and cost optimization"
+              },
+              {
+                "id": "edge-deployment",
+                "title": "Edge and on-device deployment"
+              }
+            ]
+          },
+          {
+            "id": "mlops-basics",
+            "title": "MLOps Basics",
+            "subCheckpoints": [
+              {
+                "id": "experiment-tracking",
+                "title": "Experiment tracking (MLflow, W&B)"
+              },
+              {
+                "id": "model-registry",
+                "title": "Model registry and versioning"
+              },
+              {
+                "id": "ci-cd-ml",
+                "title": "CI/CD for ML pipelines"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "AI and Data Scientist",
+    "group": "AI & Machine Learning",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "python-r-foundations",
+            "title": "Python & R Foundations",
+            "subCheckpoints": [
+              {
+                "id": "python-data",
+                "title": "Python: Pandas, NumPy, data structures"
+              },
+              {
+                "id": "r-tidyverse",
+                "title": "R: tidyverse, dplyr, ggplot2"
+              },
+              {
+                "id": "jupyter-rstudio",
+                "title": "Jupyter and RStudio workflows"
+              }
+            ]
+          },
+          {
+            "id": "statistics-probability",
+            "title": "Statistics & Probability",
+            "subCheckpoints": [
+              {
+                "id": "descriptive-stats",
+                "title": "Descriptive statistics and distributions"
+              },
+              {
+                "id": "hypothesis-testing",
+                "title": "Hypothesis testing and p-values"
+              },
+              {
+                "id": "bayesian-basics",
+                "title": "Bayesian vs frequentist inference"
+              }
+            ]
+          },
+          {
+            "id": "data-wrangling",
+            "title": "Data Wrangling",
+            "subCheckpoints": [
+              {
+                "id": "data-cleaning",
+                "title": "Data cleaning and handling missing values"
+              },
+              {
+                "id": "data-transformation",
+                "title": "Data transformation and reshaping"
+              },
+              {
+                "id": "data-sources",
+                "title": "Working with SQL, CSV, JSON, APIs"
+              }
+            ]
+          },
+          {
+            "id": "eda",
+            "title": "Exploratory Data Analysis",
+            "subCheckpoints": [
+              {
+                "id": "visualization",
+                "title": "Visualization (matplotlib, seaborn, ggplot2)"
+              },
+              {
+                "id": "distribution-analysis",
+                "title": "Distribution analysis and correlation"
+              },
+              {
+                "id": "outlier-detection",
+                "title": "Outlier detection and handling"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "ml-algorithms",
+            "title": "ML Algorithms",
+            "subCheckpoints": [
+              {
+                "id": "linear-logistic",
+                "title": "Linear and logistic regression"
+              },
+              {
+                "id": "tree-models",
+                "title": "Tree-based models (decision trees, random forest)"
+              },
+              {
+                "id": "clustering",
+                "title": "Clustering (K-means, hierarchical)"
+              },
+              {
+                "id": "svm-knn",
+                "title": "SVM, KNN, and algorithm selection"
+              }
+            ]
+          },
+          {
+            "id": "deep-learning-ds",
+            "title": "Deep Learning",
+            "subCheckpoints": [
+              {
+                "id": "nn-basics",
+                "title": "Neural network basics and tuning"
+              },
+              {
+                "id": "keras-tensorflow",
+                "title": "Keras/TensorFlow for tabular and image data"
+              },
+              {
+                "id": "transfer-learning",
+                "title": "Transfer learning for practical projects"
+              }
+            ]
+          },
+          {
+            "id": "feature-engineering",
+            "title": "Feature Engineering",
+            "subCheckpoints": [
+              {
+                "id": "feature-creation",
+                "title": "Feature creation and selection"
+              },
+              {
+                "id": "encoding-scaling",
+                "title": "Encoding, scaling, and normalization"
+              },
+              {
+                "id": "feature-importance",
+                "title": "Feature importance and interpretability"
+              }
+            ]
+          },
+          {
+            "id": "model-evaluation",
+            "title": "Model Evaluation",
+            "subCheckpoints": [
+              {
+                "id": "metrics",
+                "title": "Metrics (accuracy, precision, recall, F1, AUC)"
+              },
+              {
+                "id": "cross-validation",
+                "title": "Cross-validation and stratified sampling"
+              },
+              {
+                "id": "bias-variance",
+                "title": "Bias-variance tradeoff and overfitting"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "nlp-time-series",
+            "title": "NLP & Time Series",
+            "subCheckpoints": [
+              {
+                "id": "nlp-basics",
+                "title": "NLP: text classification, sentiment analysis"
+              },
+              {
+                "id": "time-series",
+                "title": "Time series: ARIMA, Prophet, forecasting"
+              },
+              {
+                "id": "sequence-models",
+                "title": "Sequence models for temporal data"
+              }
+            ]
+          },
+          {
+            "id": "experiment-design",
+            "title": "Experiment Design",
+            "subCheckpoints": [
+              {
+                "id": "ab-testing",
+                "title": "A/B testing and power analysis"
+              },
+              {
+                "id": "causal-inference",
+                "title": "Causal inference basics"
+              },
+              {
+                "id": "randomized-control",
+                "title": "Randomized controlled experiments"
+              }
+            ]
+          },
+          {
+            "id": "communication-visualization",
+            "title": "Communication & Visualization",
+            "subCheckpoints": [
+              {
+                "id": "storytelling",
+                "title": "Data storytelling and narrative"
+              },
+              {
+                "id": "dashboards",
+                "title": "Dashboards (Plotly, Streamlit, Tableau)"
+              },
+              {
+                "id": "reproducibility",
+                "title": "Reproducibility and technical writing"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "Machine Learning",
+    "group": "AI & Machine Learning",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "math-foundations-ml",
+            "title": "Mathematical Foundations",
+            "subCheckpoints": [
+              {
+                "id": "linear-algebra-ml",
+                "title": "Linear algebra (vectors, matrices, eigenvalues)"
+              },
+              {
+                "id": "calculus-ml",
+                "title": "Calculus (partial derivatives, chain rule)"
+              },
+              {
+                "id": "statistics-ml",
+                "title": "Statistics (distributions, MLE, Bayes)"
+              }
+            ]
+          },
+          {
+            "id": "python-for-ml",
+            "title": "Python for ML",
+            "subCheckpoints": [
+              {
+                "id": "numpy-scipy",
+                "title": "NumPy, SciPy for numerical computing"
+              },
+              {
+                "id": "pandas-sklearn",
+                "title": "Pandas and Scikit-learn basics"
+              },
+              {
+                "id": "ml-workflow",
+                "title": "End-to-end ML workflow in Python"
+              }
+            ]
+          },
+          {
+            "id": "supervised-learning",
+            "title": "Supervised Learning",
+            "subCheckpoints": [
+              {
+                "id": "regression",
+                "title": "Regression (linear, polynomial, ridge, lasso)"
+              },
+              {
+                "id": "classification",
+                "title": "Classification (logistic, decision trees, SVM)"
+              },
+              {
+                "id": "gradient-descent",
+                "title": "Gradient descent and optimization"
+              }
+            ]
+          },
+          {
+            "id": "unsupervised-learning",
+            "title": "Unsupervised Learning",
+            "subCheckpoints": [
+              {
+                "id": "clustering-ml",
+                "title": "Clustering (K-means, DBSCAN, hierarchical)"
+              },
+              {
+                "id": "dimensionality",
+                "title": "Dimensionality reduction (PCA, t-SNE)"
+              },
+              {
+                "id": "anomaly-detection",
+                "title": "Anomaly detection"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "ensemble-methods",
+            "title": "Ensemble Methods",
+            "subCheckpoints": [
+              {
+                "id": "bagging-boosting",
+                "title": "Bagging, boosting, and stacking"
+              },
+              {
+                "id": "random-forest-xgb",
+                "title": "Random Forest and XGBoost"
+              },
+              {
+                "id": "ensemble-design",
+                "title": "Ensemble design and hyperparameter tuning"
+              }
+            ]
+          },
+          {
+            "id": "neural-networks",
+            "title": "Neural Networks",
+            "subCheckpoints": [
+              {
+                "id": "mlp-backprop",
+                "title": "MLP, backpropagation, activation functions"
+              },
+              {
+                "id": "regularization",
+                "title": "Regularization (dropout, batch norm)"
+              },
+              {
+                "id": "optimizers",
+                "title": "Optimizers (SGD, Adam, learning rate schedules)"
+              }
+            ]
+          },
+          {
+            "id": "deep-learning-frameworks",
+            "title": "Deep Learning Frameworks",
+            "subCheckpoints": [
+              {
+                "id": "pytorch-basics",
+                "title": "PyTorch: tensors, autograd, nn.Module"
+              },
+              {
+                "id": "tensorflow-basics",
+                "title": "TensorFlow/Keras: layers, models, training"
+              },
+              {
+                "id": "gpu-training",
+                "title": "GPU training and debugging"
+              }
+            ]
+          },
+          {
+            "id": "model-evaluation-ml",
+            "title": "Model Evaluation",
+            "subCheckpoints": [
+              {
+                "id": "metrics-ml",
+                "title": "Metrics, confusion matrix, ROC/AUC"
+              },
+              {
+                "id": "validation-strategies",
+                "title": "Validation strategies and cross-validation"
+              },
+              {
+                "id": "model-comparison",
+                "title": "Model comparison and selection"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "feature-engineering-ml",
+            "title": "Feature Engineering",
+            "subCheckpoints": [
+              {
+                "id": "feature-selection",
+                "title": "Feature selection (filter, wrapper, embedded)"
+              },
+              {
+                "id": "feature-extraction",
+                "title": "Feature extraction and representation"
+              },
+              {
+                "id": "auto-feature",
+                "title": "Automated feature engineering"
+              }
+            ]
+          },
+          {
+            "id": "ml-deployment",
+            "title": "ML Deployment",
+            "subCheckpoints": [
+              {
+                "id": "model-serialization",
+                "title": "Model serialization (pickle, ONNX)"
+              },
+              {
+                "id": "serving-apis",
+                "title": "Model serving and REST APIs"
+              },
+              {
+                "id": "production-monitoring",
+                "title": "Production monitoring and maintenance"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "MLOps",
+    "group": "AI & Machine Learning",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "ml-fundamentals",
+            "title": "ML Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "ml-lifecycle",
+                "title": "ML lifecycle and project phases"
+              },
+              {
+                "id": "model-training-basics",
+                "title": "Model training and evaluation basics"
+              },
+              {
+                "id": "ml-problem-types",
+                "title": "Understanding ML problem types"
+              }
+            ]
+          },
+          {
+            "id": "version-control-ml",
+            "title": "Version Control for ML",
+            "subCheckpoints": [
+              {
+                "id": "git-basics",
+                "title": "Git for code and config versioning"
+              },
+              {
+                "id": "dvc-intro",
+                "title": "DVC for data and model versioning"
+              },
+              {
+                "id": "reproducibility",
+                "title": "Reproducibility and environment management"
+              }
+            ]
+          },
+          {
+            "id": "data-pipelines",
+            "title": "Data Pipelines",
+            "subCheckpoints": [
+              {
+                "id": "etl-basics",
+                "title": "ETL/ELT concepts and patterns"
+              },
+              {
+                "id": "data-validation",
+                "title": "Data validation and schema enforcement"
+              },
+              {
+                "id": "pipeline-tools",
+                "title": "Airflow, Prefect, or Dagster basics"
+              }
+            ]
+          },
+          {
+            "id": "experiment-tracking",
+            "title": "Experiment Tracking",
+            "subCheckpoints": [
+              {
+                "id": "mlflow-setup",
+                "title": "MLflow: runs, metrics, artifacts"
+              },
+              {
+                "id": "wandb-setup",
+                "title": "Weights & Biases for experiment tracking"
+              },
+              {
+                "id": "experiment-compare",
+                "title": "Comparing and selecting experiments"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "model-serving",
+            "title": "Model Serving",
+            "subCheckpoints": [
+              {
+                "id": "serving-patterns",
+                "title": "Serving patterns (batch vs real-time)"
+              },
+              {
+                "id": "serving-tools",
+                "title": "Seldon, TorchServe, or Triton"
+              },
+              {
+                "id": "api-design",
+                "title": "REST and gRPC API design for models"
+              }
+            ]
+          },
+          {
+            "id": "monitoring-drift",
+            "title": "Monitoring & Drift Detection",
+            "subCheckpoints": [
+              {
+                "id": "metrics-monitoring",
+                "title": "Metrics, latency, and throughput monitoring"
+              },
+              {
+                "id": "data-drift",
+                "title": "Data and concept drift detection"
+              },
+              {
+                "id": "alerting",
+                "title": "Alerting and incident response"
+              }
+            ]
+          },
+          {
+            "id": "ci-cd-ml",
+            "title": "CI/CD for ML",
+            "subCheckpoints": [
+              {
+                "id": "ml-pipelines",
+                "title": "ML pipeline automation"
+              },
+              {
+                "id": "testing-ml",
+                "title": "Testing models and data"
+              },
+              {
+                "id": "staging-production",
+                "title": "Staging and production deployment flows"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "infrastructure",
+            "title": "Infrastructure",
+            "subCheckpoints": [
+              {
+                "id": "kubernetes-ml",
+                "title": "Kubernetes for ML workloads"
+              },
+              {
+                "id": "cloud-ml",
+                "title": "Cloud ML platforms (AWS SageMaker, GCP Vertex)"
+              },
+              {
+                "id": "gpu-infra",
+                "title": "GPU infrastructure and scaling"
+              }
+            ]
+          },
+          {
+            "id": "feature-stores",
+            "title": "Feature Stores",
+            "subCheckpoints": [
+              {
+                "id": "feature-store-concept",
+                "title": "Feature store concepts and benefits"
+              },
+              {
+                "id": "feast-tecton",
+                "title": "Feast, Tecton, or cloud feature stores"
+              },
+              {
+                "id": "online-offline",
+                "title": "Online vs offline feature serving"
+              }
+            ]
+          },
+          {
+            "id": "model-registry",
+            "title": "Model Registry",
+            "subCheckpoints": [
+              {
+                "id": "registry-concepts",
+                "title": "Model registry and lifecycle management"
+              },
+              {
+                "id": "approval-workflows",
+                "title": "Approval workflows and governance"
+              },
+              {
+                "id": "registry-tools",
+                "title": "MLflow Model Registry, SageMaker, etc."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "AI Agents",
+    "group": "AI & Machine Learning",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "llm-fundamentals",
+            "title": "LLM Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "llm-architecture-agents",
+                "title": "LLM architecture and capabilities"
+              },
+              {
+                "id": "llm-providers",
+                "title": "LLM providers (OpenAI, Anthropic, open-source)"
+              },
+              {
+                "id": "llm-limitations",
+                "title": "Limitations: hallucination, context, latency"
+              }
+            ]
+          },
+          {
+            "id": "prompt-engineering-agents",
+            "title": "Prompt Engineering",
+            "subCheckpoints": [
+              {
+                "id": "prompt-patterns-agents",
+                "title": "Zero-shot, few-shot, chain-of-thought"
+              },
+              {
+                "id": "system-prompts",
+                "title": "System prompts and role definition"
+              },
+              {
+                "id": "output-formatting",
+                "title": "Output formatting and parsing"
+              }
+            ]
+          },
+          {
+            "id": "agent-architectures",
+            "title": "Agent Architectures",
+            "subCheckpoints": [
+              {
+                "id": "react-reflexion",
+                "title": "ReAct, Reflexion, and planning patterns"
+              },
+              {
+                "id": "agent-loop",
+                "title": "Agent loop: perceive, plan, act"
+              },
+              {
+                "id": "agent-frameworks",
+                "title": "LangChain, LlamaIndex, or custom agents"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "tool-use-function-calling",
+            "title": "Tool Use & Function Calling",
+            "subCheckpoints": [
+              {
+                "id": "tool-definition",
+                "title": "Defining and describing tools for LLMs"
+              },
+              {
+                "id": "function-calling",
+                "title": "Function calling and schema design"
+              },
+              {
+                "id": "tool-execution",
+                "title": "Tool execution and error handling"
+              },
+              {
+                "id": "tool-chaining",
+                "title": "Tool chaining and orchestration"
+              }
+            ]
+          },
+          {
+            "id": "memory-context",
+            "title": "Memory & Context Management",
+            "subCheckpoints": [
+              {
+                "id": "conversation-memory",
+                "title": "Conversation and short-term memory"
+              },
+              {
+                "id": "long-term-memory",
+                "title": "Long-term memory and retrieval"
+              },
+              {
+                "id": "context-window",
+                "title": "Context window management and summarization"
+              }
+            ]
+          },
+          {
+            "id": "multi-agent-systems",
+            "title": "Multi-Agent Systems",
+            "subCheckpoints": [
+              {
+                "id": "agent-communication",
+                "title": "Agent communication and handoffs"
+              },
+              {
+                "id": "orchestration",
+                "title": "Orchestration and delegation patterns"
+              },
+              {
+                "id": "multi-agent-frameworks",
+                "title": "CrewAI, AutoGen, or custom multi-agent"
+              }
+            ]
+          },
+          {
+            "id": "mcp-protocol",
+            "title": "MCP (Model Context Protocol)",
+            "subCheckpoints": [
+              {
+                "id": "mcp-overview",
+                "title": "MCP concept and benefits"
+              },
+              {
+                "id": "mcp-servers",
+                "title": "Building and using MCP servers"
+              },
+              {
+                "id": "mcp-integration",
+                "title": "Integrating MCP with agents"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "rag-for-agents",
+            "title": "RAG for Agents",
+            "subCheckpoints": [
+              {
+                "id": "rag-integration",
+                "title": "Integrating RAG into agent workflows"
+              },
+              {
+                "id": "dynamic-retrieval",
+                "title": "Dynamic retrieval and tool use"
+              },
+              {
+                "id": "rag-quality",
+                "title": "RAG quality for agent accuracy"
+              }
+            ]
+          },
+          {
+            "id": "evaluation-testing-agents",
+            "title": "Evaluation & Testing",
+            "subCheckpoints": [
+              {
+                "id": "agent-eval-metrics",
+                "title": "Agent evaluation metrics and benchmarks"
+              },
+              {
+                "id": "testing-agents",
+                "title": "Unit and integration testing for agents"
+              },
+              {
+                "id": "red-teaming-agents",
+                "title": "Red teaming and safety testing"
+              }
+            ]
+          },
+          {
+            "id": "deployment-scaling-agents",
+            "title": "Deployment & Scaling",
+            "subCheckpoints": [
+              {
+                "id": "agent-serving",
+                "title": "Agent serving and API design"
+              },
+              {
+                "id": "scaling-agents",
+                "title": "Scaling and latency optimization"
+              },
+              {
+                "id": "production-monitoring-agents",
+                "title": "Production monitoring and observability"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  },
+  {
+    "roadmap": "AI Red Teaming",
+    "group": "AI & Machine Learning",
+    "type": "role",
+    "levels": [
+      {
+        "level": "basic",
+        "label": "Basic",
+        "checkpoints": [
+          {
+            "id": "ai-ml-fundamentals",
+            "title": "AI/ML Fundamentals",
+            "subCheckpoints": [
+              {
+                "id": "ml-concepts",
+                "title": "ML and deep learning concepts"
+              },
+              {
+                "id": "llm-fundamentals-rt",
+                "title": "LLM architecture and behavior"
+              },
+              {
+                "id": "ai-systems-overview",
+                "title": "Overview of AI systems and deployment"
+              }
+            ]
+          },
+          {
+            "id": "adversarial-ml",
+            "title": "Adversarial ML",
+            "subCheckpoints": [
+              {
+                "id": "adversarial-attacks",
+                "title": "Adversarial attacks on classifiers"
+              },
+              {
+                "id": "evasion-techniques",
+                "title": "Evasion and poisoning attack types"
+              },
+              {
+                "id": "defense-strategies",
+                "title": "Defense strategies and robustness"
+              }
+            ]
+          },
+          {
+            "id": "prompt-injection",
+            "title": "Prompt Injection",
+            "subCheckpoints": [
+              {
+                "id": "injection-types",
+                "title": "Direct and indirect prompt injection"
+              },
+              {
+                "id": "injection-examples",
+                "title": "Common injection patterns and examples"
+              },
+              {
+                "id": "injection-detection",
+                "title": "Detection and mitigation approaches"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "intermediate",
+        "label": "Intermediate",
+        "checkpoints": [
+          {
+            "id": "jailbreaking-techniques",
+            "title": "Jailbreaking Techniques",
+            "subCheckpoints": [
+              {
+                "id": "jailbreak-methods",
+                "title": "Jailbreak methods and bypasses"
+              },
+              {
+                "id": "safety-eval",
+                "title": "Safety evaluation and stress testing"
+              },
+              {
+                "id": "guardrails-bypass",
+                "title": "Guardrail bypass and content policies"
+              }
+            ]
+          },
+          {
+            "id": "model-security-assessment",
+            "title": "Model Security Assessment",
+            "subCheckpoints": [
+              {
+                "id": "attack-surfaces",
+                "title": "Identifying attack surfaces"
+              },
+              {
+                "id": "threat-modeling",
+                "title": "Threat modeling for AI systems"
+              },
+              {
+                "id": "vulnerability-scanning",
+                "title": "Vulnerability scanning and reporting"
+              }
+            ]
+          },
+          {
+            "id": "data-poisoning",
+            "title": "Data Poisoning",
+            "subCheckpoints": [
+              {
+                "id": "poisoning-attacks",
+                "title": "Data poisoning attack vectors"
+              },
+              {
+                "id": "backdoor-attacks",
+                "title": "Backdoor and trojan attacks"
+              },
+              {
+                "id": "poisoning-defense",
+                "title": "Data provenance and poisoning defense"
+              }
+            ]
+          },
+          {
+            "id": "bias-fairness-testing",
+            "title": "Bias & Fairness Testing",
+            "subCheckpoints": [
+              {
+                "id": "bias-types",
+                "title": "Types of bias in AI systems"
+              },
+              {
+                "id": "fairness-metrics",
+                "title": "Fairness metrics and evaluation"
+              },
+              {
+                "id": "bias-testing",
+                "title": "Bias testing methodologies"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": "advanced",
+        "label": "Advanced",
+        "checkpoints": [
+          {
+            "id": "red-team-methodologies",
+            "title": "Red Team Methodologies",
+            "subCheckpoints": [
+              {
+                "id": "red-team-process",
+                "title": "Structured red team process"
+              },
+              {
+                "id": "scenario-planning",
+                "title": "Scenario planning and attack trees"
+              },
+              {
+                "id": "reporting-remediation",
+                "title": "Reporting and remediation workflows"
+              }
+            ]
+          },
+          {
+            "id": "responsible-ai",
+            "title": "Responsible AI",
+            "subCheckpoints": [
+              {
+                "id": "responsible-ai-principles",
+                "title": "Responsible AI principles and frameworks"
+              },
+              {
+                "id": "ethics-in-red-teaming",
+                "title": "Ethics in red teaming and disclosure"
+              },
+              {
+                "id": "stakeholder-communication",
+                "title": "Stakeholder communication and recommendations"
+              }
+            ]
+          },
+          {
+            "id": "compliance-governance",
+            "title": "Compliance & Governance",
+            "subCheckpoints": [
+              {
+                "id": "ai-regulations",
+                "title": "AI regulations (EU AI Act, etc.)"
+              },
+              {
+                "id": "governance-frameworks",
+                "title": "Governance frameworks and audits"
+              },
+              {
+                "id": "documentation-certification",
+                "title": "Documentation and certification requirements"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version": "1.0"
+  }
+]
