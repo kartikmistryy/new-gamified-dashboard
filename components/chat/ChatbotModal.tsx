@@ -81,7 +81,7 @@ export function ChatbotModal({
             <Bot className="size-8 mx-auto mb-3 opacity-50" />
             <p>Hi! I can help you with questions about team skills.</p>
             <p className="mt-2 text-xs">
-              Try asking: &quot;Who knows React?&quot; or &quot;What skills are needed for
+              Try asking: &quot;Is my team AI ready?&quot; or &quot;What skills are needed for
               AI projects?&quot;
             </p>
           </div>
