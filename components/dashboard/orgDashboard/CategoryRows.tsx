@@ -127,6 +127,8 @@ export function CategoryRows({
             <Fragment key={cat.category}>
               {/* Category header row - R11: No toggle, always expanded */}
               <TableRow className={`${DASHBOARD_BG_CLASSES.borderLight} bg-gray-50/80 hover:bg-gray-100/80`}>
+                {/* Spacer to align with parent table's Rank column */}
+                <TableCell className="w-14" />
                 <TableCell className={INDENT.category}>
                   <div className="flex items-center gap-2">
                     <span
@@ -234,6 +236,8 @@ function SkillRow({
       <TableRow
         className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80 ${isExpanded ? "bg-muted/50" : ""}`}
       >
+        {/* Spacer to align with parent table's Rank column */}
+        <TableCell className="w-14" />
         {/* R17: Toggle is now part of name cell with indentation */}
         <TableCell className={INDENT.skill}>
           <div className="flex items-center gap-1">
@@ -329,6 +333,8 @@ function CheckpointRowSimple({
   return (
     <>
       <TableRow className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/60`}>
+        {/* Spacer to align with parent table's Rank column */}
+        <TableCell className="w-14" />
         {/* R17: Toggle is now part of name cell with indentation */}
         <TableCell className={indentClass}>
           <div className="flex items-center gap-1">
@@ -366,7 +372,7 @@ function CheckpointRowSimple({
       {/* R18: Sub-checkpoints aligned with parent checkpoint */}
       {isExpanded && hasSubCheckpoints && (
         <TableRow className="hover:bg-transparent">
-          <TableCell colSpan={3} className="p-0">
+          <TableCell colSpan={4} className="p-0">
             <SubCheckpointRows
               checkpoint={cp.checkpoint}
               showAll={showAll}
