@@ -96,7 +96,13 @@ export function CategoryRows({
     });
 
   return (
-    <Table>
+    <Table className="table-fixed">
+      <colgroup>
+        <col className="w-14" />
+        <col className="w-[40%]" />
+        <col className="w-[35%]" />
+        <col />
+      </colgroup>
       <TableBody>
         {sortedCategories.map((cat) => {
           const color = CATEGORY_COLORS[cat.category] ?? "#6B7280";

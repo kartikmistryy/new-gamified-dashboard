@@ -90,7 +90,13 @@ export function SkillBasedTable({
 
   return (
     <div className="rounded-sm border-none overflow-hidden bg-white">
-      <Table>
+      <Table className="table-fixed">
+        <colgroup>
+          <col className="w-14" />
+          <col className="w-[40%]" />
+          <col className="w-[35%]" />
+          <col />
+        </colgroup>
         <TableHeader className="border-0">
           <TableRow className="border-none hover:bg-transparent">
             <TableHead className="w-14 text-foreground font-medium">Rank</TableHead>
