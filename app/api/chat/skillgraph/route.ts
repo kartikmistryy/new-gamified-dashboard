@@ -1,5 +1,6 @@
 import { streamText, convertToModelMessages, type UIMessage } from "ai";
 import { createVertex } from "@ai-sdk/google-vertex";
+import { GoogleAuth } from "google-auth-library";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -21,6 +22,18 @@ function loadCredentials() {
   return undefined;
 }
 
+// Verify Google Cloud credentials are available before accepting requests
+async function verifyCredentials(explicitCredentials: ReturnType<typeof loadCredentials>): Promise<boolean> {
+  if (explicitCredentials) return true;
+  try {
+    const auth = new GoogleAuth({ scopes: ["https://www.googleapis.com/auth/cloud-platform"] });
+    await auth.getClient();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 // Initialize Vertex AI client with explicit credentials
 const credentials = loadCredentials();
 const vertex = createVertex({
@@ -37,8 +50,24 @@ const vertex = createVertex({
     : undefined,
 });
 
+// Cache the credentials check result to avoid repeated auth attempts
+let credentialsVerified: boolean | null = null;
+
 export async function POST(req: Request) {
   try {
+    // Pre-flight: verify credentials before attempting to stream
+    if (credentialsVerified === null) {
+      credentialsVerified = await verifyCredentials(credentials);
+    }
+    if (!credentialsVerified) {
+      return new Response(
+        JSON.stringify({
+          error: "Google Cloud credentials are not configured. Set GOOGLE_APPLICATION_CREDENTIALS or configure Application Default Credentials.",
+        }),
+        { status: 503, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     const { messages, systemPrompt }: { messages: UIMessage[]; systemPrompt: string } = await req.json();
 
     if (!messages || !Array.isArray(messages)) {

@@ -94,7 +94,7 @@ export function OrgSkillGraphPageClient() {
         <SkillGraphChatbot
           tableData={tableData}
           rawData={fullData.raw}
-          layout="sidebar"
+          layout="both"
         />
       )}
     </div>
