@@ -10,7 +10,6 @@ import type {
   ProficiencyLevel,
 } from "@/lib/dashboard/entities/roadmap/types";
 import {
-  filterUnlockedCheckpoints,
   getTotalPeople,
 } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
 import { DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
@@ -37,8 +36,17 @@ const CATEGORY_COLORS: Record<string, string> = {
   "Others": "#6B7280",
 };
 
+// Indentation levels (applied to Name and Progress Bar columns)
+const INDENT = {
+  category: "pl-6",
+  skill: "pl-12",
+  checkpoint: "pl-18",
+};
+
 // =============================================================================
-// CategoryRows — Category-based hierarchy (R3)
+// CategoryRows — Category-based hierarchy (R3, R11-R13)
+// Categories are always expanded (R11)
+// All levels sorted by proficiency (R13)
 // =============================================================================
 
 type CategoryRowsProps = {
@@ -54,17 +62,8 @@ export function CategoryRows({
   onSkillClick,
   onSidePanelOpen,
 }: CategoryRowsProps) {
-  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [expandedSkills, setExpandedSkills] = useState<Set<string>>(new Set());
   const [expandedCheckpoints, setExpandedCheckpoints] = useState<Set<string>>(new Set());
-
-  const toggleCategory = (cat: string) => {
-    setExpandedCategories((prev) => {
-      const next = new Set(prev);
-      next.has(cat) ? next.delete(cat) : next.add(cat);
-      return next;
-    });
-  };
 
   const toggleSkill = (id: string) => {
     setExpandedSkills((prev) => {
@@ -82,19 +81,16 @@ export function CategoryRows({
     });
   };
 
-  // Filter categories based on showAll
-  const filteredCategories = categories.filter((cat) => {
-    if (showAll) return true;
-    return getTotalPeople(cat.developerCounts) > 0;
-  });
+  // R13: Sort categories by proficiency
+  const sortedCategories = [...categories]
+    .filter((cat) => showAll || getTotalPeople(cat.developerCounts) > 0)
+    .sort((a, b) => b.progressPercent - a.progressPercent);
 
   return (
     <Table>
       <TableBody>
-        {filteredCategories.map((cat) => {
-          const isExpanded = expandedCategories.has(cat.category);
+        {sortedCategories.map((cat) => {
           const color = CATEGORY_COLORS[cat.category] ?? "#6B7280";
-          // Others category is collapsed by default
           const isOthers = cat.category === "Others";
 
           const handleCategoryBadgeClick = (level: ProficiencyLevel) => {
@@ -108,27 +104,22 @@ export function CategoryRows({
             }
           };
 
+          // R13: Sort skills by proficiency
+          const sortedSkills = [...cat.skills]
+            .filter((s) => showAll || getTotalPeople(s.developerCounts) > 0)
+            .sort((a, b) => b.progressPercent - a.progressPercent);
+
+          // R13: Sort checkpoints by proficiency
+          const sortedCheckpoints = [...(cat.checkpoints ?? [])]
+            .filter((cp) => showAll || getTotalPeople(cp.developerCounts) > 0)
+            .sort((a, b) => b.progressPercent - a.progressPercent);
+
           return (
             <Fragment key={cat.category}>
-              {/* Category header row */}
+              {/* Category header row - R11: No toggle, always expanded */}
               <TableRow className={`${DASHBOARD_BG_CLASSES.borderLight} bg-gray-50/80 hover:bg-gray-100/80`}>
-                <TableCell className="w-10">
-                  <Button
-                    className="size-7 text-muted-foreground"
-                    onClick={() => toggleCategory(cat.category)}
-                    aria-expanded={isExpanded}
-                    aria-label={isExpanded ? `Collapse ${cat.category}` : `Expand ${cat.category}`}
-                    size="icon"
-                    variant="ghost"
-                  >
-                    {isExpanded ? (
-                      <ChevronUpIcon className="opacity-60" aria-hidden />
-                    ) : (
-                      <ChevronDownIcon className="opacity-60" aria-hidden />
-                    )}
-                  </Button>
-                </TableCell>
-                <TableCell>
+                <TableCell className="w-10" />
+                <TableCell className={INDENT.category}>
                   <div className="flex items-center gap-2">
                     <span
                       className={`${BADGE_CLASS} px-2 py-0.5`}
@@ -141,7 +132,7 @@ export function CategoryRows({
                     )}
                   </div>
                 </TableCell>
-                <TableCell>
+                <TableCell className={INDENT.category}>
                   <ProficiencyProgressBar percent={cat.progressPercent} />
                 </TableCell>
                 <TableCell>
@@ -152,41 +143,33 @@ export function CategoryRows({
                 </TableCell>
               </TableRow>
 
-              {/* Expanded: Skills or Checkpoints */}
-              {isExpanded && (
-                <>
-                  {/* Skills in this category */}
-                  {cat.skills
-                    .filter((s) => showAll || getTotalPeople(s.developerCounts) > 0)
-                    .map((skill) => (
-                      <SkillRow
-                        key={skill.roadmap.id}
-                        skill={skill}
-                        isExpanded={expandedSkills.has(skill.roadmap.id)}
-                        onToggle={() => toggleSkill(skill.roadmap.id)}
-                        showAll={showAll}
-                        onSkillClick={onSkillClick}
-                        onSidePanelOpen={onSidePanelOpen}
-                        expandedCheckpoints={expandedCheckpoints}
-                        onToggleCheckpoint={toggleCheckpoint}
-                      />
-                    ))}
+              {/* R11: Skills always shown (no toggle needed) */}
+              {sortedSkills.map((skill) => (
+                <SkillRow
+                  key={skill.roadmap.id}
+                  skill={skill}
+                  isExpanded={expandedSkills.has(skill.roadmap.id)}
+                  onToggle={() => toggleSkill(skill.roadmap.id)}
+                  showAll={showAll}
+                  onSkillClick={onSkillClick}
+                  onSidePanelOpen={onSidePanelOpen}
+                  expandedCheckpoints={expandedCheckpoints}
+                  onToggleCheckpoint={toggleCheckpoint}
+                />
+              ))}
 
-                  {/* Checkpoints in "Others" category (no phase badge per R6) */}
-                  {cat.checkpoints
-                    ?.filter((cp) => showAll || getTotalPeople(cp.developerCounts) > 0)
-                    .map((cp) => (
-                      <CheckpointRowSimple
-                        key={cp.checkpoint.id}
-                        checkpoint={cp}
-                        isExpanded={expandedCheckpoints.has(cp.checkpoint.id)}
-                        onToggle={() => toggleCheckpoint(cp.checkpoint.id)}
-                        showAll={showAll}
-                        onSidePanelOpen={onSidePanelOpen}
-                      />
-                    ))}
-                </>
-              )}
+              {/* Checkpoints in "Others" category */}
+              {sortedCheckpoints.map((cp) => (
+                <CheckpointRowSimple
+                  key={cp.checkpoint.id}
+                  checkpoint={cp}
+                  isExpanded={expandedCheckpoints.has(cp.checkpoint.id)}
+                  onToggle={() => toggleCheckpoint(cp.checkpoint.id)}
+                  showAll={showAll}
+                  onSidePanelOpen={onSidePanelOpen}
+                  indent="skill"
+                />
+              ))}
             </Fragment>
           );
         })}
@@ -233,12 +216,17 @@ function SkillRow({
 
   const hasCheckpoints = skill.checkpoints.length > 0;
 
+  // R13: Sort checkpoints by proficiency
+  const sortedCheckpoints = [...skill.checkpoints]
+    .filter((cp) => showAll || getTotalPeople(cp.developerCounts) > 0)
+    .sort((a, b) => b.progressPercent - a.progressPercent);
+
   return (
     <>
       <TableRow
-        className={`${DASHBOARD_BG_CLASSES.borderLight} pl-8 hover:bg-gray-50/80 ${isExpanded ? "bg-muted/50" : ""}`}
+        className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80 ${isExpanded ? "bg-muted/50" : ""}`}
       >
-        <TableCell className="w-10 pl-8">
+        <TableCell className="w-10">
           {hasCheckpoints ? (
             <Button
               className="size-6 text-muted-foreground"
@@ -255,7 +243,7 @@ function SkillRow({
             </Button>
           ) : null}
         </TableCell>
-        <TableCell>
+        <TableCell className={INDENT.skill}>
           <span
             className={`text-sm text-gray-900 font-medium ${onSkillClick ? "cursor-pointer underline-offset-2 hover:underline" : ""}`}
             onClick={onSkillClick ? () => onSkillClick(skill.roadmap.id) : undefined}
@@ -263,7 +251,7 @@ function SkillRow({
             {skill.roadmap.name}
           </span>
         </TableCell>
-        <TableCell>
+        <TableCell className={INDENT.skill}>
           <ProficiencyProgressBar percent={skill.progressPercent} />
         </TableCell>
         <TableCell onClick={(e) => e.stopPropagation()}>
@@ -276,19 +264,17 @@ function SkillRow({
 
       {/* Expanded: Skill checkpoints */}
       {isExpanded &&
-        skill.checkpoints
-          .filter((cp) => showAll || getTotalPeople(cp.developerCounts) > 0)
-          .map((cp) => (
-            <CheckpointRowSimple
-              key={cp.checkpoint.id}
-              checkpoint={cp}
-              isExpanded={expandedCheckpoints.has(cp.checkpoint.id)}
-              onToggle={() => onToggleCheckpoint(cp.checkpoint.id)}
-              showAll={showAll}
-              onSidePanelOpen={onSidePanelOpen}
-              indent={2}
-            />
-          ))}
+        sortedCheckpoints.map((cp) => (
+          <CheckpointRowSimple
+            key={cp.checkpoint.id}
+            checkpoint={cp}
+            isExpanded={expandedCheckpoints.has(cp.checkpoint.id)}
+            onToggle={() => onToggleCheckpoint(cp.checkpoint.id)}
+            showAll={showAll}
+            onSidePanelOpen={onSidePanelOpen}
+            indent="checkpoint"
+          />
+        ))}
     </>
   );
 }
@@ -303,7 +289,7 @@ type CheckpointRowSimpleProps = {
   onToggle: () => void;
   showAll: boolean;
   onSidePanelOpen?: (context: SidePanelContext) => void;
-  indent?: number;
+  indent?: "skill" | "checkpoint";
 };
 
 function CheckpointRowSimple({
@@ -312,11 +298,11 @@ function CheckpointRowSimple({
   onToggle,
   showAll,
   onSidePanelOpen,
-  indent = 1,
+  indent = "skill",
 }: CheckpointRowSimpleProps) {
   const cp = checkpoint;
   const hasSubCheckpoints = cp.checkpoint.subCheckpoints.length > 0;
-  const paddingClass = indent === 2 ? "pl-16" : "pl-8";
+  const indentClass = indent === "checkpoint" ? INDENT.checkpoint : INDENT.skill;
 
   const handleBadgeClick = (level: ProficiencyLevel) => {
     if (onSidePanelOpen) {
@@ -332,7 +318,7 @@ function CheckpointRowSimple({
   return (
     <>
       <TableRow className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/60`}>
-        <TableCell className={`w-10 ${paddingClass}`}>
+        <TableCell className="w-10">
           {hasSubCheckpoints ? (
             <Button
               className="size-5 text-muted-foreground"
@@ -349,10 +335,10 @@ function CheckpointRowSimple({
             </Button>
           ) : null}
         </TableCell>
-        <TableCell>
+        <TableCell className={indentClass}>
           <span className="text-sm text-gray-600">{cp.checkpoint.name}</span>
         </TableCell>
-        <TableCell>
+        <TableCell className={indentClass}>
           <ProficiencyProgressBar percent={cp.progressPercent} />
         </TableCell>
         <TableCell>
@@ -366,12 +352,14 @@ function CheckpointRowSimple({
       {/* Sub-checkpoints */}
       {isExpanded && hasSubCheckpoints && (
         <TableRow className="hover:bg-transparent">
-          <TableCell colSpan={4} className={`p-0 ${paddingClass}`}>
-            <SubCheckpointRows
-              checkpoint={cp.checkpoint}
-              showAll={showAll}
-              unlockCounts={cp.subCheckpointUnlockCounts}
-            />
+          <TableCell colSpan={4} className="p-0">
+            <div className="pl-24">
+              <SubCheckpointRows
+                checkpoint={cp.checkpoint}
+                showAll={showAll}
+                unlockCounts={cp.subCheckpointUnlockCounts}
+              />
+            </div>
           </TableCell>
         </TableRow>
       )}

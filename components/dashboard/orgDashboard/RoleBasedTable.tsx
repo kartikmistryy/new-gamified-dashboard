@@ -4,7 +4,6 @@ import { Fragment, useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import type { RoleRoadmapProgressData, SidePanelContext, ProficiencyLevel } from "@/lib/dashboard/entities/roadmap/types";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
-import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
 import { PeopleCountBadges, ProficiencyProgressBar } from "./PeopleStackedBar";
 import { CategoryRows } from "./CategoryRows";
 import { CheckpointRows } from "./CheckpointRows";
@@ -146,14 +145,7 @@ function RoleRow({ role, rank, isExpanded, onToggle, showAll, onSkillClick, onSi
           </span>
         </TableCell>
         <TableCell>
-          <div className="flex items-center gap-3">
-            <div
-              className="size-4 rounded shrink-0"
-              style={{ backgroundColor: getColorForDomain(role.roleRoadmap.name) }}
-              aria-hidden
-            />
-            <span className="font-medium text-gray-900">{role.roleRoadmap.name}</span>
-          </div>
+          <span className="font-medium text-gray-900">{role.roleRoadmap.name}</span>
         </TableCell>
         <TableCell>
           <ProficiencyProgressBar percent={role.progressPercent} />

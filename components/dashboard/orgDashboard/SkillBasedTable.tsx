@@ -5,7 +5,6 @@ import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import type { SkillsRoadmapProgressData, SidePanelContext, ProficiencyLevel } from "@/lib/dashboard/entities/roadmap/types";
 import type { SkillCategoryData } from "@/components/skillmap/skillGraphTableTransform";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
-import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
 import { getTotalPeople } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
 import { PeopleCountBadges, ProficiencyProgressBar, BADGE_CLASS, badgeStyle } from "./PeopleStackedBar";
 import { CheckpointRows } from "./CheckpointRows";
@@ -19,9 +18,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const EXPANDER_CELL = "align-middle [&:has([aria-expanded])]:w-px [&:has([aria-expanded])]:py-0";
-
-// Category badge colors (same as CategoryRows)
+// Category badge colors
 const CATEGORY_COLORS: Record<string, string> = {
   "Programming Languages": "#8B5CF6",
   "Frontend Technologies": "#EC4899",
@@ -32,6 +29,13 @@ const CATEGORY_COLORS: Record<string, string> = {
   "CS Fundamentals & System Design": "#6366F1",
   "Emerging Technology": "#EF4444",
   "Others": "#6B7280",
+};
+
+// Indentation levels (applied to Name and Progress Bar columns)
+const INDENT = {
+  category: "",
+  skill: "pl-6",
+  checkpoint: "pl-12",
 };
 
 type SkillBasedTableProps = {
@@ -45,8 +49,9 @@ type SkillBasedTableProps = {
 };
 
 /**
- * Skill-Based Skills Table — R9: Category-grouped view.
- * Each row is a Category. Expanding shows skills within that category.
+ * Skill-Based Skills Table — R9, R11-R13
+ * Categories are always expanded (R11)
+ * All levels sorted by proficiency (R13)
  */
 export function SkillBasedTable({
   data,
@@ -56,32 +61,15 @@ export function SkillBasedTable({
   onAutoExpandConsumed,
   onSidePanelOpen,
 }: SkillBasedTableProps) {
-  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [expandedSkills, setExpandedSkills] = useState<Set<string>>(new Set());
 
   // Auto-expand to show a specific skill
   useEffect(() => {
     if (autoExpandSkillId) {
-      // Find the category containing this skill
-      for (const cat of categories) {
-        const skill = cat.skills.find((s) => s.roadmap.id === autoExpandSkillId);
-        if (skill) {
-          setExpandedCategories((prev) => new Set(prev).add(cat.category));
-          setExpandedSkills((prev) => new Set(prev).add(autoExpandSkillId));
-          break;
-        }
-      }
+      setExpandedSkills((prev) => new Set(prev).add(autoExpandSkillId));
       onAutoExpandConsumed?.();
     }
-  }, [autoExpandSkillId, categories, onAutoExpandConsumed]);
-
-  const toggleCategory = (cat: string) => {
-    setExpandedCategories((prev) => {
-      const next = new Set(prev);
-      next.has(cat) ? next.delete(cat) : next.add(cat);
-      return next;
-    });
-  };
+  }, [autoExpandSkillId, onAutoExpandConsumed]);
 
   const toggleSkill = (id: string) => {
     setExpandedSkills((prev) => {
@@ -112,12 +100,10 @@ export function SkillBasedTable({
             </TableRow>
           ) : (
             categories.map((cat, index) => (
-              <CategoryRow
+              <CategorySection
                 key={cat.category}
                 category={cat}
                 rank={index + 1}
-                isExpanded={expandedCategories.has(cat.category)}
-                onToggle={() => toggleCategory(cat.category)}
                 expandedSkills={expandedSkills}
                 onToggleSkill={toggleSkill}
                 showAll={showAll}
@@ -132,30 +118,26 @@ export function SkillBasedTable({
 }
 
 // =============================================================================
-// CategoryRow — Category row with expansion for skills
+// CategorySection — Category row + skills (R11: always expanded)
 // =============================================================================
 
-type CategoryRowProps = {
+type CategorySectionProps = {
   category: SkillCategoryData;
   rank: number;
-  isExpanded: boolean;
-  onToggle: () => void;
   expandedSkills: Set<string>;
   onToggleSkill: (id: string) => void;
   showAll: boolean;
   onSidePanelOpen?: (context: SidePanelContext) => void;
 };
 
-function CategoryRow({
+function CategorySection({
   category,
   rank,
-  isExpanded,
-  onToggle,
   expandedSkills,
   onToggleSkill,
   showAll,
   onSidePanelOpen,
-}: CategoryRowProps) {
+}: CategorySectionProps) {
   const color = CATEGORY_COLORS[category.category] ?? "#6B7280";
 
   const handleBadgeClick = (level: ProficiencyLevel) => {
@@ -169,31 +151,18 @@ function CategoryRow({
     }
   };
 
+  // R13: Sort skills by proficiency
+  const sortedSkills = [...category.skills]
+    .filter((s) => showAll || getTotalPeople(s.developerCounts) > 0)
+    .sort((a, b) => b.progressPercent - a.progressPercent);
+
   return (
     <Fragment>
+      {/* Category row - R11: No toggle button */}
       <TableRow
-        className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80 ${isExpanded ? "bg-muted" : ""}`}
+        className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80 bg-gray-50/50`}
       >
-        <TableCell className={EXPANDER_CELL}>
-          <Button
-            className="size-7 text-muted-foreground"
-            onClick={onToggle}
-            aria-expanded={isExpanded}
-            aria-label={
-              isExpanded
-                ? `Collapse ${category.category}`
-                : `Expand ${category.category}`
-            }
-            size="icon"
-            variant="ghost"
-          >
-            {isExpanded ? (
-              <ChevronUpIcon className="opacity-60" aria-hidden />
-            ) : (
-              <ChevronDownIcon className="opacity-60" aria-hidden />
-            )}
-          </Button>
-        </TableCell>
+        <TableCell className="w-10" />
         <TableCell className="w-14">
           <span
             className={
@@ -205,7 +174,7 @@ function CategoryRow({
             {rank}
           </span>
         </TableCell>
-        <TableCell>
+        <TableCell className={INDENT.category}>
           <span
             className={`${BADGE_CLASS} px-2 py-0.5`}
             style={badgeStyle(color)}
@@ -213,7 +182,7 @@ function CategoryRow({
             {category.category}
           </span>
         </TableCell>
-        <TableCell>
+        <TableCell className={INDENT.category}>
           <ProficiencyProgressBar percent={category.progressPercent} />
         </TableCell>
         <TableCell>
@@ -224,126 +193,111 @@ function CategoryRow({
         </TableCell>
       </TableRow>
 
-      {/* Expanded: Skills within category */}
-      {isExpanded && (
-        <TableRow className="hover:bg-transparent">
-          <TableCell colSpan={5} className="p-0">
-            <SkillsWithinCategory
-              skills={category.skills}
-              showAll={showAll}
-              expandedSkills={expandedSkills}
-              onToggleSkill={onToggleSkill}
-              onSidePanelOpen={onSidePanelOpen}
-            />
-          </TableCell>
-        </TableRow>
-      )}
+      {/* R11: Skills always shown (no toggle needed) */}
+      {sortedSkills.map((skill) => (
+        <SkillRow
+          key={skill.roadmap.id}
+          skill={skill}
+          isExpanded={expandedSkills.has(skill.roadmap.id)}
+          onToggle={() => onToggleSkill(skill.roadmap.id)}
+          showAll={showAll}
+          onSidePanelOpen={onSidePanelOpen}
+        />
+      ))}
     </Fragment>
   );
 }
 
 // =============================================================================
-// SkillsWithinCategory — Nested skills table
+// SkillRow — Skill row with checkpoint expansion
 // =============================================================================
 
-type SkillsWithinCategoryProps = {
-  skills: SkillsRoadmapProgressData[];
+type SkillRowProps = {
+  skill: SkillsRoadmapProgressData;
+  isExpanded: boolean;
+  onToggle: () => void;
   showAll: boolean;
-  expandedSkills: Set<string>;
-  onToggleSkill: (id: string) => void;
   onSidePanelOpen?: (context: SidePanelContext) => void;
 };
 
-function SkillsWithinCategory({
-  skills,
+function SkillRow({
+  skill,
+  isExpanded,
+  onToggle,
   showAll,
-  expandedSkills,
-  onToggleSkill,
   onSidePanelOpen,
-}: SkillsWithinCategoryProps) {
-  const filteredSkills = showAll
-    ? skills
-    : skills.filter((s) => getTotalPeople(s.developerCounts) > 0);
+}: SkillRowProps) {
+  const hasCheckpoints = skill.checkpoints.length > 0;
+
+  const handleBadgeClick = (level: ProficiencyLevel) => {
+    if (onSidePanelOpen) {
+      onSidePanelOpen({
+        type: "roadmap",
+        id: skill.roadmap.id,
+        name: skill.roadmap.name,
+        developersByLevel: skill.developersByLevel,
+      });
+    }
+  };
+
+  // R13: Sort checkpoints by proficiency
+  const sortedCheckpoints = [...skill.checkpoints]
+    .filter((cp) => showAll || getTotalPeople(cp.developerCounts) > 0)
+    .sort((a, b) => b.progressPercent - a.progressPercent);
 
   return (
-    <Table>
-      <TableBody>
-        {filteredSkills.map((skill) => {
-          const isExpanded = expandedSkills.has(skill.roadmap.id);
-          const hasCheckpoints = skill.checkpoints.length > 0;
-
-          const handleBadgeClick = (level: ProficiencyLevel) => {
-            if (onSidePanelOpen) {
-              onSidePanelOpen({
-                type: "roadmap",
-                id: skill.roadmap.id,
-                name: skill.roadmap.name,
-                developersByLevel: skill.developersByLevel,
-              });
-            }
-          };
-
-          return (
-            <Fragment key={skill.roadmap.id}>
-              <TableRow
-                className={`${DASHBOARD_BG_CLASSES.borderLight} pl-8 hover:bg-gray-50/80 ${isExpanded ? "bg-muted/50" : ""}`}
-              >
-                <TableCell className="w-10 pl-8">
-                  {hasCheckpoints ? (
-                    <Button
-                      className="size-6 text-muted-foreground"
-                      onClick={() => onToggleSkill(skill.roadmap.id)}
-                      aria-expanded={isExpanded}
-                      size="icon"
-                      variant="ghost"
-                    >
-                      {isExpanded ? (
-                        <ChevronUpIcon className="w-4 h-4 opacity-60" aria-hidden />
-                      ) : (
-                        <ChevronDownIcon className="w-4 h-4 opacity-60" aria-hidden />
-                      )}
-                    </Button>
-                  ) : null}
-                </TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="size-4 rounded shrink-0"
-                      style={{ backgroundColor: getColorForDomain(skill.roadmap.name) }}
-                      aria-hidden
-                    />
-                    <span className="text-sm text-gray-900 font-medium">
-                      {skill.roadmap.name}
-                    </span>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <ProficiencyProgressBar percent={skill.progressPercent} />
-                </TableCell>
-                <TableCell>
-                  <PeopleCountBadges
-                    counts={skill.developerCounts}
-                    onBadgeClick={onSidePanelOpen ? handleBadgeClick : undefined}
-                  />
-                </TableCell>
-              </TableRow>
-
-              {/* Expanded: Skill checkpoints */}
-              {isExpanded && hasCheckpoints && (
-                <TableRow className="hover:bg-transparent">
-                  <TableCell colSpan={4} className="p-0 pl-8">
-                    <CheckpointRows
-                      checkpoints={skill.checkpoints}
-                      showAll={showAll}
-                      onSidePanelOpen={onSidePanelOpen}
-                    />
-                  </TableCell>
-                </TableRow>
+    <>
+      <TableRow
+        className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80 ${isExpanded ? "bg-muted/50" : ""}`}
+      >
+        <TableCell className="w-10">
+          {hasCheckpoints ? (
+            <Button
+              className="size-6 text-muted-foreground"
+              onClick={onToggle}
+              aria-expanded={isExpanded}
+              size="icon"
+              variant="ghost"
+            >
+              {isExpanded ? (
+                <ChevronUpIcon className="w-4 h-4 opacity-60" aria-hidden />
+              ) : (
+                <ChevronDownIcon className="w-4 h-4 opacity-60" aria-hidden />
               )}
-            </Fragment>
-          );
-        })}
-      </TableBody>
-    </Table>
+            </Button>
+          ) : null}
+        </TableCell>
+        <TableCell className="w-14" />
+        <TableCell className={INDENT.skill}>
+          <span className="text-sm text-gray-900 font-medium">
+            {skill.roadmap.name}
+          </span>
+        </TableCell>
+        <TableCell className={INDENT.skill}>
+          <ProficiencyProgressBar percent={skill.progressPercent} />
+        </TableCell>
+        <TableCell>
+          <PeopleCountBadges
+            counts={skill.developerCounts}
+            onBadgeClick={onSidePanelOpen ? handleBadgeClick : undefined}
+          />
+        </TableCell>
+      </TableRow>
+
+      {/* Expanded: Skill checkpoints */}
+      {isExpanded && hasCheckpoints && (
+        <TableRow className="hover:bg-transparent">
+          <TableCell colSpan={5} className="p-0">
+            <div className={INDENT.checkpoint}>
+              <CheckpointRows
+                checkpoints={sortedCheckpoints}
+                showAll={showAll}
+                onSidePanelOpen={onSidePanelOpen}
+              />
+            </div>
+          </TableCell>
+        </TableRow>
+      )}
+    </>
   );
 }
