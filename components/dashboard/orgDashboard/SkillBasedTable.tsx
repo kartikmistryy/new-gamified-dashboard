@@ -2,10 +2,10 @@
 
 import { Fragment, useEffect, useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
-import type { SkillsRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
+import type { SkillsRoadmapProgressData, SidePanelContext, ProficiencyLevel } from "@/lib/dashboard/entities/roadmap/types";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
-import { PeopleStackedBar, ProficiencyProgressBar } from "./PeopleStackedBar";
+import { PeopleCountBadges, ProficiencyProgressBar } from "./PeopleStackedBar";
 import { CheckpointRows } from "./CheckpointRows";
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +24,7 @@ type SkillBasedTableProps = {
   showAll: boolean;
   autoExpandSkillId?: string | null;
   onAutoExpandConsumed?: () => void;
+  onSidePanelOpen?: (context: SidePanelContext) => void;
 };
 
 /**
@@ -35,6 +36,7 @@ export function SkillBasedTable({
   showAll,
   autoExpandSkillId,
   onAutoExpandConsumed,
+  onSidePanelOpen,
 }: SkillBasedTableProps) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
@@ -76,6 +78,17 @@ export function SkillBasedTable({
             data.map((skill, index) => {
               const isExpanded = expandedIds.has(skill.roadmap.id);
               const rank = index + 1;
+
+              const handleBadgeClick = (level: ProficiencyLevel) => {
+                if (onSidePanelOpen) {
+                  onSidePanelOpen({
+                    type: "roadmap",
+                    id: skill.roadmap.id,
+                    name: skill.roadmap.name,
+                    developersByLevel: skill.developersByLevel,
+                  });
+                }
+              };
 
               return (
                 <Fragment key={skill.roadmap.id}>
@@ -129,7 +142,10 @@ export function SkillBasedTable({
                       <ProficiencyProgressBar percent={skill.progressPercent} />
                     </TableCell>
                     <TableCell>
-                      <PeopleStackedBar counts={skill.developerCounts} />
+                      <PeopleCountBadges
+                        counts={skill.developerCounts}
+                        onBadgeClick={onSidePanelOpen ? handleBadgeClick : undefined}
+                      />
                     </TableCell>
                   </TableRow>
                   {isExpanded ? (
@@ -138,6 +154,7 @@ export function SkillBasedTable({
                         <CheckpointRows
                           checkpoints={skill.checkpoints}
                           showAll={showAll}
+                          onSidePanelOpen={onSidePanelOpen}
                         />
                       </TableCell>
                     </TableRow>

@@ -2,6 +2,7 @@
 
 import { getProficiencyLevel } from "@/lib/dashboard/entities/roadmap/utils/progressUtils";
 import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
+import type { ProficiencyLevel } from "@/lib/dashboard/entities/roadmap/types";
 
 // =============================================================================
 // Shared badge config — single source of truth for colors, labels, and styles
@@ -31,7 +32,74 @@ export function badgeStyle(color: string) {
 }
 
 // =============================================================================
-// PeopleStackedBar — Labeled count badges (Bas · Int · Adv)
+// CountBadge — Clickable count badge for people (R7)
+// =============================================================================
+
+type CountBadgeProps = {
+  count: number;
+  level: ProficiencyLevel;
+  onClick?: () => void;
+};
+
+export function CountBadge({ count, level, onClick }: CountBadgeProps) {
+  const levelConfig = LEVEL_MAP[level];
+
+  if (count === 0) {
+    return <span className="text-gray-400 text-sm min-w-[40px] text-center">-</span>;
+  }
+
+  const baseClasses = `${BADGE_CLASS} min-w-[40px] tabular-nums`;
+  const style = badgeStyle(levelConfig.color);
+
+  if (onClick) {
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        className={`${baseClasses} cursor-pointer hover:opacity-80 transition-opacity`}
+        style={style}
+      >
+        {count}
+      </button>
+    );
+  }
+
+  return (
+    <span className={baseClasses} style={style}>
+      {count}
+    </span>
+  );
+}
+
+// =============================================================================
+// PeopleCountBadges — Clickable count badges row (R7)
+// =============================================================================
+
+type PeopleCountBadgesProps = {
+  counts: { basic: number; intermediate: number; advanced: number };
+  onBadgeClick?: (level: ProficiencyLevel) => void;
+};
+
+export function PeopleCountBadges({ counts, onBadgeClick }: PeopleCountBadgesProps) {
+  const total = counts.basic + counts.intermediate + counts.advanced;
+  if (total === 0) return <span className="text-sm text-gray-400">—</span>;
+
+  return (
+    <div className="flex items-center gap-1">
+      {LEVELS.map(({ key }) => (
+        <CountBadge
+          key={key}
+          count={counts[key]}
+          level={key}
+          onClick={onBadgeClick ? () => onBadgeClick(key) : undefined}
+        />
+      ))}
+    </div>
+  );
+}
+
+// =============================================================================
+// PeopleStackedBar — Labeled count badges (Bas · Int · Adv) [Legacy]
 // =============================================================================
 
 type PeopleStackedBarProps = {

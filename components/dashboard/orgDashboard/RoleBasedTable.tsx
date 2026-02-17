@@ -2,10 +2,10 @@
 
 import { Fragment, useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
-import type { RoleRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
+import type { RoleRoadmapProgressData, SidePanelContext, ProficiencyLevel } from "@/lib/dashboard/entities/roadmap/types";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import { getColorForDomain } from "@/components/skillmap/skillGraphUtils";
-import { PeopleStackedBar, ProficiencyProgressBar } from "./PeopleStackedBar";
+import { PeopleCountBadges, ProficiencyProgressBar } from "./PeopleStackedBar";
 import { CheckpointRows } from "./CheckpointRows";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,6 +23,7 @@ type RoleBasedTableProps = {
   data: RoleRoadmapProgressData[];
   showAll: boolean;
   onSkillClick?: (skillRoadmapId: string) => void;
+  onSidePanelOpen?: (context: SidePanelContext) => void;
 };
 
 /**
@@ -31,7 +32,7 @@ type RoleBasedTableProps = {
  * 1. All Checkpoints across all skill roadmaps (sorted by phase)
  * 2. Skill Roadmap labels (pure display) after all checkpoints
  */
-export function RoleBasedTable({ data, showAll, onSkillClick }: RoleBasedTableProps) {
+export function RoleBasedTable({ data, showAll, onSkillClick, onSidePanelOpen }: RoleBasedTableProps) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
   const toggleExpand = (id: string) => {
@@ -71,6 +72,7 @@ export function RoleBasedTable({ data, showAll, onSkillClick }: RoleBasedTablePr
                 onToggle={() => toggleExpand(role.roleRoadmap.id)}
                 showAll={showAll}
                 onSkillClick={onSkillClick}
+                onSidePanelOpen={onSidePanelOpen}
               />
             ))
           )}
@@ -91,9 +93,21 @@ type RoleRowProps = {
   onToggle: () => void;
   showAll: boolean;
   onSkillClick?: (skillRoadmapId: string) => void;
+  onSidePanelOpen?: (context: SidePanelContext) => void;
 };
 
-function RoleRow({ role, rank, isExpanded, onToggle, showAll, onSkillClick }: RoleRowProps) {
+function RoleRow({ role, rank, isExpanded, onToggle, showAll, onSkillClick, onSidePanelOpen }: RoleRowProps) {
+  const handleBadgeClick = (level: ProficiencyLevel) => {
+    if (onSidePanelOpen) {
+      onSidePanelOpen({
+        type: "roadmap",
+        id: role.roleRoadmap.id,
+        name: role.roleRoadmap.name,
+        developersByLevel: role.developersByLevel,
+      });
+    }
+  };
+
   return (
     <Fragment>
       <TableRow
@@ -144,7 +158,10 @@ function RoleRow({ role, rank, isExpanded, onToggle, showAll, onSkillClick }: Ro
           <ProficiencyProgressBar percent={role.progressPercent} />
         </TableCell>
         <TableCell>
-          <PeopleStackedBar counts={role.developerCounts} />
+          <PeopleCountBadges
+            counts={role.developerCounts}
+            onBadgeClick={onSidePanelOpen ? handleBadgeClick : undefined}
+          />
         </TableCell>
       </TableRow>
       {isExpanded ? (
@@ -155,6 +172,7 @@ function RoleRow({ role, rank, isExpanded, onToggle, showAll, onSkillClick }: Ro
               showAll={showAll}
               skillRoadmaps={role.skillsRoadmaps}
               onSkillClick={onSkillClick}
+              onSidePanelOpen={onSidePanelOpen}
             />
           </TableCell>
         </TableRow>

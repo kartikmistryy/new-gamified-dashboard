@@ -1,12 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { SkillsRoadmapProgressData, RoleRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
+import type { SkillsRoadmapProgressData, RoleRoadmapProgressData, SidePanelContext } from "@/lib/dashboard/entities/roadmap/types";
 import type { OrgSkillTableTab, OrgSkillSortMode } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
 import { getTotalPeople } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
 import { Badge } from "@/components/shared/Badge";
 import { SkillBasedTable } from "./SkillBasedTable";
 import { RoleBasedTable } from "./RoleBasedTable";
+import { DeveloperListPanel } from "@/components/dashboard/shared/DeveloperListPanel";
 
 // =============================================================================
 // Sort helper (works on both data types)
@@ -53,6 +54,16 @@ export function OrgSkillsTableSection({
   // R2: Default to "Unlocked Only" + "Most Proficient"
   const [sort, setSort] = useState<OrgSkillSortMode>("mostProficient");
   const [showAll, setShowAll] = useState(false);
+  // R7: Side panel state for people badges
+  const [sidePanelContext, setSidePanelContext] = useState<SidePanelContext>(null);
+
+  const handleSidePanelOpen = (context: SidePanelContext) => {
+    setSidePanelContext(context);
+  };
+
+  const handleSidePanelClose = () => {
+    setSidePanelContext(null);
+  };
 
   const sortedSkillData = useMemo(() => {
     const filtered = showAll ? skillData : skillData.filter((s) => getTotalPeople(s.developerCounts) > 0);
@@ -101,13 +112,30 @@ export function OrgSkillsTableSection({
           showAll={showAll}
           autoExpandSkillId={autoExpandSkillId}
           onAutoExpandConsumed={onAutoExpandConsumed}
+          onSidePanelOpen={handleSidePanelOpen}
         />
       ) : (
         <RoleBasedTable
           data={sortedRoleData}
           showAll={showAll}
           onSkillClick={onSwitchToSkill}
+          onSidePanelOpen={handleSidePanelOpen}
         />
+      )}
+
+      {/* R7: Side Panel for people list */}
+      {sidePanelContext && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/20 z-40"
+            onClick={handleSidePanelClose}
+          />
+          <DeveloperListPanel
+            context={sidePanelContext}
+            onClose={handleSidePanelClose}
+          />
+        </>
       )}
     </div>
   );
