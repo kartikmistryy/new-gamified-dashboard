@@ -478,6 +478,11 @@ export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableDat
       categories.map((cat) => cat.developersByLevel)
     );
 
+    // R19: Role progress = max of all category progress (consistent with people aggregation)
+    const roleProgressPercent = categories.length > 0
+      ? Math.max(...categories.map((cat) => cat.progressPercent))
+      : inner.progressPercent;
+
     const roleRoadmap: RoleRoadmap = {
       id: r.key,
       name: r.name,
@@ -486,8 +491,8 @@ export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableDat
 
     const result: RoleRoadmapProgressData = {
       roleRoadmap,
-      progressPercent: inner.progressPercent,
-      proficiencyLevel: inner.proficiencyLevel,
+      progressPercent: roleProgressPercent,
+      proficiencyLevel: getProficiencyLevel(roleProgressPercent),
       developerCounts: {
         basic: roleDevelopersByLevel.basic.length,
         intermediate: roleDevelopersByLevel.intermediate.length,
