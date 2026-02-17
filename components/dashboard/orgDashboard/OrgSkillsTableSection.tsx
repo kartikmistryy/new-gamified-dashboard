@@ -50,8 +50,9 @@ export function OrgSkillsTableSection({
   onAutoExpandConsumed,
   onSwitchToSkill,
 }: OrgSkillsTableSectionProps) {
-  const [sort, setSort] = useState<OrgSkillSortMode>("mostUnlocked");
-  const [showAll, setShowAll] = useState(true);
+  // R2: Default to "Unlocked Only" + "Most Proficient"
+  const [sort, setSort] = useState<OrgSkillSortMode>("mostProficient");
+  const [showAll, setShowAll] = useState(false);
 
   const sortedSkillData = useMemo(() => {
     const filtered = showAll ? skillData : skillData.filter((s) => getTotalPeople(s.developerCounts) > 0);

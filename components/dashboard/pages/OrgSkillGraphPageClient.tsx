@@ -82,9 +82,10 @@ export function OrgSkillGraphPageClient() {
         )}
       </DashboardSection>
 
-      <DashboardSection title="" className="py-6">
+      {/* Roadmap Progress temporarily hidden for demo - R1 */}
+      {/* <DashboardSection title="" className="py-6">
         <RoadmapProgressSection />
-      </DashboardSection>
+      </DashboardSection> */}
     </div>
   );
 }
