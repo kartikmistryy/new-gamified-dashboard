@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
@@ -72,6 +72,36 @@ export function OrgOverviewPageClient() {
     return { perfLabel, progress, criticalCount, atRiskPct, riskDir, riskDelta, risk: ORG_SPOF_RISK_LEVEL };
   }, []);
 
+  // #region agent log — measure card heights
+  const perfCardRef = useRef<HTMLDivElement>(null);
+  const outliersCardRef = useRef<HTMLDivElement>(null);
+  const spofCardRef = useRef<HTMLDivElement>(null);
+  const skillsCardRef = useRef<HTMLDivElement>(null);
+  const measureHeights = useCallback(() => {
+    const perfEl = perfCardRef.current;
+    const outEl = outliersCardRef.current;
+    const spofEl = spofCardRef.current;
+    const skillEl = skillsCardRef.current;
+    if (!perfEl || !outEl || !spofEl) return;
+
+    const perfRect = perfEl.getBoundingClientRect();
+    const outRect = outEl.getBoundingClientRect();
+    const spofRect = spofEl.getBoundingClientRect();
+    const skillRect = skillEl?.getBoundingClientRect();
+
+    const gaugeEl = perfEl.querySelector('[aria-label="Performance gauge"]')?.closest('div.shrink-0');
+    const chartEl = perfEl.querySelector('.overflow-visible');
+    const headerEl = perfEl.querySelector('h2')?.parentElement?.parentElement;
+
+    fetch('http://127.0.0.1:7250/ingest/c99c9929-282f-4a47-ae6f-49d19f9124ed',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'909e10'},body:JSON.stringify({sessionId:'909e10',location:'OrgOverviewPageClient.tsx:measure',message:'Card heights comparison',data:{perfCard:{height:perfRect.height,width:perfRect.width},outliersCard:{height:outRect.height,width:outRect.width},spofCard:{height:spofRect.height,width:spofRect.width},skillsCard:{height:skillRect?.height,width:skillRect?.width},perfInternals:{gaugeHeight:gaugeEl?.getBoundingClientRect().height,chartHeight:chartEl?.getBoundingClientRect().height,headerHeight:headerEl?.getBoundingClientRect().height},hypothesisId:'H1-H5'},timestamp:Date.now()})}).catch(()=>{});
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(measureHeights, 2000);
+    return () => clearTimeout(timer);
+  }, [measureHeights]);
+  // #endregion
+
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
       {/* Status Snapshot Banner */}
@@ -87,13 +117,16 @@ export function OrgOverviewPageClient() {
       </div>
 
       {/* Performance Section */}
+      {/* #region agent log ref */}
+      <div ref={perfCardRef}>
+      {/* #endregion */}
       <DashboardSection
         className={CARD_CLASS}
         title={<SectionTitle href={getOrgUrl("performance")}>Performance</SectionTitle>}
         action={<ViewDetailsButton href={getOrgUrl("performance")} />}
         actionLayout="row"
       >
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row gap-6">
           <div className="shrink-0 lg:w-1/3 flex flex-col items-center justify-center">
             <GaugeSection gaugeValue={GAUGE_VALUE} labelVariant="performance" />
           </div>
@@ -104,13 +137,20 @@ export function OrgOverviewPageClient() {
               annotationStrategy={{ mode: "static", annotations: ORG_PERFORMANCE_ANNOTATIONS }}
               timeRange="max"
               showLegend={false}
+              height={280}
             />
           </div>
         </div>
       </DashboardSection>
+      {/* #region agent log ref */}
+      </div>
+      {/* #endregion */}
 
-      {/* 3-column grid: Outliers | SPOF | Skills Graph */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* 2-column grid: Outliers | SPOF */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* #region agent log ref */}
+        <div ref={outliersCardRef}>
+        {/* #endregion */}
         <DashboardSection
           className={CARD_CLASS}
           title={<SectionTitle href={getOrgUrl("design")}>Outliers</SectionTitle>}
@@ -119,7 +159,13 @@ export function OrgOverviewPageClient() {
         >
           <OverviewOutliersSection />
         </DashboardSection>
+        {/* #region agent log ref */}
+        </div>
+        {/* #endregion */}
 
+        {/* #region agent log ref */}
+        <div ref={spofCardRef}>
+        {/* #endregion */}
         <DashboardSection
           className={CARD_CLASS}
           title={<SectionTitle href={getOrgUrl("spof")}>SPOF</SectionTitle>}
@@ -128,16 +174,26 @@ export function OrgOverviewPageClient() {
         >
           <OverviewSpofSummary />
         </DashboardSection>
-
-        <DashboardSection
-          className={CARD_CLASS}
-          title={<SectionTitle href={getOrgUrl("skillgraph")}>Skills Graph</SectionTitle>}
-          action={<ViewDetailsButton href={getOrgUrl("skillgraph")} />}
-          actionLayout="row"
-        >
-          <OverviewSkillsSummary skillData={skillData} />
-        </DashboardSection>
+        {/* #region agent log ref */}
+        </div>
+        {/* #endregion */}
       </div>
+
+      {/* Skills Graph — full width */}
+      {/* #region agent log ref */}
+      <div ref={skillsCardRef}>
+      {/* #endregion */}
+      <DashboardSection
+        className={CARD_CLASS}
+        title={<SectionTitle href={getOrgUrl("skillgraph")}>Skills Graph</SectionTitle>}
+        action={<ViewDetailsButton href={getOrgUrl("skillgraph")} />}
+        actionLayout="row"
+      >
+        <OverviewSkillsSummary skillData={skillData} />
+      </DashboardSection>
+      {/* #region agent log ref */}
+      </div>
+      {/* #endregion */}
     </div>
   );
 }

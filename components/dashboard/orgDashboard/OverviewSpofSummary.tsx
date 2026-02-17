@@ -37,7 +37,7 @@ export function OverviewSpofSummary() {
         </div>
 
         {/* Spectrum bar */}
-        <div className="flex h-1.5 w-full rounded-full overflow-hidden mb-1.5">
+        <div className="flex h-3 w-full rounded-full overflow-hidden mb-1.5">
           <div className={`h-full ${STATUS_COLORS.critical.fill}`} style={{ width: "25%" }} />
           <div className="h-full bg-[#e87b35]" style={{ width: "25%" }} />
           <div className={`h-full ${STATUS_COLORS.attention.fill}`} style={{ width: "25%" }} />

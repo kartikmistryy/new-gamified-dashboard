@@ -83,7 +83,8 @@ export function buildPlotlyLayout(
   filteredData: NormalizedPerformanceDataPoint[],
   filteredEvents: ChartEvent[],
   filteredAnnotations: ChartAnnotation[],
-  chartWidth: number
+  chartWidth: number,
+  chartHeight?: number,
 ): Partial<Layout> {
   if (filteredData.length === 0) {
     return {};
@@ -99,7 +100,7 @@ export function buildPlotlyLayout(
   return {
     autosize: true,
     width: chartWidth > 0 ? chartWidth : undefined,
-    height: CHART_HEIGHT,
+    height: chartHeight ?? CHART_HEIGHT,
     margin: {
       l: MARGIN.left,
       r: MARGIN.right,

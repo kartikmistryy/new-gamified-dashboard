@@ -19,7 +19,8 @@ export function PerformanceChart({
   ariaLabel = "Performance chart over time",
   className = "",
   showLegend = true,
-}: PerformanceChartProps & { showLegend?: boolean }) {
+  height,
+}: PerformanceChartProps & { showLegend?: boolean; height?: number }) {
   const { filteredData, filteredEvents, filteredAnnotations } = usePerformanceChartData(
     dataSource,
     eventStrategy,
@@ -49,14 +50,14 @@ export function PerformanceChart({
   const plotlyData = useMemo(() => buildPlotlyData(filteredData), [filteredData]);
 
   const plotlyLayout = useMemo(
-    () => buildPlotlyLayout(filteredData, filteredEvents, filteredAnnotations, chartSize.width),
-    [filteredData, filteredEvents, filteredAnnotations, chartSize.width]
+    () => buildPlotlyLayout(filteredData, filteredEvents, filteredAnnotations, chartSize.width, height),
+    [filteredData, filteredEvents, filteredAnnotations, chartSize.width, height]
   );
 
   if (filteredData.length === 0) {
     return (
       <div className={`w-full ${className}`}>
-        <div className="w-full h-[420px] flex items-center justify-center bg-gray-50 rounded-lg">
+        <div className={`w-full flex items-center justify-center bg-gray-50 rounded-lg`} style={{ height: height ?? 420 }}>
           <p className="text-gray-500">No data available</p>
         </div>
       </div>
