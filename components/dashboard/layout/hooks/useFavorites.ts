@@ -5,7 +5,11 @@ const createFavoriteKey = (type: string, id: string, orgId: string) =>
   `${type}:${id}:${orgId}`
 
 export function useFavorites(selectedOrg: Organization) {
-  const [favorites, setFavorites] = useState<FavoriteItem[]>(JSON.parse(localStorage.getItem("favorites") ?? "[]") as FavoriteItem[])
+  // const [favorites, setFavorites] = useState<FavoriteItem[]>(JSON.parse(localStorage.getItem("favorites") ?? "[]") as FavoriteItem[])
+  const [favorites, setFavorites] = useState<FavoriteItem[]>(() => {
+    if(typeof window === "undefined") return []
+    return (JSON.parse(localStorage.getItem("favorites") ?? "[]") as FavoriteItem[])
+  })
   const orgFavorites = useMemo(
     () => favorites.filter((fav) => fav.orgId === selectedOrg.id),
     [favorites, selectedOrg.id]
