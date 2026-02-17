@@ -34,7 +34,7 @@ export function GaugeSection({
     <div className="flex flex-col items-center gap-4">
       <div className="flex flex-col items-center gap-0">
         <div
-          className="w-full h-full min-w-[400px] flex justify-center"
+          className="w-full h-full flex justify-center"
           aria-label={isPerformance ? "Performance gauge" : "Fear & Greed Index gauge"}
         >
           <D3Gauge

@@ -18,7 +18,8 @@ export function PerformanceChart({
   entityVisibility,
   ariaLabel = "Performance chart over time",
   className = "",
-}: PerformanceChartProps) {
+  showLegend = true,
+}: PerformanceChartProps & { showLegend?: boolean }) {
   const { filteredData, filteredEvents, filteredAnnotations } = usePerformanceChartData(
     dataSource,
     eventStrategy,
@@ -73,7 +74,7 @@ export function PerformanceChart({
           useResizeHandler={true}
         />
       </div>
-      <PerformanceChartLegend />
+      {showLegend && <PerformanceChartLegend />}
     </div>
   );
 }

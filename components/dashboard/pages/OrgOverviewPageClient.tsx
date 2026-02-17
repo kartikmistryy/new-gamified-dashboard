@@ -56,8 +56,10 @@ export function OrgOverviewPageClient() {
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
       {/* Static Banner */}
-      <div className="rounded-lg bg-gray-50 px-5 py-3 text-sm text-gray-600">
-        One line description of the current state.
+      <div className="rounded-lg border border-gray-200 bg-white px-5 py-4">
+        <p className="text-base font-medium text-gray-900">
+          One line description of the current state.
+        </p>
       </div>
 
       {/* Performance Section */}
@@ -67,7 +69,7 @@ export function OrgOverviewPageClient() {
         actionLayout="row"
       >
         <div className="flex flex-col lg:flex-row gap-8">
-          <div className="shrink-0 lg:w-1/3">
+          <div className="shrink-0 lg:w-1/3 flex flex-col items-center justify-center">
             <GaugeSection gaugeValue={GAUGE_VALUE} labelVariant="performance" />
           </div>
           <div className="flex-1 min-w-0">
@@ -76,6 +78,7 @@ export function OrgOverviewPageClient() {
               eventStrategy={{ mode: "static", events: ORG_PERFORMANCE_HOLIDAYS }}
               annotationStrategy={{ mode: "static", annotations: ORG_PERFORMANCE_ANNOTATIONS }}
               timeRange="max"
+              showLegend={false}
             />
           </div>
         </div>
