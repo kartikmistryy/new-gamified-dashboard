@@ -89,11 +89,12 @@ export function OrgSkillGraphPageClient() {
         <RoadmapProgressSection />
       </DashboardSection> */}
 
-      {/* Skills Graph Chatbot */}
+      {/* Skills Graph Chatbot - use "sidebar" or "modal" layout */}
       {fullData && tableData && (
         <SkillGraphChatbot
           tableData={tableData}
           rawData={fullData.raw}
+          layout="sidebar"
         />
       )}
     </div>
