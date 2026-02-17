@@ -21,8 +21,12 @@ import {
 } from "@/components/skillmap/skillGraphDataLoader";
 import { transformToTableData } from "@/components/skillmap/skillGraphTableTransform";
 import type { SkillsRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
+import { getPerformanceGaugeLabel } from "@/lib/dashboard/entities/team/utils/utils";
+import { ORG_SPOF_RISK_LEVEL, ORG_SPOF_TOTALS } from "@/lib/dashboard/entities/team/data/orgSpofDataLoader";
+import { getDevelopersByOwnership } from "@/lib/dashboard/entities/team/mocks/outliersMockData";
 
 const GAUGE_VALUE = Math.floor(Math.random() * 100);
+const CARD_CLASS = "rounded-lg border border-gray-200 bg-white p-5";
 
 function ViewDetailsLink({ href }: { href: string }) {
   return (
@@ -53,17 +57,31 @@ export function OrgOverviewPageClient() {
       .catch(console.error);
   }, []);
 
+  const statusSnapshot = useMemo(() => {
+    const perfLabel = getPerformanceGaugeLabel(GAUGE_VALUE);
+    const progress = GAUGE_VALUE >= 45 ? "healthy" : "needs improvement";
+    const criticalCount = getDevelopersByOwnership("lower").length;
+    const { healthy, needsAttention, critical } = ORG_SPOF_TOTALS.healthDistribution;
+    const total = healthy + needsAttention + critical;
+    const atRiskPct = Math.round(((needsAttention + critical) / total) * 100);
+    const riskDelta = 5; // mock delta vs last month
+    const riskDirection = riskDelta > 0 ? "down" : "up";
+    const risk = ORG_SPOF_RISK_LEVEL.toLowerCase();
+    return `Project progress ${progress} (${perfLabel}), SPOF risk ${risk} — ${riskDirection} ${Math.abs(riskDelta)}% from last month (${atRiskPct}% at-risk), ${criticalCount} critical outliers detected.`;
+  }, []);
+
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
-      {/* Static Banner */}
+      {/* Status Snapshot Banner */}
       <div className="rounded-lg border border-gray-200 bg-white px-5 py-4">
         <p className="text-base font-medium text-gray-900">
-          One line description of the current state.
+          <span className="font-semibold">Status Snapshot:</span> {statusSnapshot}
         </p>
       </div>
 
       {/* Performance Section */}
       <DashboardSection
+        className={CARD_CLASS}
         title={<SectionTitle href={getOrgUrl("performance")}>Performance</SectionTitle>}
         action={<ViewDetailsLink href={getOrgUrl("performance")} />}
         actionLayout="row"
@@ -87,6 +105,7 @@ export function OrgOverviewPageClient() {
       {/* 3-column grid: Outliers | SPOF | Skills Graph */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <DashboardSection
+          className={CARD_CLASS}
           title={<SectionTitle href={getOrgUrl("design")}>Outliers</SectionTitle>}
           action={<ViewDetailsLink href={getOrgUrl("design")} />}
           actionLayout="row"
@@ -95,6 +114,7 @@ export function OrgOverviewPageClient() {
         </DashboardSection>
 
         <DashboardSection
+          className={CARD_CLASS}
           title={<SectionTitle href={getOrgUrl("spof")}>SPOF</SectionTitle>}
           action={<ViewDetailsLink href={getOrgUrl("spof")} />}
           actionLayout="row"
@@ -103,6 +123,7 @@ export function OrgOverviewPageClient() {
         </DashboardSection>
 
         <DashboardSection
+          className={CARD_CLASS}
           title={<SectionTitle href={getOrgUrl("skillgraph")}>Skills Graph</SectionTitle>}
           action={<ViewDetailsLink href={getOrgUrl("skillgraph")} />}
           actionLayout="row"
