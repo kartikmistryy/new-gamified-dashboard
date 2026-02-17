@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { SkillsRoadmapProgressData, RoleRoadmapProgressData, SidePanelContext } from "@/lib/dashboard/entities/roadmap/types";
+import type { SkillCategoryData } from "@/components/skillmap/skillGraphTableTransform";
 import type { OrgSkillTableTab, OrgSkillSortMode } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
 import { getTotalPeople } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
 import { Badge } from "@/components/shared/Badge";
@@ -37,6 +38,8 @@ function sortByMode<
 type OrgSkillsTableSectionProps = {
   tab: OrgSkillTableTab;
   skillData: SkillsRoadmapProgressData[];
+  /** R9: Skill-based data grouped by category */
+  skillCategories: SkillCategoryData[];
   roleData: RoleRoadmapProgressData[];
   autoExpandSkillId?: string | null;
   onAutoExpandConsumed?: () => void;
@@ -46,6 +49,7 @@ type OrgSkillsTableSectionProps = {
 export function OrgSkillsTableSection({
   tab,
   skillData,
+  skillCategories,
   roleData,
   autoExpandSkillId,
   onAutoExpandConsumed,
@@ -69,6 +73,22 @@ export function OrgSkillsTableSection({
     const filtered = showAll ? skillData : skillData.filter((s) => getTotalPeople(s.developerCounts) > 0);
     return sortByMode(filtered, sort);
   }, [skillData, sort, showAll]);
+
+  // R9: Filter and sort skill categories
+  const sortedSkillCategories = useMemo(() => {
+    return skillCategories
+      .map((cat) => ({
+        ...cat,
+        skills: showAll
+          ? cat.skills
+          : cat.skills.filter((s) => getTotalPeople(s.developerCounts) > 0),
+      }))
+      .filter((cat) => cat.skills.length > 0)
+      .sort((a, b) => {
+        if (sort === "mostProficient") return b.progressPercent - a.progressPercent;
+        return getTotalPeople(b.developerCounts) - getTotalPeople(a.developerCounts);
+      });
+  }, [skillCategories, sort, showAll]);
 
   const sortedRoleData = useMemo(() => {
     const filtered = showAll ? roleData : roleData.filter((r) => getTotalPeople(r.developerCounts) > 0);
@@ -109,6 +129,7 @@ export function OrgSkillsTableSection({
       {tab === "skill" ? (
         <SkillBasedTable
           data={sortedSkillData}
+          categories={sortedSkillCategories}
           showAll={showAll}
           autoExpandSkillId={autoExpandSkillId}
           onAutoExpandConsumed={onAutoExpandConsumed}

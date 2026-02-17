@@ -26,6 +26,7 @@ import type {
   RoleRoadmap,
   CategoryProgressData,
   SkillCategoryName,
+  ProficiencyLevel,
 } from "@/lib/dashboard/entities/roadmap/types";
 import { getProficiencyLevel } from "@/lib/dashboard/entities/roadmap/utils/progressUtils";
 
@@ -349,17 +350,96 @@ function buildCategoryProgress(
 }
 
 // =============================================================================
+// Skill-based category grouping (R9)
+// =============================================================================
+
+/** Category grouping for skill-based tab (without checkpoints) */
+export type SkillCategoryData = {
+  category: SkillCategoryName;
+  progressPercent: number;
+  proficiencyLevel: ProficiencyLevel | null;
+  developerCounts: { basic: number; intermediate: number; advanced: number };
+  developersByLevel: DevelopersByLevel;
+  skills: SkillsRoadmapProgressData[];
+};
+
+/** Build category groupings for skill-based view (R9) */
+function buildSkillBasedCategories(
+  skills: SkillsRoadmapProgressData[],
+  skillCategoryMapping: Map<string, string>,
+): SkillCategoryData[] {
+  const categoryMap = new Map<SkillCategoryName, SkillsRoadmapProgressData[]>();
+
+  // Initialize categories
+  for (const cat of CATEGORY_ORDER) {
+    categoryMap.set(cat, []);
+  }
+
+  // Group skills by category
+  for (const skill of skills) {
+    const categoryName = skillCategoryMapping.get(skill.roadmap.name) as SkillCategoryName | undefined;
+    const cat = categoryName ?? "Others";
+    const list = categoryMap.get(cat) ?? [];
+    list.push(skill);
+    categoryMap.set(cat, list);
+  }
+
+  // Build category data
+  const result: SkillCategoryData[] = [];
+
+  for (const category of CATEGORY_ORDER) {
+    const catSkills = categoryMap.get(category) ?? [];
+    if (catSkills.length === 0) continue;
+
+    // Max progress from skills
+    const maxProgress = Math.max(...catSkills.map((s) => s.progressPercent));
+
+    // Union developers by level
+    const developersByLevel = emptyByLevel();
+    const seenIds = { basic: new Set<string>(), intermediate: new Set<string>(), advanced: new Set<string>() };
+
+    for (const skill of catSkills) {
+      for (const level of ["basic", "intermediate", "advanced"] as const) {
+        for (const dev of skill.developersByLevel[level]) {
+          if (!seenIds[level].has(dev.id)) {
+            seenIds[level].add(dev.id);
+            developersByLevel[level].push(dev);
+          }
+        }
+      }
+    }
+
+    result.push({
+      category,
+      progressPercent: Math.round(maxProgress),
+      proficiencyLevel: getProficiencyLevel(maxProgress),
+      developerCounts: {
+        basic: developersByLevel.basic.length,
+        intermediate: developersByLevel.intermediate.length,
+        advanced: developersByLevel.advanced.length,
+      },
+      developersByLevel,
+      skills: catSkills,
+    });
+  }
+
+  return result;
+}
+
+// =============================================================================
 // Public API
 // =============================================================================
 
 export interface SkillGraphTableData {
   skillBased: SkillsRoadmapProgressData[];
+  /** Skill-based data grouped by category (R9) */
+  skillBasedCategories: SkillCategoryData[];
   roleBased: RoleRoadmapProgressData[];
 }
 
 /** Transform raw graph JSON into table-compatible data */
 export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableData {
-  const { roadmaps, engineerIndex, engineers, detailMap, roleSkillMapping, roleCategorizedSkills } = raw;
+  const { roadmaps, engineerIndex, engineers, detailMap, roleSkillMapping, skillCategoryMapping, roleCategorizedSkills } = raw;
 
   // Skill-based
   const skillRoadmaps = roadmaps.filter((r) => r.type === "skill");
@@ -411,5 +491,8 @@ export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableDat
     return result;
   });
 
-  return { skillBased, roleBased };
+  // Build skill-based category groupings (R9)
+  const skillBasedCategories = buildSkillBasedCategories(skillBased, skillCategoryMapping);
+
+  return { skillBased, skillBasedCategories, roleBased };
 }

@@ -72,6 +72,7 @@ export function OrgSkillGraphPageClient() {
           <OrgSkillsTableSection
             tab={tab}
             skillData={tableData.skillBased}
+            skillCategories={tableData.skillBasedCategories}
             roleData={tableData.roleBased}
             autoExpandSkillId={autoExpandSkillId}
             onAutoExpandConsumed={() => setAutoExpandSkillId(null)}
