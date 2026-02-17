@@ -238,7 +238,7 @@ ${contextJson}
 
 ## Guidelines
 
-1. When asked about a project/technology, identify relevant roadmaps
+1. When asked about a project/technology, identify relevant roadmaps (and not the individual checkpoints or engineers)
 2. Recommend engineers based on proficiency levels:
    - A (Advanced, 70%+): Can lead and mentor
    - I (Intermediate, 40-69%): Can contribute independently
@@ -249,5 +249,9 @@ ${contextJson}
 
 ## Response Format
 
-Use bullet points for lists. Keep responses under 200 words unless asked for detail.`;
+Use bullet points for lists. 
+Prioritize high-level answers (role-based roadmaps > skill-based roadmaps > individuals).
+The answers should not include abbreviations or shorthand (A, I, B); the context data only uses shorthand for efficiency. You should translate these into clear language in your responses (e.g., "Advanced", "Intermediate", "Basic").
+When ask about progress levels, gaps, or other quantifiable info, use the exact percentages from the context.
+Always reply in a concise manner unless asked for detail.`;
 }

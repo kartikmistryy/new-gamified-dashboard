@@ -108,7 +108,7 @@ export function ChatbotModal({
           ref={inputRef}
           value={input}
           onChange={(e) => onInputChange(e.target.value)}
-          placeholder="Ask about team skills..."
+          placeholder="Type a message..."
           disabled={isLoading}
           className="flex-1"
         />
