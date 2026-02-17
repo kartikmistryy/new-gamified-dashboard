@@ -25,7 +25,7 @@ export function OverviewSpofSummary() {
   const atRiskPercent = Math.round(((needsAttention + critical) / total) * 100);
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 flex-1">
       {/* Risk Indicator */}
       <div>
         <p className="text-xs text-gray-500 mb-2">SPOF Risk is:</p>

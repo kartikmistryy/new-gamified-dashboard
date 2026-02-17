@@ -77,12 +77,16 @@ export function OrgOverviewPageClient() {
   const outliersCardRef = useRef<HTMLDivElement>(null);
   const spofCardRef = useRef<HTMLDivElement>(null);
   const skillsCardRef = useRef<HTMLDivElement>(null);
+  const measured = useRef(false);
+
   const measureHeights = useCallback(() => {
+    if (measured.current) return;
     const perfEl = perfCardRef.current;
     const outEl = outliersCardRef.current;
     const spofEl = spofCardRef.current;
     const skillEl = skillsCardRef.current;
     if (!perfEl || !outEl || !spofEl) return;
+    measured.current = true;
 
     const perfRect = perfEl.getBoundingClientRect();
     const outRect = outEl.getBoundingClientRect();
@@ -152,7 +156,7 @@ export function OrgOverviewPageClient() {
         <div ref={outliersCardRef}>
         {/* #endregion */}
         <DashboardSection
-          className={CARD_CLASS}
+          className={`${CARD_CLASS} h-full flex flex-col`}
           title={<SectionTitle href={getOrgUrl("design")}>Outliers</SectionTitle>}
           action={<ViewDetailsButton href={getOrgUrl("design")} />}
           actionLayout="row"
@@ -167,7 +171,7 @@ export function OrgOverviewPageClient() {
         <div ref={spofCardRef}>
         {/* #endregion */}
         <DashboardSection
-          className={CARD_CLASS}
+          className={`${CARD_CLASS} h-full flex flex-col`}
           title={<SectionTitle href={getOrgUrl("spof")}>SPOF</SectionTitle>}
           action={<ViewDetailsButton href={getOrgUrl("spof")} />}
           actionLayout="row"
@@ -179,21 +183,23 @@ export function OrgOverviewPageClient() {
         {/* #endregion */}
       </div>
 
-      {/* Skills Graph — full width */}
-      {/* #region agent log ref */}
-      <div ref={skillsCardRef}>
-      {/* #endregion */}
-      <DashboardSection
-        className={CARD_CLASS}
-        title={<SectionTitle href={getOrgUrl("skillgraph")}>Skills Graph</SectionTitle>}
-        action={<ViewDetailsButton href={getOrgUrl("skillgraph")} />}
-        actionLayout="row"
-      >
-        <OverviewSkillsSummary skillData={skillData} />
-      </DashboardSection>
-      {/* #region agent log ref */}
+      {/* Skills Graph — half width, left-aligned */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* #region agent log ref */}
+        <div ref={skillsCardRef}>
+        {/* #endregion */}
+        <DashboardSection
+          className={CARD_CLASS}
+          title={<SectionTitle href={getOrgUrl("skillgraph")}>Skills Graph</SectionTitle>}
+          action={<ViewDetailsButton href={getOrgUrl("skillgraph")} />}
+          actionLayout="row"
+        >
+          <OverviewSkillsSummary skillData={skillData} />
+        </DashboardSection>
+        {/* #region agent log ref */}
+        </div>
+        {/* #endregion */}
       </div>
-      {/* #endregion */}
     </div>
   );
 }

@@ -75,7 +75,7 @@ export function OverviewOutliersSection() {
   );
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 flex-1">
       {/* Critical */}
       <div className="flex items-baseline gap-3">
         <span className={`text-3xl font-bold tabular-nums ${STATUS_COLORS.critical.text}`}>{critical.length}</span>
@@ -99,7 +99,7 @@ export function OverviewOutliersSection() {
       </div>
 
       {/* Stacked area chart — bleeds to card edges */}
-      <div className="-mx-5 -mb-5 mt-3 overflow-hidden rounded-b-lg">
+      <div className="-mx-5 -mb-5 mt-auto overflow-hidden rounded-b-lg">
         <StackedMiniAreaChart critical={trend.critical} needsAttention={trend.needsAttention} />
       </div>
     </div>
