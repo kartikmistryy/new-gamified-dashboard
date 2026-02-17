@@ -11,6 +11,7 @@ import {
 } from "@/components/skillmap/skillGraphDataLoader";
 import { transformToTableData } from "@/components/skillmap/skillGraphTableTransform";
 import type { OrgSkillTableTab } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
+import { SkillGraphChatbot } from "@/components/chat";
 
 export function OrgSkillGraphPageClient() {
   const [fullData, setFullData] = useState<SkillGraphFullData | null>(null);
@@ -87,6 +88,14 @@ export function OrgSkillGraphPageClient() {
       {/* <DashboardSection title="" className="py-6">
         <RoadmapProgressSection />
       </DashboardSection> */}
+
+      {/* Skills Graph Chatbot */}
+      {fullData && tableData && (
+        <SkillGraphChatbot
+          tableData={tableData}
+          rawData={fullData.raw}
+        />
+      )}
     </div>
   );
 }
