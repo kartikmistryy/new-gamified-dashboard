@@ -10,6 +10,8 @@ type SubCheckpointRowsProps = {
   showAll: boolean;
   /** Pre-computed unlock counts (graph-sourced data). Falls back to mock if absent. */
   unlockCounts?: SubCheckpointUnlockCount[];
+  /** R18: Indentation class to align with parent checkpoint */
+  indentClass?: string;
 };
 
 const LOCKED_STYLE = badgeStyle("#9CA3AF");
@@ -17,22 +19,23 @@ const LOCKED_STYLE = badgeStyle("#9CA3AF");
 /**
  * L3: Sub-checkpoints rendered as compact badges inside an expanded checkpoint.
  * Color matches the parent checkpoint's phase (Basic/Intermediate/Advanced).
+ * R18: Aligned with parent checkpoint via indentClass.
  */
-export function SubCheckpointRows({ checkpoint, showAll, unlockCounts }: SubCheckpointRowsProps) {
+export function SubCheckpointRows({ checkpoint, showAll, unlockCounts, indentClass = "pl-20" }: SubCheckpointRowsProps) {
   const subData = unlockCounts ?? getSubCheckpointUnlockCounts(checkpoint);
   const filtered = showAll ? subData : subData.filter((s) => s.unlockedByCount > 0);
   const phaseColor = PHASE_COLOR_MAP[checkpoint.phase] ?? "#6B7280";
 
   if (filtered.length === 0) {
     return (
-      <div className="pl-36 py-3 text-sm text-gray-400 italic">
+      <div className={`${indentClass} py-3 text-sm text-gray-400 italic`}>
         No sub-checkpoints to display.
       </div>
     );
   }
 
   return (
-    <div className="flex flex-wrap gap-1.5 pl-36 pr-4 py-3">
+    <div className={`flex flex-wrap gap-1.5 ${indentClass} pr-4 py-3`}>
       {filtered.map((item) => {
         const isUnlocked = item.unlockedByCount > 0;
         return (

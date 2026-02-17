@@ -31,11 +31,11 @@ const CATEGORY_COLORS: Record<string, string> = {
   "Others": "#6B7280",
 };
 
-// Indentation levels (applied to Name and Progress Bar columns)
+// Indentation levels (toggle is now part of name cell) - R17
 const INDENT = {
   category: "",
-  skill: "pl-6",
-  checkpoint: "pl-12",
+  skill: "pl-8",
+  checkpoint: "pl-14",
 };
 
 type SkillBasedTableProps = {
@@ -49,9 +49,11 @@ type SkillBasedTableProps = {
 };
 
 /**
- * Skill-Based Skills Table — R9, R11-R13
+ * Skill-Based Skills Table — R9, R11-R13, R16-R17
  * Categories are always expanded (R11)
  * All levels sorted by proficiency (R13)
+ * Others category always last (R16)
+ * Toggle coupled with name (R17)
  */
 export function SkillBasedTable({
   data,
@@ -79,12 +81,18 @@ export function SkillBasedTable({
     });
   };
 
+  // R16: Sort categories but keep "Others" last
+  const sortedCategories = [...categories].sort((a, b) => {
+    if (a.category === "Others") return 1;
+    if (b.category === "Others") return -1;
+    return b.progressPercent - a.progressPercent;
+  });
+
   return (
     <div className="rounded-sm border-none overflow-hidden bg-white">
       <Table>
         <TableHeader className="border-0">
           <TableRow className="border-none hover:bg-transparent">
-            <TableHead />
             <TableHead className="w-14 text-foreground font-medium">Rank</TableHead>
             <TableHead className="text-foreground font-medium">Category</TableHead>
             <TableHead className="text-foreground font-medium">Status</TableHead>
@@ -92,14 +100,14 @@ export function SkillBasedTable({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {categories.length === 0 ? (
+          {sortedCategories.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={5} className="h-24 text-center text-gray-500">
+              <TableCell colSpan={4} className="h-24 text-center text-gray-500">
                 No skills to display.
               </TableCell>
             </TableRow>
           ) : (
-            categories.map((cat, index) => (
+            sortedCategories.map((cat, index) => (
               <CategorySection
                 key={cat.category}
                 category={cat}
@@ -162,7 +170,6 @@ function CategorySection({
       <TableRow
         className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80 bg-gray-50/50`}
       >
-        <TableCell className="w-10" />
         <TableCell className="w-14">
           <span
             className={
@@ -209,7 +216,7 @@ function CategorySection({
 }
 
 // =============================================================================
-// SkillRow — Skill row with checkpoint expansion
+// SkillRow — Skill row with checkpoint expansion (R17: toggle in name cell)
 // =============================================================================
 
 type SkillRowProps = {
@@ -250,28 +257,31 @@ function SkillRow({
       <TableRow
         className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80 ${isExpanded ? "bg-muted/50" : ""}`}
       >
-        <TableCell className="w-10">
-          {hasCheckpoints ? (
-            <Button
-              className="size-6 text-muted-foreground"
-              onClick={onToggle}
-              aria-expanded={isExpanded}
-              size="icon"
-              variant="ghost"
-            >
-              {isExpanded ? (
-                <ChevronUpIcon className="w-4 h-4 opacity-60" aria-hidden />
-              ) : (
-                <ChevronDownIcon className="w-4 h-4 opacity-60" aria-hidden />
-              )}
-            </Button>
-          ) : null}
-        </TableCell>
         <TableCell className="w-14" />
+        {/* R17: Toggle is now part of name cell with indentation */}
         <TableCell className={INDENT.skill}>
-          <span className="text-sm text-gray-900 font-medium">
-            {skill.roadmap.name}
-          </span>
+          <div className="flex items-center gap-1">
+            {hasCheckpoints ? (
+              <Button
+                className="size-6 text-muted-foreground shrink-0"
+                onClick={onToggle}
+                aria-expanded={isExpanded}
+                size="icon"
+                variant="ghost"
+              >
+                {isExpanded ? (
+                  <ChevronUpIcon className="w-4 h-4 opacity-60" aria-hidden />
+                ) : (
+                  <ChevronDownIcon className="w-4 h-4 opacity-60" aria-hidden />
+                )}
+              </Button>
+            ) : (
+              <span className="size-6 shrink-0" />
+            )}
+            <span className="text-sm text-gray-900 font-medium">
+              {skill.roadmap.name}
+            </span>
+          </div>
         </TableCell>
         <TableCell className={INDENT.skill}>
           <ProficiencyProgressBar percent={skill.progressPercent} />
@@ -287,7 +297,7 @@ function SkillRow({
       {/* Expanded: Skill checkpoints */}
       {isExpanded && hasCheckpoints && (
         <TableRow className="hover:bg-transparent">
-          <TableCell colSpan={5} className="p-0">
+          <TableCell colSpan={4} className="p-0">
             <div className={INDENT.checkpoint}>
               <CheckpointRows
                 checkpoints={sortedCheckpoints}

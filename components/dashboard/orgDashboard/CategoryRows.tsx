@@ -36,17 +36,20 @@ const CATEGORY_COLORS: Record<string, string> = {
   "Others": "#6B7280",
 };
 
-// Indentation levels (applied to Name and Progress Bar columns)
+// Indentation levels (toggle is now part of name cell)
 const INDENT = {
   category: "pl-6",
   skill: "pl-12",
-  checkpoint: "pl-18",
+  checkpoint: "pl-16",
+  subCheckpoint: "pl-20",
 };
 
 // =============================================================================
-// CategoryRows — Category-based hierarchy (R3, R11-R13)
+// CategoryRows — Category-based hierarchy (R3, R11-R13, R16-R18)
 // Categories are always expanded (R11)
 // All levels sorted by proficiency (R13)
+// Others category always last (R16)
+// Toggle coupled with name (R17)
 // =============================================================================
 
 type CategoryRowsProps = {
@@ -81,10 +84,16 @@ export function CategoryRows({
     });
   };
 
-  // R13: Sort categories by proficiency
+  // R13 + R16: Sort categories by proficiency, but "Others" always last
   const sortedCategories = [...categories]
     .filter((cat) => showAll || getTotalPeople(cat.developerCounts) > 0)
-    .sort((a, b) => b.progressPercent - a.progressPercent);
+    .sort((a, b) => {
+      // R16: Others always last
+      if (a.category === "Others") return 1;
+      if (b.category === "Others") return -1;
+      // R13: Sort by proficiency
+      return b.progressPercent - a.progressPercent;
+    });
 
   return (
     <Table>
@@ -118,7 +127,6 @@ export function CategoryRows({
             <Fragment key={cat.category}>
               {/* Category header row - R11: No toggle, always expanded */}
               <TableRow className={`${DASHBOARD_BG_CLASSES.borderLight} bg-gray-50/80 hover:bg-gray-100/80`}>
-                <TableCell className="w-10" />
                 <TableCell className={INDENT.category}>
                   <div className="flex items-center gap-2">
                     <span
@@ -179,7 +187,7 @@ export function CategoryRows({
 }
 
 // =============================================================================
-// SkillRow — Skill-based roadmap row within a category
+// SkillRow — Skill-based roadmap row within a category (R17: toggle in name cell)
 // =============================================================================
 
 type SkillRowProps = {
@@ -226,30 +234,33 @@ function SkillRow({
       <TableRow
         className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/80 ${isExpanded ? "bg-muted/50" : ""}`}
       >
-        <TableCell className="w-10">
-          {hasCheckpoints ? (
-            <Button
-              className="size-6 text-muted-foreground"
-              onClick={onToggle}
-              aria-expanded={isExpanded}
-              size="icon"
-              variant="ghost"
-            >
-              {isExpanded ? (
-                <ChevronUpIcon className="w-4 h-4 opacity-60" aria-hidden />
-              ) : (
-                <ChevronDownIcon className="w-4 h-4 opacity-60" aria-hidden />
-              )}
-            </Button>
-          ) : null}
-        </TableCell>
+        {/* R17: Toggle is now part of name cell with indentation */}
         <TableCell className={INDENT.skill}>
-          <span
-            className={`text-sm text-gray-900 font-medium ${onSkillClick ? "cursor-pointer underline-offset-2 hover:underline" : ""}`}
-            onClick={onSkillClick ? () => onSkillClick(skill.roadmap.id) : undefined}
-          >
-            {skill.roadmap.name}
-          </span>
+          <div className="flex items-center gap-1">
+            {hasCheckpoints ? (
+              <Button
+                className="size-6 text-muted-foreground shrink-0"
+                onClick={onToggle}
+                aria-expanded={isExpanded}
+                size="icon"
+                variant="ghost"
+              >
+                {isExpanded ? (
+                  <ChevronUpIcon className="w-4 h-4 opacity-60" aria-hidden />
+                ) : (
+                  <ChevronDownIcon className="w-4 h-4 opacity-60" aria-hidden />
+                )}
+              </Button>
+            ) : (
+              <span className="size-6 shrink-0" />
+            )}
+            <span
+              className={`text-sm text-gray-900 font-medium ${onSkillClick ? "cursor-pointer underline-offset-2 hover:underline" : ""}`}
+              onClick={onSkillClick ? () => onSkillClick(skill.roadmap.id) : undefined}
+            >
+              {skill.roadmap.name}
+            </span>
+          </div>
         </TableCell>
         <TableCell className={INDENT.skill}>
           <ProficiencyProgressBar percent={skill.progressPercent} />
@@ -280,7 +291,7 @@ function SkillRow({
 }
 
 // =============================================================================
-// CheckpointRowSimple — Checkpoint without phase badge (R6)
+// CheckpointRowSimple — Checkpoint without phase badge (R6, R17, R18)
 // =============================================================================
 
 type CheckpointRowSimpleProps = {
@@ -318,25 +329,28 @@ function CheckpointRowSimple({
   return (
     <>
       <TableRow className={`${DASHBOARD_BG_CLASSES.borderLight} hover:bg-gray-50/60`}>
-        <TableCell className="w-10">
-          {hasSubCheckpoints ? (
-            <Button
-              className="size-5 text-muted-foreground"
-              onClick={onToggle}
-              aria-expanded={isExpanded}
-              size="icon"
-              variant="ghost"
-            >
-              {isExpanded ? (
-                <ChevronUpIcon className="w-3 h-3 opacity-60" aria-hidden />
-              ) : (
-                <ChevronDownIcon className="w-3 h-3 opacity-60" aria-hidden />
-              )}
-            </Button>
-          ) : null}
-        </TableCell>
+        {/* R17: Toggle is now part of name cell with indentation */}
         <TableCell className={indentClass}>
-          <span className="text-sm text-gray-600">{cp.checkpoint.name}</span>
+          <div className="flex items-center gap-1">
+            {hasSubCheckpoints ? (
+              <Button
+                className="size-5 text-muted-foreground shrink-0"
+                onClick={onToggle}
+                aria-expanded={isExpanded}
+                size="icon"
+                variant="ghost"
+              >
+                {isExpanded ? (
+                  <ChevronUpIcon className="w-3 h-3 opacity-60" aria-hidden />
+                ) : (
+                  <ChevronDownIcon className="w-3 h-3 opacity-60" aria-hidden />
+                )}
+              </Button>
+            ) : (
+              <span className="size-5 shrink-0" />
+            )}
+            <span className="text-sm text-gray-600">{cp.checkpoint.name}</span>
+          </div>
         </TableCell>
         <TableCell className={indentClass}>
           <ProficiencyProgressBar percent={cp.progressPercent} />
@@ -349,17 +363,16 @@ function CheckpointRowSimple({
         </TableCell>
       </TableRow>
 
-      {/* Sub-checkpoints */}
+      {/* R18: Sub-checkpoints aligned with parent checkpoint */}
       {isExpanded && hasSubCheckpoints && (
         <TableRow className="hover:bg-transparent">
-          <TableCell colSpan={4} className="p-0">
-            <div className="pl-24">
-              <SubCheckpointRows
-                checkpoint={cp.checkpoint}
-                showAll={showAll}
-                unlockCounts={cp.subCheckpointUnlockCounts}
-              />
-            </div>
+          <TableCell colSpan={3} className="p-0">
+            <SubCheckpointRows
+              checkpoint={cp.checkpoint}
+              showAll={showAll}
+              unlockCounts={cp.subCheckpointUnlockCounts}
+              indentClass={indent === "checkpoint" ? INDENT.subCheckpoint : INDENT.checkpoint}
+            />
           </TableCell>
         </TableRow>
       )}
