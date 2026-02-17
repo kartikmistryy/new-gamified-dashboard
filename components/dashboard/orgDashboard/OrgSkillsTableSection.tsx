@@ -90,8 +90,9 @@ export function OrgSkillsTableSection({
       });
   }, [skillCategories, sort, showAll]);
 
+  // R20: Filter by progressPercent, not people count (roles with 0 progress should be hidden)
   const sortedRoleData = useMemo(() => {
-    const filtered = showAll ? roleData : roleData.filter((r) => getTotalPeople(r.developerCounts) > 0);
+    const filtered = showAll ? roleData : roleData.filter((r) => r.progressPercent > 0);
     return sortByMode(filtered, sort);
   }, [roleData, sort, showAll]);
 
