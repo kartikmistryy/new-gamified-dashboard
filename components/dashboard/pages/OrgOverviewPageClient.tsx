@@ -28,10 +28,13 @@ import { getDevelopersByOwnership } from "@/lib/dashboard/entities/team/mocks/ou
 const GAUGE_VALUE = Math.floor(Math.random() * 100);
 const CARD_CLASS = "rounded-lg border border-gray-200 bg-white p-5";
 
-function ViewDetailsLink({ href }: { href: string }) {
+function ViewDetailsButton({ href }: { href: string }) {
   return (
-    <Link href={href} className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-gray-700">
-      View details <ArrowRight className="size-3" />
+    <Link
+      href={href}
+      className="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-white px-3 py-1.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 hover:text-gray-900"
+    >
+      View details <ArrowRight className="size-3.5" />
     </Link>
   );
 }
@@ -57,7 +60,7 @@ export function OrgOverviewPageClient() {
       .catch(console.error);
   }, []);
 
-  const statusSnapshot = useMemo(() => {
+  const snapshot = useMemo(() => {
     const perfLabel = getPerformanceGaugeLabel(GAUGE_VALUE);
     const progress = GAUGE_VALUE >= 45 ? "healthy" : "needs improvement";
     const criticalCount = getDevelopersByOwnership("lower").length;
@@ -65,17 +68,21 @@ export function OrgOverviewPageClient() {
     const total = healthy + needsAttention + critical;
     const atRiskPct = Math.round(((needsAttention + critical) / total) * 100);
     const riskDelta = 5; // mock delta vs last month
-    const riskDirection = riskDelta > 0 ? "down" : "up";
-    const risk = ORG_SPOF_RISK_LEVEL.toLowerCase();
-    return `Project progress ${progress} (${perfLabel}), SPOF risk ${risk} — ${riskDirection} ${Math.abs(riskDelta)}% from last month (${atRiskPct}% at-risk), ${criticalCount} critical outliers detected.`;
+    const riskDir = riskDelta > 0 ? "down" : "up";
+    return { perfLabel, progress, criticalCount, atRiskPct, riskDir, riskDelta, risk: ORG_SPOF_RISK_LEVEL };
   }, []);
 
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
       {/* Status Snapshot Banner */}
-      <div className="rounded-lg border border-gray-200 bg-white px-5 py-4">
-        <p className="text-base font-medium text-gray-900">
-          <span className="font-semibold">Status Snapshot:</span> {statusSnapshot}
+      <div className="rounded-lg border border-gray-200 bg-white px-5 py-3.5">
+        <p className="text-2xl font-semibold text-foreground mb-1">Status Snapshot</p>
+        <p className="text-sm leading-relaxed text-gray-600">
+          Project progress <span className="font-semibold text-gray-900">{snapshot.progress}</span>{" "}
+          ({snapshot.perfLabel}), SPOF risk{" "}
+          <span className="font-semibold text-gray-900">{snapshot.risk}</span>{" "}
+          — {snapshot.riskDir} {snapshot.riskDelta}% from last month ({snapshot.atRiskPct}% at-risk),{" "}
+          <span className="font-semibold text-gray-900">{snapshot.criticalCount} critical outliers</span> detected.
         </p>
       </div>
 
@@ -83,7 +90,7 @@ export function OrgOverviewPageClient() {
       <DashboardSection
         className={CARD_CLASS}
         title={<SectionTitle href={getOrgUrl("performance")}>Performance</SectionTitle>}
-        action={<ViewDetailsLink href={getOrgUrl("performance")} />}
+        action={<ViewDetailsButton href={getOrgUrl("performance")} />}
         actionLayout="row"
       >
         <div className="flex flex-col lg:flex-row gap-8">
@@ -107,7 +114,7 @@ export function OrgOverviewPageClient() {
         <DashboardSection
           className={CARD_CLASS}
           title={<SectionTitle href={getOrgUrl("design")}>Outliers</SectionTitle>}
-          action={<ViewDetailsLink href={getOrgUrl("design")} />}
+          action={<ViewDetailsButton href={getOrgUrl("design")} />}
           actionLayout="row"
         >
           <OverviewOutliersSection />
@@ -116,7 +123,7 @@ export function OrgOverviewPageClient() {
         <DashboardSection
           className={CARD_CLASS}
           title={<SectionTitle href={getOrgUrl("spof")}>SPOF</SectionTitle>}
-          action={<ViewDetailsLink href={getOrgUrl("spof")} />}
+          action={<ViewDetailsButton href={getOrgUrl("spof")} />}
           actionLayout="row"
         >
           <OverviewSpofSummary />
@@ -125,7 +132,7 @@ export function OrgOverviewPageClient() {
         <DashboardSection
           className={CARD_CLASS}
           title={<SectionTitle href={getOrgUrl("skillgraph")}>Skills Graph</SectionTitle>}
-          action={<ViewDetailsLink href={getOrgUrl("skillgraph")} />}
+          action={<ViewDetailsButton href={getOrgUrl("skillgraph")} />}
           actionLayout="row"
         >
           <OverviewSkillsSummary skillData={skillData} />

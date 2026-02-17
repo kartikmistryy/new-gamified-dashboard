@@ -8,12 +8,13 @@ import {
   ORG_SPOF_TOTALS,
   ORG_HEALTH_SEGMENTS,
 } from "@/lib/dashboard/entities/team/data/orgSpofDataLoader";
+import { STATUS_COLORS } from "@/lib/dashboard/shared/utils/colors";
 
 const RISK_LEVEL_COLORS: Record<SpofRiskLevel, string> = {
-  Severe: "text-red-600",
-  High: "text-orange-500",
-  Medium: "text-amber-500",
-  Low: "text-green-600",
+  Severe: STATUS_COLORS.critical.text,
+  High: "text-[#e87b35]", // orange — between critical and attention
+  Medium: STATUS_COLORS.attention.text,
+  Low: STATUS_COLORS.healthy.text,
 };
 
 const RISK_LEVELS: SpofRiskLevel[] = ["Severe", "High", "Medium", "Low"];
@@ -37,10 +38,10 @@ export function OverviewSpofSummary() {
 
         {/* Spectrum bar */}
         <div className="flex h-1.5 w-full rounded-full overflow-hidden mb-1.5">
-          <div className="h-full bg-red-500" style={{ width: "25%" }} />
-          <div className="h-full bg-orange-400" style={{ width: "25%" }} />
-          <div className="h-full bg-amber-400" style={{ width: "25%" }} />
-          <div className="h-full bg-green-500" style={{ width: "25%" }} />
+          <div className={`h-full ${STATUS_COLORS.critical.fill}`} style={{ width: "25%" }} />
+          <div className="h-full bg-[#e87b35]" style={{ width: "25%" }} />
+          <div className={`h-full ${STATUS_COLORS.attention.fill}`} style={{ width: "25%" }} />
+          <div className={`h-full ${STATUS_COLORS.healthy.fill}`} style={{ width: "25%" }} />
         </div>
         <div className="flex justify-between text-[10px]">
           {RISK_LEVELS.map((level) => (

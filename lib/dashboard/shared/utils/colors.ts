@@ -125,3 +125,28 @@ export const DASHBOARD_CHANGE_CLASSES = {
 export const DASHBOARD_TEXT_CLASSES = {
   rankMuted: "text-[#737373] font-medium",
 } as const;
+
+/**
+ * Semantic status colors for health/risk indicators.
+ * Use across overview cards, health bars, change badges, and charts.
+ */
+export const STATUS_COLORS = {
+  critical: {
+    hex: "#ef4444",
+    text: "text-[#ef4444]",
+    bg: "bg-[#ef4444]/10",
+    fill: "bg-[#ef4444]",
+  },
+  attention: {
+    hex: "#f59e0b",
+    text: "text-[#f59e0b]",
+    bg: "bg-[#f59e0b]/10",
+    fill: "bg-[#f59e0b]",
+  },
+  healthy: {
+    hex: "#22c55e",
+    text: "text-[#22c55e]",
+    bg: "bg-[#22c55e]/10",
+    fill: "bg-[#22c55e]",
+  },
+} as const;

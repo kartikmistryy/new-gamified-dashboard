@@ -56,11 +56,13 @@ export const ORG_SPOF_REPOS = ORG_SPOF_DATA.repos;
 /** Org-level totals */
 export const ORG_SPOF_TOTALS = ORG_SPOF_DATA.totals;
 
+import { STATUS_COLORS } from "@/lib/dashboard/shared/utils/colors";
+
 /** Health distribution for RepoHealthBar */
 export const ORG_HEALTH_SEGMENTS = [
-  { label: "Healthy", count: ORG_SPOF_TOTALS.healthDistribution.healthy, color: "#22c55e" },
-  { label: "Needs Attention", count: ORG_SPOF_TOTALS.healthDistribution.needsAttention, color: "#f59e0b" },
-  { label: "Critical", count: ORG_SPOF_TOTALS.healthDistribution.critical, color: "#ef4444" },
+  { label: "Healthy", count: ORG_SPOF_TOTALS.healthDistribution.healthy, color: STATUS_COLORS.healthy.hex },
+  { label: "Needs Attention", count: ORG_SPOF_TOTALS.healthDistribution.needsAttention, color: STATUS_COLORS.attention.hex },
+  { label: "Critical", count: ORG_SPOF_TOTALS.healthDistribution.critical, color: STATUS_COLORS.critical.hex },
 ];
 
 // ---------------------------------------------------------------------------

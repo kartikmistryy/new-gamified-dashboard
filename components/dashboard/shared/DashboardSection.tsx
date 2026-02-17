@@ -44,7 +44,7 @@ export function DashboardSection({
 }: DashboardSectionProps) {
   const headingId = slugify(extractTextContent(title));
   const headerLayout = actionLayout === "row"
-    ? "flex flex-row flex-wrap items-center justify-start gap-4"
+    ? "flex flex-row flex-wrap items-center justify-between gap-4"
     : "flex flex-col flex-wrap items-start justify-start gap-4";
   const titleClass = titleSize === "small"
     ? "text-lg font-semibold text-foreground"

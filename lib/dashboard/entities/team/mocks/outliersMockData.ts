@@ -121,6 +121,64 @@ export function getDevelopersByPriority(
 }
 
 // =============================================================================
+// Outlier Trend (weekly time series for mini area chart)
+// =============================================================================
+
+/** Deterministic PRNG so trend data is stable across renders */
+function seededRandom(seed: number): () => number {
+  let s = seed;
+  return () => {
+    s = (s * 16807) % 2147483647;
+    return (s - 1) / 2147483646;
+  };
+}
+
+export type OutlierTrendData = {
+  critical: number[];
+  needsAttention: number[];
+  total: number[];
+  criticalChangePct: number;
+  needsAttentionChangePct: number;
+};
+
+/**
+ * Generate `weeks` of mock outlier counts.
+ * Last entry = current real count; prior weeks are a seeded random walk.
+ * Critical trends UP (worsening), NeedsAttention trends DOWN (improving).
+ */
+export function generateOutlierTrend(
+  currentCritical: number,
+  currentNeedsAttention: number,
+  weeks = 12,
+): OutlierTrendData {
+  const rand = seededRandom(42);
+  const critical = new Array<number>(weeks);
+  const needsAttention = new Array<number>(weeks);
+
+  critical[weeks - 1] = currentCritical;
+  needsAttention[weeks - 1] = currentNeedsAttention;
+
+  for (let i = weeks - 2; i >= 0; i--) {
+    // bias negative → past lower → trend rises toward current
+    critical[i] = Math.max(1, critical[i + 1] + Math.round(rand() * 3) - 2);
+    // bias positive → past higher → trend falls toward current
+    needsAttention[i] = Math.max(1, needsAttention[i + 1] + Math.round(rand() * 3) - 1);
+  }
+
+  const total = critical.map((c, i) => c + needsAttention[i]);
+
+  const cmpIdx = Math.max(0, weeks - 5); // ~4 weeks back
+  const criticalChangePct = critical[cmpIdx] === 0
+    ? 0
+    : Math.round(((currentCritical - critical[cmpIdx]) / critical[cmpIdx]) * 100);
+  const needsAttentionChangePct = needsAttention[cmpIdx] === 0
+    ? 0
+    : Math.round(((currentNeedsAttention - needsAttention[cmpIdx]) / needsAttention[cmpIdx]) * 100);
+
+  return { critical, needsAttention, total, criticalChangePct, needsAttentionChangePct };
+}
+
+// =============================================================================
 // Chart Motivation Content
 // =============================================================================
 
