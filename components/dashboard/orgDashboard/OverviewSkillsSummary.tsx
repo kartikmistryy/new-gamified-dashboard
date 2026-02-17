@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import { Users } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Label } from "recharts";
 import type { SkillsRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
 import { STATUS_COLORS, DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
@@ -22,12 +23,52 @@ function bucketize(data: SkillsRoadmapProgressData[]) {
   }));
 }
 
+function getTotalDevCount(skill: SkillsRoadmapProgressData) {
+  return skill.developerCounts.basic + skill.developerCounts.intermediate + skill.developerCounts.advanced;
+}
+
+function SkillProgressRow({ skill }: { skill: SkillsRoadmapProgressData }) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className="text-sm text-gray-700 truncate flex-1 min-w-0">{skill.roadmap.name}</span>
+      <div className="w-14 h-2 rounded-full bg-gray-100 overflow-hidden shrink-0">
+        <div className="h-full rounded-full bg-blue-500" style={{ width: `${skill.progressPercent}%` }} />
+      </div>
+      <span className="text-xs font-medium tabular-nums text-gray-500 w-8 text-right shrink-0">
+        {skill.progressPercent}%
+      </span>
+    </div>
+  );
+}
+
+function SkillDevCountRow({ skill }: { skill: SkillsRoadmapProgressData }) {
+  const devCount = getTotalDevCount(skill);
+  return (
+    <div className="flex items-center gap-2">
+      <span className="text-sm text-gray-700 truncate flex-1 min-w-0">{skill.roadmap.name}</span>
+      <Users className="size-3.5 text-gray-400 shrink-0" />
+      <span className="text-xs font-medium tabular-nums text-gray-500 w-6 text-right shrink-0">
+        {devCount}
+      </span>
+    </div>
+  );
+}
+
 export function OverviewSkillsSummary({ skillData }: Props) {
   const buckets = useMemo(() => (skillData ? bucketize(skillData) : []), [skillData]);
 
-  const topByProgress = useMemo(() => {
+  const sorted = useMemo(() => {
     if (!skillData) return [];
-    return [...skillData].sort((a, b) => b.progressPercent - a.progressPercent).slice(0, 3);
+    return [...skillData].sort((a, b) => b.progressPercent - a.progressPercent);
+  }, [skillData]);
+
+  const topByProgress = sorted.slice(0, 3);
+
+  const mostActive = useMemo(() => {
+    if (!skillData) return [];
+    return [...skillData]
+      .sort((a, b) => getTotalDevCount(b) - getTotalDevCount(a))
+      .slice(0, 3);
   }, [skillData]);
 
   if (!skillData) {
@@ -40,7 +81,6 @@ export function OverviewSkillsSummary({ skillData }: Props) {
     <div className="flex flex-col gap-4">
       {/* Donut + Top 3 */}
       <div className="flex items-center gap-5">
-        {/* Donut */}
         <div className="shrink-0 w-[100px] h-[100px]">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -73,31 +113,36 @@ export function OverviewSkillsSummary({ skillData }: Props) {
           </ResponsiveContainer>
         </div>
 
-        {/* Top 3 Roadmaps */}
         <div className="flex-1 min-w-0 flex flex-col gap-1.5">
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
             Top 3 by Progress
           </p>
           {topByProgress.map((s) => (
-            <div key={s.roadmap.id} className="flex items-center gap-2">
-              <span className="text-sm text-gray-700 truncate flex-1 min-w-0">{s.roadmap.name}</span>
-              <div className="w-14 h-2 rounded-full bg-gray-100 overflow-hidden shrink-0">
-                <div className="h-full rounded-full bg-blue-500" style={{ width: `${s.progressPercent}%` }} />
-              </div>
-              <span className="text-xs font-medium tabular-nums text-gray-500 w-8 text-right shrink-0">
-                {s.progressPercent}%
-              </span>
-            </div>
+            <SkillProgressRow key={s.roadmap.id} skill={s} />
           ))}
         </div>
       </div>
+
+      {/* Most Active Skills (by developer count) */}
+      {mostActive.length > 0 && (
+        <div className="flex flex-col gap-1.5">
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+            Most Active Skills
+          </p>
+          {mostActive.map((s) => (
+            <SkillDevCountRow key={s.roadmap.id} skill={s} />
+          ))}
+        </div>
+      )}
 
       {/* Legend */}
       <div className="flex flex-wrap gap-x-4 gap-y-1">
         {buckets.map((b) => (
           <div key={b.name} className="flex items-center gap-1.5">
             <span className="size-2 rounded-full shrink-0" style={{ background: b.color }} />
-            <span className="text-[10px] text-gray-500">{b.name}</span>
+            <span className="text-[10px] text-gray-500">
+              {b.name} <span className="font-medium text-gray-700">{b.count}</span>
+            </span>
           </div>
         ))}
       </div>
