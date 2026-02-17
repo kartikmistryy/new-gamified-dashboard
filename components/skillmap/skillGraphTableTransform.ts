@@ -24,8 +24,27 @@ import type {
   SkillsRoadmapProgressData,
   RoleRoadmapProgressData,
   RoleRoadmap,
+  CategoryProgressData,
+  SkillCategoryName,
+  ProficiencyLevel,
 } from "@/lib/dashboard/entities/roadmap/types";
 import { getProficiencyLevel } from "@/lib/dashboard/entities/roadmap/utils/progressUtils";
+
+// =============================================================================
+// Category ordering (R3)
+// =============================================================================
+
+const CATEGORY_ORDER: SkillCategoryName[] = [
+  "Programming Languages",
+  "Frontend Technologies",
+  "Backend Frameworks & Platforms",
+  "Mobile & Cross-Platform",
+  "Databases & Data Storage",
+  "DevOps & Cloud Infrastructure",
+  "CS Fundamentals & System Design",
+  "Emerging Technology",
+  "Others",
+];
 
 // =============================================================================
 // Engineer helpers
@@ -70,6 +89,36 @@ function groupEngineers(
     if (!level) return;
     result[level].push(toRoadmapDeveloper(engineerIndex[i]));
   });
+  return result;
+}
+
+/**
+ * R19: Aggregate developers by their HIGHEST level across multiple sources.
+ * Each developer appears exactly once, at their max proficiency level.
+ * Example: Alice is Basic in React, Advanced in Vue → counted as Advanced only.
+ */
+function aggregateDevelopersByMaxLevel(sources: DevelopersByLevel[]): DevelopersByLevel {
+  const levelPriority: Record<ProficiencyLevel, number> = { basic: 1, intermediate: 2, advanced: 3 };
+
+  // Track each developer's highest level
+  const devMaxLevel = new Map<string, { dev: RoadmapDeveloper; level: ProficiencyLevel }>();
+
+  for (const source of sources) {
+    for (const level of ["basic", "intermediate", "advanced"] as const) {
+      for (const dev of source[level]) {
+        const existing = devMaxLevel.get(dev.id);
+        if (!existing || levelPriority[level] > levelPriority[existing.level]) {
+          devMaxLevel.set(dev.id, { dev, level });
+        }
+      }
+    }
+  }
+
+  // Build result grouped by level
+  const result = emptyByLevel();
+  for (const { dev, level } of devMaxLevel.values()) {
+    result[level].push(dev);
+  }
   return result;
 }
 
@@ -224,17 +273,174 @@ function buildOneRoadmapProgress(
 }
 
 // =============================================================================
+// Category grouping (R3)
+// =============================================================================
+
+/** Build category progress from skills and checkpoints (R3, R5) */
+function buildCategoryProgress(
+  roleName: string,
+  mappedSkills: SkillsRoadmapProgressData[],
+  checkpoints: CheckpointProgressData[],
+  roleCategorizedSkills: Map<string, Map<string, string[]>>,
+): CategoryProgressData[] {
+  const categoryMap = new Map<SkillCategoryName, { skills: SkillsRoadmapProgressData[]; checkpoints: CheckpointProgressData[] }>();
+
+  // Initialize with empty arrays
+  for (const cat of CATEGORY_ORDER) {
+    categoryMap.set(cat, { skills: [], checkpoints: [] });
+  }
+
+  // Get categorized skills for this role
+  const roleCategories = roleCategorizedSkills.get(roleName);
+
+  if (roleCategories) {
+    // Group skills by category according to role mapping
+    for (const [categoryName, skillNames] of roleCategories.entries()) {
+      const catName = categoryName as SkillCategoryName;
+      const catData = categoryMap.get(catName) ?? { skills: [], checkpoints: [] };
+
+      for (const skillName of skillNames) {
+        const skill = mappedSkills.find((s) => s.roadmap.name === skillName);
+        if (skill) {
+          catData.skills.push(skill);
+        }
+      }
+
+      categoryMap.set(catName, catData);
+    }
+  }
+
+  // Put checkpoints in "Others" category
+  const othersData = categoryMap.get("Others")!;
+  othersData.checkpoints = checkpoints;
+
+  // Build CategoryProgressData for each category
+  const result: CategoryProgressData[] = [];
+
+  for (const category of CATEGORY_ORDER) {
+    const data = categoryMap.get(category)!;
+
+    // Skip categories with no skills and no checkpoints
+    if (data.skills.length === 0 && (data.checkpoints?.length ?? 0) === 0) {
+      continue;
+    }
+
+    // R5: Max progress from skills
+    const maxProgress = data.skills.length > 0
+      ? Math.max(...data.skills.map((s) => s.progressPercent))
+      : (data.checkpoints?.length ?? 0) > 0
+        ? Math.max(...(data.checkpoints?.map((c) => c.progressPercent) ?? [0]))
+        : 0;
+
+    // R19: Aggregate developers by max level (each dev counted at their highest level)
+    const sources: DevelopersByLevel[] = data.skills.map((s) => s.developersByLevel);
+
+    // Also include checkpoint developers for Others category
+    if (category === "Others" && data.checkpoints) {
+      sources.push(...data.checkpoints.map((cp) => cp.developersByLevel));
+    }
+
+    const developersByLevel = aggregateDevelopersByMaxLevel(sources);
+
+    result.push({
+      category,
+      progressPercent: Math.round(maxProgress),
+      proficiencyLevel: getProficiencyLevel(maxProgress),
+      developerCounts: {
+        basic: developersByLevel.basic.length,
+        intermediate: developersByLevel.intermediate.length,
+        advanced: developersByLevel.advanced.length,
+      },
+      developersByLevel,
+      skills: data.skills,
+      checkpoints: category === "Others" ? data.checkpoints : undefined,
+    });
+  }
+
+  return result;
+}
+
+// =============================================================================
+// Skill-based category grouping (R9)
+// =============================================================================
+
+/** Category grouping for skill-based tab (without checkpoints) */
+export type SkillCategoryData = {
+  category: SkillCategoryName;
+  progressPercent: number;
+  proficiencyLevel: ProficiencyLevel | null;
+  developerCounts: { basic: number; intermediate: number; advanced: number };
+  developersByLevel: DevelopersByLevel;
+  skills: SkillsRoadmapProgressData[];
+};
+
+/** Build category groupings for skill-based view (R9) */
+function buildSkillBasedCategories(
+  skills: SkillsRoadmapProgressData[],
+  skillCategoryMapping: Map<string, string>,
+): SkillCategoryData[] {
+  const categoryMap = new Map<SkillCategoryName, SkillsRoadmapProgressData[]>();
+
+  // Initialize categories
+  for (const cat of CATEGORY_ORDER) {
+    categoryMap.set(cat, []);
+  }
+
+  // Group skills by category
+  for (const skill of skills) {
+    const categoryName = skillCategoryMapping.get(skill.roadmap.name) as SkillCategoryName | undefined;
+    const cat = categoryName ?? "Others";
+    const list = categoryMap.get(cat) ?? [];
+    list.push(skill);
+    categoryMap.set(cat, list);
+  }
+
+  // Build category data
+  const result: SkillCategoryData[] = [];
+
+  for (const category of CATEGORY_ORDER) {
+    const catSkills = categoryMap.get(category) ?? [];
+    if (catSkills.length === 0) continue;
+
+    // Max progress from skills
+    const maxProgress = Math.max(...catSkills.map((s) => s.progressPercent));
+
+    // R19: Aggregate developers by max level (each dev counted at their highest level)
+    const developersByLevel = aggregateDevelopersByMaxLevel(
+      catSkills.map((s) => s.developersByLevel)
+    );
+
+    result.push({
+      category,
+      progressPercent: Math.round(maxProgress),
+      proficiencyLevel: getProficiencyLevel(maxProgress),
+      developerCounts: {
+        basic: developersByLevel.basic.length,
+        intermediate: developersByLevel.intermediate.length,
+        advanced: developersByLevel.advanced.length,
+      },
+      developersByLevel,
+      skills: catSkills,
+    });
+  }
+
+  return result;
+}
+
+// =============================================================================
 // Public API
 // =============================================================================
 
 export interface SkillGraphTableData {
   skillBased: SkillsRoadmapProgressData[];
+  /** Skill-based data grouped by category (R9) */
+  skillBasedCategories: SkillCategoryData[];
   roleBased: RoleRoadmapProgressData[];
 }
 
 /** Transform raw graph JSON into table-compatible data */
 export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableData {
-  const { roadmaps, engineerIndex, engineers, detailMap, roleSkillMapping } = raw;
+  const { roadmaps, engineerIndex, engineers, detailMap, roleSkillMapping, skillCategoryMapping, roleCategorizedSkills } = raw;
 
   // Skill-based
   const skillRoadmaps = roadmaps.filter((r) => r.type === "skill");
@@ -259,6 +465,19 @@ export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableDat
       .map((name) => skillByName.get(name))
       .filter((s): s is SkillsRoadmapProgressData => s != null);
 
+    // Build category groupings (R3)
+    const categories = buildCategoryProgress(
+      r.name,
+      mappedSkills,
+      inner.checkpoints,
+      roleCategorizedSkills,
+    );
+
+    // R19: Role developers = union of all categories (max level per developer)
+    const roleDevelopersByLevel = aggregateDevelopersByMaxLevel(
+      categories.map((cat) => cat.developersByLevel)
+    );
+
     const roleRoadmap: RoleRoadmap = {
       id: r.key,
       name: r.name,
@@ -269,13 +488,21 @@ export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableDat
       roleRoadmap,
       progressPercent: inner.progressPercent,
       proficiencyLevel: inner.proficiencyLevel,
-      developerCounts: inner.developerCounts,
-      developersByLevel: inner.developersByLevel,
+      developerCounts: {
+        basic: roleDevelopersByLevel.basic.length,
+        intermediate: roleDevelopersByLevel.intermediate.length,
+        advanced: roleDevelopersByLevel.advanced.length,
+      },
+      developersByLevel: roleDevelopersByLevel,
       checkpoints: inner.checkpoints,
       skillsRoadmaps: mappedSkills,
+      categories,
     };
     return result;
   });
 
-  return { skillBased, roleBased };
+  // Build skill-based category groupings (R9)
+  const skillBasedCategories = buildSkillBasedCategories(skillBased, skillCategoryMapping);
+
+  return { skillBased, skillBasedCategories, roleBased };
 }

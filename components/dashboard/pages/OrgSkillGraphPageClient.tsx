@@ -11,6 +11,7 @@ import {
 } from "@/components/skillmap/skillGraphDataLoader";
 import { transformToTableData } from "@/components/skillmap/skillGraphTableTransform";
 import type { OrgSkillTableTab } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
+import { SkillGraphChatbot } from "@/components/chat";
 
 export function OrgSkillGraphPageClient() {
   const [fullData, setFullData] = useState<SkillGraphFullData | null>(null);
@@ -72,6 +73,7 @@ export function OrgSkillGraphPageClient() {
           <OrgSkillsTableSection
             tab={tab}
             skillData={tableData.skillBased}
+            skillCategories={tableData.skillBasedCategories}
             roleData={tableData.roleBased}
             autoExpandSkillId={autoExpandSkillId}
             onAutoExpandConsumed={() => setAutoExpandSkillId(null)}
@@ -82,9 +84,19 @@ export function OrgSkillGraphPageClient() {
         )}
       </DashboardSection>
 
-      <DashboardSection title="" className="py-6">
+      {/* Roadmap Progress temporarily hidden for demo - R1 */}
+      {/* <DashboardSection title="" className="py-6">
         <RoadmapProgressSection />
-      </DashboardSection>
+      </DashboardSection> */}
+
+      {/* Skills Graph Chatbot - use "sidebar" or "modal" layout */}
+      {fullData && tableData && (
+        <SkillGraphChatbot
+          tableData={tableData}
+          rawData={fullData.raw}
+          layout="sidebar"
+        />
+      )}
     </div>
   );
 }

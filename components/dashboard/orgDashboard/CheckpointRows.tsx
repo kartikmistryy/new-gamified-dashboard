@@ -2,14 +2,14 @@
 
 import { Fragment, useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
-import type { CheckpointProgressData, SkillsRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
+import type { CheckpointProgressData, SkillsRoadmapProgressData, SidePanelContext, ProficiencyLevel } from "@/lib/dashboard/entities/roadmap/types";
 import {
   sortCheckpointsByPhase,
   filterUnlockedCheckpoints,
   getTotalPeople,
 } from "@/lib/dashboard/entities/roadmap/orgSkillTableData";
 import { DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
-import { PeopleStackedBar, ProficiencyProgressBar, BADGE_CLASS, BADGE_BG_OPACITY, PHASE_COLOR_MAP, badgeStyle } from "./PeopleStackedBar";
+import { PeopleCountBadges, ProficiencyProgressBar, BADGE_CLASS, BADGE_BG_OPACITY, PHASE_COLOR_MAP, badgeStyle } from "./PeopleStackedBar";
 import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
 import { SubCheckpointRows } from "./SubCheckpointRows";
 import { Button } from "@/components/ui/button";
@@ -31,6 +31,8 @@ type CheckpointRowsProps = {
   skillRoadmaps?: SkillsRoadmapProgressData[];
   /** Called when a skill roadmap row is clicked (switch to skill tab) */
   onSkillClick?: (skillRoadmapId: string) => void;
+  /** Called when people badge is clicked to open side panel (R7) */
+  onSidePanelOpen?: (context: SidePanelContext) => void;
 };
 
 export function CheckpointRows({
@@ -38,6 +40,7 @@ export function CheckpointRows({
   showAll,
   skillRoadmaps,
   onSkillClick,
+  onSidePanelOpen,
 }: CheckpointRowsProps) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
@@ -71,6 +74,17 @@ export function CheckpointRows({
           const tint = phaseColor
             ? { backgroundColor: hexToRgba(phaseColor, BADGE_BG_OPACITY / 2) }
             : undefined;
+
+          const handleCheckpointBadgeClick = (level: ProficiencyLevel) => {
+            if (onSidePanelOpen) {
+              onSidePanelOpen({
+                type: "checkpoint",
+                id: cp.checkpoint.id,
+                name: cp.checkpoint.name,
+                developersByLevel: cp.developersByLevel,
+              });
+            }
+          };
 
           return (
             <Fragment key={cp.checkpoint.id}>
@@ -117,7 +131,10 @@ export function CheckpointRows({
                   <ProficiencyProgressBar percent={cp.progressPercent} />
                 </TableCell>
                 <TableCell style={tint}>
-                  <PeopleStackedBar counts={cp.developerCounts} />
+                  <PeopleCountBadges
+                    counts={cp.developerCounts}
+                    onBadgeClick={onSidePanelOpen ? handleCheckpointBadgeClick : undefined}
+                  />
                 </TableCell>
               </TableRow>
 
@@ -138,31 +155,47 @@ export function CheckpointRows({
         })}
 
         {/* Role-based: Skill Roadmaps with status & people */}
-        {filteredSkillRoadmaps?.map((sr) => (
-          <TableRow
-            key={`skill-roadmap-${sr.roadmap.id}`}
-            className={`${DASHBOARD_BG_CLASSES.borderLight} bg-muted ${onSkillClick ? "cursor-pointer hover:bg-gray-200/80" : "hover:bg-muted/80"}`}
-            onClick={onSkillClick ? () => onSkillClick(sr.roadmap.id) : undefined}
-          >
-            <TableCell />
-            <TableCell>
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-medium bg-gray-200 text-gray-700">
-                  Skill-Based
-                </span>
-                <span className="text-sm text-gray-900 font-medium underline-offset-2 hover:underline">
-                  {sr.roadmap.name}
-                </span>
-              </div>
-            </TableCell>
-            <TableCell>
-              <ProficiencyProgressBar percent={sr.progressPercent} />
-            </TableCell>
-            <TableCell>
-              <PeopleStackedBar counts={sr.developerCounts} />
-            </TableCell>
-          </TableRow>
-        ))}
+        {filteredSkillRoadmaps?.map((sr) => {
+          const handleSkillBadgeClick = (level: ProficiencyLevel) => {
+            if (onSidePanelOpen) {
+              onSidePanelOpen({
+                type: "roadmap",
+                id: sr.roadmap.id,
+                name: sr.roadmap.name,
+                developersByLevel: sr.developersByLevel,
+              });
+            }
+          };
+
+          return (
+            <TableRow
+              key={`skill-roadmap-${sr.roadmap.id}`}
+              className={`${DASHBOARD_BG_CLASSES.borderLight} bg-muted ${onSkillClick ? "cursor-pointer hover:bg-gray-200/80" : "hover:bg-muted/80"}`}
+              onClick={onSkillClick ? () => onSkillClick(sr.roadmap.id) : undefined}
+            >
+              <TableCell />
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-medium bg-gray-200 text-gray-700">
+                    Skill-Based
+                  </span>
+                  <span className="text-sm text-gray-900 font-medium underline-offset-2 hover:underline">
+                    {sr.roadmap.name}
+                  </span>
+                </div>
+              </TableCell>
+              <TableCell>
+                <ProficiencyProgressBar percent={sr.progressPercent} />
+              </TableCell>
+              <TableCell onClick={(e) => e.stopPropagation()}>
+                <PeopleCountBadges
+                  counts={sr.developerCounts}
+                  onBadgeClick={onSidePanelOpen ? handleSkillBadgeClick : undefined}
+                />
+              </TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );
