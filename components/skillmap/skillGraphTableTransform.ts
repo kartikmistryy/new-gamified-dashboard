@@ -92,6 +92,36 @@ function groupEngineers(
   return result;
 }
 
+/**
+ * R19: Aggregate developers by their HIGHEST level across multiple sources.
+ * Each developer appears exactly once, at their max proficiency level.
+ * Example: Alice is Basic in React, Advanced in Vue → counted as Advanced only.
+ */
+function aggregateDevelopersByMaxLevel(sources: DevelopersByLevel[]): DevelopersByLevel {
+  const levelPriority: Record<ProficiencyLevel, number> = { basic: 1, intermediate: 2, advanced: 3 };
+
+  // Track each developer's highest level
+  const devMaxLevel = new Map<string, { dev: RoadmapDeveloper; level: ProficiencyLevel }>();
+
+  for (const source of sources) {
+    for (const level of ["basic", "intermediate", "advanced"] as const) {
+      for (const dev of source[level]) {
+        const existing = devMaxLevel.get(dev.id);
+        if (!existing || levelPriority[level] > levelPriority[existing.level]) {
+          devMaxLevel.set(dev.id, { dev, level });
+        }
+      }
+    }
+  }
+
+  // Build result grouped by level
+  const result = emptyByLevel();
+  for (const { dev, level } of devMaxLevel.values()) {
+    result[level].push(dev);
+  }
+  return result;
+}
+
 // =============================================================================
 // Detail → Checkpoint conversion (real names + sub-checkpoints)
 // =============================================================================
@@ -302,34 +332,15 @@ function buildCategoryProgress(
         ? Math.max(...(data.checkpoints?.map((c) => c.progressPercent) ?? [0]))
         : 0;
 
-    // Aggregate developers by level (union of all skills)
-    const developersByLevel = emptyByLevel();
-    const seenIds = { basic: new Set<string>(), intermediate: new Set<string>(), advanced: new Set<string>() };
-
-    for (const skill of data.skills) {
-      for (const level of ["basic", "intermediate", "advanced"] as const) {
-        for (const dev of skill.developersByLevel[level]) {
-          if (!seenIds[level].has(dev.id)) {
-            seenIds[level].add(dev.id);
-            developersByLevel[level].push(dev);
-          }
-        }
-      }
-    }
+    // R19: Aggregate developers by max level (each dev counted at their highest level)
+    const sources: DevelopersByLevel[] = data.skills.map((s) => s.developersByLevel);
 
     // Also include checkpoint developers for Others category
     if (category === "Others" && data.checkpoints) {
-      for (const cp of data.checkpoints) {
-        for (const level of ["basic", "intermediate", "advanced"] as const) {
-          for (const dev of cp.developersByLevel[level]) {
-            if (!seenIds[level].has(dev.id)) {
-              seenIds[level].add(dev.id);
-              developersByLevel[level].push(dev);
-            }
-          }
-        }
-      }
+      sources.push(...data.checkpoints.map((cp) => cp.developersByLevel));
     }
+
+    const developersByLevel = aggregateDevelopersByMaxLevel(sources);
 
     result.push({
       category,
@@ -394,20 +405,10 @@ function buildSkillBasedCategories(
     // Max progress from skills
     const maxProgress = Math.max(...catSkills.map((s) => s.progressPercent));
 
-    // Union developers by level
-    const developersByLevel = emptyByLevel();
-    const seenIds = { basic: new Set<string>(), intermediate: new Set<string>(), advanced: new Set<string>() };
-
-    for (const skill of catSkills) {
-      for (const level of ["basic", "intermediate", "advanced"] as const) {
-        for (const dev of skill.developersByLevel[level]) {
-          if (!seenIds[level].has(dev.id)) {
-            seenIds[level].add(dev.id);
-            developersByLevel[level].push(dev);
-          }
-        }
-      }
-    }
+    // R19: Aggregate developers by max level (each dev counted at their highest level)
+    const developersByLevel = aggregateDevelopersByMaxLevel(
+      catSkills.map((s) => s.developersByLevel)
+    );
 
     result.push({
       category,
@@ -472,6 +473,11 @@ export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableDat
       roleCategorizedSkills,
     );
 
+    // R19: Role developers = union of all categories (max level per developer)
+    const roleDevelopersByLevel = aggregateDevelopersByMaxLevel(
+      categories.map((cat) => cat.developersByLevel)
+    );
+
     const roleRoadmap: RoleRoadmap = {
       id: r.key,
       name: r.name,
@@ -482,8 +488,12 @@ export function transformToTableData(raw: SkillGraphRawData): SkillGraphTableDat
       roleRoadmap,
       progressPercent: inner.progressPercent,
       proficiencyLevel: inner.proficiencyLevel,
-      developerCounts: inner.developerCounts,
-      developersByLevel: inner.developersByLevel,
+      developerCounts: {
+        basic: roleDevelopersByLevel.basic.length,
+        intermediate: roleDevelopersByLevel.intermediate.length,
+        advanced: roleDevelopersByLevel.advanced.length,
+      },
+      developersByLevel: roleDevelopersByLevel,
       checkpoints: inner.checkpoints,
       skillsRoadmaps: mappedSkills,
       categories,
