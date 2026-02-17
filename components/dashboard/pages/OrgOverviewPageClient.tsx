@@ -1,64 +1,112 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  getTeamPerformanceRowsForGauge,
-  getOverviewSummaryCardsForGauge,
-  getChartInsightsMock,
-} from "@/lib/dashboard/entities/team/mocks/overviewMockData";
-import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
-import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
-import { OverviewSummaryCard } from "@/components/dashboard/shared/OverviewSummaryCard";
-import { TeamTable } from "@/components/dashboard/orgDashboard/TeamTable";
+import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
+import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
+import { PerformanceChart } from "@/components/dashboard/shared/PerformanceChart";
+import { OverviewOutliersSection } from "@/components/dashboard/orgDashboard/OverviewOutliersSection";
+import { OverviewSpofSummary } from "@/components/dashboard/orgDashboard/OverviewSpofSummary";
+import { OverviewSkillsSummary } from "@/components/dashboard/orgDashboard/OverviewSkillsSummary";
+import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
+import {
+  generateOrgPerformanceData,
+  ORG_PERFORMANCE_HOLIDAYS,
+  ORG_PERFORMANCE_ANNOTATIONS,
+} from "@/lib/dashboard/entities/team/charts/performanceChart/orgPerformanceChartData";
+import {
+  loadSkillGraphFullData,
+  type SkillGraphFullData,
+} from "@/components/skillmap/skillGraphDataLoader";
+import { transformToTableData } from "@/components/skillmap/skillGraphTableTransform";
+import type { SkillsRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
+
+const GAUGE_VALUE = Math.floor(Math.random() * 100);
+
+function ViewDetailsLink({ href }: { href: string }) {
+  return (
+    <Link href={href} className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-gray-700">
+      View details <ArrowRight className="size-3" />
+    </Link>
+  );
+}
+
+function SectionTitle({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link href={href} className="hover:text-blue-600 transition-colors">
+      {children}
+    </Link>
+  );
+}
 
 export function OrgOverviewPageClient() {
-  const [gaugeValue] = useState(() => Math.floor(Math.random() * 101));
-  const teamRows = useMemo(
-    () => getTeamPerformanceRowsForGauge(gaugeValue),
-    [gaugeValue],
-  );
-  const summaryCards = useMemo(
-    () => getOverviewSummaryCardsForGauge(gaugeValue),
-    [gaugeValue],
-  );
-  const chartInsights = useMemo(() => getChartInsightsMock(), []);
+  const { getOrgUrl } = useRouteParams();
+  const [skillData, setSkillData] = useState<SkillsRoadmapProgressData[] | null>(null);
+
+  useEffect(() => {
+    loadSkillGraphFullData()
+      .then((full: SkillGraphFullData) => {
+        const table = transformToTableData(full.raw);
+        setSkillData(table.skillBased);
+      })
+      .catch(console.error);
+  }, []);
 
   return (
-    <TooltipProvider>
-      <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
-        <Card className="w-full border-none bg-white p-0 shadow-none">
-          <CardContent className="flex w-full flex-col items-stretch space-y-8 px-0">
-            <DashboardSection title="Organization Overview">
-              <div className="flex flex-row flex-wrap items-stretch gap-8">
-                <div className="flex shrink-0 min-w-[280px] max-w-[50%]">
-                  <GaugeSection
-                    gaugeValue={gaugeValue}
-                    labelVariant="performance"
-                  />
-                </div>
-                <div className="flex-1 min-w-[280px]">
-                  <ChartInsights insights={chartInsights} />
-                </div>
-              </div>
-
-              <div className="@container w-full mt-8">
-                <div className="grid grid-cols-3 gap-4 @[1050px]:grid-cols-6">
-                  {summaryCards.map((item) => (
-                    <OverviewSummaryCard key={item.key} item={item} />
-                  ))}
-                </div>
-              </div>
-            </DashboardSection>
-
-            <DashboardSection title="Teams" className="w-full">
-              <TeamTable rows={teamRows} />
-            </DashboardSection>
-          </CardContent>
-        </Card>
+    <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
+      {/* Static Banner */}
+      <div className="rounded-lg bg-gray-50 px-5 py-3 text-sm text-gray-600">
+        One line description of the current state.
       </div>
-    </TooltipProvider>
+
+      {/* Performance Section */}
+      <DashboardSection
+        title={<SectionTitle href={getOrgUrl("performance")}>Performance</SectionTitle>}
+        action={<ViewDetailsLink href={getOrgUrl("performance")} />}
+        actionLayout="row"
+      >
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="shrink-0 lg:w-1/3">
+            <GaugeSection gaugeValue={GAUGE_VALUE} labelVariant="performance" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <PerformanceChart
+              dataSource={{ type: "org", data: [], generator: generateOrgPerformanceData }}
+              eventStrategy={{ mode: "static", events: ORG_PERFORMANCE_HOLIDAYS }}
+              annotationStrategy={{ mode: "static", annotations: ORG_PERFORMANCE_ANNOTATIONS }}
+              timeRange="max"
+            />
+          </div>
+        </div>
+      </DashboardSection>
+
+      {/* 3-column grid: Outliers | SPOF | Skills Graph */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <DashboardSection
+          title={<SectionTitle href={getOrgUrl("design")}>Outliers</SectionTitle>}
+          action={<ViewDetailsLink href={getOrgUrl("design")} />}
+          actionLayout="row"
+        >
+          <OverviewOutliersSection />
+        </DashboardSection>
+
+        <DashboardSection
+          title={<SectionTitle href={getOrgUrl("spof")}>SPOF</SectionTitle>}
+          action={<ViewDetailsLink href={getOrgUrl("spof")} />}
+          actionLayout="row"
+        >
+          <OverviewSpofSummary />
+        </DashboardSection>
+
+        <DashboardSection
+          title={<SectionTitle href={getOrgUrl("skillgraph")}>Skills Graph</SectionTitle>}
+          action={<ViewDetailsLink href={getOrgUrl("skillgraph")} />}
+          actionLayout="row"
+        >
+          <OverviewSkillsSummary skillData={skillData} />
+        </DashboardSection>
+      </div>
+    </div>
   );
 }
