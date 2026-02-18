@@ -254,7 +254,7 @@ export const OPERATION_BREAKDOWN_DATA: OperationBreakdownCard[] = [
   },
   {
     operation: "selfDelete",
-    label: "SelfDeleted",
+    label: "Self-Deleted",
     nLoC: 30,
     trend: { direction: "up", value: "+8", upIsGood: false },
     insight: "Slight increase in self-deletions. Monitor for potential rework patterns.",

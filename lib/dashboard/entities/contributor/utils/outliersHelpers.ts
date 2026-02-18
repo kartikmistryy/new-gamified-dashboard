@@ -1,16 +1,16 @@
-import type { MemberDesignRow } from "../mocks/designMockData";
+import type { ContributorOutliersRow } from "../mocks/outliersMockData";
 import type { ChartInsight } from "@/lib/dashboard/entities/team/types";
 
-/** Design member filter types. */
-export type DesignMemberFilter =
+/** Outliers contributor filter types. */
+export type OutliersContributorFilter =
   | "mostImportant"
   | "skilledAI"
   | "traditionalDev"
   | "unskilledAI"
   | "lowSkillDev";
 
-/** Design filter tab configuration. */
-export const DESIGN_MEMBER_FILTER_TABS: { key: DesignMemberFilter; label: string }[] = [
+/** Outliers filter tab configuration. */
+export const OUTLIERS_CONTRIBUTOR_FILTER_TABS: { key: OutliersContributorFilter; label: string }[] = [
   { key: "mostImportant", label: "Most Important" },
   { key: "skilledAI", label: "Most Skilled AI Builders" },
   { key: "traditionalDev", label: "Most Legacy Devs" },
@@ -18,11 +18,11 @@ export const DESIGN_MEMBER_FILTER_TABS: { key: DesignMemberFilter; label: string
   { key: "lowSkillDev", label: "Most Low-Skill Devs" },
 ];
 
-/** Sort function for design member table based on active filter. */
-export function designMemberSortFunction(
-  rows: MemberDesignRow[],
-  currentFilter: DesignMemberFilter
-): MemberDesignRow[] {
+/** Sort function for outliers contributor table based on active filter. */
+export function outliersContributorSortFunction(
+  rows: ContributorOutliersRow[],
+  currentFilter: OutliersContributorFilter
+): ContributorOutliersRow[] {
   const copy = [...rows];
 
   switch (currentFilter) {
@@ -46,24 +46,24 @@ export function designMemberSortFunction(
   }
 }
 
-/** Generate design-specific insights about member ownership and chaos patterns. */
-export function getDesignInsights(members: MemberDesignRow[]): ChartInsight[] {
+/** Generate outliers-specific insights about contributor ownership and chaos patterns. */
+export function getOutliersInsights(contributors: ContributorOutliersRow[]): ChartInsight[] {
   const insights: ChartInsight[] = [];
 
   // Sort by ownership to find extremes
-  const byOwnership = [...members].sort((a, b) => b.ownershipPct - a.ownershipPct);
+  const byOwnership = [...contributors].sort((a, b) => b.ownershipPct - a.ownershipPct);
   const highestOwnership = byOwnership[0];
   const lowestOwnership = byOwnership[byOwnership.length - 1];
 
   // Sort by chaos to find extremes
-  const byChaos = [...members].sort((a, b) => b.churnRatePct - a.churnRatePct);
+  const byChaos = [...contributors].sort((a, b) => b.churnRatePct - a.churnRatePct);
   const highestChaos = byChaos[0];
   const lowestChaos = byChaos[byChaos.length - 1];
 
-  // Insight 1: Highest ownership member
+  // Insight 1: Highest ownership contributor
   insights.push({
     id: "highest-ownership",
-    text: `${highestOwnership.memberName} has the highest ownership concentration at ${highestOwnership.ownershipPct.toFixed(1)}%, indicating strong code ownership patterns.`,
+    text: `${highestOwnership.contributorName} has the highest ownership concentration at ${highestOwnership.ownershipPct.toFixed(1)}%, indicating strong code ownership patterns.`,
   });
 
   // Insight 2: Ownership spread
@@ -71,12 +71,12 @@ export function getDesignInsights(members: MemberDesignRow[]): ChartInsight[] {
   if (ownershipSpread > 15) {
     insights.push({
       id: "ownership-spread",
-      text: `Team shows ${ownershipSpread.toFixed(1)}% ownership spread, suggesting diverse responsibility distribution across members.`,
+      text: `Repository shows ${ownershipSpread.toFixed(1)}% ownership spread, suggesting diverse responsibility distribution across contributors.`,
     });
   } else {
     insights.push({
       id: "ownership-spread",
-      text: `Team has balanced ownership distribution with only ${ownershipSpread.toFixed(1)}% spread between highest and lowest members.`,
+      text: `Repository has balanced ownership distribution with only ${ownershipSpread.toFixed(1)}% spread between highest and lowest contributors.`,
     });
   }
 
@@ -84,22 +84,22 @@ export function getDesignInsights(members: MemberDesignRow[]): ChartInsight[] {
   if (highestChaos.churnRatePct > 40) {
     insights.push({
       id: "chaos-high",
-      text: `${highestChaos.memberName} shows elevated churn rate at ${highestChaos.churnRatePct.toFixed(1)}%, potentially indicating rapid iteration or refactoring work.`,
+      text: `${highestChaos.contributorName} shows elevated churn rate at ${highestChaos.churnRatePct.toFixed(1)}%, potentially indicating rapid iteration or refactoring work.`,
     });
   } else if (lowestChaos.churnRatePct < 15) {
     insights.push({
       id: "chaos-low",
-      text: `${lowestChaos.memberName} maintains low churn rate at ${lowestChaos.churnRatePct.toFixed(1)}%, suggesting stable, focused development approach.`,
+      text: `${lowestChaos.contributorName} maintains low churn rate at ${lowestChaos.churnRatePct.toFixed(1)}%, suggesting stable, focused development approach.`,
     });
   }
 
   // Insight 4: AI usage patterns (skilled AI users)
-  const bySkilledAI = [...members].sort((a, b) => b.skilledAIScore - a.skilledAIScore);
+  const bySkilledAI = [...contributors].sort((a, b) => b.skilledAIScore - a.skilledAIScore);
   const topSkilledAI = bySkilledAI[0];
   if (topSkilledAI.skilledAIScore > 12) {
     insights.push({
       id: "skilled-ai",
-      text: `${topSkilledAI.memberName} demonstrates high-productivity, low-churn pattern consistent with effective AI tool usage.`,
+      text: `${topSkilledAI.contributorName} demonstrates high-productivity, low-churn pattern consistent with effective AI tool usage.`,
     });
   }
 

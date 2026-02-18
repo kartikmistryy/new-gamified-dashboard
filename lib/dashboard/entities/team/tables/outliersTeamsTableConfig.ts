@@ -1,7 +1,7 @@
-/** Design Teams Table Configuration */
+/** Outliers Teams Table Configuration */
 
 import { TrendingUp, TrendingDown, ArrowRight } from "lucide-react";
-import type { DesignTeamRow, DesignTableFilter } from "../types";
+import type { OutliersTeamRow, OutliersTeamsTableFilter } from "../types";
 import { hexToRgba } from "../utils/tableUtils";
 import { CATEGORY_COLORS } from "../charts/chaosMatrix/chaosMatrixData";
 
@@ -42,7 +42,7 @@ export const CHAOS_SEGMENTS = [
   },
 ];
 
-export const DESIGN_FILTER_TABS: { key: DesignTableFilter; label: string }[] = [
+export const OUTLIERS_FILTER_TABS: { key: OutliersTeamsTableFilter; label: string }[] = [
   { key: "mostOutliers", label: "Most Outliers" },
   { key: "mostSkilledAIBuilders", label: "Most Skilled AI Builders" },
   { key: "mostUnskilledVibeCoders", label: "Most Unskilled Vibe Coders" },
@@ -59,8 +59,8 @@ export function getTrendIconForCount(counts: number[], index: number) {
   return ArrowRight;
 }
 
-/** Sort design teams based on filter criteria */
-export function designSortFunction(rows: DesignTeamRow[], currentFilter: DesignTableFilter): DesignTeamRow[] {
+/** Sort outliers teams based on filter criteria */
+export function outliersSortFunction(rows: OutliersTeamRow[], currentFilter: OutliersTeamsTableFilter): OutliersTeamRow[] {
   const copy = [...rows];
   if (currentFilter === "mostOutliers") return copy.sort((a, b) => b.outlierScore - a.outlierScore);
   if (currentFilter === "mostSkilledAIBuilders") return copy.sort((a, b) => b.skilledAIScore - a.skilledAIScore);

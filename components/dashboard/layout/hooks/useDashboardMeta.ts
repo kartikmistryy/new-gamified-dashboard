@@ -19,18 +19,12 @@ export type DashboardKey = "team" | "user" | "repo" | "organization"
 export type BreadcrumbItem = { label: string; href: string }
 
 const ROUTE_LABELS: Record<string, string> = {
-  activity: "Activity",
-  risks: "Risks",
-  code: "Code",
-  skills: "Skills",
-  quality: "Quality",
-  repositories: "Repositories",
-  network: "Network",
-  people: "People",
-  teams: "Teams",
-  logs: "Logs",
-  overall: "Overall",
-  benchmark: "Benchmark",
+  overview: "Overview",
+  performance: "Performance",
+  spof: "SPOF",
+  outliers: "Outliers",
+  skillgraph: "SkillsGraph",
+  
 }
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)

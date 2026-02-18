@@ -10,7 +10,7 @@ import {
   SidebarTrigger,
   SidebarInset,
 } from "@/components/ui/sidebar"
-import { organizations } from "@/__mocks__/sidebar/organizations"
+import { getOrganizations } from "@/__mocks__/sidebar/organizations"
 import DashboardHeader from "./DashboardHeader"
 import DashboardHero from "./DashboardHero"
 import DashboardTabs from "./DashboardTabs"
@@ -30,6 +30,7 @@ import type { Organization } from "@/types/sidebar"
 export default function DashboardSidebar({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const { breadcrumbItems, dashboardKey, teamId, userId, repoId } = useDashboardMeta()
+  console.log(breadcrumbItems)
   const showDashboardTabs = pathname?.startsWith("/org/") ?? false
   const timeRangeContext = useOptionalTimeRange()
 
@@ -39,8 +40,8 @@ export default function DashboardSidebar({ children }: { children: React.ReactNo
     return pathname.includes("/performance") || pathname.includes("/design")
   }, [pathname])
   const [selectedOrg, setSelectedOrg] = useState<Organization>(() => {
-    if (organizations.length === 0) throw new Error("No organizations available.")
-    return organizations[0]
+    const orgs = getOrganizations()
+    return orgs[0] ?? { id: "gitroll", name: "GitRoll" }
   })
 
   const { allTeams, allRepositories, allPeople, repositories, people } =

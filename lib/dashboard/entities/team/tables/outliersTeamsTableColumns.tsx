@@ -1,18 +1,18 @@
-/** Design Teams Table Column Definitions */
+/** Outliers Teams Table Column Definitions */
 
-import type { DesignTeamRow, DesignTableFilter } from "../types";
+import type { OutliersTeamRow, OutliersTeamsTableFilter } from "../types";
 import { DASHBOARD_TEXT_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import type { BaseTeamsTableColumn } from "@/components/dashboard/shared/BaseTeamsTable";
 import { SegmentBar } from "@/components/dashboard/shared/SegmentBar";
 import { VisibilityToggleButton } from "@/components/dashboard/shared/VisibilityToggleButton";
 import { TeamAvatar } from "@/components/shared/TeamAvatar";
-import { OWNERSHIP_SEGMENTS, CHAOS_SEGMENTS, getTrendIconForCount } from "./designTeamsTableConfig";
+import { OWNERSHIP_SEGMENTS, CHAOS_SEGMENTS, getTrendIconForCount } from "./outliersTeamsTableConfig";
 
-/** Create design table columns */
-export function createDesignColumns(
+/** Create outliers table columns */
+export function createOutliersColumns(
   effectiveVisible: Record<string, boolean>,
   toggleView: (teamName: string) => void
-): BaseTeamsTableColumn<DesignTeamRow, DesignTableFilter>[] {
+): BaseTeamsTableColumn<OutliersTeamRow, OutliersTeamsTableFilter>[] {
   return [
     {
       key: "view",

@@ -117,8 +117,8 @@ export type PerformanceTableFilter =
   | "mostImproved"
   | "mostRegressed";
 
-/** Design page teams table: ownership allocation (3 segments), engineering chaos (4 segments). */
-export type DesignTeamRow = {
+/** Outliers page teams table: ownership allocation (3 segments), engineering chaos (4 segments). */
+export type OutliersTeamRow = {
   teamName: string;
   teamColor: string;
   /** 3 segments: red, blue, green (counts). */
@@ -132,7 +132,7 @@ export type DesignTeamRow = {
   legacyScore: number;
 };
 
-export type DesignTableFilter =
+export type OutliersTeamsTableFilter =
   | "mostOutliers"
   | "mostSkilledAIBuilders"
   | "mostUnskilledVibeCoders"

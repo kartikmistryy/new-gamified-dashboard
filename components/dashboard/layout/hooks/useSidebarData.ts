@@ -4,13 +4,10 @@ import { teamsByOrg } from "@/__mocks__/sidebar/teams"
 import { repositoriesByOrg } from "@/__mocks__/sidebar/repositories"
 import { peopleByOrg } from "@/__mocks__/sidebar/people"
 
-export function useSidebarData(selectedOrg: Organization) {
-  const allTeams = useMemo(() => teamsByOrg[selectedOrg.id] ?? [], [selectedOrg.id])
-  const allRepositories = useMemo(
-    () => repositoriesByOrg[selectedOrg.id] ?? [],
-    [selectedOrg.id]
-  )
-  const allPeople = useMemo(() => peopleByOrg[selectedOrg.id] ?? [], [selectedOrg.id])
+export function useSidebarData(_selectedOrg: Organization) {
+  const allTeams = useMemo(() => teamsByOrg["gitroll"] ?? [], [])
+  const allRepositories = useMemo(() => repositoriesByOrg["gitroll"] ?? [], [])
+  const allPeople = useMemo(() => peopleByOrg["gitroll"] ?? [], [])
   return {
     allTeams,
     allRepositories,
