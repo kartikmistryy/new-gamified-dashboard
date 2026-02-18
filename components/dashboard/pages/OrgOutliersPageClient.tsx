@@ -58,25 +58,6 @@ export function OrgOutliersPageClient() {
 
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
-      {/* Row 1: Outliers Table */}
-      <DashboardSection
-        title={
-          <span className="inline-flex items-center gap-2">
-            Developer Outliers
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Info className="h-4 w-4 text-gray-400 cursor-help" />
-              </TooltipTrigger>
-              <TooltipContent side="right" className="max-w-xs text-sm">
-                Developers whose ownership or productivity patterns deviate from expected norms. Review these individuals to identify potential bottlenecks, underutilized talent, or knowledge silos.
-              </TooltipContent>
-            </Tooltip>
-          </span>
-        }
-      >
-        <OutliersTable developers={MOCK_OUTLIER_DEVELOPERS} />
-      </DashboardSection>
-
       {/* Row 2: Expected Share of Ownership */}
       <DashboardSection title="Expected Share of Ownership %">
         <div className="flex flex-row flex-wrap items-stretch gap-4">
@@ -136,6 +117,24 @@ export function OrgOutliersPageClient() {
         </div>
       </DashboardSection>
 
+      {/* Row 1: Outliers Table */}
+      <DashboardSection
+        title={
+          <span className="inline-flex items-center gap-2">
+            Developer Outliers
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Info className="h-4 w-4 text-gray-400 cursor-help" />
+              </TooltipTrigger>
+              <TooltipContent side="right" className="max-w-xs text-sm">
+                Developers whose ownership or productivity patterns deviate from expected norms. Review these individuals to identify potential bottlenecks, underutilized talent, or knowledge silos.
+              </TooltipContent>
+            </Tooltip>
+          </span>
+        }
+      >
+        <OutliersTable developers={MOCK_OUTLIER_DEVELOPERS} />
+      </DashboardSection>
     </div>
   );
 }
