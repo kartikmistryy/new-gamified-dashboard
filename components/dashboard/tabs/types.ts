@@ -2,7 +2,7 @@ export type ProfileTabKey =
   | "overview"
   | "performance"
   | "skillgraph"
-  | "design"
+  | "outliers"
   | "spof"
 
 export type ProfileTab = {

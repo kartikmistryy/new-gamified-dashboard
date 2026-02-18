@@ -30,6 +30,7 @@ import type { Organization } from "@/types/sidebar"
 export default function DashboardSidebar({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const { breadcrumbItems, dashboardKey, teamId, userId, repoId } = useDashboardMeta()
+  console.log(breadcrumbItems)
   const showDashboardTabs = pathname?.startsWith("/org/") ?? false
   const timeRangeContext = useOptionalTimeRange()
 

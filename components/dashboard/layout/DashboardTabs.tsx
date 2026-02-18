@@ -32,6 +32,7 @@ export default function DashboardTabs() {
     () => buildTabConfigs(tabs, basePath, activeFromPath, pathname),
     [tabs, basePath, activeFromPath, pathname],
   )
+  console.log(tabConfigs)
 
   const { containerRef, registerTabRef, indicatorStyle } = useTabIndicator({
     activeTab: activeFromPath,
@@ -59,6 +60,7 @@ export default function DashboardTabs() {
           role="tablist"
         >
           {tabConfigs.map((tab) => (
+            console.log(tab),
             <DashboardTabItem
               key={tab.key}
               tab={tab}
