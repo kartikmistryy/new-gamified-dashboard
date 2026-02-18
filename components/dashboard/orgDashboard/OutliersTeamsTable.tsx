@@ -1,29 +1,29 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import type { DesignTeamRow, DesignTableFilter } from "@/lib/dashboard/entities/team/types";
+import type { OutliersTeamRow, OutliersTeamsTableFilter } from "@/lib/dashboard/entities/team/types";
 import { BaseTeamsTable } from "@/components/dashboard/shared/BaseTeamsTable";
-import { DESIGN_FILTER_TABS, designSortFunction } from "@/lib/dashboard/entities/team/tables/designTeamsTableConfig";
-import { createDesignColumns } from "@/lib/dashboard/entities/team/tables/designTeamsTableColumns";
+import { OUTLIERS_FILTER_TABS, outliersSortFunction } from "@/lib/dashboard/entities/team/tables/outliersTeamsTableConfig";
+import { createOutliersColumns } from "@/lib/dashboard/entities/team/tables/outliersTeamsTableColumns";
 
-type DesignTeamsTableProps = {
-  rows: DesignTeamRow[];
-  activeFilter?: DesignTableFilter;
-  onFilterChange?: (filter: DesignTableFilter) => void;
+type OutliersTeamsTableProps = {
+  rows: OutliersTeamRow[];
+  activeFilter?: OutliersTeamsTableFilter;
+  onFilterChange?: (filter: OutliersTeamsTableFilter) => void;
   showFilters?: boolean;
   visibleTeams?: Record<string, boolean>;
   onToggleTeamVisibility?: (teamName: string) => void;
 };
 
-/** Design Teams Table - displays ownership health and engineering chaos metrics */
-export function DesignTeamsTable({
+/** Outliers Teams Table - displays ownership health and engineering chaos metrics */
+export function OutliersTeamsTable({
   rows,
   activeFilter = "mostOutliers",
   onFilterChange,
   showFilters = true,
   visibleTeams,
   onToggleTeamVisibility,
-}: DesignTeamsTableProps) {
+}: OutliersTeamsTableProps) {
   const [internalVisible, setInternalVisible] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
     rows.forEach((r, i) => {
@@ -44,16 +44,16 @@ export function DesignTeamsTable({
   );
 
   const effectiveVisible = visibleTeams ?? internalVisible;
-  const columns = createDesignColumns(effectiveVisible, toggleView);
+  const columns = createOutliersColumns(effectiveVisible, toggleView);
 
   return (
-    <BaseTeamsTable<DesignTeamRow, DesignTableFilter>
+    <BaseTeamsTable<OutliersTeamRow, OutliersTeamsTableFilter>
       rows={rows}
-      filterTabs={DESIGN_FILTER_TABS}
+      filterTabs={OUTLIERS_FILTER_TABS}
       activeFilter={activeFilter}
       onFilterChange={onFilterChange}
       defaultFilter="mostOutliers"
-      sortFunction={designSortFunction}
+      sortFunction={outliersSortFunction}
       columns={columns}
       getRowKey={(row) => row.teamName}
       showFilters={showFilters}

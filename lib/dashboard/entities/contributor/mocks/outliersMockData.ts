@@ -3,8 +3,8 @@ import type { DeveloperPoint } from "@/lib/dashboard/entities/team/types";
 import type { ChaosPoint } from "@/lib/dashboard/entities/team/charts/chaosMatrix/chaosMatrixData";
 import { getContributorPerformanceRowsForRepo } from "../mocks/overviewMockData";
 
-/** Design row with ownership and chaos metrics for a repository contributor. */
-export type ContributorDesignRow = {
+/** Outliers row with ownership and chaos metrics for a repository contributor. */
+export type ContributorOutliersRow = {
   contributorName: string;
   repoId: string;
   totalKarmaPoints: number;
@@ -25,8 +25,8 @@ function noise(seed: number): number {
   return x - Math.floor(x);
 }
 
-/** Generate contributor design data with ownership and chaos metrics. */
-export function getContributorDesignData(repoId: string, contributorCount: number = 6): ContributorDesignRow[] {
+/** Generate contributor outliers data with ownership and chaos metrics. */
+export function getContributorOutliersData(repoId: string, contributorCount: number = 6): ContributorOutliersRow[] {
   // Reuse base contributor data for consistency
   const baseContributors = getContributorPerformanceRowsForRepo(52, repoId, contributorCount);
 
@@ -112,8 +112,8 @@ export function getContributorDesignData(repoId: string, contributorCount: numbe
   });
 }
 
-/** Transform contributor design data to OwnershipScatter DeveloperPoint[] format. */
-export function transformToOwnershipScatterData(contributors: ContributorDesignRow[]): DeveloperPoint[] {
+/** Transform contributor outliers data to OwnershipScatter DeveloperPoint[] format. */
+export function transformToOwnershipScatterData(contributors: ContributorOutliersRow[]): DeveloperPoint[] {
   // Calculate mean and standard deviation for outlier detection
   const kpValues = contributors.map((c) => c.totalKarmaPoints);
   const ownValues = contributors.map((c) => c.ownershipPct);
@@ -150,9 +150,9 @@ export function transformToOwnershipScatterData(contributors: ContributorDesignR
   });
 }
 
-/** Transform contributor design data to ChaosMatrix ChaosPoint[] format. */
+/** Transform contributor outliers data to ChaosMatrix ChaosPoint[] format. */
 export function transformToChaosMatrixData(
-  contributors: ContributorDesignRow[],
+  contributors: ContributorOutliersRow[],
   range?: "1m" | "3m" | "1y" | "max"
 ): ChaosPoint[] {
   // Time range affects how much variance/drift we show from base values

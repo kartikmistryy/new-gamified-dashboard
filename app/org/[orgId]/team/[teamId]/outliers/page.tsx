@@ -1,5 +1,5 @@
-import { TeamDesignPageClient } from "@/components/dashboard/pages/TeamDesignPageClient";
+import { TeamOutliersPageClient } from "@/components/dashboard/pages/TeamOutliersPageClient";
 
-export default function TeamDesignPage() {
-  return <TeamDesignPageClient />;
+export default function TeamOutliersPage() {
+  return <TeamOutliersPageClient />;
 }

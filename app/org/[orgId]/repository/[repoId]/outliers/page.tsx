@@ -1,5 +1,5 @@
-import { RepoDesignPageClient } from "@/components/dashboard/pages/RepoDesignPageClient";
+import { RepoOutliersPageClient } from "@/components/dashboard/pages/RepoOutliersPageClient";
 
-export default function RepoDesignPage() {
-  return <RepoDesignPageClient />;
+export default function RepoOutliersPage() {
+  return <RepoOutliersPageClient />;
 }

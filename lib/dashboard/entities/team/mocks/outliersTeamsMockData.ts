@@ -1,8 +1,8 @@
-import type { DesignTeamRow, OutlierRow, SummaryCardConfig } from "../types";
+import type { OutliersTeamRow, OutlierRow, SummaryCardConfig } from "../types";
 import { DASHBOARD_BG_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import type { TimeRangeKey } from "@/lib/shared/types/timeRangeTypes";
 
-/** Mock outlier data for the Org Design "Need attention" cards (upper-left: low KP / high ownership). */
+/** Mock outlier data for the Org Outliers "Need attention" cards (upper-left: low KP / high ownership). */
 export const UPPER_LEFT_OUTLIERS: OutlierRow[] = [
   { name: "Sky Wilson 105", role: "Backend", kp: "5k", own: "25.0%", delta: "+6.64σ" },
   { name: "Alex Davis 495", role: "Backend", kp: "7k", own: "21.6%", delta: "+5.56σ" },
@@ -10,13 +10,13 @@ export const UPPER_LEFT_OUTLIERS: OutlierRow[] = [
   { name: "Avery Patel 340", role: "Backend", kp: "2k", own: "16.6%", delta: "+4.40σ" },
 ];
 
-/** Mock outlier data for the Org Design "Need attention" cards (lower-right: high KP / low ownership). */
+/** Mock outlier data for the Org Outliers "Need attention" cards (lower-right: high KP / low ownership). */
 export const LOWER_RIGHT_OUTLIERS: OutlierRow[] = [
   { name: "Avery Thomas 577", role: "DevOps", kp: "107k", own: "0.7%", delta: "-7.10σ" },
   { name: "Jordan Patel 375", role: "DevOps", kp: "31k", own: "2.4%", delta: "-1.64σ" },
 ];
 
-/** Mock summary card config for the Org Design page (Star, Key Player, Bottleneck, etc.). */
+/** Mock summary card config for the Org Outliers page (Star, Key Player, Bottleneck, etc.). */
 export const SUMMARY_CARD_CONFIGS: SummaryCardConfig[] = [
   { key: "star", title: "Star", count: 2, pct: 20, bg: "bg-green-100", iconColor: "text-green-600" },
   { key: "key-player", title: "Key Player", count: 2, pct: 20, bg: "bg-yellow-100", iconColor: "text-yellow-600" },
@@ -26,7 +26,7 @@ export const SUMMARY_CARD_CONFIGS: SummaryCardConfig[] = [
   { key: "time-bomb", title: "Time Bomb", count: 1, pct: 10, bg: "bg-red-100", iconColor: "text-red-600" },
 ];
 
-const DESIGN_TEAM_NAMES = [
+const OUTLIERS_TEAM_NAMES = [
   "Frontend Development",
   "UI/UX Design",
   "AI / ML Development",
@@ -34,7 +34,7 @@ const DESIGN_TEAM_NAMES = [
   "Web Development",
 ] as const;
 
-const DESIGN_TEAM_COLORS = [
+const OUTLIERS_TEAM_COLORS = [
   DASHBOARD_BG_CLASSES.danger,
   DASHBOARD_BG_CLASSES.excellent,
   DASHBOARD_BG_CLASSES.blue,
@@ -42,11 +42,11 @@ const DESIGN_TEAM_COLORS = [
   DASHBOARD_BG_CLASSES.danger,
 ] as const;
 
-/** Base mock design teams: ownership allocation (red, blue, green) and engineering chaos (red, light orange, blue, green). */
-const BASE_DESIGN_TEAM_ROWS: DesignTeamRow[] = [
+/** Base mock outliers teams: ownership allocation (red, blue, green) and engineering chaos (red, light orange, blue, green). */
+const BASE_OUTLIERS_TEAM_ROWS: OutliersTeamRow[] = [
   {
-    teamName: DESIGN_TEAM_NAMES[0],
-    teamColor: DESIGN_TEAM_COLORS[0],
+    teamName: OUTLIERS_TEAM_NAMES[0],
+    teamColor: OUTLIERS_TEAM_COLORS[0],
     ownershipAllocation: [8, 4, 10],
     engineeringChaos: [9, 7, 4, 3],
     outlierScore: 9,
@@ -55,8 +55,8 @@ const BASE_DESIGN_TEAM_ROWS: DesignTeamRow[] = [
     legacyScore: 2,
   },
   {
-    teamName: DESIGN_TEAM_NAMES[1],
-    teamColor: DESIGN_TEAM_COLORS[1],
+    teamName: OUTLIERS_TEAM_NAMES[1],
+    teamColor: OUTLIERS_TEAM_COLORS[1],
     ownershipAllocation: [5, 5, 14],
     engineeringChaos: [4, 3, 6, 8],
     outlierScore: 6,
@@ -65,8 +65,8 @@ const BASE_DESIGN_TEAM_ROWS: DesignTeamRow[] = [
     legacyScore: 3,
   },
   {
-    teamName: DESIGN_TEAM_NAMES[2],
-    teamColor: DESIGN_TEAM_COLORS[2],
+    teamName: OUTLIERS_TEAM_NAMES[2],
+    teamColor: OUTLIERS_TEAM_COLORS[2],
     ownershipAllocation: [6, 7, 11],
     engineeringChaos: [7, 6, 7, 4],
     outlierScore: 8,
@@ -75,8 +75,8 @@ const BASE_DESIGN_TEAM_ROWS: DesignTeamRow[] = [
     legacyScore: 4,
   },
   {
-    teamName: DESIGN_TEAM_NAMES[3],
-    teamColor: DESIGN_TEAM_COLORS[3],
+    teamName: OUTLIERS_TEAM_NAMES[3],
+    teamColor: OUTLIERS_TEAM_COLORS[3],
     ownershipAllocation: [4, 6, 14],
     engineeringChaos: [3, 4, 5, 7],
     outlierScore: 5,
@@ -85,8 +85,8 @@ const BASE_DESIGN_TEAM_ROWS: DesignTeamRow[] = [
     legacyScore: 7,
   },
   {
-    teamName: DESIGN_TEAM_NAMES[4],
-    teamColor: DESIGN_TEAM_COLORS[4],
+    teamName: OUTLIERS_TEAM_NAMES[4],
+    teamColor: OUTLIERS_TEAM_COLORS[4],
     ownershipAllocation: [7, 5, 10],
     engineeringChaos: [6, 5, 6, 5],
     outlierScore: 7,
@@ -97,7 +97,7 @@ const BASE_DESIGN_TEAM_ROWS: DesignTeamRow[] = [
 ];
 
 /** Default rows used where a specific time range is not required. */
-export const DESIGN_TEAM_ROWS: DesignTeamRow[] = BASE_DESIGN_TEAM_ROWS;
+export const OUTLIERS_TEAM_ROWS: OutliersTeamRow[] = BASE_OUTLIERS_TEAM_ROWS;
 
 function getRangeFactor(range: TimeRangeKey): number {
   if (range === "1m") return 0.8;
@@ -114,9 +114,9 @@ function clampScore(value: number, factor: number): number {
 }
 
 /** Range-aware mock rows so the Teams table can stay in sync with the chaos time filter. */
-export function getDesignTeamRowsForRange(range: TimeRangeKey): DesignTeamRow[] {
+export function getOutliersTeamRowsForRange(range: TimeRangeKey): OutliersTeamRow[] {
   const factor = getRangeFactor(range);
-  return BASE_DESIGN_TEAM_ROWS.map((row) => ({
+  return BASE_OUTLIERS_TEAM_ROWS.map((row) => ({
     ...row,
     ownershipAllocation: [
       clampScore(row.ownershipAllocation[0], factor),

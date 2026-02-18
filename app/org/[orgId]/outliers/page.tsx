@@ -1,5 +1,5 @@
-import { OrgDesignPageClient } from '@/components/dashboard/pages/OrgDesignPageClient';
+import { OrgOutliersPageClient } from '@/components/dashboard/pages/OrgOutliersPageClient';
 
-export default function OrgDesignPage() {
-  return <OrgDesignPageClient />;
+export default function OrgOutliersPage() {
+  return <OrgOutliersPageClient />;
 }

@@ -3,8 +3,8 @@ import type { DeveloperPoint } from "@/lib/dashboard/entities/team/types";
 import type { ChaosPoint } from "@/lib/dashboard/entities/team/charts/chaosMatrix/chaosMatrixData";
 import { getMemberPerformanceRowsForTeam } from "../mocks/overviewMockData";
 
-/** Design row with ownership and chaos metrics for a team member. */
-export type MemberDesignRow = {
+/** Outliers row with ownership and chaos metrics for a team member. */
+export type MemberOutliersRow = {
   memberName: string;
   teamId: string;
   totalKarmaPoints: number;
@@ -25,8 +25,8 @@ function noise(seed: number): number {
   return x - Math.floor(x);
 }
 
-/** Generate member design data with ownership and chaos metrics. */
-export function getMemberDesignData(teamId: string, memberCount: number = 6): MemberDesignRow[] {
+/** Generate member outliers data with ownership and chaos metrics. */
+export function getMemberOutliersData(teamId: string, memberCount: number = 6): MemberOutliersRow[] {
   // Reuse base member data for consistency
   const baseMembers = getMemberPerformanceRowsForTeam(52, teamId, memberCount);
 
@@ -112,8 +112,8 @@ export function getMemberDesignData(teamId: string, memberCount: number = 6): Me
   });
 }
 
-/** Transform member design data to OwnershipScatter DeveloperPoint[] format. */
-export function transformToOwnershipScatterData(members: MemberDesignRow[]): DeveloperPoint[] {
+/** Transform member outliers data to OwnershipScatter DeveloperPoint[] format. */
+export function transformToOwnershipScatterData(members: MemberOutliersRow[]): DeveloperPoint[] {
   // Calculate mean and standard deviation for outlier detection
   const kpValues = members.map((m) => m.totalKarmaPoints);
   const ownValues = members.map((m) => m.ownershipPct);
@@ -150,9 +150,9 @@ export function transformToOwnershipScatterData(members: MemberDesignRow[]): Dev
   });
 }
 
-/** Transform member design data to ChaosMatrix ChaosPoint[] format. */
+/** Transform member outliers data to ChaosMatrix ChaosPoint[] format. */
 export function transformToChaosMatrixData(
-  members: MemberDesignRow[],
+  members: MemberOutliersRow[],
   range?: "1m" | "3m" | "1y" | "max"
 ): ChaosPoint[] {
   // Time range affects how much variance/drift we show from base values

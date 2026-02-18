@@ -1,18 +1,18 @@
 import type { BaseTeamsTableColumn } from "@/components/dashboard/shared/BaseTeamsTable";
 import { SegmentBar } from "@/components/dashboard/shared/SegmentBar";
 import { Badge } from "@/components/shared/Badge";
-import { UserAvatar } from "@/components/shared/UserAvatar";
-import type { ContributorDesignRow } from "../mocks/designMockData";
-import type { DesignContributorFilter } from "../utils/designHelpers";
-import { DASHBOARD_TEXT_CLASSES, DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
+import { TeamAvatar } from "@/components/shared/TeamAvatar";
+import type { MemberOutliersRow } from "../mocks/outliersMockData";
+import type { OutliersMemberFilter } from "../utils/outliersHelpers";
+import { DASHBOARD_TEXT_CLASSES } from "@/lib/dashboard/shared/utils/colors";
 import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
 import { CATEGORY_COLORS } from "@/lib/dashboard/entities/team/charts/chaosMatrix/chaosMatrixData";
 import { getTrendIconForCount } from "@/lib/dashboard/shared/utils/trendHelpers";
 
 const OWNERSHIP_SEGMENTS = [
-  { label: "High Ownership", style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.greenLight, 0.25), color: DASHBOARD_COLORS.greenLight } },
-  { label: "Balanced Ownership", style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.blueTailwind, 0.25), color: DASHBOARD_COLORS.blueTailwind } },
-  { label: "Low Ownership", style: { backgroundColor: hexToRgba(DASHBOARD_COLORS.red, 0.25), color: DASHBOARD_COLORS.red } },
+  { label: "High Ownership", style: { backgroundColor: hexToRgba("#22c55e", 0.25), color: "#22c55e" } },
+  { label: "Balanced Ownership", style: { backgroundColor: hexToRgba("#4285f4", 0.25), color: "#4285f4" } },
+  { label: "Low Ownership", style: { backgroundColor: hexToRgba("#ef4444", 0.25), color: "#ef4444" } },
 ];
 
 const CHAOS_SEGMENTS = [
@@ -46,7 +46,7 @@ const CHAOS_SEGMENTS = [
   },
 ];
 
-export const DESIGN_CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorDesignRow, DesignContributorFilter>[] = [
+export const OUTLIERS_MEMBER_COLUMNS: BaseTeamsTableColumn<MemberOutliersRow, OutliersMemberFilter>[] = [
   {
     key: "rank",
     header: "Rank",
@@ -66,13 +66,13 @@ export const DESIGN_CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorDesignR
     },
   },
   {
-    key: "contributor",
-    header: "Contributor",
+    key: "member",
+    header: "Member",
     enableSorting: false,
     render: (row) => (
       <div className="flex items-center gap-3">
-        <UserAvatar userName={row.contributorName} className="size-4" size={16} />
-        <p className="font-medium text-gray-900">{row.contributorName}</p>
+        <TeamAvatar teamName={row.memberName} className="size-4" />
+        <p className="font-medium text-gray-900">{row.memberName}</p>
       </div>
     ),
   },
@@ -82,7 +82,7 @@ export const DESIGN_CONTRIBUTOR_COLUMNS: BaseTeamsTableColumn<ContributorDesignR
     enableSorting: true,
     accessorFn: (row) => row.ownershipAllocation[2], // Sort by high ownership count
     render: (row) => {
-      // Reverse order: green, blue, red (as per org design pattern)
+      // Reverse order: green, blue, red (as per org outliers pattern)
       const counts = [
         row.ownershipAllocation[2],
         row.ownershipAllocation[1],

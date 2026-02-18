@@ -9,30 +9,30 @@ import { CollaborationNetworkGraph } from "@/components/dashboard/teamDashboard/
 import { ChartInsights } from "@/components/dashboard/shared/ChartInsights";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import {
-  getMemberDesignData,
+  getMemberOutliersData,
   transformToChaosMatrixData,
-  type MemberDesignRow,
-} from "@/lib/dashboard/entities/member/mocks/designMockData";
+  type MemberOutliersRow,
+} from "@/lib/dashboard/entities/member/mocks/outliersMockData";
 import { getTeamCollaborationData } from "@/lib/dashboard/entities/member/charts/collaborationNetwork/collaborationNetworkData";
 import type { ChartInsight } from "@/lib/dashboard/entities/team/types";
 import {
-  DESIGN_MEMBER_FILTER_TABS,
-  designMemberSortFunction,
-  type DesignMemberFilter,
-} from "@/lib/dashboard/entities/member/utils/designHelpers";
-import { DESIGN_MEMBER_COLUMNS } from "@/lib/dashboard/entities/member/tables/designTableColumns";
+  OUTLIERS_MEMBER_FILTER_TABS,
+  outliersMemberSortFunction,
+  type OutliersMemberFilter,
+} from "@/lib/dashboard/entities/member/utils/outliersHelpers";
+import { OUTLIERS_MEMBER_COLUMNS } from "@/lib/dashboard/entities/member/tables/outliersTableColumns";
 import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 
-export function TeamDesignPageClient() {
+export function TeamOutliersPageClient() {
   const { teamId } = useRouteParams();
   const { timeRange } = useTimeRange();
 
   // State
-  const [designFilter, setDesignFilter] = useState<DesignMemberFilter>("mostImportant");
+  const [outliersFilter, setOutliersFilter] = useState<OutliersMemberFilter>("mostImportant");
   const [collaborationInsights, setCollaborationInsights] = useState<ChartInsight[]>([]);
 
   // Data pipeline
-  const members = useMemo(() => getMemberDesignData(teamId!, 6), [teamId]);
+  const members = useMemo(() => getMemberOutliersData(teamId!, 6), [teamId]);
 
   const chaosMatrixData = useMemo(
     () => transformToChaosMatrixData(members, timeRange),
@@ -75,14 +75,14 @@ export function TeamDesignPageClient() {
         </DashboardSection>
 
         <DashboardSection title="Team Members" className="w-full">
-          <BaseTeamsTable<MemberDesignRow, DesignMemberFilter>
+          <BaseTeamsTable<MemberOutliersRow, OutliersMemberFilter>
             rows={members}
-            filterTabs={DESIGN_MEMBER_FILTER_TABS}
-            activeFilter={designFilter}
-            onFilterChange={setDesignFilter}
+            filterTabs={OUTLIERS_MEMBER_FILTER_TABS}
+            activeFilter={outliersFilter}
+            onFilterChange={setOutliersFilter}
             defaultFilter="mostImportant"
-            sortFunction={designMemberSortFunction}
-            columns={DESIGN_MEMBER_COLUMNS}
+            sortFunction={outliersMemberSortFunction}
+            columns={OUTLIERS_MEMBER_COLUMNS}
             getRowKey={(row) => row.memberName}
             showFilters={false}
           />

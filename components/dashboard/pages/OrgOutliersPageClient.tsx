@@ -16,7 +16,7 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
-import { DESIGN_TEAM_ROWS, getDesignTeamRowsForRange } from "@/lib/dashboard/entities/team/mocks/designMockData";
+import { OUTLIERS_TEAM_ROWS, getOutliersTeamRowsForRange } from "@/lib/dashboard/entities/team/mocks/outliersTeamsMockData";
 import {
   MOCK_OUTLIER_DEVELOPERS,
   OWNERSHIP_MOTIVATION,
@@ -30,11 +30,11 @@ import type {
 // Using fixed time range since time filter is temporarily disabled
 const FIXED_TIME_RANGE = "max" as const;
 
-export function OrgDesignPageClient() {
+export function OrgOutliersPageClient() {
   // State for teams visibility (used by ChaosMatrixChart)
   const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
-    DESIGN_TEAM_ROWS.forEach((row, index) => {
+    OUTLIERS_TEAM_ROWS.forEach((row, index) => {
       init[row.teamName] = index !== 1;
     });
     return init;
@@ -46,14 +46,14 @@ export function OrgDesignPageClient() {
   const [selectedChaosCategory, setSelectedChaosCategory] =
     useState<ChaosCategory>("Low-Skill Developer");
 
-  const designTeamRows = useMemo(
-    () => getDesignTeamRowsForRange(FIXED_TIME_RANGE),
+  const outliersTeamRows = useMemo(
+    () => getOutliersTeamRowsForRange(FIXED_TIME_RANGE),
     []
   );
 
-  const designTeamNames = useMemo(
-    () => designTeamRows.map((row) => row.teamName),
-    [designTeamRows]
+  const outliersTeamNames = useMemo(
+    () => outliersTeamRows.map((row) => row.teamName),
+    [outliersTeamRows]
   );
 
   return (
@@ -112,7 +112,7 @@ export function OrgDesignPageClient() {
             <ChaosMatrixChart
               range={FIXED_TIME_RANGE}
               visibleTeams={visibleTeams}
-              teamNames={designTeamNames}
+              teamNames={outliersTeamNames}
               renderMode="circles"
             />
           </div>

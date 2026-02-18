@@ -7,27 +7,27 @@ import { DashboardSection } from "@/components/dashboard/shared/DashboardSection
 import { useTimeRange } from "@/lib/dashboard/shared/contexts/TimeRangeContext";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import {
-  getContributorDesignData,
+  getContributorOutliersData,
   transformToChaosMatrixData,
-  type ContributorDesignRow,
-} from "@/lib/dashboard/entities/contributor/mocks/designMockData";
+  type ContributorOutliersRow,
+} from "@/lib/dashboard/entities/contributor/mocks/outliersMockData";
 import {
-  DESIGN_CONTRIBUTOR_FILTER_TABS,
-  designContributorSortFunction,
-  type DesignContributorFilter,
-} from "@/lib/dashboard/entities/contributor/utils/designHelpers";
-import { DESIGN_CONTRIBUTOR_COLUMNS } from "@/lib/dashboard/entities/contributor/tables/designTableColumns";
+  OUTLIERS_CONTRIBUTOR_FILTER_TABS,
+  outliersContributorSortFunction,
+  type OutliersContributorFilter,
+} from "@/lib/dashboard/entities/contributor/utils/outliersHelpers";
+import { OUTLIERS_CONTRIBUTOR_COLUMNS } from "@/lib/dashboard/entities/contributor/tables/outliersTableColumns";
 import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 
-export function RepoDesignPageClient() {
+export function RepoOutliersPageClient() {
   const { repoId } = useRouteParams();
   const { timeRange } = useTimeRange();
 
   // State
-  const [designFilter, setDesignFilter] = useState<DesignContributorFilter>("mostImportant");
+  const [outliersFilter, setOutliersFilter] = useState<OutliersContributorFilter>("mostImportant");
 
   // Data pipeline
-  const contributors = useMemo(() => getContributorDesignData(repoId!, 6), [repoId]);
+  const contributors = useMemo(() => getContributorOutliersData(repoId!, 6), [repoId]);
 
   const chaosMatrixData = useMemo(
     () => transformToChaosMatrixData(contributors, timeRange),
@@ -50,14 +50,14 @@ export function RepoDesignPageClient() {
         </DashboardSection>
 
         <DashboardSection title="Repository Contributors" className="w-full">
-          <BaseTeamsTable<ContributorDesignRow, DesignContributorFilter>
+          <BaseTeamsTable<ContributorOutliersRow, OutliersContributorFilter>
             rows={contributors}
-            filterTabs={DESIGN_CONTRIBUTOR_FILTER_TABS}
-            activeFilter={designFilter}
-            onFilterChange={setDesignFilter}
+            filterTabs={OUTLIERS_CONTRIBUTOR_FILTER_TABS}
+            activeFilter={outliersFilter}
+            onFilterChange={setOutliersFilter}
             defaultFilter="mostImportant"
-            sortFunction={designContributorSortFunction}
-            columns={DESIGN_CONTRIBUTOR_COLUMNS}
+            sortFunction={outliersContributorSortFunction}
+            columns={OUTLIERS_CONTRIBUTOR_COLUMNS}
             getRowKey={(row) => row.contributorName}
             showFilters={false}
           />

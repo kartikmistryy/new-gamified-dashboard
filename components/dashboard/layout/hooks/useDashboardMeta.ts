@@ -22,7 +22,7 @@ const ROUTE_LABELS: Record<string, string> = {
   overview: "Overview",
   performance: "Performance",
   spof: "SPOF",
-  design: "Outliers",
+  outliers: "Outliers",
   skillgraph: "SkillsGraph",
   
 }
