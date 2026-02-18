@@ -161,6 +161,8 @@ function LogTicker({ stepId }: { stepId: string }) {
     return () => clearInterval(id)
   }, [])
 
+
+
   React.useEffect(() => {
     setCompletedLines([])
     setTypingText("")
@@ -707,7 +709,7 @@ function CompletionScreen({ orgUrl, onOpenDashboard }: CompletionScreenProps) {
 // ---------------------------------------------------------------------------
 
 interface ImportPanelProps {
-  onImportComplete: () => void
+  onImportComplete: (orgId: string) => void
 }
 
 export function ImportPanel({ onImportComplete }: ImportPanelProps) {
@@ -725,6 +727,21 @@ export function ImportPanel({ onImportComplete }: ImportPanelProps) {
     const id = setInterval(() => setElapsed(Date.now() - start), 80)
     return () => clearInterval(id)
   }, [phase])
+
+
+
+  React.useEffect(() => {
+    if (phase === "complete") {
+      const orgId = orgUrl.split("/").filter(Boolean).pop() ?? ""
+      const orgName = orgId.charAt(0).toUpperCase() + orgId.slice(1)
+      const raw = localStorage.getItem("orgs")
+      const orgs = raw && raw !== "undefined" ? JSON.parse(raw) : []
+      if (!orgs.find((o: { id: string }) => o.id === orgId)) {
+        orgs.push({ id: orgId, name: orgName })
+        localStorage.setItem("orgs", JSON.stringify(orgs))
+      }
+    }
+  }, [phase, orgUrl])
 
   // Pipeline step sequencer
   React.useEffect(() => {
@@ -917,7 +934,7 @@ export function ImportPanel({ onImportComplete }: ImportPanelProps) {
           >
             <CompletionScreen
               orgUrl={orgUrl}
-              onOpenDashboard={onImportComplete}
+              onOpenDashboard={() => onImportComplete(orgUrl.split("/").filter(Boolean).pop() ?? "")}
             />
           </motion.div>
         )}

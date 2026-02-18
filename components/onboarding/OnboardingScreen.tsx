@@ -3,7 +3,6 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { OnboardingSidebar } from "./OnboardingSidebar"
 import { ImportPanel } from "./ImportPanel"
 
 // ---------------------------------------------------------------------------
@@ -16,17 +15,15 @@ import { ImportPanel } from "./ImportPanel"
 // Route: /onboarding
 // ---------------------------------------------------------------------------
 
-const DEFAULT_REDIRECT = "/org/gitroll"
-
 export function OnboardingScreen() {
   const router = useRouter()
   const [exiting, setExiting] = React.useState(false)
 
-  function handleImportComplete() {
+  function handleImportComplete(orgId: string) {
     setExiting(true)
     // Allow the exit animation to play before navigating
     setTimeout(() => {
-      router.push(DEFAULT_REDIRECT)
+      router.push(`/org/${orgId}`)
     }, 500)
   }
 
@@ -41,9 +38,6 @@ export function OnboardingScreen() {
           transition={{ duration: 0.45, ease: "easeInOut" }}
           className="flex h-screen w-screen overflow-hidden bg-white"
         >
-          {/* Static sidebar — no dynamic data loaded */}
-          <OnboardingSidebar />
-
           {/* Main content area */}
           <main
             className="flex flex-1 flex-col overflow-hidden"
@@ -60,24 +54,5 @@ export function OnboardingScreen() {
         </motion.div>
       )}
     </AnimatePresence>
-  )
-}
-
-// ---------------------------------------------------------------------------
-// Subtle background texture — a 3x3 grid of faint dots that adds depth
-// without competing with the import panel. Pure CSS, no images required.
-// ---------------------------------------------------------------------------
-
-function CanvasDecoration() {
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 overflow-hidden"
-      style={{
-        backgroundImage: `radial-gradient(circle, #d4d4d4 1px, transparent 1px)`,
-        backgroundSize: "28px 28px",
-        opacity: 0.35,
-      }}
-    />
   )
 }

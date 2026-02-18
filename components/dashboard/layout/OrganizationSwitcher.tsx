@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { SidebarHeader } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
-import { organizations } from "@/__mocks__/sidebar/organizations"
+import { getOrganizations } from "@/__mocks__/sidebar/organizations"
 import type { Organization } from "@/types/sidebar"
 
 interface OrganizationSwitcherProps {
@@ -40,7 +40,7 @@ export function OrganizationSwitcher({ selectedOrg, onSelectOrg }: OrganizationS
         <DropdownMenuContent align="start" className="w-[200px] bg-white">
           <DropdownMenuLabel>Switch Organization</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          {organizations.map((org) => (
+          {getOrganizations().map((org: Organization) => (
             <DropdownMenuItem
               key={org.id}
               onClick={() => onSelectOrg(org)}

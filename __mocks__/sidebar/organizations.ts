@@ -1,5 +1,5 @@
-export const organizations = [
-  { id: "gitroll", name: "GitRoll" },
-  { id: "acme", name: "Acme Inc" },
-  { id: "techcorp", name: "TechCorp" },
-]
+export const getOrganizations = () => {
+  if (typeof window === "undefined") return []
+  const raw = localStorage.getItem("orgs")
+  return raw && raw !== "undefined" ? JSON.parse(raw) : []
+}
