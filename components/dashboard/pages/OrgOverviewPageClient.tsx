@@ -39,6 +39,31 @@ function ViewDetailsButton({ href }: { href: string }) {
   );
 }
 
+function progressColor(progress: string) {
+  if (progress === "healthy") return "text-green-600";
+  return "text-amber-600";
+}
+
+function perfLabelColor(label: string) {
+  if (label.startsWith("Extreme Outperforming")) return "text-emerald-600";
+  if (label === "Outperforming") return "text-green-600";
+  if (label === "Flat") return "text-slate-500";
+  if (label === "Underperforming") return "text-amber-600";
+  if (label.startsWith("Extreme Underperforming")) return "text-red-600";
+  return "text-gray-900";
+}
+
+function riskColor(risk: string) {
+  if (risk === "Low") return "text-green-600";
+  if (risk === "Medium") return "text-amber-600";
+  if (risk === "High") return "text-orange-500";
+  return "text-red-600"; // Severe
+}
+
+function dirColor(dir: string) {
+  return dir === "down" ? "text-green-600" : "text-red-600";
+}
+
 function SectionTitle({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <Link href={href} className="hover:text-blue-600 transition-colors">
@@ -112,11 +137,12 @@ export function OrgOverviewPageClient() {
       <div className="rounded-lg border border-gray-200 bg-white px-5 py-3.5">
         <p className="text-2xl font-semibold text-foreground mb-1">Status Snapshot</p>
         <p className="text-sm leading-relaxed text-gray-600">
-          Project progress <span className="font-semibold text-gray-900">{snapshot.progress}</span>{" "}
-          ({snapshot.perfLabel}), SPOF risk{" "}
-          <span className="font-semibold text-gray-900">{snapshot.risk}</span>{" "}
-          — {snapshot.riskDir} {snapshot.riskDelta}% from last month ({snapshot.atRiskPct}% at-risk),{" "}
-          <span className="font-semibold text-gray-900">{snapshot.criticalCount} critical outliers</span> detected.
+          Project progress{" "}
+          <span className={`font-semibold ${progressColor(snapshot.progress)}`}>{snapshot.progress}</span>{" "}
+          (<span className={`font-medium ${perfLabelColor(snapshot.perfLabel)}`}>{snapshot.perfLabel}</span>), SPOF risk{" "}
+          <span className={`font-semibold ${riskColor(snapshot.risk)}`}>{snapshot.risk}</span>{" "}
+          — <span className={`font-semibold ${dirColor(snapshot.riskDir)}`}>{snapshot.riskDir} {snapshot.riskDelta}%</span> from last month ({snapshot.atRiskPct}% at-risk),{" "}
+          <span className="font-semibold text-red-600">{snapshot.criticalCount} critical outliers</span> detected.
         </p>
       </div>
 
