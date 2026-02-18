@@ -170,7 +170,6 @@ export function buildChaosMatrixLayout(
         line: { color: "#9ca3af", width: 1, dash: "dash" },
       },
     ],
-    annotations: buildQuadrantAnnotations(xMin, xMax, yMin, yMax, kpThresh),
     plot_bgcolor: "#f9fafb",
     paper_bgcolor: "#ffffff",
     margin: { t: 30, r: 30, b: 60, l: 70 },
@@ -178,7 +177,7 @@ export function buildChaosMatrixLayout(
     height: 420,
     legend: {
       orientation: "h",
-      y: -0.2,
+      y: -0.3,
       x: 0.5,
       xanchor: "center",
       font: { size: 12 },
