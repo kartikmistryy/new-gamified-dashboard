@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-02-19T18:24:40.949Z",
+  "repos": [
+    "AutoGPT",
+    "Flowise",
+    "QuivrHQ_quivr",
+    "langchain",
+    "langfuse_langfuse",
+    "llama_index",
+    "reflex-dev_reflex",
+    "ruff",
+    "rustdesk",
+    "stable-diffusion-webui",
+    "text-generation-webui",
+    "transformers",
+    "twentyhq_twenty",
+    "typst"
+  ],
+  "contributor": {
+    "repoCount": 14,
+    "contributorCount": 5322,
+    "totalCommits": 34458
+  },
+  "nLoc": {
+    "total": 7804043,
+    "byOperation": {
+      "add": 4804773,
+      "update": 1392774,
+      "delete": 1229684,
+      "selfDelete": 376812
+    },
+    "fractions": {
+      "add": 0.6156774123361443,
+      "update": 0.1784682631810204,
+      "delete": 0.15757012102572987,
+      "selfDelete": 0.048284203457105504
+    }
+  },
+  "churn": {
+    "churnRatePct": 4.82842034571055,
+    "totalSelfDeleteLines": 376812,
+    "totalLinesChanged": 7804043
+  }
+}
