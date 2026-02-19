@@ -10,11 +10,16 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/shared/Badge";
 import type {
   OutlierDeveloper,
   OutlierPriority,
 } from "@/lib/dashboard/entities/team/types";
 import { SPOF_STYLES } from "@/lib/dashboard/entities/team/mocks/outliersMockData";
+import {
+  DASHBOARD_TEXT_CLASSES,
+  STATUS_COLORS,
+} from "@/lib/dashboard/shared/utils/colors";
 
 type OutliersTableProps = {
   developers: OutlierDeveloper[];
@@ -23,44 +28,80 @@ type OutliersTableProps = {
 
 type ViewMode = "outliers" | "all";
 
-const SECTION_CONFIG: Record<OutlierPriority, { label: string; bgColor: string }> = {
+const SECTION_CONFIG: Record<
+  OutlierPriority,
+  { label: string; rowBg: string; rowHover: string; badgeBg: string; badgeText: string }
+> = {
   critical: {
     label: "Lower than expected",
-    bgColor: "bg-red-500",
+    rowBg: STATUS_COLORS.critical.bg,
+    rowHover: "hover:bg-[#ef4444]/10",
+    badgeBg: STATUS_COLORS.critical.bg,
+    badgeText: STATUS_COLORS.critical.text,
   },
   attention: {
     label: "Higher than expected",
-    bgColor: "bg-amber-500",
+    rowBg: STATUS_COLORS.attention.bg,
+    rowHover: "hover:bg-[#f59e0b]/10",
+    badgeBg: STATUS_COLORS.attention.bg,
+    badgeText: STATUS_COLORS.attention.text,
   },
   normal: {
     label: "As expected",
-    bgColor: "bg-green-500",
+    rowBg: STATUS_COLORS.healthy.bg,
+    rowHover: "hover:bg-[#22c55e]/10",
+    badgeBg: STATUS_COLORS.healthy.bg,
+    badgeText: STATUS_COLORS.healthy.text,
   },
 };
 
 type DeveloperRowProps = {
   dev: OutlierDeveloper;
-  index: number;
+  globalIndex: number;
+  priority: OutlierPriority;
+  isFirstInSection: boolean;
 };
 
-function DeveloperRow({ dev, index }: DeveloperRowProps) {
+function DeveloperRow({
+  dev,
+  globalIndex,
+  priority,
+  isFirstInSection,
+}: DeveloperRowProps) {
   const spofStyle = SPOF_STYLES[dev.spofAssessment];
+  const config = SECTION_CONFIG[priority];
 
   return (
-    <TableRow>
+    <TableRow className={cn(config.rowBg, config.rowHover)}>
+      {/* Category badge — only on first row of each section */}
+      <TableCell className="w-[150px]">
+        {isFirstInSection && (
+          <span
+            className={cn(
+              "px-2.5 py-0.5 text-xs font-semibold rounded-full whitespace-nowrap",
+              config.badgeBg,
+              config.badgeText
+            )}
+          >
+            {config.label}
+          </span>
+        )}
+      </TableCell>
+
       {/* Rank */}
-      <TableCell className="text-center w-[50px]">
+      <TableCell className="w-14">
         <span
-          className={cn(
-            "text-sm font-medium",
-            index < 3 ? "text-gray-900 font-bold" : "text-gray-400"
-          )}
+          className={
+            globalIndex < 3
+              ? "text-foreground font-bold"
+              : DASHBOARD_TEXT_CLASSES.rankMuted
+          }
         >
-          {index + 1}
+          {globalIndex + 1}
         </span>
       </TableCell>
 
-      {/* Name + Quadrant subtitle */}
+      {/* Name + subtitle */}
       <TableCell>
         <div className="flex items-center gap-3">
           <div className="h-8 w-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs font-medium shrink-0">
@@ -94,29 +135,6 @@ function DeveloperRow({ dev, index }: DeveloperRowProps) {
   );
 }
 
-
-function SectionHeader({ priority }: { priority: OutlierPriority }) {
-  const config = SECTION_CONFIG[priority];
-
-  return (
-    <TableRow>
-      <TableCell colSpan={3} className="py-3 border-t border-border">
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">Share of Ownership</span>
-          <span
-            className={cn(
-              "px-2.5 py-0.5 text-xs font-semibold rounded-full text-white",
-              config.bgColor
-            )}
-          >
-            {config.label}
-          </span>
-        </div>
-      </TableCell>
-    </TableRow>
-  );
-}
-
 /**
  * Outliers table showing developers grouped by priority sections.
  * Toggle between "See Outliers" (Critical + Needs Attention) and "See All" (includes Normal).
@@ -124,59 +142,67 @@ function SectionHeader({ priority }: { priority: OutlierPriority }) {
 export function OutliersTable({ developers, className }: OutliersTableProps) {
   const [viewMode, setViewMode] = useState<ViewMode>("outliers");
 
-  // Group developers by priority
   const grouped = useMemo(() => {
     const groups: Record<OutlierPriority, OutlierDeveloper[]> = {
       critical: [],
       attention: [],
       normal: [],
     };
-
     developers.forEach((dev) => {
       groups[dev.priority].push(dev);
     });
-
     return groups;
   }, [developers]);
 
-  // Determine which sections to show based on view mode
-  const sectionsToShow: OutlierPriority[] =
-    viewMode === "outliers"
-      ? ["critical", "attention"]
-      : ["critical", "attention", "normal"];
+  const rows = useMemo(() => {
+    const sectionsToShow: OutlierPriority[] =
+      viewMode === "outliers"
+        ? ["critical", "attention"]
+        : ["critical", "attention", "normal"];
 
-  // Calculate running index for row numbers
-  let runningIndex = 0;
+    const result: {
+      dev: OutlierDeveloper;
+      priority: OutlierPriority;
+      isFirstInSection: boolean;
+      globalIndex: number;
+    }[] = [];
+    let globalIndex = 0;
+
+    sectionsToShow.forEach((priority) => {
+      grouped[priority].forEach((dev, idx) => {
+        result.push({ dev, priority, isFirstInSection: idx === 0, globalIndex: globalIndex++ });
+      });
+    });
+
+    return result;
+  }, [grouped, viewMode]);
 
   return (
     <div className={cn("w-full", className)}>
       {/* Toggle */}
-      <div className="flex items-center gap-2 mb-4">
-        <button
-          type="button"
+      <div className="flex flex-row flex-wrap items-center gap-2 mb-4">
+        <Badge
           onClick={() => setViewMode("outliers")}
-          className={cn(
-            "px-4 py-1.5 text-sm font-medium rounded-md transition-colors",
+          className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
             viewMode === "outliers"
-              ? "bg-gray-900 text-white"
-              : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-          )}
+              ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
+              : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
+          }`}
         >
           See Outliers
-        </button>
-        <button
-          type="button"
+        </Badge>
+        <Badge
           onClick={() => setViewMode("all")}
-          className={cn(
-            "px-4 py-1.5 text-sm font-medium rounded-md transition-colors",
+          className={`px-3 py-2 rounded-lg cursor-pointer text-xs font-medium transition-colors ${
             viewMode === "all"
-              ? "bg-gray-900 text-white"
-              : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-          )}
+              ? "bg-gray-100 text-gray-700 hover:bg-gray-100"
+              : "bg-transparent text-gray-700 border border-gray-200 hover:bg-gray-100"
+          }`}
         >
           See All
-        </button>
-        <span className="ml-2 text-sm text-gray-500">
+        </Badge>
+        <span className="text-gray-300">|</span>
+        <span className="text-xs text-gray-500">
           {viewMode === "outliers"
             ? `${grouped.critical.length + grouped.attention.length} outliers`
             : `${developers.length} total`}
@@ -184,59 +210,39 @@ export function OutliersTable({ developers, className }: OutliersTableProps) {
       </div>
 
       {/* Table */}
-      <div className="rounded-lg border border-border overflow-hidden">
+      <div className="rounded-sm border-none overflow-hidden bg-white">
         <Table>
-          <TableHeader>
-            <TableRow className="bg-gray-50">
-              <TableHead className="w-[50px] text-center">#</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>SPOF Assessment</TableHead>
+          <TableHeader className="border-0">
+            <TableRow className="border-none hover:bg-transparent">
+              <TableHead className="w-[150px] text-foreground font-medium">
+                Category
+              </TableHead>
+              <TableHead className="w-14 text-foreground font-medium">Rank</TableHead>
+              <TableHead className="text-foreground font-medium">Name</TableHead>
+              <TableHead className="text-foreground font-medium">SPOF Assessment</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {sectionsToShow.map((priority) => {
-              const sectionDevs = grouped[priority];
-              if (sectionDevs.length === 0) return null;
-
-              const startIndex = runningIndex;
-              runningIndex += sectionDevs.length;
-
-              return (
-                <SectionRows
-                  key={priority}
-                  priority={priority}
-                  developers={sectionDevs}
-                  startIndex={startIndex}
-                />
-              );
-            })}
-            {sectionsToShow.every((p) => grouped[p].length === 0) && (
+            {rows.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={3} className="text-center py-8 text-gray-400">
+                <TableCell colSpan={4} className="text-center py-8 text-gray-400">
                   No developers to display
                 </TableCell>
               </TableRow>
+            ) : (
+              rows.map(({ dev, priority, isFirstInSection, globalIndex }) => (
+                <DeveloperRow
+                  key={dev.id}
+                  dev={dev}
+                  globalIndex={globalIndex}
+                  priority={priority}
+                  isFirstInSection={isFirstInSection}
+                />
+              ))
             )}
           </TableBody>
         </Table>
       </div>
     </div>
-  );
-}
-
-type SectionRowsProps = {
-  priority: OutlierPriority;
-  developers: OutlierDeveloper[];
-  startIndex: number;
-};
-
-function SectionRows({ priority, developers, startIndex }: SectionRowsProps) {
-  return (
-    <>
-      <SectionHeader priority={priority} />
-      {developers.map((dev, idx) => (
-        <DeveloperRow key={dev.id} dev={dev} index={startIndex + idx} />
-      ))}
-    </>
   );
 }
