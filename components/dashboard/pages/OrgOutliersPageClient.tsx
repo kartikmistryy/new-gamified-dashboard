@@ -11,6 +11,7 @@ import {
   ChaosTogglePanel,
 } from "@/components/dashboard/shared/CategoryTogglePanel";
 import { OutliersTable } from "@/components/dashboard/orgDashboard/OutliersTable";
+import { OverviewOutliersSection } from "@/components/dashboard/orgDashboard/OverviewOutliersSection";
 import {
   Tooltip,
   TooltipTrigger,
@@ -32,7 +33,7 @@ const FIXED_TIME_RANGE = "max" as const;
 
 export function OrgOutliersPageClient() {
   // State for teams visibility (used by ChaosMatrixChart)
-  const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
+  const [visibleTeams] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
     OUTLIERS_TEAM_ROWS.forEach((row, index) => {
       init[row.teamName] = index !== 1;
@@ -58,11 +59,36 @@ export function OrgOutliersPageClient() {
 
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
+      {/* Header: visualization left (70%), motivation right (30%) */}
+      <div className="flex flex-row flex-wrap items-stretch gap-6">
+        {/* Left column: visualization card */}
+        <div className="flex-7 min-w-[300px] rounded-[10px] p-6 flex flex-col">
+          <p className="text-sm text-gray-500 mb-3">Developer Outliers at a Glance</p>
+          <OverviewOutliersSection />
+        </div>
+
+        {/* Right column: motivation card */}
+        <div className="flex-3 min-w-[200px] rounded-[10px] p-6 flex flex-col justify-center">
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+            Why It Matters
+          </p>
+          <p className="text-sm text-gray-700 mb-4">
+            Surfaces developers whose contribution patterns diverge from team norms — revealing hidden bottlenecks, overburdened owners, or misaligned effort before they become costly.
+          </p>
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+            How It&apos;s Calculated
+          </p>
+          <p className="text-sm text-gray-700">
+            Cross-references Share of Ownership (KarmaPoints vs ownership %), Developer Performance Matrix (KP vs churn rate), and SPOF risk to rank and prioritize individuals who need attention.
+          </p>
+        </div>
+      </div>
+
       {/* Row 2: Expected Share of Ownership */}
       <DashboardSection title="Expected Share of Ownership %">
         <div className="flex flex-row flex-wrap items-stretch gap-4">
           {/* Column 1: Chart */}
-          <div className="flex-[2] min-w-[400px]">
+          <div className="flex-2 min-w-[400px]">
             <OwnershipScatter range={FIXED_TIME_RANGE} />
           </div>
           {/* Column 2: Motivation Panel */}
@@ -89,7 +115,7 @@ export function OrgOutliersPageClient() {
       <DashboardSection title="Developer Performance Matrix">
         <div className="flex flex-row flex-wrap items-stretch gap-4">
           {/* Column 1: Chart */}
-          <div className="flex-[2] min-w-[400px] overflow-hidden">
+          <div className="flex-2 min-w-[400px] overflow-hidden">
             <ChaosMatrixChart
               range={FIXED_TIME_RANGE}
               visibleTeams={visibleTeams}
