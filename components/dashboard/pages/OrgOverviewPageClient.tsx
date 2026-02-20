@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, useCallback } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { GaugeSection } from "@/components/dashboard/shared/GaugeSection";
 import { PerformanceChart } from "@/components/dashboard/shared/PerformanceChart";
-import { OverviewOutliersSection } from "@/components/dashboard/orgDashboard/OverviewOutliersSection";
-import { OverviewSpofSummary } from "@/components/dashboard/orgDashboard/OverviewSpofSummary";
-import { OverviewSkillsSummary } from "@/components/dashboard/orgDashboard/OverviewSkillsSummary";
+import { OverviewOutliersSection } from "@/components/dashboard/shared/OverviewOutliersSection";
+import { OverviewSpofSummary } from "@/components/dashboard/shared/OverviewSpofSummary";
+import { OverviewSkillsSummary } from "@/components/dashboard/shared/OverviewSkillsSummary";
 import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 import {
   generateOrgPerformanceData,
@@ -22,10 +22,10 @@ import {
 import { transformToTableData } from "@/components/skillmap/skillGraphTableTransform";
 import type { SkillsRoadmapProgressData } from "@/lib/dashboard/entities/roadmap/types";
 import { getPerformanceGaugeLabel } from "@/lib/dashboard/entities/team/utils/utils";
-import { ORG_SPOF_RISK_LEVEL, ORG_SPOF_TOTALS } from "@/lib/dashboard/entities/team/data/orgSpofDataLoader";
-import { getDevelopersByOwnership } from "@/lib/dashboard/entities/team/mocks/outliersMockData";
+import { ORG_PERFORMANCE_GAUGE_VALUE } from "@/lib/dashboard/entities/team/data/orgPerformanceDataLoader";
+import { ORG_SPOF_RISK_LEVEL, ORG_SPOF_TOTALS, ORG_HEALTH_SEGMENTS } from "@/lib/dashboard/entities/team/data/orgSpofDataLoader";
+import { getDevelopersByOwnership, generateOutlierTrend } from "@/lib/dashboard/entities/team/mocks/outliersMockData";
 
-const GAUGE_VALUE = Math.floor(Math.random() * 100);
 const CARD_CLASS = "rounded-lg border border-gray-200 bg-white p-5";
 
 function ViewDetailsButton({ href }: { href: string }) {
@@ -86,8 +86,8 @@ export function OrgOverviewPageClient() {
   }, []);
 
   const snapshot = useMemo(() => {
-    const perfLabel = getPerformanceGaugeLabel(GAUGE_VALUE);
-    const progress = GAUGE_VALUE >= 45 ? "healthy" : "needs improvement";
+    const perfLabel = getPerformanceGaugeLabel(ORG_PERFORMANCE_GAUGE_VALUE);
+    const progress = ORG_PERFORMANCE_GAUGE_VALUE >= 45 ? "healthy" : "needs improvement";
     const criticalCount = getDevelopersByOwnership("lower").length;
     const { healthy, needsAttention, critical } = ORG_SPOF_TOTALS.healthDistribution;
     const total = healthy + needsAttention + critical;
@@ -97,39 +97,20 @@ export function OrgOverviewPageClient() {
     return { perfLabel, progress, criticalCount, atRiskPct, riskDir, riskDelta, risk: ORG_SPOF_RISK_LEVEL };
   }, []);
 
-  // #region agent log — measure card heights
-  const perfCardRef = useRef<HTMLDivElement>(null);
-  const outliersCardRef = useRef<HTMLDivElement>(null);
-  const spofCardRef = useRef<HTMLDivElement>(null);
-  const skillsCardRef = useRef<HTMLDivElement>(null);
-  const measured = useRef(false);
+  // Outliers data for OverviewOutliersSection
+  const orgCritical = useMemo(() => getDevelopersByOwnership("lower"), []);
+  const orgNeedsAttention = useMemo(() => getDevelopersByOwnership("higher"), []);
+  const orgOutliersTrend = useMemo(
+    () => generateOutlierTrend(orgCritical.length, orgNeedsAttention.length),
+    [orgCritical.length, orgNeedsAttention.length]
+  );
 
-  const measureHeights = useCallback(() => {
-    if (measured.current) return;
-    const perfEl = perfCardRef.current;
-    const outEl = outliersCardRef.current;
-    const spofEl = spofCardRef.current;
-    const skillEl = skillsCardRef.current;
-    if (!perfEl || !outEl || !spofEl) return;
-    measured.current = true;
-
-    const perfRect = perfEl.getBoundingClientRect();
-    const outRect = outEl.getBoundingClientRect();
-    const spofRect = spofEl.getBoundingClientRect();
-    const skillRect = skillEl?.getBoundingClientRect();
-
-    const gaugeEl = perfEl.querySelector('[aria-label="Performance gauge"]')?.closest('div.shrink-0');
-    const chartEl = perfEl.querySelector('.overflow-visible');
-    const headerEl = perfEl.querySelector('h2')?.parentElement?.parentElement;
-
-    fetch('http://127.0.0.1:7250/ingest/c99c9929-282f-4a47-ae6f-49d19f9124ed',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'909e10'},body:JSON.stringify({sessionId:'909e10',location:'OrgOverviewPageClient.tsx:measure',message:'Card heights comparison',data:{perfCard:{height:perfRect.height,width:perfRect.width},outliersCard:{height:outRect.height,width:outRect.width},spofCard:{height:spofRect.height,width:spofRect.width},skillsCard:{height:skillRect?.height,width:skillRect?.width},perfInternals:{gaugeHeight:gaugeEl?.getBoundingClientRect().height,chartHeight:chartEl?.getBoundingClientRect().height,headerHeight:headerEl?.getBoundingClientRect().height},hypothesisId:'H1-H5'},timestamp:Date.now()})}).catch(()=>{});
+  // SPOF data for OverviewSpofSummary
+  const orgSpofAtRiskPercent = useMemo(() => {
+    const { healthy, needsAttention, critical } = ORG_SPOF_TOTALS.healthDistribution;
+    const total = healthy + needsAttention + critical;
+    return Math.round(((needsAttention + critical) / total) * 100);
   }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(measureHeights, 2000);
-    return () => clearTimeout(timer);
-  }, [measureHeights]);
-  // #endregion
 
   return (
     <div className="flex flex-col gap-8 px-6 pb-8 min-h-screen bg-white text-gray-900">
@@ -147,9 +128,6 @@ export function OrgOverviewPageClient() {
       </div>
 
       {/* Performance Section */}
-      {/* #region agent log ref */}
-      <div ref={perfCardRef}>
-      {/* #endregion */}
       <DashboardSection
         className={CARD_CLASS}
         title={<SectionTitle href={getOrgUrl("performance")}>Performance</SectionTitle>}
@@ -158,7 +136,7 @@ export function OrgOverviewPageClient() {
       >
         <div className="flex flex-col lg:flex-row gap-6">
           <div className="shrink-0 lg:w-1/3 flex flex-col items-center justify-center">
-            <GaugeSection gaugeValue={GAUGE_VALUE} labelVariant="performance" />
+            <GaugeSection gaugeValue={ORG_PERFORMANCE_GAUGE_VALUE} labelVariant="performance" />
           </div>
           <div className="flex-1 min-w-0">
             <PerformanceChart
@@ -172,48 +150,40 @@ export function OrgOverviewPageClient() {
           </div>
         </div>
       </DashboardSection>
-      {/* #region agent log ref */}
-      </div>
-      {/* #endregion */}
 
       {/* 2-column grid: Outliers | SPOF */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* #region agent log ref */}
-        <div ref={outliersCardRef}>
-        {/* #endregion */}
         <DashboardSection
           className={`${CARD_CLASS} h-full flex flex-col`}
           title={<SectionTitle href={getOrgUrl("design")}>Outliers</SectionTitle>}
           action={<ViewDetailsButton href={getOrgUrl("design")} />}
           actionLayout="row"
         >
-          <OverviewOutliersSection />
+          <OverviewOutliersSection
+            criticalCount={orgCritical.length}
+            needsAttentionCount={orgNeedsAttention.length}
+            trend={orgOutliersTrend}
+          />
         </DashboardSection>
-        {/* #region agent log ref */}
-        </div>
-        {/* #endregion */}
 
-        {/* #region agent log ref */}
-        <div ref={spofCardRef}>
-        {/* #endregion */}
         <DashboardSection
           className={`${CARD_CLASS} h-full flex flex-col`}
           title={<SectionTitle href={getOrgUrl("spof")}>SPOF</SectionTitle>}
           action={<ViewDetailsButton href={getOrgUrl("spof")} />}
           actionLayout="row"
         >
-          <OverviewSpofSummary />
+          <OverviewSpofSummary
+            riskLevel={ORG_SPOF_RISK_LEVEL}
+            atRiskPercent={orgSpofAtRiskPercent}
+            spofModuleCount={ORG_SPOF_TOTALS.spofModuleCount}
+            uniqueSpofOwnerCount={ORG_SPOF_TOTALS.uniqueSpofOwnerCount}
+            healthSegments={ORG_HEALTH_SEGMENTS}
+          />
         </DashboardSection>
-        {/* #region agent log ref */}
-        </div>
-        {/* #endregion */}
       </div>
 
       {/* Skills Graph — half width, left-aligned */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* #region agent log ref */}
-        <div ref={skillsCardRef}>
-        {/* #endregion */}
         <DashboardSection
           className={CARD_CLASS}
           title={<SectionTitle href={getOrgUrl("skillgraph")}>Skills Graph</SectionTitle>}
@@ -222,9 +192,6 @@ export function OrgOverviewPageClient() {
         >
           <OverviewSkillsSummary skillData={skillData} />
         </DashboardSection>
-        {/* #region agent log ref */}
-        </div>
-        {/* #endregion */}
       </div>
     </div>
   );
