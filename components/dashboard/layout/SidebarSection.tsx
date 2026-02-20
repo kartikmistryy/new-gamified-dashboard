@@ -1,7 +1,7 @@
+
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
 import { MoreHorizontal, ChevronRight, ChevronDown, type LucideIcon } from "lucide-react"
 import {
   SidebarGroup,
@@ -93,15 +93,14 @@ export function SidebarSection<T>({
               </div>
             )}
             {headingHref ? (
-              <Link
-                href={headingHref}
+              <span
                 className={cn(
-                  "flex-1 text-sm font-medium tracking-wide transition-colors duration-150 ease-in-out text-gray-900",
+                  "flex-1 text-sm font-medium tracking-wide cursor-default transition-colors duration-150 ease-in-out text-gray-900",
                   isHighlighted && "text-gray-900"
                 )}
               >
                 {title}
-              </Link>
+              </span>
             ) : (
               <span className={cn("flex-1 text-gray-900", isHighlighted && "text-gray-900")}>{title}</span>
             )}
