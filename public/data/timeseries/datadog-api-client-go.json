@@ -1,0 +1,1628 @@
+{
+  "schemaVersion": "1.1",
+  "generatedAt": "2026-02-22T16:47:39.140Z",
+  "repoId": "datadog-api-client-go",
+  "granularity": "weekly",
+  "topContributors": [
+    "skarimo",
+    "api-clients-generation-pipeline[bot]",
+    "Thomas Hervé",
+    "HantingZhang2",
+    "Kevin Zou",
+    "Sherzod Karimov",
+    "dependabot[bot]"
+  ],
+  "lifetimeTotals": {
+    "skarimo": {
+      "additions": 7592,
+      "deletions": 36281
+    },
+    "api-clients-generation-pipeline[bot]": {
+      "additions": 124210,
+      "deletions": 1971
+    },
+    "Thomas Hervé": {
+      "additions": 3838,
+      "deletions": 9501
+    },
+    "HantingZhang2": {
+      "additions": 325,
+      "deletions": 0
+    },
+    "Kevin Zou": {
+      "additions": 7,
+      "deletions": 1
+    },
+    "Sherzod Karimov": {
+      "additions": 3,
+      "deletions": 0
+    },
+    "dependabot[bot]": {
+      "additions": 1,
+      "deletions": 0
+    }
+  },
+  "data": [
+    {
+      "date": "2023-01-02",
+      "value": 4,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 10,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 1952,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 63,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-01-09",
+      "value": 1,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 4,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 610,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-01-16",
+      "value": 11,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 29,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 7,
+        "api-clients-generation-pipeline[bot]": 6186,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-01-23",
+      "value": 12,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 16,
+        "Thomas Hervé": 7,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 3075,
+        "Thomas Hervé": 14,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 826,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-01-30",
+      "value": 2,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 6,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 71,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 756,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 3,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 117,
+        "Thomas Hervé": 38,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-02-06",
+      "value": 0,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 320,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 5,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-02-13",
+      "value": 7,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 19,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 3976,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 9,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-02-20",
+      "value": 1,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 35,
+        "api-clients-generation-pipeline[bot]": 201,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 2,
+        "api-clients-generation-pipeline[bot]": 87,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-02-27",
+      "value": 57,
+      "contributorValues": {
+        "skarimo": 42,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 681,
+        "api-clients-generation-pipeline[bot]": 395,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 5579,
+        "api-clients-generation-pipeline[bot]": 1,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-03-06",
+      "value": 5,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 12,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 100,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2589,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 298,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-03-13",
+      "value": 4,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 11,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2514,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-03-20",
+      "value": 3,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 10,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2000,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-03-27",
+      "value": 29,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 72,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 44,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 13735,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 1,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 19,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 1,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-04-03",
+      "value": 4,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 8,
+        "Thomas Hervé": 1,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 1085,
+        "Thomas Hervé": 16,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 31,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-04-10",
+      "value": 1,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 1,
+        "Thomas Hervé": 1,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 100,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 3,
+        "api-clients-generation-pipeline[bot]": 112,
+        "Thomas Hervé": 104,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 3,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 3,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 135,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-04-17",
+      "value": 40,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 100,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 15793,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 209,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-04-24",
+      "value": 0,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 175,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-05-01",
+      "value": 2,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 6,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 543,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 23,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-05-08",
+      "value": 2,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 5,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 258,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-05-15",
+      "value": 2,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 6,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 5,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 963,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 1,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 3,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-05-22",
+      "value": 1,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 4,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 11,
+        "api-clients-generation-pipeline[bot]": 537,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 6,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-05-29",
+      "value": 4,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 11,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2396,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-06-05",
+      "value": 4,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 12,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 3,
+        "api-clients-generation-pipeline[bot]": 1750,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 81,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-06-12",
+      "value": 15,
+      "contributorValues": {
+        "skarimo": 2,
+        "api-clients-generation-pipeline[bot]": 31,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 301,
+        "api-clients-generation-pipeline[bot]": 6208,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 102,
+        "api-clients-generation-pipeline[bot]": 57,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-06-19",
+      "value": 0,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 58,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 1,
+        "api-clients-generation-pipeline[bot]": 1,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-06-26",
+      "value": 100,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 27,
+        "Thomas Hervé": 100,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 5640,
+        "Thomas Hervé": 3599,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 8191,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-07-03",
+      "value": 13,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 32,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 6689,
+        "Thomas Hervé": 4,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 17,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-07-10",
+      "value": 100,
+      "contributorValues": {
+        "skarimo": 72,
+        "api-clients-generation-pipeline[bot]": 9,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 10,
+        "api-clients-generation-pipeline[bot]": 1218,
+        "Thomas Hervé": 10,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 13359,
+        "api-clients-generation-pipeline[bot]": 42,
+        "Thomas Hervé": 30,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-07-17",
+      "value": 1,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 3,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 383,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 8,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-07-24",
+      "value": 5,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 12,
+        "Thomas Hervé": 1,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 38,
+        "api-clients-generation-pipeline[bot]": 1747,
+        "Thomas Hervé": 47,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 3,
+        "api-clients-generation-pipeline[bot]": 15,
+        "Thomas Hervé": 86,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-07-31",
+      "value": 100,
+      "contributorValues": {
+        "skarimo": 100,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 2660,
+        "api-clients-generation-pipeline[bot]": 340,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 11931,
+        "api-clients-generation-pipeline[bot]": 1,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-08-07",
+      "value": 0,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 1,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 136,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-08-14",
+      "value": 0,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 278,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-08-21",
+      "value": 2,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 4,
+        "Thomas Hervé": 2,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 640,
+        "Thomas Hervé": 30,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 34,
+        "Thomas Hervé": 126,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-08-28",
+      "value": 1,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 4,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 3,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 579,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 16,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 4,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-09-04",
+      "value": 1,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 5,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 53
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 1161,
+        "Thomas Hervé": 1,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 1
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-09-11",
+      "value": 1,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 3,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 100,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 413,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-09-18",
+      "value": 7,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 19,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 17,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 2,
+        "api-clients-generation-pipeline[bot]": 2390,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 2,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 40,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-09-25",
+      "value": 8,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 22,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 3875,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 179,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-10-02",
+      "value": 8,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 21,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 1,
+        "api-clients-generation-pipeline[bot]": 4285,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 24,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-10-09",
+      "value": 12,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 31,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 100
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 4963,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 347,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-10-16",
+      "value": 8,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 21,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2807,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 371,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-10-23",
+      "value": 3,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 9,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 4,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 1720,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 11,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 10,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-10-30",
+      "value": 15,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 38,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 1,
+        "api-clients-generation-pipeline[bot]": 6291,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 29,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-11-06",
+      "value": 70,
+      "contributorValues": {
+        "skarimo": 51,
+        "api-clients-generation-pipeline[bot]": 4,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 3839,
+        "api-clients-generation-pipeline[bot]": 654,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 5301,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-11-13",
+      "value": 14,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 35,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 6613,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 137,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-11-20",
+      "value": 0,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 196,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 1,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-12-04",
+      "value": 4,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 10,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 1919,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 27,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-12-11",
+      "value": 1,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 4,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 606,
+        "Thomas Hervé": 4,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 1,
+        "Thomas Hervé": 2,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-12-18",
+      "value": 1,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 3,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 453,
+        "Thomas Hervé": 9,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 8,
+        "Thomas Hervé": 19,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    },
+    {
+      "date": "2023-12-25",
+      "value": 0,
+      "contributorValues": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 0,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorAdditions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 27,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      },
+      "contributorDeletions": {
+        "skarimo": 0,
+        "api-clients-generation-pipeline[bot]": 2,
+        "Thomas Hervé": 0,
+        "HantingZhang2": 0,
+        "Kevin Zou": 0,
+        "Sherzod Karimov": 0,
+        "dependabot[bot]": 0
+      }
+    }
+  ]
+}

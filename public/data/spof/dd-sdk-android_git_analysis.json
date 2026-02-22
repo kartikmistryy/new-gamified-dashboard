@@ -1,0 +1,3309 @@
+{
+  "summary": {
+    "projectName": "dd-sdk-android",
+    "analyzedAt": "2026-02-10T20:12:06.195Z",
+    "totalModules": 11,
+    "totalFunctions": 33,
+    "totalContributors": 13,
+    "totalFiles": 827,
+    "spofFileCount": 78,
+    "spofFilePercentage": 9.4,
+    "repositoryBusFactor": 0,
+    "algorithmUsed": "avelino_doa",
+    "algorithmReason": "GITHUB_TOKEN not set"
+  },
+  "busFactorResults": {
+    "repository": {
+      "busFactor": 0,
+      "authorCount": 12,
+      "totalFiles": 827,
+      "filesByAuthor": {
+        "Timur Valeev": 39,
+        "Nikita Ogorodnikov": 19,
+        "Priyanshi Gupta": 1,
+        "Tyler Potter": 2,
+        "jonathanmos": 3,
+        "Igor Wojda": 1,
+        "Paolo Rotolo": 1,
+        "Marius Constantin": 11,
+        "Xavier F. Gouchet": 4,
+        "luyi": 2,
+        "Jeff Ward": 5,
+        "Xavier Gouchet": 2
+      },
+      "algorithmUsed": "avelino_doa",
+      "algorithmReason": "GITHUB_TOKEN not set"
+    },
+    "modules": {
+      "APM & Distributed Tracing": {
+        "moduleName": "APM & Distributed Tracing",
+        "busFactor": 1,
+        "authorCount": 4,
+        "fileCount": 37,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/B3HttpCodec.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/DatadogHttpCodec.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/W3CHttpCodec.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpanBuilder.java",
+            "developer": "Paolo Rotolo",
+            "rawDOA": 3.045845210377794,
+            "normalizedDOA": 0.7749526780863651,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 2,
+              "AC": 5
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpanBuilder.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 3.5039995100805155,
+            "normalizedDOA": 0.8915206180203082,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 4,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpanBuilder.java",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.930362842153244,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 6
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/HttpCodec.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/IdGenerationStrategy.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/Baggage.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/DDTraceId.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpan.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.703,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 8,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/PendingTrace.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.211,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 5,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/Config.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/config/TracerConfig.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.047,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 4,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/common/sampling/ForcePrioritySampler.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/common/sampling/RateByServiceTraceSampler.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/common/sampling/Sampler.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/interceptor/MutableSpan.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/bootstrap/instrumentation/api/SpanLink.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/bootstrap/instrumentation/api/TagContext.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/CoreSpan.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/CoreTracer.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.375,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 6,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/DDSpan.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/DDSpanContext.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/DDSpanLink.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/ExtractedContext.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/XRayHttpCodec.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelExtractedContext.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.867,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 9,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/DDSpanId.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelTracerBuilder.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelConventions.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelTracer.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/scopemanager/ContinuableScopeManager.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/ConfigDefaults.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/common/writer/NoOpWriter.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/TagContextExtractor.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/compat/function/Function.java",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/README.md",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Infrastructure": {
+        "moduleName": "Infrastructure",
+        "busFactor": 2,
+        "authorCount": 4,
+        "fileCount": 3,
+        "fileScores": [
+          {
+            "filePath": "tools/testserver/README.md",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "tools/benchmark/README.md",
+            "developer": "Yi LU",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "tools/benchmark/README.md",
+            "developer": "luyi",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "sample/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 2.8818452103777945,
+            "normalizedDOA": 0.7241098731335408,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 5
+            }
+          },
+          {
+            "filePath": "sample/README.md",
+            "developer": "Xavier F. Gouchet",
+            "rawDOA": 2.8818452103777945,
+            "normalizedDOA": 0.7241098731335408,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 5
+            }
+          },
+          {
+            "filePath": "sample/README.md",
+            "developer": "Xavier Gouchet",
+            "rawDOA": 3.3399995100805153,
+            "normalizedDOA": 0.8392284959654147,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "sample/README.md",
+            "developer": "Marius Constantin",
+            "rawDOA": 3.979845210377794,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 5
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Core Platform & Data Management": {
+        "moduleName": "Core Platform & Data Management",
+        "busFactor": 2,
+        "authorCount": 3,
+        "fileCount": 4,
+        "fileScores": [
+          {
+            "filePath": "dd-sdk-android-core/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/advanced_troubleshooting.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.5624997550402577,
+            "normalizedDOA": 0.8667883648897243,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "docs/advanced_troubleshooting.md",
+            "developer": "Priyanshi Gupta",
+            "rawDOA": 4.109999510080515,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "dd-sdk-android-core/src/test/java/com/datadog/trace/sampling/JavaDeterministicSampler.java",
+            "developer": "Xavier F. Gouchet",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "dd-sdk-android-core/BackgroundThreads.md",
+            "developer": "Xavier F. Gouchet",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Feature Flag Management": {
+        "moduleName": "Feature Flag Management",
+        "busFactor": 2,
+        "authorCount": 2,
+        "fileCount": 2,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-flags-openfeature/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.0119995100805155,
+            "normalizedDOA": 0.6462825165526691,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-flags-openfeature/README.md",
+            "developer": "Tyler Potter",
+            "rawDOA": 4.660499755040258,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-flags/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 2.587715885446191,
+            "normalizedDOA": 0.5938062874018084,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 14
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-flags/README.md",
+            "developer": "Tyler Potter",
+            "rawDOA": 4.3578452103777945,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 10,
+              "AC": 5
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-flags/README.md",
+            "developer": "jonathanmos",
+            "rawDOA": 4.249344965418052,
+            "normalizedDOA": 0.975102317837871,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 4,
+              "AC": 11
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Native Crash Reporting": {
+        "moduleName": "Native Crash Reporting",
+        "busFactor": 2,
+        "authorCount": 3,
+        "fileCount": 10,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-ndk/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/datadog-native-lib.cpp",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.366345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/datadog-native-lib.cpp",
+            "developer": "Jeff Ward",
+            "rawDOA": 3.0119995100805155,
+            "normalizedDOA": 0.6898216233437432,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/datadog-native-lib.cpp",
+            "developer": "Marius Constantin",
+            "rawDOA": 3.0119995100805155,
+            "normalizedDOA": 0.6898216233437432,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/datadog-native-lib.h",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/datadog-native-lib.h",
+            "developer": "Jeff Ward",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/datadog-native-lib.h",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.202345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/test/cpp/integration-tests.cpp",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/test/cpp/integration-tests.cpp",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/test/cpp/test-crash-log.cpp",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/test/cpp/test-crash-log.cpp",
+            "developer": "Jeff Ward",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/utils/backtrace-handler.cpp",
+            "developer": "Jeff Ward",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/utils/signal-monitor.h",
+            "developer": "Jeff Ward",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/utils/string-utils.h",
+            "developer": "Jeff Ward",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/utils/signal-monitor.c",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "sample/kotlin/src/main/cpp/datadog-native-sample-lib.cpp",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 2.8818452103777945,
+            "normalizedDOA": 0.613897131729216,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 5
+            }
+          },
+          {
+            "filePath": "sample/kotlin/src/main/cpp/datadog-native-sample-lib.cpp",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.694345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 4,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "sample/kotlin/src/main/cpp/datadog-native-sample-lib.cpp",
+            "developer": "Xavier Gouchet",
+            "rawDOA": 2.8818452103777945,
+            "normalizedDOA": 0.613897131729216,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 5
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Framework & Library Integrations": {
+        "moduleName": "Framework & Library Integrations",
+        "busFactor": 2,
+        "authorCount": 5,
+        "fileCount": 14,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-apollo/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 2.8818452103777945,
+            "normalizedDOA": 0.5776977752611993,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 5
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-apollo/README.md",
+            "developer": "jonathanmos",
+            "rawDOA": 4.988499755040258,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 5,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-coil/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-coil3/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-coil3/README.md",
+            "developer": "jonathanmos",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-compose/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-fresco/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-glide/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-rx/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-sqldelight/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-timber/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.2739995100805155,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-timber/README.md",
+            "developer": "Igor Wojda",
+            "rawDOA": 3.432345455337537,
+            "normalizedDOA": 0.8030757718249896,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-cronet/README.md",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpanContext.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.211,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 5,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpanLink.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.211,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 5,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-okhttp-otel/README.md",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-okhttp/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Real User Monitoring (RUM)": {
+        "moduleName": "Real User Monitoring (RUM)",
+        "busFactor": 2,
+        "authorCount": 3,
+        "fileCount": 4,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-tv/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/sdk_performance.md",
+            "developer": "luyi",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "docs/sdk_performance.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "docs/sdk_performance.md",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.202345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-rum/src/main/java/com/datadog/android/rum/internal/instrumentation/gestures/GestureListenerCompat.java",
+            "developer": "Xavier Gouchet",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-rum/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Utility": {
+        "moduleName": "Utility",
+        "busFactor": 2,
+        "authorCount": 3,
+        "fileCount": 4,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/util/PercentEscaper.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/test/cpp/test-format-utils.cpp",
+            "developer": "Jeff Ward",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "tools/unit/src/test/kotlin/com/datadog/tools/unit/extensions/JavaClassWithNestedStaticMock.java",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "tools/unit/src/test/kotlin/com/datadog/tools/unit/extensions/JavaClassWithStaticMock.java",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Continuous Profiler": {
+        "moduleName": "Continuous Profiler",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "sample/benchmark/README.md",
+            "developer": "luyi",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Session Replay": {
+        "moduleName": "Session Replay",
+        "busFactor": 2,
+        "authorCount": 2,
+        "fileCount": 4,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-session-replay-compose/README.md",
+            "developer": "Xavier F. Gouchet",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-session-replay-compose/ComposeInternals.md",
+            "developer": "Xavier F. Gouchet",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-session-replay-material/README.md",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-session-replay/README.md",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Web & Hybrid App Monitoring": {
+        "moduleName": "Web & Hybrid App Monitoring",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-webview/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      }
+    },
+    "functions": {
+      "APM & Distributed Tracing:::Distributed Trace Propagation": {
+        "functionName": "Distributed Trace Propagation",
+        "moduleName": "APM & Distributed Tracing",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 10,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/B3HttpCodec.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/DatadogHttpCodec.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/W3CHttpCodec.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/HttpCodec.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/Baggage.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/bootstrap/instrumentation/api/TagContext.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/DDSpanContext.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/ExtractedContext.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/XRayHttpCodec.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/TagContextExtractor.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Infrastructure:::Build & Configuration": {
+        "functionName": "Build & Configuration",
+        "moduleName": "Infrastructure",
+        "busFactor": 2,
+        "authorCount": 4,
+        "fileCount": 3,
+        "fileScores": [
+          {
+            "filePath": "tools/testserver/README.md",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "tools/benchmark/README.md",
+            "developer": "Yi LU",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "tools/benchmark/README.md",
+            "developer": "luyi",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "sample/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 2.8818452103777945,
+            "normalizedDOA": 0.7241098731335408,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 5
+            }
+          },
+          {
+            "filePath": "sample/README.md",
+            "developer": "Xavier F. Gouchet",
+            "rawDOA": 2.8818452103777945,
+            "normalizedDOA": 0.7241098731335408,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 5
+            }
+          },
+          {
+            "filePath": "sample/README.md",
+            "developer": "Xavier Gouchet",
+            "rawDOA": 3.3399995100805153,
+            "normalizedDOA": 0.8392284959654147,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "sample/README.md",
+            "developer": "Marius Constantin",
+            "rawDOA": 3.979845210377794,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 5
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Core Platform & Data Management:::SDK Engineering Documentation": {
+        "functionName": "SDK Engineering Documentation",
+        "moduleName": "Core Platform & Data Management",
+        "busFactor": 2,
+        "authorCount": 3,
+        "fileCount": 3,
+        "fileScores": [
+          {
+            "filePath": "dd-sdk-android-core/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "docs/advanced_troubleshooting.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.5624997550402577,
+            "normalizedDOA": 0.8667883648897243,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "docs/advanced_troubleshooting.md",
+            "developer": "Priyanshi Gupta",
+            "rawDOA": 4.109999510080515,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "dd-sdk-android-core/BackgroundThreads.md",
+            "developer": "Xavier F. Gouchet",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Feature Flag Management:::OpenFeature Provider": {
+        "functionName": "OpenFeature Provider",
+        "moduleName": "Feature Flag Management",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-flags-openfeature/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.0119995100805155,
+            "normalizedDOA": 0.6462825165526691,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-flags-openfeature/README.md",
+            "developer": "Tyler Potter",
+            "rawDOA": 4.660499755040258,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 1
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Feature Flag Management:::Feature Flag Core Engine": {
+        "functionName": "Feature Flag Core Engine",
+        "moduleName": "Feature Flag Management",
+        "busFactor": 2,
+        "authorCount": 2,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-flags/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 2.587715885446191,
+            "normalizedDOA": 0.5938062874018084,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 14
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-flags/README.md",
+            "developer": "Tyler Potter",
+            "rawDOA": 4.3578452103777945,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 10,
+              "AC": 5
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-flags/README.md",
+            "developer": "jonathanmos",
+            "rawDOA": 4.249344965418052,
+            "normalizedDOA": 0.975102317837871,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 4,
+              "AC": 11
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Native Crash Reporting:::Android SDK Integration and API Management": {
+        "functionName": "Android SDK Integration and API Management",
+        "moduleName": "Native Crash Reporting",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-ndk/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Framework & Library Integrations:::Apollo GraphQL Instrumentation": {
+        "functionName": "Apollo GraphQL Instrumentation",
+        "moduleName": "Framework & Library Integrations",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-apollo/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 2.8818452103777945,
+            "normalizedDOA": 0.5776977752611993,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 5
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-apollo/README.md",
+            "developer": "jonathanmos",
+            "rawDOA": 4.988499755040258,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 5,
+              "AC": 1
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Framework & Library Integrations:::Coil Instrumentation": {
+        "functionName": "Coil Instrumentation",
+        "moduleName": "Framework & Library Integrations",
+        "busFactor": 2,
+        "authorCount": 2,
+        "fileCount": 2,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-coil/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-coil3/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-coil3/README.md",
+            "developer": "jonathanmos",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Framework & Library Integrations:::Jetpack Compose Instrumentation": {
+        "functionName": "Jetpack Compose Instrumentation",
+        "moduleName": "Framework & Library Integrations",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-compose/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Framework & Library Integrations:::Fresco Instrumentation": {
+        "functionName": "Fresco Instrumentation",
+        "moduleName": "Framework & Library Integrations",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-fresco/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Framework & Library Integrations:::Glide Instrumentation": {
+        "functionName": "Glide Instrumentation",
+        "moduleName": "Framework & Library Integrations",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-glide/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Framework & Library Integrations:::RxJava Instrumentation": {
+        "functionName": "RxJava Instrumentation",
+        "moduleName": "Framework & Library Integrations",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-rx/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Framework & Library Integrations:::SQLDelight Instrumentation": {
+        "functionName": "SQLDelight Instrumentation",
+        "moduleName": "Framework & Library Integrations",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-sqldelight/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Framework & Library Integrations:::Timber Logging Integration": {
+        "functionName": "Timber Logging Integration",
+        "moduleName": "Framework & Library Integrations",
+        "busFactor": 2,
+        "authorCount": 2,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-timber/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.2739995100805155,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-timber/README.md",
+            "developer": "Igor Wojda",
+            "rawDOA": 3.432345455337537,
+            "normalizedDOA": 0.8030757718249896,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 3,
+              "AC": 2
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Real User Monitoring (RUM):::User Interaction & View Tracking": {
+        "functionName": "User Interaction & View Tracking",
+        "moduleName": "Real User Monitoring (RUM)",
+        "busFactor": 2,
+        "authorCount": 2,
+        "fileCount": 2,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-tv/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-rum/src/main/java/com/datadog/android/rum/internal/instrumentation/gestures/GestureListenerCompat.java",
+            "developer": "Xavier Gouchet",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Framework & Library Integrations:::Cronet Instrumentation": {
+        "functionName": "Cronet Instrumentation",
+        "moduleName": "Framework & Library Integrations",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-cronet/README.md",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "APM & Distributed Tracing:::OpenTelemetry Tracing Adapter": {
+        "functionName": "OpenTelemetry Tracing Adapter",
+        "moduleName": "APM & Distributed Tracing",
+        "busFactor": 1,
+        "authorCount": 4,
+        "fileCount": 8,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpanBuilder.java",
+            "developer": "Paolo Rotolo",
+            "rawDOA": 3.045845210377794,
+            "normalizedDOA": 0.7749526780863651,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 2,
+              "AC": 5
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpanBuilder.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 3.5039995100805155,
+            "normalizedDOA": 0.8915206180203082,
+            "isAuthor": true,
+            "components": {
+              "FA": 0,
+              "DL": 4,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpanBuilder.java",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.930362842153244,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 6
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpan.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.703,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 8,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelExtractedContext.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.867,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 9,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelTracerBuilder.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelConventions.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelTracer.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/compat/function/Function.java",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/README.md",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "APM & Distributed Tracing:::Span & Trace Lifecycle Management": {
+        "functionName": "Span & Trace Lifecycle Management",
+        "moduleName": "APM & Distributed Tracing",
+        "busFactor": 1,
+        "authorCount": 2,
+        "fileCount": 11,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/IdGenerationStrategy.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/DDTraceId.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/interceptor/MutableSpan.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/bootstrap/instrumentation/api/SpanLink.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/CoreSpan.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/CoreTracer.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.375,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 6,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/DDSpan.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/DDSpanLink.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/DDSpanId.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/scopemanager/ContinuableScopeManager.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Utility:::General Utility": {
+        "functionName": "General Utility",
+        "moduleName": "Utility",
+        "busFactor": 2,
+        "authorCount": 3,
+        "fileCount": 4,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/util/PercentEscaper.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/test/cpp/test-format-utils.cpp",
+            "developer": "Jeff Ward",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "tools/unit/src/test/kotlin/com/datadog/tools/unit/extensions/JavaClassWithNestedStaticMock.java",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "tools/unit/src/test/kotlin/com/datadog/tools/unit/extensions/JavaClassWithStaticMock.java",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "APM & Distributed Tracing:::Trace Buffering & Export": {
+        "functionName": "Trace Buffering & Export",
+        "moduleName": "APM & Distributed Tracing",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 2,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/PendingTrace.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.211,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 5,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/common/writer/NoOpWriter.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "APM & Distributed Tracing:::Tracer Configuration Management": {
+        "functionName": "Tracer Configuration Management",
+        "moduleName": "APM & Distributed Tracing",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 3,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/Config.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/config/TracerConfig.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.047,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 4,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/ConfigDefaults.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "APM & Distributed Tracing:::Trace & Span Sampling": {
+        "functionName": "Trace & Span Sampling",
+        "moduleName": "APM & Distributed Tracing",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 3,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/common/sampling/ForcePrioritySampler.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/common/sampling/RateByServiceTraceSampler.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/common/sampling/Sampler.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Framework & Library Integrations:::OpenTelemetry Integration": {
+        "functionName": "OpenTelemetry Integration",
+        "moduleName": "Framework & Library Integrations",
+        "busFactor": 1,
+        "authorCount": 2,
+        "fileCount": 3,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpanContext.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.211,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 5,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpanLink.java",
+            "developer": "Timur Valeev",
+            "rawDOA": 5.211,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 5,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "integrations/dd-sdk-android-okhttp-otel/README.md",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Real User Monitoring (RUM):::SDK Telemetry & Internal Insights": {
+        "functionName": "SDK Telemetry & Internal Insights",
+        "moduleName": "Real User Monitoring (RUM)",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "docs/sdk_performance.md",
+            "developer": "luyi",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "docs/sdk_performance.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "docs/sdk_performance.md",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.202345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 2
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Core Platform & Data Management:::SDK Test & Validation Framework": {
+        "functionName": "SDK Test & Validation Framework",
+        "moduleName": "Core Platform & Data Management",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "dd-sdk-android-core/src/test/java/com/datadog/trace/sampling/JavaDeterministicSampler.java",
+            "developer": "Xavier F. Gouchet",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Continuous Profiler:::Profiler Test and Benchmark Suite": {
+        "functionName": "Profiler Test and Benchmark Suite",
+        "moduleName": "Continuous Profiler",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "sample/benchmark/README.md",
+            "developer": "luyi",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Native Crash Reporting:::Native Crash Capture and Reporting": {
+        "functionName": "Native Crash Capture and Reporting",
+        "moduleName": "Native Crash Reporting",
+        "busFactor": 2,
+        "authorCount": 3,
+        "fileCount": 9,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/datadog-native-lib.cpp",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.366345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/datadog-native-lib.cpp",
+            "developer": "Jeff Ward",
+            "rawDOA": 3.0119995100805155,
+            "normalizedDOA": 0.6898216233437432,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/datadog-native-lib.cpp",
+            "developer": "Marius Constantin",
+            "rawDOA": 3.0119995100805155,
+            "normalizedDOA": 0.6898216233437432,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 3
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/datadog-native-lib.h",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/datadog-native-lib.h",
+            "developer": "Jeff Ward",
+            "rawDOA": 3.104345455337537,
+            "normalizedDOA": 0.7387173397167065,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/datadog-native-lib.h",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.202345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/test/cpp/integration-tests.cpp",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/test/cpp/integration-tests.cpp",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/test/cpp/test-crash-log.cpp",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 3.234499755040258,
+            "normalizedDOA": 0.7465666331030648,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/test/cpp/test-crash-log.cpp",
+            "developer": "Jeff Ward",
+            "rawDOA": 4.332499755040257,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 1
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/utils/backtrace-handler.cpp",
+            "developer": "Jeff Ward",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/utils/signal-monitor.h",
+            "developer": "Jeff Ward",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/utils/string-utils.h",
+            "developer": "Jeff Ward",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-ndk/src/main/cpp/utils/signal-monitor.c",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "sample/kotlin/src/main/cpp/datadog-native-sample-lib.cpp",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 2.8818452103777945,
+            "normalizedDOA": 0.613897131729216,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 5
+            }
+          },
+          {
+            "filePath": "sample/kotlin/src/main/cpp/datadog-native-sample-lib.cpp",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.694345455337537,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 4,
+              "AC": 2
+            }
+          },
+          {
+            "filePath": "sample/kotlin/src/main/cpp/datadog-native-sample-lib.cpp",
+            "developer": "Xavier Gouchet",
+            "rawDOA": 2.8818452103777945,
+            "normalizedDOA": 0.613897131729216,
+            "isAuthor": false,
+            "components": {
+              "FA": 0,
+              "DL": 1,
+              "AC": 5
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Session Replay:::Jetpack Compose Integration": {
+        "functionName": "Jetpack Compose Integration",
+        "moduleName": "Session Replay",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 2,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-session-replay-compose/README.md",
+            "developer": "Xavier F. Gouchet",
+            "rawDOA": 4.883,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 3,
+              "AC": 0
+            }
+          },
+          {
+            "filePath": "features/dd-sdk-android-session-replay-compose/ComposeInternals.md",
+            "developer": "Xavier F. Gouchet",
+            "rawDOA": 4.719,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 2,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Session Replay:::Material Design Components Integration": {
+        "functionName": "Material Design Components Integration",
+        "moduleName": "Session Replay",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-session-replay-material/README.md",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Session Replay:::Core SDK Framework": {
+        "functionName": "Core SDK Framework",
+        "moduleName": "Session Replay",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-session-replay/README.md",
+            "developer": "Marius Constantin",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Real User Monitoring (RUM):::RUM Core & Session Management": {
+        "functionName": "RUM Core & Session Management",
+        "moduleName": "Real User Monitoring (RUM)",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-rum/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Web & Hybrid App Monitoring:::WebView Data Collection": {
+        "functionName": "WebView Data Collection",
+        "moduleName": "Web & Hybrid App Monitoring",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "features/dd-sdk-android-webview/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      },
+      "Framework & Library Integrations:::OkHttp Instrumentation": {
+        "functionName": "OkHttp Instrumentation",
+        "moduleName": "Framework & Library Integrations",
+        "busFactor": 1,
+        "authorCount": 1,
+        "fileCount": 1,
+        "fileScores": [
+          {
+            "filePath": "integrations/dd-sdk-android-okhttp/README.md",
+            "developer": "Nikita Ogorodnikov",
+            "rawDOA": 4.555,
+            "normalizedDOA": 1,
+            "isAuthor": true,
+            "components": {
+              "FA": 1,
+              "DL": 1,
+              "AC": 0
+            }
+          }
+        ],
+        "algorithmUsed": "avelino_doa"
+      }
+    }
+  },
+  "spofFiles": [
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/B3HttpCodec.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/DatadogHttpCodec.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/W3CHttpCodec.java",
+    "tools/testserver/README.md",
+    "dd-sdk-android-core/README.md",
+    "docs/advanced_troubleshooting.md",
+    "features/dd-sdk-android-flags-openfeature/README.md",
+    "features/dd-sdk-android-flags/README.md",
+    "features/dd-sdk-android-ndk/README.md",
+    "integrations/dd-sdk-android-apollo/README.md",
+    "integrations/dd-sdk-android-coil/README.md",
+    "integrations/dd-sdk-android-coil3/README.md",
+    "integrations/dd-sdk-android-compose/README.md",
+    "integrations/dd-sdk-android-fresco/README.md",
+    "integrations/dd-sdk-android-glide/README.md",
+    "integrations/dd-sdk-android-rx/README.md",
+    "integrations/dd-sdk-android-sqldelight/README.md",
+    "integrations/dd-sdk-android-timber/README.md",
+    "integrations/dd-sdk-android-tv/README.md",
+    "integrations/dd-sdk-android-cronet/README.md",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/HttpCodec.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/IdGenerationStrategy.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/Baggage.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/util/PercentEscaper.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/DDTraceId.java",
+    "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpan.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/PendingTrace.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/Config.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/config/TracerConfig.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/common/sampling/ForcePrioritySampler.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/common/sampling/RateByServiceTraceSampler.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/common/sampling/Sampler.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/interceptor/MutableSpan.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/bootstrap/instrumentation/api/SpanLink.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/bootstrap/instrumentation/api/TagContext.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/CoreSpan.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/CoreTracer.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/DDSpan.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/DDSpanContext.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/DDSpanLink.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/ExtractedContext.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/XRayHttpCodec.java",
+    "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelExtractedContext.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/DDSpanId.java",
+    "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpanContext.java",
+    "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelSpanLink.java",
+    "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelTracerBuilder.java",
+    "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelConventions.java",
+    "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/trace/OtelTracer.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/scopemanager/ContinuableScopeManager.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/api/ConfigDefaults.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/common/writer/NoOpWriter.java",
+    "features/dd-sdk-android-trace-internal/src/main/java/com/datadog/trace/core/propagation/TagContextExtractor.java",
+    "docs/sdk_performance.md",
+    "dd-sdk-android-core/src/test/java/com/datadog/trace/sampling/JavaDeterministicSampler.java",
+    "tools/benchmark/README.md",
+    "sample/benchmark/README.md",
+    "integrations/dd-sdk-android-okhttp-otel/README.md",
+    "features/dd-sdk-android-trace-otel/src/main/java/com/datadog/opentelemetry/compat/function/Function.java",
+    "features/dd-sdk-android-trace-otel/README.md",
+    "features/dd-sdk-android-ndk/src/test/cpp/test-crash-log.cpp",
+    "dd-sdk-android-core/BackgroundThreads.md",
+    "features/dd-sdk-android-session-replay-compose/README.md",
+    "features/dd-sdk-android-session-replay-compose/ComposeInternals.md",
+    "features/dd-sdk-android-ndk/src/main/cpp/utils/backtrace-handler.cpp",
+    "features/dd-sdk-android-ndk/src/main/cpp/utils/signal-monitor.h",
+    "features/dd-sdk-android-ndk/src/main/cpp/utils/string-utils.h",
+    "features/dd-sdk-android-ndk/src/test/cpp/test-format-utils.cpp",
+    "features/dd-sdk-android-ndk/src/main/cpp/utils/signal-monitor.c",
+    "features/dd-sdk-android-rum/src/main/java/com/datadog/android/rum/internal/instrumentation/gestures/GestureListenerCompat.java",
+    "features/dd-sdk-android-session-replay-material/README.md",
+    "features/dd-sdk-android-session-replay/README.md",
+    "features/dd-sdk-android-rum/README.md",
+    "features/dd-sdk-android-trace/README.md",
+    "features/dd-sdk-android-webview/README.md",
+    "integrations/dd-sdk-android-okhttp/README.md",
+    "tools/unit/src/test/kotlin/com/datadog/tools/unit/extensions/JavaClassWithNestedStaticMock.java",
+    "tools/unit/src/test/kotlin/com/datadog/tools/unit/extensions/JavaClassWithStaticMock.java"
+  ],
+  "moduleStats": {
+    "APM & Distributed Tracing": {
+      "Timur Valeev": 516.6905985510148,
+      "Paolo Rotolo": 20.2134085301633,
+      "Nikita Ogorodnikov": 4.463779623694909,
+      "Marius Constantin": 1.8120054100528176
+    },
+    "Infrastructure": {
+      "Timur Valeev": 192.7174666312531,
+      "Yi LU": 0.23919817454163234,
+      "luyi": 5.678107206445506,
+      "Nikita Ogorodnikov": 0.0611926733148612,
+      "Xavier F. Gouchet": 0.003961583014603798,
+      "Xavier Gouchet": 0.11634348895468377,
+      "Marius Constantin": 0.006346974171102628
+    },
+    "Core Platform & Data Management": {
+      "Nikita Ogorodnikov": 13.940732571110619,
+      "Priyanshi Gupta": 0.0020695373103728314,
+      "Xavier F. Gouchet": 19.62491840294024
+    },
+    "Feature Flag Management": {
+      "Nikita Ogorodnikov": 9.243632177927152,
+      "Tyler Potter": 264.63474315890767,
+      "jonathanmos": 205.2074089602786
+    },
+    "Native Crash Reporting": {
+      "Nikita Ogorodnikov": 10.91306031171199,
+      "Jeff Ward": 6.206848369732305,
+      "Marius Constantin": 3.0073345065145713,
+      "Xavier Gouchet": 0.0008296016924173857
+    },
+    "Framework & Library Integrations": {
+      "Nikita Ogorodnikov": 86.13883647522402,
+      "jonathanmos": 99.18374719388719,
+      "Igor Wojda": 1.7837056819157935,
+      "Timur Valeev": 114.83949482352632,
+      "Marius Constantin": 1.2177484388498323
+    },
+    "Real User Monitoring (RUM)": {
+      "Nikita Ogorodnikov": 13.460853014224547,
+      "luyi": 26.508786509214026,
+      "Marius Constantin": 0.02855113522713836,
+      "Xavier Gouchet": 1.1782830497809171
+    },
+    "Utility": {
+      "Timur Valeev": 242.4764230530033,
+      "Jeff Ward": 0.4029216463611917,
+      "Nikita Ogorodnikov": 0.11347076200426293
+    },
+    "Continuous Profiler": {
+      "luyi": 5.2049316059083806
+    },
+    "Session Replay": {
+      "Xavier F. Gouchet": 5.890479703115993,
+      "Marius Constantin": 0.29103773749139317
+    },
+    "Web & Hybrid App Monitoring": {
+      "Nikita Ogorodnikov": 0.16175859391687536
+    }
+  },
+  "functionStats": {
+    "APM & Distributed Tracing:::Distributed Trace Propagation": {
+      "Timur Valeev": 150.63230453992605
+    },
+    "Infrastructure:::Build & Configuration": {
+      "Timur Valeev": 192.7174666312531,
+      "Yi LU": 0.23919817454163234,
+      "luyi": 5.678107206445506,
+      "Nikita Ogorodnikov": 0.0611926733148612,
+      "Xavier F. Gouchet": 0.003961583014603798,
+      "Xavier Gouchet": 0.11634348895468377,
+      "Marius Constantin": 0.006346974171102628
+    },
+    "Core Platform & Data Management:::SDK Engineering Documentation": {
+      "Nikita Ogorodnikov": 13.940732571110619,
+      "Priyanshi Gupta": 0.0020695373103728314,
+      "Xavier F. Gouchet": 10.936570866085464
+    },
+    "Feature Flag Management:::OpenFeature Provider": {
+      "Nikita Ogorodnikov": 1.8487264355854303,
+      "Tyler Potter": 191.73928611869863
+    },
+    "Feature Flag Management:::Feature Flag Core Engine": {
+      "Nikita Ogorodnikov": 7.394905742341721,
+      "Tyler Potter": 72.89545704020904,
+      "jonathanmos": 205.2074089602786
+    },
+    "Native Crash Reporting:::Android SDK Integration and API Management": {
+      "Nikita Ogorodnikov": 8.688974493676724
+    },
+    "Framework & Library Integrations:::Apollo GraphQL Instrumentation": {
+      "Nikita Ogorodnikov": 9.243632177927152,
+      "jonathanmos": 47.84822557725576
+    },
+    "Framework & Library Integrations:::Coil Instrumentation": {
+      "Nikita Ogorodnikov": 19.91613193545337,
+      "jonathanmos": 51.335521616631425
+    },
+    "Framework & Library Integrations:::Jetpack Compose Instrumentation": {
+      "Nikita Ogorodnikov": 8.581135431065473
+    },
+    "Framework & Library Integrations:::Fresco Instrumentation": {
+      "Nikita Ogorodnikov": 10.322022804039655
+    },
+    "Framework & Library Integrations:::Glide Instrumentation": {
+      "Nikita Ogorodnikov": 10.375942335345279
+    },
+    "Framework & Library Integrations:::RxJava Instrumentation": {
+      "Nikita Ogorodnikov": 8.446336602801411
+    },
+    "Framework & Library Integrations:::SQLDelight Instrumentation": {
+      "Nikita Ogorodnikov": 10.429861866650905
+    },
+    "Framework & Library Integrations:::Timber Logging Integration": {
+      "Nikita Ogorodnikov": 8.66201472802391,
+      "Igor Wojda": 1.7837056819157935
+    },
+    "Real User Monitoring (RUM):::User Interaction & View Tracking": {
+      "Nikita Ogorodnikov": 9.039451447163287,
+      "Xavier Gouchet": 1.1782830497809171
+    },
+    "Framework & Library Integrations:::Cronet Instrumentation": {
+      "Timur Valeev": 22.03633429613795
+    },
+    "APM & Distributed Tracing:::OpenTelemetry Tracing Adapter": {
+      "Paolo Rotolo": 20.2134085301633,
+      "Timur Valeev": 169.57577533725726,
+      "Nikita Ogorodnikov": 4.302021029778033,
+      "Marius Constantin": 1.8120054100528176
+    },
+    "APM & Distributed Tracing:::Span & Trace Lifecycle Management": {
+      "Timur Valeev": 89.88356601031182,
+      "Nikita Ogorodnikov": 0.16175859391687536
+    },
+    "Utility:::General Utility": {
+      "Timur Valeev": 242.4764230530033,
+      "Jeff Ward": 0.4029216463611917,
+      "Nikita Ogorodnikov": 0.11347076200426293
+    },
+    "APM & Distributed Tracing:::Trace Buffering & Export": {
+      "Timur Valeev": 9.754415152977863
+    },
+    "APM & Distributed Tracing:::Tracer Configuration Management": {
+      "Timur Valeev": 65.00760069446343
+    },
+    "APM & Distributed Tracing:::Trace & Span Sampling": {
+      "Timur Valeev": 31.836936816078268
+    },
+    "Framework & Library Integrations:::OpenTelemetry Integration": {
+      "Timur Valeev": 92.80316052738837,
+      "Marius Constantin": 1.2177484388498323
+    },
+    "Real User Monitoring (RUM):::SDK Telemetry & Internal Insights": {
+      "luyi": 26.508786509214026,
+      "Nikita Ogorodnikov": 4.259642973144384,
+      "Marius Constantin": 0.02855113522713836
+    },
+    "Core Platform & Data Management:::SDK Test & Validation Framework": {
+      "Xavier F. Gouchet": 8.688347536854776
+    },
+    "Continuous Profiler:::Profiler Test and Benchmark Suite": {
+      "luyi": 5.2049316059083806
+    },
+    "Native Crash Reporting:::Native Crash Capture and Reporting": {
+      "Nikita Ogorodnikov": 2.2240858180352645,
+      "Jeff Ward": 6.206848369732305,
+      "Marius Constantin": 3.0073345065145713,
+      "Xavier Gouchet": 0.0008296016924173857
+    },
+    "Session Replay:::Jetpack Compose Integration": {
+      "Xavier F. Gouchet": 5.890479703115993
+    },
+    "Session Replay:::Material Design Components Integration": {
+      "Marius Constantin": 0.11641509499655725
+    },
+    "Session Replay:::Core SDK Framework": {
+      "Marius Constantin": 0.1746226424948359
+    },
+    "Real User Monitoring (RUM):::RUM Core & Session Management": {
+      "Nikita Ogorodnikov": 0.16175859391687536
+    },
+    "Web & Hybrid App Monitoring:::WebView Data Collection": {
+      "Nikita Ogorodnikov": 0.16175859391687536
+    },
+    "Framework & Library Integrations:::OkHttp Instrumentation": {
+      "Nikita Ogorodnikov": 0.16175859391687536
+    }
+  },
+  "totalLines": 1873.6650158683976
+}

@@ -1,0 +1,1029 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-02-22T16:47:39.145Z",
+  "granularity": "weekly",
+  "source": "scannedData/datadog_main",
+  "repoNames": [
+    "browser-sdk",
+    "datadog-agent",
+    "datadog-api-client-go",
+    "dd-sdk-android",
+    "dd-trace-dotnet",
+    "dd-trace-java",
+    "dd-trace-js",
+    "dd-trace-py",
+    "dd-trace-rb",
+    "integrations-core",
+    "libdatadog",
+    "system-tests"
+  ],
+  "data": [
+    {
+      "date": "2022-12-26",
+      "week": "Dec 2022",
+      "value": 0,
+      "teamValues": {
+        "browser-sdk": 0,
+        "datadog-agent": 0,
+        "datadog-api-client-go": 0,
+        "dd-sdk-android": 0,
+        "dd-trace-dotnet": 0,
+        "dd-trace-java": 0,
+        "dd-trace-js": 0,
+        "dd-trace-py": 0,
+        "dd-trace-rb": 0,
+        "integrations-core": 0,
+        "libdatadog": 0,
+        "system-tests": 0
+      }
+    },
+    {
+      "date": "2023-01-02",
+      "week": "Jan 2023",
+      "value": 30,
+      "teamValues": {
+        "browser-sdk": 9,
+        "datadog-agent": 54,
+        "datadog-api-client-go": 3,
+        "dd-sdk-android": 13,
+        "dd-trace-dotnet": 10,
+        "dd-trace-java": 8,
+        "dd-trace-js": 12,
+        "dd-trace-py": 0,
+        "dd-trace-rb": 7,
+        "integrations-core": 1,
+        "libdatadog": 0,
+        "system-tests": 6
+      }
+    },
+    {
+      "date": "2023-01-09",
+      "week": "Jan 2023",
+      "value": 76,
+      "teamValues": {
+        "browser-sdk": 5,
+        "datadog-agent": 100,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 19,
+        "dd-trace-dotnet": 14,
+        "dd-trace-java": 36,
+        "dd-trace-js": 33,
+        "dd-trace-py": 8,
+        "dd-trace-rb": 3,
+        "integrations-core": 4,
+        "libdatadog": 1,
+        "system-tests": 2
+      }
+    },
+    {
+      "date": "2023-01-16",
+      "week": "Jan 2023",
+      "value": 57,
+      "teamValues": {
+        "browser-sdk": 5,
+        "datadog-agent": 21,
+        "datadog-api-client-go": 9,
+        "dd-sdk-android": 28,
+        "dd-trace-dotnet": 10,
+        "dd-trace-java": 14,
+        "dd-trace-js": 7,
+        "dd-trace-py": 4,
+        "dd-trace-rb": 77,
+        "integrations-core": 6,
+        "libdatadog": 0,
+        "system-tests": 2
+      }
+    },
+    {
+      "date": "2023-01-23",
+      "week": "Jan 2023",
+      "value": 42,
+      "teamValues": {
+        "browser-sdk": 5,
+        "datadog-agent": 1,
+        "datadog-api-client-go": 9,
+        "dd-sdk-android": 47,
+        "dd-trace-dotnet": 33,
+        "dd-trace-java": 62,
+        "dd-trace-js": 28,
+        "dd-trace-py": 3,
+        "dd-trace-rb": 36,
+        "integrations-core": 0,
+        "libdatadog": 4,
+        "system-tests": 13
+      }
+    },
+    {
+      "date": "2023-01-30",
+      "week": "Jan 2023",
+      "value": 39,
+      "teamValues": {
+        "browser-sdk": 4,
+        "datadog-agent": 29,
+        "datadog-api-client-go": 2,
+        "dd-sdk-android": 87,
+        "dd-trace-dotnet": 12,
+        "dd-trace-java": 51,
+        "dd-trace-js": 20,
+        "dd-trace-py": 2,
+        "dd-trace-rb": 9,
+        "integrations-core": 8,
+        "libdatadog": 4,
+        "system-tests": 13
+      }
+    },
+    {
+      "date": "2023-02-06",
+      "week": "Feb 2023",
+      "value": 17,
+      "teamValues": {
+        "browser-sdk": 6,
+        "datadog-agent": 15,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 33,
+        "dd-trace-dotnet": 5,
+        "dd-trace-java": 58,
+        "dd-trace-js": 17,
+        "dd-trace-py": 3,
+        "dd-trace-rb": 2,
+        "integrations-core": 4,
+        "libdatadog": 1,
+        "system-tests": 18
+      }
+    },
+    {
+      "date": "2023-02-13",
+      "week": "Feb 2023",
+      "value": 6,
+      "teamValues": {
+        "browser-sdk": 1,
+        "datadog-agent": 9,
+        "datadog-api-client-go": 6,
+        "dd-sdk-android": 29,
+        "dd-trace-dotnet": 10,
+        "dd-trace-java": 13,
+        "dd-trace-js": 30,
+        "dd-trace-py": 5,
+        "dd-trace-rb": 5,
+        "integrations-core": 1,
+        "libdatadog": 1,
+        "system-tests": 4
+      }
+    },
+    {
+      "date": "2023-02-20",
+      "week": "Feb 2023",
+      "value": 69,
+      "teamValues": {
+        "browser-sdk": 2,
+        "datadog-agent": 14,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 38,
+        "dd-trace-dotnet": 9,
+        "dd-trace-java": 74,
+        "dd-trace-js": 6,
+        "dd-trace-py": 2,
+        "dd-trace-rb": 100,
+        "integrations-core": 1,
+        "libdatadog": 3,
+        "system-tests": 11
+      }
+    },
+    {
+      "date": "2023-02-27",
+      "week": "Feb 2023",
+      "value": 57,
+      "teamValues": {
+        "browser-sdk": 10,
+        "datadog-agent": 44,
+        "datadog-api-client-go": 42,
+        "dd-sdk-android": 31,
+        "dd-trace-dotnet": 3,
+        "dd-trace-java": 22,
+        "dd-trace-js": 5,
+        "dd-trace-py": 15,
+        "dd-trace-rb": 4,
+        "integrations-core": 6,
+        "libdatadog": 2,
+        "system-tests": 2
+      }
+    },
+    {
+      "date": "2023-03-06",
+      "week": "Mar 2023",
+      "value": 7,
+      "teamValues": {
+        "browser-sdk": 13,
+        "datadog-agent": 1,
+        "datadog-api-client-go": 4,
+        "dd-sdk-android": 100,
+        "dd-trace-dotnet": 6,
+        "dd-trace-java": 23,
+        "dd-trace-js": 3,
+        "dd-trace-py": 5,
+        "dd-trace-rb": 4,
+        "integrations-core": 0,
+        "libdatadog": 8,
+        "system-tests": 7
+      }
+    },
+    {
+      "date": "2023-03-13",
+      "week": "Mar 2023",
+      "value": 19,
+      "teamValues": {
+        "browser-sdk": 9,
+        "datadog-agent": 22,
+        "datadog-api-client-go": 3,
+        "dd-sdk-android": 44,
+        "dd-trace-dotnet": 14,
+        "dd-trace-java": 17,
+        "dd-trace-js": 27,
+        "dd-trace-py": 1,
+        "dd-trace-rb": 5,
+        "integrations-core": 2,
+        "libdatadog": 1,
+        "system-tests": 11
+      }
+    },
+    {
+      "date": "2023-03-20",
+      "week": "Mar 2023",
+      "value": 49,
+      "teamValues": {
+        "browser-sdk": 11,
+        "datadog-agent": 13,
+        "datadog-api-client-go": 3,
+        "dd-sdk-android": 23,
+        "dd-trace-dotnet": 52,
+        "dd-trace-java": 23,
+        "dd-trace-js": 18,
+        "dd-trace-py": 17,
+        "dd-trace-rb": 2,
+        "integrations-core": 12,
+        "libdatadog": 3,
+        "system-tests": 7
+      }
+    },
+    {
+      "date": "2023-03-27",
+      "week": "Mar 2023",
+      "value": 45,
+      "teamValues": {
+        "browser-sdk": 43,
+        "datadog-agent": 9,
+        "datadog-api-client-go": 21,
+        "dd-sdk-android": 69,
+        "dd-trace-dotnet": 36,
+        "dd-trace-java": 35,
+        "dd-trace-js": 21,
+        "dd-trace-py": 3,
+        "dd-trace-rb": 3,
+        "integrations-core": 12,
+        "libdatadog": 0,
+        "system-tests": 4
+      }
+    },
+    {
+      "date": "2023-04-03",
+      "week": "Apr 2023",
+      "value": 21,
+      "teamValues": {
+        "browser-sdk": 24,
+        "datadog-agent": 22,
+        "datadog-api-client-go": 3,
+        "dd-sdk-android": 25,
+        "dd-trace-dotnet": 5,
+        "dd-trace-java": 42,
+        "dd-trace-js": 3,
+        "dd-trace-py": 3,
+        "dd-trace-rb": 5,
+        "integrations-core": 6,
+        "libdatadog": 2,
+        "system-tests": 3
+      }
+    },
+    {
+      "date": "2023-04-10",
+      "week": "Apr 2023",
+      "value": 57,
+      "teamValues": {
+        "browser-sdk": 10,
+        "datadog-agent": 30,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 43,
+        "dd-trace-dotnet": 55,
+        "dd-trace-java": 30,
+        "dd-trace-js": 6,
+        "dd-trace-py": 1,
+        "dd-trace-rb": 12,
+        "integrations-core": 15,
+        "libdatadog": 1,
+        "system-tests": 2
+      }
+    },
+    {
+      "date": "2023-04-17",
+      "week": "Apr 2023",
+      "value": 100,
+      "teamValues": {
+        "browser-sdk": 17,
+        "datadog-agent": 85,
+        "datadog-api-client-go": 29,
+        "dd-sdk-android": 16,
+        "dd-trace-dotnet": 100,
+        "dd-trace-java": 4,
+        "dd-trace-js": 5,
+        "dd-trace-py": 5,
+        "dd-trace-rb": 5,
+        "integrations-core": 0,
+        "libdatadog": 8,
+        "system-tests": 10
+      }
+    },
+    {
+      "date": "2023-04-24",
+      "week": "Apr 2023",
+      "value": 55,
+      "teamValues": {
+        "browser-sdk": 4,
+        "datadog-agent": 9,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 72,
+        "dd-trace-dotnet": 12,
+        "dd-trace-java": 29,
+        "dd-trace-js": 100,
+        "dd-trace-py": 9,
+        "dd-trace-rb": 3,
+        "integrations-core": 5,
+        "libdatadog": 9,
+        "system-tests": 100
+      }
+    },
+    {
+      "date": "2023-05-01",
+      "week": "May 2023",
+      "value": 23,
+      "teamValues": {
+        "browser-sdk": 100,
+        "datadog-agent": 14,
+        "datadog-api-client-go": 2,
+        "dd-sdk-android": 3,
+        "dd-trace-dotnet": 25,
+        "dd-trace-java": 7,
+        "dd-trace-js": 15,
+        "dd-trace-py": 3,
+        "dd-trace-rb": 1,
+        "integrations-core": 3,
+        "libdatadog": 2,
+        "system-tests": 4
+      }
+    },
+    {
+      "date": "2023-05-08",
+      "week": "May 2023",
+      "value": 10,
+      "teamValues": {
+        "browser-sdk": 6,
+        "datadog-agent": 9,
+        "datadog-api-client-go": 2,
+        "dd-sdk-android": 6,
+        "dd-trace-dotnet": 23,
+        "dd-trace-java": 30,
+        "dd-trace-js": 25,
+        "dd-trace-py": 4,
+        "dd-trace-rb": 0,
+        "integrations-core": 3,
+        "libdatadog": 0,
+        "system-tests": 3
+      }
+    },
+    {
+      "date": "2023-05-15",
+      "week": "May 2023",
+      "value": 45,
+      "teamValues": {
+        "browser-sdk": 8,
+        "datadog-agent": 40,
+        "datadog-api-client-go": 2,
+        "dd-sdk-android": 21,
+        "dd-trace-dotnet": 24,
+        "dd-trace-java": 15,
+        "dd-trace-js": 8,
+        "dd-trace-py": 4,
+        "dd-trace-rb": 9,
+        "integrations-core": 8,
+        "libdatadog": 1,
+        "system-tests": 22
+      }
+    },
+    {
+      "date": "2023-05-22",
+      "week": "May 2023",
+      "value": 26,
+      "teamValues": {
+        "browser-sdk": 1,
+        "datadog-agent": 13,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 16,
+        "dd-trace-dotnet": 12,
+        "dd-trace-java": 32,
+        "dd-trace-js": 26,
+        "dd-trace-py": 1,
+        "dd-trace-rb": 14,
+        "integrations-core": 2,
+        "libdatadog": 1,
+        "system-tests": 44
+      }
+    },
+    {
+      "date": "2023-05-29",
+      "week": "May 2023",
+      "value": 13,
+      "teamValues": {
+        "browser-sdk": 2,
+        "datadog-agent": 1,
+        "datadog-api-client-go": 3,
+        "dd-sdk-android": 41,
+        "dd-trace-dotnet": 19,
+        "dd-trace-java": 14,
+        "dd-trace-js": 25,
+        "dd-trace-py": 3,
+        "dd-trace-rb": 3,
+        "integrations-core": 0,
+        "libdatadog": 0,
+        "system-tests": 41
+      }
+    },
+    {
+      "date": "2023-06-05",
+      "week": "Jun 2023",
+      "value": 6,
+      "teamValues": {
+        "browser-sdk": 3,
+        "datadog-agent": 5,
+        "datadog-api-client-go": 3,
+        "dd-sdk-android": 18,
+        "dd-trace-dotnet": 23,
+        "dd-trace-java": 12,
+        "dd-trace-js": 15,
+        "dd-trace-py": 3,
+        "dd-trace-rb": 3,
+        "integrations-core": 5,
+        "libdatadog": 0,
+        "system-tests": 3
+      }
+    },
+    {
+      "date": "2023-06-12",
+      "week": "Jun 2023",
+      "value": 70,
+      "teamValues": {
+        "browser-sdk": 20,
+        "datadog-agent": 9,
+        "datadog-api-client-go": 12,
+        "dd-sdk-android": 61,
+        "dd-trace-dotnet": 24,
+        "dd-trace-java": 39,
+        "dd-trace-js": 16,
+        "dd-trace-py": 42,
+        "dd-trace-rb": 2,
+        "integrations-core": 16,
+        "libdatadog": 23,
+        "system-tests": 4
+      }
+    },
+    {
+      "date": "2023-06-19",
+      "week": "Jun 2023",
+      "value": 18,
+      "teamValues": {
+        "browser-sdk": 12,
+        "datadog-agent": 8,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 70,
+        "dd-trace-dotnet": 11,
+        "dd-trace-java": 24,
+        "dd-trace-js": 43,
+        "dd-trace-py": 2,
+        "dd-trace-rb": 8,
+        "integrations-core": 4,
+        "libdatadog": 1,
+        "system-tests": 19
+      }
+    },
+    {
+      "date": "2023-06-26",
+      "week": "Jun 2023",
+      "value": 66,
+      "teamValues": {
+        "browser-sdk": 5,
+        "datadog-agent": 10,
+        "datadog-api-client-go": 73,
+        "dd-sdk-android": 76,
+        "dd-trace-dotnet": 33,
+        "dd-trace-java": 19,
+        "dd-trace-js": 13,
+        "dd-trace-py": 2,
+        "dd-trace-rb": 3,
+        "integrations-core": 16,
+        "libdatadog": 1,
+        "system-tests": 11
+      }
+    },
+    {
+      "date": "2023-07-03",
+      "week": "Jul 2023",
+      "value": 57,
+      "teamValues": {
+        "browser-sdk": 74,
+        "datadog-agent": 20,
+        "datadog-api-client-go": 10,
+        "dd-sdk-android": 28,
+        "dd-trace-dotnet": 12,
+        "dd-trace-java": 18,
+        "dd-trace-js": 42,
+        "dd-trace-py": 15,
+        "dd-trace-rb": 2,
+        "integrations-core": 21,
+        "libdatadog": 0,
+        "system-tests": 16
+      }
+    },
+    {
+      "date": "2023-07-10",
+      "week": "Jul 2023",
+      "value": 39,
+      "teamValues": {
+        "browser-sdk": 6,
+        "datadog-agent": 0,
+        "datadog-api-client-go": 74,
+        "dd-sdk-android": 46,
+        "dd-trace-dotnet": 4,
+        "dd-trace-java": 14,
+        "dd-trace-js": 48,
+        "dd-trace-py": 8,
+        "dd-trace-rb": 3,
+        "integrations-core": 4,
+        "libdatadog": 0,
+        "system-tests": 11
+      }
+    },
+    {
+      "date": "2023-07-17",
+      "week": "Jul 2023",
+      "value": 100,
+      "teamValues": {
+        "browser-sdk": 3,
+        "datadog-agent": 19,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 11,
+        "dd-trace-dotnet": 17,
+        "dd-trace-java": 16,
+        "dd-trace-js": 27,
+        "dd-trace-py": 4,
+        "dd-trace-rb": 5,
+        "integrations-core": 100,
+        "libdatadog": 0,
+        "system-tests": 2
+      }
+    },
+    {
+      "date": "2023-07-24",
+      "week": "Jul 2023",
+      "value": 38,
+      "teamValues": {
+        "browser-sdk": 6,
+        "datadog-agent": 21,
+        "datadog-api-client-go": 4,
+        "dd-sdk-android": 11,
+        "dd-trace-dotnet": 11,
+        "dd-trace-java": 33,
+        "dd-trace-js": 20,
+        "dd-trace-py": 11,
+        "dd-trace-rb": 5,
+        "integrations-core": 20,
+        "libdatadog": 0,
+        "system-tests": 2
+      }
+    },
+    {
+      "date": "2023-07-31",
+      "week": "Jul 2023",
+      "value": 61,
+      "teamValues": {
+        "browser-sdk": 6,
+        "datadog-agent": 9,
+        "datadog-api-client-go": 100,
+        "dd-sdk-android": 8,
+        "dd-trace-dotnet": 14,
+        "dd-trace-java": 9,
+        "dd-trace-js": 29,
+        "dd-trace-py": 7,
+        "dd-trace-rb": 3,
+        "integrations-core": 11,
+        "libdatadog": 12,
+        "system-tests": 1
+      }
+    },
+    {
+      "date": "2023-08-07",
+      "week": "Aug 2023",
+      "value": 39,
+      "teamValues": {
+        "browser-sdk": 3,
+        "datadog-agent": 23,
+        "datadog-api-client-go": 0,
+        "dd-sdk-android": 15,
+        "dd-trace-dotnet": 6,
+        "dd-trace-java": 14,
+        "dd-trace-js": 9,
+        "dd-trace-py": 23,
+        "dd-trace-rb": 3,
+        "integrations-core": 20,
+        "libdatadog": 2,
+        "system-tests": 4
+      }
+    },
+    {
+      "date": "2023-08-14",
+      "week": "Aug 2023",
+      "value": 34,
+      "teamValues": {
+        "browser-sdk": 2,
+        "datadog-agent": 22,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 12,
+        "dd-trace-dotnet": 27,
+        "dd-trace-java": 4,
+        "dd-trace-js": 6,
+        "dd-trace-py": 1,
+        "dd-trace-rb": 6,
+        "integrations-core": 15,
+        "libdatadog": 37,
+        "system-tests": 3
+      }
+    },
+    {
+      "date": "2023-08-21",
+      "week": "Aug 2023",
+      "value": 9,
+      "teamValues": {
+        "browser-sdk": 11,
+        "datadog-agent": 1,
+        "datadog-api-client-go": 2,
+        "dd-sdk-android": 22,
+        "dd-trace-dotnet": 4,
+        "dd-trace-java": 29,
+        "dd-trace-js": 17,
+        "dd-trace-py": 3,
+        "dd-trace-rb": 14,
+        "integrations-core": 7,
+        "libdatadog": 12,
+        "system-tests": 0
+      }
+    },
+    {
+      "date": "2023-08-28",
+      "week": "Aug 2023",
+      "value": 44,
+      "teamValues": {
+        "browser-sdk": 22,
+        "datadog-agent": 8,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 24,
+        "dd-trace-dotnet": 16,
+        "dd-trace-java": 29,
+        "dd-trace-js": 11,
+        "dd-trace-py": 10,
+        "dd-trace-rb": 56,
+        "integrations-core": 5,
+        "libdatadog": 2,
+        "system-tests": 1
+      }
+    },
+    {
+      "date": "2023-09-04",
+      "week": "Sep 2023",
+      "value": 26,
+      "teamValues": {
+        "browser-sdk": 19,
+        "datadog-agent": 24,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 29,
+        "dd-trace-dotnet": 9,
+        "dd-trace-java": 34,
+        "dd-trace-js": 5,
+        "dd-trace-py": 9,
+        "dd-trace-rb": 8,
+        "integrations-core": 2,
+        "libdatadog": 3,
+        "system-tests": 8
+      }
+    },
+    {
+      "date": "2023-09-11",
+      "week": "Sep 2023",
+      "value": 100,
+      "teamValues": {
+        "browser-sdk": 22,
+        "datadog-agent": 11,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 20,
+        "dd-trace-dotnet": 33,
+        "dd-trace-java": 20,
+        "dd-trace-js": 5,
+        "dd-trace-py": 100,
+        "dd-trace-rb": 93,
+        "integrations-core": 4,
+        "libdatadog": 3,
+        "system-tests": 6
+      }
+    },
+    {
+      "date": "2023-09-18",
+      "week": "Sep 2023",
+      "value": 11,
+      "teamValues": {
+        "browser-sdk": 5,
+        "datadog-agent": 11,
+        "datadog-api-client-go": 6,
+        "dd-sdk-android": 12,
+        "dd-trace-dotnet": 2,
+        "dd-trace-java": 30,
+        "dd-trace-js": 16,
+        "dd-trace-py": 7,
+        "dd-trace-rb": 7,
+        "integrations-core": 4,
+        "libdatadog": 3,
+        "system-tests": 3
+      }
+    },
+    {
+      "date": "2023-09-25",
+      "week": "Sep 2023",
+      "value": 66,
+      "teamValues": {
+        "browser-sdk": 2,
+        "datadog-agent": 30,
+        "datadog-api-client-go": 6,
+        "dd-sdk-android": 15,
+        "dd-trace-dotnet": 58,
+        "dd-trace-java": 19,
+        "dd-trace-js": 10,
+        "dd-trace-py": 5,
+        "dd-trace-rb": 44,
+        "integrations-core": 3,
+        "libdatadog": 3,
+        "system-tests": 2
+      }
+    },
+    {
+      "date": "2023-10-02",
+      "week": "Oct 2023",
+      "value": 0,
+      "teamValues": {
+        "browser-sdk": 6,
+        "datadog-agent": 1,
+        "datadog-api-client-go": 6,
+        "dd-sdk-android": 12,
+        "dd-trace-dotnet": 15,
+        "dd-trace-java": 9,
+        "dd-trace-js": 25,
+        "dd-trace-py": 3,
+        "dd-trace-rb": 7,
+        "integrations-core": 0,
+        "libdatadog": 0,
+        "system-tests": 4
+      }
+    },
+    {
+      "date": "2023-10-09",
+      "week": "Oct 2023",
+      "value": 45,
+      "teamValues": {
+        "browser-sdk": 22,
+        "datadog-agent": 37,
+        "datadog-api-client-go": 9,
+        "dd-sdk-android": 91,
+        "dd-trace-dotnet": 4,
+        "dd-trace-java": 13,
+        "dd-trace-js": 4,
+        "dd-trace-py": 4,
+        "dd-trace-rb": 5,
+        "integrations-core": 18,
+        "libdatadog": 0,
+        "system-tests": 5
+      }
+    },
+    {
+      "date": "2023-10-16",
+      "week": "Oct 2023",
+      "value": 6,
+      "teamValues": {
+        "browser-sdk": 9,
+        "datadog-agent": 15,
+        "datadog-api-client-go": 6,
+        "dd-sdk-android": 19,
+        "dd-trace-dotnet": 11,
+        "dd-trace-java": 12,
+        "dd-trace-js": 1,
+        "dd-trace-py": 2,
+        "dd-trace-rb": 1,
+        "integrations-core": 3,
+        "libdatadog": 0,
+        "system-tests": 2
+      }
+    },
+    {
+      "date": "2023-10-23",
+      "week": "Oct 2023",
+      "value": 37,
+      "teamValues": {
+        "browser-sdk": 0,
+        "datadog-agent": 14,
+        "datadog-api-client-go": 3,
+        "dd-sdk-android": 16,
+        "dd-trace-dotnet": 26,
+        "dd-trace-java": 17,
+        "dd-trace-js": 6,
+        "dd-trace-py": 4,
+        "dd-trace-rb": 2,
+        "integrations-core": 4,
+        "libdatadog": 100,
+        "system-tests": 13
+      }
+    },
+    {
+      "date": "2023-10-30",
+      "week": "Oct 2023",
+      "value": 49,
+      "teamValues": {
+        "browser-sdk": 9,
+        "datadog-agent": 11,
+        "datadog-api-client-go": 12,
+        "dd-sdk-android": 6,
+        "dd-trace-dotnet": 45,
+        "dd-trace-java": 33,
+        "dd-trace-js": 17,
+        "dd-trace-py": 24,
+        "dd-trace-rb": 1,
+        "integrations-core": 7,
+        "libdatadog": 0,
+        "system-tests": 8
+      }
+    },
+    {
+      "date": "2023-11-06",
+      "week": "Nov 2023",
+      "value": 92,
+      "teamValues": {
+        "browser-sdk": 2,
+        "datadog-agent": 73,
+        "datadog-api-client-go": 51,
+        "dd-sdk-android": 9,
+        "dd-trace-dotnet": 14,
+        "dd-trace-java": 12,
+        "dd-trace-js": 8,
+        "dd-trace-py": 7,
+        "dd-trace-rb": 3,
+        "integrations-core": 22,
+        "libdatadog": 0,
+        "system-tests": 14
+      }
+    },
+    {
+      "date": "2023-11-13",
+      "week": "Nov 2023",
+      "value": 24,
+      "teamValues": {
+        "browser-sdk": 2,
+        "datadog-agent": 3,
+        "datadog-api-client-go": 10,
+        "dd-sdk-android": 18,
+        "dd-trace-dotnet": 37,
+        "dd-trace-java": 15,
+        "dd-trace-js": 33,
+        "dd-trace-py": 19,
+        "dd-trace-rb": 0,
+        "integrations-core": 0,
+        "libdatadog": 0,
+        "system-tests": 2
+      }
+    },
+    {
+      "date": "2023-11-20",
+      "week": "Nov 2023",
+      "value": 5,
+      "teamValues": {
+        "browser-sdk": 11,
+        "datadog-agent": 18,
+        "datadog-api-client-go": 0,
+        "dd-sdk-android": 13,
+        "dd-trace-dotnet": 10,
+        "dd-trace-java": 8,
+        "dd-trace-js": 8,
+        "dd-trace-py": 4,
+        "dd-trace-rb": 4,
+        "integrations-core": 1,
+        "libdatadog": 0,
+        "system-tests": 1
+      }
+    },
+    {
+      "date": "2023-11-27",
+      "week": "Nov 2023",
+      "value": 55,
+      "teamValues": {
+        "browser-sdk": 5,
+        "datadog-agent": 37,
+        "datadog-api-client-go": 0,
+        "dd-sdk-android": 1,
+        "dd-trace-dotnet": 32,
+        "dd-trace-java": 100,
+        "dd-trace-js": 9,
+        "dd-trace-py": 15,
+        "dd-trace-rb": 7,
+        "integrations-core": 2,
+        "libdatadog": 0,
+        "system-tests": 1
+      }
+    },
+    {
+      "date": "2023-12-04",
+      "week": "Dec 2023",
+      "value": 5,
+      "teamValues": {
+        "browser-sdk": 10,
+        "datadog-agent": 18,
+        "datadog-api-client-go": 3,
+        "dd-sdk-android": 10,
+        "dd-trace-dotnet": 1,
+        "dd-trace-java": 8,
+        "dd-trace-js": 28,
+        "dd-trace-py": 2,
+        "dd-trace-rb": 4,
+        "integrations-core": 1,
+        "libdatadog": 1,
+        "system-tests": 8
+      }
+    },
+    {
+      "date": "2023-12-11",
+      "week": "Dec 2023",
+      "value": 18,
+      "teamValues": {
+        "browser-sdk": 4,
+        "datadog-agent": 9,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 81,
+        "dd-trace-dotnet": 5,
+        "dd-trace-java": 55,
+        "dd-trace-js": 35,
+        "dd-trace-py": 5,
+        "dd-trace-rb": 8,
+        "integrations-core": 3,
+        "libdatadog": 0,
+        "system-tests": 7
+      }
+    },
+    {
+      "date": "2023-12-18",
+      "week": "Dec 2023",
+      "value": 1,
+      "teamValues": {
+        "browser-sdk": 4,
+        "datadog-agent": 12,
+        "datadog-api-client-go": 1,
+        "dd-sdk-android": 50,
+        "dd-trace-dotnet": 0,
+        "dd-trace-java": 21,
+        "dd-trace-js": 30,
+        "dd-trace-py": 2,
+        "dd-trace-rb": 3,
+        "integrations-core": 2,
+        "libdatadog": 0,
+        "system-tests": 2
+      }
+    },
+    {
+      "date": "2023-12-25",
+      "week": "Dec 2023",
+      "value": 0,
+      "teamValues": {
+        "browser-sdk": 0,
+        "datadog-agent": 3,
+        "datadog-api-client-go": 0,
+        "dd-sdk-android": 26,
+        "dd-trace-dotnet": 5,
+        "dd-trace-java": 4,
+        "dd-trace-js": 25,
+        "dd-trace-py": 0,
+        "dd-trace-rb": 0,
+        "integrations-core": 0,
+        "libdatadog": 0,
+        "system-tests": 11
+      }
+    }
+  ]
+}

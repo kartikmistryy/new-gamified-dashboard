@@ -1,45 +1,44 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-02-19T18:24:40.949Z",
+  "generatedAt": "2026-02-21T18:39:54.099Z",
+  "source": "scannedData/datadog_main",
   "repos": [
-    "AutoGPT",
-    "Flowise",
-    "QuivrHQ_quivr",
-    "langchain",
-    "langfuse_langfuse",
-    "llama_index",
-    "reflex-dev_reflex",
-    "ruff",
-    "rustdesk",
-    "stable-diffusion-webui",
-    "text-generation-webui",
-    "transformers",
-    "twentyhq_twenty",
-    "typst"
+    "browser-sdk",
+    "datadog-agent",
+    "datadog-api-client-go",
+    "dd-sdk-android",
+    "dd-trace-dotnet",
+    "dd-trace-java",
+    "dd-trace-js",
+    "dd-trace-py",
+    "dd-trace-rb",
+    "integrations-core",
+    "libdatadog",
+    "system-tests"
   ],
   "contributor": {
-    "repoCount": 14,
-    "contributorCount": 5322,
-    "totalCommits": 34458
+    "repoCount": 12,
+    "contributorCount": 931,
+    "totalCommits": 21777
   },
   "nLoc": {
-    "total": 7804043,
+    "total": 4102120,
     "byOperation": {
-      "add": 4804773,
-      "update": 1392774,
-      "delete": 1229684,
-      "selfDelete": 376812
+      "add": 2689139,
+      "update": 577390,
+      "delete": 623122,
+      "selfDelete": 212469
     },
     "fractions": {
-      "add": 0.6156774123361443,
-      "update": 0.1784682631810204,
-      "delete": 0.15757012102572987,
-      "selfDelete": 0.048284203457105504
+      "add": 0.6555485943853422,
+      "update": 0.14075404912581788,
+      "delete": 0.15190243093814906,
+      "selfDelete": 0.05179492555069086
     }
   },
   "churn": {
-    "churnRatePct": 4.82842034571055,
-    "totalSelfDeleteLines": 376812,
-    "totalLinesChanged": 7804043
+    "churnRatePct": 5.9599,
+    "totalSelfDeleteLines": 244483,
+    "totalLinesChanged": 4102120
   }
 }

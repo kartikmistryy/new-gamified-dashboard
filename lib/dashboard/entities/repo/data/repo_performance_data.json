@@ -1,3811 +1,1994 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-02-20T15:14:00.453Z",
+  "generatedAt": "2026-02-22T16:47:39.071Z",
+  "source": "scannedData/datadog_main",
   "repos": {
-    "AutoGPT": {
-      "repoId": "AutoGPT",
-      "churnRatePct": 3.32,
-      "gaugeValue": 80,
-      "contributorCount": 705,
-      "totalCommits": 4097,
+    "browser-sdk": {
+      "repoId": "browser-sdk",
+      "churnRatePct": 21.63,
+      "gaugeValue": 41,
+      "contributorCount": 15,
+      "totalCommits": 523,
       "contributors": [
         {
           "rank": 1,
-          "name": "Merwane Hamadi",
-          "totalCommits": 407,
-          "totalDiffDelta": 568448,
-          "churnRatePct": 2.3,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 2,
-          "name": "Auto-GPT-Bot",
-          "totalCommits": 1070,
-          "totalDiffDelta": 333738,
-          "churnRatePct": 0.2,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 3,
-          "name": "hunteraraujo",
-          "totalCommits": 257,
-          "totalDiffDelta": 241218,
-          "churnRatePct": 5.6,
-          "gaugeValue": 73,
-          "trend": "flat"
-        },
-        {
-          "rank": 4,
-          "name": "SwiftyOS",
-          "totalCommits": 237,
-          "totalDiffDelta": 121556,
-          "churnRatePct": 2.9,
+          "name": "Benoît",
+          "totalCommits": 122,
+          "totalDiffDelta": 54916.97,
+          "churnRatePct": 5.59,
           "gaugeValue": 81,
-          "trend": "up"
-        },
-        {
-          "rank": 5,
-          "name": "Reinier van der Leer",
-          "totalCommits": 176,
-          "totalDiffDelta": 24219,
-          "churnRatePct": 4.3,
-          "gaugeValue": 77,
-          "trend": "up"
-        },
-        {
-          "rank": 6,
-          "name": "Reinier van der Leer",
-          "totalCommits": 149,
-          "totalDiffDelta": 13637,
-          "churnRatePct": 1.6,
-          "gaugeValue": 85,
-          "trend": "up"
-        },
-        {
-          "rank": 7,
-          "name": "Silen Naihin",
-          "totalCommits": 130,
-          "totalDiffDelta": 13173,
-          "churnRatePct": 33.4,
-          "gaugeValue": 10,
-          "trend": "down"
-        },
-        {
-          "rank": 8,
-          "name": "James Collins",
-          "totalCommits": 40,
-          "totalDiffDelta": 5807,
-          "churnRatePct": 1.9,
-          "gaugeValue": 84,
-          "trend": "up"
-        },
-        {
-          "rank": 9,
-          "name": "Luke",
-          "totalCommits": 39,
-          "totalDiffDelta": 5403,
-          "churnRatePct": 0.7,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 10,
-          "name": "Reinier van der Leer",
-          "totalCommits": 22,
-          "totalDiffDelta": 5323,
-          "churnRatePct": 1.3,
-          "gaugeValue": 86,
-          "trend": "up"
-        },
-        {
-          "rank": 11,
-          "name": "Richard Beales",
-          "totalCommits": 41,
-          "totalDiffDelta": 5310,
-          "churnRatePct": 0.2,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 12,
-          "name": "Jure Bogunovic",
-          "totalCommits": 1,
-          "totalDiffDelta": 4286,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 13,
-          "name": "BillSchumacher",
-          "totalCommits": 82,
-          "totalDiffDelta": 3350,
-          "churnRatePct": 20.9,
-          "gaugeValue": 27,
-          "trend": "down"
-        },
-        {
-          "rank": 14,
-          "name": "Erik Peterson",
-          "totalCommits": 29,
-          "totalDiffDelta": 2547,
-          "churnRatePct": 0.9,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "Walter Nasich",
-          "totalCommits": 1,
-          "totalDiffDelta": 1677,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 16,
-          "name": "bszollosinagy",
-          "totalCommits": 2,
-          "totalDiffDelta": 1087,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 17,
-          "name": "Sicong Zhao",
-          "totalCommits": 1,
-          "totalDiffDelta": 658,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "Toran Bruce Richards",
-          "totalCommits": 217,
-          "totalDiffDelta": 414,
-          "churnRatePct": 9.3,
-          "gaugeValue": 62,
-          "trend": "flat"
-        },
-        {
-          "rank": 19,
-          "name": "bingokon",
-          "totalCommits": 3,
-          "totalDiffDelta": 381,
-          "churnRatePct": 10.9,
-          "gaugeValue": 57,
-          "trend": "flat"
-        },
-        {
-          "rank": 20,
-          "name": "lengweiping1983",
-          "totalCommits": 2,
-          "totalDiffDelta": 325,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 21,
-          "name": "k-boikov",
-          "totalCommits": 18,
-          "totalDiffDelta": 231,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 22,
-          "name": "Tomas Valenta",
-          "totalCommits": 2,
-          "totalDiffDelta": 211,
-          "churnRatePct": 2.6,
-          "gaugeValue": 82,
-          "trend": "up"
-        },
-        {
-          "rank": 23,
-          "name": "Alrik Olson",
-          "totalCommits": 6,
-          "totalDiffDelta": 207,
-          "churnRatePct": 4.8,
-          "gaugeValue": 76,
-          "trend": "up"
-        },
-        {
-          "rank": 24,
-          "name": "Fabrice Hong",
-          "totalCommits": 9,
-          "totalDiffDelta": 205,
-          "churnRatePct": 4.4,
-          "gaugeValue": 77,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "Eddie Cohen",
-          "totalCommits": 4,
-          "totalDiffDelta": 185,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 26,
-          "name": "Peter Krenesky",
-          "totalCommits": 4,
-          "totalDiffDelta": 184,
-          "churnRatePct": 11.4,
-          "gaugeValue": 56,
-          "trend": "flat"
-        },
-        {
-          "rank": 27,
-          "name": "PaperMoose",
-          "totalCommits": 2,
-          "totalDiffDelta": 178,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 28,
-          "name": "Bob",
-          "totalCommits": 1,
-          "totalDiffDelta": 177,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 29,
-          "name": "Vwing",
-          "totalCommits": 1,
-          "totalDiffDelta": 174,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "douglas",
-          "totalCommits": 4,
-          "totalDiffDelta": 173,
-          "churnRatePct": 0.9,
-          "gaugeValue": 87,
-          "trend": "up"
-        }
-      ]
-    },
-    "Flowise": {
-      "repoId": "Flowise",
-      "churnRatePct": 15.62,
-      "gaugeValue": 43,
-      "contributorCount": 73,
-      "totalCommits": 1016,
-      "contributors": [
-        {
-          "rank": 1,
-          "name": "Henry",
-          "totalCommits": 474,
-          "totalDiffDelta": 65780,
-          "churnRatePct": 13.7,
-          "gaugeValue": 49,
-          "trend": "flat"
-        },
-        {
-          "rank": 2,
-          "name": "use-the-fork",
-          "totalCommits": 10,
-          "totalDiffDelta": 21712,
-          "churnRatePct": 19.7,
-          "gaugeValue": 31,
-          "trend": "down"
-        },
-        {
-          "rank": 3,
-          "name": "vinodkiran",
-          "totalCommits": 95,
-          "totalDiffDelta": 6024,
-          "churnRatePct": 13.3,
-          "gaugeValue": 50,
-          "trend": "flat"
-        },
-        {
-          "rank": 4,
-          "name": "chungyau97",
-          "totalCommits": 111,
-          "totalDiffDelta": 3366,
-          "churnRatePct": 5,
-          "gaugeValue": 75,
-          "trend": "flat"
-        },
-        {
-          "rank": 5,
-          "name": "abhishekshankr",
-          "totalCommits": 27,
-          "totalDiffDelta": 1334,
-          "churnRatePct": 2.7,
-          "gaugeValue": 82,
-          "trend": "up"
-        },
-        {
-          "rank": 6,
-          "name": "Yongtae",
-          "totalCommits": 54,
-          "totalDiffDelta": 600,
-          "churnRatePct": 8.5,
-          "gaugeValue": 65,
-          "trend": "flat"
-        },
-        {
-          "rank": 7,
-          "name": "Seif",
-          "totalCommits": 11,
-          "totalDiffDelta": 400,
-          "churnRatePct": 5.5,
-          "gaugeValue": 74,
-          "trend": "flat"
-        },
-        {
-          "rank": 8,
-          "name": "Avin",
-          "totalCommits": 1,
-          "totalDiffDelta": 390,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 9,
-          "name": "Martin Andrews",
-          "totalCommits": 5,
-          "totalDiffDelta": 349,
-          "churnRatePct": 3.4,
-          "gaugeValue": 80,
-          "trend": "up"
-        },
-        {
-          "rank": 10,
-          "name": "Henry Heng",
-          "totalCommits": 64,
-          "totalDiffDelta": 332,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 11,
-          "name": "Fabio Valencio",
-          "totalCommits": 4,
-          "totalDiffDelta": 322,
-          "churnRatePct": 5.8,
-          "gaugeValue": 73,
-          "trend": "flat"
-        },
-        {
-          "rank": 12,
-          "name": "Govind Kumar",
-          "totalCommits": 8,
-          "totalDiffDelta": 319,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 13,
-          "name": "Brian Krygsman",
-          "totalCommits": 4,
-          "totalDiffDelta": 267,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 14,
-          "name": "apeng-singlestore",
-          "totalCommits": 3,
-          "totalDiffDelta": 252,
-          "churnRatePct": 4.7,
-          "gaugeValue": 76,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "vjsai",
-          "totalCommits": 7,
-          "totalDiffDelta": 180,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 16,
-          "name": "ivalkshfoeif",
-          "totalCommits": 6,
-          "totalDiffDelta": 159,
-          "churnRatePct": 3.8,
-          "gaugeValue": 79,
-          "trend": "up"
-        },
-        {
-          "rank": 17,
-          "name": "Atish Amte",
-          "totalCommits": 8,
-          "totalDiffDelta": 151,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "drobnikj",
-          "totalCommits": 4,
-          "totalDiffDelta": 137,
-          "churnRatePct": 2.1,
-          "gaugeValue": 84,
-          "trend": "up"
-        },
-        {
-          "rank": 19,
-          "name": "SebastjanPrachovskij",
-          "totalCommits": 3,
-          "totalDiffDelta": 131,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 20,
-          "name": "Jeffrey-Wang",
-          "totalCommits": 6,
-          "totalDiffDelta": 118,
-          "churnRatePct": 8.1,
-          "gaugeValue": 66,
-          "trend": "flat"
-        },
-        {
-          "rank": 21,
-          "name": "matthias",
-          "totalCommits": 2,
-          "totalDiffDelta": 112,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 22,
-          "name": "atilgner",
-          "totalCommits": 4,
-          "totalDiffDelta": 109,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 23,
-          "name": "Lorenzo",
-          "totalCommits": 5,
-          "totalDiffDelta": 109,
-          "churnRatePct": 6.8,
-          "gaugeValue": 70,
-          "trend": "flat"
-        },
-        {
-          "rank": 24,
-          "name": "Ayush Jain",
-          "totalCommits": 3,
-          "totalDiffDelta": 104,
-          "churnRatePct": 2.1,
-          "gaugeValue": 84,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "tirongi",
-          "totalCommits": 5,
-          "totalDiffDelta": 101,
-          "churnRatePct": 2,
-          "gaugeValue": 84,
-          "trend": "up"
-        },
-        {
-          "rank": 26,
-          "name": "xiexin12138",
-          "totalCommits": 2,
-          "totalDiffDelta": 101,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 27,
-          "name": "Hamzah Abdulfattah",
-          "totalCommits": 2,
-          "totalDiffDelta": 92,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 28,
-          "name": "BitVoyagerMan",
-          "totalCommits": 2,
-          "totalDiffDelta": 84,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 29,
-          "name": "denchi",
-          "totalCommits": 4,
-          "totalDiffDelta": 80,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "Pravesh-mansharamani",
-          "totalCommits": 3,
-          "totalDiffDelta": 73,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        }
-      ]
-    },
-    "quivr": {
-      "repoId": "quivr",
-      "churnRatePct": 12.2,
-      "gaugeValue": 53,
-      "contributorCount": 84,
-      "totalCommits": 934,
-      "contributors": [
-        {
-          "rank": 1,
-          "name": "Mamadou DICKO",
-          "totalCommits": 220,
-          "totalDiffDelta": 23414,
-          "churnRatePct": 16,
-          "gaugeValue": 42,
           "trend": "down"
         },
         {
           "rank": 2,
-          "name": "Zineb El Bachiri",
-          "totalCommits": 67,
-          "totalDiffDelta": 13315,
-          "churnRatePct": 5.6,
-          "gaugeValue": 73,
+          "name": "Bastien Caudan",
+          "totalCommits": 106,
+          "totalDiffDelta": 20996.39,
+          "churnRatePct": 2.55,
+          "gaugeValue": 89,
           "trend": "flat"
         },
         {
           "rank": 3,
-          "name": "Stan Girard",
-          "totalCommits": 410,
-          "totalDiffDelta": 13207,
-          "churnRatePct": 16.5,
-          "gaugeValue": 41,
-          "trend": "down"
-        },
-        {
-          "rank": 4,
-          "name": "Matt",
-          "totalCommits": 24,
-          "totalDiffDelta": 3620,
-          "churnRatePct": 9.7,
-          "gaugeValue": 61,
-          "trend": "flat"
-        },
-        {
-          "rank": 5,
-          "name": "Noe",
-          "totalCommits": 1,
-          "totalDiffDelta": 2789,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 6,
-          "name": "Matthieu Jacq",
-          "totalCommits": 38,
-          "totalDiffDelta": 2325,
-          "churnRatePct": 8.3,
-          "gaugeValue": 65,
-          "trend": "flat"
-        },
-        {
-          "rank": 7,
-          "name": "ChloeMouret",
-          "totalCommits": 5,
-          "totalDiffDelta": 1854,
-          "churnRatePct": 0.8,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 8,
-          "name": "Aditya Nandan",
-          "totalCommits": 25,
-          "totalDiffDelta": 1331,
-          "churnRatePct": 3.8,
-          "gaugeValue": 79,
-          "trend": "up"
-        },
-        {
-          "rank": 9,
-          "name": "MaHDi",
-          "totalCommits": 1,
-          "totalDiffDelta": 996,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 10,
-          "name": "shaun",
-          "totalCommits": 14,
-          "totalDiffDelta": 708,
-          "churnRatePct": 2.3,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 11,
-          "name": "Nick Guernsey",
-          "totalCommits": 3,
-          "totalDiffDelta": 546,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 12,
-          "name": "Stepan Lebedev",
-          "totalCommits": 3,
-          "totalDiffDelta": 536,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 13,
-          "name": "iMADi-ARCH",
-          "totalCommits": 18,
-          "totalDiffDelta": 223,
-          "churnRatePct": 3.3,
-          "gaugeValue": 80,
-          "trend": "up"
-        },
-        {
-          "rank": 14,
-          "name": "Ruben1701",
-          "totalCommits": 2,
-          "totalDiffDelta": 144,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "Joey Wang",
-          "totalCommits": 2,
-          "totalDiffDelta": 114,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 16,
-          "name": "Jerry Shang",
-          "totalCommits": 1,
-          "totalDiffDelta": 92,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 17,
-          "name": "Gustavo J. Maciel",
-          "totalCommits": 5,
-          "totalDiffDelta": 78,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "Michael Tan",
-          "totalCommits": 2,
-          "totalDiffDelta": 74,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 19,
-          "name": "joelsprunger",
-          "totalCommits": 3,
-          "totalDiffDelta": 73,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 20,
-          "name": "Gabriel Rodrigues Eger",
-          "totalCommits": 1,
-          "totalDiffDelta": 67,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 21,
-          "name": "Buer",
-          "totalCommits": 1,
-          "totalDiffDelta": 60,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 22,
-          "name": "Ziyad El Abid",
-          "totalCommits": 1,
-          "totalDiffDelta": 54,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 23,
-          "name": "Corey Psoinos",
-          "totalCommits": 1,
-          "totalDiffDelta": 29,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 24,
-          "name": "Maria Romanenko",
-          "totalCommits": 1,
-          "totalDiffDelta": 27,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "Laurens Van Keer",
-          "totalCommits": 2,
-          "totalDiffDelta": 26,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 26,
-          "name": "Shan",
-          "totalCommits": 4,
-          "totalDiffDelta": 24,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 27,
-          "name": "mvda",
-          "totalCommits": 1,
-          "totalDiffDelta": 23,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 28,
-          "name": "Ishaan Jaff",
-          "totalCommits": 1,
-          "totalDiffDelta": 20,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 29,
-          "name": "Murtaza",
-          "totalCommits": 2,
-          "totalDiffDelta": 15,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "Daniel",
-          "totalCommits": 1,
-          "totalDiffDelta": 14,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        }
-      ]
-    },
-    "langchain": {
-      "repoId": "langchain",
-      "churnRatePct": 3.67,
-      "gaugeValue": 79,
-      "contributorCount": 1712,
-      "totalCommits": 6023,
-      "contributors": [
-        {
-          "rank": 1,
-          "name": "Bagatur",
-          "totalCommits": 537,
-          "totalDiffDelta": 404070,
-          "churnRatePct": 3.4,
-          "gaugeValue": 80,
-          "trend": "up"
-        },
-        {
-          "rank": 2,
-          "name": "Joe McElroy",
-          "totalCommits": 6,
-          "totalDiffDelta": 178458,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 3,
-          "name": "Harrison Chase",
-          "totalCommits": 951,
-          "totalDiffDelta": 155222,
-          "churnRatePct": 9.3,
-          "gaugeValue": 62,
-          "trend": "flat"
-        },
-        {
-          "rank": 4,
-          "name": "sergerdn",
-          "totalCommits": 9,
-          "totalDiffDelta": 81482,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 5,
-          "name": "Erick Friis",
-          "totalCommits": 125,
-          "totalDiffDelta": 70203,
-          "churnRatePct": 1.8,
-          "gaugeValue": 85,
-          "trend": "up"
-        },
-        {
-          "rank": 6,
-          "name": "Davis Chase",
-          "totalCommits": 120,
-          "totalDiffDelta": 41400,
-          "churnRatePct": 1.6,
-          "gaugeValue": 85,
-          "trend": "up"
-        },
-        {
-          "rank": 7,
-          "name": "William FH",
-          "totalCommits": 210,
-          "totalDiffDelta": 31686,
-          "churnRatePct": 4.1,
-          "gaugeValue": 78,
-          "trend": "up"
-        },
-        {
-          "rank": 8,
-          "name": "Lance Martin",
-          "totalCommits": 104,
-          "totalDiffDelta": 27605,
-          "churnRatePct": 2.6,
-          "gaugeValue": 82,
-          "trend": "up"
-        },
-        {
-          "rank": 9,
-          "name": "Eugene Yurtsev",
-          "totalCommits": 184,
-          "totalDiffDelta": 20304,
-          "churnRatePct": 15.7,
-          "gaugeValue": 43,
-          "trend": "down"
-        },
-        {
-          "rank": 10,
-          "name": "Leonid Ganeline",
-          "totalCommits": 193,
-          "totalDiffDelta": 19568,
-          "churnRatePct": 1,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
-          "rank": 11,
-          "name": "Zander Chase",
-          "totalCommits": 146,
-          "totalDiffDelta": 16416,
-          "churnRatePct": 11.9,
-          "gaugeValue": 54,
-          "trend": "flat"
-        },
-        {
-          "rank": 12,
-          "name": "Ankush Gola",
-          "totalCommits": 47,
-          "totalDiffDelta": 14903,
-          "churnRatePct": 4.8,
-          "gaugeValue": 76,
-          "trend": "up"
-        },
-        {
-          "rank": 13,
-          "name": "Predrag Gruevski",
-          "totalCommits": 79,
-          "totalDiffDelta": 10306,
-          "churnRatePct": 2.3,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 14,
-          "name": "Nuno Campos",
-          "totalCommits": 148,
-          "totalDiffDelta": 10192,
-          "churnRatePct": 3,
-          "gaugeValue": 81,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "Bagatur",
-          "totalCommits": 34,
-          "totalDiffDelta": 9402,
-          "churnRatePct": 0.4,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 16,
-          "name": "Nuno Campos",
-          "totalCommits": 91,
-          "totalDiffDelta": 8572,
-          "churnRatePct": 7.4,
-          "gaugeValue": 68,
-          "trend": "flat"
-        },
-        {
-          "rank": 17,
-          "name": "Nicolas",
-          "totalCommits": 14,
-          "totalDiffDelta": 7286,
-          "churnRatePct": 0.4,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "David Duong",
-          "totalCommits": 13,
-          "totalDiffDelta": 6666,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 19,
-          "name": "Tomaz Bratanic",
-          "totalCommits": 25,
-          "totalDiffDelta": 4886,
-          "churnRatePct": 1,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
-          "rank": 20,
-          "name": "Kacper Łukawski",
-          "totalCommits": 25,
-          "totalDiffDelta": 4712,
-          "churnRatePct": 5,
-          "gaugeValue": 75,
-          "trend": "flat"
-        },
-        {
-          "rank": 21,
-          "name": "cs0lar",
-          "totalCommits": 3,
-          "totalDiffDelta": 4003,
-          "churnRatePct": 2.8,
-          "gaugeValue": 82,
-          "trend": "up"
-        },
-        {
-          "rank": 22,
-          "name": "olgavrou",
-          "totalCommits": 55,
-          "totalDiffDelta": 3396,
-          "churnRatePct": 18.7,
-          "gaugeValue": 34,
-          "trend": "down"
-        },
-        {
-          "rank": 23,
-          "name": "Daniel Chalef",
-          "totalCommits": 17,
-          "totalDiffDelta": 3201,
-          "churnRatePct": 1.4,
-          "gaugeValue": 86,
-          "trend": "up"
-        },
-        {
-          "rank": 24,
-          "name": "Sam Partee",
-          "totalCommits": 1,
-          "totalDiffDelta": 3041,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "Jacob Lee",
-          "totalCommits": 31,
-          "totalDiffDelta": 2699,
-          "churnRatePct": 0.4,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 26,
-          "name": "Piyush Jain",
-          "totalCommits": 21,
-          "totalDiffDelta": 2631,
-          "churnRatePct": 0.4,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 27,
-          "name": "Stefano Lottini",
-          "totalCommits": 17,
-          "totalDiffDelta": 2261,
-          "churnRatePct": 3.7,
-          "gaugeValue": 79,
-          "trend": "up"
-        },
-        {
-          "rank": 28,
-          "name": "Leonid Kuligin",
-          "totalCommits": 31,
-          "totalDiffDelta": 2084,
-          "churnRatePct": 0.8,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 29,
-          "name": "mbchang",
-          "totalCommits": 24,
-          "totalDiffDelta": 2045,
-          "churnRatePct": 4.1,
-          "gaugeValue": 78,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "Matvey Arye",
-          "totalCommits": 1,
-          "totalDiffDelta": 2041,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        }
-      ]
-    },
-    "langfuse": {
-      "repoId": "langfuse",
-      "churnRatePct": 22.49,
-      "gaugeValue": 23,
-      "contributorCount": 20,
-      "totalCommits": 951,
-      "contributors": [
-        {
-          "rank": 1,
-          "name": "Marc Klingen",
-          "totalCommits": 509,
-          "totalDiffDelta": 14349,
-          "churnRatePct": 13.2,
-          "gaugeValue": 50,
-          "trend": "flat"
-        },
-        {
-          "rank": 2,
-          "name": "Max Deichmann",
-          "totalCommits": 252,
-          "totalDiffDelta": 14201,
-          "churnRatePct": 29.9,
-          "gaugeValue": 10,
-          "trend": "down"
-        },
-        {
-          "rank": 3,
-          "name": "18feb06",
-          "totalCommits": 7,
-          "totalDiffDelta": 770,
-          "churnRatePct": 0.4,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 4,
-          "name": "Felix Wu",
-          "totalCommits": 4,
-          "totalDiffDelta": 390,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 5,
-          "name": "Diwakar Kashyap",
-          "totalCommits": 3,
-          "totalDiffDelta": 214,
-          "churnRatePct": 0.4,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 6,
-          "name": "Simon Gneuß",
-          "totalCommits": 1,
-          "totalDiffDelta": 169,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 7,
-          "name": "Md. Tonoy Akando",
-          "totalCommits": 1,
-          "totalDiffDelta": 152,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 8,
-          "name": "John HU",
-          "totalCommits": 1,
-          "totalDiffDelta": 134,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 9,
-          "name": "Richard Krümmel",
-          "totalCommits": 1,
-          "totalDiffDelta": 88,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 10,
-          "name": "dependabot[bot]",
-          "totalCommits": 152,
-          "totalDiffDelta": 72,
-          "churnRatePct": 7.1,
-          "gaugeValue": 69,
-          "trend": "flat"
-        },
-        {
-          "rank": 11,
-          "name": "Debashis Debnath",
-          "totalCommits": 2,
-          "totalDiffDelta": 53,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 12,
-          "name": "Yash Khare",
-          "totalCommits": 2,
-          "totalDiffDelta": 15,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 13,
-          "name": "Gokul Js",
-          "totalCommits": 2,
-          "totalDiffDelta": 12,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 14,
-          "name": "Robert Sturla",
-          "totalCommits": 1,
-          "totalDiffDelta": 11,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "Yaroslav Halchenko",
-          "totalCommits": 1,
-          "totalDiffDelta": 5,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 16,
-          "name": "Dev Khant",
-          "totalCommits": 1,
-          "totalDiffDelta": 4,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 17,
-          "name": "Bernd Strehl",
-          "totalCommits": 1,
-          "totalDiffDelta": 3,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "Guangya Liu",
-          "totalCommits": 1,
-          "totalDiffDelta": 1,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 19,
-          "name": "Veniamin Viflyantsev",
-          "totalCommits": 1,
-          "totalDiffDelta": 1,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        }
-      ]
-    },
-    "llama_index": {
-      "repoId": "llama_index",
-      "churnRatePct": 1.41,
-      "gaugeValue": 86,
-      "contributorCount": 545,
-      "totalCommits": 2204,
-      "contributors": [
-        {
-          "rank": 1,
-          "name": "James Braza",
-          "totalCommits": 66,
-          "totalDiffDelta": 542929,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 2,
-          "name": "Simon Suo",
-          "totalCommits": 190,
-          "totalDiffDelta": 86280,
-          "churnRatePct": 7.5,
-          "gaugeValue": 68,
-          "trend": "flat"
-        },
-        {
-          "rank": 3,
-          "name": "Jerry Liu",
-          "totalCommits": 543,
-          "totalDiffDelta": 79549,
-          "churnRatePct": 2.3,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 4,
-          "name": "Logan",
-          "totalCommits": 315,
-          "totalDiffDelta": 38965,
-          "churnRatePct": 5.3,
-          "gaugeValue": 74,
-          "trend": "flat"
-        },
-        {
-          "rank": 5,
-          "name": "jon-chuang",
-          "totalCommits": 17,
-          "totalDiffDelta": 26206,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 6,
-          "name": "Andrei Fajardo",
-          "totalCommits": 31,
-          "totalDiffDelta": 8241,
-          "churnRatePct": 1.5,
-          "gaugeValue": 86,
-          "trend": "up"
-        },
-        {
-          "rank": 7,
-          "name": "Ravi Theja",
-          "totalCommits": 37,
-          "totalDiffDelta": 7880,
-          "churnRatePct": 0.5,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 8,
-          "name": "Haotian Zhang",
-          "totalCommits": 80,
-          "totalDiffDelta": 6538,
-          "churnRatePct": 3.5,
-          "gaugeValue": 80,
-          "trend": "up"
-        },
-        {
-          "rank": 9,
-          "name": "Wey Gu",
-          "totalCommits": 11,
-          "totalDiffDelta": 5270,
-          "churnRatePct": 2,
-          "gaugeValue": 84,
-          "trend": "up"
-        },
-        {
-          "rank": 10,
-          "name": "Eric Zhu",
-          "totalCommits": 3,
-          "totalDiffDelta": 4105,
-          "churnRatePct": 0.7,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 11,
-          "name": "hongyishi",
-          "totalCommits": 18,
-          "totalDiffDelta": 3526,
-          "churnRatePct": 2.8,
-          "gaugeValue": 82,
-          "trend": "up"
-        },
-        {
-          "rank": 12,
-          "name": "Laurie Voss",
-          "totalCommits": 22,
-          "totalDiffDelta": 2863,
-          "churnRatePct": 0.2,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 13,
-          "name": "Matvey Arye",
-          "totalCommits": 2,
-          "totalDiffDelta": 2703,
-          "churnRatePct": 1.8,
-          "gaugeValue": 85,
-          "trend": "up"
-        },
-        {
-          "rank": 14,
-          "name": "Sourabh Desai",
-          "totalCommits": 21,
-          "totalDiffDelta": 2097,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "Lawrence Tsang",
-          "totalCommits": 1,
-          "totalDiffDelta": 1611,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 16,
-          "name": "Adilkhan Sarsen",
-          "totalCommits": 4,
-          "totalDiffDelta": 1370,
-          "churnRatePct": 2.2,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 17,
-          "name": "Javier Torres",
-          "totalCommits": 5,
-          "totalDiffDelta": 1361,
-          "churnRatePct": 0.2,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "Jesse Zhang",
-          "totalCommits": 13,
-          "totalDiffDelta": 1071,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 19,
-          "name": "yureikami",
-          "totalCommits": 2,
-          "totalDiffDelta": 970,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 20,
-          "name": "Nicholas Léonard",
-          "totalCommits": 1,
-          "totalDiffDelta": 911,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 21,
-          "name": "Ofer Mendelevitch",
-          "totalCommits": 6,
-          "totalDiffDelta": 896,
-          "churnRatePct": 4,
-          "gaugeValue": 78,
-          "trend": "up"
-        },
-        {
-          "rank": 22,
-          "name": "Varik Matevosyan",
-          "totalCommits": 1,
-          "totalDiffDelta": 891,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 23,
-          "name": "Tomaz Bratanic",
-          "totalCommits": 4,
-          "totalDiffDelta": 812,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 24,
-          "name": "Pierre-Loic Doulcet",
-          "totalCommits": 2,
-          "totalDiffDelta": 740,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "ahmetkca",
-          "totalCommits": 3,
-          "totalDiffDelta": 739,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 26,
-          "name": "Brandon Max",
-          "totalCommits": 4,
-          "totalDiffDelta": 732,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 27,
-          "name": "Joseph McElroy",
-          "totalCommits": 5,
-          "totalDiffDelta": 729,
-          "churnRatePct": 0.6,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 28,
-          "name": "Noam Gat",
-          "totalCommits": 2,
-          "totalDiffDelta": 729,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 29,
-          "name": "Mark McDonald",
-          "totalCommits": 1,
-          "totalDiffDelta": 714,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "Shreya Rajpal",
-          "totalCommits": 2,
-          "totalDiffDelta": 712,
-          "churnRatePct": 0.4,
-          "gaugeValue": 89,
-          "trend": "up"
-        }
-      ]
-    },
-    "reflex": {
-      "repoId": "reflex",
-      "churnRatePct": 5.16,
-      "gaugeValue": 75,
-      "contributorCount": 103,
-      "totalCommits": 970,
-      "contributors": [
-        {
-          "rank": 1,
-          "name": "Nikhil Rao",
-          "totalCommits": 209,
-          "totalDiffDelta": 42088,
-          "churnRatePct": 11.1,
-          "gaugeValue": 57,
-          "trend": "flat"
-        },
-        {
-          "rank": 2,
-          "name": "Alek Petuskey",
-          "totalCommits": 77,
-          "totalDiffDelta": 36553,
-          "churnRatePct": 2,
-          "gaugeValue": 84,
-          "trend": "up"
-        },
-        {
-          "rank": 3,
-          "name": "Masen Furer",
-          "totalCommits": 171,
-          "totalDiffDelta": 36531,
-          "churnRatePct": 5.7,
-          "gaugeValue": 73,
-          "trend": "flat"
-        },
-        {
-          "rank": 4,
-          "name": "Elijah Ahianyo",
-          "totalCommits": 108,
-          "totalDiffDelta": 23132,
-          "churnRatePct": 3.9,
-          "gaugeValue": 78,
-          "trend": "up"
-        },
-        {
-          "rank": 5,
-          "name": "Thomas Brandého",
-          "totalCommits": 92,
-          "totalDiffDelta": 23065,
-          "churnRatePct": 2.3,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 6,
-          "name": "Nikhil Rao",
-          "totalCommits": 40,
-          "totalDiffDelta": 11412,
-          "churnRatePct": 3.8,
-          "gaugeValue": 79,
-          "trend": "up"
-        },
-        {
-          "rank": 7,
-          "name": "iron3oxide",
-          "totalCommits": 5,
-          "totalDiffDelta": 8976,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 8,
-          "name": "Kabir Goel",
-          "totalCommits": 7,
-          "totalDiffDelta": 8830,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 9,
-          "name": "Tom Gotsman",
-          "totalCommits": 16,
-          "totalDiffDelta": 4305,
-          "churnRatePct": 0.2,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 10,
-          "name": "PeterYusuke",
-          "totalCommits": 11,
-          "totalDiffDelta": 2684,
-          "churnRatePct": 0.2,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 11,
-          "name": "Martin Xu",
-          "totalCommits": 30,
-          "totalDiffDelta": 2554,
-          "churnRatePct": 39.1,
-          "gaugeValue": 10,
-          "trend": "down"
-        },
-        {
-          "rank": 12,
-          "name": "benedikt-bartscher",
-          "totalCommits": 10,
-          "totalDiffDelta": 1051,
-          "churnRatePct": 5.1,
-          "gaugeValue": 75,
-          "trend": "flat"
-        },
-        {
-          "rank": 13,
-          "name": "Kasun Herath",
-          "totalCommits": 6,
-          "totalDiffDelta": 670,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 14,
-          "name": "jackie-pc",
-          "totalCommits": 9,
-          "totalDiffDelta": 574,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "advo-kat",
-          "totalCommits": 5,
-          "totalDiffDelta": 550,
-          "churnRatePct": 4.3,
-          "gaugeValue": 77,
-          "trend": "up"
-        },
-        {
-          "rank": 16,
-          "name": "Atharva Shah",
-          "totalCommits": 1,
-          "totalDiffDelta": 500,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 17,
-          "name": "Tommy Dew",
-          "totalCommits": 2,
-          "totalDiffDelta": 303,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "jackie-pc",
-          "totalCommits": 8,
-          "totalDiffDelta": 296,
-          "churnRatePct": 7.5,
-          "gaugeValue": 68,
-          "trend": "flat"
-        },
-        {
-          "rank": 19,
-          "name": "TaiJuWu",
-          "totalCommits": 10,
-          "totalDiffDelta": 265,
-          "churnRatePct": 5.2,
-          "gaugeValue": 74,
-          "trend": "flat"
-        },
-        {
-          "rank": 20,
-          "name": "叶子",
-          "totalCommits": 5,
-          "totalDiffDelta": 244,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 21,
-          "name": "Nev Delap",
-          "totalCommits": 1,
-          "totalDiffDelta": 229,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 22,
-          "name": "Christopher Terrazas",
-          "totalCommits": 2,
-          "totalDiffDelta": 211,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 23,
-          "name": "Aidan Rauscher",
-          "totalCommits": 2,
-          "totalDiffDelta": 178,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 24,
-          "name": "Xiaojing Chen",
-          "totalCommits": 9,
-          "totalDiffDelta": 150,
-          "churnRatePct": 2.7,
-          "gaugeValue": 82,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "Alek Petuskey",
-          "totalCommits": 3,
-          "totalDiffDelta": 138,
-          "churnRatePct": 1.2,
-          "gaugeValue": 86,
-          "trend": "up"
-        },
-        {
-          "rank": 26,
-          "name": "Sheldon",
-          "totalCommits": 10,
-          "totalDiffDelta": 133,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 27,
-          "name": "Sergei Ozeranskii",
-          "totalCommits": 2,
-          "totalDiffDelta": 128,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 28,
-          "name": "Milo Chen",
-          "totalCommits": 12,
-          "totalDiffDelta": 113,
-          "churnRatePct": 0.6,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 29,
-          "name": "Unknown Sentinel",
-          "totalCommits": 1,
-          "totalDiffDelta": 97,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "Jishnu N",
-          "totalCommits": 1,
-          "totalDiffDelta": 76,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        }
-      ]
-    },
-    "ruff": {
-      "repoId": "ruff",
-      "churnRatePct": 5.97,
-      "gaugeValue": 72,
-      "contributorCount": 312,
-      "totalCommits": 4435,
-      "contributors": [
-        {
-          "rank": 1,
-          "name": "Charlie Marsh",
-          "totalCommits": 1988,
-          "totalDiffDelta": 229850,
-          "churnRatePct": 10.3,
-          "gaugeValue": 59,
-          "trend": "flat"
-        },
-        {
-          "rank": 2,
-          "name": "Micha Reiser",
-          "totalCommits": 363,
-          "totalDiffDelta": 226911,
-          "churnRatePct": 4.6,
-          "gaugeValue": 76,
-          "trend": "up"
-        },
-        {
-          "rank": 3,
-          "name": "Dhruv Manilawala",
-          "totalCommits": 168,
-          "totalDiffDelta": 83735,
-          "churnRatePct": 2.6,
-          "gaugeValue": 82,
-          "trend": "up"
-        },
-        {
-          "rank": 4,
-          "name": "konsti",
-          "totalCommits": 221,
-          "totalDiffDelta": 37251,
-          "churnRatePct": 4.4,
-          "gaugeValue": 77,
-          "trend": "up"
-        },
-        {
-          "rank": 5,
-          "name": "Martin Fischer",
-          "totalCommits": 203,
-          "totalDiffDelta": 22054,
-          "churnRatePct": 8.3,
-          "gaugeValue": 65,
-          "trend": "flat"
-        },
-        {
-          "rank": 6,
-          "name": "Aarni Koskela",
-          "totalCommits": 55,
-          "totalDiffDelta": 19793,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 7,
-          "name": "Zanie Blue",
-          "totalCommits": 155,
-          "totalDiffDelta": 15333,
-          "churnRatePct": 1.5,
-          "gaugeValue": 86,
-          "trend": "up"
-        },
-        {
-          "rank": 8,
-          "name": "Jonathan Plasse",
-          "totalCommits": 85,
-          "totalDiffDelta": 11234,
-          "churnRatePct": 0.5,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 9,
-          "name": "Tom Kuson",
-          "totalCommits": 79,
-          "totalDiffDelta": 10134,
-          "churnRatePct": 0.8,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 10,
-          "name": "Andrew Gallant",
-          "totalCommits": 18,
-          "totalDiffDelta": 10127,
-          "churnRatePct": 1.8,
-          "gaugeValue": 85,
-          "trend": "up"
-        },
-        {
-          "rank": 11,
-          "name": "messense",
-          "totalCommits": 19,
-          "totalDiffDelta": 6988,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 12,
-          "name": "Simon Brugman",
-          "totalCommits": 49,
-          "totalDiffDelta": 6004,
-          "churnRatePct": 1,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
-          "rank": 13,
-          "name": "qdegraaf",
-          "totalCommits": 37,
-          "totalDiffDelta": 4849,
-          "churnRatePct": 0.6,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 14,
-          "name": "Jeong, YunWon",
-          "totalCommits": 11,
-          "totalDiffDelta": 3982,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "Harutaka Kawamura",
-          "totalCommits": 87,
-          "totalDiffDelta": 3891,
-          "churnRatePct": 1.3,
-          "gaugeValue": 86,
-          "trend": "up"
-        },
-        {
-          "rank": 16,
-          "name": "Micha Reiser",
-          "totalCommits": 3,
-          "totalDiffDelta": 3485,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 17,
-          "name": "Colin Delahunty",
-          "totalCommits": 23,
-          "totalDiffDelta": 2771,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "Evan Rittenhouse",
-          "totalCommits": 36,
-          "totalDiffDelta": 2319,
-          "churnRatePct": 2.5,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 19,
-          "name": "Thomas de Zeeuw",
-          "totalCommits": 1,
-          "totalDiffDelta": 2079,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 20,
-          "name": "Simon Brugman",
-          "totalCommits": 8,
-          "totalDiffDelta": 2039,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 21,
-          "name": "Victor Hugo Gomes",
-          "totalCommits": 21,
-          "totalDiffDelta": 1900,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 22,
-          "name": "Steve C",
-          "totalCommits": 21,
-          "totalDiffDelta": 1900,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 23,
-          "name": "Justin Prieto",
-          "totalCommits": 13,
-          "totalDiffDelta": 1732,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 24,
-          "name": "Edgar R. M",
-          "totalCommits": 16,
-          "totalDiffDelta": 1679,
-          "churnRatePct": 0.6,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "David Szotten",
-          "totalCommits": 18,
-          "totalDiffDelta": 1549,
-          "churnRatePct": 0.5,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 26,
-          "name": "Chris Pryer",
-          "totalCommits": 19,
-          "totalDiffDelta": 1485,
-          "churnRatePct": 2.2,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 27,
-          "name": "Eric Roberts",
-          "totalCommits": 4,
-          "totalDiffDelta": 1428,
-          "churnRatePct": 3.7,
-          "gaugeValue": 79,
-          "trend": "up"
-        },
-        {
-          "rank": 28,
-          "name": "Valeriy Savchenko",
-          "totalCommits": 5,
-          "totalDiffDelta": 1370,
-          "churnRatePct": 2.8,
-          "gaugeValue": 82,
-          "trend": "up"
-        },
-        {
-          "rank": 29,
-          "name": "Samuel Cormier-Iijima",
-          "totalCommits": 15,
-          "totalDiffDelta": 1142,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "Thomas de Zeeuw",
-          "totalCommits": 7,
-          "totalDiffDelta": 1121,
-          "churnRatePct": 4.4,
-          "gaugeValue": 77,
-          "trend": "up"
-        }
-      ]
-    },
-    "rustdesk": {
-      "repoId": "rustdesk",
-      "churnRatePct": 10.67,
-      "gaugeValue": 58,
-      "contributorCount": 139,
-      "totalCommits": 3301,
-      "contributors": [
-        {
-          "rank": 1,
-          "name": "21pages",
-          "totalCommits": 384,
-          "totalDiffDelta": 29556,
-          "churnRatePct": 10.2,
-          "gaugeValue": 59,
-          "trend": "flat"
-        },
-        {
-          "rank": 2,
-          "name": "fufesou",
-          "totalCommits": 636,
-          "totalDiffDelta": 22646,
-          "churnRatePct": 14.7,
-          "gaugeValue": 46,
-          "trend": "flat"
-        },
-        {
-          "rank": 3,
-          "name": "rustdesk",
-          "totalCommits": 467,
-          "totalDiffDelta": 16575,
-          "churnRatePct": 8.3,
-          "gaugeValue": 65,
-          "trend": "flat"
-        },
-        {
-          "rank": 4,
-          "name": "dignow",
-          "totalCommits": 240,
-          "totalDiffDelta": 11609,
-          "churnRatePct": 10.2,
-          "gaugeValue": 59,
-          "trend": "flat"
-        },
-        {
-          "rank": 5,
-          "name": "ClSlaid",
-          "totalCommits": 50,
-          "totalDiffDelta": 9622,
-          "churnRatePct": 10.4,
-          "gaugeValue": 59,
-          "trend": "flat"
-        },
-        {
-          "rank": 6,
-          "name": "NicKoehler",
+          "name": "Aymeric",
           "totalCommits": 73,
-          "totalDiffDelta": 6323,
-          "churnRatePct": 5,
-          "gaugeValue": 75,
-          "trend": "flat"
-        },
-        {
-          "rank": 7,
-          "name": "Kingtous",
-          "totalCommits": 196,
-          "totalDiffDelta": 6208,
-          "churnRatePct": 21.4,
-          "gaugeValue": 26,
+          "totalDiffDelta": 16571.05,
+          "churnRatePct": 8.23,
+          "gaugeValue": 74,
           "trend": "down"
         },
         {
-          "rank": 8,
-          "name": "csf",
-          "totalCommits": 53,
-          "totalDiffDelta": 5467,
-          "churnRatePct": 8.5,
-          "gaugeValue": 65,
+          "rank": 4,
+          "name": "Yannick Adam",
+          "totalCommits": 23,
+          "totalDiffDelta": 6905.36,
+          "churnRatePct": 8.78,
+          "gaugeValue": 73,
+          "trend": "down"
+        },
+        {
+          "rank": 5,
+          "name": "Thibaut Gery",
+          "totalCommits": 12,
+          "totalDiffDelta": 1959.6,
+          "churnRatePct": 2.54,
+          "gaugeValue": 89,
           "trend": "flat"
         },
         {
+          "rank": 6,
+          "name": "Hamza Kadiri",
+          "totalCommits": 3,
+          "totalDiffDelta": 540.64,
+          "churnRatePct": 8.06,
+          "gaugeValue": 75,
+          "trend": "down"
+        },
+        {
+          "rank": 7,
+          "name": "Aymeric",
+          "totalCommits": 1,
+          "totalDiffDelta": 212.37,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
+        },
+        {
+          "rank": 8,
+          "name": "ci.browser-sdk",
+          "totalCommits": 52,
+          "totalDiffDelta": 37.44,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
+        },
+        {
           "rank": 9,
-          "name": "RustDesk",
-          "totalCommits": 69,
-          "totalDiffDelta": 2813,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
+          "name": "Piotr Oleś",
+          "totalCommits": 1,
+          "totalDiffDelta": 24.62,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
           "trend": "up"
         },
         {
           "rank": 10,
-          "name": "grummbeer",
-          "totalCommits": 93,
-          "totalDiffDelta": 2709,
-          "churnRatePct": 6.6,
-          "gaugeValue": 70,
-          "trend": "flat"
+          "name": "Brock Chelle",
+          "totalCommits": 1,
+          "totalDiffDelta": 19.56,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
         },
         {
           "rank": 11,
-          "name": "Sahil Yeole",
-          "totalCommits": 100,
-          "totalDiffDelta": 1842,
-          "churnRatePct": 20,
-          "gaugeValue": 30,
-          "trend": "down"
+          "name": "Antoine Richard",
+          "totalCommits": 1,
+          "totalDiffDelta": 10.94,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
         },
         {
           "rank": 12,
-          "name": "Sahil Yeole",
-          "totalCommits": 6,
-          "totalDiffDelta": 1709,
-          "churnRatePct": 2.4,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 13,
-          "name": "Vasyl Gello",
-          "totalCommits": 24,
-          "totalDiffDelta": 1362,
-          "churnRatePct": 4.6,
-          "gaugeValue": 76,
-          "trend": "up"
-        },
-        {
-          "rank": 14,
-          "name": "Mr-Update",
-          "totalCommits": 82,
-          "totalDiffDelta": 1155,
-          "churnRatePct": 0.2,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "滅ü",
-          "totalCommits": 6,
-          "totalDiffDelta": 1072,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 16,
-          "name": "crwusiz",
-          "totalCommits": 7,
-          "totalDiffDelta": 1047,
-          "churnRatePct": 1.5,
-          "gaugeValue": 86,
-          "trend": "up"
-        },
-        {
-          "rank": 17,
-          "name": "leroyloren",
-          "totalCommits": 14,
-          "totalDiffDelta": 963,
-          "churnRatePct": 0.5,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "Ibnul Mutaki",
-          "totalCommits": 23,
-          "totalDiffDelta": 873,
-          "churnRatePct": 0.6,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 19,
-          "name": "jxdv",
-          "totalCommits": 17,
-          "totalDiffDelta": 854,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 20,
-          "name": "FastAct",
-          "totalCommits": 34,
-          "totalDiffDelta": 799,
-          "churnRatePct": 1.1,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
-          "rank": 21,
-          "name": "Mălina-Ioana Popa",
-          "totalCommits": 3,
-          "totalDiffDelta": 765,
-          "churnRatePct": 0.5,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 22,
-          "name": "bovirus",
-          "totalCommits": 50,
-          "totalDiffDelta": 740,
-          "churnRatePct": 0.7,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 23,
-          "name": "MrVinyla",
-          "totalCommits": 8,
-          "totalDiffDelta": 709,
-          "churnRatePct": 24.9,
-          "gaugeValue": 15,
+          "name": "Jeremy C",
+          "totalCommits": 2,
+          "totalDiffDelta": 4.8,
+          "churnRatePct": 16.67,
+          "gaugeValue": 53,
           "trend": "down"
-        },
-        {
-          "rank": 24,
-          "name": "Yevhen Popok",
-          "totalCommits": 16,
-          "totalDiffDelta": 653,
-          "churnRatePct": 0.5,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "Kleofass",
-          "totalCommits": 10,
-          "totalDiffDelta": 592,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 26,
-          "name": "0ofta",
-          "totalCommits": 1,
-          "totalDiffDelta": 570,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 27,
-          "name": "mcfans",
-          "totalCommits": 23,
-          "totalDiffDelta": 521,
-          "churnRatePct": 10.4,
-          "gaugeValue": 59,
-          "trend": "flat"
-        },
-        {
-          "rank": 28,
-          "name": "sakiodre",
-          "totalCommits": 1,
-          "totalDiffDelta": 477,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 29,
-          "name": "SimonHanel",
-          "totalCommits": 1,
-          "totalDiffDelta": 435,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "Phongsathorn Sae-Ung (X10)",
-          "totalCommits": 1,
-          "totalDiffDelta": 417,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
         }
       ]
     },
-    "stable-diffusion-webui": {
-      "repoId": "stable-diffusion-webui",
-      "churnRatePct": 18.18,
-      "gaugeValue": 35,
-      "contributorCount": 333,
-      "totalCommits": 2524,
+    "datadog-agent": {
+      "repoId": "datadog-agent",
+      "churnRatePct": 13.37,
+      "gaugeValue": 62,
+      "contributorCount": 238,
+      "totalCommits": 4809,
       "contributors": [
         {
           "rank": 1,
-          "name": "AUTOMATIC1111",
-          "totalCommits": 949,
-          "totalDiffDelta": 23863,
-          "churnRatePct": 26.5,
-          "gaugeValue": 11,
+          "name": "Sylvain Afchain",
+          "totalCommits": 171,
+          "totalDiffDelta": 143569.93,
+          "churnRatePct": 5.84,
+          "gaugeValue": 80,
           "trend": "down"
         },
         {
           "rank": 2,
-          "name": "Aarni Koskela",
-          "totalCommits": 136,
-          "totalDiffDelta": 19686,
-          "churnRatePct": 3.6,
-          "gaugeValue": 79,
-          "trend": "up"
+          "name": "Paul Cacheux",
+          "totalCommits": 370,
+          "totalDiffDelta": 75281.79,
+          "churnRatePct": 1.44,
+          "gaugeValue": 91,
+          "trend": "down"
         },
         {
           "rank": 3,
-          "name": "Robert Barron",
-          "totalCommits": 6,
-          "totalDiffDelta": 1789,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
+          "name": "Julien Lebot",
+          "totalCommits": 75,
+          "totalDiffDelta": 53400.61,
+          "churnRatePct": 22.04,
+          "gaugeValue": 40,
+          "trend": "down"
         },
         {
           "rank": 4,
-          "name": "space-nuko",
-          "totalCommits": 45,
-          "totalDiffDelta": 1740,
-          "churnRatePct": 9.1,
-          "gaugeValue": 63,
-          "trend": "flat"
+          "name": "Pierre Guilleminot",
+          "totalCommits": 65,
+          "totalDiffDelta": 44228.46,
+          "churnRatePct": 2.75,
+          "gaugeValue": 88,
+          "trend": "down"
         },
         {
           "rank": 5,
-          "name": "w-e-w",
-          "totalCommits": 178,
-          "totalDiffDelta": 1459,
-          "churnRatePct": 4.1,
-          "gaugeValue": 78,
-          "trend": "up"
+          "name": "pducolin",
+          "totalCommits": 70,
+          "totalDiffDelta": 37761.62,
+          "churnRatePct": 0.84,
+          "gaugeValue": 93,
+          "trend": "down"
         },
         {
           "rank": 6,
-          "name": "Kyle",
-          "totalCommits": 10,
-          "totalDiffDelta": 1167,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
+          "name": "Guillaume Fournier",
+          "totalCommits": 63,
+          "totalDiffDelta": 32295.41,
+          "churnRatePct": 3.96,
+          "gaugeValue": 85,
+          "trend": "down"
         },
         {
           "rank": 7,
-          "name": "Danil Boldyrev",
-          "totalCommits": 34,
-          "totalDiffDelta": 1117,
-          "churnRatePct": 5.8,
-          "gaugeValue": 73,
-          "trend": "flat"
+          "name": "Bryce Kahle",
+          "totalCommits": 140,
+          "totalDiffDelta": 31234.35,
+          "churnRatePct": 2.4,
+          "gaugeValue": 89,
+          "trend": "down"
         },
         {
           "rank": 8,
-          "name": "CodeHatchling",
-          "totalCommits": 33,
-          "totalDiffDelta": 981,
-          "churnRatePct": 29.2,
-          "gaugeValue": 10,
+          "name": "Brian Floersch",
+          "totalCommits": 36,
+          "totalDiffDelta": 30508.06,
+          "churnRatePct": 18.21,
+          "gaugeValue": 49,
           "trend": "down"
         },
         {
           "rank": 9,
-          "name": "Kohaku-Blueleaf",
-          "totalCommits": 72,
-          "totalDiffDelta": 691,
-          "churnRatePct": 15.8,
-          "gaugeValue": 43,
+          "name": "Derek Brown",
+          "totalCommits": 40,
+          "totalDiffDelta": 30435.69,
+          "churnRatePct": 0.34,
+          "gaugeValue": 94,
           "trend": "down"
         },
         {
           "rank": 10,
-          "name": "Emily Zeng",
-          "totalCommits": 5,
-          "totalDiffDelta": 676,
-          "churnRatePct": 7.6,
-          "gaugeValue": 67,
-          "trend": "flat"
+          "name": "Jaime Fullaondo",
+          "totalCommits": 14,
+          "totalDiffDelta": 25268.34,
+          "churnRatePct": 18.74,
+          "gaugeValue": 48,
+          "trend": "down"
         },
         {
           "rank": 11,
-          "name": "catboxanon",
-          "totalCommits": 113,
-          "totalDiffDelta": 409,
-          "churnRatePct": 3.1,
-          "gaugeValue": 81,
-          "trend": "up"
+          "name": "Guy Arbitman",
+          "totalCommits": 273,
+          "totalDiffDelta": 23315.73,
+          "churnRatePct": 7.21,
+          "gaugeValue": 77,
+          "trend": "down"
         },
         {
           "rank": 12,
-          "name": "aria1th",
-          "totalCommits": 16,
-          "totalDiffDelta": 381,
-          "churnRatePct": 5.3,
-          "gaugeValue": 74,
-          "trend": "flat"
+          "name": "Jonathan Ribas",
+          "totalCommits": 48,
+          "totalDiffDelta": 22826.27,
+          "churnRatePct": 2.19,
+          "gaugeValue": 90,
+          "trend": "down"
         },
         {
           "rank": 13,
-          "name": "missionfloyd",
-          "totalCommits": 64,
-          "totalDiffDelta": 364,
-          "churnRatePct": 5.2,
-          "gaugeValue": 74,
-          "trend": "flat"
+          "name": "Maxime mouial",
+          "totalCommits": 77,
+          "totalDiffDelta": 22529.22,
+          "churnRatePct": 2.97,
+          "gaugeValue": 88,
+          "trend": "down"
         },
         {
           "rank": 14,
-          "name": "brkirch",
-          "totalCommits": 43,
-          "totalDiffDelta": 345,
-          "churnRatePct": 17.1,
-          "gaugeValue": 39,
+          "name": "Pablo Baeyens",
+          "totalCommits": 14,
+          "totalDiffDelta": 22517.57,
+          "churnRatePct": 13.22,
+          "gaugeValue": 62,
           "trend": "down"
         },
         {
           "rank": 15,
-          "name": "v0xie",
-          "totalCommits": 24,
-          "totalDiffDelta": 329,
-          "churnRatePct": 31,
-          "gaugeValue": 10,
+          "name": "modernplumbing",
+          "totalCommits": 38,
+          "totalDiffDelta": 19603.63,
+          "churnRatePct": 0.51,
+          "gaugeValue": 94,
           "trend": "down"
         },
         {
           "rank": 16,
-          "name": "Khachatur Avanesian",
-          "totalCommits": 4,
-          "totalDiffDelta": 317,
-          "churnRatePct": 3,
-          "gaugeValue": 81,
-          "trend": "up"
-        },
-        {
-          "rank": 17,
-          "name": "Vladimir Mandic",
-          "totalCommits": 50,
-          "totalDiffDelta": 304,
-          "churnRatePct": 3.3,
-          "gaugeValue": 80,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "EllangoK",
-          "totalCommits": 24,
-          "totalDiffDelta": 272,
-          "churnRatePct": 1.1,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
-          "rank": 19,
-          "name": "Charlie Joynt",
-          "totalCommits": 4,
-          "totalDiffDelta": 236,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 20,
-          "name": "Jabasukuriputo Wang",
-          "totalCommits": 28,
-          "totalDiffDelta": 223,
-          "churnRatePct": 7.4,
-          "gaugeValue": 68,
-          "trend": "flat"
-        },
-        {
-          "rank": 21,
-          "name": "papuSpartan",
-          "totalCommits": 9,
-          "totalDiffDelta": 182,
-          "churnRatePct": 9.6,
-          "gaugeValue": 61,
-          "trend": "flat"
-        },
-        {
-          "rank": 22,
-          "name": "superhero-7",
-          "totalCommits": 2,
-          "totalDiffDelta": 180,
-          "churnRatePct": 0.5,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 23,
-          "name": "Sakura-Luna",
-          "totalCommits": 27,
-          "totalDiffDelta": 177,
-          "churnRatePct": 5.4,
-          "gaugeValue": 74,
-          "trend": "flat"
-        },
-        {
-          "rank": 24,
-          "name": "Pam",
-          "totalCommits": 4,
-          "totalDiffDelta": 164,
-          "churnRatePct": 0.4,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "Vespinian",
-          "totalCommits": 8,
-          "totalDiffDelta": 154,
-          "churnRatePct": 22.1,
-          "gaugeValue": 24,
+          "name": "Olivier G",
+          "totalCommits": 49,
+          "totalDiffDelta": 18567.25,
+          "churnRatePct": 4.29,
+          "gaugeValue": 84,
           "trend": "down"
         },
         {
-          "rank": 26,
-          "name": "Shondoit",
-          "totalCommits": 7,
-          "totalDiffDelta": 148,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
+          "rank": 17,
+          "name": "Hasan Mahmood",
+          "totalCommits": 57,
+          "totalDiffDelta": 17942.59,
+          "churnRatePct": 5.25,
+          "gaugeValue": 82,
+          "trend": "down"
         },
         {
-          "rank": 27,
-          "name": "me",
-          "totalCommits": 4,
-          "totalDiffDelta": 145,
-          "churnRatePct": 3.4,
+          "rank": 18,
+          "name": "Branden Clark",
+          "totalCommits": 46,
+          "totalDiffDelta": 16826.67,
+          "churnRatePct": 0.73,
+          "gaugeValue": 93,
+          "trend": "down"
+        },
+        {
+          "rank": 19,
+          "name": "Pierre Gimalac",
+          "totalCommits": 97,
+          "totalDiffDelta": 16572.83,
+          "churnRatePct": 6.14,
           "gaugeValue": 80,
-          "trend": "up"
+          "trend": "down"
         },
         {
-          "rank": 28,
-          "name": "Nuullll",
-          "totalCommits": 8,
-          "totalDiffDelta": 143,
-          "churnRatePct": 12,
-          "gaugeValue": 54,
-          "trend": "flat"
-        },
-        {
-          "rank": 29,
-          "name": "DejitaruJin",
-          "totalCommits": 5,
-          "totalDiffDelta": 138,
-          "churnRatePct": 1,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "Vladimir Repin",
-          "totalCommits": 17,
-          "totalDiffDelta": 133,
-          "churnRatePct": 18.6,
-          "gaugeValue": 34,
+          "rank": 20,
+          "name": "Steven Blumenthal",
+          "totalCommits": 31,
+          "totalDiffDelta": 15872.14,
+          "churnRatePct": 1.24,
+          "gaugeValue": 92,
           "trend": "down"
         }
       ]
     },
-    "text-generation-webui": {
-      "repoId": "text-generation-webui",
-      "churnRatePct": 13.17,
-      "gaugeValue": 50,
-      "contributorCount": 278,
-      "totalCommits": 2829,
+    "datadog-api-client-go": {
+      "repoId": "datadog-api-client-go",
+      "churnRatePct": 7.81,
+      "gaugeValue": 75,
+      "contributorCount": 7,
+      "totalCommits": 445,
       "contributors": [
         {
           "rank": 1,
-          "name": "oobabooga",
-          "totalCommits": 2099,
-          "totalDiffDelta": 27250,
-          "churnRatePct": 19,
+          "name": "skarimo",
+          "totalCommits": 25,
+          "totalDiffDelta": 181861.12,
+          "churnRatePct": 4.86,
+          "gaugeValue": 83,
+          "trend": "down"
+        },
+        {
+          "rank": 2,
+          "name": "Thomas Hervé",
+          "totalCommits": 23,
+          "totalDiffDelta": 51257.87,
+          "churnRatePct": 0.04,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 3,
+          "name": "HantingZhang2",
+          "totalCommits": 3,
+          "totalDiffDelta": 363.94,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
+        },
+        {
+          "rank": 4,
+          "name": "Kevin Zou",
+          "totalCommits": 5,
+          "totalDiffDelta": 33.8,
+          "churnRatePct": 6.25,
+          "gaugeValue": 79,
+          "trend": "down"
+        },
+        {
+          "rank": 5,
+          "name": "Sherzod Karimov",
+          "totalCommits": 1,
+          "totalDiffDelta": 23.25,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
+        }
+      ]
+    },
+    "dd-sdk-android": {
+      "repoId": "dd-sdk-android",
+      "churnRatePct": 11.03,
+      "gaugeValue": 67,
+      "contributorCount": 17,
+      "totalCommits": 1229,
+      "contributors": [
+        {
+          "rank": 1,
+          "name": "Nikita Ogorodnikov",
+          "totalCommits": 300,
+          "totalDiffDelta": 83781.7,
+          "churnRatePct": 10.46,
+          "gaugeValue": 69,
+          "trend": "down"
+        },
+        {
+          "rank": 2,
+          "name": "Marius Constantin",
+          "totalCommits": 118,
+          "totalDiffDelta": 41294.01,
+          "churnRatePct": 14.44,
+          "gaugeValue": 59,
+          "trend": "down"
+        },
+        {
+          "rank": 3,
+          "name": "Xavier Gouchet",
+          "totalCommits": 99,
+          "totalDiffDelta": 24031,
+          "churnRatePct": 3.35,
+          "gaugeValue": 87,
+          "trend": "down"
+        },
+        {
+          "rank": 4,
+          "name": "Xavier F. Gouchet",
+          "totalCommits": 60,
+          "totalDiffDelta": 17640.96,
+          "churnRatePct": 0.89,
+          "gaugeValue": 93,
+          "trend": "up"
+        },
+        {
+          "rank": 5,
+          "name": "Jonathan Moskovich",
+          "totalCommits": 39,
+          "totalDiffDelta": 15167.91,
+          "churnRatePct": 7.65,
+          "gaugeValue": 76,
+          "trend": "down"
+        },
+        {
+          "rank": 6,
+          "name": "Pedro Lousada",
+          "totalCommits": 27,
+          "totalDiffDelta": 6221.2,
+          "churnRatePct": 1.51,
+          "gaugeValue": 91,
+          "trend": "flat"
+        },
+        {
+          "rank": 7,
+          "name": "Jeff Ward",
+          "totalCommits": 33,
+          "totalDiffDelta": 2466.3,
+          "churnRatePct": 3.19,
+          "gaugeValue": 87,
+          "trend": "down"
+        },
+        {
+          "rank": 8,
+          "name": "Rosa Trieu",
+          "totalCommits": 8,
+          "totalDiffDelta": 1723.63,
+          "churnRatePct": 0.68,
+          "gaugeValue": 93,
+          "trend": "up"
+        },
+        {
+          "rank": 9,
+          "name": "louiszawadzki",
+          "totalCommits": 12,
+          "totalDiffDelta": 755.04,
+          "churnRatePct": 1.65,
+          "gaugeValue": 91,
+          "trend": "flat"
+        },
+        {
+          "rank": 10,
+          "name": "Austin Lai",
+          "totalCommits": 3,
+          "totalDiffDelta": 352.05,
+          "churnRatePct": 2.4,
+          "gaugeValue": 89,
+          "trend": "down"
+        },
+        {
+          "rank": 11,
+          "name": "Rosa Trieu",
+          "totalCommits": 5,
+          "totalDiffDelta": 37.2,
+          "churnRatePct": 3.23,
+          "gaugeValue": 87,
+          "trend": "down"
+        },
+        {
+          "rank": 12,
+          "name": "Daniel Esponda",
+          "totalCommits": 2,
+          "totalDiffDelta": 5.76,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
+        },
+        {
+          "rank": 13,
+          "name": "Kari Halsted",
+          "totalCommits": 1,
+          "totalDiffDelta": 5.4,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
+        },
+        {
+          "rank": 14,
+          "name": "Igor Wojda",
+          "totalCommits": 2,
+          "totalDiffDelta": 5.35,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
+        },
+        {
+          "rank": 15,
+          "name": "Nikita Ogorodnikov",
+          "totalCommits": 2,
+          "totalDiffDelta": 3.3,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
+        },
+        {
+          "rank": 16,
+          "name": "May Lee",
+          "totalCommits": 1,
+          "totalDiffDelta": 1.65,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
+        },
+        {
+          "rank": 17,
+          "name": "py - Pierre Yves Ricau",
+          "totalCommits": 1,
+          "totalDiffDelta": 1,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
+        }
+      ]
+    },
+    "dd-trace-dotnet": {
+      "repoId": "dd-trace-dotnet",
+      "churnRatePct": 9.57,
+      "gaugeValue": 71,
+      "contributorCount": 40,
+      "totalCommits": 1065,
+      "contributors": [
+        {
+          "rank": 1,
+          "name": "Andrew Lock",
+          "totalCommits": 246,
+          "totalDiffDelta": 148864.22,
+          "churnRatePct": 6.8,
+          "gaugeValue": 78,
+          "trend": "down"
+        },
+        {
+          "rank": 2,
+          "name": "Tony Redondo",
+          "totalCommits": 122,
+          "totalDiffDelta": 89125.37,
+          "churnRatePct": 4.62,
+          "gaugeValue": 83,
+          "trend": "down"
+        },
+        {
+          "rank": 3,
+          "name": "Zach Montoya",
+          "totalCommits": 48,
+          "totalDiffDelta": 74849.7,
+          "churnRatePct": 0.13,
+          "gaugeValue": 95,
+          "trend": "up"
+        },
+        {
+          "rank": 4,
+          "name": "Gregory LEOCADIE",
+          "totalCommits": 88,
+          "totalDiffDelta": 50598.64,
+          "churnRatePct": 1.24,
+          "gaugeValue": 92,
+          "trend": "down"
+        },
+        {
+          "rank": 5,
+          "name": "Matan Green",
+          "totalCommits": 14,
+          "totalDiffDelta": 34186.95,
+          "churnRatePct": 0.34,
+          "gaugeValue": 94,
+          "trend": "flat"
+        },
+        {
+          "rank": 6,
+          "name": "Maximo Bautista",
+          "totalCommits": 13,
+          "totalDiffDelta": 31230.23,
+          "churnRatePct": 12.1,
+          "gaugeValue": 65,
+          "trend": "down"
+        },
+        {
+          "rank": 7,
+          "name": "Kevin Gosse",
+          "totalCommits": 87,
+          "totalDiffDelta": 29099.59,
+          "churnRatePct": 2.99,
+          "gaugeValue": 88,
+          "trend": "down"
+        },
+        {
+          "rank": 8,
+          "name": "NachoEchevarria",
+          "totalCommits": 63,
+          "totalDiffDelta": 26681.44,
+          "churnRatePct": 10.48,
+          "gaugeValue": 69,
+          "trend": "down"
+        },
+        {
+          "rank": 9,
+          "name": "Daniel Romano",
+          "totalCommits": 26,
+          "totalDiffDelta": 26458.46,
+          "churnRatePct": 6.4,
+          "gaugeValue": 79,
+          "trend": "down"
+        },
+        {
+          "rank": 10,
+          "name": "Anna",
+          "totalCommits": 42,
+          "totalDiffDelta": 20931.87,
+          "churnRatePct": 5.74,
+          "gaugeValue": 81,
+          "trend": "down"
+        },
+        {
+          "rank": 11,
+          "name": "Lucas Pimentel-Ordyna",
+          "totalCommits": 14,
+          "totalDiffDelta": 14693.15,
+          "churnRatePct": 1.44,
+          "gaugeValue": 91,
+          "trend": "down"
+        },
+        {
+          "rank": 12,
+          "name": "Robert Pickering",
+          "totalCommits": 34,
+          "totalDiffDelta": 12923.74,
+          "churnRatePct": 0.56,
+          "gaugeValue": 94,
+          "trend": "down"
+        },
+        {
+          "rank": 13,
+          "name": "chrisnas",
+          "totalCommits": 49,
+          "totalDiffDelta": 10964.47,
+          "churnRatePct": 2.76,
+          "gaugeValue": 88,
+          "trend": "down"
+        },
+        {
+          "rank": 14,
+          "name": "Pierre Bonet",
+          "totalCommits": 34,
+          "totalDiffDelta": 10812.32,
+          "churnRatePct": 0.15,
+          "gaugeValue": 95,
+          "trend": "up"
+        },
+        {
+          "rank": 15,
+          "name": "Steven Bouwkamp",
+          "totalCommits": 32,
+          "totalDiffDelta": 9653.71,
+          "churnRatePct": 1.24,
+          "gaugeValue": 92,
+          "trend": "down"
+        },
+        {
+          "rank": 16,
+          "name": "Dudi Keleti",
+          "totalCommits": 9,
+          "totalDiffDelta": 9204.3,
+          "churnRatePct": 4.18,
+          "gaugeValue": 85,
+          "trend": "down"
+        },
+        {
+          "rank": 17,
+          "name": "jordan gonzález",
+          "totalCommits": 8,
+          "totalDiffDelta": 7930.74,
+          "churnRatePct": 0.53,
+          "gaugeValue": 94,
+          "trend": "down"
+        },
+        {
+          "rank": 18,
+          "name": "pablomartinezbernardo",
+          "totalCommits": 8,
+          "totalDiffDelta": 7049.97,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "up"
+        },
+        {
+          "rank": 19,
+          "name": "Andrew Lock",
+          "totalCommits": 7,
+          "totalDiffDelta": 5831.4,
+          "churnRatePct": 0.4,
+          "gaugeValue": 94,
+          "trend": "flat"
+        },
+        {
+          "rank": 20,
+          "name": "Joey Zhao",
+          "totalCommits": 2,
+          "totalDiffDelta": 5060.74,
+          "churnRatePct": 0.05,
+          "gaugeValue": 95,
+          "trend": "up"
+        }
+      ]
+    },
+    "dd-trace-java": {
+      "repoId": "dd-trace-java",
+      "churnRatePct": 9.6,
+      "gaugeValue": 71,
+      "contributorCount": 83,
+      "totalCommits": 2520,
+      "contributors": [
+        {
+          "rank": 1,
+          "name": "Nikita Tkachenko",
+          "totalCommits": 161,
+          "totalDiffDelta": 88172.96,
+          "churnRatePct": 10.26,
+          "gaugeValue": 69,
+          "trend": "down"
+        },
+        {
+          "rank": 2,
+          "name": "Jean-Philippe Bempel",
+          "totalCommits": 242,
+          "totalDiffDelta": 35035.42,
+          "churnRatePct": 18.23,
+          "gaugeValue": 49,
+          "trend": "down"
+        },
+        {
+          "rank": 3,
+          "name": "Manuel Álvarez Álvarez",
+          "totalCommits": 73,
+          "totalDiffDelta": 33259.71,
+          "churnRatePct": 10.29,
+          "gaugeValue": 69,
+          "trend": "down"
+        },
+        {
+          "rank": 4,
+          "name": "Gustavo Lopes",
+          "totalCommits": 74,
+          "totalDiffDelta": 25721.38,
+          "churnRatePct": 4.29,
+          "gaugeValue": 84,
+          "trend": "down"
+        },
+        {
+          "rank": 5,
+          "name": "Richard Startin",
+          "totalCommits": 145,
+          "totalDiffDelta": 21784.19,
+          "churnRatePct": 4.69,
+          "gaugeValue": 83,
+          "trend": "down"
+        },
+        {
+          "rank": 6,
+          "name": "Andrea Marziali",
+          "totalCommits": 111,
+          "totalDiffDelta": 17620.51,
+          "churnRatePct": 7.54,
+          "gaugeValue": 76,
+          "trend": "down"
+        },
+        {
+          "rank": 7,
+          "name": "Stuart McCulloch",
+          "totalCommits": 186,
+          "totalDiffDelta": 13857.49,
+          "churnRatePct": 5.35,
+          "gaugeValue": 82,
+          "trend": "down"
+        },
+        {
+          "rank": 8,
+          "name": "Santiago M. Mola",
+          "totalCommits": 151,
+          "totalDiffDelta": 13586.65,
+          "churnRatePct": 3.71,
+          "gaugeValue": 86,
+          "trend": "down"
+        },
+        {
+          "rank": 9,
+          "name": "Bruce Bujon",
+          "totalCommits": 72,
+          "totalDiffDelta": 12245.12,
+          "churnRatePct": 3.73,
+          "gaugeValue": 86,
+          "trend": "down"
+        },
+        {
+          "rank": 10,
+          "name": "Yury Gribkov",
+          "totalCommits": 46,
+          "totalDiffDelta": 8961.94,
+          "churnRatePct": 8.38,
+          "gaugeValue": 74,
+          "trend": "down"
+        },
+        {
+          "rank": 11,
+          "name": "Alejandro González García",
+          "totalCommits": 39,
+          "totalDiffDelta": 7454.57,
+          "churnRatePct": 4.78,
+          "gaugeValue": 83,
+          "trend": "down"
+        },
+        {
+          "rank": 12,
+          "name": "Björn Antonsson",
+          "totalCommits": 62,
+          "totalDiffDelta": 7421.14,
+          "churnRatePct": 2.38,
+          "gaugeValue": 89,
+          "trend": "down"
+        },
+        {
+          "rank": 13,
+          "name": "Javier Santos",
+          "totalCommits": 35,
+          "totalDiffDelta": 6498.86,
+          "churnRatePct": 3.82,
+          "gaugeValue": 85,
+          "trend": "down"
+        },
+        {
+          "rank": 14,
+          "name": "ValentinZakharov",
+          "totalCommits": 30,
+          "totalDiffDelta": 3642.2,
+          "churnRatePct": 0.4,
+          "gaugeValue": 94,
+          "trend": "down"
+        },
+        {
+          "rank": 15,
+          "name": "Sebastien Coquelin",
+          "totalCommits": 1,
+          "totalDiffDelta": 2880,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 16,
+          "name": "Brian Devins-Suresh",
+          "totalCommits": 14,
+          "totalDiffDelta": 2596.29,
+          "churnRatePct": 0.69,
+          "gaugeValue": 93,
+          "trend": "down"
+        },
+        {
+          "rank": 17,
+          "name": "Paul Laffon",
+          "totalCommits": 32,
+          "totalDiffDelta": 2368.15,
+          "churnRatePct": 4.46,
+          "gaugeValue": 84,
+          "trend": "down"
+        },
+        {
+          "rank": 18,
+          "name": "Nayeem Kamal",
+          "totalCommits": 8,
+          "totalDiffDelta": 1861.44,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 19,
+          "name": "Jaroslav Bachorik",
+          "totalCommits": 25,
+          "totalDiffDelta": 1828.76,
+          "churnRatePct": 1.6,
+          "gaugeValue": 91,
+          "trend": "down"
+        },
+        {
+          "rank": 20,
+          "name": "Igor Kravchenko",
+          "totalCommits": 74,
+          "totalDiffDelta": 1805.88,
+          "churnRatePct": 14.77,
+          "gaugeValue": 58,
+          "trend": "down"
+        }
+      ]
+    },
+    "dd-trace-js": {
+      "repoId": "dd-trace-js",
+      "churnRatePct": 9.35,
+      "gaugeValue": 72,
+      "contributorCount": 58,
+      "totalCommits": 702,
+      "contributors": [
+        {
+          "rank": 1,
+          "name": "Ugaitz Urien",
+          "totalCommits": 54,
+          "totalDiffDelta": 13256.65,
+          "churnRatePct": 3.24,
+          "gaugeValue": 87,
+          "trend": "down"
+        },
+        {
+          "rank": 2,
+          "name": "Juan Antonio Fernández de Alba",
+          "totalCommits": 139,
+          "totalDiffDelta": 10146.67,
+          "churnRatePct": 8.16,
+          "gaugeValue": 75,
+          "trend": "down"
+        },
+        {
+          "rank": 3,
+          "name": "Roch Devost",
+          "totalCommits": 56,
+          "totalDiffDelta": 7320.79,
+          "churnRatePct": 1.2,
+          "gaugeValue": 92,
+          "trend": "down"
+        },
+        {
+          "rank": 4,
+          "name": "Thomas Hunter II",
+          "totalCommits": 77,
+          "totalDiffDelta": 6474.14,
+          "churnRatePct": 1.99,
+          "gaugeValue": 90,
+          "trend": "down"
+        },
+        {
+          "rank": 5,
+          "name": "Ayan Khan",
+          "totalCommits": 24,
+          "totalDiffDelta": 5764.31,
+          "churnRatePct": 2.75,
+          "gaugeValue": 88,
+          "trend": "down"
+        },
+        {
+          "rank": 6,
+          "name": "Igor Unanua",
+          "totalCommits": 30,
+          "totalDiffDelta": 5322.16,
+          "churnRatePct": 6.15,
+          "gaugeValue": 80,
+          "trend": "down"
+        },
+        {
+          "rank": 7,
+          "name": "Stephen Belanger",
+          "totalCommits": 35,
+          "totalDiffDelta": 4316.29,
+          "churnRatePct": 0.97,
+          "gaugeValue": 93,
+          "trend": "down"
+        },
+        {
+          "rank": 8,
+          "name": "Eric Navarro",
+          "totalCommits": 5,
+          "totalDiffDelta": 3974.37,
+          "churnRatePct": 0.8,
+          "gaugeValue": 93,
+          "trend": "down"
+        },
+        {
+          "rank": 9,
+          "name": "Carles Capell",
+          "totalCommits": 34,
+          "totalDiffDelta": 3647.89,
+          "churnRatePct": 6.26,
+          "gaugeValue": 79,
+          "trend": "down"
+        },
+        {
+          "rank": 10,
+          "name": "Jordi Bertran de Balanda",
+          "totalCommits": 20,
+          "totalDiffDelta": 3592.61,
+          "churnRatePct": 17.52,
+          "gaugeValue": 51,
+          "trend": "down"
+        },
+        {
+          "rank": 11,
+          "name": "Julio Gonzalez",
+          "totalCommits": 11,
+          "totalDiffDelta": 3131.82,
+          "churnRatePct": 1.75,
+          "gaugeValue": 91,
+          "trend": "down"
+        },
+        {
+          "rank": 12,
+          "name": "simon-id",
+          "totalCommits": 24,
+          "totalDiffDelta": 2317.24,
+          "churnRatePct": 5.87,
+          "gaugeValue": 80,
+          "trend": "down"
+        },
+        {
+          "rank": 13,
+          "name": "Bryan English",
+          "totalCommits": 6,
+          "totalDiffDelta": 2211.16,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 14,
+          "name": "Nicolas Savoire",
+          "totalCommits": 30,
+          "totalDiffDelta": 1746.07,
+          "churnRatePct": 3.14,
+          "gaugeValue": 87,
+          "trend": "down"
+        },
+        {
+          "rank": 15,
+          "name": "Ida Liu",
+          "totalCommits": 7,
+          "totalDiffDelta": 1460.56,
+          "churnRatePct": 1.14,
+          "gaugeValue": 92,
+          "trend": "down"
+        },
+        {
+          "rank": 16,
+          "name": "Rodrigo Argüello",
+          "totalCommits": 3,
+          "totalDiffDelta": 1367.94,
+          "churnRatePct": 0.42,
+          "gaugeValue": 94,
+          "trend": "down"
+        },
+        {
+          "rank": 17,
+          "name": "Attila Szegedi",
+          "totalCommits": 30,
+          "totalDiffDelta": 1337.02,
+          "churnRatePct": 16.49,
+          "gaugeValue": 54,
+          "trend": "down"
+        },
+        {
+          "rank": 18,
+          "name": "Sam Brenner",
+          "totalCommits": 16,
+          "totalDiffDelta": 819.75,
+          "churnRatePct": 9.66,
+          "gaugeValue": 71,
+          "trend": "down"
+        },
+        {
+          "rank": 19,
+          "name": "Jordi Bertran de Balanda",
+          "totalCommits": 6,
+          "totalDiffDelta": 581.6,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 20,
+          "name": "William Conti",
+          "totalCommits": 7,
+          "totalDiffDelta": 515.78,
+          "churnRatePct": 0.57,
+          "gaugeValue": 94,
+          "trend": "down"
+        }
+      ]
+    },
+    "dd-trace-py": {
+      "repoId": "dd-trace-py",
+      "churnRatePct": 7.08,
+      "gaugeValue": 77,
+      "contributorCount": 81,
+      "totalCommits": 1607,
+      "contributors": [
+        {
+          "rank": 1,
+          "name": "Tahir H. Butt",
+          "totalCommits": 49,
+          "totalDiffDelta": 141599.35,
+          "churnRatePct": 0.21,
+          "gaugeValue": 94,
+          "trend": "down"
+        },
+        {
+          "rank": 2,
+          "name": "Yun Kim",
+          "totalCommits": 95,
+          "totalDiffDelta": 89490.8,
+          "churnRatePct": 4.89,
+          "gaugeValue": 83,
+          "trend": "down"
+        },
+        {
+          "rank": 3,
+          "name": "Emmett Butler",
+          "totalCommits": 172,
+          "totalDiffDelta": 59560.84,
+          "churnRatePct": 3.13,
+          "gaugeValue": 87,
+          "trend": "down"
+        },
+        {
+          "rank": 4,
+          "name": "Alberto Vara",
+          "totalCommits": 151,
+          "totalDiffDelta": 40229.68,
+          "churnRatePct": 4.98,
+          "gaugeValue": 83,
+          "trend": "down"
+        },
+        {
+          "rank": 5,
+          "name": "Munir Abdinur",
+          "totalCommits": 158,
+          "totalDiffDelta": 25229.31,
+          "churnRatePct": 6.5,
+          "gaugeValue": 79,
+          "trend": "down"
+        },
+        {
+          "rank": 6,
+          "name": "Gabriele N. Tornetta",
+          "totalCommits": 192,
+          "totalDiffDelta": 22458.5,
+          "churnRatePct": 8.5,
+          "gaugeValue": 74,
+          "trend": "down"
+        },
+        {
+          "rank": 7,
+          "name": "Teague Bick",
+          "totalCommits": 37,
+          "totalDiffDelta": 20696.78,
+          "churnRatePct": 0.55,
+          "gaugeValue": 94,
+          "trend": "down"
+        },
+        {
+          "rank": 8,
+          "name": "Christophe Papazian",
+          "totalCommits": 145,
+          "totalDiffDelta": 16994.67,
+          "churnRatePct": 4.18,
+          "gaugeValue": 85,
+          "trend": "down"
+        },
+        {
+          "rank": 9,
+          "name": "William Conti",
+          "totalCommits": 20,
+          "totalDiffDelta": 15914.77,
+          "churnRatePct": 3.41,
+          "gaugeValue": 86,
+          "trend": "down"
+        },
+        {
+          "rank": 10,
+          "name": "Yun Kim",
+          "totalCommits": 1,
+          "totalDiffDelta": 15417.76,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 11,
+          "name": "Juanjo Alvarez Martinez",
+          "totalCommits": 54,
+          "totalDiffDelta": 9508.48,
+          "churnRatePct": 3.41,
+          "gaugeValue": 86,
+          "trend": "down"
+        },
+        {
+          "rank": 12,
+          "name": "Federico Mon",
+          "totalCommits": 123,
+          "totalDiffDelta": 8842.19,
+          "churnRatePct": 3.34,
+          "gaugeValue": 87,
+          "trend": "down"
+        },
+        {
+          "rank": 13,
+          "name": "Brett Langdon",
+          "totalCommits": 72,
+          "totalDiffDelta": 6295.92,
+          "churnRatePct": 1.09,
+          "gaugeValue": 92,
+          "trend": "down"
+        },
+        {
+          "rank": 14,
+          "name": "Romain Komorn",
+          "totalCommits": 41,
+          "totalDiffDelta": 5300.58,
+          "churnRatePct": 4.87,
+          "gaugeValue": 83,
+          "trend": "down"
+        },
+        {
+          "rank": 15,
+          "name": "Eric Navarro",
+          "totalCommits": 19,
+          "totalDiffDelta": 4661.3,
+          "churnRatePct": 1.15,
+          "gaugeValue": 92,
+          "trend": "down"
+        },
+        {
+          "rank": 16,
+          "name": "Jordi Bertran de Balanda",
+          "totalCommits": 2,
+          "totalDiffDelta": 4605.65,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 17,
+          "name": "Zachary Groves",
+          "totalCommits": 45,
+          "totalDiffDelta": 4376.05,
+          "churnRatePct": 2.15,
+          "gaugeValue": 90,
+          "trend": "down"
+        },
+        {
+          "rank": 18,
+          "name": "Idan Shatz",
+          "totalCommits": 10,
+          "totalDiffDelta": 3605.51,
+          "churnRatePct": 3.76,
+          "gaugeValue": 86,
+          "trend": "down"
+        },
+        {
+          "rank": 19,
+          "name": "Eric Navarro",
+          "totalCommits": 3,
+          "totalDiffDelta": 3111.57,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 20,
+          "name": "Kyle Verhoog",
+          "totalCommits": 44,
+          "totalDiffDelta": 2731.28,
+          "churnRatePct": 4.4,
+          "gaugeValue": 84,
+          "trend": "down"
+        }
+      ]
+    },
+    "dd-trace-rb": {
+      "repoId": "dd-trace-rb",
+      "churnRatePct": 17.2,
+      "gaugeValue": 52,
+      "contributorCount": 60,
+      "totalCommits": 2879,
+      "contributors": [
+        {
+          "rank": 1,
+          "name": "Ivo Anjo",
+          "totalCommits": 338,
+          "totalDiffDelta": 138404.71,
+          "churnRatePct": 2.87,
+          "gaugeValue": 88,
+          "trend": "down"
+        },
+        {
+          "rank": 2,
+          "name": "TonyCTHsu",
+          "totalCommits": 276,
+          "totalDiffDelta": 81932.82,
+          "churnRatePct": 3.63,
+          "gaugeValue": 86,
+          "trend": "down"
+        },
+        {
+          "rank": 3,
+          "name": "Andrey Marchenko",
+          "totalCommits": 20,
+          "totalDiffDelta": 68600.02,
+          "churnRatePct": 12.31,
+          "gaugeValue": 64,
+          "trend": "down"
+        },
+        {
+          "rank": 4,
+          "name": "Loic Nageleisen",
+          "totalCommits": 227,
+          "totalDiffDelta": 52344.74,
+          "churnRatePct": 5.57,
+          "gaugeValue": 81,
+          "trend": "down"
+        },
+        {
+          "rank": 5,
+          "name": "Gustavo Caso",
+          "totalCommits": 324,
+          "totalDiffDelta": 48378.53,
+          "churnRatePct": 6.39,
+          "gaugeValue": 79,
+          "trend": "down"
+        },
+        {
+          "rank": 6,
+          "name": "Marco Costa",
+          "totalCommits": 274,
+          "totalDiffDelta": 22891.24,
+          "churnRatePct": 3.86,
+          "gaugeValue": 85,
+          "trend": "down"
+        },
+        {
+          "rank": 7,
+          "name": "TonyCTHsu",
+          "totalCommits": 213,
+          "totalDiffDelta": 16750.86,
+          "churnRatePct": 9.07,
+          "gaugeValue": 72,
+          "trend": "down"
+        },
+        {
+          "rank": 8,
+          "name": "Edmund Kump",
+          "totalCommits": 10,
+          "totalDiffDelta": 12088.58,
+          "churnRatePct": 0.32,
+          "gaugeValue": 94,
+          "trend": "down"
+        },
+        {
+          "rank": 9,
+          "name": "Zarir Hamza",
+          "totalCommits": 96,
+          "totalDiffDelta": 6111.38,
+          "churnRatePct": 23.19,
+          "gaugeValue": 37,
+          "trend": "down"
+        },
+        {
+          "rank": 10,
+          "name": "TonyCTHsu",
+          "totalCommits": 3,
+          "totalDiffDelta": 3597.92,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 11,
+          "name": "Sarah Chen",
+          "totalCommits": 16,
+          "totalDiffDelta": 3505.94,
+          "churnRatePct": 18.81,
+          "gaugeValue": 48,
+          "trend": "down"
+        },
+        {
+          "rank": 12,
+          "name": "Marco Costa",
+          "totalCommits": 1,
+          "totalDiffDelta": 2598.16,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 13,
+          "name": "Andrew Rodriguez",
+          "totalCommits": 25,
+          "totalDiffDelta": 2257,
+          "churnRatePct": 16.87,
+          "gaugeValue": 53,
+          "trend": "down"
+        },
+        {
+          "rank": 14,
+          "name": "Alexandre Fonseca",
+          "totalCommits": 5,
+          "totalDiffDelta": 1907.55,
+          "churnRatePct": 1.87,
+          "gaugeValue": 90,
+          "trend": "down"
+        },
+        {
+          "rank": 15,
+          "name": "wan",
+          "totalCommits": 8,
+          "totalDiffDelta": 1498.08,
+          "churnRatePct": 3.21,
+          "gaugeValue": 87,
+          "trend": "down"
+        },
+        {
+          "rank": 16,
+          "name": "wconti27",
+          "totalCommits": 102,
+          "totalDiffDelta": 1133.15,
+          "churnRatePct": 20.3,
+          "gaugeValue": 44,
+          "trend": "down"
+        },
+        {
+          "rank": 17,
+          "name": "Albert Vaca Cintora",
+          "totalCommits": 3,
+          "totalDiffDelta": 1043.26,
+          "churnRatePct": 0.24,
+          "gaugeValue": 94,
+          "trend": "down"
+        },
+        {
+          "rank": 18,
+          "name": "Andrew Rodriguez",
+          "totalCommits": 8,
+          "totalDiffDelta": 749.55,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 19,
+          "name": "ivoanjo",
+          "totalCommits": 1,
+          "totalDiffDelta": 676.45,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 20,
+          "name": "Alex Robbin",
+          "totalCommits": 2,
+          "totalDiffDelta": 668.45,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        }
+      ]
+    },
+    "integrations-core": {
+      "repoId": "integrations-core",
+      "churnRatePct": 6.14,
+      "gaugeValue": 80,
+      "contributorCount": 194,
+      "totalCommits": 2196,
+      "contributors": [
+        {
+          "rank": 1,
+          "name": "Ofek Lev",
+          "totalCommits": 176,
+          "totalDiffDelta": 132293.17,
+          "churnRatePct": 5.41,
+          "gaugeValue": 81,
+          "trend": "down"
+        },
+        {
+          "rank": 2,
+          "name": "Florent Clarret",
+          "totalCommits": 390,
+          "totalDiffDelta": 68298.14,
+          "churnRatePct": 0.36,
+          "gaugeValue": 94,
+          "trend": "down"
+        },
+        {
+          "rank": 3,
+          "name": "Alexandre Yang",
+          "totalCommits": 91,
+          "totalDiffDelta": 38070.77,
+          "churnRatePct": 0.2,
+          "gaugeValue": 95,
+          "trend": "down"
+        },
+        {
+          "rank": 4,
+          "name": "jose-manuel-almaza",
+          "totalCommits": 16,
+          "totalDiffDelta": 31114.52,
+          "churnRatePct": 1.21,
+          "gaugeValue": 92,
+          "trend": "down"
+        },
+        {
+          "rank": 5,
+          "name": "Wassim Dhif",
+          "totalCommits": 7,
+          "totalDiffDelta": 30050,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 6,
+          "name": "Sarah Wang",
+          "totalCommits": 203,
+          "totalDiffDelta": 26523.19,
+          "churnRatePct": 0.07,
+          "gaugeValue": 95,
+          "trend": "down"
+        },
+        {
+          "rank": 7,
+          "name": "Thibaud Cheruy",
+          "totalCommits": 48,
+          "totalDiffDelta": 21317.7,
+          "churnRatePct": 0.09,
+          "gaugeValue": 95,
+          "trend": "down"
+        },
+        {
+          "rank": 8,
+          "name": "Elizaveta Eremina",
+          "totalCommits": 45,
+          "totalDiffDelta": 17810.11,
+          "churnRatePct": 2.08,
+          "gaugeValue": 90,
+          "trend": "down"
+        },
+        {
+          "rank": 9,
+          "name": "Steven Yuen",
+          "totalCommits": 106,
+          "totalDiffDelta": 16617.66,
+          "churnRatePct": 0.21,
+          "gaugeValue": 94,
+          "trend": "down"
+        },
+        {
+          "rank": 10,
+          "name": "Nathan Adams",
+          "totalCommits": 4,
+          "totalDiffDelta": 14355.82,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 11,
+          "name": "Ilia Kurenkov",
+          "totalCommits": 116,
+          "totalDiffDelta": 14141.45,
+          "churnRatePct": 1.89,
+          "gaugeValue": 90,
+          "trend": "down"
+        },
+        {
+          "rank": 12,
+          "name": "NouhaManai",
+          "totalCommits": 32,
+          "totalDiffDelta": 13494.83,
+          "churnRatePct": 0.15,
+          "gaugeValue": 95,
+          "trend": "down"
+        },
+        {
+          "rank": 13,
+          "name": "tbavelier",
+          "totalCommits": 16,
+          "totalDiffDelta": 12457.52,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 14,
+          "name": "Cedric Lamoriniere",
+          "totalCommits": 3,
+          "totalDiffDelta": 9865.12,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 15,
+          "name": "Yao Ding",
+          "totalCommits": 3,
+          "totalDiffDelta": 9327.24,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 16,
+          "name": "Fanny Jiang",
+          "totalCommits": 16,
+          "totalDiffDelta": 8790.89,
+          "churnRatePct": 0.33,
+          "gaugeValue": 94,
+          "trend": "down"
+        },
+        {
+          "rank": 17,
+          "name": "Andrew Zhang",
+          "totalCommits": 99,
+          "totalDiffDelta": 8453.31,
+          "churnRatePct": 1.35,
+          "gaugeValue": 92,
+          "trend": "down"
+        },
+        {
+          "rank": 18,
+          "name": "mathieucolin",
+          "totalCommits": 3,
+          "totalDiffDelta": 8187.3,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 19,
+          "name": "Sarah Witt",
+          "totalCommits": 39,
+          "totalDiffDelta": 7583.3,
+          "churnRatePct": 0.7,
+          "gaugeValue": 93,
+          "trend": "down"
+        },
+        {
+          "rank": 20,
+          "name": "Alex Lopez",
+          "totalCommits": 84,
+          "totalDiffDelta": 7161.81,
+          "churnRatePct": 2.41,
+          "gaugeValue": 89,
+          "trend": "down"
+        }
+      ]
+    },
+    "libdatadog": {
+      "repoId": "libdatadog",
+      "churnRatePct": 7,
+      "gaugeValue": 78,
+      "contributorCount": 16,
+      "totalCommits": 148,
+      "contributors": [
+        {
+          "rank": 1,
+          "name": "Ivo Anjo",
+          "totalCommits": 23,
+          "totalDiffDelta": 31275.52,
+          "churnRatePct": 0.04,
+          "gaugeValue": 95,
+          "trend": "down"
+        },
+        {
+          "rank": 2,
+          "name": "Bob Weinand",
+          "totalCommits": 18,
+          "totalDiffDelta": 12757.38,
+          "churnRatePct": 1.2,
+          "gaugeValue": 92,
+          "trend": "down"
+        },
+        {
+          "rank": 3,
+          "name": "Daniel Schwartz-Narbonne",
+          "totalCommits": 21,
+          "totalDiffDelta": 12361.35,
+          "churnRatePct": 2.71,
+          "gaugeValue": 88,
+          "trend": "down"
+        },
+        {
+          "rank": 4,
+          "name": "Levi Morrison",
+          "totalCommits": 23,
+          "totalDiffDelta": 6892.3,
+          "churnRatePct": 3.64,
+          "gaugeValue": 86,
+          "trend": "down"
+        },
+        {
+          "rank": 5,
+          "name": "David Lee",
+          "totalCommits": 26,
+          "totalDiffDelta": 6111.24,
+          "churnRatePct": 3.28,
+          "gaugeValue": 87,
+          "trend": "down"
+        },
+        {
+          "rank": 6,
+          "name": "Pawel Chojnacki",
+          "totalCommits": 9,
+          "totalDiffDelta": 3787.73,
+          "churnRatePct": 12.45,
+          "gaugeValue": 64,
+          "trend": "down"
+        },
+        {
+          "rank": 7,
+          "name": "paullegranddc",
+          "totalCommits": 8,
+          "totalDiffDelta": 2194.11,
+          "churnRatePct": 0.71,
+          "gaugeValue": 93,
+          "trend": "down"
+        },
+        {
+          "rank": 8,
+          "name": "Gregory LEOCADIE",
+          "totalCommits": 8,
+          "totalDiffDelta": 1004.33,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 9,
+          "name": "Andrew Glaude",
+          "totalCommits": 1,
+          "totalDiffDelta": 365.05,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 10,
+          "name": "David Sanchez",
+          "totalCommits": 2,
+          "totalDiffDelta": 204.38,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 11,
+          "name": "Anil Mahtani",
+          "totalCommits": 1,
+          "totalDiffDelta": 40.25,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 12,
+          "name": "Nicolas Savoire",
+          "totalCommits": 1,
+          "totalDiffDelta": 13.6,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 13,
+          "name": "r1viollet",
+          "totalCommits": 1,
+          "totalDiffDelta": 2.88,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 14,
+          "name": "Florian Engelhardt",
+          "totalCommits": 1,
+          "totalDiffDelta": 1.8,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        },
+        {
+          "rank": 15,
+          "name": "Ivan Topolcic",
+          "totalCommits": 1,
+          "totalDiffDelta": 0.5,
+          "churnRatePct": 0,
+          "gaugeValue": 95,
+          "trend": "flat"
+        }
+      ]
+    },
+    "system-tests": {
+      "repoId": "system-tests",
+      "churnRatePct": 10.19,
+      "gaugeValue": 70,
+      "contributorCount": 122,
+      "totalCommits": 3654,
+      "contributors": [
+        {
+          "rank": 1,
+          "name": "Roberto Montero",
+          "totalCommits": 74,
+          "totalDiffDelta": 53353.1,
+          "churnRatePct": 10.54,
+          "gaugeValue": 69,
+          "trend": "down"
+        },
+        {
+          "rank": 2,
+          "name": "Robert Pickering",
+          "totalCommits": 34,
+          "totalDiffDelta": 47527.3,
+          "churnRatePct": 31.45,
+          "gaugeValue": 16,
+          "trend": "down"
+        },
+        {
+          "rank": 3,
+          "name": "Charles de Beauchesne",
+          "totalCommits": 509,
+          "totalDiffDelta": 22390.97,
+          "churnRatePct": 14.46,
+          "gaugeValue": 59,
+          "trend": "down"
+        },
+        {
+          "rank": 4,
+          "name": "Gustavo Caso",
+          "totalCommits": 54,
+          "totalDiffDelta": 21596.02,
+          "churnRatePct": 0.26,
+          "gaugeValue": 94,
+          "trend": "up"
+        },
+        {
+          "rank": 5,
+          "name": "Diana Shevchenko",
+          "totalCommits": 88,
+          "totalDiffDelta": 13234.77,
+          "churnRatePct": 25.3,
+          "gaugeValue": 32,
+          "trend": "down"
+        },
+        {
+          "rank": 6,
+          "name": "Kyle Verhoog",
+          "totalCommits": 80,
+          "totalDiffDelta": 9916.77,
+          "churnRatePct": 51.12,
+          "gaugeValue": 10,
+          "trend": "down"
+        },
+        {
+          "rank": 7,
+          "name": "Santiago M. Mola",
+          "totalCommits": 81,
+          "totalDiffDelta": 5067.57,
+          "churnRatePct": 4.32,
+          "gaugeValue": 84,
+          "trend": "down"
+        },
+        {
+          "rank": 8,
+          "name": "Ugaitz Urien",
+          "totalCommits": 13,
+          "totalDiffDelta": 4769.93,
+          "churnRatePct": 0.08,
+          "gaugeValue": 95,
+          "trend": "up"
+        },
+        {
+          "rank": 9,
+          "name": "Manuel Álvarez Álvarez",
+          "totalCommits": 9,
+          "totalDiffDelta": 3084.03,
+          "churnRatePct": 1.9,
+          "gaugeValue": 90,
+          "trend": "down"
+        },
+        {
+          "rank": 10,
+          "name": "mehulsonowal",
+          "totalCommits": 41,
+          "totalDiffDelta": 2931.81,
+          "churnRatePct": 23.04,
+          "gaugeValue": 37,
+          "trend": "down"
+        },
+        {
+          "rank": 11,
+          "name": "ZStriker19",
+          "totalCommits": 36,
+          "totalDiffDelta": 2762.59,
+          "churnRatePct": 24.84,
           "gaugeValue": 33,
           "trend": "down"
         },
         {
-          "rank": 2,
-          "name": "HideLord",
-          "totalCommits": 1,
-          "totalDiffDelta": 5005,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 3,
-          "name": "matatonic",
-          "totalCommits": 28,
-          "totalDiffDelta": 1969,
-          "churnRatePct": 18.2,
-          "gaugeValue": 35,
-          "trend": "down"
-        },
-        {
-          "rank": 4,
-          "name": "FartyPants (FP HAM)",
-          "totalCommits": 18,
-          "totalDiffDelta": 1907,
-          "churnRatePct": 2.5,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 5,
-          "name": "jllllll",
-          "totalCommits": 62,
-          "totalDiffDelta": 675,
-          "churnRatePct": 8.1,
-          "gaugeValue": 66,
-          "trend": "flat"
-        },
-        {
-          "rank": 6,
-          "name": "Wojtab",
-          "totalCommits": 5,
-          "totalDiffDelta": 649,
-          "churnRatePct": 20.9,
-          "gaugeValue": 27,
-          "trend": "down"
-        },
-        {
-          "rank": 7,
-          "name": "kanttouchthis",
-          "totalCommits": 1,
-          "totalDiffDelta": 517,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 8,
-          "name": "Andy Salerno",
-          "totalCommits": 2,
-          "totalDiffDelta": 509,
-          "churnRatePct": 0.5,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 9,
-          "name": "Alex \"mcmonkey\" Goodwin",
-          "totalCommits": 13,
-          "totalDiffDelta": 471,
-          "churnRatePct": 2.9,
-          "gaugeValue": 81,
-          "trend": "up"
-        },
-        {
-          "rank": 10,
-          "name": "Φφ",
-          "totalCommits": 10,
-          "totalDiffDelta": 395,
-          "churnRatePct": 3.6,
-          "gaugeValue": 79,
-          "trend": "up"
-        },
-        {
-          "rank": 11,
-          "name": "Blake Wyatt",
-          "totalCommits": 3,
-          "totalDiffDelta": 373,
-          "churnRatePct": 1.1,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
           "rank": 12,
-          "name": "Alexander Hristov Hristov",
-          "totalCommits": 3,
-          "totalDiffDelta": 360,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
+          "name": "Igor Unanua",
+          "totalCommits": 10,
+          "totalDiffDelta": 2744.12,
+          "churnRatePct": 0.03,
+          "gaugeValue": 95,
           "trend": "up"
         },
         {
           "rank": 13,
-          "name": "Alex \"mcmonkey\" Goodwin",
-          "totalCommits": 23,
-          "totalDiffDelta": 326,
-          "churnRatePct": 6.8,
-          "gaugeValue": 70,
-          "trend": "flat"
-        },
-        {
-          "rank": 14,
-          "name": "SeanScripts",
-          "totalCommits": 2,
-          "totalDiffDelta": 306,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "missionfloyd",
-          "totalCommits": 19,
-          "totalDiffDelta": 268,
-          "churnRatePct": 1.5,
-          "gaugeValue": 86,
-          "trend": "up"
-        },
-        {
-          "rank": 16,
-          "name": "Morgan Schweers",
-          "totalCommits": 4,
-          "totalDiffDelta": 255,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 17,
-          "name": "cal066",
-          "totalCommits": 6,
-          "totalDiffDelta": 235,
-          "churnRatePct": 1.7,
-          "gaugeValue": 85,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "da3dsoul",
-          "totalCommits": 2,
-          "totalDiffDelta": 234,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 19,
-          "name": "tdrussell",
-          "totalCommits": 4,
-          "totalDiffDelta": 164,
-          "churnRatePct": 4.8,
-          "gaugeValue": 76,
-          "trend": "up"
-        },
-        {
-          "rank": 20,
-          "name": "Ahmed Said",
-          "totalCommits": 1,
-          "totalDiffDelta": 160,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 21,
-          "name": "Carl Kenner",
-          "totalCommits": 4,
-          "totalDiffDelta": 155,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 22,
-          "name": "Callum",
-          "totalCommits": 1,
-          "totalDiffDelta": 152,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 23,
-          "name": "Luis Lopez",
-          "totalCommits": 5,
-          "totalDiffDelta": 150,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 24,
-          "name": "MarkovInequality",
-          "totalCommits": 1,
-          "totalDiffDelta": 125,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "Haotian Liu",
-          "totalCommits": 2,
-          "totalDiffDelta": 123,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 26,
-          "name": "Steve Randall",
-          "totalCommits": 1,
-          "totalDiffDelta": 120,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 27,
-          "name": "Chris Rude",
-          "totalCommits": 1,
-          "totalDiffDelta": 118,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 28,
-          "name": "Abhilash Majumder",
-          "totalCommits": 1,
-          "totalDiffDelta": 114,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 29,
-          "name": "wizd",
-          "totalCommits": 2,
-          "totalDiffDelta": 102,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "mjbogusz",
-          "totalCommits": 1,
-          "totalDiffDelta": 98,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        }
-      ]
-    },
-    "transformers": {
-      "repoId": "transformers",
-      "churnRatePct": 2.36,
-      "gaugeValue": 83,
-      "contributorCount": 757,
-      "totalCommits": 3049,
-      "contributors": [
-        {
-          "rank": 1,
-          "name": "Matt",
-          "totalCommits": 91,
-          "totalDiffDelta": 41338,
-          "churnRatePct": 2.2,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 2,
-          "name": "Arthur",
-          "totalCommits": 162,
-          "totalDiffDelta": 33381,
-          "churnRatePct": 1,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
-          "rank": 3,
-          "name": "Sylvain Gugger",
-          "totalCommits": 160,
-          "totalDiffDelta": 32902,
-          "churnRatePct": 2.2,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 4,
-          "name": "Yih-Dar",
-          "totalCommits": 397,
-          "totalDiffDelta": 32321,
-          "churnRatePct": 3.5,
-          "gaugeValue": 80,
-          "trend": "up"
-        },
-        {
-          "rank": 5,
-          "name": "NielsRogge",
-          "totalCommits": 57,
-          "totalDiffDelta": 26389,
-          "churnRatePct": 0.6,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 6,
-          "name": "amyeroberts",
-          "totalCommits": 87,
-          "totalDiffDelta": 23790,
-          "churnRatePct": 11.9,
-          "gaugeValue": 54,
-          "trend": "flat"
-        },
-        {
-          "rank": 7,
-          "name": "Younes Belkada",
-          "totalCommits": 166,
-          "totalDiffDelta": 18646,
-          "churnRatePct": 8.4,
-          "gaugeValue": 65,
-          "trend": "flat"
-        },
-        {
-          "rank": 8,
-          "name": "Yoach Lacombe",
-          "totalCommits": 25,
-          "totalDiffDelta": 15280,
-          "churnRatePct": 1.3,
-          "gaugeValue": 86,
-          "trend": "up"
-        },
-        {
-          "rank": 9,
-          "name": "Steven Liu",
-          "totalCommits": 22,
-          "totalDiffDelta": 15047,
-          "churnRatePct": 0.8,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 10,
-          "name": "Joao Gante",
-          "totalCommits": 152,
-          "totalDiffDelta": 12578,
-          "churnRatePct": 16.5,
-          "gaugeValue": 41,
-          "trend": "down"
-        },
-        {
-          "rank": 11,
-          "name": "Susnato Dhar",
-          "totalCommits": 21,
-          "totalDiffDelta": 11934,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 12,
-          "name": "Matthijs Hollemans",
-          "totalCommits": 14,
-          "totalDiffDelta": 11437,
-          "churnRatePct": 1,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
-          "rank": 13,
-          "name": "Patrick von Platen",
-          "totalCommits": 26,
-          "totalDiffDelta": 10470,
-          "churnRatePct": 5.6,
-          "gaugeValue": 73,
-          "trend": "flat"
-        },
-        {
-          "rank": 14,
-          "name": "Rockerz",
-          "totalCommits": 8,
-          "totalDiffDelta": 9836,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "Alara Dirik",
-          "totalCommits": 16,
-          "totalDiffDelta": 9600,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 16,
-          "name": "Maria Khalusova",
-          "totalCommits": 42,
-          "totalDiffDelta": 6757,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 17,
-          "name": "Sanchit Gandhi",
-          "totalCommits": 66,
-          "totalDiffDelta": 6638,
-          "churnRatePct": 0.6,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "Jitesh Jain",
-          "totalCommits": 1,
-          "totalDiffDelta": 5429,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 19,
-          "name": "Eli Simhayev",
-          "totalCommits": 5,
-          "totalDiffDelta": 5147,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 20,
-          "name": "Arindam Jati",
-          "totalCommits": 2,
-          "totalDiffDelta": 3613,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 21,
-          "name": "Stas Bekman",
-          "totalCommits": 36,
-          "totalDiffDelta": 3604,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 22,
-          "name": "Kashif Rasul",
-          "totalCommits": 10,
-          "totalDiffDelta": 2941,
-          "churnRatePct": 1.4,
-          "gaugeValue": 86,
-          "trend": "up"
-        },
-        {
-          "rank": 23,
-          "name": "fxmarty",
-          "totalCommits": 23,
-          "totalDiffDelta": 2921,
-          "churnRatePct": 0.2,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 24,
-          "name": "Anahita Bhiwandiwalla",
-          "totalCommits": 4,
-          "totalDiffDelta": 2767,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "jiaqiw09",
-          "totalCommits": 17,
-          "totalDiffDelta": 2746,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 26,
-          "name": "Zach Mueller",
-          "totalCommits": 57,
-          "totalDiffDelta": 2717,
-          "churnRatePct": 4.7,
-          "gaugeValue": 76,
-          "trend": "up"
-        },
-        {
-          "rank": 27,
-          "name": "Mitch Naylor",
-          "totalCommits": 1,
-          "totalDiffDelta": 2674,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 28,
-          "name": "Samuel Xu",
-          "totalCommits": 1,
-          "totalDiffDelta": 2510,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 29,
-          "name": "Zineng Tang",
-          "totalCommits": 1,
-          "totalDiffDelta": 2510,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "Aaron Gokaslan",
-          "totalCommits": 1,
-          "totalDiffDelta": 2443,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        }
-      ]
-    },
-    "twenty": {
-      "repoId": "twenty",
-      "churnRatePct": 10.98,
-      "gaugeValue": 57,
-      "contributorCount": 54,
-      "totalCommits": 905,
-      "contributors": [
-        {
-          "rank": 1,
-          "name": "Charles Bochet",
-          "totalCommits": 179,
-          "totalDiffDelta": 59312,
-          "churnRatePct": 10.9,
-          "gaugeValue": 57,
-          "trend": "flat"
-        },
-        {
-          "rank": 2,
-          "name": "Félix Malfait",
-          "totalCommits": 58,
-          "totalDiffDelta": 38072,
-          "churnRatePct": 23.9,
-          "gaugeValue": 18,
-          "trend": "down"
-        },
-        {
-          "rank": 3,
-          "name": "Charles Bochet",
-          "totalCommits": 109,
-          "totalDiffDelta": 22435,
-          "churnRatePct": 1.4,
-          "gaugeValue": 86,
-          "trend": "up"
-        },
-        {
-          "rank": 4,
-          "name": "Jérémy M",
-          "totalCommits": 61,
-          "totalDiffDelta": 14165,
-          "churnRatePct": 6.9,
-          "gaugeValue": 69,
-          "trend": "flat"
-        },
-        {
-          "rank": 5,
-          "name": "Thaïs",
-          "totalCommits": 41,
-          "totalDiffDelta": 8020,
-          "churnRatePct": 11.4,
+          "name": "Zach Montoya",
+          "totalCommits": 74,
+          "totalDiffDelta": 2296.09,
+          "churnRatePct": 15.67,
           "gaugeValue": 56,
-          "trend": "flat"
-        },
-        {
-          "rank": 6,
-          "name": "corentin",
-          "totalCommits": 36,
-          "totalDiffDelta": 6842,
-          "churnRatePct": 2.4,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 7,
-          "name": "Lucas Bordeau",
-          "totalCommits": 64,
-          "totalDiffDelta": 5577,
-          "churnRatePct": 5.9,
-          "gaugeValue": 72,
-          "trend": "flat"
-        },
-        {
-          "rank": 8,
-          "name": "Emilien Chauvet",
-          "totalCommits": 47,
-          "totalDiffDelta": 3104,
-          "churnRatePct": 6.5,
-          "gaugeValue": 71,
-          "trend": "flat"
-        },
-        {
-          "rank": 9,
-          "name": "brendanlaschke",
-          "totalCommits": 29,
-          "totalDiffDelta": 2167,
-          "churnRatePct": 11.8,
-          "gaugeValue": 55,
-          "trend": "flat"
-        },
-        {
-          "rank": 10,
-          "name": "gitstart-twenty",
-          "totalCommits": 31,
-          "totalDiffDelta": 2121,
-          "churnRatePct": 2.6,
-          "gaugeValue": 82,
-          "trend": "up"
-        },
-        {
-          "rank": 11,
-          "name": "Charles Bochet",
-          "totalCommits": 26,
-          "totalDiffDelta": 1245,
-          "churnRatePct": 25.9,
-          "gaugeValue": 12,
           "trend": "down"
-        },
-        {
-          "rank": 12,
-          "name": "Aditya Pimpalkar",
-          "totalCommits": 2,
-          "totalDiffDelta": 277,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 13,
-          "name": "Mustajab Ikram",
-          "totalCommits": 2,
-          "totalDiffDelta": 242,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
         },
         {
           "rank": 14,
-          "name": "Sunil Kumar Behera",
-          "totalCommits": 4,
-          "totalDiffDelta": 233,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "Matthew",
-          "totalCommits": 4,
-          "totalDiffDelta": 153,
-          "churnRatePct": 2.2,
-          "gaugeValue": 83,
-          "trend": "up"
-        },
-        {
-          "rank": 16,
-          "name": "Mustajab Ikram",
-          "totalCommits": 1,
-          "totalDiffDelta": 146,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 17,
-          "name": "Srikar Samudrala",
-          "totalCommits": 4,
-          "totalDiffDelta": 141,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 18,
-          "name": "Moussa Bistami",
-          "totalCommits": 2,
-          "totalDiffDelta": 131,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 19,
-          "name": "Anders Borch",
-          "totalCommits": 36,
-          "totalDiffDelta": 98,
-          "churnRatePct": 5.5,
-          "gaugeValue": 74,
-          "trend": "flat"
-        },
-        {
-          "rank": 20,
-          "name": "310387",
-          "totalCommits": 3,
-          "totalDiffDelta": 75,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 21,
-          "name": "Shobhit Gupta",
-          "totalCommits": 1,
-          "totalDiffDelta": 58,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 22,
-          "name": "Manikanta cheepurupalli",
-          "totalCommits": 4,
-          "totalDiffDelta": 47,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 23,
-          "name": "Kelvin Yelyen",
-          "totalCommits": 2,
-          "totalDiffDelta": 41,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 24,
-          "name": "willkrakow",
-          "totalCommits": 1,
-          "totalDiffDelta": 25,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "Thaïs",
-          "totalCommits": 1,
-          "totalDiffDelta": 22,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 26,
-          "name": "Pepe",
-          "totalCommits": 1,
-          "totalDiffDelta": 22,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 27,
-          "name": "Indrajeet Nikam",
-          "totalCommits": 2,
-          "totalDiffDelta": 17,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 28,
-          "name": "josoriomarin",
-          "totalCommits": 1,
-          "totalDiffDelta": 17,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 29,
-          "name": "Deepak Singh",
-          "totalCommits": 5,
-          "totalDiffDelta": 14,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "Ragnar Laud",
-          "totalCommits": 1,
-          "totalDiffDelta": 13,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        }
-      ]
-    },
-    "typst": {
-      "repoId": "typst",
-      "churnRatePct": 15.38,
-      "gaugeValue": 44,
-      "contributorCount": 207,
-      "totalCommits": 1220,
-      "contributors": [
-        {
-          "rank": 1,
-          "name": "Laurenz",
-          "totalCommits": 618,
-          "totalDiffDelta": 64719,
-          "churnRatePct": 20.5,
-          "gaugeValue": 29,
+          "name": "Steven Bouwkamp",
+          "totalCommits": 66,
+          "totalDiffDelta": 2151.75,
+          "churnRatePct": 31.15,
+          "gaugeValue": 17,
           "trend": "down"
         },
         {
-          "rank": 2,
-          "name": "Sébastien d'Herbais de Thun",
-          "totalCommits": 56,
-          "totalDiffDelta": 11780,
-          "churnRatePct": 4.4,
-          "gaugeValue": 77,
-          "trend": "up"
-        },
-        {
-          "rank": 3,
-          "name": "PgBiel",
-          "totalCommits": 24,
-          "totalDiffDelta": 2022,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 4,
-          "name": "Malo",
-          "totalCommits": 17,
-          "totalDiffDelta": 1852,
-          "churnRatePct": 1,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
-          "rank": 5,
-          "name": "Martin Haug",
-          "totalCommits": 23,
-          "totalDiffDelta": 1353,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 6,
-          "name": "Marmare314",
-          "totalCommits": 12,
-          "totalDiffDelta": 1125,
-          "churnRatePct": 4.1,
-          "gaugeValue": 78,
-          "trend": "up"
-        },
-        {
-          "rank": 7,
-          "name": "Leedehai",
+          "rank": 15,
+          "name": "Bob Weinand",
           "totalCommits": 25,
-          "totalDiffDelta": 1015,
-          "churnRatePct": 0.9,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
-          "rank": 8,
-          "name": "Alex Saveau",
-          "totalCommits": 16,
-          "totalDiffDelta": 937,
-          "churnRatePct": 1,
-          "gaugeValue": 87,
-          "trend": "up"
-        },
-        {
-          "rank": 9,
-          "name": "Beiri22",
-          "totalCommits": 7,
-          "totalDiffDelta": 851,
-          "churnRatePct": 0.1,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 10,
-          "name": "Anton Wetzel",
-          "totalCommits": 4,
-          "totalDiffDelta": 823,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 11,
-          "name": "Peng Guanwen",
-          "totalCommits": 10,
-          "totalDiffDelta": 783,
-          "churnRatePct": 1.6,
-          "gaugeValue": 85,
-          "trend": "up"
-        },
-        {
-          "rank": 12,
-          "name": "frozolotl",
-          "totalCommits": 20,
-          "totalDiffDelta": 716,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 13,
-          "name": "Laurenz Stampfl",
-          "totalCommits": 10,
-          "totalDiffDelta": 710,
-          "churnRatePct": 1.6,
-          "gaugeValue": 85,
-          "trend": "up"
-        },
-        {
-          "rank": 14,
-          "name": "damaxwell",
-          "totalCommits": 15,
-          "totalDiffDelta": 603,
-          "churnRatePct": 0.7,
-          "gaugeValue": 88,
-          "trend": "up"
-        },
-        {
-          "rank": 15,
-          "name": "jimvdl",
-          "totalCommits": 4,
-          "totalDiffDelta": 528,
-          "churnRatePct": 0.7,
-          "gaugeValue": 88,
-          "trend": "up"
+          "totalDiffDelta": 2045.94,
+          "churnRatePct": 1.07,
+          "gaugeValue": 92,
+          "trend": "down"
         },
         {
           "rank": 16,
-          "name": "lolstork",
-          "totalCommits": 3,
-          "totalDiffDelta": 464,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
+          "name": "Paul",
+          "totalCommits": 14,
+          "totalDiffDelta": 1964.88,
+          "churnRatePct": 24.37,
+          "gaugeValue": 34,
+          "trend": "down"
         },
         {
           "rank": 17,
-          "name": "bluebear94",
+          "name": "lievan",
           "totalCommits": 18,
-          "totalDiffDelta": 458,
-          "churnRatePct": 1.5,
-          "gaugeValue": 86,
-          "trend": "up"
+          "totalDiffDelta": 1942.3,
+          "churnRatePct": 8.57,
+          "gaugeValue": 74,
+          "trend": "down"
         },
         {
           "rank": 18,
-          "name": "Myriad-Dreamin",
-          "totalCommits": 3,
-          "totalDiffDelta": 443,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
+          "name": "Mikayla Toffler",
+          "totalCommits": 30,
+          "totalDiffDelta": 1914.43,
+          "churnRatePct": 14.6,
+          "gaugeValue": 59,
+          "trend": "down"
         },
         {
           "rank": 19,
-          "name": "LU Jialin",
-          "totalCommits": 8,
-          "totalDiffDelta": 426,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
+          "name": "Gustavo Lopes",
+          "totalCommits": 9,
+          "totalDiffDelta": 1888.49,
+          "churnRatePct": 3.66,
+          "gaugeValue": 86,
+          "trend": "down"
         },
         {
           "rank": 20,
-          "name": "sitandr",
-          "totalCommits": 10,
-          "totalDiffDelta": 397,
-          "churnRatePct": 0.2,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 21,
-          "name": "Eric Biedert",
-          "totalCommits": 15,
-          "totalDiffDelta": 383,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 22,
-          "name": "astrale-sharp",
-          "totalCommits": 3,
-          "totalDiffDelta": 383,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 23,
-          "name": "Wenzhuo Liu",
-          "totalCommits": 6,
-          "totalDiffDelta": 353,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 24,
-          "name": "HarmoGlace",
-          "totalCommits": 9,
-          "totalDiffDelta": 343,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 25,
-          "name": "Marek Barvíř",
-          "totalCommits": 10,
-          "totalDiffDelta": 328,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 26,
-          "name": "Birk Tjelmeland",
-          "totalCommits": 1,
-          "totalDiffDelta": 295,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 27,
-          "name": "SekoiaTree",
-          "totalCommits": 5,
-          "totalDiffDelta": 282,
-          "churnRatePct": 0.3,
-          "gaugeValue": 89,
-          "trend": "up"
-        },
-        {
-          "rank": 28,
-          "name": "Kevin K",
-          "totalCommits": 2,
-          "totalDiffDelta": 267,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
-        },
-        {
-          "rank": 29,
-          "name": "tingerrr",
-          "totalCommits": 8,
-          "totalDiffDelta": 257,
-          "churnRatePct": 1.9,
-          "gaugeValue": 84,
-          "trend": "up"
-        },
-        {
-          "rank": 30,
-          "name": "Joseph Wilson",
-          "totalCommits": 6,
-          "totalDiffDelta": 252,
-          "churnRatePct": 0,
-          "gaugeValue": 90,
-          "trend": "up"
+          "name": "Hoki Tam",
+          "totalCommits": 59,
+          "totalDiffDelta": 1884.1,
+          "churnRatePct": 20.66,
+          "gaugeValue": 43,
+          "trend": "down"
         }
       ]
     }

@@ -1,289 +1,349 @@
 {
   "repos": [
     {
-      "id": "novu",
-      "name": "novu",
-      "totalModules": 11,
-      "repositoryBusFactor": 4,
+      "id": "browser-sdk",
+      "name": "browser-sdk",
+      "totalModules": 8,
+      "repositoryBusFactor": 3,
       "modules": [
         {
-          "name": "Translation Management",
-          "busFactor": 1,
-          "status": "At Risk",
-          "owners": [
-            "Adam Chmara"
-          ]
-        },
-        {
-          "name": "Activity Feed & Analytics",
+          "name": "Infrastructure",
           "busFactor": 2,
           "status": "Needs Attention",
           "owners": [
-            "George Djabarov",
-            "Dima Grossman"
+            "Thomas Lebeau",
+            "Aymeric",
+            "Benoît"
+          ],
+          "ownershipPercents": [
+            56,
+            24,
+            20
           ]
         },
         {
-          "name": "User, Team & Tenant Management",
-          "busFactor": 2,
-          "status": "Needs Attention",
-          "owners": [
-            "Richard Fontein",
-            "Himanshu Garg"
-          ]
-        },
-        {
-          "name": "Provider & Channel Integrations",
+          "name": "Core Data Collection & Transport",
           "busFactor": 3,
           "status": "Healthy",
           "owners": [
-            "Richard Fontein",
-            "Dima Grossman",
-            "Sokratis Vidros"
+            "Thomas Lebeau",
+            "Benoît",
+            "Aymeric"
+          ],
+          "ownershipPercents": [
+            40,
+            36,
+            24
+          ]
+        },
+        {
+          "name": "Feature Flagging & Experimentation",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Leo Romanovsky",
+            "Aymeric",
+            "Benoît"
+          ],
+          "ownershipPercents": [
+            40,
+            37,
+            23
+          ]
+        },
+        {
+          "name": "Real User Monitoring (RUM)",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Aymeric",
+            "Benoît",
+            "Bastien Caudan"
+          ],
+          "ownershipPercents": [
+            52,
+            26,
+            22
+          ]
+        },
+        {
+          "name": "Session Replay & Profiling",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "sethfowler-datadog",
+            "Aymeric",
+            "Congyao Zheng"
+          ],
+          "ownershipPercents": [
+            83,
+            9,
+            8
+          ]
+        },
+        {
+          "name": "Developer Tooling & Diagnostics",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Benoît",
+            "Aymeric",
+            "Yannick Adam"
+          ],
+          "ownershipPercents": [
+            44,
+            30,
+            26
+          ]
+        },
+        {
+          "name": "Client-Side Log Management",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Aymeric",
+            "Benoît",
+            "Adrian de la Rosa"
+          ],
+          "ownershipPercents": [
+            95,
+            3,
+            1
           ]
         },
         {
           "name": "Utility",
-          "busFactor": 3,
-          "status": "Healthy",
+          "busFactor": 2,
+          "status": "Needs Attention",
           "owners": [
-            "Dima Grossman",
-            "Paweł Tymczuk",
-            "Richard Fontein"
-          ]
-        },
-        {
-          "name": "Billing & Subscription Management",
-          "busFactor": 3,
-          "status": "Healthy",
-          "owners": [
-            "George Desipris",
-            "GalTidhar",
-            "Adam Chmara"
-          ]
-        },
-        {
-          "name": "In-App Notification Center",
-          "busFactor": 4,
-          "status": "Healthy",
-          "owners": [
-            "Adam Chmara",
-            "Dima Grossman",
-            "George Djabarov",
-            "Paweł Tymczuk"
-          ]
-        },
-        {
-          "name": "Workflow Studio & Orchestration",
-          "busFactor": 4,
-          "status": "Healthy",
-          "owners": [
-            "Adam Chmara",
-            "Richard Fontein",
-            "Dima Grossman",
-            "p-fernandez"
-          ]
-        },
-        {
-          "name": "Developer Experience & SDKs",
-          "busFactor": 4,
-          "status": "Healthy",
-          "owners": [
-            "Dima Grossman",
-            "Paweł Tymczuk",
-            "Adam Chmara",
-            "Sokratis Vidros"
-          ]
-        },
-        {
-          "name": "Subscriber & Audience Management",
-          "busFactor": 4,
-          "status": "Healthy",
-          "owners": [
-            "Gosha",
-            "Adam Chmara",
-            "Dima Grossman",
-            "Paweł Tymczuk"
-          ]
-        },
-        {
-          "name": "Infrastructure",
-          "busFactor": 5,
-          "status": "Healthy",
-          "owners": [
-            "Adam Chmara",
-            "Dima Grossman",
-            "Sokratis Vidros",
-            "Paweł Tymczuk",
-            "Denis Kralj"
+            "Benoît",
+            "Aymeric",
+            "romanG"
+          ],
+          "ownershipPercents": [
+            46,
+            27,
+            27
           ]
         }
       ],
       "spofOwnerCount": 5,
-      "uniqueSpofOwnerCount": 5
+      "uniqueSpofOwnerCount": 4
     },
     {
-      "id": "transformers",
-      "name": "transformers",
-      "totalModules": 9,
-      "repositoryBusFactor": 18,
+      "id": "datadog-agent",
+      "name": "datadog-agent",
+      "totalModules": 14,
+      "repositoryBusFactor": 16,
       "modules": [
         {
-          "name": "Infrastructure",
+          "name": "Agent Core Framework",
+          "busFactor": 14,
+          "status": "Healthy",
+          "owners": [
+            "Gabriel Dos Santos",
+            "David Ortiz",
+            "Stephen Wakely"
+          ],
+          "ownershipPercents": [
+            53,
+            24,
+            23
+          ]
+        },
+        {
+          "name": "Build, Packaging, & Test Automation",
+          "busFactor": 7,
+          "status": "Healthy",
+          "owners": [
+            "Kevin Fairise",
+            "Joseph Gette",
+            "Nicolas Schweitzer"
+          ],
+          "ownershipPercents": [
+            69,
+            19,
+            11
+          ]
+        },
+        {
+          "name": "Dynamic Service Discovery (Autodiscovery)",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "David Ortiz",
+            "Gabriel Dos Santos",
+            "Vincent Whitchurch"
+          ],
+          "ownershipPercents": [
+            37,
+            32,
+            31
+          ]
+        },
+        {
+          "name": "Fleet Automation & Remote Management",
+          "busFactor": 6,
+          "status": "Healthy",
+          "owners": [
+            "Baptiste Foy",
+            "Fabrice Matrat",
+            "Arthur Bellal"
+          ],
+          "ownershipPercents": [
+            38,
+            38,
+            24
+          ]
+        },
+        {
+          "name": "Live Process & Container Monitoring",
+          "busFactor": 7,
+          "status": "Healthy",
+          "owners": [
+            "Matthew Geng",
+            "Daniel Tafoya",
+            "Guillaume Pagnoux"
+          ],
+          "ownershipPercents": [
+            57,
+            22,
+            21
+          ]
+        },
+        {
+          "name": "Continuous Profiler",
           "busFactor": 2,
           "status": "Needs Attention",
           "owners": [
-            "Yih-Dar",
-            "Sylvain Gugger"
+            "Nicolas Savoire",
+            "Théo de Magalhaes",
+            "Olivier G"
+          ],
+          "ownershipPercents": [
+            67,
+            19,
+            14
+          ]
+        },
+        {
+          "name": "System & Kernel Monitoring (System Probe)",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Daniel Lavie",
+            "Bryce Kahle",
+            "Amit Slavin"
+          ],
+          "ownershipPercents": [
+            47,
+            27,
+            26
+          ]
+        },
+        {
+          "name": "Security & Compliance Platform",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Sylvain Afchain",
+            "Paul Cacheux",
+            "Théo Putegnat"
+          ],
+          "ownershipPercents": [
+            53,
+            25,
+            22
+          ]
+        },
+        {
+          "name": "Application Performance Monitoring (APM)",
+          "busFactor": 10,
+          "status": "Healthy",
+          "owners": [
+            "Pierre Gimalac",
+            "Baptiste Foy",
+            "Aleksandr Pasechnik"
+          ],
+          "ownershipPercents": [
+            37,
+            34,
+            29
+          ]
+        },
+        {
+          "name": "Network Performance Monitoring (NPM)",
+          "busFactor": 6,
+          "status": "Healthy",
+          "owners": [
+            "Pierre Lin",
+            "Alexandre Yang",
+            "Fabrice Matrat"
+          ],
+          "ownershipPercents": [
+            43,
+            32,
+            25
+          ]
+        },
+        {
+          "name": "Log Collection & Management",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Branden Clark",
+            "louis-cqrl",
+            "davidioin"
+          ],
+          "ownershipPercents": [
+            82,
+            13,
+            4
+          ]
+        },
+        {
+          "name": "Infrastructure",
+          "busFactor": 6,
+          "status": "Healthy",
+          "owners": [
+            "Célian Raimbault",
+            "Pierre-Louis Veyrenc",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            40,
+            31,
+            30
+          ]
+        },
+        {
+          "name": "Custom Metrics & Events (DogStatsD)",
+          "busFactor": 6,
+          "status": "Healthy",
+          "owners": [
+            "Ryan",
+            "Gustavo Caso",
+            "Wassim Dhif"
+          ],
+          "ownershipPercents": [
+            48,
+            26,
+            26
           ]
         },
         {
           "name": "Utility",
-          "busFactor": 5,
+          "busFactor": 4,
           "status": "Healthy",
           "owners": [
-            "Yuanyuan Chen",
-            "Cyril Vallez",
-            "Sylvain Gugger",
-            "Yih-Dar",
-            "Pablo Montalvo"
-          ]
-        },
-        {
-          "name": "Computer Vision Model Library",
-          "busFactor": 10,
-          "status": "Healthy",
-          "owners": [
-            "NielsRogge",
-            "Sylvain Gugger",
-            "Yuanyuan Chen",
-            "Cyril Vallez",
-            "Raushan Turganbay",
-            "Yoni Gozlan",
-            "amyeroberts",
-            "Yih-Dar",
-            "Arthur",
-            "Younes Belkada"
-          ]
-        },
-        {
-          "name": "Natural Language Processing (NLP) Model Library",
-          "busFactor": 11,
-          "status": "Healthy",
-          "owners": [
-            "Yih-Dar",
-            "Younes Belkada",
-            "Anton Vlasjuk",
-            "Cyril Vallez",
-            "Harry Mellor",
-            "Raghav Ravishankar",
-            "EduardDurech",
-            "Raushan Turganbay",
-            "Crystalcareai",
-            "Mohamed Mekkouri",
-            "Ita Zaporozhets"
-          ]
-        },
-        {
-          "name": "Audio & Speech Model Library",
-          "busFactor": 12,
-          "status": "Healthy",
-          "owners": [
-            "Eric Bezzam",
-            "eustlb",
-            "Sylvain Gugger",
-            "Nicolas Patry",
-            "Yih-Dar",
-            "Matt",
-            "Cyril Vallez",
-            "Yoach Lacombe",
-            "Matthijs Hollemans",
-            "Arthur",
-            "Connor Henderson",
-            "Raushan Turganbay"
-          ]
-        },
-        {
-          "name": "Developer Enablement Resources",
-          "busFactor": 12,
-          "status": "Healthy",
-          "owners": [
-            "Steven Liu",
-            "Merve Noyan",
-            "Cyril Vallez",
-            "Yoni Gozlan",
-            "Yuanyuan Chen",
-            "Alex McKinney",
-            "NielsRogge",
-            "Arthur",
-            "Lysandre Debut",
-            "Matt",
-            "StevenBucaille",
-            "omahs"
-          ]
-        },
-        {
-          "name": "Training & Inference Framework",
-          "busFactor": 13,
-          "status": "Healthy",
-          "owners": [
-            "NielsRogge",
-            "Arthur",
-            "Sylvain Gugger",
-            "Marc Sun",
-            "Zach Mueller",
-            "Sourab Mangrulkar",
-            "Steven Liu",
-            "Cyril Vallez",
-            "Joao Gante",
-            "Wonhyeong Seo",
-            "Yuanyuan Chen",
-            "Yih-Dar",
-            "Patrick von Platen"
-          ]
-        },
-        {
-          "name": "Performance Optimization Toolkit",
-          "busFactor": 14,
-          "status": "Healthy",
-          "owners": [
-            "Joao Gante",
-            "Marc Sun",
-            "Arthur",
-            "Younes Belkada",
-            "Steven Liu",
-            "Ke Wen",
-            "김민서",
-            "Mohamed Mekkouri",
-            "Ilyas Moutawwakil",
-            "Cyril Vallez",
-            "Raushan Turganbay",
-            "Yih-Dar",
-            "Guang Yang",
-            "Yuanyuan Chen"
-          ]
-        },
-        {
-          "name": "Multimodal Model Library",
-          "busFactor": 16,
-          "status": "Healthy",
-          "owners": [
-            "Raushan Turganbay",
-            "Cyril Vallez",
-            "Arthur",
-            "Susnato Dhar",
-            "Yaswanth Gali",
-            "Joao Gante",
-            "eustlb",
-            "Anton Vlasjuk",
-            "Jaeyong Sung",
-            "Xibin Bayes Zhou",
-            "Yoni Gozlan",
-            "NielsRogge",
-            "Sylvain Gugger",
-            "Pablo Montalvo",
-            "Vladislav Bronzov",
-            "Pavel Iakubovskii"
+            "Kevin Fairise",
+            "Pierre Gimalac",
+            "Nicholas Hulston"
+          ],
+          "ownershipPercents": [
+            72,
+            18,
+            10
           ]
         }
       ],
@@ -291,315 +351,247 @@
       "uniqueSpofOwnerCount": 2
     },
     {
-      "id": "langchain",
-      "name": "langchain",
-      "totalModules": 11,
-      "repositoryBusFactor": 0,
+      "id": "datadog-api-client-go",
+      "name": "datadog-api-client-go",
+      "totalModules": 18,
+      "repositoryBusFactor": 1,
       "modules": [
         {
-          "name": "Pre-built Application Chains",
+          "name": "Monitoring & Alerting",
           "busFactor": 1,
           "status": "At Risk",
           "owners": [
-            "Mason Daugherty"
+            "wynbennett",
+            "skarimo",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            47,
+            42,
+            11
           ]
         },
         {
-          "name": "Composable Workflow Engine (LCEL)",
-          "busFactor": 3,
-          "status": "Healthy",
-          "owners": [
-            "Christophe Bornet",
-            "Mason Daugherty",
-            "Nuno Campos"
-          ]
-        },
-        {
-          "name": "Prompt Engineering & Management",
-          "busFactor": 3,
-          "status": "Healthy",
-          "owners": [
-            "Mason Daugherty",
-            "Chuyuan Qu",
-            "Sourab Singh Bora"
-          ]
-        },
-        {
-          "name": "Conversational Memory Management",
-          "busFactor": 3,
-          "status": "Healthy",
-          "owners": [
-            "Mason Daugherty",
-            "Christophe Bornet",
-            "James Braza"
-          ]
-        },
-        {
-          "name": "Model Abstraction Layer",
-          "busFactor": 4,
-          "status": "Healthy",
-          "owners": [
-            "Mason Daugherty",
-            "ccurme",
-            "Bagatur",
-            "Eugene Yurtsev"
-          ]
-        },
-        {
-          "name": "Observability & Evaluation (LangSmith)",
-          "busFactor": 4,
-          "status": "Healthy",
-          "owners": [
-            "Erick Friis",
-            "Christophe Bornet",
-            "Eugene Yurtsev",
-            "Mason Daugherty"
-          ]
-        },
-        {
-          "name": "Agent & Tool Framework",
-          "busFactor": 4,
-          "status": "Healthy",
-          "owners": [
-            "Eugene Yurtsev",
-            "Mason Daugherty",
-            "Christophe Bornet",
-            "Bagatur"
-          ]
-        },
-        {
-          "name": "Data Indexing & Retrieval (RAG)",
-          "busFactor": 4,
-          "status": "Healthy",
-          "owners": [
-            "Mason Daugherty",
-            "Christophe Bornet",
-            "Bagatur",
-            "Guangdong Liu"
-          ]
-        },
-        {
-          "name": "Utility",
-          "busFactor": 4,
-          "status": "Healthy",
-          "owners": [
-            "Mason Daugherty",
-            "Erick Friis",
-            "Harrison Chase",
-            "Sydney Runkle"
-          ]
-        },
-        {
-          "name": "Third-Party Integrations & Connectors",
-          "busFactor": 5,
-          "status": "Healthy",
-          "owners": [
-            "ccurme",
-            "Mason Daugherty",
-            "Bagatur",
-            "Eugene Yurtsev",
-            "Graden Rea"
-          ]
-        },
-        {
-          "name": "Infrastructure",
-          "busFactor": 5,
-          "status": "Healthy",
-          "owners": [
-            "ccurme",
-            "Sydney Runkle",
-            "Eugene Yurtsev",
-            "Mason Daugherty",
-            "Christophe Bornet"
-          ]
-        }
-      ],
-      "spofOwnerCount": 1,
-      "uniqueSpofOwnerCount": 1
-    },
-    {
-      "id": "langfuse",
-      "name": "langfuse",
-      "totalModules": 14,
-      "repositoryBusFactor": 4,
-      "modules": [
-        {
-          "name": "Dataset & Experiment Management",
+          "name": "Infrastructure Monitoring",
           "busFactor": 1,
           "status": "At Risk",
           "owners": [
-            "marliessophie"
+            "wynbennett",
+            "skarimo",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            64,
+            28,
+            8
           ]
         },
         {
-          "name": "Enterprise SSO",
+          "name": "Platform & Integration Management",
           "busFactor": 1,
           "status": "At Risk",
           "owners": [
-            "Marc Klingen"
+            "wynbennett",
+            "skarimo",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            77,
+            15,
+            7
           ]
         },
         {
-          "name": "Data Annotation & Labeling",
+          "name": "Incident Management & Collaboration",
           "busFactor": 1,
           "status": "At Risk",
           "owners": [
-            "marliessophie"
+            "wynbennett",
+            "skarimo",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            62,
+            29,
+            9
           ]
         },
         {
-          "name": "Automations & Integrations",
-          "busFactor": 2,
-          "status": "Needs Attention",
+          "name": "Service Catalog & API Management",
+          "busFactor": 1,
+          "status": "At Risk",
           "owners": [
-            "Marc Klingen",
-            "marliessophie"
-          ]
-        },
-        {
-          "name": "User & Access Management",
-          "busFactor": 2,
-          "status": "Needs Attention",
-          "owners": [
-            "Marc Klingen",
-            "Max Deichmann"
-          ]
-        },
-        {
-          "name": "Model Evaluation & Scoring",
-          "busFactor": 2,
-          "status": "Needs Attention",
-          "owners": [
-            "marliessophie",
-            "Steffen Schmitz"
-          ]
-        },
-        {
-          "name": "Infrastructure",
-          "busFactor": 2,
-          "status": "Needs Attention",
-          "owners": [
-            "Valery Meleshkin",
-            "Steffen Schmitz"
-          ]
-        },
-        {
-          "name": "Billing & Subscription Management",
-          "busFactor": 2,
-          "status": "Needs Attention",
-          "owners": [
-            "marliessophie",
-            "Hassieb Pakzad"
-          ]
-        },
-        {
-          "name": "LLM Playground",
-          "busFactor": 2,
-          "status": "Needs Attention",
-          "owners": [
-            "Hassieb Pakzad",
-            "Thorsten Spieker"
-          ]
-        },
-        {
-          "name": "Observability & Analytics",
-          "busFactor": 3,
-          "status": "Healthy",
-          "owners": [
-            "Valery Meleshkin",
-            "Michael Fröhlich",
-            "Max Deichmann"
-          ]
-        },
-        {
-          "name": "Prompt Management",
-          "busFactor": 3,
-          "status": "Healthy",
-          "owners": [
-            "Michael Fröhlich",
-            "Max Deichmann",
-            "Marc Klingen"
-          ]
-        },
-        {
-          "name": "Utility",
-          "busFactor": 3,
-          "status": "Healthy",
-          "owners": [
-            "Steffen Schmitz",
-            "Hassieb Pakzad",
-            "Nimar"
+            "wynbennett",
+            "skarimo",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            61,
+            32,
+            7
           ]
         },
         {
           "name": "Dashboards & Reporting",
-          "busFactor": 3,
-          "status": "Healthy",
+          "busFactor": 2,
+          "status": "Needs Attention",
           "owners": [
-            "Nimar",
-            "Steffen Schmitz",
-            "marliessophie"
+            "skarimo",
+            "wynbennett",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            54,
+            31,
+            15
+          ]
+        },
+        {
+          "name": "CI/CD Visibility",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Andrew Robert McBurney",
+            "skarimo",
+            "wynbennett"
+          ],
+          "ownershipPercents": [
+            59,
+            30,
+            11
           ]
         },
         {
           "name": "Security & Compliance",
-          "busFactor": 3,
-          "status": "Healthy",
-          "owners": [
-            "Valery Meleshkin",
-            "marliessophie",
-            "Marc Klingen"
-          ]
-        }
-      ],
-      "spofOwnerCount": 15,
-      "uniqueSpofOwnerCount": 7
-    },
-    {
-      "id": "rustdesk",
-      "name": "rustdesk",
-      "totalModules": 13,
-      "repositoryBusFactor": 2,
-      "modules": [
-        {
-          "name": "File Transfer & Clipboard Sync",
           "busFactor": 1,
           "status": "At Risk",
           "owners": [
-            "fufesou"
+            "wynbennett",
+            "Andrew Robert McBurney",
+            "skarimo"
+          ],
+          "ownershipPercents": [
+            48,
+            34,
+            18
           ]
         },
         {
-          "name": "Remote Printing",
+          "name": "Account & Access Management",
           "busFactor": 1,
           "status": "At Risk",
           "owners": [
-            "fufesou"
+            "wynbennett",
+            "skarimo",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            66,
+            25,
+            9
           ]
         },
         {
-          "name": "Collaborative Whiteboard",
-          "busFactor": 1,
-          "status": "At Risk",
-          "owners": [
-            "fufesou"
-          ]
-        },
-        {
-          "name": "Plugin & Extension Framework",
-          "busFactor": 1,
-          "status": "At Risk",
-          "owners": [
-            "fufesou"
-          ]
-        },
-        {
-          "name": "Remote Session Control",
+          "name": "Usage & Billing Metering",
           "busFactor": 2,
           "status": "Needs Attention",
           "owners": [
-            "fufesou",
-            "Asura"
+            "wynbennett",
+            "skarimo",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            58,
+            32,
+            11
+          ]
+        },
+        {
+          "name": "Real User Monitoring (RUM)",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "wynbennett",
+            "skarimo",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            59,
+            31,
+            10
+          ]
+        },
+        {
+          "name": "DORA Metrics",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "wynbennett",
+            "skarimo"
+          ],
+          "ownershipPercents": [
+            88,
+            12
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "skarimo",
+            "David Tapiador",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            74,
+            15,
+            12
+          ]
+        },
+        {
+          "name": "Workflow & Deployment Automation",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "wynbennett",
+            "skarimo",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            86,
+            9,
+            5
+          ]
+        },
+        {
+          "name": "Synthetic Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Andrew Robert McBurney",
+            "wynbennett",
+            "skarimo"
+          ],
+          "ownershipPercents": [
+            84,
+            9,
+            7
+          ]
+        },
+        {
+          "name": "Cloud Cost Management",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "wynbennett",
+            "skarimo",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            93,
+            6,
+            1
           ]
         },
         {
@@ -607,217 +599,903 @@
           "busFactor": 2,
           "status": "Needs Attention",
           "owners": [
-            "rustdesk",
-            "21pages"
+            "Ulysse Mavrocordatos",
+            "skarimo",
+            "António Ramadas"
+          ],
+          "ownershipPercents": [
+            87,
+            9,
+            3
           ]
         },
         {
-          "name": "Connection Management & Relay",
+          "name": "Application Performance Monitoring (APM)",
           "busFactor": 2,
           "status": "Needs Attention",
           "owners": [
-            "rustdesk",
-            "fufesou"
+            "wynbennett",
+            "skarimo",
+            "Thomas Hervé"
+          ],
+          "ownershipPercents": [
+            47,
+            46,
+            7
+          ]
+        }
+      ],
+      "spofOwnerCount": 18,
+      "uniqueSpofOwnerCount": 4
+    },
+    {
+      "id": "dd-sdk-android",
+      "name": "dd-sdk-android",
+      "totalModules": 11,
+      "repositoryBusFactor": 0,
+      "modules": [
+        {
+          "name": "APM & Distributed Tracing",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Timur Valeev",
+            "Paolo Rotolo",
+            "Nikita Ogorodnikov"
+          ],
+          "ownershipPercents": [
+            95,
+            4,
+            1
           ]
         },
         {
-          "name": "Remote Terminal Access",
+          "name": "Infrastructure",
           "busFactor": 2,
           "status": "Needs Attention",
           "owners": [
-            "fufesou",
-            "RustDesk"
+            "Timur Valeev",
+            "luyi",
+            "Yi LU"
+          ],
+          "ownershipPercents": [
+            97,
+            3,
+            0
           ]
         },
         {
-          "name": "Self-Hosted Infrastructure & Administration",
+          "name": "Core Platform & Data Management",
           "busFactor": 2,
           "status": "Needs Attention",
           "owners": [
-            "21pages",
-            "rustdesk"
+            "Xavier F. Gouchet",
+            "Nikita Ogorodnikov",
+            "Priyanshi Gupta"
+          ],
+          "ownershipPercents": [
+            58,
+            42,
+            0
           ]
         },
         {
-          "name": "TCP Tunneling & Port Forwarding",
+          "name": "Feature Flag Management",
           "busFactor": 2,
           "status": "Needs Attention",
           "owners": [
-            "21pages",
-            "rustdesk"
+            "Tyler Potter",
+            "jonathanmos",
+            "Nikita Ogorodnikov"
+          ],
+          "ownershipPercents": [
+            55,
+            43,
+            2
           ]
         },
         {
-          "name": "Client Application Shell",
-          "busFactor": 3,
-          "status": "Healthy",
+          "name": "Native Crash Reporting",
+          "busFactor": 2,
+          "status": "Needs Attention",
           "owners": [
-            "fufesou",
-            "21pages",
-            "Mr-Update"
+            "Nikita Ogorodnikov",
+            "Jeff Ward",
+            "Marius Constantin"
+          ],
+          "ownershipPercents": [
+            54,
+            31,
+            15
+          ]
+        },
+        {
+          "name": "Framework & Library Integrations",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Timur Valeev",
+            "jonathanmos",
+            "Nikita Ogorodnikov"
+          ],
+          "ownershipPercents": [
+            38,
+            33,
+            29
+          ]
+        },
+        {
+          "name": "Real User Monitoring (RUM)",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "luyi",
+            "Nikita Ogorodnikov",
+            "Xavier Gouchet"
+          ],
+          "ownershipPercents": [
+            64,
+            33,
+            3
           ]
         },
         {
           "name": "Utility",
-          "busFactor": 3,
-          "status": "Healthy",
+          "busFactor": 2,
+          "status": "Needs Attention",
           "owners": [
-            "fufesou",
-            "yuluo",
-            "21pages"
+            "Timur Valeev",
+            "Jeff Ward",
+            "Nikita Ogorodnikov"
+          ],
+          "ownershipPercents": [
+            100,
+            0,
+            0
           ]
         },
         {
-          "name": "Security & Privacy",
-          "busFactor": 5,
-          "status": "Healthy",
+          "name": "Continuous Profiler",
+          "busFactor": 1,
+          "status": "At Risk",
           "owners": [
-            "rustdesk",
-            "fufesou",
-            "Bin Li",
-            "Luca-rickrolled-himself",
-            "Daniel"
+            "luyi"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        },
+        {
+          "name": "Session Replay",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Xavier F. Gouchet",
+            "Marius Constantin"
+          ],
+          "ownershipPercents": [
+            95,
+            5
+          ]
+        },
+        {
+          "name": "Web & Hybrid App Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Nikita Ogorodnikov"
+          ],
+          "ownershipPercents": [
+            100
           ]
         }
       ],
-      "spofOwnerCount": 16,
+      "spofOwnerCount": 11,
       "uniqueSpofOwnerCount": 5
     },
     {
-      "id": "twenty",
-      "name": "twenty",
-      "totalModules": 14,
-      "repositoryBusFactor": 7,
+      "id": "dd-trace-dotnet",
+      "name": "dd-trace-dotnet",
+      "totalModules": 12,
+      "repositoryBusFactor": 0,
       "modules": [
         {
-          "name": "AI Assistant",
-          "busFactor": 1,
-          "status": "At Risk",
-          "owners": [
-            "Charles Bochet"
-          ]
-        },
-        {
-          "name": "Billing & Subscription Management",
+          "name": "Core Instrumentation Engine",
           "busFactor": 2,
           "status": "Needs Attention",
           "owners": [
-            "Félix Malfait",
-            "Ana Sofia Marin Alexandre"
+            "Gregory LEOCADIE",
+            "chrisnas",
+            "Andrew Lock"
+          ],
+          "ownershipPercents": [
+            43,
+            33,
+            25
           ]
         },
         {
-          "name": "Data Import & Export",
+          "name": "APM & Distributed Tracing",
           "busFactor": 3,
           "status": "Healthy",
           "owners": [
-            "Charles Bochet",
-            "Raphaël Bosi",
-            "Etienne"
+            "Andrew Lock",
+            "Lucas Pimentel",
+            "Raphaël Vandon"
+          ],
+          "ownershipPercents": [
+            70,
+            20,
+            10
           ]
         },
         {
-          "name": "Security & Compliance Auditing",
+          "name": "Continuous Profiler",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "chrisnas",
+            "Gregory LEOCADIE",
+            "Raphaël Vandon"
+          ],
+          "ownershipPercents": [
+            52,
+            46,
+            2
+          ]
+        },
+        {
+          "name": "Live Debugger & Diagnostics",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Gregory LEOCADIE",
+            "Kevin Gosse",
+            "Tony Redondo"
+          ],
+          "ownershipPercents": [
+            59,
+            38,
+            3
+          ]
+        },
+        {
+          "name": "Remote Configuration & Telemetry",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Anna",
+            "chrisnas",
+            "Gregory LEOCADIE"
+          ],
+          "ownershipPercents": [
+            56,
+            33,
+            11
+          ]
+        },
+        {
+          "name": "Feature Flag Tracking",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Daniel Romano"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        },
+        {
+          "name": "Application Security Management (IAST & AppSec)",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Daniel Romano",
+            "Kevin Gosse",
+            "NachoEchevarria"
+          ],
+          "ownershipPercents": [
+            98,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "CI Visibility & Test Instrumentation",
           "busFactor": 3,
           "status": "Healthy",
           "owners": [
-            "Félix Malfait",
-            "Paul Rastoin",
-            "martmull"
+            "Lucas Pimentel",
+            "NachoEchevarria",
+            "Tony Redondo"
+          ],
+          "ownershipPercents": [
+            59,
+            41,
+            0
           ]
         },
         {
-          "name": "Dashboards & Reporting",
+          "name": "Automatic Instrumentation Engine",
           "busFactor": 3,
           "status": "Healthy",
           "owners": [
-            "Marie",
-            "Etienne",
-            "Paul Rastoin"
-          ]
-        },
-        {
-          "name": "Workflow Automation",
-          "busFactor": 4,
-          "status": "Healthy",
-          "owners": [
-            "Charles Bochet",
-            "martmull",
-            "Thomas Trompette",
-            "Paul Rastoin"
-          ]
-        },
-        {
-          "name": "App Marketplace & Integrations",
-          "busFactor": 5,
-          "status": "Healthy",
-          "owners": [
-            "Paul Rastoin",
-            "neo773",
-            "Félix Malfait",
-            "Guillim",
-            "Charles Bochet"
-          ]
-        },
-        {
-          "name": "Flexible Data Modeling",
-          "busFactor": 5,
-          "status": "Healthy",
-          "owners": [
-            "Charles Bochet",
-            "Paul Rastoin",
-            "martmull",
-            "Félix Malfait",
-            "Etienne"
+            "Lucas Pimentel",
+            "Steven Bouwkamp",
+            "Andrew Lock"
+          ],
+          "ownershipPercents": [
+            90,
+            9,
+            2
           ]
         },
         {
           "name": "Infrastructure",
-          "busFactor": 5,
+          "busFactor": 3,
           "status": "Healthy",
           "owners": [
-            "Charles Bochet",
-            "martmull",
-            "Weiko",
-            "Marie",
-            "nitin"
+            "Andrew Lock",
+            "chrisnas",
+            "Steven Bouwkamp"
+          ],
+          "ownershipPercents": [
+            81,
+            10,
+            9
           ]
         },
         {
-          "name": "Developer Platform & API",
-          "busFactor": 5,
-          "status": "Healthy",
+          "name": "Utility",
+          "busFactor": 1,
+          "status": "At Risk",
           "owners": [
-            "Charles Bochet",
-            "Paul Rastoin",
-            "Weiko",
-            "Marie",
-            "Jérémy M"
+            "Gregory LEOCADIE",
+            "Andrew Lock",
+            "Daniel Romano"
+          ],
+          "ownershipPercents": [
+            66,
+            23,
+            11
           ]
         },
         {
-          "name": "Workspace & Tenant Management",
+          "name": "Data Streams Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Igor Kravchenko",
+            "Zach Montoya"
+          ],
+          "ownershipPercents": [
+            86,
+            14
+          ]
+        }
+      ],
+      "spofOwnerCount": 8,
+      "uniqueSpofOwnerCount": 5
+    },
+    {
+      "id": "dd-trace-java",
+      "name": "dd-trace-java",
+      "totalModules": 15,
+      "repositoryBusFactor": 4,
+      "modules": [
+        {
+          "name": "Application Performance Monitoring (APM)",
           "busFactor": 5,
           "status": "Healthy",
           "owners": [
-            "Charles Bochet",
-            "Paul Rastoin",
-            "Weiko",
-            "Marie",
-            "Abdul Rahman"
+            "Douglas Q Hawkins",
+            "Bruce Bujon",
+            "Andrea Marziali"
+          ],
+          "ownershipPercents": [
+            50,
+            29,
+            21
           ]
         },
         {
-          "name": "User & Access Management",
+          "name": "CI Test & Pipeline Visibility",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Nikita Tkachenko",
+            "Daniel Mohedano",
+            "Bruce Bujon"
+          ],
+          "ownershipPercents": [
+            59,
+            36,
+            5
+          ]
+        },
+        {
+          "name": "Continuous Code Profiling",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Jaroslav Bachorik",
+            "Richard Startin",
+            "Bruce Bujon"
+          ],
+          "ownershipPercents": [
+            93,
+            4,
+            2
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Andrea Marziali",
+            "Bruce Bujon",
+            "Douglas Q Hawkins"
+          ],
+          "ownershipPercents": [
+            68,
+            17,
+            15
+          ]
+        },
+        {
+          "name": "Dynamic Agent Configuration",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Bruce Bujon",
+            "mhlidd",
+            "Jean-Philippe Bempel"
+          ],
+          "ownershipPercents": [
+            43,
+            35,
+            22
+          ]
+        },
+        {
+          "name": "Open Standard Compatibility",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Bruce Bujon",
+            "cecile",
+            "Stuart McCulloch"
+          ],
+          "ownershipPercents": [
+            44,
+            36,
+            20
+          ]
+        },
+        {
+          "name": "Agent Health & Custom Metrics",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Douglas Q Hawkins",
+            "Andrea Marziali",
+            "Bruce Bujon"
+          ],
+          "ownershipPercents": [
+            82,
+            12,
+            6
+          ]
+        },
+        {
+          "name": "Infrastructure",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Brice Dutheil",
+            "Douglas Q Hawkins",
+            "Mikayla Toffler"
+          ],
+          "ownershipPercents": [
+            60,
+            31,
+            9
+          ]
+        },
+        {
+          "name": "Application Security Management (ASM)",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Manuel Álvarez Álvarez",
+            "Alejandro González García",
+            "Alexey Kuznetsov"
+          ],
+          "ownershipPercents": [
+            60,
+            30,
+            10
+          ]
+        },
+        {
+          "name": "Data Streams Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Igor Kravchenko",
+            "Piotr WOLSKI",
+            "Bruce Bujon"
+          ],
+          "ownershipPercents": [
+            70,
+            17,
+            13
+          ]
+        },
+        {
+          "name": "LLM Observability",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Gary Huang",
+            "Manuel Álvarez Álvarez",
+            "Yury Gribkov"
+          ],
+          "ownershipPercents": [
+            36,
+            33,
+            31
+          ]
+        },
+        {
+          "name": "Feature Flag Management",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Manuel Álvarez Álvarez",
+            "Leo Romanovsky",
+            "Andrea Marziali"
+          ],
+          "ownershipPercents": [
+            95,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "Log & Trace Correlation",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Mikayla Toffler",
+            "Andrea Marziali",
+            "Alexey Kuznetsov"
+          ],
+          "ownershipPercents": [
+            53,
+            24,
+            23
+          ]
+        },
+        {
+          "name": "Real User Monitoring (RUM) Integration",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Sarah Chen",
+            "Bruce Bujon",
+            "Andrea Marziali"
+          ],
+          "ownershipPercents": [
+            40,
+            39,
+            22
+          ]
+        },
+        {
+          "name": "Crash & Error Tracking",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Laplie Anderson",
+            "Matt",
+            "Alejandro González García"
+          ],
+          "ownershipPercents": [
+            50,
+            33,
+            17
+          ]
+        }
+      ],
+      "spofOwnerCount": 8,
+      "uniqueSpofOwnerCount": 8
+    },
+    {
+      "id": "dd-trace-js",
+      "name": "dd-trace-js",
+      "totalModules": 11,
+      "repositoryBusFactor": 6,
+      "modules": [
+        {
+          "name": "Automatic Instrumentation",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Ruben Bridgewater",
+            "Pablo Erhard",
+            "Roch Devost"
+          ],
+          "ownershipPercents": [
+            72,
+            16,
+            12
+          ]
+        },
+        {
+          "name": "Core Tracing & APM",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Ruben Bridgewater",
+            "Thomas Watson",
+            "Roch Devost"
+          ],
+          "ownershipPercents": [
+            67,
+            24,
+            10
+          ]
+        },
+        {
+          "name": "Application Security (AppSec)",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Ruben Bridgewater",
+            "Ugaitz Urien",
+            "Ilyas Shabi"
+          ],
+          "ownershipPercents": [
+            66,
+            18,
+            16
+          ]
+        },
+        {
+          "name": "CI/CD Visibility",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Juan Antonio Fernández de Alba",
+            "Ruben Bridgewater",
+            "Mario Vidal Domínguez"
+          ],
+          "ownershipPercents": [
+            50,
+            38,
+            13
+          ]
+        },
+        {
+          "name": "Data Streams Monitoring (DSM)",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "robcarlan-datadog",
+            "Ruben Bridgewater",
+            "William Conti"
+          ],
+          "ownershipPercents": [
+            44,
+            37,
+            20
+          ]
+        },
+        {
+          "name": "Crash Tracking & Diagnostics",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Ruben Bridgewater",
+            "Thomas Watson",
+            "Roch Devost"
+          ],
+          "ownershipPercents": [
+            50,
+            37,
+            13
+          ]
+        },
+        {
+          "name": "Infrastructure",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Ruben Bridgewater",
+            "Mikayla Toffler",
+            "Thomas Watson"
+          ],
+          "ownershipPercents": [
+            76,
+            14,
+            10
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Ruben Bridgewater",
+            "Roch Devost",
+            "simon-id"
+          ],
+          "ownershipPercents": [
+            53,
+            24,
+            23
+          ]
+        },
+        {
+          "name": "Open Standards Integration",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Ruben Bridgewater",
+            "Munir Abdinur",
+            "Ayan Khan"
+          ],
+          "ownershipPercents": [
+            41,
+            34,
+            25
+          ]
+        },
+        {
+          "name": "Continuous Profiler",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Attila Szegedi",
+            "Ruben Bridgewater",
+            "Mikayla Toffler"
+          ],
+          "ownershipPercents": [
+            56,
+            35,
+            8
+          ]
+        },
+        {
+          "name": "LLM Observability",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Sam Brenner",
+            "Ruben Bridgewater",
+            "Alexandre Choura"
+          ],
+          "ownershipPercents": [
+            69,
+            27,
+            4
+          ]
+        }
+      ],
+      "spofOwnerCount": 4,
+      "uniqueSpofOwnerCount": 4
+    },
+    {
+      "id": "dd-trace-py",
+      "name": "dd-trace-py",
+      "totalModules": 11,
+      "repositoryBusFactor": 9,
+      "modules": [
+        {
+          "name": "Infrastructure",
           "busFactor": 6,
           "status": "Healthy",
           "owners": [
-            "Weiko",
-            "Paul Rastoin",
-            "Antoine Moreaux",
-            "Félix Malfait",
-            "Marie",
-            "martmull"
+            "Brett Langdon",
+            "William Conti",
+            "Alberto Vara"
+          ],
+          "ownershipPercents": [
+            53,
+            27,
+            20
+          ]
+        },
+        {
+          "name": "Application Security Management (ASM)",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Alberto Vara",
+            "Christophe Papazian",
+            "Florentin Labelle"
+          ],
+          "ownershipPercents": [
+            71,
+            21,
+            9
+          ]
+        },
+        {
+          "name": "APM & Distributed Tracing",
+          "busFactor": 7,
+          "status": "Healthy",
+          "owners": [
+            "Munir Abdinur",
+            "Brett Langdon",
+            "Emmett Butler"
+          ],
+          "ownershipPercents": [
+            63,
+            22,
+            15
+          ]
+        },
+        {
+          "name": "LLM Observability",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Yun Kim",
+            "ncybul",
+            "Sam Brenner"
+          ],
+          "ownershipPercents": [
+            37,
+            37,
+            26
+          ]
+        },
+        {
+          "name": "Data Streams Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "robcarlan-datadog",
+            "Munir Abdinur",
+            "Louis Tricot"
+          ],
+          "ownershipPercents": [
+            40,
+            33,
+            27
+          ]
+        },
+        {
+          "name": "CI Visibility & Test Analytics",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Vítor De Araújo",
+            "Federico Mon",
+            "Romain Komorn"
+          ],
+          "ownershipPercents": [
+            56,
+            28,
+            17
+          ]
+        },
+        {
+          "name": "Error Tracking & Crash Reporting",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Louis Tricot",
+            "Gyuheon Oh",
+            "Brett Langdon"
+          ],
+          "ownershipPercents": [
+            39,
+            37,
+            25
           ]
         },
         {
@@ -825,40 +1503,2458 @@
           "busFactor": 6,
           "status": "Healthy",
           "owners": [
-            "Charles Bochet",
-            "Félix Malfait",
-            "Paul Rastoin",
-            "martmull",
-            "Marie",
-            "Etienne"
+            "Gabriele N. Tornetta",
+            "paullegranddc",
+            "Juanjo Alvarez Martinez"
+          ],
+          "ownershipPercents": [
+            54,
+            29,
+            17
           ]
         },
         {
-          "name": "Sales Pipeline & Contact Management",
-          "busFactor": 7,
+          "name": "Continuous Profiling",
+          "busFactor": 3,
           "status": "Healthy",
           "owners": [
-            "Félix Malfait",
-            "Charles Bochet",
-            "Lucas Bordeau",
-            "Abdullah.",
-            "Marie",
-            "Paul Rastoin",
-            "Weiko"
+            "Thomas Kowalski",
+            "Taegyun Kim",
+            "Vlad Scherbich"
+          ],
+          "ownershipPercents": [
+            44,
+            40,
+            16
+          ]
+        },
+        {
+          "name": "Feature Flag Management",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Alberto Vara",
+            "Oleksii Shmalko",
+            "Christophe Papazian"
+          ],
+          "ownershipPercents": [
+            88,
+            9,
+            3
+          ]
+        },
+        {
+          "name": "OpenTelemetry Integration",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Munir Abdinur",
+            "Zach Montoya",
+            "Zachary Groves"
+          ],
+          "ownershipPercents": [
+            46,
+            37,
+            17
           ]
         }
       ],
-      "spofOwnerCount": 3,
-      "uniqueSpofOwnerCount": 3
+      "spofOwnerCount": 5,
+      "uniqueSpofOwnerCount": 4
+    },
+    {
+      "id": "dd-trace-rb",
+      "name": "dd-trace-rb",
+      "totalModules": 12,
+      "repositoryBusFactor": 4,
+      "modules": [
+        {
+          "name": "Crash Tracking",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Gyuheon Oh",
+            "Marco Costa",
+            "Tony Hsu"
+          ],
+          "ownershipPercents": [
+            73,
+            22,
+            5
+          ]
+        },
+        {
+          "name": "Application Performance Monitoring (APM)",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Oleg Pudeyev",
+            "Victor Pellan",
+            "Marco Costa"
+          ],
+          "ownershipPercents": [
+            60,
+            21,
+            19
+          ]
+        },
+        {
+          "name": "Application Security Management (ASM)",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Sergey Fedorov",
+            "Yury Lebedev",
+            "Victor Pellan"
+          ],
+          "ownershipPercents": [
+            48,
+            47,
+            5
+          ]
+        },
+        {
+          "name": "Infrastructure",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Victor Pellan",
+            "Oleg Pudeyev",
+            "Ivo Anjo"
+          ],
+          "ownershipPercents": [
+            54,
+            32,
+            14
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Oleg Pudeyev",
+            "Marco Costa",
+            "Ivo Anjo"
+          ],
+          "ownershipPercents": [
+            53,
+            36,
+            11
+          ]
+        },
+        {
+          "name": "Data Streams Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Eric Firth",
+            "Rafael Gibim",
+            "Oleg Pudeyev"
+          ],
+          "ownershipPercents": [
+            94,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "AI Guard & LLM Observability",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Yury Lebedev",
+            "Oleg Pudeyev",
+            "Victor Pellan"
+          ],
+          "ownershipPercents": [
+            98,
+            2,
+            0
+          ]
+        },
+        {
+          "name": "Dynamic Instrumentation & Live Debugging",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Oleg Pudeyev",
+            "Tyler Finethy",
+            "Victor Pellan"
+          ],
+          "ownershipPercents": [
+            98,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Error Tracking",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Louis Tricot",
+            "Marco Costa",
+            "Oleg Pudeyev"
+          ],
+          "ownershipPercents": [
+            55,
+            25,
+            20
+          ]
+        },
+        {
+          "name": "Feature Flag Observability",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Sergey Fedorov",
+            "Oleksii Shmalko",
+            "Sameeran Kunche"
+          ],
+          "ownershipPercents": [
+            77,
+            18,
+            6
+          ]
+        },
+        {
+          "name": "Continuous Profiler",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ivo Anjo",
+            "Marco Costa",
+            "Erwan Viollet"
+          ],
+          "ownershipPercents": [
+            62,
+            32,
+            6
+          ]
+        },
+        {
+          "name": "OpenTelemetry Integration",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Munir",
+            "ZStriker19",
+            "Oleg Pudeyev"
+          ],
+          "ownershipPercents": [
+            89,
+            9,
+            3
+          ]
+        }
+      ],
+      "spofOwnerCount": 8,
+      "uniqueSpofOwnerCount": 7
+    },
+    {
+      "id": "integrations-core",
+      "name": "integrations-core",
+      "totalModules": 119,
+      "repositoryBusFactor": 3,
+      "modules": [
+        {
+          "name": "Integrations Core Library",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Ilia Kurenkov",
+            "Juanpe Araque",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            47,
+            37,
+            15
+          ]
+        },
+        {
+          "name": "Infrastructure",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Juanpe Araque",
+            "Kyle Neale",
+            "lucia"
+          ],
+          "ownershipPercents": [
+            51,
+            39,
+            10
+          ]
+        },
+        {
+          "name": "Cisco Secure Client (AnyConnect) Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "manan-crest"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        },
+        {
+          "name": "Developer Tools & Environment",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Juanpe Araque",
+            "mahipdeora25",
+            "luciasanchezbella01"
+          ],
+          "ownershipPercents": [
+            39,
+            33,
+            28
+          ]
+        },
+        {
+          "name": "Cisco ACI Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "zoe ✨",
+            "jedupau",
+            "Jim Wilson"
+          ],
+          "ownershipPercents": [
+            58,
+            41,
+            1
+          ]
+        },
+        {
+          "name": "BlueCat Edge DDI Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "surabhipatel-crest"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        },
+        {
+          "name": "Cisco SD-WAN Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Vic Weiss",
+            "Thibaud Cheruy",
+            "Garrison Stauffer"
+          ],
+          "ownershipPercents": [
+            67,
+            20,
+            12
+          ]
+        },
+        {
+          "name": "Fly.io Application Platform Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Sarah Witt",
+            "Kyle Neale",
+            "Juanpe Araque"
+          ],
+          "ownershipPercents": [
+            95,
+            3,
+            2
+          ]
+        },
+        {
+          "name": "Check Point Quantum Firewall Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Tirthraj Chaudhari",
+            "HadhemiDD",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            55,
+            23,
+            22
+          ]
+        },
+        {
+          "name": "Device Battery Health Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Mohammad Rafi"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        },
+        {
+          "name": "Cato Networks SASE Integration",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "shubhamvekariya-crest"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        },
+        {
+          "name": "Cisco ASA Firewall Log Analysis",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "manan-crest"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        },
+        {
+          "name": "ClickHouse Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Patryk",
+            "Steven Yuen",
+            "Oliver Harrison"
+          ],
+          "ownershipPercents": [
+            65,
+            27,
+            8
+          ]
+        },
+        {
+          "name": "Datadog CSI Driver Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Adel Haj Hassan",
+            "Steven Yuen",
+            "NouemanKHAL"
+          ],
+          "ownershipPercents": [
+            95,
+            3,
+            2
+          ]
+        },
+        {
+          "name": "Cisco Secure Firewall Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Tirthraj Chaudhari",
+            "prerakdali",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            53,
+            28,
+            19
+          ]
+        },
+        {
+          "name": "Databricks Unified Analytics Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "rkaneriya",
+            "Rosa Trieu",
+            "Florent Clarret"
+          ],
+          "ownershipPercents": [
+            90,
+            6,
+            4
+          ]
+        },
+        {
+          "name": "Cilium Network Observability",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Hadrien Patte",
+            "Ofek Lev",
+            "Jared Ledvina"
+          ],
+          "ownershipPercents": [
+            90,
+            7,
+            3
+          ]
+        },
+        {
+          "name": "Apache Airflow Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Ian Moroney",
+            "Jackson Davenport",
+            "Marwan Zibaoui"
+          ],
+          "ownershipPercents": [
+            72,
+            15,
+            12
+          ]
+        },
+        {
+          "name": "Active Directory Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "davidioin",
+            "Brian Tu",
+            "Ofek Lev"
+          ],
+          "ownershipPercents": [
+            68,
+            24,
+            8
+          ]
+        },
+        {
+          "name": "ActiveMQ Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Ofek Lev",
+            "HadhemiDD",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            45,
+            27,
+            27
+          ]
+        },
+        {
+          "name": "ActiveMQ XML-Based Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Ofek Lev",
+            "Sarah Wang",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            45,
+            36,
+            19
+          ]
+        },
+        {
+          "name": "Aerospike Database Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Steven Yuen",
+            "Ofek Lev",
+            "Hristo Voyvodov"
+          ],
+          "ownershipPercents": [
+            51,
+            28,
+            21
+          ]
+        },
+        {
+          "name": "Amazon MSK Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ofek Lev",
+            "Ilia Kurenkov",
+            "Steven Yuen"
+          ],
+          "ownershipPercents": [
+            46,
+            29,
+            25
+          ]
+        },
+        {
+          "name": "Ambari Cluster Management Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ofek Lev",
+            "HadhemiDD",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            54,
+            23,
+            23
+          ]
+        },
+        {
+          "name": "Apache HTTP Server Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Ofek Lev",
+            "Sarah Wang",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            48,
+            29,
+            23
+          ]
+        },
+        {
+          "name": "Appgate SDP Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Laura",
+            "Kyle Neale",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            90,
+            7,
+            4
+          ]
+        },
+        {
+          "name": "ArangoDB Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ofek Lev",
+            "Kyle Neale",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            57,
+            24,
+            19
+          ]
+        },
+        {
+          "name": "Argo Workflows Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ilia Kurenkov",
+            "Brian Hartford",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            67,
+            23,
+            10
+          ]
+        },
+        {
+          "name": "Argo CD Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Steven Yuen",
+            "Ofek Lev",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            73,
+            19,
+            9
+          ]
+        },
+        {
+          "name": "ASP.NET Application Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ofek Lev",
+            "HadhemiDD",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            52,
+            24,
+            24
+          ]
+        },
+        {
+          "name": "VMware NSX Advanced Load Balancer (Avi) Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "NouemanKHAL",
+            "Ofek Lev",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            55,
+            24,
+            20
+          ]
+        },
+        {
+          "name": "AWS Neuron Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "dkirov-dd",
+            "Kyle Neale",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            88,
+            7,
+            5
+          ]
+        },
+        {
+          "name": "Azure IoT Edge Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ofek Lev",
+            "Yann Armelin",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            56,
+            26,
+            18
+          ]
+        },
+        {
+          "name": "Barracuda SecureEdge Integration",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Juanpe Araque",
+            "vinodkumar-sacumen",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            56,
+            41,
+            3
+          ]
+        },
+        {
+          "name": "BentoML Model Serving Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Steven Yuen",
+            "NouemanKHAL",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            97,
+            2,
+            1
+          ]
+        },
+        {
+          "name": "BeyondTrust Password Safe Audit",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "manan-crest",
+            "Akshit Vaid",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            81,
+            16,
+            3
+          ]
+        },
+        {
+          "name": "HashiCorp Boundary Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ofek Lev",
+            "Ilia Kurenkov",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            59,
+            22,
+            19
+          ]
+        },
+        {
+          "name": "Btrfs Filesystem Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Ofek Lev",
+            "HadhemiDD",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            37,
+            32,
+            32
+          ]
+        },
+        {
+          "name": "Cacti Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Ofek Lev",
+            "Kyle Neale",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            37,
+            33,
+            30
+          ]
+        },
+        {
+          "name": "Calico Network & Security Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Ofek Lev",
+            "Juanpe Araque",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            51,
+            27,
+            21
+          ]
+        },
+        {
+          "name": "Cassandra Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ofek Lev",
+            "HadhemiDD",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            44,
+            28,
+            28
+          ]
+        },
+        {
+          "name": "Cassandra Nodetool-Based Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Ofek Lev",
+            "HadhemiDD",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            39,
+            31,
+            31
+          ]
+        },
+        {
+          "name": "Celery Task Queue Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Kyle Neale",
+            "HadhemiDD",
+            "NouemanKHAL"
+          ],
+          "ownershipPercents": [
+            96,
+            2,
+            2
+          ]
+        },
+        {
+          "name": "Ceph Storage Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Dan Meyers",
+            "Sarah Witt",
+            "Ofek Lev"
+          ],
+          "ownershipPercents": [
+            65,
+            21,
+            14
+          ]
+        },
+        {
+          "name": "cert-manager Certificate Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Florent Clarret",
+            "Kyle Neale",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            55,
+            27,
+            18
+          ]
+        },
+        {
+          "name": "Check Point Harmony Endpoint Security",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "vinodkumar-sacumen",
+            "HadhemiDD",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            94,
+            3,
+            2
+          ]
+        },
+        {
+          "name": "Cisco Secure Web Appliance Log Analysis",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "madhavpandya-crest",
+            "Kyle Neale",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            88,
+            6,
+            5
+          ]
+        },
+        {
+          "name": "Citrix Hypervisor Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "NouemanKHAL",
+            "Ofek Lev",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            70,
+            20,
+            11
+          ]
+        },
+        {
+          "name": "Cloud Foundry API Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Juanpe Araque",
+            "Ofek Lev",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            41,
+            41,
+            18
+          ]
+        },
+        {
+          "name": "Cloudera Data Platform Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Juanpe Araque",
+            "jose-manuel-almaza",
+            "Andrew Zhang"
+          ],
+          "ownershipPercents": [
+            64,
+            31,
+            6
+          ]
+        },
+        {
+          "name": "CockroachDB Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Florent Clarret",
+            "Ofek Lev",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            86,
+            10,
+            4
+          ]
+        },
+        {
+          "name": "Confluent Platform Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Ofek Lev",
+            "Kyle Neale",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            43,
+            29,
+            28
+          ]
+        },
+        {
+          "name": "HashiCorp Consul Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Sarah Witt",
+            "Ofek Lev",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            74,
+            15,
+            11
+          ]
+        },
+        {
+          "name": "CoreDNS Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Ofek Lev",
+            "HadhemiDD",
+            "Yann Armelin"
+          ],
+          "ownershipPercents": [
+            58,
+            22,
+            21
+          ]
+        },
+        {
+          "name": "CouchDB Monitoring",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Ofek Lev",
+            "Sarah Wang",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            48,
+            26,
+            25
+          ]
+        },
+        {
+          "name": "Couchbase Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Sven Ulland",
+            "Florent Clarret",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            76,
+            13,
+            10
+          ]
+        },
+        {
+          "name": "CRI-O Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Ofek Lev",
+            "Yann Armelin",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            50,
+            27,
+            23
+          ]
+        },
+        {
+          "name": "NVIDIA DCGM Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Florent Clarret",
+            "Steven Yuen",
+            "Ofek Lev"
+          ],
+          "ownershipPercents": [
+            40,
+            37,
+            23
+          ]
+        },
+        {
+          "name": "Delinea Privilege Manager Audit",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "manan-crest",
+            "HadhemiDD",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            84,
+            8,
+            8
+          ]
+        },
+        {
+          "name": "Delinea Secret Server Audit",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "surabhipatel-crest",
+            "HadhemiDD",
+            "NouemanKHAL"
+          ],
+          "ownershipPercents": [
+            86,
+            7,
+            7
+          ]
+        },
+        {
+          "name": "Directory and File Monitoring",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Ofek Lev",
+            "Sarah Wang",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            39,
+            31,
+            31
+          ]
+        },
+        {
+          "name": "Disk Performance and Usage Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ilia Kurenkov",
+            "Juanpe Araque",
+            "Ofek Lev"
+          ],
+          "ownershipPercents": [
+            82,
+            10,
+            7
+          ]
+        },
+        {
+          "name": "DNS Resolution Monitoring",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Ofek Lev",
+            "Kyle Neale",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            39,
+            31,
+            30
+          ]
+        },
+        {
+          "name": "DuckDB Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "HadhemiDD",
+            "Kyle Neale",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            96,
+            3,
+            1
+          ]
+        },
+        {
+          "name": "Amazon EKS on Fargate Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "JacksonDavenport",
+            "Bryce Eadie",
+            "Justin Lesko"
+          ],
+          "ownershipPercents": [
+            75,
+            14,
+            12
+          ]
+        },
+        {
+          "name": "Elasticsearch Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Kyle Neale",
+            "Ilia Kurenkov",
+            "Ofek Lev"
+          ],
+          "ownershipPercents": [
+            41,
+            34,
+            25
+          ]
+        },
+        {
+          "name": "ESET PROTECT Security Integration",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "savandalasaniya-crest",
+            "HadhemiDD",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            87,
+            7,
+            6
+          ]
+        },
+        {
+          "name": "VMware ESXi Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Sarah Witt",
+            "Juanpe Araque",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            91,
+            7,
+            2
+          ]
+        },
+        {
+          "name": "etcd Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ofek Lev",
+            "Alex Lopez",
+            "Sarah Wang"
+          ],
+          "ownershipPercents": [
+            52,
+            25,
+            23
+          ]
+        },
+        {
+          "name": "Microsoft Exchange Server Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Ofek Lev",
+            "HadhemiDD",
+            "Kyle Neale"
+          ],
+          "ownershipPercents": [
+            54,
+            23,
+            23
+          ]
+        },
+        {
+          "name": "Falco Security Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Kyle Neale",
+            "surabhipatel-crest",
+            "Sarah Witt"
+          ],
+          "ownershipPercents": [
+            94,
+            5,
+            2
+          ]
+        },
+        {
+          "name": "Fluentd Log Collector Monitoring",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Ofek Lev",
+            "Ilia Kurenkov",
+            "Sarah Wang"
+          ],
+          "ownershipPercents": [
+            52,
+            27,
+            21
+          ]
+        },
+        {
+          "name": "FluxCD GitOps Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ilia Kurenkov",
+            "Kyle Neale",
+            "HadhemiDD"
+          ],
+          "ownershipPercents": [
+            78,
+            12,
+            9
+          ]
+        },
+        {
+          "name": "FoundationDB Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Jon Chambers",
+            "Kyle Neale",
+            "Ofek Lev"
+          ],
+          "ownershipPercents": [
+            88,
+            7,
+            5
+          ]
+        },
+        {
+          "name": "BlazeMeter Performance Testing Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Bhavik Parmar",
+            "dkirov-dd",
+            "Doug Gunter"
+          ],
+          "ownershipPercents": [
+            83,
+            9,
+            8
+          ]
+        },
+        {
+          "name": "Box Enterprise Event Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "shubhamvekariya-crest",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            95,
+            5
+          ]
+        },
+        {
+          "name": "Cofense Triage Phishing Response Integration",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Vraj Patel"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        },
+        {
+          "name": "Bitwarden Audit Log Integration",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Akshit Vaid",
+            "manan-crest",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            49,
+            46,
+            5
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Juanpe Araque",
+            "Lucía",
+            "Ofek Lev"
+          ],
+          "ownershipPercents": [
+            65,
+            18,
+            17
+          ]
+        },
+        {
+          "name": "Adyen Payment Processing Analytics",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Akshit Vaid",
+            "Doug Gunter",
+            "Esther Kim"
+          ],
+          "ownershipPercents": [
+            50,
+            37,
+            13
+          ]
+        },
+        {
+          "name": "Asana Audit Trail Integration",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Tirthraj Chaudhari",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            90,
+            10
+          ]
+        },
+        {
+          "name": "Authorize.Net Payment Analytics",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "DhruvaPatel-crest",
+            "Akshit Vaid",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            56,
+            34,
+            10
+          ]
+        },
+        {
+          "name": "Avast Business Hub Security Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "narendranandaniya-crest",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            90,
+            10
+          ]
+        },
+        {
+          "name": "BeyondTrust Identity Security Insights Integration",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Tirthraj Chaudhari",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            94,
+            6
+          ]
+        },
+        {
+          "name": "Bitdefender EDR Integration",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "shubhamvekariya-crest",
+            "madhavpandya-crest",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            50,
+            46,
+            4
+          ]
+        },
+        {
+          "name": "Brevo Email & Marketing Integration",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "rajshah-crest",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            85,
+            15
+          ]
+        },
+        {
+          "name": "VMware Carbon Black Cloud Integration",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "ravindrasojitra-crest",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            92,
+            8
+          ]
+        },
+        {
+          "name": "Check Point Harmony Email & Collaboration Security",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "shubhamvekariya-crest",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            90,
+            10
+          ]
+        },
+        {
+          "name": "Cisco Duo Security Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "mohittilala-crest",
+            "dkirov-dd",
+            "Nathan Adams"
+          ],
+          "ownershipPercents": [
+            68,
+            24,
+            8
+          ]
+        },
+        {
+          "name": "Cisco Secure Email Threat Defense Integration",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "manan-crest",
+            "ankitarajput-crest",
+            "Vraj Patel"
+          ],
+          "ownershipPercents": [
+            40,
+            36,
+            23
+          ]
+        },
+        {
+          "name": "Cisco Secure Endpoint Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "ankitarajput-crest",
+            "Vraj Patel",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            63,
+            26,
+            11
+          ]
+        },
+        {
+          "name": "Cisco Umbrella DNS Security Integration",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Bhargav Nariyani",
+            "dkirov-dd",
+            "Ilia Kurenkov"
+          ],
+          "ownershipPercents": [
+            55,
+            38,
+            7
+          ]
+        },
+        {
+          "name": "Contentful Audit Trail Integration",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Mauneel Sorathia",
+            "dkirov-dd",
+            "davidfeng-datadog"
+          ],
+          "ownershipPercents": [
+            74,
+            21,
+            5
+          ]
+        },
+        {
+          "name": "DNSFilter Security Integration",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "manan-crest",
+            "Akshit Vaid",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            56,
+            39,
+            5
+          ]
+        },
+        {
+          "name": "DocuSign Audit Trail Integration",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "narendranandaniya-crest",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            96,
+            4
+          ]
+        },
+        {
+          "name": "ExtraHop Reveal(x) Integration",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "surabhipatel-crest",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            91,
+            9
+          ]
+        },
+        {
+          "name": "Forcepoint Secure Web Gateway Integration",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "madhavpandya-crest",
+            "dkirov-dd",
+            "manan-crest"
+          ],
+          "ownershipPercents": [
+            90,
+            7,
+            3
+          ]
+        },
+        {
+          "name": "Forcepoint SSE Integration",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "manan-crest",
+            "dkirov-dd",
+            "davidfeng-datadog"
+          ],
+          "ownershipPercents": [
+            92,
+            6,
+            2
+          ]
+        },
+        {
+          "name": "Airbyte Data Integration Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ilia Kurenkov",
+            "dkirov-dd",
+            "davidfeng-datadog"
+          ],
+          "ownershipPercents": [
+            63,
+            24,
+            13
+          ]
+        },
+        {
+          "name": "AWS App Mesh Observability",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Nicholas Muesch",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            99,
+            1
+          ]
+        },
+        {
+          "name": "Anthropic LLM Observability",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "apiazza-dd",
+            "yahya-mouman",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            58,
+            39,
+            4
+          ]
+        },
+        {
+          "name": "Anthropic Usage & Cost Management",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Bo Huang",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            98,
+            2
+          ]
+        },
+        {
+          "name": "Anyscale Platform Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ilia Kurenkov",
+            "dkirov-dd",
+            "davidfeng-datadog"
+          ],
+          "ownershipPercents": [
+            71,
+            19,
+            10
+          ]
+        },
+        {
+          "name": "CrewAI Observability",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Yun Kim",
+            "dkirov-dd"
+          ],
+          "ownershipPercents": [
+            98,
+            2
+          ]
+        },
+        {
+          "name": "Datadog Operator for Kubernetes",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "dkirov-dd",
+            "levan-m",
+            "Ilia Kurenkov"
+          ],
+          "ownershipPercents": [
+            54,
+            31,
+            15
+          ]
+        },
+        {
+          "name": "Docker Daemon Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Sarah Wang",
+            "Ofek Lev",
+            "davidfeng-datadog"
+          ],
+          "ownershipPercents": [
+            53,
+            28,
+            19
+          ]
+        },
+        {
+          "name": "CrowdStrike Falcon Data Replicator Integration",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Tirthraj Chaudhari"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        },
+        {
+          "name": "Container Monitoring",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "dkirov-dd",
+            "Steven Yuen",
+            "Anthonin Bonnefoy"
+          ],
+          "ownershipPercents": [
+            75,
+            13,
+            12
+          ]
+        },
+        {
+          "name": "Azure Active Directory (Entra ID) Monitoring",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Bryce Eadie",
+            "Ilia Kurenkov",
+            "rahulkaukuntla"
+          ],
+          "ownershipPercents": [
+            77,
+            13,
+            10
+          ]
+        },
+        {
+          "name": "HashiCorp Consul Connect Monitoring",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Ilia Kurenkov",
+            "davidfeng-datadog",
+            "Andrew Zhang"
+          ],
+          "ownershipPercents": [
+            54,
+            39,
+            7
+          ]
+        },
+        {
+          "name": "containerd Monitoring",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Ilia Kurenkov",
+            "davidfeng-datadog",
+            "cswatt"
+          ],
+          "ownershipPercents": [
+            54,
+            39,
+            7
+          ]
+        },
+        {
+          "name": "CRI Monitoring",
+          "busFactor": 6,
+          "status": "Healthy",
+          "owners": [
+            "Ilia Kurenkov",
+            "davidfeng-datadog",
+            "Pierre Guceski"
+          ],
+          "ownershipPercents": [
+            56,
+            40,
+            4
+          ]
+        },
+        {
+          "name": "Amazon EKS Monitoring",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Ofek Lev",
+            "Ilia Kurenkov",
+            "Bryce Eadie"
+          ],
+          "ownershipPercents": [
+            57,
+            25,
+            17
+          ]
+        },
+        {
+          "name": "Amazon EKS Blueprints Deployment",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Ilia Kurenkov",
+            "Bryce Eadie",
+            "cswatt"
+          ],
+          "ownershipPercents": [
+            44,
+            29,
+            27
+          ]
+        },
+        {
+          "name": "Amazon EKS Anywhere Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Ilia Kurenkov",
+            "Cedric Lamoriniere",
+            "Sarah Wang"
+          ],
+          "ownershipPercents": [
+            74,
+            22,
+            4
+          ]
+        },
+        {
+          "name": "VMware vSphere Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Nicholas Muesch",
+            "Ofek Lev",
+            "Steven Yuen"
+          ],
+          "ownershipPercents": [
+            41,
+            35,
+            24
+          ]
+        },
+        {
+          "name": "Windows Event Log Collection",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Ofek Lev"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        },
+        {
+          "name": "IBM i (AS/400) Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Pablo Baeyens"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        },
+        {
+          "name": "Hadoop MapReduce Monitoring",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Sarah Witt"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        }
+      ],
+      "spofOwnerCount": 95,
+      "uniqueSpofOwnerCount": 43
+    },
+    {
+      "id": "libdatadog",
+      "name": "libdatadog",
+      "totalModules": 11,
+      "repositoryBusFactor": 1,
+      "modules": [
+        {
+          "name": "Core Platform & Utilities",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Bob Weinand",
+            "vianney",
+            "Julio Gonzalez"
+          ],
+          "ownershipPercents": [
+            40,
+            33,
+            27
+          ]
+        },
+        {
+          "name": "Continuous Profiling",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Daniel Schwartz-Narbonne",
+            "Levi Morrison",
+            "Julio Gonzalez"
+          ],
+          "ownershipPercents": [
+            59,
+            40,
+            1
+          ]
+        },
+        {
+          "name": "Crash Reporting & Diagnostics",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Gyuheon Oh",
+            "Scarlett",
+            "Gregory LEOCADIE"
+          ],
+          "ownershipPercents": [
+            44,
+            41,
+            15
+          ]
+        },
+        {
+          "name": "APM & Distributed Tracing",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Bob Weinand",
+            "Jules Wiriath",
+            "Alexandre Rulleau"
+          ],
+          "ownershipPercents": [
+            75,
+            14,
+            11
+          ]
+        },
+        {
+          "name": "Dynamic Instrumentation & Remote Configuration",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Bob Weinand",
+            "Edmund Kump",
+            "Victor Pellan"
+          ],
+          "ownershipPercents": [
+            64,
+            19,
+            17
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 4,
+          "status": "Healthy",
+          "owners": [
+            "Edmund Kump",
+            "paullegranddc",
+            "Julio Gonzalez"
+          ],
+          "ownershipPercents": [
+            70,
+            26,
+            4
+          ]
+        },
+        {
+          "name": "Custom Metrics & Monitoring",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Jules Wiriath",
+            "Edmund Kump",
+            "Alexandre Rulleau"
+          ],
+          "ownershipPercents": [
+            58,
+            24,
+            18
+          ]
+        },
+        {
+          "name": "Sidecar & Service Management",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Alexandre Rulleau",
+            "Bob Weinand",
+            "Gustavo Lopes"
+          ],
+          "ownershipPercents": [
+            43,
+            33,
+            24
+          ]
+        },
+        {
+          "name": "Infrastructure",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Edouard Schweisguth",
+            "Igor Unanua",
+            "Ivo Anjo"
+          ],
+          "ownershipPercents": [
+            77,
+            13,
+            11
+          ]
+        },
+        {
+          "name": "Feature Flag Management",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Oleksii Shmalko",
+            "Sameeran Kunche",
+            "Björn Antonsson"
+          ],
+          "ownershipPercents": [
+            82,
+            17,
+            1
+          ]
+        },
+        {
+          "name": "Data Security & Obfuscation",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Igor Unanua",
+            "Julio Gonzalez"
+          ],
+          "ownershipPercents": [
+            76,
+            24
+          ]
+        }
+      ],
+      "spofOwnerCount": 7,
+      "uniqueSpofOwnerCount": 7
+    },
+    {
+      "id": "system-tests",
+      "name": "system-tests",
+      "totalModules": 19,
+      "repositoryBusFactor": 2,
+      "modules": [
+        {
+          "name": "Infrastructure",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Charles de Beauchesne",
+            "Nicolas Catoni",
+            "Roberto Montero"
+          ],
+          "ownershipPercents": [
+            41,
+            41,
+            19
+          ]
+        },
+        {
+          "name": "AI & LLM Observability",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Sam Brenner",
+            "Xinyuan Guo",
+            "Alexandre Choura"
+          ],
+          "ownershipPercents": [
+            58,
+            30,
+            12
+          ]
+        },
+        {
+          "name": "AI Guard & Prompt Security",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Roberto Montero",
+            "Manuel Álvarez Álvarez",
+            "Santiago M. Mola"
+          ],
+          "ownershipPercents": [
+            55,
+            31,
+            14
+          ]
+        },
+        {
+          "name": "Automated Instrumentation & Deployment",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Roberto Montero",
+            "Charles de Beauchesne",
+            "Nicolas Catoni"
+          ],
+          "ownershipPercents": [
+            90,
+            8,
+            1
+          ]
+        },
+        {
+          "name": "APM & Distributed Tracing",
+          "busFactor": 5,
+          "status": "Healthy",
+          "owners": [
+            "Charles de Beauchesne",
+            "Munir Abdinur",
+            "Nicolas Catoni"
+          ],
+          "ownershipPercents": [
+            80,
+            11,
+            9
+          ]
+        },
+        {
+          "name": "Continuous Code Profiling",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Charles de Beauchesne",
+            "Andrea Marziali",
+            "Raphaël Vandon"
+          ],
+          "ownershipPercents": [
+            61,
+            31,
+            8
+          ]
+        },
+        {
+          "name": "OpenTelemetry Integration & Compatibility",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Zach Montoya",
+            "Charles de Beauchesne",
+            "wantsui"
+          ],
+          "ownershipPercents": [
+            52,
+            36,
+            11
+          ]
+        },
+        {
+          "name": "Runtime Application Self-Protection (RASP)",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Charles de Beauchesne",
+            "Christophe Papazian",
+            "Ilyas Shabi"
+          ],
+          "ownershipPercents": [
+            40,
+            33,
+            27
+          ]
+        },
+        {
+          "name": "Interactive Application Security Testing (IAST)",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Charles de Beauchesne",
+            "Ilyas Shabi",
+            "Alejandro González García"
+          ],
+          "ownershipPercents": [
+            46,
+            29,
+            25
+          ]
+        },
+        {
+          "name": "Third-Party Service Integrations",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Charles de Beauchesne",
+            "William Conti",
+            "Andrew Glaude"
+          ],
+          "ownershipPercents": [
+            65,
+            20,
+            15
+          ]
+        },
+        {
+          "name": "API Security Monitoring",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "simon-id",
+            "Alejandro González García",
+            "Christophe Papazian"
+          ],
+          "ownershipPercents": [
+            44,
+            31,
+            25
+          ]
+        },
+        {
+          "name": "Remote Configuration & Dynamic Control",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Charles de Beauchesne",
+            "ajwerner",
+            "Thomas Watson"
+          ],
+          "ownershipPercents": [
+            49,
+            27,
+            24
+          ]
+        },
+        {
+          "name": "Web Application Firewall (WAF)",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Charles de Beauchesne",
+            "Alejandro González García",
+            "Manuel Álvarez Álvarez"
+          ],
+          "ownershipPercents": [
+            57,
+            22,
+            20
+          ]
+        },
+        {
+          "name": "Utility",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Charles de Beauchesne",
+            "Nicolas Catoni",
+            "Roberto Montero"
+          ],
+          "ownershipPercents": [
+            89,
+            8,
+            2
+          ]
+        },
+        {
+          "name": "Feature Flag & Experimentation Analytics",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Charles de Beauchesne",
+            "Leo Romanovsky",
+            "Oleksii Shmalko"
+          ],
+          "ownershipPercents": [
+            67,
+            25,
+            9
+          ]
+        },
+        {
+          "name": "Crash Tracking & Error Reporting",
+          "busFactor": 3,
+          "status": "Healthy",
+          "owners": [
+            "Charles de Beauchesne",
+            "Kevin Gosse",
+            "Roberto Montero"
+          ],
+          "ownershipPercents": [
+            59,
+            28,
+            12
+          ]
+        },
+        {
+          "name": "Database Monitoring (DBM)",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "Charles de Beauchesne",
+            "William Conti",
+            "Maximo Bautista"
+          ],
+          "ownershipPercents": [
+            48,
+            39,
+            13
+          ]
+        },
+        {
+          "name": "Data Streams Monitoring (DSM)",
+          "busFactor": 2,
+          "status": "Needs Attention",
+          "owners": [
+            "William Conti",
+            "Charles de Beauchesne",
+            "robcarlan-datadog"
+          ],
+          "ownershipPercents": [
+            54,
+            41,
+            5
+          ]
+        },
+        {
+          "name": "Real User Monitoring (RUM)",
+          "busFactor": 1,
+          "status": "At Risk",
+          "owners": [
+            "Roberto Montero"
+          ],
+          "ownershipPercents": [
+            100
+          ]
+        }
+      ],
+      "spofOwnerCount": 13,
+      "uniqueSpofOwnerCount": 5
     }
   ],
   "totals": {
-    "spofModuleCount": 26,
-    "uniqueSpofOwnerCount": 23,
+    "spofModuleCount": 184,
+    "uniqueSpofOwnerCount": 95,
     "healthDistribution": {
-      "healthy": 46,
-      "needsAttention": 16,
-      "critical": 10
+      "healthy": 77,
+      "needsAttention": 76,
+      "critical": 108
     }
   }
 }
