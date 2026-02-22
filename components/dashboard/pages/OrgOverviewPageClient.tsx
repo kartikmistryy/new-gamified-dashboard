@@ -12,9 +12,8 @@ import { OverviewSkillsSummary } from "@/components/dashboard/shared/OverviewSki
 import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 import {
   generateOrgPerformanceData,
-  ORG_PERFORMANCE_HOLIDAYS,
-  ORG_PERFORMANCE_ANNOTATIONS,
 } from "@/lib/dashboard/entities/team/charts/performanceChart/orgPerformanceChartData";
+import { ORG_TIMESERIES_DATA, ORG_TIMESERIES_READY } from "@/lib/dashboard/entities/team/data/orgTimeseriesDataLoader";
 import {
   loadSkillGraphFullData,
   type SkillGraphFullData,
@@ -140,9 +139,13 @@ export function OrgOverviewPageClient() {
           </div>
           <div className="flex-1 min-w-0">
             <PerformanceChart
-              dataSource={{ type: "org", data: [], generator: generateOrgPerformanceData }}
-              eventStrategy={{ mode: "static", events: ORG_PERFORMANCE_HOLIDAYS }}
-              annotationStrategy={{ mode: "static", annotations: ORG_PERFORMANCE_ANNOTATIONS }}
+              dataSource={{
+                type: "org",
+                data: ORG_TIMESERIES_READY ? ORG_TIMESERIES_DATA : [],
+                generator: ORG_TIMESERIES_READY ? undefined : generateOrgPerformanceData,
+              }}
+              eventStrategy={{ mode: "none" }}
+              annotationStrategy={{ mode: "none" }}
               timeRange="max"
               showLegend={false}
               height={280}

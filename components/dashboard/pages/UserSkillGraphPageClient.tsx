@@ -2,8 +2,17 @@
 
 import { DashboardSection } from "@/components/dashboard/shared/DashboardSection";
 import { SkillGraph } from "@/components/skillmap/SkillGraph";
-import { useMemo, Fragment } from "react";
+import { useMemo, useState, Fragment } from "react";
 import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import { flexRender } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
@@ -20,6 +29,8 @@ export function UserSkillGraphPageClient() {
   }, [userId]);
 
   const { table } = useUserSkillTable(skillRows);
+  const [page, setPage] = useState(1);
+  const PAGE_SIZE = 10;
 
   if (!userId) {
     return null;
@@ -52,7 +63,7 @@ export function UserSkillGraphPageClient() {
               </TableHeader>
               <TableBody>
                 {table.getRowModel().rows?.length ? (
-                  table.getRowModel().rows.map((row) => (
+                  table.getRowModel().rows.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).map((row) => (
                     <Fragment key={row.id}>
                       <TableRow
                         className={`border-[#E5E5E5] hover:bg-gray-50/80 ${row.getIsExpanded() ? "bg-muted" : ""}`}
@@ -91,6 +102,52 @@ export function UserSkillGraphPageClient() {
               </TableBody>
             </Table>
           </div>
+          {(() => {
+            const totalRows = table.getRowModel().rows.length;
+            const totalPages = Math.ceil(totalRows / PAGE_SIZE);
+            if (totalPages <= 1) return <p className="mt-4 text-center text-sm text-gray-400">All Loaded</p>;
+            return (
+              <div className="mt-4 flex flex-col gap-4 items-center justify-between">
+                <Pagination>
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious
+                        href="#"
+                        onClick={(e) => { e.preventDefault(); setPage((p) => Math.max(1, p - 1)); }}
+                        aria-disabled={page === 1}
+                        className={page === 1 ? "pointer-events-none opacity-50" : ""}
+                      />
+                    </PaginationItem>
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => {
+                      const showPage = p === 1 || p === totalPages || Math.abs(p - page) <= 1;
+                      const showEllipsisBefore = p === page - 2 && page > 3;
+                      const showEllipsisAfter = p === page + 2 && page < totalPages - 2;
+                      if (showEllipsisBefore || showEllipsisAfter) {
+                        return <PaginationItem key={`e-${p}`}><PaginationEllipsis /></PaginationItem>;
+                      }
+                      if (!showPage) return null;
+                      return (
+                        <PaginationItem key={p}>
+                          <PaginationLink href="#" isActive={p === page} onClick={(e) => { e.preventDefault(); setPage(p); }}>{p}</PaginationLink>
+                        </PaginationItem>
+                      );
+                    })}
+                    <PaginationItem>
+                      <PaginationNext
+                        href="#"
+                        onClick={(e) => { e.preventDefault(); setPage((p) => Math.min(totalPages, p + 1)); }}
+                        aria-disabled={page === totalPages}
+                        className={page === totalPages ? "pointer-events-none opacity-50" : ""}
+                      />
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+                <p className="text-sm text-gray-400 w-fit mx-auto shrink-0">
+                  Showing {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, totalRows)} of {totalRows} skills
+                </p>
+              </div>
+            );
+          })()}
         </div>
       </DashboardSection>
     </div>

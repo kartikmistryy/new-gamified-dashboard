@@ -18,7 +18,6 @@ import { DashboardSection } from "@/components/dashboard/shared/DashboardSection
 import { RepoHealthBar } from "@/components/dashboard/shared/RepoHealthBar";
 import { FilterBadges } from "@/components/dashboard/shared/FilterBadges";
 import { SortableTableHeader } from "@/components/dashboard/shared/SortableTableHeader";
-import { SpofDistributionChart } from "@/components/dashboard/teamDashboard/SpofDistributionChart";
 import {
   Table,
   TableBody,
@@ -28,6 +27,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import { UserAvatar } from "@/components/shared/UserAvatar";
 import { OwnerCell } from "@/components/dashboard/repoDashboard/ModuleTableComponents";
 
@@ -46,10 +54,6 @@ import {
   sortOrgRepoSpof,
   sortSpofOwners,
 } from "@/lib/dashboard/entities/team/data/orgSpofDataLoader";
-import {
-  SPOF_DATA,
-  SPOF_TEAM_CONFIG,
-} from "@/lib/dashboard/entities/team/mocks/spofMockData";
 import { DASHBOARD_TEXT_CLASSES, DASHBOARD_COLORS } from "@/lib/dashboard/shared/utils/colors";
 import { hexToRgba } from "@/lib/dashboard/entities/team/utils/tableUtils";
 import { getRepoPath } from "@/lib/routes";
@@ -124,7 +128,8 @@ const repoSpofColumns: ColumnDef<OrgRepoSpofRow>[] = [
     enableSorting: false,
     meta: { className: "w-14" },
     cell: ({ row, table }) => {
-      const rank = table.getSortedRowModel().rows.findIndex(r => r.id === row.id) + 1;
+      const pageOffset = (table.options.meta as { pageOffset?: number })?.pageOffset ?? 0;
+      const rank = table.getSortedRowModel().rows.findIndex(r => r.id === row.id) + 1 + pageOffset;
       return (
         <span className={rank <= 3 ? "text-foreground font-bold" : DASHBOARD_TEXT_CLASSES.rankMuted}>
           {rank}
@@ -223,33 +228,54 @@ export function OrgSpofPageClient() {
     { id: "spofModuleCount", desc: true },
   ]);
 
+  // SPOF Repos table state
+  const [repoPage, setRepoPage] = useState(1);
+  const REPOS_PER_PAGE = 10;
+
   // SPOF Owners table state
   const [ownerFilter, setOwnerFilter] = useState<SpofOwnerFilter>("mostSpofModules");
+  const [ownerPage, setOwnerPage] = useState(1);
+  const OWNERS_PER_PAGE = 10;
 
   // Repo view toggle state
   const [repoView, setRepoView] = useState<"spof" | "all">("spof");
-
-  // SPOF Distribution Chart state
-  const [visibleTeams, setVisibleTeams] = useState<Record<string, boolean>>(() => {
-    const init: Record<string, boolean> = {};
-    for (const team of SPOF_TEAM_CONFIG) {
-      init[team.name] = true;
-    }
-    return init;
-  });
 
   const sortedRows = useMemo(
     () => sortOrgRepoSpof(ORG_REPO_SPOF_ROWS, currentFilter),
     [currentFilter],
   );
 
+  const repoTotalPages = Math.ceil(sortedRows.length / REPOS_PER_PAGE);
+
+  const paginatedRows = useMemo(
+    () => sortedRows.slice((repoPage - 1) * REPOS_PER_PAGE, repoPage * REPOS_PER_PAGE),
+    [sortedRows, repoPage],
+  );
+
+  const handleRepoFilterChange = useCallback((filter: OrgRepoSpofFilter) => {
+    setCurrentFilter(filter);
+    setRepoPage(1);
+  }, []);
+
   const sortedOwners = useMemo(
     () => sortSpofOwners(ORG_SPOF_OWNERS, ownerFilter),
     [ownerFilter],
   );
 
+  const ownerTotalPages = Math.ceil(sortedOwners.length / OWNERS_PER_PAGE);
+
+  const paginatedOwners = useMemo(
+    () => sortedOwners.slice((ownerPage - 1) * OWNERS_PER_PAGE, ownerPage * OWNERS_PER_PAGE),
+    [sortedOwners, ownerPage],
+  );
+
+  const handleOwnerFilterChange = useCallback((filter: SpofOwnerFilter) => {
+    setOwnerFilter(filter);
+    setOwnerPage(1);
+  }, []);
+
   const table = useReactTable({
-    data: sortedRows,
+    data: paginatedRows,
     columns: repoSpofColumns,
     getRowCanExpand: () => true,
     getCoreRowModel: getCoreRowModel(),
@@ -257,6 +283,7 @@ export function OrgSpofPageClient() {
     getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
     state: { sorting },
+    meta: { pageOffset: (repoPage - 1) * REPOS_PER_PAGE },
   });
 
   return (
@@ -384,7 +411,7 @@ export function OrgSpofPageClient() {
             <FilterBadges
               filterTabs={ORG_REPO_SPOF_FILTER_TABS}
               currentFilter={currentFilter}
-              onFilterChange={setCurrentFilter}
+              onFilterChange={handleRepoFilterChange}
             />
           </div>
 
@@ -439,7 +466,7 @@ export function OrgSpofPageClient() {
                               </TableHeader>
                               <TableBody>
                                 {row.original.modules.map((mod) => {
-                                  const pcts = deriveOwnershipPercents(mod.owners.length);
+                                  const pcts = mod.ownershipPercents ?? deriveOwnershipPercents(mod.owners.length);
                                   const primaryColor = STATUS_OWNER_COLOR[mod.status] ?? BACKUP_OWNER_COLOR;
                                   return (
                                     <TableRow key={mod.moduleName}>
@@ -509,7 +536,60 @@ export function OrgSpofPageClient() {
           </div>
           )}
 
-          <p className="mt-4 text-center text-sm text-gray-400">All Loaded</p>
+          {repoTotalPages > 1 && (
+            <div className="mt-4 flex flex-col gap-4 items-center justify-between">
+              <Pagination>
+                <PaginationContent>
+                  <PaginationItem>
+                    <PaginationPrevious
+                      href="#"
+                      onClick={(e) => { e.preventDefault(); setRepoPage((p) => Math.max(1, p - 1)); }}
+                      aria-disabled={repoPage === 1}
+                      className={repoPage === 1 ? "pointer-events-none opacity-50" : ""}
+                    />
+                  </PaginationItem>
+                  {Array.from({ length: repoTotalPages }, (_, i) => i + 1).map((page) => {
+                    const showPage = page === 1 || page === repoTotalPages || Math.abs(page - repoPage) <= 1;
+                    const showEllipsisBefore = page === repoPage - 2 && repoPage > 3;
+                    const showEllipsisAfter = page === repoPage + 2 && repoPage < repoTotalPages - 2;
+                    if (showEllipsisBefore || showEllipsisAfter) {
+                      return (
+                        <PaginationItem key={`ellipsis-${page}`}>
+                          <PaginationEllipsis />
+                        </PaginationItem>
+                      );
+                    }
+                    if (!showPage) return null;
+                    return (
+                      <PaginationItem key={page}>
+                        <PaginationLink
+                          href="#"
+                          isActive={page === repoPage}
+                          onClick={(e) => { e.preventDefault(); setRepoPage(page); }}
+                        >
+                          {page}
+                        </PaginationLink>
+                      </PaginationItem>
+                    );
+                  })}
+                  <PaginationItem>
+                    <PaginationNext
+                      href="#"
+                      onClick={(e) => { e.preventDefault(); setRepoPage((p) => Math.min(repoTotalPages, p + 1)); }}
+                      aria-disabled={repoPage === repoTotalPages}
+                      className={repoPage === repoTotalPages ? "pointer-events-none opacity-50" : ""}
+                    />
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
+              <p className="text-sm text-gray-400 w-fit mx-auto shrink-0">
+                Showing {(repoPage - 1) * REPOS_PER_PAGE + 1}–{Math.min(repoPage * REPOS_PER_PAGE, sortedRows.length)} of {sortedRows.length} repos
+              </p>
+            </div>
+          )}
+          {repoTotalPages <= 1 && (
+            <p className="mt-4 text-center text-sm text-gray-400">All Loaded</p>
+          )}
         </div>
       </DashboardSection>
 
@@ -519,7 +599,7 @@ export function OrgSpofPageClient() {
           <FilterBadges
             filterTabs={SPOF_OWNER_FILTER_TABS}
             currentFilter={ownerFilter}
-            onFilterChange={setOwnerFilter}
+            onFilterChange={handleOwnerFilterChange}
           />
 
           <div className="rounded-sm border-none overflow-hidden bg-white">
@@ -534,12 +614,14 @@ export function OrgSpofPageClient() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {sortedOwners.length > 0 ? (
-                  sortedOwners.map((owner, index) => (
+                {paginatedOwners.length > 0 ? (
+                  paginatedOwners.map((owner, index) => {
+                    const globalIndex = (ownerPage - 1) * OWNERS_PER_PAGE + index;
+                    return (
                     <TableRow key={owner.name} className="border-[#E5E5E5] hover:bg-gray-50/80">
                       <TableCell>
-                        <span className={index < 3 ? "text-foreground font-bold" : DASHBOARD_TEXT_CLASSES.rankMuted}>
-                          {index + 1}
+                        <span className={globalIndex < 3 ? "text-foreground font-bold" : DASHBOARD_TEXT_CLASSES.rankMuted}>
+                          {globalIndex + 1}
                         </span>
                       </TableCell>
                       <TableCell>
@@ -580,7 +662,8 @@ export function OrgSpofPageClient() {
                         </div>
                       </TableCell>
                     </TableRow>
-                  ))
+                  );
+                  })
                 ) : (
                   <TableRow>
                     <TableCell colSpan={5} className="h-24 text-center">
@@ -592,7 +675,61 @@ export function OrgSpofPageClient() {
             </Table>
           </div>
 
-          <p className="mt-4 text-center text-sm text-gray-400">All Loaded</p>
+          {ownerTotalPages > 1 && (
+            <div className="mt-4 flex flex-col gap-4 items-center justify-between">
+              <Pagination>
+                <PaginationContent>
+                  <PaginationItem>
+                    <PaginationPrevious
+                      href="#"
+                      onClick={(e) => { e.preventDefault(); setOwnerPage((p) => Math.max(1, p - 1)); }}
+                      aria-disabled={ownerPage === 1}
+                      className={ownerPage === 1 ? "pointer-events-none opacity-50" : ""}
+                    />
+                  </PaginationItem>
+                  {Array.from({ length: ownerTotalPages }, (_, i) => i + 1).map((page) => {
+                    const showPage = page === 1 || page === ownerTotalPages || Math.abs(page - ownerPage) <= 1;
+                    const showEllipsisBefore = page === ownerPage - 2 && ownerPage > 3;
+                    const showEllipsisAfter = page === ownerPage + 2 && ownerPage < ownerTotalPages - 2;
+                    if (showEllipsisBefore || showEllipsisAfter) {
+                      return (
+                        <PaginationItem key={`ellipsis-${page}`}>
+                          <PaginationEllipsis />
+                        </PaginationItem>
+                      );
+                    }
+                    if (!showPage) return null;
+                    return (
+                      <PaginationItem key={page}>
+                        <PaginationLink
+                          href="#"
+                          isActive={page === ownerPage}
+                          onClick={(e) => { e.preventDefault(); setOwnerPage(page); }}
+                        >
+                          {page}
+                        </PaginationLink>
+                      </PaginationItem>
+                    );
+                  })}
+                  <PaginationItem>
+                    <PaginationNext
+                      href="#"
+                      onClick={(e) => { e.preventDefault(); setOwnerPage((p) => Math.min(ownerTotalPages, p + 1)); }}
+                      aria-disabled={ownerPage === ownerTotalPages}
+                      className={ownerPage === ownerTotalPages ? "pointer-events-none opacity-50" : ""}
+                    />
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
+              <p className="text-sm text-gray-400 w-fit mx-auto shrink-0">
+                Showing {(ownerPage - 1) * OWNERS_PER_PAGE + 1}–{Math.min(ownerPage * OWNERS_PER_PAGE, sortedOwners.length)} of {sortedOwners.length} owners
+              </p>
+
+            </div>
+          )}
+          {ownerTotalPages <= 1 && (
+            <p className="mt-4 text-center text-sm text-gray-400">All Loaded</p>
+          )}
         </div>
       </DashboardSection>
     </div>

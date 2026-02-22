@@ -13,10 +13,9 @@ import {
 } from "@/lib/dashboard/entities/team/mocks/overviewMockData";
 import { getTimeRangeComparisonLabel } from "@/lib/shared/types/timeRangeTypes";
 import {
-  ORG_PERFORMANCE_HOLIDAYS,
-  ORG_PERFORMANCE_ANNOTATIONS,
   generateOrgPerformanceData,
 } from "@/lib/dashboard/entities/team/charts/performanceChart/orgPerformanceChartData";
+import { ORG_TIMESERIES_DATA, ORG_TIMESERIES_READY } from "@/lib/dashboard/entities/team/data/orgTimeseriesDataLoader";
 import { PERFORMANCE_METRICS } from "@/lib/dashboard/entities/team/mocks/performanceMetricsMockData";
 import { OperationBreakdownCard } from "@/components/dashboard/OperationBreakdownCard";
 import {
@@ -125,17 +124,11 @@ export function OrgPerformancePageClient() {
               <PerformanceChart
                 dataSource={{
                   type: "org",
-                  data: [],
-                  generator: generateOrgPerformanceData,
+                  data: ORG_TIMESERIES_READY ? ORG_TIMESERIES_DATA : [],
+                  generator: ORG_TIMESERIES_READY ? undefined : generateOrgPerformanceData,
                 }}
-                eventStrategy={{
-                  mode: "static",
-                  events: ORG_PERFORMANCE_HOLIDAYS,
-                }}
-                annotationStrategy={{
-                  mode: "static",
-                  annotations: ORG_PERFORMANCE_ANNOTATIONS,
-                }}
+                eventStrategy={{ mode: "none" }}
+                annotationStrategy={{ mode: "none" }}
                 timeRange={timeRange}
               />
             </DashboardSection>

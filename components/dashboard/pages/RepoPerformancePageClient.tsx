@@ -21,10 +21,6 @@ import { PERFORMANCE_CONTRIBUTOR_COLUMNS } from "@/lib/dashboard/entities/contri
 import { useRouteParams } from "@/lib/dashboard/shared/contexts/RouteParamsProvider";
 import { PerformanceFilter } from "@/lib/dashboard/entities/contributor/types";
 import { useRepoPerformanceData } from "@/lib/dashboard/entities/contributor/hooks/useRepoPerformanceData";
-import {
-  getRepoGaugeValue,
-  buildRepoContributorTableRows,
-} from "@/lib/dashboard/entities/repo/data/repoPerformanceDataLoader";
 
 export function RepoPerformancePageClient() {
   const { repoId } = useRouteParams();
@@ -37,12 +33,9 @@ export function RepoPerformancePageClient() {
     filteredAggregateData,
     medianValues,
     carouselContributors,
+    repoPerformanceValue,
+    tableRows,
   } = useRepoPerformanceData(repoId!, timeRange);
-
-  // Real data: gauge value from churn formula, contributor table from real metrics
-  const realGauge = getRepoGaugeValue(repoId!);
-  const repoPerformanceValue = realGauge ?? 52;
-  const tableRows = buildRepoContributorTableRows(repoId!);
 
   return (
     <TooltipProvider>
