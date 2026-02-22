@@ -35,5 +35,7 @@ export type PerformanceFilter =
 export type ContributorPerformanceDataPoint = {
   date: string;           // ISO date string YYYY-MM-DD
   value: number;          // Repository average performance at this point
-  contributorValues: Record<string, number>; // Individual contributor values keyed by contributorName
+  contributorValues: Record<string, number>;    // Normalized delta score per contributor (0-100)
+  contributorAdditions?: Record<string, number>; // Raw linesAdded per contributor this week
+  contributorDeletions?: Record<string, number>; // Raw linesDeleted per contributor this week
 };

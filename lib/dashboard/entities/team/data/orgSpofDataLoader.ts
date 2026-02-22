@@ -16,6 +16,8 @@ export type OrgSpofModule = {
   busFactor: number;
   status: OrgSpofModuleStatus;
   owners: string[];
+  /** Real DOA-derived ownership percentages, parallel to owners[]. */
+  ownershipPercents?: number[];
 };
 
 export type OrgSpofRepo = {
@@ -94,6 +96,7 @@ export type OrgRepoSpofModule = {
   moduleName: string;
   status: OrgSpofModuleStatus;
   owners: string[];
+  ownershipPercents?: number[];
 };
 
 export type RepoHealthDistribution = {
@@ -130,6 +133,7 @@ export const ORG_REPO_SPOF_ROWS: OrgRepoSpofRow[] = ORG_SPOF_REPOS.map((repo) =>
       moduleName: m.name,
       status: m.status,
       owners: m.owners,
+      ownershipPercents: m.ownershipPercents,
     })),
     healthDistribution,
   };

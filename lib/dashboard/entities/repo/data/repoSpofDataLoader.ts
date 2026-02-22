@@ -105,21 +105,18 @@ export type RepoSpofData = {
 // ---------------------------------------------------------------------------
 
 const AVAILABLE_REPOS = [
-  "AutoGPT",
-  "Flowise",
-  "langchain",
-  "langfuse",
-  "llama_index",
-  "novu",
-  "quivr",
-  "reflex",
-  "ruff",
-  "rustdesk",
-  "stable-diffusion-webui",
-  "text-generation-webui",
-  "transformers",
-  "twenty",
-  "typst",
+  "browser-sdk",
+  "datadog-agent",
+  "datadog-api-client-go",
+  "dd-sdk-android",
+  "dd-trace-dotnet",
+  "dd-trace-java",
+  "dd-trace-js",
+  "dd-trace-py",
+  "dd-trace-rb",
+  "integrations-core",
+  "libdatadog",
+  "system-tests",
 ] as const;
 
 export type AvailableRepo = (typeof AVAILABLE_REPOS)[number];

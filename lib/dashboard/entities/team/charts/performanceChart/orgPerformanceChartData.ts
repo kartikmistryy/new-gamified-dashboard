@@ -1,4 +1,5 @@
 import type { ChartEvent, ChartAnnotation } from "../../types";
+import { ORG_TIMESERIES_DATA, ORG_TIMESERIES_READY } from "@/lib/dashboard/entities/team/data/orgTimeseriesDataLoader";
 
 export type OrgPerformanceDataPoint = {
   date: string;
@@ -67,8 +68,11 @@ function generateTeamValues(orgValue: number, weekIndex: number): Record<string,
   return teamValues;
 }
 
-/** Generate weekly data points for the org performance chart */
+/** Generate weekly data points for the org performance chart.
+ *  Returns real Datadog timeseries when available; falls back to mock data. */
 export function generateOrgPerformanceData(): OrgPerformanceDataPoint[] {
+  if (ORG_TIMESERIES_READY) return ORG_TIMESERIES_DATA;
+  // ── Mock fallback (used until aggregate-timeseries.mjs has been run) ──
   const data: OrgPerformanceDataPoint[] = [];
   const startDate = new Date("2024-01-01");
   const endDate = new Date("2025-01-06");
