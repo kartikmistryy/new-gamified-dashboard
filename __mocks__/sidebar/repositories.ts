@@ -2,12 +2,18 @@ import type { Repository } from "@/types/sidebar"
 
 export const repositoriesByOrg: Record<string, Repository[]> = {
   gitroll: [
-    { id: "novu", name: "novu", orgId: "gitroll" },
-    { id: "transformers", name: "transformers", orgId: "gitroll" },
-    { id: "langchain", name: "langchain", orgId: "gitroll" },
-    { id: "langfuse", name: "langfuse", orgId: "gitroll" },
-    { id: "rustdesk", name: "rustdesk", orgId: "gitroll" },
-    { id: "twenty", name: "twenty", orgId: "gitroll" },
+    { id: "browser-sdk", name: "browser-sdk", orgId: "gitroll" },
+    { id: "datadog-agent", name: "datadog-agent", orgId: "gitroll" },
+    { id: "datadog-api-client-go", name: "datadog-api-client-go", orgId: "gitroll" },
+    { id: "dd-sdk-android", name: "dd-sdk-android", orgId: "gitroll" },
+    { id: "dd-trace-dotnet", name: "dd-trace-dotnet", orgId: "gitroll" },
+    { id: "dd-trace-java", name: "dd-trace-java", orgId: "gitroll" },
+    { id: "dd-trace-js", name: "dd-trace-js", orgId: "gitroll" },
+    { id: "dd-trace-py", name: "dd-trace-py", orgId: "gitroll" },
+    { id: "dd-trace-rb", name: "dd-trace-rb", orgId: "gitroll" },
+    { id: "integrations-core", name: "integrations-core", orgId: "gitroll" },
+    { id: "libdatadog", name: "libdatadog", orgId: "gitroll" },
+    { id: "system-tests", name: "system-tests", orgId: "gitroll" },
   ],
   acme: [
     { id: "monorepo", name: "monorepo", orgId: "acme" },
